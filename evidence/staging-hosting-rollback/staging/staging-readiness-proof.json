@@ -1,0 +1,224 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-06-11T17:29:09.398Z",
+  "baseUrl": "http://127.0.0.1:4173",
+  "staticExportExists": true,
+  "staticExportPath": "C:\\new\\dokumenty-dlya-biznesa\\code\\out",
+  "localCopyExists": true,
+  "localCopyPath": "C:\\new\\dokumenty82-p0-local",
+  "p0RouteFiles": [
+    {
+      "route": "/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\index.html",
+      "exists": true,
+      "size": 122402
+    },
+    {
+      "route": "/razbor-situacii/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\razbor-situacii\\index.html",
+      "exists": true,
+      "size": 126827
+    },
+    {
+      "route": "/kontakty/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\kontakty\\index.html",
+      "exists": true,
+      "size": 125523
+    },
+    {
+      "route": "/policy/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\policy\\index.html",
+      "exists": true,
+      "size": 47256
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\otvet-na-trebovanie-ifns\\index.html",
+      "exists": true,
+      "size": 41954
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\otvet-na-zapros-banka\\index.html",
+      "exists": true,
+      "size": 41385
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\dokumenty-dlya-banka-115-fz\\index.html",
+      "exists": true,
+      "size": 41495
+    },
+    {
+      "route": "/deklaraciya-usn/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\deklaraciya-usn\\index.html",
+      "exists": true,
+      "size": 41439
+    },
+    {
+      "route": "/nulevaya-otchetnost-ooo/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\nulevaya-otchetnost-ooo\\index.html",
+      "exists": true,
+      "size": 41417
+    },
+    {
+      "route": "/nulevaya-otchetnost-ip/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\nulevaya-otchetnost-ip\\index.html",
+      "exists": true,
+      "size": 41028
+    },
+    {
+      "route": "/registraciya-ooo/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\registraciya-ooo\\index.html",
+      "exists": true,
+      "size": 36291
+    },
+    {
+      "route": "/registraciya-ip/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\registraciya-ip\\index.html",
+      "exists": true,
+      "size": 35659
+    },
+    {
+      "route": "/yuridicheskiy-adres-simferopol/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\yuridicheskiy-adres-simferopol\\index.html",
+      "exists": true,
+      "size": 41680
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "file": "C:\\new\\dokumenty-dlya-biznesa\\code\\out\\nedostovernost-yuridicheskogo-adresa\\index.html",
+      "exists": true,
+      "size": 44296
+    }
+  ],
+  "p0RoutesExistInOut": true,
+  "sitemapExists": true,
+  "robotsExists": true,
+  "assetsExist": true,
+  "policyRouteExists": true,
+  "noServerRuntimeRequired": true,
+  "noNextServerRequired": true,
+  "noBackendRequiredForPlaceholderForms": true,
+  "noApiRoutesRequired": true,
+  "apiRouteFiles": [],
+  "noEnvironmentVariablesRequiredForLocalStaticServing": true,
+  "noSecretsRequired": true,
+  "noLiveCrmRequired": true,
+  "noLiveAnalyticsRequired": true,
+  "httpRoutes": [
+    {
+      "route": "/",
+      "url": "http://127.0.0.1:4173/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/razbor-situacii/",
+      "url": "http://127.0.0.1:4173/razbor-situacii/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/kontakty/",
+      "url": "http://127.0.0.1:4173/kontakty/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/policy/",
+      "url": "http://127.0.0.1:4173/policy/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "url": "http://127.0.0.1:4173/otvet-na-trebovanie-ifns/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "url": "http://127.0.0.1:4173/otvet-na-zapros-banka/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "url": "http://127.0.0.1:4173/dokumenty-dlya-banka-115-fz/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/deklaraciya-usn/",
+      "url": "http://127.0.0.1:4173/deklaraciya-usn/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/nulevaya-otchetnost-ooo/",
+      "url": "http://127.0.0.1:4173/nulevaya-otchetnost-ooo/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/nulevaya-otchetnost-ip/",
+      "url": "http://127.0.0.1:4173/nulevaya-otchetnost-ip/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/registraciya-ooo/",
+      "url": "http://127.0.0.1:4173/registraciya-ooo/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/registraciya-ip/",
+      "url": "http://127.0.0.1:4173/registraciya-ip/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/yuridicheskiy-adres-simferopol/",
+      "url": "http://127.0.0.1:4173/yuridicheskiy-adres-simferopol/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "url": "http://127.0.0.1:4173/nedostovernost-yuridicheskogo-adresa/",
+      "status": 200,
+      "ok": true,
+      "hasHtml": true,
+      "hasMain": true
+    }
+  ],
+  "p0RoutesHttp200": true
+}

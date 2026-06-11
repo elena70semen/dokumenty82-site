@@ -1,0 +1,359 @@
+{
+  "generatedAt": "2026-06-11T16:53:24.397Z",
+  "mode": "viewport",
+  "baseUrl": "http://127.0.0.1:4182",
+  "screenshots": [
+    {
+      "route": "/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\home-desktop.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "proof": {
+        "bodyWidth": 1425,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 0,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 1425,
+        "submitButtons": 0,
+        "title": "Документы для бизнеса — подготовка документов в Симферополе"
+      }
+    },
+    {
+      "route": "/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\home-mobile.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 900
+      },
+      "proof": {
+        "bodyWidth": 375,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 0,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 375,
+        "submitButtons": 0,
+        "title": "Документы для бизнеса — подготовка документов в Симферополе"
+      }
+    },
+    {
+      "route": "/razbor-situacii/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\razbor-situacii-desktop.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "proof": {
+        "bodyWidth": 1425,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 1425,
+        "submitButtons": 0,
+        "title": "Разбор ситуации по документам бизнеса в Симферополе | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/razbor-situacii/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\razbor-situacii-mobile.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 900
+      },
+      "proof": {
+        "bodyWidth": 375,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 375,
+        "submitButtons": 0,
+        "title": "Разбор ситуации по документам бизнеса в Симферополе | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/kontakty/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\kontakty-desktop.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "proof": {
+        "bodyWidth": 1425,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 1425,
+        "submitButtons": 0,
+        "title": "Контакты — Документы для бизнеса в Симферополе | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/kontakty/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\kontakty-mobile.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 900
+      },
+      "proof": {
+        "bodyWidth": 375,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 375,
+        "submitButtons": 0,
+        "title": "Контакты — Документы для бизнеса в Симферополе | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/policy/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\policy-desktop.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "proof": {
+        "bodyWidth": 1425,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 0,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 1425,
+        "submitButtons": 0,
+        "title": "Политика конфиденциальности | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/policy/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\policy-mobile.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 900
+      },
+      "proof": {
+        "bodyWidth": 375,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 0,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 375,
+        "submitButtons": 0,
+        "title": "Политика конфиденциальности | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-trebovanie-ifns-desktop.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "proof": {
+        "bodyWidth": 1425,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 1425,
+        "submitButtons": 0,
+        "title": "Ответ на требование ИФНС | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-trebovanie-ifns-mobile.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 900
+      },
+      "proof": {
+        "bodyWidth": 375,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 375,
+        "submitButtons": 0,
+        "title": "Ответ на требование ИФНС | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-zapros-banka-desktop.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "proof": {
+        "bodyWidth": 1425,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 1425,
+        "submitButtons": 0,
+        "title": "Ответ на запрос банка | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-zapros-banka-mobile.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 900
+      },
+      "proof": {
+        "bodyWidth": 375,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 375,
+        "submitButtons": 0,
+        "title": "Ответ на запрос банка | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\dokumenty-dlya-banka-115-fz-desktop.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "proof": {
+        "bodyWidth": 1425,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 1425,
+        "submitButtons": 0,
+        "title": "Документы для банка по 115-ФЗ | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\dokumenty-dlya-banka-115-fz-mobile.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 900
+      },
+      "proof": {
+        "bodyWidth": 375,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 375,
+        "submitButtons": 0,
+        "title": "Документы для банка по 115-ФЗ | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\nedostovernost-yuridicheskogo-adresa-desktop.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "proof": {
+        "bodyWidth": 1425,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 1425,
+        "submitButtons": 0,
+        "title": "Недостоверность юридического адреса - документы и маршрут | Документы для бизнеса"
+      }
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\nedostovernost-yuridicheskogo-adresa-mobile.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 900
+      },
+      "proof": {
+        "bodyWidth": 375,
+        "fileInputs": 0,
+        "footer": true,
+        "forms": 1,
+        "h1": 1,
+        "header": true,
+        "main": true,
+        "noHorizontalOverflow": true,
+        "scrollWidth": 375,
+        "submitButtons": 0,
+        "title": "Недостоверность юридического адреса - документы и маршрут | Документы для бизнеса"
+      }
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+[
+  {
+    "route": "/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [],
+    "dataCtaLabel": [],
+    "dataPageSlug": [],
+    "dataPageType": [],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/razbor-situacii/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [],
+    "dataCtaLabel": [],
+    "dataPageSlug": [],
+    "dataPageType": [],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/kontakty/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Заказать звонок",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [],
+    "dataCtaLabel": [],
+    "dataPageSlug": [],
+    "dataPageType": [],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/policy",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "phone",
+      "contacts"
+    ],
+    "dataCtaLabel": [
+      "Позвонить",
+      "Контакты"
+    ],
+    "dataPageSlug": [
+      "policy"
+    ],
+    "dataPageType": [
+      "legal"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
+    "policyHasPhoneAndContactsFallbackOnly": true,
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/otvet-na-trebovanie-ifns/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "show_documents"
+    ],
+    "dataCtaLabel": [
+      "Показать документы"
+    ],
+    "dataPageSlug": [
+      "otvet-na-trebovanie-ifns"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": true,
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/otvet-na-zapros-banka/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "show_documents"
+    ],
+    "dataCtaLabel": [
+      "Показать документы"
+    ],
+    "dataPageSlug": [
+      "otvet-na-zapros-banka"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": true,
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/dokumenty-dlya-banka-115-fz/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "show_documents"
+    ],
+    "dataCtaLabel": [
+      "Показать документы"
+    ],
+    "dataPageSlug": [
+      "dokumenty-dlya-banka-115-fz"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": true,
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/deklaraciya-usn/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "show_documents"
+    ],
+    "dataCtaLabel": [
+      "Показать документы"
+    ],
+    "dataPageSlug": [
+      "deklaraciya-usn"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": true,
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/nulevaya-otchetnost-ooo/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "show_documents"
+    ],
+    "dataCtaLabel": [
+      "Показать документы"
+    ],
+    "dataPageSlug": [
+      "nulevaya-otchetnost-ooo"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": true,
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/nulevaya-otchetnost-ip/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "show_documents"
+    ],
+    "dataCtaLabel": [
+      "Показать документы"
+    ],
+    "dataPageSlug": [
+      "nulevaya-otchetnost-ip"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": true,
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/registraciya-ooo/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "situation_review"
+    ],
+    "dataCtaLabel": [
+      "Разобрать ситуацию"
+    ],
+    "dataPageSlug": [
+      "registraciya-ooo"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/registraciya-ip/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "situation_review"
+    ],
+    "dataCtaLabel": [
+      "Разобрать ситуацию"
+    ],
+    "dataPageSlug": [
+      "registraciya-ip"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/yuridicheskiy-adres-simferopol/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "show_documents"
+    ],
+    "dataCtaLabel": [
+      "Показать документы"
+    ],
+    "dataPageSlug": [
+      "yuridicheskiy-adres-simferopol"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": true,
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  },
+  {
+    "route": "/nedostovernost-yuridicheskogo-adresa/",
+    "collectorLabelsDetected": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Контакты",
+      "+7 (978) 998-72-22"
+    ],
+    "dataCollectorKind": [
+      "show_documents"
+    ],
+    "dataCtaLabel": [
+      "Показать документы"
+    ],
+    "dataPageSlug": [
+      "nedostovernost-yuridicheskogo-adresa"
+    ],
+    "dataPageType": [
+      "money"
+    ],
+    "safeCollectorOrContactPathFound": true,
+    "documentHeavyHasShowDocuments": true,
+    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyAggressiveCommercialCollector": false
+  }
+]

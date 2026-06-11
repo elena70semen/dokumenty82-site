@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-06-11T17:29:09.329Z",
+  "recommendedCurrentStagingApproach": {
+    "staticHostingOverHttpsTcp": true,
+    "http2Allowed": true,
+    "http3Enabled": false,
+    "quicEnabled": false,
+    "udp443Required": false,
+    "h3AltSvcEnabled": false,
+    "liveCrmFormsAnalytics": false,
+    "publicLaunchApproved": false
+  },
+  "options": [
+    {
+      "option": "Simple Nginx static hosting",
+      "staticExportCompatibility": "high",
+      "tlsSupport": "yes",
+      "http2TcpSupport": "yes",
+      "http3QuicRisk": "low if not enabled",
+      "rollbackSimplicity": "high",
+      "logsAccessControl": "server-controlled",
+      "privacyLegalConsiderations": "owner controls logs and retention",
+      "placeholderForms": "safe",
+      "futureBackendReadiness": "medium",
+      "ownerBurden": "medium",
+      "recommendation": "recommended for current staging review"
+    },
+    {
+      "option": "Static object hosting + CDN",
+      "staticExportCompatibility": "high",
+      "tlsSupport": "yes",
+      "http2TcpSupport": "provider-dependent",
+      "http3QuicRisk": "must be disabled or reviewed",
+      "rollbackSimplicity": "high with versioned artifacts",
+      "logsAccessControl": "provider-dependent",
+      "privacyLegalConsiderations": "provider and CDN logs need review",
+      "placeholderForms": "safe",
+      "futureBackendReadiness": "low without extra services",
+      "ownerBurden": "low to medium",
+      "recommendation": "candidate after provider/legal review"
+    },
+    {
+      "option": "Vercel/Netlify-style static hosting",
+      "staticExportCompatibility": "high",
+      "tlsSupport": "yes",
+      "http2TcpSupport": "yes",
+      "http3QuicRisk": "provider defaults must be reviewed",
+      "rollbackSimplicity": "high",
+      "logsAccessControl": "provider-dependent",
+      "privacyLegalConsiderations": "cross-border/provider review required",
+      "placeholderForms": "safe if no platform forms are enabled",
+      "futureBackendReadiness": "medium to high",
+      "ownerBurden": "low",
+      "recommendation": "not current default until provider review"
+    },
+    {
+      "option": "VPS with Nginx",
+      "staticExportCompatibility": "high",
+      "tlsSupport": "yes",
+      "http2TcpSupport": "yes",
+      "http3QuicRisk": "low if config stays TCP-only",
+      "rollbackSimplicity": "medium",
+      "logsAccessControl": "owner-controlled",
+      "privacyLegalConsiderations": "ops/access discipline required",
+      "placeholderForms": "safe",
+      "futureBackendReadiness": "high",
+      "ownerBurden": "high",
+      "recommendation": "good future option with ops owner"
+    },
+    {
+      "option": "Future backend-capable hosting",
+      "staticExportCompatibility": "medium to high",
+      "tlsSupport": "yes",
+      "http2TcpSupport": "yes",
+      "http3QuicRisk": "must be controlled explicitly",
+      "rollbackSimplicity": "depends on release process",
+      "logsAccessControl": "depends on platform",
+      "privacyLegalConsiderations": "requires backend, CRM and retention review",
+      "placeholderForms": "safe only while backend remains disabled",
+      "futureBackendReadiness": "high",
+      "ownerBurden": "medium to high",
+      "recommendation": "defer until live forms/backend stage"
+    }
+  ]
+}

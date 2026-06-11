@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — route grid pattern</title>
+  <desc id="desc">Фоновая сетка порядка и маршрута для брендовой графической матрицы.</desc>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#162844" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#245DA7" stop-opacity="0.26"/>
+      <stop offset="0.58" stop-color="#0D4A3B" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#C69A47" stop-opacity="0.22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="#F7F3EA"/>
+  <rect width="1200" height="760" fill="url(#grid)"/>
+  <path d="M92 596 C224 472 278 260 430 270 C590 282 558 510 722 518 C874 526 910 310 1110 184" fill="none" stroke="url(#route)" stroke-width="18" stroke-linecap="round"/>
+  <g fill="#FFFFFF" stroke="#245DA7" stroke-width="3" opacity="0.94">
+    <circle cx="126" cy="566" r="18"/>
+    <circle cx="430" cy="270" r="18"/>
+    <circle cx="722" cy="518" r="18"/>
+    <circle cx="1080" cy="204" r="18"/>
+  </g>
+  <g fill="#162844" opacity="0.16">
+    <rect x="132" y="120" width="230" height="132" rx="24"/>
+    <rect x="458" y="96" width="392" height="92" rx="24"/>
+    <rect x="870" y="444" width="230" height="140" rx="24"/>
+  </g>
+</svg>

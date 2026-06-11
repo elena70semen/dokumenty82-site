@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — square advertising pilot template</title>
+  <desc id="desc">Квадратный шаблон 1080x1080 для внутреннего рекламного пилота: контур Разбор ситуации, один основной смысл и один CTA.</desc>
+  <metadata>status: Stage 04 REVIEW / internal draft; public use requires owner, design and rights approval.</metadata>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBFAF6"/>
+      <stop offset="0.58" stop-color="#F2F2F2"/>
+      <stop offset="1" stop-color="#DDE3EA"/>
+    </linearGradient>
+    <linearGradient id="depth" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B0F14"/>
+      <stop offset="0.62" stop-color="#111318"/>
+      <stop offset="1" stop-color="#33215F"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#245DA7"/>
+      <stop offset="0.72" stop-color="#2E7CF6"/>
+      <stop offset="1" stop-color="#C6FF00"/>
+    </linearGradient>
+    <pattern id="quietGrid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0V72" fill="none" stroke="#162844" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1080" height="1080" rx="40" fill="url(#surface)"/>
+  <rect width="1080" height="1080" rx="40" fill="url(#quietGrid)"/>
+  <path d="M696 0H1080V1080H592C654 944 684 780 676 588C668 404 692 208 696 0Z" fill="url(#depth)"/>
+  <path d="M760 120H1020V1020H704" fill="none" stroke="#F2F2F2" stroke-opacity="0.09" stroke-width="2"/>
+  <path d="M832 84V1000" stroke="#7B61FF" stroke-opacity="0.20" stroke-width="44"/>
+  <path d="M894 86V1000" stroke="#C6FF00" stroke-opacity="0.18" stroke-width="18"/>
+  <path d="M770 802C842 754 900 848 968 790S1034 724 1056 688" fill="none" stroke="#F2F2F2" stroke-opacity="0.28" stroke-width="8" stroke-linecap="round"/>
+
+  <g font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <text x="80" y="118" font-size="26" font-weight="800" fill="#111821">Документы для бизнеса</text>
+    <text x="80" y="158" font-size="22" font-weight="650" fill="#667184">Центр подготовки документов</text>
+
+    <text x="80" y="320" font-size="76" font-weight="760" fill="#111821">Разберём</text>
+    <text x="80" y="406" font-size="76" font-weight="760" fill="#111821">ситуацию</text>
+    <text x="80" y="492" font-size="76" font-weight="760" fill="#111821">по документам</text>
+    <text x="80" y="570" font-size="31" font-weight="500" fill="#2A2D34">Покажем ближайший шаг и комплект.</text>
+  </g>
+
+  <g aria-label="Маршрут: ситуация, разбор, документы, следующий шаг">
+    <rect x="80" y="660" width="560" height="132" rx="20" fill="#FFFFFF" fill-opacity="0.82" stroke="#162844" stroke-opacity="0.12"/>
+    <path d="M132 728H578" stroke="url(#route)" stroke-width="8" stroke-linecap="round"/>
+    <g fill="#FFFFFF" stroke="#245DA7" stroke-width="4">
+      <circle cx="132" cy="728" r="18"/>
+      <circle cx="280" cy="728" r="18"/>
+      <circle cx="428" cy="728" r="18"/>
+    </g>
+    <circle cx="578" cy="728" r="19" fill="#C6FF00" stroke="#111318" stroke-width="4"/>
+    <g font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="18" font-weight="720" fill="#667184">
+      <text x="110" y="700">01</text>
+      <text x="258" y="700">02</text>
+      <text x="406" y="700">03</text>
+      <text x="550" y="700" fill="#111821">04</text>
+      <text x="132" y="770">разбор ситуации</text>
+    </g>
+  </g>
+
+  <rect x="80" y="870" width="392" height="84" rx="16" fill="#245DA7"/>
+  <text x="124" y="924" font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">Разобрать ситуацию</text>
+
+  <g font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <text x="80" y="1012" font-size="24" font-weight="620" fill="#2A2D34">Симферополь · ул. Мате Залки, 1</text>
+    <path d="M720 940H970" stroke="#C6FF00" stroke-width="10" stroke-linecap="round"/>
+    <text x="720" y="1008" font-size="20" font-weight="700" fill="#F2F2F2">один маршрут</text>
+  </g>
+</svg>

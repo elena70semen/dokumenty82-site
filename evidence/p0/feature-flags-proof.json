@@ -1,0 +1,27 @@
+{
+  "source": "lib/feature-flags.ts",
+  "flags": {
+    "formsLive": false,
+    "crmSuccessEnabled": false,
+    "analyticsEnabled": false,
+    "metricaEnabled": false,
+    "maxEnabled": false,
+    "telegramEnabled": false,
+    "messagingRevealEnabled": false,
+    "mapEnabled": false,
+    "cookieNoticeEnabled": false,
+    "formPlaceholdersEnabled": true
+  },
+  "unsafeGatesAllClosed": true,
+  "unsafeGateStatus": {
+    "formsLive": true,
+    "crmSuccessEnabled": true,
+    "analyticsEnabled": true,
+    "metricaEnabled": true,
+    "maxEnabled": true,
+    "telegramEnabled": true,
+    "messagingRevealEnabled": true,
+    "mapEnabled": true,
+    "cookieNoticeEnabled": true
+  }
+}

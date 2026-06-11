@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Host: dokumenty82.ru
+Sitemap: https://dokumenty82.ru/sitemap.xml
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&ysclid&from

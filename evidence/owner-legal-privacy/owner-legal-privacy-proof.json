@@ -1,0 +1,202 @@
+{
+  "reviewedAtLocal": "2026-06-11T17:05:21.050Z",
+  "sourceCommit": "9b13676",
+  "publicLiveAllowed": false,
+  "formsLive": false,
+  "crmSuccessEnabled": false,
+  "analyticsEnabled": false,
+  "metricaEnabled": false,
+  "maxEnabled": false,
+  "telegramEnabled": false,
+  "mapEnabled": false,
+  "cookieNoticeEnabled": false,
+  "formPlaceholdersEnabled": true,
+  "policyRoutePresent": true,
+  "policyFooterLinkPresent": true,
+  "formsPlaceholderOnly": true,
+  "noUpload": true,
+  "noSubmit": true,
+  "noBackendEndpoint": true,
+  "noWebhook": true,
+  "noSecrets": true,
+  "noAnalyticsScripts": true,
+  "noMetricaScripts": true,
+  "noTelegramMaxDeepLinks": true,
+  "noPrices": true,
+  "noGuarantees": true,
+  "noReviewsRatings": true,
+  "ownerLegalReviewRequired": true,
+  "publicLaunchReady": false,
+  "verdict": "HOLD/NOT_PUBLIC_LAUNCH_READY",
+  "sourceDocuments": [
+    {
+      "path": "AGENTS.md",
+      "present": true
+    },
+    {
+      "path": "README.md",
+      "present": true
+    },
+    {
+      "path": "docs/00-start/active-canon-index.md",
+      "present": true
+    },
+    {
+      "path": "docs/00-start/hold-register.md",
+      "present": true
+    },
+    {
+      "path": "docs/operations/live-launch-gates-v1.md",
+      "present": true
+    },
+    {
+      "path": "docs/operations/project-finalization-readiness-v1.md",
+      "present": true
+    },
+    {
+      "path": "docs/operations/launch-finalization-roadmap-v1.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/site-legal-compliance-rf-v1.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/legal-source-register-rf.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/personal-data-152fz-site-checklist.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/privacy-policy-consent-and-notices.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/forms-cookies-analytics-crm-compliance.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/cross-border-third-party-services-register.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/site-publication-owner-info-and-disclaimers.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/ip-media-fonts-maps-licenses.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/security-retention-access-control.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/legal-pages-and-ui-notices-proposal.md",
+      "present": true
+    },
+    {
+      "path": "docs/legal/site-maintenance-legal-ops-plan.md",
+      "present": true
+    },
+    {
+      "path": "docs/crm-analytics/route-to-lead-traceability-v1.md",
+      "present": true
+    },
+    {
+      "path": "docs/crm-analytics/metrica-goals-and-crm-contract.md",
+      "present": true
+    },
+    {
+      "path": "docs/ux/site-lead-collectors-v1.md",
+      "present": true
+    },
+    {
+      "path": "docs/ux/contact-actions-v1.md",
+      "present": true
+    },
+    {
+      "path": "docs/ux/page-lead-collector-map.md",
+      "present": true
+    },
+    {
+      "path": "code/app/policy/page.tsx",
+      "present": true
+    },
+    {
+      "path": "code/lib/feature-flags.ts",
+      "present": true
+    },
+    {
+      "path": "code/BROWSER_ACCESSIBILITY_EVIDENCE_REPORT.md",
+      "present": true
+    },
+    {
+      "path": "code/LOCAL_P0_BUILD.md",
+      "present": true
+    }
+  ],
+  "missingSources": [],
+  "reviewedRoutes": [
+    "/",
+    "/razbor-situacii/",
+    "/kontakty/",
+    "/policy/",
+    "/otvet-na-trebovanie-ifns/",
+    "/otvet-na-zapros-banka/",
+    "/dokumenty-dlya-banka-115-fz/",
+    "/deklaraciya-usn/",
+    "/nulevaya-otchetnost-ooo/",
+    "/nulevaya-otchetnost-ip/",
+    "/registraciya-ooo/",
+    "/registraciya-ip/",
+    "/yuridicheskiy-adres-simferopol/",
+    "/nedostovernost-yuridicheskogo-adresa/"
+  ],
+  "policyAudit": {
+    "title": "Политика конфиденциальности | Документы для бизнеса",
+    "h1": "Политика конфиденциальности и обработки данных",
+    "canonical": "https://dokumenty82.ru/policy",
+    "notCommercialLanding": true,
+    "noAggressiveCta": true,
+    "ownerLegalSignoffRequired": true
+  },
+  "formAudit": {
+    "formPlaceholderCount": 10,
+    "expectedFormPlaceholderCount": 10,
+    "formActionCount": 0,
+    "methodPostCount": 0,
+    "submitControlCount": 0,
+    "fileInputCount": 0,
+    "fallbackPresent": true,
+    "offlineTextPresent": true,
+    "falseSuccessPresent": false
+  },
+  "secretLikeFiles": [],
+  "evidenceStatus": {
+    "browser": "passed",
+    "accessibility": "passed",
+    "forms": "passed",
+    "finalLocalSafety": "passed"
+  },
+  "blockers": [
+    "PUBLIC_LIVE_ALLOWED = false",
+    "owner/legal acceptance missing",
+    "legal/privacy review required",
+    "live forms disabled",
+    "CRM disabled",
+    "analytics disabled",
+    "Metrica disabled",
+    "cookie notice disabled",
+    "MAX disabled",
+    "Telegram disabled",
+    "live map disabled",
+    "production deploy not performed",
+    "staging proof missing",
+    "rollback proof missing",
+    "Search Console/Yandex Webmaster setup missing",
+    "FNS live/autopublish disabled"
+  ]
+}

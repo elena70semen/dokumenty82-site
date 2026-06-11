@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — V0.4 slide route process template</title>
+  <desc id="desc">Процессный слайд 16:9: situation, review, documents and next step route without result promises.</desc>
+  <metadata>status: V0.4 REVIEW / INTERNAL DRAFT; public use requires separate owner, design and rights review.</metadata>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.70" stop-color="#F2F2F2"/>
+      <stop offset="1" stop-color="#DDE3EA"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#245DA7"/>
+      <stop offset="0.72" stop-color="#2E7CF6"/>
+      <stop offset="1" stop-color="#C6FF00"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#paper)"/>
+  <g font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <text x="104" y="132" font-size="20" font-weight="800" letter-spacing="4" fill="#245DA7">ROUTE PROCESS</text>
+    <text x="104" y="236" font-size="66" font-weight="780" fill="#111821">Спокойный маршрут через документы</text>
+    <text x="104" y="304" font-size="28" fill="#2A2D34">Процесс показывает следующий шаг, но не обещает внешний результат.</text>
+  </g>
+  <path d="M186 540H1390" stroke="url(#route)" stroke-width="12" stroke-linecap="round"/>
+  <g font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <g transform="translate(132 430)">
+      <rect width="260" height="220" rx="18" fill="#FBFAF6" stroke="#162844" stroke-opacity="0.14"/>
+      <circle cx="54" cy="110" r="28" fill="#245DA7"/>
+      <text x="41" y="120" font-size="24" font-weight="820" fill="#FFFFFF">01</text>
+      <text x="104" y="102" font-size="28" font-weight="780" fill="#111821">Ситуация</text>
+      <text x="104" y="148" font-size="20" fill="#667184">что уже есть</text>
+    </g>
+    <g transform="translate(468 430)">
+      <rect width="260" height="220" rx="18" fill="#FBFAF6" stroke="#162844" stroke-opacity="0.14"/>
+      <circle cx="54" cy="110" r="28" fill="#245DA7"/>
+      <text x="41" y="120" font-size="24" font-weight="820" fill="#FFFFFF">02</text>
+      <text x="104" y="102" font-size="28" font-weight="780" fill="#111821">Разбор</text>
+      <text x="104" y="148" font-size="20" fill="#667184">вводные</text>
+    </g>
+    <g transform="translate(804 430)">
+      <rect width="260" height="220" rx="18" fill="#FBFAF6" stroke="#162844" stroke-opacity="0.14"/>
+      <circle cx="54" cy="110" r="28" fill="#245DA7"/>
+      <text x="41" y="120" font-size="24" font-weight="820" fill="#FFFFFF">03</text>
+      <text x="104" y="102" font-size="28" font-weight="780" fill="#111821">Документы</text>
+      <text x="104" y="148" font-size="20" fill="#667184">состав</text>
+    </g>
+    <g transform="translate(1140 430)">
+      <rect width="300" height="220" rx="18" fill="#111318"/>
+      <circle cx="58" cy="110" r="30" fill="#C6FF00" stroke="#111318" stroke-width="4"/>
+      <text x="44" y="120" font-size="24" font-weight="820" fill="#111318">04</text>
+      <text x="112" y="102" font-size="28" font-weight="780" fill="#F2F2F2">Следующий шаг</text>
+      <text x="112" y="148" font-size="20" fill="#DDE3EA">без давления</text>
+    </g>
+  </g>
+</svg>

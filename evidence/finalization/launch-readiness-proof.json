@@ -1,0 +1,33 @@
+{
+  "package": "project-finalization-readiness-v1",
+  "releaseVerdict": "GO WITH CONDITIONS",
+  "p0BuildVerdict": "READY_FOR_DOKUMENTY82_SITE_P0_BUILD_WITH_CONDITIONS",
+  "staticStagingCandidate": "READY_TO_PREPARE",
+  "publicLaunchVerdict": "NOT_PUBLIC_LAUNCH_READY",
+  "paidTrafficVerdict": "BLOCKS_PAID_TRAFFIC",
+  "fnsAutopublishVerdict": "BLOCKED_UNTIL_SERVER_LEGAL_OWNER_ACCEPTANCE",
+  "minimumSafeLaunchMode": "STATIC_CONTACT_ONLY_LAUNCH_CANDIDATE",
+  "docsExist": {
+    "projectFinalizationReadiness": true,
+    "launchFinalizationRoadmap": true,
+    "liveLaunchGates": true,
+    "browserEvidenceRequirements": true,
+    "accessibilityFinalizationChecklist": true,
+    "salesChannelReadiness": true
+  },
+  "p0EvidenceExists": true,
+  "unsafeFlagsClosed": true,
+  "secretsAbsent": true,
+  "uploadAbsent": true,
+  "telegramMaxDeepLinksAbsent": true,
+  "publicLaunchBlocked": true,
+  "paidTrafficBlocked": true,
+  "fnsAutopublishBlocked": true,
+  "browserEvidenceStatus": "MISSING_EXPECTED",
+  "accessibilityEvidenceStatus": "MISSING_EXPECTED",
+  "stagingStatus": "MISSING_EXPECTED",
+  "pr49Dependency": "PR_49_MERGED_FOUNDATION_ONLY",
+  "publicLiveAllowed": false,
+  "paidTrafficAllowed": false,
+  "fnsAutopublishAllowed": false
+}

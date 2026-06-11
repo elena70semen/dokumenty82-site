@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — V0.4 slide service contour template</title>
+  <desc id="desc">Слайд 16:9 для одного сервисного контура: route card, document geometry and safe CTA hierarchy.</desc>
+  <metadata>status: V0.4 REVIEW / INTERNAL DRAFT; public use requires separate owner, design and rights review.</metadata>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBFAF6"/>
+      <stop offset="1" stop-color="#F7F3EA"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#245DA7"/>
+      <stop offset="0.72" stop-color="#2E7CF6"/>
+      <stop offset="1" stop-color="#C6FF00"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#paper)"/>
+  <rect x="96" y="86" width="1408" height="728" rx="24" fill="#FFFFFF" fill-opacity="0.66" stroke="#162844" stroke-opacity="0.12"/>
+  <g font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <text x="136" y="154" font-size="20" font-weight="800" letter-spacing="4" fill="#245DA7">SERVICE CONTOUR</text>
+    <text x="136" y="256" font-size="62" font-weight="780" fill="#111821">Один контур — один маршрут</text>
+    <text x="136" y="320" font-size="28" fill="#2A2D34">Пример: разбор ситуации как безопасный первый шаг, не каталог услуг.</text>
+  </g>
+  <g transform="translate(136 420)" font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <rect width="430" height="250" rx="18" fill="#FBFAF6" stroke="#162844" stroke-opacity="0.14"/>
+    <text x="32" y="58" font-size="20" font-weight="780" fill="#245DA7">01 Ситуация</text>
+    <text x="32" y="110" font-size="30" font-weight="760" fill="#111821">Что уже есть?</text>
+    <text x="32" y="158" font-size="21" fill="#667184">Документ, запрос, вопрос или вводные.</text>
+    <text x="32" y="216" font-size="19" font-weight="740" fill="#111821">CTA: Разобрать ситуацию</text>
+  </g>
+  <g transform="translate(608 420)" font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <rect width="430" height="250" rx="18" fill="#FBFAF6" stroke="#162844" stroke-opacity="0.14"/>
+    <text x="32" y="58" font-size="20" font-weight="780" fill="#6C2537">02 Граница</text>
+    <text x="32" y="110" font-size="30" font-weight="760" fill="#111821">Что нельзя обещать?</text>
+    <text x="32" y="158" font-size="21" fill="#667184">Результат, внешнее решение или финальный вывод.</text>
+    <text x="32" y="216" font-size="19" font-weight="740" fill="#111821">Status: REVIEW</text>
+  </g>
+  <g transform="translate(1080 420)" font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <rect width="330" height="250" rx="18" fill="#111318"/>
+    <path d="M48 142H282" stroke="url(#route)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="48" cy="142" r="17" fill="#F2F2F2" stroke="#245DA7" stroke-width="4"/>
+    <circle cx="164" cy="142" r="17" fill="#F2F2F2" stroke="#245DA7" stroke-width="4"/>
+    <circle cx="282" cy="142" r="18" fill="#C6FF00" stroke="#111318" stroke-width="4"/>
+    <text x="48" y="70" font-size="23" font-weight="760" fill="#F2F2F2">route logic</text>
+    <text x="48" y="206" font-size="19" fill="#DDE3EA">ситуация → разбор → шаг</text>
+  </g>
+</svg>

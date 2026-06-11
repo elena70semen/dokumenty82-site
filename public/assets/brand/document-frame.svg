@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — document frame</title>
+  <desc id="desc">Мягкая документальная рамка для карточек, слайдов и рекламных материалов.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F7F3EA"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="20" stdDeviation="26" flood-color="#111821" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="960" height="640" rx="36" fill="#FBFAF6"/>
+  <g filter="url(#shadow)">
+    <rect x="154" y="72" width="652" height="496" rx="34" fill="url(#paper)" stroke="#162844" stroke-opacity="0.12" stroke-width="2"/>
+  </g>
+  <path d="M214 164H566" stroke="#162844" stroke-opacity="0.18" stroke-width="10" stroke-linecap="round"/>
+  <path d="M214 224H700" stroke="#162844" stroke-opacity="0.12" stroke-width="8" stroke-linecap="round"/>
+  <path d="M214 272H650" stroke="#162844" stroke-opacity="0.10" stroke-width="8" stroke-linecap="round"/>
+  <path d="M214 320H720" stroke="#162844" stroke-opacity="0.10" stroke-width="8" stroke-linecap="round"/>
+  <path d="M214 368H596" stroke="#162844" stroke-opacity="0.10" stroke-width="8" stroke-linecap="round"/>
+  <rect x="214" y="438" width="214" height="58" rx="29" fill="#245DA7"/>
+  <text x="242" y="475" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">Разобрать ситуацию</text>
+  <g fill="none" stroke="#C69A47" stroke-width="4" stroke-linecap="round" opacity="0.88">
+    <path d="M646 438c34 0 62 28 62 62"/>
+    <path d="M708 500c0-34 28-62 62-62"/>
+  </g>
+  <circle cx="708" cy="500" r="12" fill="#C69A47"/>
+</svg>

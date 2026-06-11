@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "generatedAt": "2026-06-11T18:11:17.383Z",
+  "browserSurface": "Codex Browser plugin with Playwright API",
+  "manifestFile": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\screenshot-manifest.json",
+  "baseUrl": "http://127.0.0.1:4182",
+  "screenshotMode": "viewport",
+  "expectedScreenshotCount": 16,
+  "capturedScreenshotCount": 16,
+  "routes": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\home-desktop.png"
+    },
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\home-mobile.png"
+    },
+    {
+      "route": "/razbor-situacii/",
+      "viewport": "desktop",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\razbor-situacii-desktop.png"
+    },
+    {
+      "route": "/razbor-situacii/",
+      "viewport": "mobile",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\razbor-situacii-mobile.png"
+    },
+    {
+      "route": "/kontakty/",
+      "viewport": "desktop",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\kontakty-desktop.png"
+    },
+    {
+      "route": "/kontakty/",
+      "viewport": "mobile",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\kontakty-mobile.png"
+    },
+    {
+      "route": "/policy/",
+      "viewport": "desktop",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\policy-desktop.png"
+    },
+    {
+      "route": "/policy/",
+      "viewport": "mobile",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\policy-mobile.png"
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "viewport": "desktop",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-trebovanie-ifns-desktop.png"
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "viewport": "mobile",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-trebovanie-ifns-mobile.png"
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "viewport": "desktop",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-zapros-banka-desktop.png"
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "viewport": "mobile",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-zapros-banka-mobile.png"
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "viewport": "desktop",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\dokumenty-dlya-banka-115-fz-desktop.png"
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "viewport": "mobile",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\dokumenty-dlya-banka-115-fz-mobile.png"
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "viewport": "desktop",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\nedostovernost-yuridicheskogo-adresa-desktop.png"
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "viewport": "mobile",
+      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\nedostovernost-yuridicheskogo-adresa-mobile.png"
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,25 @@
+{
+  "source": [
+    "rendered P0 HTML under out",
+    "repository filename scan excluding build/cache directories"
+  ],
+  "noEnvFiles": true,
+  "noPrivateKeyFiles": true,
+  "secretLikeFiles": [],
+  "renderedP0Html": {
+    "noForbiddenPublicPhrases": true,
+    "noFinalTelegramMaxDeepLinks": true,
+    "noUploadInputs": true,
+    "noMetricaIdOrCounter": true,
+    "noWebhookOrSecretPattern": true,
+    "noFalseSuccessSignal": true,
+    "failures": []
+  },
+  "notCollectedInThisPr": [
+    "visual screenshots",
+    "browser accessibility/axe",
+    "Playwright E2E",
+    "CRM/Metrica live payload proof",
+    "owner/legal/backend/provider acceptance"
+  ]
+}
