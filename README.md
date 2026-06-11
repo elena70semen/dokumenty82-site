@@ -1,38 +1,97 @@
 # dokumenty82-site
 
-Site repository for `dokumenty82.ru`.
+Standalone production site repository for `https://dokumenty82.ru/`.
 
-## Source of Truth
+Project: **Документы для бизнеса**.
+
+## Source of truth
 
 The canonical source-of-truth repository remains:
 
-`https://github.com/elena70semen/dokumenty-dlya-biznesa`
+```text
+https://github.com/elena70semen/dokumenty-dlya-biznesa
+```
 
-This repository contains the synchronized standalone Next.js static-export site source, selected evidence packs, public-readiness reports, and the TCP-only hosting reference for review.
+Use the source-of-truth repository for brand, NAP, HOLD zones, route registry, legal/privacy boundaries, CRM/analytics rules, pricing restrictions and final launch gates.
 
-## Current Status
+This repository contains the standalone Next.js static-export site source, selected evidence packs, CI/build proof, public-readiness reports and hosting references.
+
+## Current status
 
 - Site stack: Next.js static export.
+- Repository layout: standalone root project.
 - Public release: `HOLD`.
 - Production deploy: not performed.
 - Forms: placeholder UI only.
-- Form submit, upload, CRM, analytics, Yandex Metrica, Telegram, MAX, cookie notice, and live map: disabled.
+- Form submit, upload, CRM, analytics, Yandex Metrica, Telegram, MAX, cookie notice and live map: disabled.
 - Public launch gates remain closed until owner and legal/privacy approvals are complete.
 
 ## Build
 
-```powershell
-npm install
+Run from the repository root:
+
+```bash
+npm ci
+npm run check:p0-semantic
 npm run build
+npm run evidence:p0
+npm run check:p0-evidence
+npm run check:fns-blog-news
+npm run check:static-links
+npm run check:launch-readiness
+npm run check:finalization
+npm run brand:check
 ```
 
-## Preview Static Export
+Static export output:
 
-```powershell
+```text
+out/
+```
+
+## Preview static export
+
+```bash
 npx serve out
 ```
 
-## Evidence Packs
+or:
+
+```bash
+npm run preview:local
+```
+
+## CI
+
+GitHub Actions workflow:
+
+```text
+.github/workflows/site-ci.yml
+```
+
+Stage 14A CI scope:
+
+- install dependencies with `npm ci`;
+- run P0 semantic and evidence checks;
+- build static export;
+- run static export link check;
+- run launch/finalization guard checks;
+- run brand checks;
+- upload static export artifact from `out/`.
+
+Artifact pattern:
+
+```text
+dokumenty82-static-export-<commit-sha>
+```
+
+If no workflow run is visible, manually start:
+
+```text
+Actions -> Site CI -> Run workflow -> main
+```
+
+## Evidence packs
 
 Evidence and review artifacts are stored under:
 
@@ -56,3 +115,13 @@ Key reports:
 Hosting reference:
 
 - `server/nginx/dokumenty82.static-tcp-only.reference.conf`
+
+## Launch rule
+
+`PUBLIC_LIVE_ALLOWED = false` until all launch gates pass.
+
+## Current release verdict
+
+`GO WITH CONDITIONS` for Stage 14A CI/build proof.
+
+`PUBLIC_LIVE_ALLOWED = false`.
