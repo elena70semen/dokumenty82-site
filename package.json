@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "description": "Static-export Next.js website for dokumenty82.ru",
+  "engines": {
+    "node": ">=22 <23",
+    "npm": ">=10"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,9 +16,10 @@
     "evidence:p0": "node scripts/generate-p0-evidence.mjs",
     "check:p0-evidence": "node scripts/check-p0-evidence.mjs",
     "check:fns-blog-news": "node scripts/check-fns-blog-news-foundation.mjs",
-    "check:p0-full": "npm run check:p0-semantic && npm run build && npm run evidence:p0 && npm run check:p0-evidence && npm run check:fns-blog-news",
+    "check:static-links": "node scripts/check-static-site-links.mjs",
+    "check:p0-full": "npm run check:p0-semantic && npm run build && npm run evidence:p0 && npm run check:p0-evidence && npm run check:fns-blog-news && npm run check:static-links",
     "check:launch-readiness": "node scripts/check-launch-finalization-readiness.mjs",
-    "check:finalization": "npm run check:p0-semantic && npm run check:p0-evidence && npm run check:fns-blog-news && npm run check:launch-readiness",
+    "check:finalization": "npm run check:p0-semantic && npm run check:p0-evidence && npm run check:fns-blog-news && npm run check:static-links && npm run check:launch-readiness",
     "preview:local": "node scripts/serve-static.mjs out 4173",
     "evidence:browser": "node scripts/generate-browser-evidence.mjs",
     "check:browser-evidence": "node scripts/check-browser-evidence.mjs",
