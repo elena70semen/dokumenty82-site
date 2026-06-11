@@ -1,0 +1,80 @@
+name: Site CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-verify:
+    name: Build and verify static site
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: P0 semantic alignment
+        run: npm run check:p0-semantic
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Generate P0 evidence
+        run: npm run evidence:p0
+
+      - name: Check P0 evidence
+        run: npm run check:p0-evidence
+
+      - name: Check FNS blog/news foundation
+        run: npm run check:fns-blog-news
+
+      - name: Check static export links
+        run: npm run check:static-links
+
+      - name: Check launch readiness
+        run: npm run check:launch-readiness
+
+      - name: Check finalization gates
+        run: npm run check:finalization
+
+      - name: Browser/accessibility evidence checks
+        run: npm run check:local-p0-browser
+
+      - name: Owner/legal/privacy evidence checks
+        run: npm run check:owner-legal-privacy
+
+      - name: Staging/hosting/rollback evidence checks
+        run: npm run check:staging-hosting-rollback
+
+      - name: Owner go/no-go evidence checks
+        run: npm run check:owner-go-no-go
+
+      - name: Brand checks
+        run: npm run brand:check
+
+      - name: Upload static export artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dokumenty82-static-export-${{ github.sha }}
+          path: out
+          if-no-files-found: error
