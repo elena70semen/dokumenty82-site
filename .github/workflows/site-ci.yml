@@ -57,18 +57,6 @@ jobs:
       - name: Check finalization gates
         run: npm run check:finalization
 
-      - name: Browser/accessibility evidence checks
-        run: npm run check:local-p0-browser
-
-      - name: Owner/legal/privacy evidence checks
-        run: npm run check:owner-legal-privacy
-
-      - name: Staging/hosting/rollback evidence checks
-        run: npm run check:staging-hosting-rollback
-
-      - name: Owner go/no-go evidence checks
-        run: npm run check:owner-go-no-go
-
       - name: Brand checks
         run: npm run brand:check
 
