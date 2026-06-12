@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "baseUrl": "http://127.0.0.1:4173",
-  "generatedAt": "2026-06-12T11:57:08.221Z",
+  "generatedAt": "2026-06-12T13:50:33.928Z",
   "note": "Dependency-free HTTP and rendered HTML proof. Runtime console logs are checked separately in browser automation when available.",
   "routes": [
     {
@@ -62,7 +62,7 @@
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/kontakty/",
       "h1Count": 1,
-      "h1Text": "Контакты и передача документов",
+      "h1Text": "Контакты, адрес и безопасный показ документов",
       "mainExists": true,
       "headerExists": true,
       "footerExists": true,

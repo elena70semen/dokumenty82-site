@@ -243,7 +243,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                 </h2>
               </div>
               <p className="text-lg leading-9 text-[#667184]">
-                Эта структура помогает отделить точный интент страницы от соседних маршрутов и сохранить безопасный первый шаг.
+                Сверяем вводные именно для этой страницы: источник вопроса, документы на руках, безопасный способ показа и границу соседних маршрутов.
               </p>
             </div>
 
@@ -253,9 +253,9 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                   <h3 className="text-xl font-black leading-tight text-[#111821]">{block.title}</h3>
                   <ul className="mt-5 grid gap-3 text-sm leading-7 text-[#667184]">
                     {block.items.map((item) => (
-                      <li key={item} className="flex gap-3">
+                      <li key={item} className="flex min-w-0 gap-3">
                         <span className="font-black text-[#c69a47]">✓</span>
-                        <span>{item}</span>
+                        <span className="min-w-0 break-words">{item}</span>
                       </li>
                     ))}
                   </ul>

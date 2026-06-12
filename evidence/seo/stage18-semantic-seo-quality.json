@@ -76,7 +76,7 @@
     "forbiddenActiveClaims": "none_or_failed_above",
     "transportHttp3QuicActiveEnablement": "none_or_failed_above"
   },
-  "timestamp": "2026-06-12T11:56:42.454Z",
+  "timestamp": "2026-06-12T13:50:20.700Z",
   "releaseVerdict": "GO_WITH_CONDITIONS",
   "publicLiveAllowed": false,
   "issues": []
