@@ -22,7 +22,7 @@ export default function BlogExplainersPage() {
         <div className="container-premium grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div className="reveal-block" data-reveal="left">
             <p className="eyebrow-line">Блог и новости</p>
-            <h1 className="display-serif mt-6 text-6xl font-semibold leading-[0.98] text-[#111821] md:text-8xl">Разборы ситуаций</h1>
+            <h1 className="display-serif mt-6 text-5xl font-semibold leading-[1.02] text-[#111821] sm:text-6xl sm:leading-[0.98] md:text-8xl">Разборы ситуаций</h1>
             <p className="mt-7 text-xl leading-9 text-[#667184]">
               Здесь будут evergreen-материалы, которые объясняют деловую ситуацию, помогают выбрать маршрут и ведут к безопасному первому шагу.
             </p>

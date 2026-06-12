@@ -85,12 +85,14 @@ export function RouteHero({ hero, pageKind, pageSlug, pageType, leadTopic }: Rou
 
       <div className="container-premium grid min-h-[calc(78vh-88px)] gap-10 pb-14 lg:grid-cols-[1.02fr_0.88fr] lg:items-center">
         <div className="max-w-3xl">
-          <nav className="mb-7 flex flex-wrap gap-2 text-sm font-black text-[color:var(--text-inverse-muted)]" aria-label="Контекст маршрута">
+          <nav className="mb-7 flex max-w-full flex-wrap gap-2 text-sm font-black text-[color:var(--text-inverse-muted)]" aria-label="Контекст маршрута">
             <Link href="/" className="text-[color:var(--lime-signal)]">
               Главная
             </Link>
             <span>/</span>
-            <span aria-current="page">{hero.eyebrow}</span>
+            <span aria-current="page" className="min-w-0 break-words">
+              {hero.eyebrow}
+            </span>
           </nav>
 
           <div className="inline-flex items-center gap-3 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-4 py-3">
@@ -98,7 +100,7 @@ export function RouteHero({ hero, pageKind, pageSlug, pageType, leadTopic }: Rou
             <p className="text-sm font-black text-[color:var(--lime-signal)]">{hero.eyebrow}</p>
           </div>
 
-          <h1 id="route-hero-title" className="mt-7 text-[2.46rem] font-black leading-[1.04] tracking-normal md:text-[4.45rem] lg:text-[5rem]">
+          <h1 id="route-hero-title" className="mt-7 max-w-full break-words text-[1.95rem] font-black leading-[1.08] tracking-normal [overflow-wrap:anywhere] md:text-[4.45rem] md:leading-[1.04] lg:text-[5rem]">
             {hero.title}
           </h1>
 

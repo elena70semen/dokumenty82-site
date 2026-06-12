@@ -22,7 +22,7 @@ export default function FnsUpdatesPage() {
         <div className="container-premium grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <div className="reveal-block" data-reveal="left">
             <p className="eyebrow-line">Блог и новости</p>
-            <h1 className="display-serif mt-6 text-6xl font-semibold leading-[0.98] text-[#111821] md:text-8xl">Обновления ФНС</h1>
+            <h1 className="display-serif mt-6 text-5xl font-semibold leading-[1.02] text-[#111821] sm:text-6xl sm:leading-[0.98] md:text-8xl">Обновления ФНС</h1>
             <p className="mt-7 text-xl leading-9 text-[#667184]">
               Здесь готовится раздел для кратких source-attributed обновлений ФНС и ИФНС. В этой версии нет живой ленты, парсинга,
               переписывания или автоматической публикации.
