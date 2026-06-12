@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-06-12T11:05:52.017Z",
+  "requiredHomeBlocks": [
+    "situation_selector",
+    "start_path",
+    "priority_tasks",
+    "route_groups",
+    "client_information",
+    "local_trust",
+    "faq",
+    "final_cta"
+  ],
+  "requiredRoutes": [
+    "/razbor-situacii/",
+    "/otchetnost/",
+    "/bank-i-115-fz/",
+    "/adres-egryul-direktor/",
+    "/registraciya-i-likvidaciya/",
+    "/kadry/",
+    "/soprovozhdenie/",
+    "/kontakty/"
+  ],
+  "exactHomepageDescription": "Центр подготовки документов в Симферополе. Разберём ситуацию и подготовим документы: регистрация, отчётность, ЕГРЮЛ, юридический адрес, банк и 115-ФЗ. Офис рядом с налоговой.",
+  "publicLiveAllowed": false,
+  "issues": []
+}

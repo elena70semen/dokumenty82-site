@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-06-12T11:05:52.199Z",
+  "approvedRoutes": 39,
+  "indexedRoutes": 36,
+  "noindexRoutes": [
+    "/blog/",
+    "/blog/obnovleniya-fns/",
+    "/blog/razbory/"
+  ],
+  "evidenceInputs": [
+    "evidence/seo/stage18-semantic-seo-quality.json",
+    "evidence/ux/stage18-page-blocks-and-lead-path.json",
+    "evidence/frontend/stage18-layout-foundation.json",
+    "evidence/frontend/stage18-homepage-structure.json"
+  ],
+  "publicLiveAllowed": false,
+  "launchVerdict": "NOT_PUBLIC_LIVE_READY",
+  "issues": []
+}

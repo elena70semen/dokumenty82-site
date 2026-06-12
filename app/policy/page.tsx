@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { RouteProductFoundation } from "@/components/routes/RouteProductFoundation";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -179,6 +180,8 @@ export default function PolicyPage() {
           </div>
         </div>
       </section>
+
+      <RouteProductFoundation path="/policy" variant="full" />
     </main>
   );
 }

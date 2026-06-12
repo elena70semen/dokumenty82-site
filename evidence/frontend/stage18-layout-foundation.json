@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-06-12T11:05:51.845Z",
+  "requiredNavRoutes": [
+    "/razbor-situacii/",
+    "/otchetnost/",
+    "/bank-i-115-fz/",
+    "/adres-egryul-direktor/",
+    "/registraciya-i-likvidaciya/",
+    "/kadry/",
+    "/soprovozhdenie/",
+    "/kontakty/"
+  ],
+  "shell": {
+    "header": true,
+    "footer": true,
+    "skipLink": true,
+    "mobileNav": true
+  },
+  "issues": []
+}

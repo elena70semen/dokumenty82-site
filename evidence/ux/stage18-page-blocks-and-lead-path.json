@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-06-12T11:05:51.666Z",
+  "indexedRoutes": 36,
+  "noindexFoundationRoutes": [
+    "/blog/",
+    "/blog/obnovleniya-fns/",
+    "/blog/razbory/"
+  ],
+  "requiredBlockFamilies": [
+    "route_intent",
+    "when_this_page_fits",
+    "what_we_check",
+    "documents_data_needed",
+    "how_work_starts",
+    "what_is_not_promised",
+    "related_routes",
+    "faq_direction",
+    "safe_final_cta",
+    "client_information"
+  ],
+  "allowedCtaLabels": [
+    "Разобрать ситуацию",
+    "Позвонить",
+    "Построить маршрут",
+    "Показать документы",
+    "Контакты"
+  ],
+  "placeholderFormsChecked": true,
+  "unsafeFeatureFlagsChecked": [
+    "formsLive",
+    "crmSuccessEnabled",
+    "analyticsEnabled",
+    "metricaEnabled",
+    "maxEnabled",
+    "telegramEnabled",
+    "messagingRevealEnabled",
+    "mapEnabled",
+    "cookieNoticeEnabled"
+  ],
+  "issues": []
+}

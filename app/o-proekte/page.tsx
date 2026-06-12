@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { RouteProductFoundation } from "@/components/routes/RouteProductFoundation";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -82,6 +83,8 @@ export default function AboutProjectPage() {
           </div>
         </div>
       </section>
+
+      <RouteProductFoundation path="/o-proekte/" variant="full" />
     </main>
   );
 }

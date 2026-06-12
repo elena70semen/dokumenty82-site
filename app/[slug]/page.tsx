@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ShowDocumentsPlaceholder } from "@/components/forms/ShowDocumentsPlaceholder";
 import { JsonLd } from "@/components/JsonLd";
+import { RouteProductFoundation } from "@/components/routes/RouteProductFoundation";
 import { cta, getParentPage, getRoutePage, routePages, site } from "@/lib/content";
 import type { RoutePage } from "@/lib/content";
 import { routePageSlugs } from "@/lib/routes/route-page-data";
@@ -260,6 +261,8 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
           </div>
         </section>
       ) : null}
+
+      <RouteProductFoundation path={page.href} />
 
       {relatedRoutes.length > 0 ? (
         <section className="section-pad bg-[#f7f3ea]" aria-labelledby={`related-${page.slug}`}>
