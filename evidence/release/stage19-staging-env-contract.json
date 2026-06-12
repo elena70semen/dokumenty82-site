@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "timestamp": "2026-06-12T19:56:45.479Z",
+  "git": {
+    "branch": "stage19/staging-env-preview-contract",
+    "commit": "79bbd4f"
+  },
+  "envExamplePath": ".env.example",
+  "publicLiveAllowed": false,
+  "analytics": {
+    "mode": "stub",
+    "enabled": false
+  },
+  "metrika": {
+    "enabled": false,
+    "id": "stub",
+    "rawId": "00000000"
+  },
+  "webmasterPlaceholders": {
+    "yandex": "",
+    "google": ""
+  },
+  "crmForms": {
+    "enabled": false,
+    "webhookConfigured": false
+  },
+  "uploads": {
+    "enabled": false
+  },
+  "messaging": {
+    "enabled": false
+  },
+  "stagingIndexingAllowed": false,
+  "realEnvFilesCommitted": [],
+  "secretsScan": {
+    "status": "passed",
+    "filesCheckedCount": 132,
+    "checkedAreas": [
+      ".env.example",
+      ".github/workflows",
+      "app",
+      "components",
+      "lib",
+      "next.config.ts",
+      "package.json",
+      "public",
+      "scripts",
+      "server"
+    ]
+  },
+  "runtimeScan": {
+    "status": "passed",
+    "filesCheckedCount": 437,
+    "checkedAreas": [
+      "app",
+      "components",
+      "lib",
+      "public",
+      "server",
+      "package.json",
+      "next.config.ts",
+      "out"
+    ]
+  },
+  "transport": {
+    "http3": "BLOCKED_BY_DEFAULT",
+    "quic": "BLOCKED_BY_DEFAULT",
+    "udp443": "BLOCKED_BY_DEFAULT",
+    "h3AltSvc": "BLOCKED_BY_DEFAULT"
+  },
+  "releaseVerdict": "GO_WITH_CONDITIONS",
+  "issues": []
+}
