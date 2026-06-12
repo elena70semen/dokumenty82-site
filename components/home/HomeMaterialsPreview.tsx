@@ -35,13 +35,13 @@ export function HomeMaterialsPreview() {
           {homeMaterials.map((material, index) => (
             <article
               key={material.title}
-              className="grid grid-cols-[56px_1fr] items-start gap-4 rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-4 shadow-[var(--shadow-card-sm)]"
+              className="grid min-w-0 grid-cols-[48px_1fr] items-start gap-4 rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-4 shadow-[var(--shadow-card-sm)] sm:grid-cols-[56px_1fr]"
             >
               <span className="grid size-12 place-items-center rounded-[8px] border border-[var(--accent-emerald-border)] bg-[var(--accent-emerald-bg)] text-[color:var(--emerald)]">
                 <BrandIcon name={material.icon} size={24} />
               </span>
-              <div>
-                <div className="flex items-center justify-between gap-4">
+              <div className="min-w-0">
+                <div className="flex min-w-0 items-start justify-between gap-4">
                   <h3 className="text-lg font-black leading-tight text-[color:var(--text-primary)]">{material.title}</h3>
                   <span className="text-xs font-black text-[color:var(--text-muted)]">{String(index + 1).padStart(2, "0")}</span>
                 </div>

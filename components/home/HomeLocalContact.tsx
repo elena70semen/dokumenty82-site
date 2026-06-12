@@ -54,7 +54,7 @@ export function HomeLocalContact() {
                 </div>
               </address>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {homeContact.actions.map((action, index) => {
                   const isPhone = action.href.startsWith("tel:");
                   const className =

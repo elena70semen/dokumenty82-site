@@ -8,9 +8,9 @@ type RouteProductFoundationProps = {
 
 function ProductList({ title, items }: { title: string; items: string[] }) {
   return (
-    <article className="rounded-[8px] border border-[var(--line)] bg-white/86 p-5 shadow-[var(--shadow-card-sm)]">
+    <article className="flex h-full min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-white/86 p-5 shadow-[var(--shadow-card-sm)]">
       <h3 className="text-xl font-black leading-tight text-[color:var(--text-primary)]">{title}</h3>
-      <ul className="mt-5 grid gap-3 text-sm leading-7 text-[color:var(--text-secondary)]">
+      <ul className="mt-5 grid flex-1 gap-3 text-sm leading-7 text-[color:var(--text-secondary)]">
         {items.map((item) => (
           <li key={item} className="flex min-w-0 gap-3">
             <span className="font-black text-[color:var(--gold)]">✓</span>
@@ -75,9 +75,9 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
         {variant === "full" && foundation.relatedRoutes.length > 0 ? (
           <div className="mt-8 rounded-[8px] border border-[var(--line)] bg-white/86 p-6">
             <h3 className="text-xl font-black text-[color:var(--text-primary)]">Связанные маршруты</h3>
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {foundation.relatedRoutes.map((route) => (
-                <Link key={route.href} href={route.href} className="rounded-[8px] border border-[var(--line)] bg-white px-4 py-2 text-sm font-black text-[color:var(--surface-dark-strong)]">
+                <Link key={route.href} href={route.href} className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-4 py-2 text-center text-sm font-black text-[color:var(--surface-dark-strong)]">
                   {route.label}
                 </Link>
               ))}
@@ -88,12 +88,12 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
         <div className="mt-8 rounded-[8px] bg-[var(--surface-dark-strong)] p-6 text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]">
           <h3 className="text-2xl font-black leading-tight">{foundation.finalCta.title}</h3>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[color:var(--text-inverse-muted)]">{foundation.finalCta.copy}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:max-w-4xl">
             {foundation.finalCta.actions.map((action, index) => {
               const className =
                 index === 0
-                  ? "rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-sm font-black text-[color:var(--lime-text)]"
-                  : "rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]";
+                  ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-center text-sm font-black text-[color:var(--lime-text)]"
+                  : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-center text-sm font-black text-[color:var(--text-inverse)]";
 
               return action.href.startsWith("tel:") ? (
                 <a key={`${action.label}-${action.href}`} href={action.href} className={className}>

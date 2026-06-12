@@ -24,7 +24,7 @@ export function RouteServiceScope({ section }: RouteServiceScopeProps) {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <article className="rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-6 shadow-[var(--shadow-card-md)]">
+            <article className="h-full min-w-0 rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-6 shadow-[var(--shadow-card-md)]">
               <div className="flex items-center gap-3">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--accent-emerald-bg)] text-[color:var(--emerald)]">
                   <BrandIcon name="folder" size={24} />
@@ -33,15 +33,15 @@ export function RouteServiceScope({ section }: RouteServiceScopeProps) {
               </div>
               <ul className="mt-6 grid gap-3">
                 {section.included.map((item) => (
-                  <li key={item} className="flex gap-3 text-base leading-7 text-[color:var(--text-secondary)]">
+                  <li key={item} className="flex min-w-0 gap-3 text-base leading-7 text-[color:var(--text-secondary)]">
                     <span className="mt-2 size-2 shrink-0 rounded-full bg-[var(--emerald)]" aria-hidden="true" />
-                    <span>{item}</span>
+                    <span className="min-w-0 break-words">{item}</span>
                   </li>
                 ))}
               </ul>
             </article>
 
-            <article className="rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-6 shadow-[var(--shadow-card-md)]">
+            <article className="h-full min-w-0 rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-6 shadow-[var(--shadow-card-md)]">
               <div className="flex items-center gap-3">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--accent-navy-bg)] text-[color:var(--navy)]">
                   <BrandIcon name="shield" size={24} />
@@ -50,9 +50,9 @@ export function RouteServiceScope({ section }: RouteServiceScopeProps) {
               </div>
               <ul className="mt-6 grid gap-3">
                 {section.boundaries.map((item) => (
-                  <li key={item} className="flex gap-3 text-base leading-7 text-[color:var(--text-secondary)]">
+                  <li key={item} className="flex min-w-0 gap-3 text-base leading-7 text-[color:var(--text-secondary)]">
                     <span className="mt-2 size-2 shrink-0 rounded-full bg-[var(--navy)]" aria-hidden="true" />
-                    <span>{item}</span>
+                    <span className="min-w-0 break-words">{item}</span>
                   </li>
                 ))}
               </ul>

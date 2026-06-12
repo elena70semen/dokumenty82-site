@@ -37,7 +37,7 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
     <section className="section-pad bg-white/74" aria-labelledby={`${formId}-title`}>
       <div className="container-premium">
         <form
-          className="grid gap-5 rounded-[8px] border border-[var(--line)] bg-white/90 p-6 shadow-[var(--shadow-card-lg)] md:p-8"
+          className="grid gap-6 rounded-[8px] border border-[var(--line)] bg-white/90 p-6 shadow-[var(--shadow-card-lg)] md:p-8"
           data-form-placeholder="true"
           onSubmit={(event) => {
             event.preventDefault();
@@ -56,7 +56,7 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
             {fields.map((field) => {
               const fieldId = `${formId}-${field.id}`;
               return (
-                <label key={field.id} htmlFor={fieldId} className="grid gap-2 text-sm font-black text-[color:var(--text-primary)]">
+                <label key={field.id} htmlFor={fieldId} className="grid min-w-0 gap-2 text-sm font-black text-[color:var(--text-primary)]">
                   {field.label}
                   {field.multiline ? (
                     <textarea
@@ -85,10 +85,10 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
             {offlineNotice}
           </p>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="grid gap-3 sm:grid-cols-3">
             <button
               type="button"
-              className="min-h-12 rounded-[8px] bg-[var(--surface-dark-strong)] px-5 py-3 text-sm font-black text-white shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-5 py-3 text-center text-sm font-black text-white shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
               aria-describedby={noticeId}
               onClick={explainOffline}
             >
@@ -96,13 +96,13 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
             </button>
             <Link
               href="/kontakty/"
-              className="min-h-12 rounded-[8px] border border-[var(--line)] bg-white px-5 py-3 text-sm font-black text-[color:var(--surface-dark-strong)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-5 py-3 text-center text-sm font-black text-[color:var(--surface-dark-strong)]"
             >
               Перейти в контакты
             </Link>
             <a
               href={site.phoneHref}
-              className="min-h-12 rounded-[8px] border border-[var(--line)] bg-white px-5 py-3 text-sm font-black text-[color:var(--surface-dark-strong)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-5 py-3 text-center text-sm font-black text-[color:var(--surface-dark-strong)]"
             >
               {site.phone}
             </a>

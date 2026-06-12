@@ -77,10 +77,10 @@ export default function PolicyPage() {
             <p className="mt-7 text-xl leading-9 text-[#667184]">
               Страница нужна для правил конфиденциальности, обработки данных и безопасного обращения с документами пользователей.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-9 grid gap-3 sm:grid-cols-[auto_auto] sm:justify-start">
               <a
                 href={site.phoneHref}
-                className="rounded-full bg-[#162844] px-7 py-4 text-sm font-black text-white"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[#162844] px-7 py-4 text-center text-sm font-black text-white"
                 data-collector-kind="phone"
                 data-cta-label="Позвонить"
                 data-lead-topic="policy_legal"
@@ -91,7 +91,7 @@ export default function PolicyPage() {
               </a>
               <Link
                 href="/kontakty/"
-                className="rounded-full border border-[#16284422] bg-white/72 px-7 py-4 text-sm font-black text-[#162844]"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[#16284422] bg-white/72 px-7 py-4 text-center text-sm font-black text-[#162844]"
                 data-collector-kind="contacts"
                 data-cta-label="Контакты"
                 data-lead-topic="policy_legal"
@@ -114,11 +114,11 @@ export default function PolicyPage() {
             <p className="mt-5 leading-8 text-[#667184]">
               Если вопрос связан с данными или документами, кратко опишите тему без чувствительных сведений. Документы передаются только согласованным способом.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a href={site.phoneHref} className="rounded-full bg-[#162844] px-6 py-3 text-sm font-black text-white">
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
+              <a href={site.phoneHref} className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[#162844] px-6 py-3 text-center text-sm font-black text-white">
                 {site.phone}
               </a>
-              <Link href="/kontakty/" className="rounded-full border border-[#16284422] px-6 py-3 text-sm font-black text-[#162844]">
+              <Link href="/kontakty/" className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[#16284422] px-6 py-3 text-center text-sm font-black text-[#162844]">
                 Контакты
               </Link>
             </div>
@@ -128,18 +128,18 @@ export default function PolicyPage() {
 
       <section className="section-pad bg-white/62">
         <div className="container-premium grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="reveal-block rounded-[8px] bg-[#111821] p-8 text-white" data-reveal="left">
+          <div className="reveal-block h-full rounded-[8px] bg-[#111821] p-8 text-white" data-reveal="left">
             <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#c69a47]">Что важно</p>
             <ul className="mt-6 grid gap-4">
               {safetyItems.map((item) => (
-                <li key={item} className="flex gap-3 text-white/78">
+                <li key={item} className="flex min-w-0 gap-3 text-white/78">
                   <span className="text-[#c69a47]">✓</span>
-                  <span>{item}</span>
+                  <span className="min-w-0 break-words">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <article className="rich-text reveal-block rounded-[8px] border border-[#16284414] bg-white/82 p-8 shadow-[0_22px_58px_rgba(22,40,68,0.08)]" data-reveal="right">
+          <article className="rich-text reveal-block h-full rounded-[8px] border border-[#16284414] bg-white/82 p-8 shadow-[0_22px_58px_rgba(22,40,68,0.08)]" data-reveal="right">
             <h2 className="display-serif mb-6 text-4xl font-semibold leading-tight text-[#111821]">
               Как пользоваться этой страницей
             </h2>
@@ -173,7 +173,7 @@ export default function PolicyPage() {
           <div className="grid gap-3">
             {faqItems.map((item, index) => (
               <details key={item.question} open={index === 0} className="reveal-block rounded-[8px] border border-[#16284414] bg-white/82 p-6 shadow-[0_18px_50px_rgba(22,40,68,0.08)]" data-reveal="right">
-                <summary className="cursor-pointer text-lg font-black text-[#111821]">{item.question}</summary>
+                <summary className="cursor-pointer text-lg font-black leading-tight text-[#111821]">{item.question}</summary>
                 <p className="mt-4 leading-8 text-[#667184]">{item.answer}</p>
               </details>
             ))}

@@ -6,16 +6,15 @@ import { brandTokens } from "@/lib/brand/brand-tokens";
 export function HomeHero() {
   return (
     <section
-      className="relative isolate overflow-hidden bg-[var(--surface-dark)] pt-36 text-[color:var(--text-inverse)] md:pt-40"
+      className="relative isolate overflow-hidden bg-[var(--surface-dark)] pt-32 text-[color:var(--text-inverse)] md:pt-36"
       aria-labelledby="home-hero-title"
       style={{
         backgroundImage: `${brandTokens.gradients.businessDepth}, url(${brandTokens.assets.routeGridPattern})`
       }}
     >
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(198,255,0,0.52),transparent)]" aria-hidden="true" />
-      <div className="absolute -right-28 top-28 hidden size-[420px] rounded-full border border-[var(--border-dark-soft)] bg-[radial-gradient(circle,rgba(198,255,0,0.16),transparent_64%)] lg:block" aria-hidden="true" />
 
-      <div className="container-premium grid min-h-[calc(100vh-88px)] gap-12 pb-16 lg:grid-cols-[1fr_0.86fr] lg:items-center">
+      <div className="container-premium grid min-h-[calc(90vh-88px)] gap-10 pb-14 lg:grid-cols-[1fr_0.82fr] lg:items-center">
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-3 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-4 py-3 text-sm font-black text-[color:var(--lime-signal)]">
             <BrandIcon name="location" size={20} />
@@ -30,16 +29,16 @@ export function HomeHero() {
             {homeHero.text}
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href={homeHero.primaryCta.href}
-              className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              className="inline-flex min-h-12 w-full min-w-[190px] items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
             >
               {homeHero.primaryCta.label}
             </Link>
             <Link
               href={homeHero.secondaryCta.href}
-              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-6 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              className="inline-flex min-h-12 w-full min-w-[190px] items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-6 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
             >
               {homeHero.secondaryCta.label}
             </Link>
@@ -47,15 +46,15 @@ export function HomeHero() {
 
           <ul className="mt-8 grid gap-3 text-sm text-[color:var(--text-inverse-soft)] sm:grid-cols-3">
             {homeHero.signals.map((signal) => (
-              <li key={signal} className="flex items-center gap-2">
+              <li key={signal} className="flex min-w-0 items-center gap-2 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-3 py-2">
                 <span className="size-2 rounded-full bg-[var(--lime-signal)]" aria-hidden="true" />
-                {signal}
+                <span className="min-w-0">{signal}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="relative min-h-[420px]" aria-hidden="true">
+        <div className="relative hidden min-h-[390px] lg:block" aria-hidden="true">
           <div className="absolute inset-0 rounded-[8px] border border-[var(--border-dark-soft)] bg-[rgba(255,255,255,0.04)] shadow-[var(--shadow-panel)]" />
           <div className="absolute left-8 right-8 top-8 rounded-[8px] border border-[var(--border-dark-soft)] bg-[rgba(17,24,33,0.72)] p-5">
             <div className="mb-5 flex items-center justify-between">

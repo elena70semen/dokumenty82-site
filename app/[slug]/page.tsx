@@ -166,10 +166,10 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               {page.title}
             </h1>
             <p className="mt-7 text-xl leading-9 text-[#667184]">{page.description}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-9 grid gap-3 sm:grid-cols-[auto_auto] sm:justify-start">
               <Link
                 href={primaryCollector.href}
-                className="rounded-full bg-[#162844] px-7 py-4 text-sm font-black text-white"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[#162844] px-7 py-4 text-center text-sm font-black text-white"
                 data-collector-kind={primaryCollector.kind}
                 data-cta-label={primaryCollector.label}
                 data-lead-topic={page.leadTopic ?? page.slug}
@@ -178,7 +178,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               >
                 {primaryCollector.label}
               </Link>
-              <a href={site.phoneHref} className="rounded-full border border-[#16284422] bg-white/72 px-7 py-4 text-sm font-black text-[#162844]">
+              <a href={site.phoneHref} className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[#16284422] bg-white/72 px-7 py-4 text-center text-sm font-black text-[#162844]">
                 Позвонить
               </a>
             </div>
@@ -190,7 +190,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
           <img
             src={page.image}
             alt={page.imageAlt}
-            className="reveal-block rounded-[8px] shadow-[0_24px_74px_rgba(22,40,68,0.16)]"
+            className="reveal-block aspect-[4/3] w-full rounded-[8px] object-cover shadow-[0_24px_74px_rgba(22,40,68,0.16)]"
             data-reveal="right"
           />
         </div>
@@ -198,18 +198,18 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
 
       <section className="section-pad bg-white/62">
         <div className="container-premium grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="reveal-block rounded-[8px] bg-[#111821] p-8 text-white" data-reveal="left">
+          <div className="reveal-block h-full rounded-[8px] bg-[#111821] p-8 text-white" data-reveal="left">
             <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#c69a47]">Что важно на старте</p>
             <ul className="mt-6 grid gap-4">
               {page.bullets.map((bullet) => (
-                <li key={bullet} className="flex gap-3 text-white/78">
+                <li key={bullet} className="flex min-w-0 gap-3 text-white/78">
                   <span className="text-[#c69a47]">✓</span>
-                  <span>{bullet}</span>
+                  <span className="min-w-0 break-words">{bullet}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <article className="rich-text reveal-block rounded-[8px] border border-[#16284414] bg-white/82 p-8 shadow-[0_22px_58px_rgba(22,40,68,0.08)]" data-reveal="right">
+          <article className="rich-text reveal-block h-full rounded-[8px] border border-[#16284414] bg-white/82 p-8 shadow-[0_22px_58px_rgba(22,40,68,0.08)]" data-reveal="right">
             <h2 className="display-serif mb-6 text-4xl font-semibold leading-tight text-[#111821]">
               Как мы подходим к задаче
             </h2>
@@ -249,9 +249,9 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
 
             <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {hardeningBlocks.map((block) => (
-                <article key={block.title} className="rounded-[8px] border border-[#16284414] bg-[#f7f3ea] p-5">
+                <article key={block.title} className="flex h-full min-w-0 flex-col rounded-[8px] border border-[#16284414] bg-[#f7f3ea] p-5">
                   <h3 className="text-xl font-black leading-tight text-[#111821]">{block.title}</h3>
-                  <ul className="mt-5 grid gap-3 text-sm leading-7 text-[#667184]">
+                  <ul className="mt-5 grid flex-1 gap-3 text-sm leading-7 text-[#667184]">
                     {block.items.map((item) => (
                       <li key={item} className="flex min-w-0 gap-3">
                         <span className="font-black text-[#c69a47]">✓</span>
@@ -287,7 +287,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               {relatedRoutes.map((relatedRoute) => (
                 <article
                   key={relatedRoute.href}
-                  className="flex min-h-[220px] flex-col rounded-[8px] border border-[#16284414] bg-white/84 p-5 shadow-[0_18px_46px_rgba(22,40,68,0.08)]"
+                  className="flex min-h-[220px] min-w-0 flex-col rounded-[8px] border border-[#16284414] bg-white/84 p-5 shadow-[0_18px_46px_rgba(22,40,68,0.08)]"
                 >
                   <p className="text-[0.72rem] font-black uppercase tracking-[0.18em] text-[#c69a47]">
                     {relatedRoute.kicker}
@@ -296,7 +296,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                   <p className="mt-4 flex-1 text-sm leading-7 text-[#667184]">{relatedRoute.description}</p>
                   <Link
                     href={relatedRoute.href}
-                    className="mt-6 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[#162844] px-4 py-2 text-sm font-black text-white"
+                    className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[#162844] px-4 py-2 text-center text-sm font-black text-white"
                   >
                     Открыть маршрут
                   </Link>
