@@ -42,6 +42,14 @@ export function RouteHero({ hero, pageKind }: RouteHeroProps) {
 
       <div className="container-premium grid min-h-[calc(78vh-88px)] gap-10 pb-14 lg:grid-cols-[1.02fr_0.88fr] lg:items-center">
         <div className="max-w-3xl">
+          <nav className="mb-7 flex flex-wrap gap-2 text-sm font-black text-[color:var(--text-inverse-muted)]" aria-label="Контекст маршрута">
+            <Link href="/" className="text-[color:var(--lime-signal)]">
+              Главная
+            </Link>
+            <span>/</span>
+            <span aria-current="page">{hero.eyebrow}</span>
+          </nav>
+
           <div className="inline-flex items-center gap-3 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-4 py-3">
             <BrandIcon name={hero.icon} size={20} className="text-[color:var(--lime-signal)]" />
             <p className="text-sm font-black text-[color:var(--lime-signal)]">{hero.eyebrow}</p>

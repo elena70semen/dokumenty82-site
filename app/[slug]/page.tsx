@@ -104,11 +104,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title,
     description,
     alternates: {
-      canonical: page.href
+      canonical: `${site.domain}${page.href}`
     },
     openGraph: {
       title,
       description: page.metadataDescription ?? page.description,
+      url: `${site.domain}${page.href}`,
       images: [page.image]
     }
   };
@@ -160,6 +161,10 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                   </Link>
                 </>
               ) : null}
+              <span>/</span>
+              <span aria-current="page" className="text-[#111821]">
+                {page.shortTitle}
+              </span>
             </nav>
             <p className="eyebrow-line">{page.kicker}</p>
             <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[#111821] md:text-7xl">
@@ -298,7 +303,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                     href={relatedRoute.href}
                     className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[#162844] px-4 py-2 text-center text-sm font-black text-white"
                   >
-                    Открыть маршрут
+                    {relatedRoute.shortTitle}
                   </Link>
                 </article>
               ))}

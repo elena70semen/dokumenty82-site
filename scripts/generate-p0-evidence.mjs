@@ -298,9 +298,9 @@ function parseCollectorProof() {
       safeCollectorOrContactPathFound:
         labelsDetected.length > 0 || /href=["']tel:\+79789987222["']|href=["']\/kontakty\/["']|href=["']\/razbor-situacii\/["']/i.test(html),
       documentHeavyHasShowDocuments: documentHeavyRoutes.includes(route) ? labelsDetected.includes("Показать документы") : "NOT_APPLICABLE",
-      policyHasPhoneAndContactsFallbackOnly:
+      policyHasPhoneAndRouteFallbackOnly:
         route === "/policy"
-          ? dataCtaLabel.includes("Позвонить") && dataCtaLabel.includes("Контакты") && !policyAggressiveCommercialCollector
+          ? dataCtaLabel.includes("Позвонить") && dataCtaLabel.includes("Построить маршрут") && !policyAggressiveCommercialCollector
           : "NOT_APPLICABLE",
       policyAggressiveCommercialCollector
     };

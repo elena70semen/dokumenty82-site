@@ -30,7 +30,7 @@ export default function BlogExplainersPage() {
                 Разобрать ситуацию
               </Link>
               <Link href="/kontakty/" className="rounded-full border border-[#16284422] bg-white/72 px-7 py-4 text-sm font-black text-[#162844]">
-                Контакты
+                Построить маршрут
               </Link>
             </div>
           </div>
