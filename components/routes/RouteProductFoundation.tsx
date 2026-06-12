@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getProductFoundation } from "@/lib/product-foundation";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 
 type RouteProductFoundationProps = {
   path: string;
@@ -22,10 +23,26 @@ function ProductList({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+function getSlugFromPath(path: string) {
+  if (path === "/" || path === "") return "home";
+  return path.replace(/^\/|\/$/g, "") || "home";
+}
+
+function getGoalForLabel(label: string) {
+  if (label === "Позвонить") return analyticsGoalNames.callClick;
+  if (label === "Построить маршрут") return analyticsGoalNames.routeClick;
+  if (label === "Показать документы") return analyticsGoalNames.docsShowClick;
+  return analyticsGoalNames.formStart;
+}
+
 export function RouteProductFoundation({ path, variant = "summary" }: RouteProductFoundationProps) {
   const foundation = getProductFoundation(path);
 
   if (!foundation) return null;
+
+  const pageSlug = getSlugFromPath(path);
+  const pageType = pageSlug === "policy" ? "legal" : "route";
+  const shouldExposeAnalyticsData = pageType !== "legal";
 
   const operationalBlocks =
     variant === "full"
@@ -77,7 +94,18 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
             <h3 className="text-xl font-black text-[color:var(--text-primary)]">Связанные маршруты</h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {foundation.relatedRoutes.map((route) => (
-                <Link key={route.href} href={route.href} className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-4 py-2 text-center text-sm font-black text-[color:var(--surface-dark-strong)]">
+                <Link
+                  key={route.href}
+                  href={route.href}
+                  className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-4 py-2 text-center text-sm font-black text-[color:var(--surface-dark-strong)]"
+                  data-analytics-goal={shouldExposeAnalyticsData ? analyticsGoalNames.relatedRouteClick : undefined}
+                  data-cta-label={shouldExposeAnalyticsData ? route.label : undefined}
+                  data-cta-location={shouldExposeAnalyticsData ? "route_product_foundation_related" : undefined}
+                  data-lead-topic={shouldExposeAnalyticsData ? pageSlug : undefined}
+                  data-page-slug={shouldExposeAnalyticsData ? pageSlug : undefined}
+                  data-page-type={shouldExposeAnalyticsData ? pageType : undefined}
+                  data-related-href={shouldExposeAnalyticsData ? route.href : undefined}
+                >
                   {route.label}
                 </Link>
               ))}
@@ -96,11 +124,31 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
                   : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-center text-sm font-black text-[color:var(--text-inverse)]";
 
               return action.href.startsWith("tel:") ? (
-                <a key={`${action.label}-${action.href}`} href={action.href} className={className}>
+                <a
+                  key={`${action.label}-${action.href}`}
+                  href={action.href}
+                  className={className}
+                  data-analytics-goal={shouldExposeAnalyticsData ? getGoalForLabel(action.label) : undefined}
+                  data-cta-label={shouldExposeAnalyticsData ? action.label : undefined}
+                  data-cta-location={shouldExposeAnalyticsData ? "route_product_foundation_final" : undefined}
+                  data-lead-topic={shouldExposeAnalyticsData ? pageSlug : undefined}
+                  data-page-slug={shouldExposeAnalyticsData ? pageSlug : undefined}
+                  data-page-type={shouldExposeAnalyticsData ? pageType : undefined}
+                >
                   {action.label}
                 </a>
               ) : (
-                <Link key={`${action.label}-${action.href}`} href={action.href} className={className}>
+                <Link
+                  key={`${action.label}-${action.href}`}
+                  href={action.href}
+                  className={className}
+                  data-analytics-goal={shouldExposeAnalyticsData ? getGoalForLabel(action.label) : undefined}
+                  data-cta-label={shouldExposeAnalyticsData ? action.label : undefined}
+                  data-cta-location={shouldExposeAnalyticsData ? "route_product_foundation_final" : undefined}
+                  data-lead-topic={shouldExposeAnalyticsData ? pageSlug : undefined}
+                  data-page-slug={shouldExposeAnalyticsData ? pageSlug : undefined}
+                  data-page-type={shouldExposeAnalyticsData ? pageType : undefined}
+                >
                   {action.label}
                 </Link>
               );

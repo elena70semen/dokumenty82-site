@@ -84,15 +84,24 @@ function collectRuntimeFiles() {
 
 const analyticsConfigPath = path.join(root, "lib", "integrations", "analytics-config.ts");
 const analyticsEventsPath = path.join(root, "lib", "integrations", "analytics-events.ts");
+const sourceCapturePath = path.join(root, "lib", "integrations", "source-capture.ts");
+const sourceCaptureComponentPath = path.join(root, "components", "analytics", "SourceCapture.tsx");
 const metrikaComponentPath = path.join(root, "components", "analytics", "YandexMetrika.tsx");
+const readinessReportPath = path.join(root, "evidence", "forms", "ANALYTICS_SOURCE_CAPTURE_READINESS.md");
 const packageJsonPath = path.join(root, "package.json");
 
 const analyticsConfigText = readIfExists(analyticsConfigPath);
 const analyticsEventsText = readIfExists(analyticsEventsPath);
+const sourceCaptureText = readIfExists(sourceCapturePath);
+const sourceCaptureComponentText = readIfExists(sourceCaptureComponentPath);
+const readinessReportText = readIfExists(readinessReportPath);
 const packageJsonText = readIfExists(packageJsonPath);
 
 assert(analyticsConfigText, "Analytics config stub file is missing.");
 assert(analyticsEventsText, "Analytics no-op events file is missing.");
+assert(sourceCaptureText, "Source capture utility is missing.");
+assert(sourceCaptureComponentText, "Source capture client hook is missing.");
+assert(readinessReportText, "Analytics/source-capture readiness evidence report is missing.");
 assert(packageJsonText, "package.json is missing.");
 
 if (analyticsConfigText) {
@@ -103,21 +112,61 @@ if (analyticsConfigText) {
   assert(/siteUrl:\s*"https:\/\/dokumenty82\.ru\/"/.test(analyticsConfigText), "Analytics config must keep the canonical site URL.");
   assert(/canLoadScript:\s*false/.test(analyticsConfigText), "Analytics config must keep canLoadScript: false.");
   assert(/canSendEvents:\s*false/.test(analyticsConfigText), "Analytics config must keep canSendEvents: false.");
+  assert(/NEXT_PUBLIC_ANALYTICS_ENABLED/.test(analyticsConfigText), "Analytics config must recognize the generic disabled-by-default flag.");
+  assert(/NEXT_PUBLIC_METRIKA_ID/.test(analyticsConfigText), "Analytics config must keep Metrica ID deployment-only.");
 }
 
 if (analyticsEventsText) {
   for (const goal of [
-    "lead_razbor_situacii_click",
-    "phone_click",
-    "route_click",
-    "show_documents_click",
-    "contacts_open",
-    "policy_open"
+    "goal_call_click",
+    "goal_route_click",
+    "goal_docs_show_click",
+    "goal_form_start",
+    "goal_form_submit_attempt",
+    "goal_form_submit_success",
+    "goal_form_submit_fail",
+    "goal_related_route_click"
   ]) {
     assert(analyticsEventsText.includes(goal), `Planned analytics goal is missing: ${goal}.`);
   }
 
   assert(!/\bfetch\s*\(|navigator\.sendBeacon|XMLHttpRequest|new\s+Image\s*\(|\bgtag\s*\(/.test(analyticsEventsText), "Analytics event helpers must remain local no-ops.");
+  assert(/backend_acceptance_required/.test(analyticsEventsText), "goal_form_submit_success must require backend/CRM acceptance.");
+  assert(/analytics_disabled/.test(analyticsEventsText), "Analytics dispatcher must remain disabled by default.");
+}
+
+if (sourceCaptureText) {
+  for (const key of [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "yclid",
+    "page_slug",
+    "page_type",
+    "cta_label",
+    "cta_location",
+    "lead_topic"
+  ]) {
+    assert(sourceCaptureText.includes(key), `Source capture key is missing: ${key}.`);
+  }
+
+  assert(/sessionStorage/.test(sourceCaptureText), "Source capture must preserve attribution in safe browser storage.");
+  assert(/memorySourceContext/.test(sourceCaptureText), "Source capture must have an in-memory fallback.");
+  assert(!/\b(name|phone|email|message|passport|uploaded_file|document_file)\b\s*:/.test(sourceCaptureText), "Source capture must not define personal-data payload fields.");
+}
+
+if (sourceCaptureComponentText) {
+  assert(/captureSourceFromLocation/.test(sourceCaptureComponentText), "Source capture hook must preserve URL attribution.");
+  assert(/data-analytics-goal/.test(sourceCaptureComponentText), "Source capture hook must read CTA data hooks.");
+  assert(!/\bfetch\s*\(|navigator\.sendBeacon|XMLHttpRequest|new\s+Image\s*\(|\bym\s*\(/.test(sourceCaptureComponentText), "Source capture hook must not send network analytics.");
+}
+
+if (readinessReportText) {
+  assert(/PUBLIC_LIVE_ALLOWED = false/.test(readinessReportText), "Readiness report must keep public live gate closed.");
+  assert(/goal_form_submit_success/.test(readinessReportText), "Readiness report must document the submit-success gate.");
+  assert(/backend\/CRM acceptance/i.test(readinessReportText), "Readiness report must document backend/CRM acceptance.");
 }
 
 if (packageJsonText) {
@@ -154,6 +203,10 @@ if (existingEnvExamples.length === 0) {
 }
 
 const runtimeFiles = collectRuntimeFiles();
+const uiRuntimeFiles = runtimeFiles.filter((filePath) => {
+  const rel = path.relative(root, filePath);
+  return rel.startsWith("app/") || rel.startsWith("components/");
+});
 const forbiddenRuntimePatterns = [
   [/mc\.yandex/i, "Yandex Metrika host must not appear in runtime output/source."],
   [/\bym\s*\(/i, "Active Metrika ym call must not appear in runtime output/source."],
@@ -175,6 +228,19 @@ for (const filePath of runtimeFiles) {
 
   for (const [pattern, message] of forbiddenRuntimePatterns) {
     if (pattern.test(text)) fail(`${message} File: ${rel}`);
+  }
+}
+
+for (const filePath of uiRuntimeFiles) {
+  const rel = path.relative(root, filePath);
+  const text = fs.readFileSync(filePath, "utf8");
+
+  if (/data-analytics-goal=\{?analyticsGoalNames\.formSubmitSuccess|data-analytics-goal=["']goal_form_submit_success["']/.test(text)) {
+    fail(`goal_form_submit_success must not be attached to UI click/start/fallback elements. File: ${rel}`);
+  }
+
+  if (/успешно отправлена|заявка принята/i.test(text)) {
+    fail(`False form success copy must not appear while backend/CRM is disabled. File: ${rel}`);
   }
 }
 

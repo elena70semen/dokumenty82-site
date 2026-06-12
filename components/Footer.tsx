@@ -61,10 +61,16 @@ export function Footer() {
             </p>
           </address>
           <div className="mt-4 grid gap-2 sm:grid-cols-2">
-            <a href={homeFooter.phoneHref} className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-4 py-2 text-sm font-black text-[color:var(--lime-text)]">
+            <a
+              href={homeFooter.phoneHref}
+              className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-4 py-2 text-sm font-black text-[color:var(--lime-text)]"
+            >
               Позвонить
             </a>
-            <Link href="/kontakty/" className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)]">
+            <Link
+              href="/kontakty/"
+              className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)]"
+            >
               Построить маршрут
             </Link>
           </div>

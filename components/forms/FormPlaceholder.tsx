@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useId, useState } from "react";
 import { site } from "@/lib/content";
+import { trackFormStart, trackFormSubmitAttempt, trackFormSubmitFail } from "@/lib/integrations/analytics-events";
 
 type PlaceholderField = {
   id: string;
@@ -17,20 +18,63 @@ type FormPlaceholderProps = {
   title: string;
   text: string;
   fields: PlaceholderField[];
+  pageSlug?: string;
+  pageType?: string;
+  leadTopic?: string;
+  ctaLocation?: string;
 };
 
 const offlineNotice =
   "Онлайн-отправка пока не подключена. Чтобы передать вопрос, позвоните или согласуйте способ показа документов.";
 const localMessage = "Отправка формы пока не подключена. Позвоните или перейдите на страницу контактов.";
 
-export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholderProps) {
+export function FormPlaceholder({
+  eyebrow,
+  title,
+  text,
+  fields,
+  pageSlug = "unknown",
+  pageType = "route",
+  leadTopic = "Другое / первый шаг",
+  ctaLocation = "form_placeholder"
+}: FormPlaceholderProps) {
   const formId = useId();
   const [message, setMessage] = useState("");
+  const [hasStarted, setHasStarted] = useState(false);
   const noticeId = `${formId}-notice`;
   const messageId = `${formId}-message`;
+  const analyticsContext = {
+    page_slug: pageSlug,
+    page_type: pageType,
+    lead_topic: leadTopic,
+    cta_location: ctaLocation
+  };
 
   function explainOffline() {
     setMessage(localMessage);
+  }
+
+  function startFormDraft() {
+    if (hasStarted) return;
+
+    setHasStarted(true);
+    trackFormStart({
+      ...analyticsContext,
+      cta_label: title
+    });
+  }
+
+  function submitAttemptFallback() {
+    trackFormSubmitAttempt({
+      ...analyticsContext,
+      cta_label: title
+    });
+    trackFormSubmitFail({
+      ...analyticsContext,
+      cta_label: title,
+      failure_reason: "backend_unavailable"
+    });
+    explainOffline();
   }
 
   return (
@@ -39,9 +83,12 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
         <form
           className="grid gap-6 rounded-[8px] border border-[var(--line)] bg-white/90 p-6 shadow-[var(--shadow-card-lg)] md:p-8"
           data-form-placeholder="true"
+          data-page-slug={pageSlug}
+          data-page-type={pageType}
+          data-lead-topic={leadTopic}
           onSubmit={(event) => {
             event.preventDefault();
-            explainOffline();
+            submitAttemptFallback();
           }}
         >
           <div className="max-w-3xl">
@@ -65,6 +112,7 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
                       className="min-h-32 rounded-[8px] border border-[var(--line)] bg-white px-4 py-3 text-base font-normal leading-7 text-[color:var(--text-primary)] outline-none transition focus:border-[var(--blue)] focus:ring-4 focus:ring-[rgba(36,93,167,0.14)]"
                       placeholder={field.placeholder}
                       aria-describedby={noticeId}
+                      onFocus={startFormDraft}
                     />
                   ) : (
                     <input
@@ -74,6 +122,7 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
                       placeholder={field.placeholder}
                       aria-describedby={noticeId}
                       autoComplete={field.type === "tel" ? "tel" : "off"}
+                      onFocus={startFormDraft}
                     />
                   )}
                 </label>
@@ -90,7 +139,7 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
               type="button"
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-5 py-3 text-center text-sm font-black text-white shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
               aria-describedby={noticeId}
-              onClick={explainOffline}
+              onClick={submitAttemptFallback}
             >
               Отправка пока не подключена
             </button>

@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { RouteProductFoundation } from "@/components/routes/RouteProductFoundation";
 import { cta, getParentPage, getRoutePage, routePages, site } from "@/lib/content";
 import type { RoutePage } from "@/lib/content";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 import { routePageSlugs } from "@/lib/routes/route-page-data";
 
 const documentHeavySlugs = new Set([
@@ -175,15 +176,26 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               <Link
                 href={primaryCollector.href}
                 className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[#162844] px-7 py-4 text-center text-sm font-black text-white"
+                data-analytics-goal={primaryCollector.label === cta.docs ? analyticsGoalNames.docsShowClick : analyticsGoalNames.formStart}
                 data-collector-kind={primaryCollector.kind}
                 data-cta-label={primaryCollector.label}
+                data-cta-location="dynamic_route_hero_primary"
                 data-lead-topic={page.leadTopic ?? page.slug}
                 data-page-slug={page.slug}
                 data-page-type={page.pageType}
               >
                 {primaryCollector.label}
               </Link>
-              <a href={site.phoneHref} className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[#16284422] bg-white/72 px-7 py-4 text-center text-sm font-black text-[#162844]">
+              <a
+                href={site.phoneHref}
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[#16284422] bg-white/72 px-7 py-4 text-center text-sm font-black text-[#162844]"
+                data-analytics-goal={analyticsGoalNames.callClick}
+                data-cta-label="Позвонить"
+                data-cta-location="dynamic_route_hero_secondary"
+                data-lead-topic={page.leadTopic ?? page.slug}
+                data-page-slug={page.slug}
+                data-page-type={page.pageType}
+              >
                 Позвонить
               </a>
             </div>
@@ -302,6 +314,13 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                   <Link
                     href={relatedRoute.href}
                     className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[#162844] px-4 py-2 text-center text-sm font-black text-white"
+                    data-analytics-goal={analyticsGoalNames.relatedRouteClick}
+                    data-cta-label={relatedRoute.shortTitle}
+                    data-cta-location="dynamic_route_related"
+                    data-lead-topic={page.leadTopic ?? page.slug}
+                    data-page-slug={page.slug}
+                    data-page-type={page.pageType}
+                    data-related-href={relatedRoute.href}
                   >
                     {relatedRoute.shortTitle}
                   </Link>
@@ -312,7 +331,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
         </section>
       ) : null}
 
-      {showDocumentsPlaceholder ? <ShowDocumentsPlaceholder /> : null}
+      {showDocumentsPlaceholder ? <ShowDocumentsPlaceholder pageSlug={page.slug} pageType={page.pageType} leadTopic={page.leadTopic ?? page.slug} /> : null}
     </main>
   );
 }

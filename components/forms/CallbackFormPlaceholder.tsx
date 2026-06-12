@@ -1,11 +1,21 @@
 import { FormPlaceholder } from "@/components/forms/FormPlaceholder";
 
-export function CallbackFormPlaceholder() {
+type FormPlaceholderContext = {
+  pageSlug?: string;
+  pageType?: string;
+  leadTopic?: string;
+};
+
+export function CallbackFormPlaceholder({ pageSlug, pageType, leadTopic }: FormPlaceholderContext) {
   return (
     <FormPlaceholder
       eyebrow="Форма-заглушка"
       title="Заказать звонок"
       text="Онлайн-заявка пока не отправляется. Используйте форму как черновик вопроса и fallback на телефон."
+      pageSlug={pageSlug}
+      pageType={pageType}
+      leadTopic={leadTopic}
+      ctaLocation="callback_form_placeholder"
       fields={[
         {
           id: "name",

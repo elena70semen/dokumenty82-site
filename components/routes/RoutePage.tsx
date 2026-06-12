@@ -15,19 +15,35 @@ type RoutePageProps = {
   page: RoutePageConfig;
 };
 
+function getPageType(page: RoutePageConfig) {
+  if (page.kind === "core") return "core_situation_review";
+  if (page.kind === "contact") return "contact_page";
+  return "hub";
+}
+
+function getLeadTopic(page: RoutePageConfig) {
+  if (page.slug === "kontakty") return "Контакт / визит";
+  if (page.slug === "otchetnost") return "Отчётность / нулёвка / декларация";
+  if (page.slug === "bank-i-115-fz") return "Банк / 115-ФЗ";
+  return "Другое / первый шаг";
+}
+
 export function RoutePage({ page }: RoutePageProps) {
+  const pageType = getPageType(page);
+  const leadTopic = getLeadTopic(page);
+
   return (
     <main id="main-content" data-route-page-template="static" data-stage18h-route-content="true">
-      <RouteHero hero={page.hero} pageKind={page.kind} />
+      <RouteHero hero={page.hero} pageKind={page.kind} pageSlug={page.slug} pageType={pageType} leadTopic={leadTopic} />
       <RouteSituationPanel section={page.situation} />
       <RouteServiceScope section={page.scope} />
       <RouteProcess section={page.process} />
       <RouteDocumentsPanel section={page.documents} />
       <RouteProductFoundation path={page.href} />
-      {page.slug === "razbor-situacii" ? <SituationFormPlaceholder /> : null}
-      {page.slug === "kontakty" ? <CallbackFormPlaceholder /> : null}
-      <RouteRelatedLinks links={page.related} />
-      <RouteLocalContact contact={page.localContact} />
+      {page.slug === "razbor-situacii" ? <SituationFormPlaceholder pageSlug={page.slug} pageType={pageType} leadTopic={leadTopic} /> : null}
+      {page.slug === "kontakty" ? <CallbackFormPlaceholder pageSlug={page.slug} pageType={pageType} leadTopic={leadTopic} /> : null}
+      <RouteRelatedLinks links={page.related} pageSlug={page.slug} pageType={pageType} leadTopic={leadTopic} />
+      <RouteLocalContact contact={page.localContact} pageSlug={page.slug} pageType={pageType} leadTopic={leadTopic} />
       <RouteSafetyNote note={page.safetyNote} />
     </main>
   );

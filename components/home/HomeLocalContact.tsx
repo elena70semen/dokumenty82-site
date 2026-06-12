@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { homeContact } from "@/lib/home/home-page-data";
 import { brandTokens } from "@/lib/brand/brand-tokens";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 
 export function HomeLocalContact() {
   return (
@@ -46,7 +47,16 @@ export function HomeLocalContact() {
                     </span>
                     <div>
                       <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--text-muted)]">Телефон</p>
-                      <a href={homeContact.phoneHref} className="mt-2 inline-block text-lg font-black text-[color:var(--text-primary)]">
+                      <a
+                        href={homeContact.phoneHref}
+                        className="mt-2 inline-block text-lg font-black text-[color:var(--text-primary)]"
+                        data-analytics-goal={analyticsGoalNames.callClick}
+                        data-cta-label="Позвонить"
+                        data-cta-location="home_local_contact_phone"
+                        data-lead-topic="Контакт / визит"
+                        data-page-slug="home"
+                        data-page-type="homepage"
+                      >
                         {homeContact.phone}
                       </a>
                     </div>
@@ -67,6 +77,12 @@ export function HomeLocalContact() {
                       key={action.label}
                       href={action.href}
                       className={`inline-flex min-h-12 items-center justify-center rounded-[8px] px-4 py-3 text-sm font-black transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${className}`}
+                      data-analytics-goal={isPhone ? analyticsGoalNames.callClick : analyticsGoalNames.routeClick}
+                      data-cta-label={action.label}
+                      data-cta-location="home_local_contact_actions"
+                      data-lead-topic="Контакт / визит"
+                      data-page-slug="home"
+                      data-page-type="homepage"
                     >
                       {action.label}
                     </a>
@@ -75,6 +91,12 @@ export function HomeLocalContact() {
                       key={action.label}
                       href={action.href}
                       className={`inline-flex min-h-12 items-center justify-center rounded-[8px] px-4 py-3 text-sm font-black transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${className}`}
+                      data-analytics-goal={analyticsGoalNames.routeClick}
+                      data-cta-label={action.label}
+                      data-cta-location="home_local_contact_actions"
+                      data-lead-topic="Контакт / визит"
+                      data-page-slug="home"
+                      data-page-type="homepage"
                     >
                       {action.label}
                     </Link>

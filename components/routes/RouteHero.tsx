@@ -3,33 +3,76 @@ import { BrandBadge } from "@/components/brand/BrandBadge";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { brandTokens } from "@/lib/brand/brand-tokens";
 import type { RouteAction, RouteHeroConfig, RoutePageKind } from "@/lib/routes/route-page-data";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 
 type RouteHeroProps = {
   hero: RouteHeroConfig;
   pageKind: RoutePageKind;
+  pageSlug: string;
+  pageType: string;
+  leadTopic: string;
 };
 
-function RouteActionLink({ action, primary = false }: { action: RouteAction; primary?: boolean }) {
+function getActionGoal(action: RouteAction) {
+  if (action.kind === "phone") return analyticsGoalNames.callClick;
+  if (action.label === "Построить маршрут") return analyticsGoalNames.routeClick;
+  if (action.label === "Показать документы") return analyticsGoalNames.docsShowClick;
+  return analyticsGoalNames.formStart;
+}
+
+function RouteActionLink({
+  action,
+  primary = false,
+  pageSlug,
+  pageType,
+  leadTopic
+}: {
+  action: RouteAction;
+  primary?: boolean;
+  pageSlug: string;
+  pageType: string;
+  leadTopic: string;
+}) {
   const className = primary
     ? "inline-flex min-h-12 w-full min-w-[184px] items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
     : "inline-flex min-h-12 w-full min-w-[184px] items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto";
+  const ctaLocation = primary ? "route_hero_primary" : "route_hero_secondary";
+  const analyticsGoal = getActionGoal(action);
 
   if (action.kind === "phone" || action.href.startsWith("#")) {
     return (
-      <a href={action.href} className={className}>
+      <a
+        href={action.href}
+        className={className}
+        data-analytics-goal={analyticsGoal}
+        data-cta-label={action.label}
+        data-cta-location={ctaLocation}
+        data-lead-topic={leadTopic}
+        data-page-slug={pageSlug}
+        data-page-type={pageType}
+      >
         {action.label}
       </a>
     );
   }
 
   return (
-    <Link href={action.href} className={className}>
+    <Link
+      href={action.href}
+      className={className}
+      data-analytics-goal={analyticsGoal}
+      data-cta-label={action.label}
+      data-cta-location={ctaLocation}
+      data-lead-topic={leadTopic}
+      data-page-slug={pageSlug}
+      data-page-type={pageType}
+    >
       {action.label}
     </Link>
   );
 }
 
-export function RouteHero({ hero, pageKind }: RouteHeroProps) {
+export function RouteHero({ hero, pageKind, pageSlug, pageType, leadTopic }: RouteHeroProps) {
   return (
     <section
       className="relative isolate overflow-hidden bg-[var(--surface-dark)] pt-32 text-[color:var(--text-inverse)] md:pt-36"
@@ -64,9 +107,9 @@ export function RouteHero({ hero, pageKind }: RouteHeroProps) {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <RouteActionLink action={hero.primaryAction} primary />
+            <RouteActionLink action={hero.primaryAction} pageSlug={pageSlug} pageType={pageType} leadTopic={leadTopic} primary />
             {hero.secondaryActions.map((action) => (
-              <RouteActionLink key={`${action.label}-${action.href}`} action={action} />
+              <RouteActionLink key={`${action.label}-${action.href}`} action={action} pageSlug={pageSlug} pageType={pageType} leadTopic={leadTopic} />
             ))}
           </div>
 
