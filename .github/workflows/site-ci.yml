@@ -36,6 +36,9 @@ jobs:
       - name: P0 semantic alignment
         run: npm run check:p0-semantic
 
+      - name: Stage 18 semantic SEO quality
+        run: npm run check:semantic-seo
+
       - name: Build static export
         run: npm run build
 

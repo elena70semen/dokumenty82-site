@@ -32,6 +32,7 @@ It does not close any blocker by itself. All blockers remain incomplete unless r
 ## Current Non-Closure Notes
 
 - Source Stage 16 docs are now resolved for semantic service map, selling SEO content architecture, page block blueprints and client need hooks/lead path, but this does not approve public copy or launch.
+- Stage 18A semantic SEO docs, route data and local evidence strengthen route semantics, but they do not close owner/legal, Search Console/Yandex Webmaster, staging, rollback, transport or public-live blockers.
 - Owner/legal acceptance remains `MISSING_EXPECTED`.
 - CRM/forms/analytics acceptance remains `MISSING_EXPECTED`.
 - Staging, rollback and transport proof remain `MISSING_EXPECTED`.

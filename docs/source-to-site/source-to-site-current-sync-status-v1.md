@@ -12,7 +12,7 @@ Public launch: `NOT_PUBLIC_LAUNCH_READY`
 
 ## Purpose
 
-This document records the current Stage 15/16/17 source-to-site sync state inside the standalone site repository.
+This document records the current Stage 15/16/17/18A source-to-site sync state inside the standalone site repository.
 
 The site repository is not independent. Every site route, content block, metadata rule, collector, launch gate and deployment decision must remain traceable to the source-of-truth repository.
 
@@ -56,6 +56,9 @@ SEO, routes and semantics:
 - `docs/seo/seo-structure-strengthening-audit-v1.md`
 - `docs/seo/yandex-seo-playbook.md`
 - `docs/seo/stage-16-route-group-semantic-coverage-v1.md`
+- `docs/seo/stage-18a-semantic-seo-master-audit-v1.md`
+- `docs/seo/stage-18a-route-semantic-cluster-map-v1.md`
+- `docs/seo/stage-18a-internal-linking-and-anti-cannibalization-map-v1.md`
 
 Services, content and UX:
 
@@ -102,6 +105,8 @@ They are now source-backed operational docs with `READY_WITH_CONDITIONS` status.
 - `components/`
 - `lib/content.ts`
 - `lib/routes.ts`
+- `lib/seo/semantic-route-data.json`
+- `lib/seo/semantic-route-data.ts`
 - `lib/routes/route-page-data.ts`
 - `lib/feature-flags.ts`
 - `public/robots.txt`
@@ -133,9 +138,10 @@ They are now source-backed operational docs with `READY_WITH_CONDITIONS` status.
 | Stage 17H blocker closure roadmap | `READY_WITH_CONDITIONS` | `docs/launch/stage-17h-blocker-closure-roadmap-v1.md`: lists safe closure path for remaining blockers without closing them. |
 | Stage 17I commit readiness worktree audit | `READY_WITH_CONDITIONS` | `docs/launch/stage-17i-commit-readiness-worktree-audit-v1.md`: records commit-readiness conditions without staging, committing, pushing or launching. |
 | Stage 17J worktree integration and local commit readiness | `READY_WITH_CONDITIONS` | `docs/launch/stage-17j-worktree-integration-and-local-commit-readiness-v1.md`: inventories source/site dirty worktrees and permits local commits only after checks pass; push, merge, deploy and public live remain blocked. |
+| Stage 18A semantic SEO foundation | `READY_WITH_CONDITIONS` | Three Stage 18A source docs are synced byte-for-byte; site route manifest now consumes `lib/seo/semantic-route-data.json`; `npm run check:semantic-seo` writes `evidence/seo/stage18-semantic-seo-quality.json`. |
 | Feature flags | `PASS` | Live forms, CRM success, analytics, Metrica, messaging, map and cookie notice remain false. |
 | Forms/uploads | `PASS` | Placeholder-only; no live upload or false success is enabled. |
-| SEO/indexing | `READY_WITH_CONDITIONS` | Sitemap excludes blog/news, FAQ and internal proof routes; browser/staging evidence still required before live. |
+| SEO/indexing | `READY_WITH_CONDITIONS` | Sitemap excludes blog/news, FAQ and internal proof routes; Stage 18A semantic route data covers 36 indexed and 3 noindex foundation routes; Webmaster/indexing evidence still required before live. |
 | Project vector | `VECTOR_ALIGNED_WITH_CONDITIONS` | `docs/launch/stage-17-project-vector-audit-v1.md`; no major drift detected. |
 | Transport gate | `READY_WITH_CONDITIONS / PROOF_MISSING` | TCP HTTPS baseline preserved; HTTP/3/QUIC/UDP/443/Alt-Svc h3/listen quic remain blocked by default. |
 | Public live | `BLOCKED` | `PUBLIC_LIVE_ALLOWED = false`. |
@@ -156,12 +162,13 @@ They are now source-backed operational docs with `READY_WITH_CONDITIONS` status.
 - staging deploy and rollback proof remain `MISSING_EXPECTED`;
 - HTTP/3/QUIC transport proof remains `MISSING_EXPECTED`;
 - Search Console/Yandex Webmaster setup remains `MISSING_EXPECTED`;
+- Stage 18A semantic SEO evidence is local QA evidence only and does not approve live indexing;
 - no known Stage 16 source document placeholder remains after Stage 17I.
 
 ## Release Verdict
 
 `GO WITH CONDITIONS`
 
-Stage 15/16/17 source-to-site sync is ready with conditions for local/build QA and later owner/legal route review. It does not approve public live.
+Stage 15/16/17/18A source-to-site sync is ready with conditions for local/build QA and later owner/legal route review. It does not approve public live.
 
 `PUBLIC_LIVE_ALLOWED = false`
