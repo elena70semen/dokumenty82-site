@@ -20,7 +20,7 @@ It is a worktree integration and local commit-readiness report only. It is not o
 | --- | --- | --- |
 | Source repository | `PASS` | `/Users/office-9102/Documents/Dokumenty-dlya-biznesa`, remote `https://github.com/elena70semen/dokumenty-dlya-biznesa.git`, branch before audit `stage12/wave2-document-bank-reporting-routes`. |
 | Site repository | `PASS` | `/Users/office-9102/Documents/GitHub/dokumenty82-site`, remote `https://github.com/elena70semen/dokumenty82-site.git`, branch before audit `main`. |
-| Site branch gate | `REQUIRES_LOCAL_BRANCH_BEFORE_COMMIT` | If still on `main`, switch/create `stage17/source-site-owner-review-readiness` before local site commit. |
+| Site branch gate | `PASS` | Site local commit branch is `stage17/source-site-owner-review-readiness`; it was created before local site commit. |
 | Source-of-truth rule | `PASS` | Source controls canon, NAP, HOLD, route registry, SEO, content rules, UX/lead collectors, CRM/analytics restrictions, legal/privacy constraints, launch gates, deployment rules and QA/evidence requirements. |
 | Public live | `BLOCKED` | `PUBLIC_LIVE_ALLOWED = false`. |
 | Push/merge/deploy | `BLOCKED_IN_STAGE_17J` | No push, merge, deploy, DNS or public live action is allowed in this stage. |
@@ -244,7 +244,7 @@ No push, merge, deploy, DNS, staging, public live or fake approval action is all
 
 ## Stage 17J Run Results
 
-Current run result: `CHECKS_PASSED_LOCAL_COMMIT_READY`
+Current run result: `LOCAL_COMMITS_CREATED_WITH_PUSH_BLOCKED`
 
 Source cmp checks:
 
@@ -279,11 +279,13 @@ Site checks:
 
 Source local commit: `9487af7 docs: complete stage 16 source package`
 
-Site local commit: `PENDING_SITE_LOCAL_COMMIT`
+Site local integration commit: `1421b2c chore: integrate stage 17 source-to-site readiness package`
 
-Files left uncommitted after local commits: `PENDING_SITE_LOCAL_COMMIT`
+Files left uncommitted after local integration commit: `NONE_BEFORE_STAGE_17J_RESULT_NOTE`
 
-Note: a commit cannot contain its own final SHA without rewriting history. The final Codex response must report the actual local site commit SHA(s) from `git log -1 --oneline` after successful commits.
+Stage 17J result-note commit: `RECORDED_IN_FINAL_CODEX_REPORT`
+
+Note: a commit cannot contain its own final SHA without rewriting history. The final Codex response must report the actual local site result-note commit SHA from `git log -1 --oneline`.
 
 ## Release Verdict
 
