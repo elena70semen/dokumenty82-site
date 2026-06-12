@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "timestamp": "2026-06-12T19:08:33.604Z",
+  "timestamp": "2026-06-12T19:29:42.056Z",
   "git": {
     "branch": "stage19/staging-rollback-transport-preflight",
-    "commit": "2dc520e"
+    "commit": "2978bd4"
   },
   "buildOutputPath": "out",
   "indexedRouteCount": 36,
@@ -373,7 +373,7 @@
         {
           "path": "out/index.html",
           "size": 203033,
-          "sha256": "7b23409e296f2e2017d1f66c09f98baca5b88394fc96dd0f58897ee4a2155f27"
+          "sha256": "147249cabf454bd04aebabb6a67374dfa3663c6cf813c2417d11c2b6c2b26ca3"
         },
         {
           "path": "out/sitemap.xml",
