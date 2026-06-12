@@ -22,7 +22,7 @@ The site repository is not independent. Every site route, content block, metadat
 | --- | --- | --- |
 | Site checkout | `PASS` | Current checkout is `/Users/office-9102/Documents/GitHub/dokumenty82-site`. |
 | Site remote | `PASS` | `https://github.com/elena70semen/dokumenty82-site.git`. |
-| Site branch | `PASS` | `stage18/route-content-blocks-site`. |
+| Site branch | `PASS` | `stage18/route-quality-deepening-site`. |
 | Root layout | `PASS` | `package.json`, `package-lock.json`, `app/`, `components/`, `lib/`, `public/`, `scripts/`, `evidence/`, `.github/workflows/site-ci.yml`, `README.md`. |
 | Source checkout | `PASS` | `/Users/office-9102/Documents/Dokumenty-dlya-biznesa`. |
 | Source remote | `PASS` | `https://github.com/elena70semen/dokumenty-dlya-biznesa.git`. |
@@ -156,6 +156,7 @@ They are now source-backed operational docs with `READY_WITH_CONDITIONS` status.
 | Stage 18A semantic SEO foundation | `READY_WITH_CONDITIONS` | Three Stage 18A source docs are synced byte-for-byte; site route manifest now consumes `lib/seo/semantic-route-data.json`; `npm run check:semantic-seo` writes `evidence/seo/stage18-semantic-seo-quality.json`. |
 | Stage 18B/C/D/E product foundation | `READY_WITH_CONDITIONS` | 13 source docs are synced byte-for-byte; runtime product-foundation layer, homepage structure, route block support, page-block/layout/homepage/public-foundation guardrails and evidence are present. |
 | Stage 18H route content/navigation foundation | `READY_WITH_CONDITIONS` | 2 source docs are synced byte-for-byte; top-level route-family navigation includes `Налоги и режимы`; route templates and product foundation expose Stage 18H markers; `npm run check:route-content` writes `evidence/content/stage18-route-content-and-navigation.json`. |
+| Stage 18K route quality deepening | `READY_WITH_CONDITIONS` | 2 source docs are synced byte-for-byte; priority route quality data deepens fit/checks/documents/FAQ/related-route coverage; `npm run check:route-quality` writes `evidence/content/stage18-route-quality-depth.json`. |
 | Feature flags | `PASS` | Live forms, CRM success, analytics, Metrica, messaging, map and cookie notice remain false. |
 | Forms/uploads | `PASS` | Placeholder-only; no live upload or false success is enabled. |
 | SEO/indexing | `READY_WITH_CONDITIONS` | Sitemap excludes blog/news, FAQ and internal proof routes; Stage 18A semantic route data covers 36 indexed and 3 noindex foundation routes; Webmaster/indexing evidence still required before live. |
@@ -182,12 +183,13 @@ They are now source-backed operational docs with `READY_WITH_CONDITIONS` status.
 - Stage 18A semantic SEO evidence is local QA evidence only and does not approve live indexing;
 - Stage 18B/C/D/E product foundation evidence is local QA evidence only and does not approve owner/legal acceptance, CRM/forms/analytics acceptance, staging, transport or public live;
 - Stage 18H route content/navigation evidence is local QA evidence only and does not approve final public copy, owner/legal acceptance, route copy, `/policy`, CRM/forms/analytics acceptance, staging, transport or public live;
+- Stage 18K route quality evidence is local QA evidence only and does not approve final public copy, owner/legal acceptance, route copy, `/policy`, CRM/forms/analytics acceptance, staging, transport or public live;
 - no known Stage 16 source document placeholder remains after Stage 17I.
 
 ## Release Verdict
 
 `GO WITH CONDITIONS`
 
-Stage 15/16/17/18A/18B/18C/18D/18E/18H source-to-site sync is ready with conditions for local/build QA and later owner/legal route review. It does not approve public live.
+Stage 15/16/17/18A/18B/18C/18D/18E/18H/18K source-to-site sync is ready with conditions for local/build QA and later owner/legal route review. It does not approve public live.
 
 `PUBLIC_LIVE_ALLOWED = false`

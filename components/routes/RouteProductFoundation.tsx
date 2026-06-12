@@ -46,6 +46,8 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
       data-route-path={foundation.path}
       data-owner-legal-status="pending-human-review"
       data-public-live-allowed="false"
+      data-stage18k-route-quality={foundation.stage18kQualityStatus ?? "READY_FOR_OWNER_REVIEW"}
+      data-stage18k-owner-review={foundation.ownerReviewStatus ?? "PENDING_HUMAN_REVIEW"}
       data-required-blocks="route_intent when_this_page_fits what_we_check documents_data_needed how_work_starts what_is_not_promised related_routes faq_direction safe_final_cta client_information"
     >
       <div className="container-premium">
