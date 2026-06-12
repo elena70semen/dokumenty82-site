@@ -24,18 +24,20 @@ export function HomeProductFoundation() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {homeSituationSelector.map((item) => (
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {homeSituationSelector.map((item, index) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-[8px] border border-[var(--line)] bg-white/86 p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+              className={`flex min-h-[218px] min-w-0 flex-col rounded-[8px] border bg-white/88 p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
+                index === 0 ? "border-[var(--accent-blue-border)] xl:col-span-2" : "border-[var(--line)]"
+              }`}
             >
               <span className="grid size-11 place-items-center rounded-[8px] bg-[var(--accent-blue-bg)] text-[color:var(--blue)]">
                 <BrandIcon name={item.icon} size={24} decorative />
               </span>
               <h3 className="mt-5 text-xl font-black leading-tight text-[color:var(--text-primary)]">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--text-secondary)]">{item.copy}</p>
+              <p className="mt-3 flex-1 text-sm leading-7 text-[color:var(--text-secondary)]">{item.copy}</p>
             </Link>
           ))}
         </div>
@@ -43,9 +45,9 @@ export function HomeProductFoundation() {
         <div className="mt-10 grid gap-5 lg:grid-cols-[1fr_1fr]">
           <article className="rounded-[8px] border border-[var(--line)] bg-white/88 p-6 shadow-[var(--shadow-card-md)]">
             <h3 className="text-2xl font-black text-[color:var(--text-primary)]">Как начинается работа</h3>
-            <ol className="mt-6 grid gap-4">
+            <ol className="mt-6 grid gap-4 sm:grid-cols-2">
               {homeStartPath.map((step, index) => (
-                <li key={step.title} className="grid gap-2 rounded-[8px] bg-[var(--paper-soft)] p-4">
+                <li key={step.title} className="grid min-w-0 gap-2 rounded-[8px] bg-[var(--paper-soft)] p-4">
                   <span className="text-sm font-black text-[color:var(--gold)]">{String(index + 1).padStart(2, "0")}</span>
                   <strong className="text-lg leading-tight text-[color:var(--text-primary)]">{step.title}</strong>
                   <span className="text-sm leading-7 text-[color:var(--text-secondary)]">{step.copy}</span>
@@ -56,13 +58,13 @@ export function HomeProductFoundation() {
 
           <article className="rounded-[8px] border border-[var(--line)] bg-white/88 p-6 shadow-[var(--shadow-card-md)]">
             <h3 className="text-2xl font-black text-[color:var(--text-primary)]">Какая информация помогает</h3>
-            <div className="mt-6 grid gap-4">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {homeClientInformation.map((item) => (
-                <div key={item.title} className="flex gap-4 rounded-[8px] bg-[var(--paper-soft)] p-4">
+                <div key={item.title} className="flex min-w-0 gap-4 rounded-[8px] bg-[var(--paper-soft)] p-4">
                   <span className="grid size-10 shrink-0 place-items-center rounded-[8px] bg-[var(--accent-gold-bg)] text-[color:var(--gold)]">
                     <BrandIcon name={item.icon} size={20} decorative />
                   </span>
-                  <span>
+                  <span className="min-w-0">
                     <strong className="block text-lg leading-tight text-[color:var(--text-primary)]">{item.title}</strong>
                     <span className="mt-2 block text-sm leading-7 text-[color:var(--text-secondary)]">{item.copy}</span>
                   </span>
@@ -72,7 +74,7 @@ export function HomeProductFoundation() {
           </article>
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="mt-10 grid gap-5 lg:grid-cols-[1.14fr_0.86fr] lg:items-stretch">
           <article className="rounded-[8px] border border-[var(--line)] bg-white/88 p-6 shadow-[var(--shadow-card-md)]">
             <h3 className="text-2xl font-black text-[color:var(--text-primary)]">FAQ первого шага</h3>
             <div className="mt-6 grid gap-3">
@@ -85,20 +87,22 @@ export function HomeProductFoundation() {
             </div>
           </article>
 
-          <article className="rounded-[8px] bg-[var(--surface-dark-strong)] p-6 text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]">
-            <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--lime-signal)]">Безопасный следующий шаг</p>
-            <h3 className="mt-4 text-3xl font-black leading-tight">Начните с разбора ситуации</h3>
-            <p className="mt-4 text-sm leading-7 text-[color:var(--text-inverse-muted)]">
-              Опишите вопрос, позвоните или перейдите в контакты. Публичная страница не принимает файлы и не отправляет заявку в CRM.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/razbor-situacii/" className="rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-sm font-black text-[color:var(--lime-text)]">
+          <article className="flex h-full flex-col justify-between rounded-[8px] bg-[var(--surface-dark-strong)] p-6 text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--lime-signal)]">Безопасный следующий шаг</p>
+              <h3 className="mt-4 text-3xl font-black leading-tight">Начните с разбора ситуации</h3>
+              <p className="mt-4 text-sm leading-7 text-[color:var(--text-inverse-muted)]">
+                Опишите вопрос, позвоните или перейдите в контакты. Публичная страница не принимает файлы и не отправляет заявку в CRM.
+              </p>
+            </div>
+            <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              <Link href="/razbor-situacii/" className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-sm font-black text-[color:var(--lime-text)]">
                 {cta.primary}
               </Link>
-              <a href={site.phoneHref} className="rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]">
+              <a href={site.phoneHref} className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]">
                 {cta.phone}
               </a>
-              <Link href="/kontakty/" className="rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]">
+              <Link href="/kontakty/" className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]">
                 {cta.route}
               </Link>
             </div>

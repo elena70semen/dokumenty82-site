@@ -81,7 +81,7 @@ export function RouteLocalContact({ contact }: RouteLocalContactProps) {
                 </div>
               </address>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {contact.actions.map((action, index) => (
                   <ContactActionLink key={`${action.label}-${action.href}`} action={action} index={index} />
                 ))}

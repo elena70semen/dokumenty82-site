@@ -207,7 +207,17 @@ summary::-webkit-details-marker {
   }
 
   .section-pad {
-    padding: 64px 0;
+    padding: 58px 0;
+  }
+
+  .eyebrow-line {
+    gap: 9px;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+  }
+
+  .eyebrow-line::before {
+    width: 22px;
   }
 
   .reveal-block,

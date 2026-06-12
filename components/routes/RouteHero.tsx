@@ -11,8 +11,8 @@ type RouteHeroProps = {
 
 function RouteActionLink({ action, primary = false }: { action: RouteAction; primary?: boolean }) {
   const className = primary
-    ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
-    : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]";
+    ? "inline-flex min-h-12 w-full min-w-[184px] items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
+    : "inline-flex min-h-12 w-full min-w-[184px] items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto";
 
   if (action.kind === "phone" || action.href.startsWith("#")) {
     return (
@@ -32,7 +32,7 @@ function RouteActionLink({ action, primary = false }: { action: RouteAction; pri
 export function RouteHero({ hero, pageKind }: RouteHeroProps) {
   return (
     <section
-      className="relative isolate overflow-hidden bg-[var(--surface-dark)] pt-36 text-[color:var(--text-inverse)] md:pt-40"
+      className="relative isolate overflow-hidden bg-[var(--surface-dark)] pt-32 text-[color:var(--text-inverse)] md:pt-36"
       aria-labelledby="route-hero-title"
       style={{
         backgroundImage: `${brandTokens.gradients.businessDepth}, url(${brandTokens.assets.routeGridPattern})`
@@ -40,7 +40,7 @@ export function RouteHero({ hero, pageKind }: RouteHeroProps) {
     >
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(198,255,0,0.52),transparent)]" aria-hidden="true" />
 
-      <div className="container-premium grid min-h-[calc(86vh-88px)] gap-12 pb-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+      <div className="container-premium grid min-h-[calc(78vh-88px)] gap-10 pb-14 lg:grid-cols-[1.02fr_0.88fr] lg:items-center">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-3 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-4 py-3">
             <BrandIcon name={hero.icon} size={20} className="text-[color:var(--lime-signal)]" />
@@ -64,15 +64,15 @@ export function RouteHero({ hero, pageKind }: RouteHeroProps) {
 
           <ul className="mt-8 grid gap-3 text-sm text-[color:var(--text-inverse-soft)] sm:grid-cols-3">
             {hero.signals.map((signal) => (
-              <li key={signal} className="flex items-center gap-2">
+              <li key={signal} className="flex min-w-0 items-center gap-2 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-3 py-2">
                 <span className="size-2 rounded-full bg-[var(--lime-signal)]" aria-hidden="true" />
-                {signal}
+                <span className="min-w-0">{signal}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="relative min-h-[430px]" aria-hidden="true">
+        <div className="relative hidden min-h-[390px] lg:block" aria-hidden="true">
           <div className="absolute inset-0 rounded-[8px] border border-[var(--border-dark-soft)] bg-[rgba(255,255,255,0.04)] shadow-[var(--shadow-panel)]" />
           <div className="absolute left-7 right-7 top-7 grid gap-5">
             <div className="flex items-center justify-between rounded-[8px] border border-[var(--border-dark-soft)] bg-[rgba(247,243,234,0.9)] p-4 shadow-[var(--shadow-card-sm)]">

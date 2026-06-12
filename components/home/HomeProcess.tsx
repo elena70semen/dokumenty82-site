@@ -26,8 +26,8 @@ export function HomeProcess() {
                 <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--lime-signal)] text-sm font-black text-[color:var(--lime-text)]">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <div>
-                  <div className="flex items-center gap-3">
+                <div className="min-w-0">
+                  <div className="flex min-w-0 items-start gap-3">
                     <BrandIcon name={index === 2 ? "folder" : "route"} size={20} className="text-[color:var(--lime-signal)]" />
                     <h3 className="text-xl font-black leading-tight">{step.title}</h3>
                   </div>

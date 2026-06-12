@@ -26,11 +26,13 @@ export function HomeRouteCards() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {homeRouteCards.map((card) => (
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {homeRouteCards.map((card, index) => (
             <article
               key={card.title}
-              className="group flex min-h-[292px] flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)]"
+              className={`group flex min-h-[292px] min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)] ${
+                index === 0 ? "xl:col-span-2" : ""
+              }`}
             >
               <div className="flex items-start justify-between gap-4">
                 <BrandBadge kind={card.badgeKind} label="Маршрут" icon={card.icon} size={48} />
@@ -39,11 +41,11 @@ export function HomeRouteCards() {
               <div className="mt-7 flex flex-1 flex-col">
                 <h3 className="text-2xl font-black leading-tight text-[color:var(--text-primary)]">{card.title}</h3>
                 <p className="mt-4 flex-1 text-base leading-7 text-[color:var(--text-secondary)]">{card.copy}</p>
-                <div className="mt-6 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-4">
-                  <span className="text-sm font-bold text-[color:var(--text-muted)]">{card.nextStep}</span>
+                <div className="mt-6 grid gap-3 border-t border-[var(--line)] pt-4 sm:grid-cols-[1fr_auto] sm:items-center">
+                  <span className="min-w-0 text-sm font-bold leading-6 text-[color:var(--text-muted)]">{card.nextStep}</span>
                   <Link
                     href={card.href}
-                    className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] sm:w-auto"
                   >
                     Разобрать ситуацию
                   </Link>

@@ -88,7 +88,7 @@ export function Header() {
               <span className="sr-only">Открыть навигацию</span>
               <BrandIcon name="route" size={24} />
             </summary>
-            <div className="glass-panel fixed left-4 right-4 top-[92px] grid max-h-[calc(100vh-112px)] gap-3 overflow-y-auto rounded-[8px] p-4 backdrop-blur-2xl backdrop-saturate-150">
+            <div className="glass-panel fixed left-4 right-4 top-[92px] grid max-h-[calc(100vh-112px)] gap-3 overflow-y-auto overscroll-contain rounded-[8px] p-4 backdrop-blur-2xl backdrop-saturate-150">
               <nav aria-label="Мобильная навигация">
                 <ul className="grid gap-2">
                   {homeNavigation.map((item) => {
@@ -111,10 +111,10 @@ export function Header() {
                 </ul>
               </nav>
               <div className="grid gap-2 border-t border-[var(--line)] pt-3 sm:grid-cols-2">
-                <Link href="/razbor-situacii/" className="rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)]">
+                <Link href="/razbor-situacii/" className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)]">
                   Разобрать ситуацию
                 </Link>
-                <a href={site.phoneHref} className="rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]">
+                <a href={site.phoneHref} className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]">
                   {site.phone}
                 </a>
               </div>
