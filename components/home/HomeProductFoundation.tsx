@@ -17,11 +17,11 @@ export function HomeProductFoundation() {
           <div>
             <p className="eyebrow-line">С чего начать</p>
             <h2 id="home-product-foundation" className="display-serif mt-5 text-4xl font-semibold leading-tight text-[color:var(--text-primary)] md:text-6xl">
-              Выберите ситуацию или начните с разбора
+              Выберите ситуацию или начните с первого шага
             </h2>
           </div>
           <p className="text-lg leading-9 text-[color:var(--text-secondary)]">
-            Главная страница остаётся маршрутизатором: она помогает выбрать направление, понять стартовые вводные и перейти к безопасному первому шагу.
+            Если не уверены, с чего начать, начните с разбора ситуации. Посмотрим, что уже есть, что нужно подготовить и какой маршрут подходит.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ export function HomeProductFoundation() {
               key={item.href}
               href={item.href}
               className={`flex min-h-[218px] min-w-0 flex-col rounded-[8px] border bg-white/88 p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
-                index === 0 ? "border-[var(--accent-blue-border)] xl:col-span-2" : "border-[var(--line)]"
+                index === 0 || item.href === "/razbor-situacii/" ? "border-[var(--accent-blue-border)] xl:col-span-2" : "border-[var(--line)]"
               }`}
               data-analytics-goal={analyticsGoalNames.relatedRouteClick}
               data-cta-label={item.title}
@@ -46,6 +46,7 @@ export function HomeProductFoundation() {
               </span>
               <h3 className="mt-5 text-xl font-black leading-tight text-[color:var(--text-primary)]">{item.title}</h3>
               <p className="mt-3 flex-1 text-sm leading-7 text-[color:var(--text-secondary)]">{item.copy}</p>
+              <span className="mt-5 text-sm font-black text-[color:var(--blue)]">{item.href === "/razbor-situacii/" ? "Безопасный первый шаг" : "Один основной интент"}</span>
             </Link>
           ))}
         </div>
@@ -100,7 +101,7 @@ export function HomeProductFoundation() {
               <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--lime-signal)]">Безопасный следующий шаг</p>
               <h3 className="mt-4 text-3xl font-black leading-tight">Начните с разбора ситуации</h3>
               <p className="mt-4 text-sm leading-7 text-[color:var(--text-inverse-muted)]">
-                Опишите вопрос, позвоните или перейдите в контакты. Публичная страница не принимает файлы и не отправляет заявку в CRM.
+                Можно показать документы при обращении — без загрузки файлов на сайте. Если ситуация неясна, начните с разбора.
               </p>
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">

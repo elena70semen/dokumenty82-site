@@ -60,7 +60,10 @@ export function Footer() {
               </a>
             </p>
           </address>
-          <div className="mt-4 grid gap-2 sm:grid-cols-2">
+          <p className="mt-3 text-xs font-bold leading-6 text-[color:var(--text-inverse-soft)]">
+            Если вопрос не разложен, начните с разбора ситуации. Документы показываются только согласованным способом.
+          </p>
+          <div className="mt-4 grid gap-2 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             <a
               href={homeFooter.phoneHref}
               className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-4 py-2 text-sm font-black text-[color:var(--lime-text)]"
@@ -72,6 +75,12 @@ export function Footer() {
               className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)]"
             >
               Построить маршрут
+            </Link>
+            <Link
+              href="/razbor-situacii/"
+              className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)]"
+            >
+              Разобрать ситуацию
             </Link>
           </div>
         </div>

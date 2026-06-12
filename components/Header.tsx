@@ -89,6 +89,9 @@ export function Header() {
               <BrandIcon name="route" size={24} />
             </summary>
             <div className="fixed left-4 right-4 top-[92px] grid max-h-[calc(100vh-112px)] gap-3 overflow-y-auto overscroll-contain rounded-[8px] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-panel)]">
+              <p className="rounded-[8px] bg-[var(--paper-soft)] px-4 py-3 text-sm font-bold leading-6 text-[color:var(--text-secondary)]">
+                Если не уверены, с чего начать, откройте разбор ситуации или позвоните.
+              </p>
               <nav aria-label="Мобильная навигация">
                 <ul className="grid gap-2">
                   {homeNavigation.map((item) => {
@@ -110,7 +113,7 @@ export function Header() {
                   })}
                 </ul>
               </nav>
-              <div className="grid gap-2 border-t border-[var(--line)] pt-3 sm:grid-cols-2">
+              <div className="grid gap-2 border-t border-[var(--line)] pt-3 sm:grid-cols-3">
                 <Link
                   href="/razbor-situacii/"
                   className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)]"
@@ -123,6 +126,12 @@ export function Header() {
                 >
                   {site.phone}
                 </a>
+                <Link
+                  href="/kontakty/"
+                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]"
+                >
+                  Построить маршрут
+                </Link>
               </div>
             </div>
           </details>

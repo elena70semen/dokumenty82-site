@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checkedAt": "2026-06-12T22:46:18.046Z",
+  "checkedAt": "2026-06-12T22:57:22.966Z",
   "indexedRoutes": 36,
   "noindexFoundationRoutes": [
     "/blog/",
@@ -21,11 +21,11 @@
       "href": "/bank-i-115-fz/"
     },
     {
-      "label": "Адрес и ЕГРЮЛ",
+      "label": "Адрес / ЕГРЮЛ / директор",
       "href": "/adres-egryul-direktor/"
     },
     {
-      "label": "Регистрация",
+      "label": "Регистрация и ликвидация",
       "href": "/registraciya-i-likvidaciya/"
     },
     {

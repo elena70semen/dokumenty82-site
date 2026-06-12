@@ -15,14 +15,14 @@ export function HomeHero() {
     >
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(198,255,0,0.52),transparent)]" aria-hidden="true" />
 
-      <div className="container-premium grid min-h-[calc(90vh-88px)] gap-10 pb-14 lg:grid-cols-[1fr_0.82fr] lg:items-center">
+      <div className="container-premium grid min-h-[calc(78vh-88px)] gap-10 pb-14 lg:min-h-[calc(86vh-88px)] lg:grid-cols-[1fr_0.82fr] lg:items-center">
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-3 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-4 py-3 text-sm font-black text-[color:var(--lime-signal)]">
             <BrandIcon name="location" size={20} />
             {homeHero.kicker}
           </p>
 
-          <h1 id="home-hero-title" className="mt-7 text-[2.68rem] font-black leading-[1.04] tracking-normal md:text-[4.9rem] lg:text-[5.4rem]">
+          <h1 id="home-hero-title" className="mt-7 text-[2.35rem] font-black leading-[1.06] tracking-normal sm:text-[3.15rem] md:text-[4.9rem] lg:text-[5.4rem]">
             {homeHero.title}
           </h1>
 
@@ -55,6 +55,18 @@ export function HomeHero() {
             >
               {homeHero.secondaryCta.label}
             </Link>
+            <a
+              href={homeHero.phoneCta.href}
+              className="inline-flex min-h-12 w-full min-w-[190px] items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-6 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
+              data-analytics-goal={analyticsGoalNames.callClick}
+              data-cta-label={homeHero.phoneCta.label}
+              data-cta-location="home_hero_secondary"
+              data-lead-topic="Другое / первый шаг"
+              data-page-slug="home"
+              data-page-type="homepage"
+            >
+              {homeHero.phoneCta.label}
+            </a>
           </div>
 
           <ul className="mt-8 grid gap-3 text-sm text-[color:var(--text-inverse-soft)] sm:grid-cols-3">

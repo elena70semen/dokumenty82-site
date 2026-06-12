@@ -20,6 +20,18 @@ const requiredRoutes = [
   "/kontakty/"
 ];
 
+const requiredSituationRoutes = [
+  "/razbor-situacii/",
+  "/srochnye-voprosy/",
+  "/otchetnost/",
+  "/otvet-na-zapros-banka/",
+  "/dokumenty-dlya-banka-115-fz/",
+  "/adres-egryul-direktor/",
+  "/registraciya-i-likvidaciya/",
+  "/nalogi-i-rezhimy/",
+  "/kadry/"
+];
+
 const requiredHomeBlocks = [
   "situation_selector",
   "start_path",
@@ -78,19 +90,28 @@ for (const route of requiredRoutes) {
   assert(homeDataText.includes(`href: "${route}"`) || homeFoundationText.includes(`href="${route}"`), `Homepage missing required route path: ${route}`);
 }
 
+for (const route of requiredSituationRoutes) {
+  assert(homeDataText.includes(`href: "${route}"`), `Homepage situation selector missing route path: ${route}`);
+}
+
+assert(/primaryCta:\s*\{ label: "Разобрать ситуацию", href: "\/razbor-situacii\/" \}/.test(homeDataText), "Homepage hero primary CTA must point to /razbor-situacii/.");
+assert(/phoneCta:\s*\{ label: "Позвонить", href: site\.phoneHref \}/.test(homeDataText), "Homepage hero must expose phone CTA through confirmed phone href.");
+assert(/Не знаю, с чего начать/.test(homeDataText), "Homepage situation selector must include unsure-start path.");
+
 for (const route of ["/blog/", "/blog/obnovleniya-fns/", "/blog/razbory/"]) {
   assert(!homeDataText.includes(`href: "${route}"`), `Homepage navigation must not include noindex route: ${route}`);
 }
 
 assert(!/гарантируем|100%\s*результат|отзывы|рейтинг|цена от|стоимость от/i.test(homeDataText + homeFoundationText), "Homepage contains forbidden public proof/price wording.");
-assert(/публичная страница не принимает файлы/i.test(homeFoundationText), "Homepage must preserve no-upload client information.");
-assert(/офис рядом с налоговой/.test(homeDataText), "Homepage must preserve neutral local marker.");
+assert(/публичная страница не принимает файлы|без загрузки файлов на сайте|файлы не загружаются/i.test(homeDataText + homeFoundationText), "Homepage must preserve no-upload client information.");
+assert(/офис рядом с налоговой/i.test(homeDataText), "Homepage must preserve neutral local marker.");
 
 const evidence = {
   status: issues.length === 0 ? "passed" : "failed",
   checkedAt: new Date().toISOString(),
   requiredHomeBlocks,
   requiredRoutes,
+  requiredSituationRoutes,
   exactHomepageDescription,
   publicLiveAllowed: false,
   issues
