@@ -15,7 +15,7 @@
     "dataPageType": [],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -34,7 +34,7 @@
     "dataPageType": [],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -54,7 +54,7 @@
     "dataPageType": [],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -72,7 +72,7 @@
     ],
     "dataCtaLabel": [
       "Позвонить",
-      "Контакты"
+      "Построить маршрут"
     ],
     "dataPageSlug": [
       "policy"
@@ -82,7 +82,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
-    "policyHasPhoneAndContactsFallbackOnly": true,
+    "policyHasPhoneAndRouteFallbackOnly": true,
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -109,7 +109,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -136,7 +136,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -163,7 +163,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -190,7 +190,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -217,7 +217,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -244,7 +244,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -270,7 +270,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -296,7 +296,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -323,7 +323,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   },
   {
@@ -350,7 +350,7 @@
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
-    "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
+    "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
     "policyAggressiveCommercialCollector": false
   }
 ]

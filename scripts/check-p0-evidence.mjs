@@ -225,8 +225,8 @@ if (!sitemapProof?.excludesInternalGraphicsProof) {
 }
 
 const policyCollector = collectorByRoute.get("/policy");
-if (!policyCollector?.policyHasPhoneAndContactsFallbackOnly) {
-  issues.push("/policy must have phone + contacts fallback only.");
+if (!policyCollector?.policyHasPhoneAndRouteFallbackOnly) {
+  issues.push("/policy must have phone + route fallback only.");
 }
 
 if (policyCollector?.policyAggressiveCommercialCollector) {
