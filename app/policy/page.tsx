@@ -93,12 +93,12 @@ export default function PolicyPage() {
                 href="/kontakty/"
                 className="rounded-full border border-[#16284422] bg-white/72 px-7 py-4 text-sm font-black text-[#162844]"
                 data-collector-kind="contacts"
-                data-cta-label="Построить маршрут"
+                data-cta-label="Контакты"
                 data-lead-topic="policy_legal"
                 data-page-slug="policy"
                 data-page-type="legal"
               >
-                Построить маршрут
+                Контакты
               </Link>
             </div>
             <p className="mt-4 max-w-xl text-sm leading-7 text-[#667184]">
@@ -119,7 +119,7 @@ export default function PolicyPage() {
                 {site.phone}
               </a>
               <Link href="/kontakty/" className="rounded-full border border-[#16284422] px-6 py-3 text-sm font-black text-[#162844]">
-                Построить маршрут
+                Контакты
               </Link>
             </div>
           </div>

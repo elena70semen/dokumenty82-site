@@ -267,7 +267,7 @@ function getActionSet(path: string, page?: RoutePage): ProductFoundationAction[]
   if (path === "/policy") {
     return [
       { label: cta.phone, href: site.phoneHref },
-      { label: cta.route, href: "/kontakty/" }
+      { label: "Контакты", href: "/kontakty/" }
     ];
   }
 
