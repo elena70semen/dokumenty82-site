@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GraphicsProofPage } from "@/components/graphics-proof/GraphicsProofPage";
+import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Internal graphics proof - not public",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     }
   },
   alternates: {
-    canonical: "/internal/graphics-proof/"
+    canonical: `${site.domain}/internal/graphics-proof/`
   }
 };
 

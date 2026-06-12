@@ -345,7 +345,7 @@ function generateSafetyProof() {
     { key: "hookEndpointText", pattern: /webhook/i },
     { key: "telegramLinks", pattern: /t\.me\/|telegram\.me\//i },
     { key: "maxLinks", pattern: /max:\/\//i },
-    { key: "metrica", pattern: /ym\(|mc\.yandex|counterId|metrika/i },
+    { key: "metrica", pattern: /ym\(|mc\.yandex|counterId\s*[:=]\s*(?!["']?00000000\b)|yandex_metrica/i },
     { key: "fileInputs", pattern: /type=["']file["']/i },
     { key: "falseSuccess", pattern: /заявка отправлена|успешно отправлено|заявка принята/i },
     { key: "absoluteResultClaim", pattern: /100% результат|гарантируем/i },

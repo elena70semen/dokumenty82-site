@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { VisualDetailKitPage } from "@/components/visual-detail-kit/VisualDetailKitPage";
+import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Internal visual detail kit - not public",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     }
   },
   alternates: {
-    canonical: "/internal/visual-detail-kit/"
+    canonical: `${site.domain}/internal/visual-detail-kit/`
   }
 };
 

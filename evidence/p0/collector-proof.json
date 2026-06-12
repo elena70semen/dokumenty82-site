@@ -10,9 +10,25 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [],
-    "dataCtaLabel": [],
-    "dataPageSlug": [],
-    "dataPageType": [],
+    "dataCtaLabel": [
+      "Разобрать ситуацию",
+      "Показать документы",
+      "Пришло требование или запрос",
+      "Нужна отчётность",
+      "Банк запросил документы",
+      "Адрес, ЕГРЮЛ или директор",
+      "Регистрация или ликвидация",
+      "Налоги или режим надо проверить",
+      "Кадры или сопровождение",
+      "Позвонить",
+      "Построить маршрут"
+    ],
+    "dataPageSlug": [
+      "home"
+    ],
+    "dataPageType": [
+      "homepage"
+    ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
     "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
@@ -29,9 +45,22 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [],
-    "dataCtaLabel": [],
-    "dataPageSlug": [],
-    "dataPageType": [],
+    "dataCtaLabel": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Построить маршрут",
+      "Ответ на требование ИФНС",
+      "Ответ на запрос банка",
+      "Контакты"
+    ],
+    "dataPageSlug": [
+      "razbor-situacii"
+    ],
+    "dataPageType": [
+      "core_situation_review",
+      "route"
+    ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
     "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
@@ -49,9 +78,22 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [],
-    "dataCtaLabel": [],
-    "dataPageSlug": [],
-    "dataPageType": [],
+    "dataCtaLabel": [
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Разобрать ситуацию",
+      "Разбор ситуации",
+      "Отчётность",
+      "Банк и 115-ФЗ"
+    ],
+    "dataPageSlug": [
+      "kontakty"
+    ],
+    "dataPageType": [
+      "contact_page",
+      "route"
+    ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
     "policyHasPhoneAndRouteFallbackOnly": "NOT_APPLICABLE",
@@ -99,13 +141,20 @@
       "show_documents"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Показать документы",
+      "Позвонить",
+      "Разобрать ситуацию",
+      "Построить маршрут",
+      "Срочные вопросы",
+      "Отчетность",
+      "Декларация УСН"
     ],
     "dataPageSlug": [
       "otvet-na-trebovanie-ifns"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
@@ -126,13 +175,20 @@
       "show_documents"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Показать документы",
+      "Позвонить",
+      "Разобрать ситуацию",
+      "Построить маршрут",
+      "Банк и 115-ФЗ",
+      "Документы 115-ФЗ",
+      "Срочные вопросы"
     ],
     "dataPageSlug": [
       "otvet-na-zapros-banka"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
@@ -153,13 +209,20 @@
       "show_documents"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Показать документы",
+      "Позвонить",
+      "Разобрать ситуацию",
+      "Построить маршрут",
+      "Банк и 115-ФЗ",
+      "Ответ банку",
+      "Срочные вопросы"
     ],
     "dataPageSlug": [
       "dokumenty-dlya-banka-115-fz"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
@@ -180,13 +243,21 @@
       "show_documents"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Показать документы",
+      "Позвонить",
+      "Разобрать ситуацию",
+      "Построить маршрут",
+      "Отчетность",
+      "Нулевая отчетность ООО",
+      "Нулевая отчетность ИП",
+      "Восстановление бухучёта"
     ],
     "dataPageSlug": [
       "deklaraciya-usn"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
@@ -207,13 +278,21 @@
       "show_documents"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Показать документы",
+      "Позвонить",
+      "Разобрать ситуацию",
+      "Построить маршрут",
+      "Отчетность",
+      "Нулевая отчетность ИП",
+      "Декларация УСН",
+      "Сопровождение ООО"
     ],
     "dataPageSlug": [
       "nulevaya-otchetnost-ooo"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
@@ -234,13 +313,21 @@
       "show_documents"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Показать документы",
+      "Позвонить",
+      "Разобрать ситуацию",
+      "Построить маршрут",
+      "Отчетность",
+      "Нулевая отчетность ООО",
+      "Декларация УСН",
+      "Сопровождение ИП"
     ],
     "dataPageSlug": [
       "nulevaya-otchetnost-ip"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
@@ -260,13 +347,19 @@
       "situation_review"
     ],
     "dataCtaLabel": [
-      "Разобрать ситуацию"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Регистрация",
+      "Регистрация ИП",
+      "Юридический адрес"
     ],
     "dataPageSlug": [
       "registraciya-ooo"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
@@ -286,13 +379,19 @@
       "situation_review"
     ],
     "dataCtaLabel": [
-      "Разобрать ситуацию"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Регистрация",
+      "Регистрация ООО",
+      "Налоги и режимы"
     ],
     "dataPageSlug": [
       "registraciya-ip"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
@@ -313,13 +412,20 @@
       "show_documents"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Показать документы",
+      "Позвонить",
+      "Разобрать ситуацию",
+      "Построить маршрут",
+      "Адрес и ЕГРЮЛ",
+      "Недостоверность адреса",
+      "Смена адреса ООО"
     ],
     "dataPageSlug": [
       "yuridicheskiy-adres-simferopol"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,
@@ -340,13 +446,19 @@
       "show_documents"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Показать документы",
+      "Позвонить",
+      "Построить маршрут",
+      "Адрес и ЕГРЮЛ",
+      "Юридический адрес",
+      "Смена адреса ООО"
     ],
     "dataPageSlug": [
       "nedostovernost-yuridicheskogo-adresa"
     ],
     "dataPageType": [
-      "money"
+      "money",
+      "route"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": true,

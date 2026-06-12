@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Разборы ситуаций",
   description:
     "Будущий раздел evergreen-разборов для бизнеса. Раздел noindex: публичная индексация и автопубликация не включены.",
   alternates: {
-    canonical: "/blog/razbory/"
+    canonical: `${site.domain}/blog/razbory/`
   },
   robots: {
     index: false,

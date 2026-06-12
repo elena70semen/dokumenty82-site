@@ -143,6 +143,13 @@ const packageText = read("package.json");
 
 const sitemapLocs = [...sitemapText.matchAll(/<loc>https:\/\/dokumenty82\.ru([^<]+)<\/loc>/g)].map((match) => match[1]);
 
+const appPageFiles = listFiles(repoPath("app")).filter((file) => /\.(ts|tsx)$/i.test(file));
+for (const file of appPageFiles) {
+  const rel = path.relative(root, file).split(path.sep).join("/");
+  const text = fs.readFileSync(file, "utf8");
+  assert(!/canonical:\s*["'`]\/(?!\/)/.test(text), `Canonical URL must be absolute in app metadata: ${rel}`);
+}
+
 assert(semanticRoutes.length === 39, `Expected 39 approved semantic routes; found ${semanticRoutes.length}.`);
 assert(indexedRoutes.length === 36, `Expected 36 indexed route expectations; found ${indexedRoutes.length}.`);
 assert(noindexFoundationRoutes.length === 3, `Expected 3 noindex route expectations; found ${noindexFoundationRoutes.length}.`);
