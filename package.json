@@ -27,6 +27,7 @@
     "check:static-links": "node scripts/check-static-site-links.mjs",
     "check:p0-full": "npm run check:p0-semantic && npm run build && npm run evidence:p0 && npm run check:p0-evidence && npm run check:fns-blog-news && npm run check:static-links",
     "check:launch-readiness": "node scripts/check-launch-finalization-readiness.mjs",
+    "check:release-preflight": "node scripts/check-release-preflight.mjs",
     "check:finalization": "npm run check:p0-semantic && npm run check:semantic-seo && npm run check:analytics-stubs && npm run check:page-blocks && npm run check:layout && npm run check:homepage && npm run check:public-foundation && npm run check:route-content && npm run check:route-quality && npm run check:p0-evidence && npm run check:fns-blog-news && npm run check:static-links && npm run check:launch-readiness && npm run check:stage16-source-to-site",
     "preview:local": "node scripts/serve-static.mjs out 4173",
     "evidence:browser": "node scripts/generate-browser-evidence.mjs",
