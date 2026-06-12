@@ -123,7 +123,7 @@ for (const loc of sitemapLocs) {
   }
 }
 
-const heldRoutes = ["/blog/", "/blog/obnovleniya-fns/", "/blog/razbory/", "/faq/", "/internal/graphics-proof/"];
+const heldRoutes = ["/blog/", "/blog/obnovleniya-fns/", "/blog/razbory/", "/faq/", "/internal/graphics-proof/", "/internal/visual-detail-kit/"];
 const sitemapSet = new Set(sitemapLocs.map((loc) => normalizeInternalPath(loc)).filter(Boolean));
 
 for (const route of heldRoutes) {

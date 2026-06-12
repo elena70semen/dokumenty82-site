@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "О проекте Документы для бизнеса в Симферополе: локальный центр подготовки документов, спокойный разбор ситуации и понятный маршрут.",
   alternates: {
-    canonical: "/o-proekte/"
+    canonical: `${site.domain}/o-proekte/`
   }
 };
 
@@ -78,7 +78,7 @@ export default function AboutProjectPage() {
               разбор.
             </p>
             <Link href="/kontakty/" className="mt-6 inline-flex rounded-full bg-[#162844] px-7 py-4 text-sm font-black text-white">
-              Контакты
+              Построить маршрут
             </Link>
           </div>
         </div>
