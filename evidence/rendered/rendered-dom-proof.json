@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-06-12T11:57:08.240Z",
+  "generatedAt": "2026-06-12T13:50:33.951Z",
   "screenshots": [
     {
       "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/home-desktop.png",
@@ -97,7 +97,7 @@
     {
       "route": "/kontakty/",
       "h1Count": 1,
-      "h1Text": "Контакты и передача документов",
+      "h1Text": "Контакты, адрес и безопасный показ документов",
       "mainExists": true,
       "headerExists": true,
       "footerExists": true,

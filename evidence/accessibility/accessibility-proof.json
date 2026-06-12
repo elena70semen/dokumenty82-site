@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-06-12T11:57:08.668Z",
+  "generatedAt": "2026-06-12T13:50:34.373Z",
   "axeUsed": false,
   "note": "AXE_NOT_AVAILABLE_DOM_BASED_CHECK_ONLY",
   "routes": [
@@ -47,7 +47,7 @@
     {
       "route": "/kontakty/",
       "h1Count": 1,
-      "h1Text": "Контакты и передача документов",
+      "h1Text": "Контакты, адрес и безопасный показ документов",
       "mainLandmarkExists": true,
       "navOrHeaderExists": true,
       "footerExists": true,

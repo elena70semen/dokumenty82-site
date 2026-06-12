@@ -88,7 +88,7 @@ export function Header() {
               <span className="sr-only">Открыть навигацию</span>
               <BrandIcon name="route" size={24} />
             </summary>
-            <div className="glass-panel fixed left-4 right-4 top-[92px] grid gap-3 rounded-[8px] p-4 backdrop-blur-2xl backdrop-saturate-150">
+            <div className="glass-panel fixed left-4 right-4 top-[92px] grid max-h-[calc(100vh-112px)] gap-3 overflow-y-auto rounded-[8px] p-4 backdrop-blur-2xl backdrop-saturate-150">
               <nav aria-label="Мобильная навигация">
                 <ul className="grid gap-2">
                   {homeNavigation.map((item) => {
