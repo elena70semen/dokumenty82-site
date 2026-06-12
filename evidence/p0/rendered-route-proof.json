@@ -1,7 +1,7 @@
 [
   {
     "route": "/",
-    "renderedFilePath": "out\\index.html",
+    "renderedFilePath": "out/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Разберём ситуацию и подготовим документы",
@@ -18,7 +18,7 @@
   },
   {
     "route": "/razbor-situacii/",
-    "renderedFilePath": "out\\razbor-situacii\\index.html",
+    "renderedFilePath": "out/razbor-situacii/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Разберём ситуацию и подскажем документальный маршрут",
@@ -35,7 +35,7 @@
   },
   {
     "route": "/kontakty/",
-    "renderedFilePath": "out\\kontakty\\index.html",
+    "renderedFilePath": "out/kontakty/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Контакты и передача документов",
@@ -52,7 +52,7 @@
   },
   {
     "route": "/policy",
-    "renderedFilePath": "out\\policy\\index.html",
+    "renderedFilePath": "out/policy/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Политика конфиденциальности и обработки данных",
@@ -69,7 +69,7 @@
   },
   {
     "route": "/otvet-na-trebovanie-ifns/",
-    "renderedFilePath": "out\\otvet-na-trebovanie-ifns\\index.html",
+    "renderedFilePath": "out/otvet-na-trebovanie-ifns/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Ответ на требование ИФНС",
@@ -86,7 +86,7 @@
   },
   {
     "route": "/otvet-na-zapros-banka/",
-    "renderedFilePath": "out\\otvet-na-zapros-banka\\index.html",
+    "renderedFilePath": "out/otvet-na-zapros-banka/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Ответ на запрос банка",
@@ -103,7 +103,7 @@
   },
   {
     "route": "/dokumenty-dlya-banka-115-fz/",
-    "renderedFilePath": "out\\dokumenty-dlya-banka-115-fz\\index.html",
+    "renderedFilePath": "out/dokumenty-dlya-banka-115-fz/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Документы для банка по 115-ФЗ",
@@ -120,7 +120,7 @@
   },
   {
     "route": "/deklaraciya-usn/",
-    "renderedFilePath": "out\\deklaraciya-usn\\index.html",
+    "renderedFilePath": "out/deklaraciya-usn/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Декларация УСН в Симферополе",
@@ -137,7 +137,7 @@
   },
   {
     "route": "/nulevaya-otchetnost-ooo/",
-    "renderedFilePath": "out\\nulevaya-otchetnost-ooo\\index.html",
+    "renderedFilePath": "out/nulevaya-otchetnost-ooo/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Нулевая отчетность ООО",
@@ -154,7 +154,7 @@
   },
   {
     "route": "/nulevaya-otchetnost-ip/",
-    "renderedFilePath": "out\\nulevaya-otchetnost-ip\\index.html",
+    "renderedFilePath": "out/nulevaya-otchetnost-ip/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Нулевая отчетность ИП",
@@ -171,7 +171,7 @@
   },
   {
     "route": "/registraciya-ooo/",
-    "renderedFilePath": "out\\registraciya-ooo\\index.html",
+    "renderedFilePath": "out/registraciya-ooo/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Регистрация ООО в Симферополе",
@@ -188,7 +188,7 @@
   },
   {
     "route": "/registraciya-ip/",
-    "renderedFilePath": "out\\registraciya-ip\\index.html",
+    "renderedFilePath": "out/registraciya-ip/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Регистрация ИП в Симферополе",
@@ -205,7 +205,7 @@
   },
   {
     "route": "/yuridicheskiy-adres-simferopol/",
-    "renderedFilePath": "out\\yuridicheskiy-adres-simferopol\\index.html",
+    "renderedFilePath": "out/yuridicheskiy-adres-simferopol/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Юридический адрес в Симферополе",
@@ -222,7 +222,7 @@
   },
   {
     "route": "/nedostovernost-yuridicheskogo-adresa/",
-    "renderedFilePath": "out\\nedostovernost-yuridicheskogo-adresa\\index.html",
+    "renderedFilePath": "out/nedostovernost-yuridicheskogo-adresa/index.html",
     "rendered": true,
     "h1Count": 1,
     "h1Text": "Недостоверность юридического адреса: что проверить",

@@ -18,7 +18,21 @@ const requiredDocs = standaloneSiteRepo
       "REMOTE_SYNC_RESULT.json",
       codeRel("evidence/owner-legal-privacy/review-pack-index.md"),
       codeRel("evidence/staging-hosting-rollback/final/production-readiness-gap.md"),
-      codeRel("evidence/owner-go-no-go/remote-sync-plan.md")
+      codeRel("evidence/owner-go-no-go/remote-sync-plan.md"),
+      "docs/qa/stage-17f-owner-legal-content-qa-v1.md",
+      "docs/qa/stage-17f-public-copy-review-checklist-v1.md",
+      "docs/seo/stage-16-yandex-semantic-service-map-v1.md",
+      "docs/strategy/stage-16-selling-seo-content-architecture-v1.md",
+      "docs/content/stage-16-page-block-blueprints-v1.md",
+      "docs/content/stage-16-client-need-hooks-and-lead-path-v1.md",
+      "docs/owner-review/stage-17g-owner-legal-signoff-packet-v1.md",
+      "docs/owner-review/stage-17g-route-decision-log-v1.md",
+      "docs/owner-review/stage-17g-go-no-go-review-checklist-v1.md",
+      "docs/owner-review/stage-17g-owner-review-index-v1.md",
+      "docs/owner-review/stage-17h-human-decision-intake-protocol-v1.md",
+      "docs/launch/stage-17h-blocker-closure-roadmap-v1.md",
+      "docs/launch/stage-17i-commit-readiness-worktree-audit-v1.md",
+      "docs/launch/stage-17j-worktree-integration-and-local-commit-readiness-v1.md"
     ]
   : [
       "docs/operations/project-finalization-readiness-v1.md",
@@ -185,6 +199,20 @@ for (const flag of unsafeFeatureFlags) {
 }
 
 const combinedFinalizationText = finalizationDocs.map(read).join("\n");
+const stage17fQaText = read("docs/qa/stage-17f-owner-legal-content-qa-v1.md");
+const stage17fCopyText = read("docs/qa/stage-17f-public-copy-review-checklist-v1.md");
+const stage16YandexSemanticMapText = read("docs/seo/stage-16-yandex-semantic-service-map-v1.md");
+const stage16SellingSeoArchitectureText = read("docs/strategy/stage-16-selling-seo-content-architecture-v1.md");
+const stage16PageBlockBlueprintsText = read("docs/content/stage-16-page-block-blueprints-v1.md");
+const stage16ClientNeedHooksText = read("docs/content/stage-16-client-need-hooks-and-lead-path-v1.md");
+const stage17gSignoffPacketText = read("docs/owner-review/stage-17g-owner-legal-signoff-packet-v1.md");
+const stage17gRouteDecisionLogText = read("docs/owner-review/stage-17g-route-decision-log-v1.md");
+const stage17gGoNoGoChecklistText = read("docs/owner-review/stage-17g-go-no-go-review-checklist-v1.md");
+const stage17gOwnerReviewIndexText = read("docs/owner-review/stage-17g-owner-review-index-v1.md");
+const stage17hDecisionIntakeText = read("docs/owner-review/stage-17h-human-decision-intake-protocol-v1.md");
+const stage17hBlockerRoadmapText = read("docs/launch/stage-17h-blocker-closure-roadmap-v1.md");
+const stage17iCommitReadinessText = read("docs/launch/stage-17i-commit-readiness-worktree-audit-v1.md");
+const stage17jWorktreeIntegrationText = read("docs/launch/stage-17j-worktree-integration-and-local-commit-readiness-v1.md");
 assert(
   /Public launch(?: verdict)?:\s*`NOT_PUBLIC_LAUNCH_READY`/.test(combinedFinalizationText),
   "Public launch verdict must remain NOT_PUBLIC_LAUNCH_READY."
@@ -200,6 +228,118 @@ assert(
 assert(
   /FNS autopublish(?: verdict)?:\s*`BLOCKED_UNTIL_SERVER_LEGAL_OWNER_ACCEPTANCE`/.test(combinedFinalizationText),
   "FNS autopublish verdict must remain blocked."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage17fQaText) && /OWNER_LEGAL_REVIEW_REQUIRED/.test(stage17fQaText),
+  "Stage 17F owner/legal/content QA must be ready with conditions and owner/legal-gated."
+);
+assert(
+  /Status:\s*`READY_FOR_OWNER_REVIEW`/.test(stage17fCopyText) && /NOT_READY_FOR_PUBLIC_LIVE/.test(stage17fCopyText),
+  "Stage 17F public copy checklist must be ready for owner review only and not public-live ready."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage16YandexSemanticMapText) &&
+    !/Status:\s*`MISSING_EXPECTED`/.test(stage16YandexSemanticMapText) &&
+    /Approved Route Map/.test(stage16YandexSemanticMapText) &&
+    /Route-Level HOLD Risks/.test(stage16YandexSemanticMapText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage16YandexSemanticMapText),
+  "Stage 16 Yandex semantic service map must be resolved, route-backed and public-live gated."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage16SellingSeoArchitectureText) &&
+    !/Status:\s*`MISSING_EXPECTED`/.test(stage16SellingSeoArchitectureText) &&
+    /Site Architecture Model/.test(stage16SellingSeoArchitectureText) &&
+    /User Journey Model/.test(stage16SellingSeoArchitectureText) &&
+    /Page Type Model/.test(stage16SellingSeoArchitectureText) &&
+    /Route Group Model/.test(stage16SellingSeoArchitectureText) &&
+    /SEO Architecture/.test(stage16SellingSeoArchitectureText) &&
+    /Selling Architecture/.test(stage16SellingSeoArchitectureText) &&
+    /Source-To-Site Implementation Rules/.test(stage16SellingSeoArchitectureText) &&
+    /Launch And Public-Live Boundaries/.test(stage16SellingSeoArchitectureText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage16SellingSeoArchitectureText),
+  "Stage 16 selling SEO content architecture must be resolved, source-backed and public-live gated."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage16PageBlockBlueprintsText) &&
+    !/Status:\s*`MISSING_EXPECTED`/.test(stage16PageBlockBlueprintsText) &&
+    /Money Page Blueprint/.test(stage16PageBlockBlueprintsText) &&
+    /Noindex Foundation Page Blueprint/.test(stage16PageBlockBlueprintsText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage16PageBlockBlueprintsText),
+  "Stage 16 page block blueprints must be resolved and public-live gated."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage16ClientNeedHooksText) &&
+    !/Status:\s*`MISSING_EXPECTED`/.test(stage16ClientNeedHooksText) &&
+    /Hook-To-Route Map/.test(stage16ClientNeedHooksText) &&
+    /Owner\/Legal Review Boundary/.test(stage16ClientNeedHooksText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage16ClientNeedHooksText),
+  "Stage 16 client need hooks and lead path must be resolved and public-live gated."
+);
+assert(
+  /Status:\s*`READY_FOR_OWNER_REVIEW`/.test(stage17gSignoffPacketText) &&
+    /OWNER_LEGAL_REVIEW_REQUIRED/.test(stage17gSignoffPacketText) &&
+    /BACKEND_CRM_REVIEW_REQUIRED/.test(stage17gSignoffPacketText) &&
+    /OPS_REVIEW_REQUIRED/.test(stage17gSignoffPacketText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage17gSignoffPacketText),
+  "Stage 17G owner/legal sign-off packet must be ready for owner review while keeping owner/legal, CRM and ops gates closed."
+);
+assert(
+  /Routes included:\s*36/.test(stage17gRouteDecisionLogText) &&
+    /Routes approved for public live:\s*0/.test(stage17gRouteDecisionLogText) &&
+    /OWNER_LEGAL_REVIEW_REQUIRED/.test(stage17gRouteDecisionLogText) &&
+    /BACKEND_CRM_REVIEW_REQUIRED/.test(stage17gRouteDecisionLogText) &&
+    /NOT_PUBLIC_LIVE_READY/.test(stage17gRouteDecisionLogText),
+  "Stage 17G route decision log must include all 36 routes and approve zero routes for public live."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage17gGoNoGoChecklistText) &&
+    /Search Console\/Yandex Webmaster/.test(stage17gGoNoGoChecklistText) &&
+    /Transport protocol proof/.test(stage17gGoNoGoChecklistText) &&
+    /MISSING_EXPECTED/.test(stage17gGoNoGoChecklistText) &&
+    /BLOCKED/.test(stage17gGoNoGoChecklistText) &&
+    /NOT_PUBLIC_LIVE_READY/.test(stage17gGoNoGoChecklistText),
+  "Stage 17G go/no-go checklist must keep missing expected blockers and not-public-live status."
+);
+assert(
+  /Status:\s*`READY_FOR_OWNER_REVIEW`/.test(stage17gOwnerReviewIndexText) &&
+    /stage-17g-route-decision-log-v1\.md/.test(stage17gOwnerReviewIndexText) &&
+    /stage-17g-go-no-go-review-checklist-v1\.md/.test(stage17gOwnerReviewIndexText) &&
+    /stage-17f-owner-legal-content-qa-v1\.md/.test(stage17gOwnerReviewIndexText) &&
+    /stage-17h-human-decision-intake-protocol-v1\.md/.test(stage17gOwnerReviewIndexText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage17gOwnerReviewIndexText),
+  "Stage 17G owner review index must point to the route log, go/no-go checklist, Stage 17F QA and Stage 17H intake protocol while keeping public live false."
+);
+assert(
+  /Status:\s*`READY_FOR_OWNER_REVIEW`/.test(stage17hDecisionIntakeText) &&
+    /No decision can be recorded as approved without explicit human-provided evidence/.test(stage17hDecisionIntakeText) &&
+    /public live cannot become true from route approval alone/i.test(stage17hDecisionIntakeText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage17hDecisionIntakeText),
+  "Stage 17H human decision intake protocol must prevent fake approvals and keep public live false."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage17hBlockerRoadmapText) &&
+    /Owner\/legal route approval/.test(stage17hBlockerRoadmapText) &&
+    /Transport network proof/.test(stage17hBlockerRoadmapText) &&
+    /Public live go\/no-go/.test(stage17hBlockerRoadmapText) &&
+    /NOT_PUBLIC_LIVE_READY/.test(stage17hBlockerRoadmapText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage17hBlockerRoadmapText),
+  "Stage 17H blocker closure roadmap must list remaining blockers without approving public live."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage17iCommitReadinessText) &&
+    /READY_WITH_CONDITIONS_FOR_REVIEW/.test(stage17iCommitReadinessText) &&
+    /No staging, commit, push, merge, deploy or DNS action was performed/.test(stage17iCommitReadinessText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage17iCommitReadinessText),
+  "Stage 17I commit readiness audit must be review-only and public-live gated."
+);
+assert(
+  /Status:\s*`READY_WITH_CONDITIONS`/.test(stage17jWorktreeIntegrationText) &&
+    /SAFE_AFTER_CHECKS_PASS/.test(stage17jWorktreeIntegrationText) &&
+    /Push status:\s*`BLOCKED`/.test(stage17jWorktreeIntegrationText) &&
+    /No human approval is recorded/.test(stage17jWorktreeIntegrationText) &&
+    /stage17\/source-site-owner-review-readiness/.test(stage17jWorktreeIntegrationText) &&
+    /PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(stage17jWorktreeIntegrationText),
+  "Stage 17J worktree integration report must keep local commits check-gated, push blocked and public live false."
 );
 
 const blogNewsConfigPresent = exists(codeRel("lib/blog-news.ts"));
@@ -258,7 +398,7 @@ if (issues.length > 0) {
   process.exit(1);
 }
 
-console.log("PASS launch finalization readiness: foundation consistent; public LIVE, paid traffic and FNS autopublish remain blocked.");
+console.log("PASS launch finalization readiness: foundation consistent; Stage 16 source gaps resolved; Stage 17G/17H/17I/17J owner review and local commit controls are gated; public LIVE, paid traffic and FNS autopublish remain blocked.");
 console.log("Remaining blockers:");
 for (const blocker of blockers) {
   console.log(`- ${blocker}`);

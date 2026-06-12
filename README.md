@@ -20,10 +20,13 @@ This repository contains the standalone Next.js static-export site source, selec
 
 - Site stack: Next.js static export.
 - Repository layout: standalone root project.
+- Stage 15/16 source-to-site package: synced with `MISSING_EXPECTED` placeholders where source files are absent.
+- Stage 17 repository conformance: active checklist in `docs/launch/stage-17-repository-conformance-checklist-v1.md`.
 - Public release: `HOLD`.
 - Production deploy: not performed.
 - Forms: placeholder UI only.
 - Form submit, upload, CRM, analytics, Yandex Metrica, Telegram, MAX, cookie notice and live map: disabled.
+- Final visual design polish: postponed until source/content/SEO/code/mobile/QA foundation is strong.
 - Public launch gates remain closed until owner and legal/privacy approvals are complete.
 
 ## Build
@@ -39,8 +42,16 @@ npm run check:p0-evidence
 npm run check:fns-blog-news
 npm run check:static-links
 npm run check:launch-readiness
+npm run check:stage16-source-to-site
 npm run check:finalization
 npm run brand:check
+npm run check:pricing
+```
+
+For browser/accessibility evidence, start the static preview and then run:
+
+```bash
+npm run check:local-p0-browser
 ```
 
 Static export output:
@@ -76,6 +87,7 @@ Stage 14A CI scope:
 - build static export;
 - run static export link check;
 - run launch/finalization guard checks;
+- run Stage 16 source-to-site guardrails;
 - run brand checks;
 - upload static export artifact from `out/`.
 
@@ -120,8 +132,22 @@ Hosting reference:
 
 `PUBLIC_LIVE_ALLOWED = false` until all launch gates pass.
 
+## Stage 15/16 source-to-site package
+
+Current control files:
+
+- `docs/source-to-site/source-to-site-alignment-contract-v1.md`
+- `docs/source-to-site/source-to-site-current-sync-status-v1.md`
+- `docs/source-to-site/site-repo-stage-16-assembly-handoff-v1.md`
+- `docs/launch/stage-15-site-foundation-status-v1.md`
+- `docs/launch/stage-16-source-package-status-v1.md`
+- `docs/launch/stage-16-selling-seo-content-status-v1.md`
+- `docs/launch/stage-17-repository-conformance-checklist-v1.md`
+
+The site repository remains source-led. Missing source documents are recorded as `MISSING_EXPECTED`, not filled with invented copy or claims.
+
 ## Current release verdict
 
-`GO WITH CONDITIONS` for Stage 14A CI/build proof.
+`GO WITH CONDITIONS` for Stage 14A CI/build proof, Stage 15/16 source-to-site foundation and Stage 17 repository conformance.
 
 `PUBLIC_LIVE_ALLOWED = false`.

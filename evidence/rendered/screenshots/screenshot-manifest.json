@@ -1,11 +1,11 @@
 {
   "generatedAt": "2026-06-11T16:53:24.397Z",
   "mode": "viewport",
-  "baseUrl": "http://127.0.0.1:4182",
+  "baseUrl": "http://127.0.0.1:4173",
   "screenshots": [
     {
       "route": "/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\home-desktop.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/home-desktop.png",
       "viewport": {
         "name": "desktop",
         "width": 1440,
@@ -27,7 +27,7 @@
     },
     {
       "route": "/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\home-mobile.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/home-mobile.png",
       "viewport": {
         "name": "mobile",
         "width": 390,
@@ -49,7 +49,7 @@
     },
     {
       "route": "/razbor-situacii/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\razbor-situacii-desktop.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/razbor-situacii-desktop.png",
       "viewport": {
         "name": "desktop",
         "width": 1440,
@@ -71,7 +71,7 @@
     },
     {
       "route": "/razbor-situacii/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\razbor-situacii-mobile.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/razbor-situacii-mobile.png",
       "viewport": {
         "name": "mobile",
         "width": 390,
@@ -93,7 +93,7 @@
     },
     {
       "route": "/kontakty/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\kontakty-desktop.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/kontakty-desktop.png",
       "viewport": {
         "name": "desktop",
         "width": 1440,
@@ -115,7 +115,7 @@
     },
     {
       "route": "/kontakty/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\kontakty-mobile.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/kontakty-mobile.png",
       "viewport": {
         "name": "mobile",
         "width": 390,
@@ -137,7 +137,7 @@
     },
     {
       "route": "/policy/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\policy-desktop.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/policy-desktop.png",
       "viewport": {
         "name": "desktop",
         "width": 1440,
@@ -159,7 +159,7 @@
     },
     {
       "route": "/policy/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\policy-mobile.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/policy-mobile.png",
       "viewport": {
         "name": "mobile",
         "width": 390,
@@ -181,7 +181,7 @@
     },
     {
       "route": "/otvet-na-trebovanie-ifns/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-trebovanie-ifns-desktop.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/otvet-na-trebovanie-ifns-desktop.png",
       "viewport": {
         "name": "desktop",
         "width": 1440,
@@ -203,7 +203,7 @@
     },
     {
       "route": "/otvet-na-trebovanie-ifns/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-trebovanie-ifns-mobile.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/otvet-na-trebovanie-ifns-mobile.png",
       "viewport": {
         "name": "mobile",
         "width": 390,
@@ -225,7 +225,7 @@
     },
     {
       "route": "/otvet-na-zapros-banka/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-zapros-banka-desktop.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/otvet-na-zapros-banka-desktop.png",
       "viewport": {
         "name": "desktop",
         "width": 1440,
@@ -247,7 +247,7 @@
     },
     {
       "route": "/otvet-na-zapros-banka/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\otvet-na-zapros-banka-mobile.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/otvet-na-zapros-banka-mobile.png",
       "viewport": {
         "name": "mobile",
         "width": 390,
@@ -269,7 +269,7 @@
     },
     {
       "route": "/dokumenty-dlya-banka-115-fz/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\dokumenty-dlya-banka-115-fz-desktop.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/dokumenty-dlya-banka-115-fz-desktop.png",
       "viewport": {
         "name": "desktop",
         "width": 1440,
@@ -291,7 +291,7 @@
     },
     {
       "route": "/dokumenty-dlya-banka-115-fz/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\dokumenty-dlya-banka-115-fz-mobile.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/dokumenty-dlya-banka-115-fz-mobile.png",
       "viewport": {
         "name": "mobile",
         "width": 390,
@@ -313,7 +313,7 @@
     },
     {
       "route": "/nedostovernost-yuridicheskogo-adresa/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\nedostovernost-yuridicheskogo-adresa-desktop.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/nedostovernost-yuridicheskogo-adresa-desktop.png",
       "viewport": {
         "name": "desktop",
         "width": 1440,
@@ -335,7 +335,7 @@
     },
     {
       "route": "/nedostovernost-yuridicheskogo-adresa/",
-      "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\nedostovernost-yuridicheskogo-adresa-mobile.png",
+      "file": "/Users/office-9102/Documents/GitHub/dokumenty82-site/evidence/rendered/screenshots/nedostovernost-yuridicheskogo-adresa-mobile.png",
       "viewport": {
         "name": "mobile",
         "width": 390,

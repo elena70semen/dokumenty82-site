@@ -276,7 +276,7 @@ function generateBrowserSmokeProof() {
       manifest.baseUrl = baseUrl;
       manifest.screenshots = (manifest.screenshots ?? []).map((shot) => ({
         ...shot,
-        file: path.join(screenshotsDir, path.basename(shot.file))
+        file: path.join(screenshotsDir, String(shot.file).replace(/\\/g, "/").split("/").pop())
       }));
       writeJson(manifestFile, manifest);
     } catch (error) {
