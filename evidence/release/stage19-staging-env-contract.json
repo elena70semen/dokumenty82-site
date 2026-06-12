@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "timestamp": "2026-06-12T22:57:15.571Z",
+  "timestamp": "2026-06-12T23:23:33.125Z",
   "git": {
-    "branch": "stage20/home-menu-leadpath-refinement",
-    "commit": "34e6c95"
+    "branch": "stage20/route-page-cluster-deepening",
+    "commit": "6aeb546"
   },
   "envExamplePath": ".env.example",
   "publicLiveAllowed": false,

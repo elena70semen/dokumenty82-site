@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checkedAt": "2026-06-12T22:57:22.966Z",
+  "checkedAt": "2026-06-12T23:23:40.624Z",
   "indexedRoutes": 36,
   "noindexFoundationRoutes": [
     "/blog/",
@@ -57,6 +57,31 @@
     "safe_final_cta",
     "client_information"
   ],
+  "requiredVisibleParentRelatedRoutes": {
+    "otvet-na-trebovanie-ifns": "/srochnye-voprosy/",
+    "deklaraciya-usn": "/otchetnost/",
+    "otvet-na-zapros-banka": "/bank-i-115-fz/",
+    "dokumenty-dlya-banka-115-fz": "/bank-i-115-fz/",
+    "yuridicheskiy-adres-simferopol": "/adres-egryul-direktor/",
+    "nedostovernost-yuridicheskogo-adresa": "/adres-egryul-direktor/",
+    "smena-yuridicheskogo-adresa-ooo": "/adres-egryul-direktor/",
+    "smena-direktora-ooo": "/adres-egryul-direktor/",
+    "srochnoe-oformlenie-sotrudnikov": "/kadry/",
+    "perehod-na-ausn": "/nalogi-i-rezhimy/",
+    "nulevaya-otchetnost-ooo": "/otchetnost/",
+    "nulevaya-otchetnost-ip": "/otchetnost/",
+    "otchetnost-elektronno": "/otchetnost/",
+    "vosstanovlenie-buhucheta": "/otchetnost/",
+    "buhgalterskoe-soprovozhdenie-ooo": "/soprovozhdenie/",
+    "buhgalterskoe-soprovozhdenie-ip": "/soprovozhdenie/",
+    "kadrovoe-soprovozhdenie": "/kadry/",
+    "registraciya-ooo": "/registraciya-i-likvidaciya/",
+    "registraciya-ip": "/registraciya-i-likvidaciya/",
+    "likvidaciya-ooo": "/registraciya-i-likvidaciya/",
+    "ausn-krym": "/nalogi-i-rezhimy/",
+    "raschet-nalogovoy-nagruzki": "/nalogi-i-rezhimy/",
+    "nds-pri-usn-2026": "/nalogi-i-rezhimy/"
+  },
   "sourceSyncedDocs": [
     "docs/content/stage-18h-route-copy-block-quality-plan-v1.md",
     "docs/ux/stage-18h-navigation-menu-and-route-flow-plan-v1.md"

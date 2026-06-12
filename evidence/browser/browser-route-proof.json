@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "baseUrl": "http://127.0.0.1:4173",
-  "generatedAt": "2026-06-12T22:57:34.874Z",
+  "generatedAt": "2026-06-12T23:25:30.866Z",
   "note": "Dependency-free HTTP and rendered HTML proof. Runtime console logs are checked separately in browser automation when available.",
   "routes": [
     {
