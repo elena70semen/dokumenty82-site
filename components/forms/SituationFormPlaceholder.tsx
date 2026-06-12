@@ -1,11 +1,21 @@
 import { FormPlaceholder } from "@/components/forms/FormPlaceholder";
 
-export function SituationFormPlaceholder() {
+type FormPlaceholderContext = {
+  pageSlug?: string;
+  pageType?: string;
+  leadTopic?: string;
+};
+
+export function SituationFormPlaceholder({ pageSlug, pageType, leadTopic }: FormPlaceholderContext) {
   return (
     <FormPlaceholder
       eyebrow="Форма-заглушка"
       title="Кратко описать ситуацию"
       text="Для первого шага достаточно зафиксировать контекст без передачи конфиденциальных документов через сайт."
+      pageSlug={pageSlug}
+      pageType={pageType}
+      leadTopic={leadTopic}
+      ctaLocation="situation_form_placeholder"
       fields={[
         {
           id: "situation",

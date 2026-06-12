@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { homeClientInformation, homeFaq, homeSituationSelector, homeStartPath } from "@/lib/home/home-page-data";
 import { cta, site } from "@/lib/content";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 
 export function HomeProductFoundation() {
   return (
@@ -32,6 +33,13 @@ export function HomeProductFoundation() {
               className={`flex min-h-[218px] min-w-0 flex-col rounded-[8px] border bg-white/88 p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
                 index === 0 ? "border-[var(--accent-blue-border)] xl:col-span-2" : "border-[var(--line)]"
               }`}
+              data-analytics-goal={analyticsGoalNames.relatedRouteClick}
+              data-cta-label={item.title}
+              data-cta-location="home_situation_selector"
+              data-lead-topic="Другое / первый шаг"
+              data-page-slug="home"
+              data-page-type="homepage"
+              data-related-href={item.href}
             >
               <span className="grid size-11 place-items-center rounded-[8px] bg-[var(--accent-blue-bg)] text-[color:var(--blue)]">
                 <BrandIcon name={item.icon} size={24} decorative />
@@ -96,13 +104,40 @@ export function HomeProductFoundation() {
               </p>
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              <Link href="/razbor-situacii/" className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-sm font-black text-[color:var(--lime-text)]">
+              <Link
+                href="/razbor-situacii/"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-sm font-black text-[color:var(--lime-text)]"
+                data-analytics-goal={analyticsGoalNames.formStart}
+                data-cta-label={cta.primary}
+                data-cta-location="home_final_cta"
+                data-lead-topic="Другое / первый шаг"
+                data-page-slug="home"
+                data-page-type="homepage"
+              >
                 {cta.primary}
               </Link>
-              <a href={site.phoneHref} className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]">
+              <a
+                href={site.phoneHref}
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]"
+                data-analytics-goal={analyticsGoalNames.callClick}
+                data-cta-label={cta.phone}
+                data-cta-location="home_final_cta"
+                data-lead-topic="Другое / первый шаг"
+                data-page-slug="home"
+                data-page-type="homepage"
+              >
                 {cta.phone}
               </a>
-              <Link href="/kontakty/" className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]">
+              <Link
+                href="/kontakty/"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]"
+                data-analytics-goal={analyticsGoalNames.routeClick}
+                data-cta-label={cta.route}
+                data-cta-location="home_final_cta"
+                data-lead-topic="Другое / первый шаг"
+                data-page-slug="home"
+                data-page-type="homepage"
+              >
                 {cta.route}
               </Link>
             </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { homeHero } from "@/lib/home/home-page-data";
 import { brandTokens } from "@/lib/brand/brand-tokens";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 
 export function HomeHero() {
   return (
@@ -33,12 +34,24 @@ export function HomeHero() {
             <Link
               href={homeHero.primaryCta.href}
               className="inline-flex min-h-12 w-full min-w-[190px] items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
+              data-analytics-goal={analyticsGoalNames.formStart}
+              data-cta-label={homeHero.primaryCta.label}
+              data-cta-location="home_hero_primary"
+              data-lead-topic="Другое / первый шаг"
+              data-page-slug="home"
+              data-page-type="homepage"
             >
               {homeHero.primaryCta.label}
             </Link>
             <Link
               href={homeHero.secondaryCta.href}
               className="inline-flex min-h-12 w-full min-w-[190px] items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-6 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
+              data-analytics-goal={analyticsGoalNames.docsShowClick}
+              data-cta-label={homeHero.secondaryCta.label}
+              data-cta-location="home_hero_secondary"
+              data-lead-topic="Другое / первый шаг"
+              data-page-slug="home"
+              data-page-type="homepage"
             >
               {homeHero.secondaryCta.label}
             </Link>

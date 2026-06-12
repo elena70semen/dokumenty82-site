@@ -3,12 +3,16 @@ import { BrandBadge } from "@/components/brand/BrandBadge";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { brandTokens } from "@/lib/brand/brand-tokens";
 import type { RouteRelatedLink } from "@/lib/routes/route-page-data";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 
 type RouteRelatedLinksProps = {
   links: RouteRelatedLink[];
+  pageSlug: string;
+  pageType: string;
+  leadTopic: string;
 };
 
-export function RouteRelatedLinks({ links }: RouteRelatedLinksProps) {
+export function RouteRelatedLinks({ links, pageSlug, pageType, leadTopic }: RouteRelatedLinksProps) {
   return (
     <section
       className="section-pad bg-[var(--paper-soft)]"
@@ -44,6 +48,13 @@ export function RouteRelatedLinks({ links }: RouteRelatedLinksProps) {
                 <Link
                   href={link.href}
                   className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  data-analytics-goal={analyticsGoalNames.relatedRouteClick}
+                  data-cta-label={link.title}
+                  data-cta-location="route_related_links"
+                  data-lead-topic={leadTopic}
+                  data-page-slug={pageSlug}
+                  data-page-type={pageType}
+                  data-related-href={link.href}
                 >
                   {link.title}
                 </Link>

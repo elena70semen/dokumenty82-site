@@ -111,10 +111,16 @@ export function Header() {
                 </ul>
               </nav>
               <div className="grid gap-2 border-t border-[var(--line)] pt-3 sm:grid-cols-2">
-                <Link href="/razbor-situacii/" className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)]">
+                <Link
+                  href="/razbor-situacii/"
+                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)]"
+                >
                   Разобрать ситуацию
                 </Link>
-                <a href={site.phoneHref} className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]">
+                <a
+                  href={site.phoneHref}
+                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]"
+                >
                   {site.phone}
                 </a>
               </div>

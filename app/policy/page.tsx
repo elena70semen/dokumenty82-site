@@ -86,7 +86,6 @@ export default function PolicyPage() {
                 className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[#162844] px-7 py-4 text-center text-sm font-black text-white"
                 data-collector-kind="phone"
                 data-cta-label="Позвонить"
-                data-lead-topic="policy_legal"
                 data-page-slug="policy"
                 data-page-type="legal"
               >
@@ -97,7 +96,6 @@ export default function PolicyPage() {
                 className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[#16284422] bg-white/72 px-7 py-4 text-center text-sm font-black text-[#162844]"
                 data-collector-kind="contacts"
                 data-cta-label="Построить маршрут"
-                data-lead-topic="policy_legal"
                 data-page-slug="policy"
                 data-page-type="legal"
               >
@@ -118,10 +116,22 @@ export default function PolicyPage() {
               Если вопрос связан с данными или документами, кратко опишите тему без чувствительных сведений. Документы передаются только согласованным способом.
             </p>
             <div className="mt-7 grid gap-3 sm:grid-cols-2">
-              <a href={site.phoneHref} className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[#162844] px-6 py-3 text-center text-sm font-black text-white">
+              <a
+                href={site.phoneHref}
+                className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[#162844] px-6 py-3 text-center text-sm font-black text-white"
+                data-cta-label="Позвонить"
+                data-page-slug="policy"
+                data-page-type="legal"
+              >
                 {site.phone}
               </a>
-              <Link href="/kontakty/" className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[#16284422] px-6 py-3 text-center text-sm font-black text-[#162844]">
+              <Link
+                href="/kontakty/"
+                className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[#16284422] px-6 py-3 text-center text-sm font-black text-[#162844]"
+                data-cta-label="Построить маршрут"
+                data-page-slug="policy"
+                data-page-type="legal"
+              >
                 Построить маршрут
               </Link>
             </div>

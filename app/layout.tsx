@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { SourceCapture } from "@/components/analytics/SourceCapture";
 import { RevealController } from "@/components/RevealController";
 import { site } from "@/lib/content";
 
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <Header />
         {children}
         <Footer />
+        <SourceCapture />
         <RevealController />
       </body>
     </html>
