@@ -2,6 +2,9 @@ node_modules/
 .next/
 out/
 dist/
+artifacts/
+*.tgz
+*.zip
 .env*
 !.env.example
 npm-debug.log*

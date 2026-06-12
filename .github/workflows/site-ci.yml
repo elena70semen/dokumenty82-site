@@ -51,6 +51,9 @@ jobs:
       - name: Build static export
         run: npm run build
 
+      - name: Check static preview artifact
+        run: npm run check:preview-artifact
+
       - name: Generate P0 evidence
         run: npm run evidence:p0
 
@@ -78,9 +81,10 @@ jobs:
       - name: Brand checks
         run: npm run brand:check
 
-      - name: Upload static export artifact
+      - name: Upload static preview artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dokumenty82-static-export-${{ github.sha }}
+          name: dokumenty82-static-preview
           path: out
           if-no-files-found: error
+          retention-days: 7

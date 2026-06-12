@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "timestamp": "2026-06-12T20:11:46.395Z",
+  "git": {
+    "branch": "stage19/static-preview-artifact-package",
+    "commit": "ceeec82"
+  },
+  "buildOutputDirectory": "out",
+  "indexedSitemapUrlCount": 36,
+  "noindexRouteExclusionStatus": "passed",
+  "noindexRouteProofs": [
+    {
+      "route": "/blog/",
+      "built": true,
+      "output": "out/blog/index.html",
+      "noindex": true
+    },
+    {
+      "route": "/blog/obnovleniya-fns/",
+      "built": true,
+      "output": "out/blog/obnovleniya-fns/index.html",
+      "noindex": true
+    },
+    {
+      "route": "/blog/razbory/",
+      "built": true,
+      "output": "out/blog/razbory/index.html",
+      "noindex": true
+    },
+    {
+      "route": "/faq/",
+      "built": true,
+      "output": "out/faq/index.html",
+      "noindex": true
+    },
+    {
+      "route": "/internal/graphics-proof/",
+      "built": true,
+      "output": "out/internal/graphics-proof/index.html",
+      "noindex": true
+    },
+    {
+      "route": "/internal/visual-detail-kit/",
+      "built": true,
+      "output": "out/internal/visual-detail-kit/index.html",
+      "noindex": true
+    }
+  ],
+  "analyticsStatus": {
+    "status": "STUB_ONLY_DISABLED",
+    "metrikaScriptPresent": false,
+    "realAnalyticsIdPresent": false
+  },
+  "publicLiveStatus": {
+    "publicLiveAllowed": false,
+    "deployPerformed": false,
+    "publicUrlCreated": false
+  },
+  "artifactReadinessStatus": "passed",
+  "artifact": {
+    "name": "dokumenty82-static-preview",
+    "retentionDays": 7,
+    "uploadMechanism": "GitHub Actions upload-artifact",
+    "deploy": false,
+    "publicUrl": false,
+    "manifest": {
+      "mode": "github-actions-artifact-only",
+      "outputDirectory": "out",
+      "localArchiveCommitted": false,
+      "fileCount": 401,
+      "criticalFiles": [
+        {
+          "path": "out/index.html",
+          "size": 203033,
+          "sha256": "f40589a92b3753e8ae5e2ab471cd863892d52d58946e73acc8bf549dbb6abb7b"
+        },
+        {
+          "path": "out/policy/index.html",
+          "size": 86985,
+          "sha256": "a24de797b626ff18f151c45fc41055de9c8f731019785ad4ffbefc1ea3d9d809"
+        },
+        {
+          "path": "out/kontakty/index.html",
+          "size": 158400,
+          "sha256": "376c1e3caa046d087540f3a5df4fb37c2159fd7feda4a3a3a098de9f0c9150ae"
+        },
+        {
+          "path": "out/sitemap.xml",
+          "size": 5943,
+          "sha256": "4c050682b6f3062c369fefaa881f082da1ce843bf3f0d503c5c767512aa4e71a"
+        },
+        {
+          "path": "out/robots.txt",
+          "size": 176,
+          "sha256": "0b4d84af835455cad0971a1a317d66c4e13205fa14890816108ce5d8f98f5b4e"
+        }
+      ]
+    }
+  },
+  "transportBoundaryStatus": {
+    "allowedBaseline": "HTTPS over TCP/443 with HTTP/1.1 or HTTP/2",
+    "http3": "BLOCKED_BY_DEFAULT",
+    "quic": "BLOCKED_BY_DEFAULT",
+    "udp443": "BLOCKED_BY_DEFAULT",
+    "h3AltSvc": "BLOCKED_BY_DEFAULT"
+  },
+  "forbiddenScanStatus": "passed",
+  "releaseVerdict": "GO_WITH_CONDITIONS",
+  "publicLiveAllowed": false,
+  "issues": []
+}
