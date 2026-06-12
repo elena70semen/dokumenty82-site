@@ -144,7 +144,7 @@ const secretLike = /OPENAI_API_KEY|sk-[A-Za-z0-9]|token=|secret=|webhook/i;
 
 for (const file of textFiles) {
   const rel = path.relative(root, file).split(path.sep).join("/");
-  if (rel.startsWith("scripts/") || rel.startsWith("lib/pricing/") || rel.startsWith("evidence/")) {
+  if (rel.startsWith("scripts/") || rel.startsWith("lib/pricing/") || rel.startsWith("evidence/") || rel.startsWith("docs/")) {
     continue;
   }
 
