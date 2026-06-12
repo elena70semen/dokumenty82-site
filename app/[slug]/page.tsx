@@ -142,7 +142,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
       : null;
 
   return (
-    <main className="pt-36">
+    <main id="main-content" className="pt-36" data-route-page-template="dynamic" data-stage18h-route-content="true">
       {serviceJsonLd ? <JsonLd data={serviceJsonLd} /> : null}
 
       <section className="section-pad">
@@ -229,7 +229,11 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
       </section>
 
       {hardeningBlocks.length > 0 ? (
-        <section className="section-pad bg-white" aria-labelledby={`route-hardening-${page.slug}`}>
+        <section
+          className="section-pad bg-white"
+          aria-labelledby={`route-hardening-${page.slug}`}
+          data-route-hardening-blocks="what_we_check documents_data_needed how_work_starts what_is_not_promised"
+        >
           <div className="container-premium">
             <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
               <div>

@@ -34,6 +34,7 @@ It combines Stage 18A semantic SEO, Stage 18B page blocks/lead path, Stage 18C l
 | Route blocks and lead path | `READY_WITH_CONDITIONS` | `evidence/ux/stage18-page-blocks-and-lead-path.json`. |
 | Layout foundation | `READY_WITH_CONDITIONS` | `evidence/frontend/stage18-layout-foundation.json`. |
 | Public foundation guardrail | `PASS_WITH_CONDITIONS` | `scripts/check-public-site-foundation.mjs`; `evidence/public-foundation/stage18-public-site-foundation.json`. |
+| Stage 18H route content/navigation hardening | `READY_WITH_CONDITIONS` | `docs/launch/stage-18h-route-content-navigation-status-v1.md`; `evidence/content/stage18-route-content-and-navigation.json`. |
 | CI/package wiring | `READY_WITH_CONDITIONS` | `package.json`; `.github/workflows/site-ci.yml`. |
 
 ## Remaining Public-Live Blockers
@@ -47,6 +48,7 @@ It combines Stage 18A semantic SEO, Stage 18B page blocks/lead path, Stage 18C l
 - transport network proof: `MISSING_EXPECTED`;
 - Search Console/Yandex Webmaster setup: `MISSING_EXPECTED`;
 - public-live approval: `NOT_PUBLIC_LIVE_READY`.
+- Stage 18H local evidence does not approve final public copy or owner/legal acceptance.
 
 ## Release Verdict
 

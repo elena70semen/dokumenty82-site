@@ -42,7 +42,10 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
       className="section-pad bg-[var(--paper)]"
       aria-labelledby={`product-foundation-${foundation.path.replace(/[^a-z0-9]+/gi, "-")}`}
       data-product-foundation="true"
+      data-stage18h-route-content="true"
       data-route-path={foundation.path}
+      data-owner-legal-status="pending-human-review"
+      data-public-live-allowed="false"
       data-required-blocks="route_intent when_this_page_fits what_we_check documents_data_needed how_work_starts what_is_not_promised related_routes faq_direction safe_final_cta client_information"
     >
       <div className="container-premium">

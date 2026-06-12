@@ -1,12 +1,13 @@
 {
   "status": "passed",
-  "checkedAt": "2026-06-12T11:05:51.845Z",
+  "checkedAt": "2026-06-12T11:56:47.500Z",
   "requiredNavRoutes": [
     "/razbor-situacii/",
     "/otchetnost/",
     "/bank-i-115-fz/",
     "/adres-egryul-direktor/",
     "/registraciya-i-likvidaciya/",
+    "/nalogi-i-rezhimy/",
     "/kadry/",
     "/soprovozhdenie/",
     "/kontakty/"

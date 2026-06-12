@@ -17,7 +17,7 @@ type RoutePageProps = {
 
 export function RoutePage({ page }: RoutePageProps) {
   return (
-    <main id="main-content">
+    <main id="main-content" data-route-page-template="static" data-stage18h-route-content="true">
       <RouteHero hero={page.hero} pageKind={page.kind} />
       <RouteSituationPanel section={page.situation} />
       <RouteServiceScope section={page.scope} />

@@ -45,6 +45,7 @@ export const homeNavigation: HomeNavigationItem[] = [
   { label: "Банк и 115-ФЗ", href: "/bank-i-115-fz/" },
   { label: "Адрес и ЕГРЮЛ", href: "/adres-egryul-direktor/" },
   { label: "Регистрация", href: "/registraciya-i-likvidaciya/" },
+  { label: "Налоги и режимы", href: "/nalogi-i-rezhimy/" },
   { label: "Кадры", href: "/kadry/" },
   { label: "Сопровождение", href: "/soprovozhdenie/" },
   { label: "Контакты", href: "/kontakty/" }
@@ -165,6 +166,14 @@ export const homeRouteCards: HomeRouteCard[] = [
     nextStep: "Выбрать вход"
   },
   {
+    title: "Налоги и режимы",
+    href: "/nalogi-i-rezhimy/",
+    icon: "question",
+    badgeKind: "route",
+    copy: "Проверяем применимость режима и налоговые вводные без публичных финальных выводов.",
+    nextStep: "Проверить вводные"
+  },
+  {
     title: "Адрес, ЕГРЮЛ и директор",
     href: "/adres-egryul-direktor/",
     icon: "location",
@@ -245,6 +254,7 @@ export const homeFooter = {
     { label: "Банк и 115-ФЗ", href: "/bank-i-115-fz/" },
     { label: "Адрес и ЕГРЮЛ", href: "/adres-egryul-direktor/" },
     { label: "Регистрация", href: "/registraciya-i-likvidaciya/" },
+    { label: "Налоги и режимы", href: "/nalogi-i-rezhimy/" },
     { label: "Кадры", href: "/kadry/" },
     { label: "Сопровождение", href: "/soprovozhdenie/" },
     { label: "Контакты", href: "/kontakty/" }
