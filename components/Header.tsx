@@ -27,7 +27,7 @@ export function Header() {
       </a>
 
       <div className="container-premium">
-        <div className="glass-panel grid min-h-[74px] grid-cols-[1fr_auto] items-center gap-4 rounded-[8px] px-4 py-3 backdrop-blur-2xl backdrop-saturate-150 lg:grid-cols-[auto_1fr_auto]">
+        <div className="glass-panel grid min-h-[74px] grid-cols-[1fr_auto] items-center gap-4 rounded-[8px] px-4 py-3 backdrop-blur-2xl backdrop-saturate-150 xl:grid-cols-[auto_1fr_auto]">
           <Link
             href="/"
             className="flex min-w-0 items-center gap-3 rounded-[8px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
@@ -46,7 +46,7 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden justify-self-center lg:block" aria-label="Основная навигация">
+          <nav className="hidden justify-self-center xl:block" aria-label="Основная навигация">
             <ul className="flex items-center gap-1 rounded-[8px] border border-[var(--line)] bg-white/46 p-1">
               {homeNavigation.map((item) => {
                 const current = isCurrentPath(pathname, item.href);
@@ -56,7 +56,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       aria-current={current ? "page" : undefined}
-                      className={`flex min-h-10 items-center rounded-[6px] px-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
+                        className={`flex min-h-10 items-center rounded-[6px] px-2.5 text-xs font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
                         current ? "bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)] shadow-sm" : "text-[color:var(--text-secondary)] hover:bg-[var(--surface-raised)] hover:text-[color:var(--surface-dark-strong)]"
                       }`}
                     >
@@ -68,7 +68,7 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="hidden items-center gap-2 xl:flex">
+          <div className="hidden items-center gap-2 2xl:flex">
             <Link
               href="/razbor-situacii/"
               className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"

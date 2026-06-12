@@ -36,6 +36,18 @@ jobs:
       - name: P0 semantic alignment
         run: npm run check:p0-semantic
 
+      - name: Stage 18 semantic SEO quality
+        run: npm run check:semantic-seo
+
+      - name: Stage 18 page blocks and lead path
+        run: npm run check:page-blocks
+
+      - name: Stage 18 layout foundation
+        run: npm run check:layout
+
+      - name: Stage 18 homepage structure
+        run: npm run check:homepage
+
       - name: Build static export
         run: npm run build
 
@@ -53,6 +65,9 @@ jobs:
 
       - name: Check launch readiness
         run: npm run check:launch-readiness
+
+      - name: Stage 18 public foundation
+        run: npm run check:public-foundation
 
       - name: Check Stage 16 source-to-site guardrails
         run: npm run check:stage16-source-to-site

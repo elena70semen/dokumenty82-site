@@ -8,7 +8,7 @@ Public launch: `NOT_PUBLIC_LAUNCH_READY`
 
 ## Purpose
 
-This document records the Stage 16 site-repo status for selling structure, SEO semantics, content architecture, lead path, route implementation rules and transport gates.
+This document records the Stage 16 site-repo status for selling structure, SEO semantics, content architecture, lead path, route implementation rules and transport gates, with later Stage 18A semantic SEO and Stage 18B/C/D/E product-foundation hardening noted as control-layer extensions.
 
 ## Status Matrix
 
@@ -38,12 +38,17 @@ This document records the Stage 16 site-repo status for selling structure, SEO s
 | Stage 17H blocker closure roadmap | `READY_WITH_CONDITIONS` | `docs/launch/stage-17h-blocker-closure-roadmap-v1.md`; closure paths recorded while blockers remain incomplete. |
 | Stage 17I commit readiness worktree audit | `READY_WITH_CONDITIONS` | `docs/launch/stage-17i-commit-readiness-worktree-audit-v1.md`; records review/commit conditions without staging, committing or pushing. |
 | Stage 17J worktree integration and local commit readiness | `READY_WITH_CONDITIONS` | `docs/launch/stage-17j-worktree-integration-and-local-commit-readiness-v1.md`; records dirty inventory, Stage 17I naming normalization and local-commit-only rules while push/deploy/public live remain blocked. |
+| Stage 18A semantic SEO hardening | `READY_WITH_CONDITIONS` | `docs/launch/stage-18a-semantic-seo-hardening-status-v1.md`; route cluster, metadata/H1 direction, internal linking and anti-cannibalization guardrails strengthened without public-live approval. |
+| Stage 18B page blocks, copy and leadgen | `READY_WITH_CONDITIONS` | `docs/launch/stage-18b-page-blocks-copy-leadgen-status-v1.md`; route block model, lead path and client-information checks added without live forms/CRM/analytics. |
+| Stage 18C layout foundation | `READY_WITH_CONDITIONS` | `docs/launch/stage-18c-layout-foundation-status-v1.md`; shell, navigation, mobile and product block layout guardrails added without final visual polish. |
+| Stage 18D homepage structure | `READY_WITH_CONDITIONS` | `docs/launch/stage-18d-homepage-structure-status-v1.md`; homepage router, situation selector, client information, FAQ and final CTA strengthened. |
+| Stage 18E full product foundation | `READY_WITH_CONDITIONS` | `docs/launch/stage-18e-full-product-foundation-status-v1.md`; public information, route completeness and strong block library synced and checked. |
 | Implementation status | `READY_WITH_CONDITIONS` | Site has typed route data, safe collectors, noindex blog/internal routes, Stage 17D/E hardening blocks, Stage 17F QA docs and closed live flags; final owner/legal approval remains future work. |
 | Public live | `BLOCKED` | `PUBLIC_LIVE_ALLOWED = false`. |
 
 ## Implementation Notes
 
-The current pass does not add final full copy for all routes, new public routes or final visual design polish. It strengthens the control layer, records Stage 17D/E route-group hardening plus Stage 17F owner/legal/content QA preparation, and preserves the existing source-shaped implementation.
+The current pass does not add final full copy for all routes, new public routes or final visual design polish. It strengthens the control layer, records Stage 17D/E route-group hardening plus Stage 17F owner/legal/content QA preparation, adds Stage 18A semantic route evidence, adds Stage 18B/C/D/E product-foundation guardrails/evidence, and preserves the existing source-shaped implementation.
 
 ## HOLD Preserved
 

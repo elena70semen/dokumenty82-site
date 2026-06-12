@@ -4,6 +4,7 @@ import { RouteDocumentsPanel } from "@/components/routes/RouteDocumentsPanel";
 import { RouteHero } from "@/components/routes/RouteHero";
 import { RouteLocalContact } from "@/components/routes/RouteLocalContact";
 import { RouteProcess } from "@/components/routes/RouteProcess";
+import { RouteProductFoundation } from "@/components/routes/RouteProductFoundation";
 import { RouteRelatedLinks } from "@/components/routes/RouteRelatedLinks";
 import { RouteSafetyNote } from "@/components/routes/RouteSafetyNote";
 import { RouteServiceScope } from "@/components/routes/RouteServiceScope";
@@ -22,6 +23,7 @@ export function RoutePage({ page }: RoutePageProps) {
       <RouteServiceScope section={page.scope} />
       <RouteProcess section={page.process} />
       <RouteDocumentsPanel section={page.documents} />
+      <RouteProductFoundation path={page.href} />
       {page.slug === "razbor-situacii" ? <SituationFormPlaceholder /> : null}
       {page.slug === "kontakty" ? <CallbackFormPlaceholder /> : null}
       <RouteRelatedLinks links={page.related} />

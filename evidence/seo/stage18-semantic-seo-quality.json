@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "routeCount": 39,
+  "indexedRouteCount": 36,
+  "noindexRouteCount": 3,
+  "routesChecked": [
+    "/",
+    "/razbor-situacii/",
+    "/kontakty/",
+    "/o-proekte/",
+    "/policy",
+    "/srochnye-voprosy/",
+    "/otchetnost/",
+    "/nalogi-i-rezhimy/",
+    "/bank-i-115-fz/",
+    "/adres-egryul-direktor/",
+    "/kadry/",
+    "/soprovozhdenie/",
+    "/registraciya-i-likvidaciya/",
+    "/otvet-na-trebovanie-ifns/",
+    "/deklaraciya-usn/",
+    "/otvet-na-zapros-banka/",
+    "/dokumenty-dlya-banka-115-fz/",
+    "/yuridicheskiy-adres-simferopol/",
+    "/nedostovernost-yuridicheskogo-adresa/",
+    "/smena-yuridicheskogo-adresa-ooo/",
+    "/smena-direktora-ooo/",
+    "/srochnoe-oformlenie-sotrudnikov/",
+    "/perehod-na-ausn/",
+    "/nulevaya-otchetnost-ooo/",
+    "/nulevaya-otchetnost-ip/",
+    "/otchetnost-elektronno/",
+    "/vosstanovlenie-buhucheta/",
+    "/buhgalterskoe-soprovozhdenie-ooo/",
+    "/buhgalterskoe-soprovozhdenie-ip/",
+    "/kadrovoe-soprovozhdenie/",
+    "/registraciya-ooo/",
+    "/registraciya-ip/",
+    "/likvidaciya-ooo/",
+    "/ausn-krym/",
+    "/raschet-nalogovoy-nagruzki/",
+    "/nds-pri-usn-2026/",
+    "/blog/",
+    "/blog/obnovleniya-fns/",
+    "/blog/razbory/"
+  ],
+  "semanticDataCompleteness": {
+    "expectedRoutes": 39,
+    "actualRoutes": 39,
+    "completeRoutes": 39
+  },
+  "titleH1DescriptionCompleteness": {
+    "indexedRoutesWithMetadataDirection": 36,
+    "indexedRoutesWithH1Direction": 36,
+    "indexedRoutesWithContentAngle": 36
+  },
+  "parentChildLinkCompleteness": {
+    "hubsChecked": 8,
+    "moneyPagesChecked": 20,
+    "diagnosticsChecked": 3
+  },
+  "relatedRouteCompleteness": {
+    "routesWithRelatedRoutes": 39
+  },
+  "noindexSitemapExclusion": {
+    "checkedRoutes": [
+      "/blog/",
+      "/blog/obnovleniya-fns/",
+      "/blog/razbory/"
+    ],
+    "excluded": true
+  },
+  "holdScanResult": {
+    "hiddenSeoMarkers": "none",
+    "publicLiveAllowedTrue": "none",
+    "forbiddenActiveClaims": "none_or_failed_above",
+    "transportHttp3QuicActiveEnablement": "none_or_failed_above"
+  },
+  "timestamp": "2026-06-12T11:05:46.774Z",
+  "releaseVerdict": "GO_WITH_CONDITIONS",
+  "publicLiveAllowed": false,
+  "issues": []
+}

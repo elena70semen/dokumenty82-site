@@ -1,4 +1,5 @@
 import { routePages, site } from "./content";
+import { semanticRouteDataByPath, type SemanticRouteData } from "./seo/semantic-route-data";
 
 export type RouteIndexing = "index" | "noindex";
 export type RouteSourceStatus = "APPROVED_IN_ROUTE_REGISTRY" | "ROUTE_REGISTRY_REVIEW_REQUIRED";
@@ -24,8 +25,35 @@ export type RouteManifestEntry = {
   schemaBoundary?: string;
   holdRisks?: string[];
   sourceAlignmentNotes?: string[];
+  stage18Semantic?: SemanticRouteData;
+  primaryIntent?: string;
+  secondarySupportIntent?: string;
+  serviceCluster?: string;
+  safeQueryVariants?: string[];
+  problemHooks?: string[];
+  antiCannibalizationBoundaries?: string[];
+  metadataDirection?: string;
+  h1Direction?: string;
+  pageBlockPurpose?: string[];
   notes?: string;
 };
+
+function semanticFields(path: string) {
+  const semantic = semanticRouteDataByPath[path];
+
+  return {
+    stage18Semantic: semantic,
+    primaryIntent: semantic?.primaryIntent,
+    secondarySupportIntent: semantic?.secondarySupportIntent,
+    serviceCluster: semantic?.serviceCluster,
+    safeQueryVariants: semantic?.safeQueryVariants,
+    problemHooks: semantic?.problemHooks,
+    antiCannibalizationBoundaries: semantic?.avoidCannibalizing,
+    metadataDirection: semantic?.metadataDirection,
+    h1Direction: semantic?.h1Direction,
+    pageBlockPurpose: semantic?.pageBlockPurpose
+  };
+}
 
 const p0Paths = new Set([
   "/",
@@ -63,7 +91,8 @@ const staticApprovedRoutes: RouteManifestEntry[] = [
     faqTopics: ["brand entry", "local office route", "safe first step"],
     schemaBoundary: "LocalBusiness schema from confirmed visible NAP only.",
     holdRisks: ["local_profile_claims", "unconfirmed_hours", "state_affiliation"],
-    sourceAlignmentNotes: ["active-canon-index", "route-registry: home", "stage-17-group-A"]
+    sourceAlignmentNotes: ["active-canon-index", "route-registry: home", "stage-17-group-A"],
+    ...semanticFields("/")
   },
   {
     path: "/razbor-situacii/",
@@ -83,7 +112,8 @@ const staticApprovedRoutes: RouteManifestEntry[] = [
     faqTopics: ["what to bring", "how triage starts", "what is not replaced"],
     schemaBoundary: "Core route only; no service terms, outcome claims or broad legal advice.",
     holdRisks: ["free_service_implication", "result_promise", "public_upload"],
-    sourceAlignmentNotes: ["passport: situation-review", "stage-17-group-A"]
+    sourceAlignmentNotes: ["passport: situation-review", "stage-17-group-A"],
+    ...semanticFields("/razbor-situacii/")
   },
   {
     path: "/kontakty/",
@@ -103,7 +133,8 @@ const staticApprovedRoutes: RouteManifestEntry[] = [
     faqTopics: ["phone", "route to office", "safe document showing"],
     schemaBoundary: "LocalBusiness schema from confirmed NAP only; no hours or legal identifiers.",
     holdRisks: ["working_hours", "office_number", "legal_identifiers"],
-    sourceAlignmentNotes: ["passport: contacts-office-visit", "stage-17-group-A"]
+    sourceAlignmentNotes: ["passport: contacts-office-visit", "stage-17-group-A"],
+    ...semanticFields("/kontakty/")
   },
   {
     path: "/o-proekte/",
@@ -123,7 +154,8 @@ const staticApprovedRoutes: RouteManifestEntry[] = [
     faqTopics: ["project role", "source-led boundaries", "office-first logic"],
     schemaBoundary: "Informational project page only; no public proof claims or legal details.",
     holdRisks: ["unapproved_proof", "comparative_claim", "legal_details"],
-    sourceAlignmentNotes: ["active-canon-index", "stage-17-group-A"]
+    sourceAlignmentNotes: ["active-canon-index", "stage-17-group-A"],
+    ...semanticFields("/o-proekte/")
   },
   {
     path: "/policy",
@@ -144,6 +176,7 @@ const staticApprovedRoutes: RouteManifestEntry[] = [
     schemaBoundary: "Legal/privacy route only; no commercial service schema.",
     holdRisks: ["legal_final_wording", "backend_not_connected", "owner_review"],
     sourceAlignmentNotes: ["hold-register", "stage-17-group-A"],
+    ...semanticFields("/policy"),
     notes: "Legal/privacy transparency route; not a commercial landing page."
   }
 ];
@@ -168,6 +201,7 @@ const contentApprovedRoutes: RouteManifestEntry[] = [
     schemaBoundary: "No article/news schema until indexing and editorial source approval.",
     holdRisks: ["autopublish", "indexing", "source_attribution"],
     sourceAlignmentNotes: ["route-registry: content foundation", "stage-17-group-H"],
+    ...semanticFields("/blog/"),
     notes: "Planned blog/news section; held noindex and excluded from sitemap until blog/news QA and indexing approval."
   },
   {
@@ -189,6 +223,7 @@ const contentApprovedRoutes: RouteManifestEntry[] = [
     schemaBoundary: "No news/article schema until source, editorial and indexing approval.",
     holdRisks: ["live_fetch", "scheduler", "autopublish"],
     sourceAlignmentNotes: ["route-registry: content foundation", "stage-17-group-H"],
+    ...semanticFields("/blog/obnovleniya-fns/"),
     notes: "Planned FNS/IFNS updates category; no live autopublishing in this PR."
   },
   {
@@ -210,6 +245,7 @@ const contentApprovedRoutes: RouteManifestEntry[] = [
     schemaBoundary: "No article schema until editorial and indexing approval.",
     holdRisks: ["seo_text_misuse", "autopublish", "unapproved_examples"],
     sourceAlignmentNotes: ["route-registry: content foundation", "stage-17-group-H"],
+    ...semanticFields("/blog/razbory/"),
     notes: "Planned evergreen explanatory category; indexing held until QA."
   }
 ];
@@ -233,7 +269,8 @@ const dynamicApprovedRoutes: RouteManifestEntry[] = routePages.map((page) => ({
   faqTopics: page.faqTopics,
   schemaBoundary: page.schemaBoundary,
   holdRisks: page.holdRisks,
-  sourceAlignmentNotes: page.sourceAlignmentNotes
+  sourceAlignmentNotes: page.sourceAlignmentNotes,
+  ...semanticFields(page.href)
 }));
 
 const nonApprovedAppRoutes: RouteManifestEntry[] = [
