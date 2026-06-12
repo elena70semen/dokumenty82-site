@@ -1,0 +1,400 @@
+{
+  "status": "passed",
+  "timestamp": "2026-06-12T19:29:42.056Z",
+  "git": {
+    "branch": "stage19/staging-rollback-transport-preflight",
+    "commit": "2978bd4"
+  },
+  "buildOutputPath": "out",
+  "indexedRouteCount": 36,
+  "sitemapUrlCount": 36,
+  "noindexRouteCount": 3,
+  "internalNoindexRouteCount": 3,
+  "routeProofs": [
+    {
+      "route": "/",
+      "output": "out/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/",
+      "expectedCanonical": "https://dokumenty82.ru/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/razbor-situacii/",
+      "output": "out/razbor-situacii/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/razbor-situacii/",
+      "expectedCanonical": "https://dokumenty82.ru/razbor-situacii/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/kontakty/",
+      "output": "out/kontakty/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/kontakty/",
+      "expectedCanonical": "https://dokumenty82.ru/kontakty/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/policy",
+      "output": "out/policy/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/policy",
+      "expectedCanonical": "https://dokumenty82.ru/policy",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/o-proekte/",
+      "output": "out/o-proekte/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/o-proekte/",
+      "expectedCanonical": "https://dokumenty82.ru/o-proekte/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/srochnye-voprosy/",
+      "output": "out/srochnye-voprosy/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/srochnye-voprosy/",
+      "expectedCanonical": "https://dokumenty82.ru/srochnye-voprosy/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/otchetnost/",
+      "output": "out/otchetnost/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/otchetnost/",
+      "expectedCanonical": "https://dokumenty82.ru/otchetnost/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/nalogi-i-rezhimy/",
+      "output": "out/nalogi-i-rezhimy/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/nalogi-i-rezhimy/",
+      "expectedCanonical": "https://dokumenty82.ru/nalogi-i-rezhimy/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/bank-i-115-fz/",
+      "output": "out/bank-i-115-fz/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/bank-i-115-fz/",
+      "expectedCanonical": "https://dokumenty82.ru/bank-i-115-fz/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/adres-egryul-direktor/",
+      "output": "out/adres-egryul-direktor/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/adres-egryul-direktor/",
+      "expectedCanonical": "https://dokumenty82.ru/adres-egryul-direktor/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/kadry/",
+      "output": "out/kadry/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/kadry/",
+      "expectedCanonical": "https://dokumenty82.ru/kadry/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/soprovozhdenie/",
+      "output": "out/soprovozhdenie/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/soprovozhdenie/",
+      "expectedCanonical": "https://dokumenty82.ru/soprovozhdenie/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/registraciya-i-likvidaciya/",
+      "output": "out/registraciya-i-likvidaciya/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/registraciya-i-likvidaciya/",
+      "expectedCanonical": "https://dokumenty82.ru/registraciya-i-likvidaciya/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "output": "out/otvet-na-trebovanie-ifns/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/otvet-na-trebovanie-ifns/",
+      "expectedCanonical": "https://dokumenty82.ru/otvet-na-trebovanie-ifns/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/deklaraciya-usn/",
+      "output": "out/deklaraciya-usn/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/deklaraciya-usn/",
+      "expectedCanonical": "https://dokumenty82.ru/deklaraciya-usn/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/nulevaya-otchetnost-ooo/",
+      "output": "out/nulevaya-otchetnost-ooo/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/nulevaya-otchetnost-ooo/",
+      "expectedCanonical": "https://dokumenty82.ru/nulevaya-otchetnost-ooo/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/nulevaya-otchetnost-ip/",
+      "output": "out/nulevaya-otchetnost-ip/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/nulevaya-otchetnost-ip/",
+      "expectedCanonical": "https://dokumenty82.ru/nulevaya-otchetnost-ip/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/vosstanovlenie-buhucheta/",
+      "output": "out/vosstanovlenie-buhucheta/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/vosstanovlenie-buhucheta/",
+      "expectedCanonical": "https://dokumenty82.ru/vosstanovlenie-buhucheta/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/otchetnost-elektronno/",
+      "output": "out/otchetnost-elektronno/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/otchetnost-elektronno/",
+      "expectedCanonical": "https://dokumenty82.ru/otchetnost-elektronno/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/perehod-na-ausn/",
+      "output": "out/perehod-na-ausn/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/perehod-na-ausn/",
+      "expectedCanonical": "https://dokumenty82.ru/perehod-na-ausn/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "output": "out/otvet-na-zapros-banka/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/otvet-na-zapros-banka/",
+      "expectedCanonical": "https://dokumenty82.ru/otvet-na-zapros-banka/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "output": "out/dokumenty-dlya-banka-115-fz/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/",
+      "expectedCanonical": "https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/yuridicheskiy-adres-simferopol/",
+      "output": "out/yuridicheskiy-adres-simferopol/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/yuridicheskiy-adres-simferopol/",
+      "expectedCanonical": "https://dokumenty82.ru/yuridicheskiy-adres-simferopol/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "output": "out/nedostovernost-yuridicheskogo-adresa/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/",
+      "expectedCanonical": "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/smena-yuridicheskogo-adresa-ooo/",
+      "output": "out/smena-yuridicheskogo-adresa-ooo/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/",
+      "expectedCanonical": "https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/smena-direktora-ooo/",
+      "output": "out/smena-direktora-ooo/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/smena-direktora-ooo/",
+      "expectedCanonical": "https://dokumenty82.ru/smena-direktora-ooo/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/srochnoe-oformlenie-sotrudnikov/",
+      "output": "out/srochnoe-oformlenie-sotrudnikov/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/srochnoe-oformlenie-sotrudnikov/",
+      "expectedCanonical": "https://dokumenty82.ru/srochnoe-oformlenie-sotrudnikov/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/kadrovoe-soprovozhdenie/",
+      "output": "out/kadrovoe-soprovozhdenie/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/kadrovoe-soprovozhdenie/",
+      "expectedCanonical": "https://dokumenty82.ru/kadrovoe-soprovozhdenie/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/registraciya-ooo/",
+      "output": "out/registraciya-ooo/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/registraciya-ooo/",
+      "expectedCanonical": "https://dokumenty82.ru/registraciya-ooo/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/registraciya-ip/",
+      "output": "out/registraciya-ip/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/registraciya-ip/",
+      "expectedCanonical": "https://dokumenty82.ru/registraciya-ip/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/likvidaciya-ooo/",
+      "output": "out/likvidaciya-ooo/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/likvidaciya-ooo/",
+      "expectedCanonical": "https://dokumenty82.ru/likvidaciya-ooo/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/buhgalterskoe-soprovozhdenie-ooo/",
+      "output": "out/buhgalterskoe-soprovozhdenie-ooo/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/",
+      "expectedCanonical": "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/buhgalterskoe-soprovozhdenie-ip/",
+      "output": "out/buhgalterskoe-soprovozhdenie-ip/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ip/",
+      "expectedCanonical": "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ip/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/ausn-krym/",
+      "output": "out/ausn-krym/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/ausn-krym/",
+      "expectedCanonical": "https://dokumenty82.ru/ausn-krym/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/raschet-nalogovoy-nagruzki/",
+      "output": "out/raschet-nalogovoy-nagruzki/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/raschet-nalogovoy-nagruzki/",
+      "expectedCanonical": "https://dokumenty82.ru/raschet-nalogovoy-nagruzki/",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/nds-pri-usn-2026/",
+      "output": "out/nds-pri-usn-2026/index.html",
+      "exists": true,
+      "canonical": "https://dokumenty82.ru/nds-pri-usn-2026/",
+      "expectedCanonical": "https://dokumenty82.ru/nds-pri-usn-2026/",
+      "passed": true,
+      "issues": []
+    }
+  ],
+  "analyticsStatus": {
+    "status": "STUB_ONLY_DISABLED",
+    "analyticsEnabled": false,
+    "metricaEnabled": false,
+    "realCounterPresent": false
+  },
+  "transportStatus": {
+    "allowedBaseline": "HTTPS over TCP/443 with HTTP/1.1 or HTTP/2",
+    "http3": "BLOCKED_BY_DEFAULT",
+    "quic": "BLOCKED_BY_DEFAULT",
+    "udp443": "BLOCKED_BY_DEFAULT",
+    "h3AltSvc": "BLOCKED_BY_DEFAULT",
+    "activeTransportConfigAdded": false,
+    "checkedReferenceConfig": "server/nginx/dokumenty82.static-tcp-only.reference.conf",
+    "issues": []
+  },
+  "publicLiveStatus": {
+    "publicLiveAllowed": false,
+    "deployPerformed": false,
+    "dnsChanged": false,
+    "liveIntegrationsEnabled": false
+  },
+  "rollbackPreflight": {
+    "currentGitCommitIdentified": true,
+    "releaseArtifactCanBeRebuiltFromGitCommit": true,
+    "staticOutputManifestMode": "manifest-only",
+    "deterministicEnoughForLocalProof": true,
+    "liveDeploymentExistsInThisStage": false,
+    "rollbackMode": "CONCEPTUAL_ONLY_UNTIL_STAGING_PROVIDER_SELECTED",
+    "providerAssumptionsAdded": false,
+    "artifactManifest": {
+      "mode": "manifest-only",
+      "reason": "Static export is reproducible from repository build output; no duplicate artifact copy is committed.",
+      "files": [
+        {
+          "path": "out/index.html",
+          "size": 203033,
+          "sha256": "147249cabf454bd04aebabb6a67374dfa3663c6cf813c2417d11c2b6c2b26ca3"
+        },
+        {
+          "path": "out/sitemap.xml",
+          "size": 5943,
+          "sha256": "4c050682b6f3062c369fefaa881f082da1ce843bf3f0d503c5c767512aa4e71a"
+        },
+        {
+          "path": "out/robots.txt",
+          "size": 176,
+          "sha256": "0b4d84af835455cad0971a1a317d66c4e13205fa14890816108ce5d8f98f5b4e"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 56316,
+          "sha256": "149f3c53236af3a0d6e78b5c724111c0fe4de18923894c852fafa9b990d2b8fb"
+        }
+      ]
+    }
+  },
+  "forbiddenScanStatus": "passed",
+  "releaseVerdict": "GO_WITH_CONDITIONS",
+  "publicLiveAllowed": false,
+  "issues": []
+}
