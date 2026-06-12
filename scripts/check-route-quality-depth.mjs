@@ -116,6 +116,8 @@ const noindexRoutes = semanticRoutes.filter((route) => !route.indexed);
 
 const productFoundationText = read("lib/product-foundation.ts");
 const priorityQualitySection = productFoundationText.slice(productFoundationText.indexOf("const priorityRouteQualityDepthByPath"));
+const fullSiteQualitySection = productFoundationText.slice(productFoundationText.indexOf("const fullSiteRouteQualityDepthByPath"));
+const manualCoreQualitySection = productFoundationText.slice(productFoundationText.indexOf("const manualCoreRouteCopy"));
 const productComponentText = read("components/routes/RouteProductFoundation.tsx");
 const contentText = read("lib/content.ts");
 const staticRouteDataText = read("lib/routes/route-page-data.ts");
@@ -136,6 +138,7 @@ assert(packageText.includes('"check:route-quality"'), "package.json missing chec
 assert(packageText.includes("npm run check:route-quality"), "check:finalization must include check:route-quality.");
 assert(/data-stage18k-route-quality=/.test(productComponentText), "Product foundation must expose Stage 18K route-quality marker.");
 assert(/data-stage18k-owner-review=/.test(productComponentText), "Product foundation must expose Stage 18K owner-review marker.");
+assert(productFoundationText.includes("fullSiteRouteQualityDepthByPath"), "Product foundation missing Stage 18O full-site route-quality coverage.");
 assert(/RouteProductFoundation/.test(dynamicRouteTemplateText), "Dynamic route template must render RouteProductFoundation.");
 assert(/RouteProductFoundation/.test(staticRouteTemplateText), "Static route template must render RouteProductFoundation.");
 
@@ -152,6 +155,7 @@ for (const family of requiredBlockFamilies) {
 }
 
 const routeSpecificCoverage = {};
+const fullSiteRouteQualityCoverage = {};
 const faqCoverage = {};
 const relatedRouteCoverage = {};
 
@@ -170,12 +174,18 @@ for (const routePath of priorityRoutes) {
 }
 
 for (const route of indexedRoutes) {
+  const routeQualityBlock =
+    extractObjectBlock(priorityQualitySection, route.path) ||
+    extractObjectBlock(fullSiteQualitySection, route.path) ||
+    extractObjectBlock(manualCoreQualitySection, route.path);
   const pathPattern = new RegExp(`"${escapeRegExp(route.path)}"`);
   const appearsInRuntime =
     productFoundationText.includes(route.path) ||
     contentText.includes(`href: "${route.path}"`) ||
     staticRouteDataText.includes(`href: "${route.path}"`);
 
+  fullSiteRouteQualityCoverage[route.path] = Boolean(routeQualityBlock);
+  assert(Boolean(routeQualityBlock), `Indexed route missing Stage 18O route-quality coverage: ${route.path}`);
   assert(appearsInRuntime || pathPattern.test(productFoundationText), `Indexed route missing runtime/source quality coverage: ${route.path}`);
   assert(Array.isArray(route.pageBlockPurpose) && route.pageBlockPurpose.length > 0, `Indexed route missing page block purpose: ${route.path}`);
   assert(Array.isArray(route.relatedRoutes) && route.relatedRoutes.length > 0, `Indexed route missing related route source data: ${route.path}`);
@@ -231,9 +241,11 @@ const evidence = {
   status: issues.length === 0 ? "passed" : "failed",
   checkedAt: new Date().toISOString(),
   priorityRoutesChecked: priorityRoutes,
+  stage18oIndexedRoutesChecked: indexedRoutes.map((route) => route.path),
   indexedRoutesChecked: indexedRoutes.map((route) => route.path),
   noindexRoutesChecked: noindexRoutes.map((route) => route.path),
   routeSpecificBlockCoverage: routeSpecificCoverage,
+  fullSiteRouteQualityCoverage,
   faqCoverage,
   relatedRouteCoverage,
   ctaSafety: {

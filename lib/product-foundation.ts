@@ -223,6 +223,131 @@ const priorityRouteQualityDepthByPath: Record<string, RouteQualityDepth> = {
 
 export const stage18kPriorityRoutes = Object.keys(priorityRouteQualityDepthByPath);
 
+const fullSiteRouteQualityDepthByPath: Record<string, RouteQualityDepth> = {
+  "/srochnye-voprosy/": {
+    whenFits: ["на руках письмо, запрос или уведомление", "тема кажется срочной, но точный маршрут неясен", "вопрос может перейти к ИФНС, банку или отчётности"],
+    clientInformation: ["назовите, кто прислал документ", "отметьте дату, период или тему, если они есть", "точную страницу выбираем после разбора источника"],
+    faqDirection: ["когда идти на точную страницу ИФНС", "что показать на первом шаге", "почему срочность не означает обещание срока"],
+    relatedRoutePaths: ["/otvet-na-trebovanie-ifns/", "/otchetnost/", "/bank-i-115-fz/", "/razbor-situacii/"]
+  },
+  "/nalogi-i-rezhimy/": {
+    whenFits: ["нужно отделить переход на режим от диагностики", "есть вопрос по налоговой нагрузке", "вопрос НДС при УСН связан с отчётностью"],
+    clientInformation: ["назовите текущий режим, если он известен", "укажите период или год вопроса", "отделите проверку режима от подготовки отчётности"],
+    faqDirection: ["переход или диагностика", "какие вводные нужны", "куда идти при отчётном вопросе"],
+    relatedRoutePaths: ["/perehod-na-ausn/", "/ausn-krym/", "/raschet-nalogovoy-nagruzki/", "/nds-pri-usn-2026/"]
+  },
+  "/adres-egryul-direktor/": {
+    whenFits: ["адресный вопрос смешан с изменениями", "нужно понять, это недостоверность, смена адреса или директор", "важны текущие сведения компании"],
+    clientInformation: ["назовите источник адресного вопроса", "отметьте, какие сведения меняются", "офисные детали используем только после подтверждения"],
+    faqDirection: ["адрес или смена адреса", "когда смотреть недостоверность", "чем директор отличается от адресного маршрута"],
+    relatedRoutePaths: ["/yuridicheskiy-adres-simferopol/", "/nedostovernost-yuridicheskogo-adresa/", "/smena-yuridicheskogo-adresa-ooo/", "/smena-direktora-ooo/"]
+  },
+  "/kadry/": {
+    whenFits: ["нужно отделить срочное кадровое событие от сопровождения", "есть документы сотрудников", "важен безопасный способ показа данных"],
+    clientInformation: ["опишите кадровое событие без персональных данных", "отметьте, вопрос разовый или регулярный", "согласуйте способ показа материалов отдельно"],
+    faqDirection: ["срочный вопрос или сопровождение", "как не передавать персональные данные публично", "какие вводные подготовить"],
+    relatedRoutePaths: ["/srochnoe-oformlenie-sotrudnikov/", "/kadrovoe-soprovozhdenie/", "/soprovozhdenie/"]
+  },
+  "/soprovozhdenie/": {
+    whenFits: ["задачи повторяются", "нужно отделить сопровождение от разовой страницы", "есть текущий комплект документов"],
+    clientInformation: ["перечислите регулярные задачи", "отметьте ООО, ИП или кадровый контур", "если вопрос разовый, откройте точную страницу"],
+    faqDirection: ["разовая задача или сопровождение", "какой объём обсуждать на старте", "куда перейти по отчётности или кадрам"],
+    relatedRoutePaths: ["/buhgalterskoe-soprovozhdenie-ooo/", "/buhgalterskoe-soprovozhdenie-ip/", "/kadrovoe-soprovozhdenie/"]
+  },
+  "/registraciya-i-likvidaciya/": {
+    whenFits: ["нужно выбрать между ООО, ИП и ликвидацией", "есть адресный вопрос до регистрации", "жизненный цикл задачи ещё не разложен"],
+    clientInformation: ["укажите, речь об ООО, ИП или ликвидации", "отметьте адресный вопрос отдельно", "не смешивайте регистрацию и изменения в одном запросе"],
+    faqDirection: ["ООО или ИП", "регистрация или ликвидация", "когда нужен адресный маршрут"],
+    relatedRoutePaths: ["/registraciya-ooo/", "/registraciya-ip/", "/likvidaciya-ooo/", "/adres-egryul-direktor/"]
+  },
+  "/nulevaya-otchetnost-ooo/": {
+    whenFits: ["вопрос именно по ООО", "нужно проверить период и наличие деятельности", "есть сомнение между нулевой отчётностью и декларацией"],
+    clientInformation: ["назовите период и форму ООО", "отметьте, была ли деятельность", "если есть пробелы в данных, смотрите восстановление"],
+    faqDirection: ["что проверить у ООО", "чем отличается от ИП", "когда нужна декларация или восстановление"],
+    relatedRoutePaths: ["/otchetnost/", "/nulevaya-otchetnost-ip/", "/deklaraciya-usn/", "/vosstanovlenie-buhucheta/"]
+  },
+  "/nulevaya-otchetnost-ip/": {
+    whenFits: ["вопрос именно по ИП", "нужно проверить режим и период", "нужно отделить нулевой маршрут от декларации"],
+    clientInformation: ["назовите режим ИП, если он известен", "укажите период вопроса", "отдельно отметьте, была ли деятельность"],
+    faqDirection: ["что проверить у ИП", "чем отличается от ООО", "когда смотреть декларацию УСН"],
+    relatedRoutePaths: ["/otchetnost/", "/nulevaya-otchetnost-ooo/", "/deklaraciya-usn/", "/buhgalterskoe-soprovozhdenie-ip/"]
+  },
+  "/otchetnost-elektronno/": {
+    whenFits: ["вопрос в электронном маршруте сдачи", "нужно понять, какие данные нужны", "важно не передавать доступы публично"],
+    clientInformation: ["назовите вид отчётности и период", "не отправляйте доступы через публичную страницу", "согласуйте безопасный способ показа материалов"],
+    faqDirection: ["чем отличается от декларации", "какие данные нужны", "как не передавать доступы публично"],
+    relatedRoutePaths: ["/otchetnost/", "/deklaraciya-usn/", "/nulevaya-otchetnost-ooo/", "/nulevaya-otchetnost-ip/"]
+  },
+  "/perehod-na-ausn/": {
+    whenFits: ["интересует именно переход на АУСН", "нужно отделить переход от диагностики применимости", "есть текущий режим и вводные бизнеса"],
+    clientInformation: ["назовите текущий режим", "отметьте, почему рассматриваете АУСН", "если применимость неясна, начните с диагностики"],
+    faqDirection: ["переход или диагностика", "какие вводные подготовить", "что остаётся на проверке"],
+    relatedRoutePaths: ["/nalogi-i-rezhimy/", "/ausn-krym/", "/raschet-nalogovoy-nagruzki/"]
+  },
+  "/smena-yuridicheskogo-adresa-ooo/": {
+    whenFits: ["нужно сменить адрес ООО", "есть новые адресные сведения", "нужно отделить смену от недостоверности или подбора адреса"],
+    clientInformation: ["назовите текущий и новый адресный контур", "подготовьте сведения ООО, если они есть", "результат регистрации остаётся на проверке до изучения документов"],
+    faqDirection: ["что меняется", "чем отличается от юридического адреса", "когда смотреть недостоверность"],
+    relatedRoutePaths: ["/adres-egryul-direktor/", "/yuridicheskiy-adres-simferopol/", "/nedostovernost-yuridicheskogo-adresa/"]
+  },
+  "/smena-direktora-ooo/": {
+    whenFits: ["нужно изменить сведения о директоре", "есть связанные изменения ООО", "нужно отделить директора от адресного маршрута"],
+    clientInformation: ["назовите, какое изменение готовится", "отметьте связанные сведения компании", "если есть адресный вопрос, откройте адресный хаб"],
+    faqDirection: ["какие сведения меняются", "что уже есть у ООО", "когда нужен общий хаб изменений"],
+    relatedRoutePaths: ["/adres-egryul-direktor/", "/smena-yuridicheskogo-adresa-ooo/", "/registraciya-i-likvidaciya/"]
+  },
+  "/srochnoe-oformlenie-sotrudnikov/": {
+    whenFits: ["сотрудник выходит скоро", "нужно понять кадровое событие", "важно не передавать персональные данные публично"],
+    clientInformation: ["опишите кадровое событие без персональных данных", "назовите, какие документы уже есть", "согласуйте безопасный способ показа материалов"],
+    faqDirection: ["что считать срочным", "что показать сначала", "как не передавать персональные данные публично"],
+    relatedRoutePaths: ["/kadry/", "/kadrovoe-soprovozhdenie/", "/kontakty/"]
+  },
+  "/kadrovoe-soprovozhdenie/": {
+    whenFits: ["кадровые задачи повторяются", "нужен порядок в кадровых документах", "нужно отделить регулярный формат от срочного события"],
+    clientInformation: ["перечислите повторяющиеся кадровые задачи", "не передавайте персональные данные публично", "если вопрос разовый, откройте срочный кадровый маршрут"],
+    faqDirection: ["регулярный формат или разовый вопрос", "чем отличается от срочного оформления", "какие вводные подготовить"],
+    relatedRoutePaths: ["/kadry/", "/srochnoe-oformlenie-sotrudnikov/", "/soprovozhdenie/"]
+  },
+  "/likvidaciya-ooo/": {
+    whenFits: ["вопрос именно по ликвидации ООО", "есть текущие документы компании", "нужно отделить ликвидацию от регистрации и сопровождения"],
+    clientInformation: ["назовите текущее состояние ООО", "отметьте, что уже сделано", "порядок следующего шага уточняется после просмотра документов"],
+    faqDirection: ["какие документы компании нужны", "что уже сделано", "когда нужен общий разбор"],
+    relatedRoutePaths: ["/registraciya-i-likvidaciya/", "/registraciya-ooo/", "/soprovozhdenie/"]
+  },
+  "/buhgalterskoe-soprovozhdenie-ooo/": {
+    whenFits: ["задачи ООО повторяются", "нужен порядок в отчётности и учёте", "нужно отделить сопровождение от разовой декларации"],
+    clientInformation: ["назовите текущий отчётный статус ООО", "перечислите регулярные задачи", "если нужен один отчёт, откройте отчётный маршрут"],
+    faqDirection: ["что входит в первый разбор", "если нужна только декларация", "какие документы показать"],
+    relatedRoutePaths: ["/soprovozhdenie/", "/buhgalterskoe-soprovozhdenie-ip/", "/deklaraciya-usn/", "/vosstanovlenie-buhucheta/"]
+  },
+  "/buhgalterskoe-soprovozhdenie-ip/": {
+    whenFits: ["задачи ИП повторяются", "нужно проверить режим и отчётные вопросы", "нужно отделить сопровождение от нулевой отчётности"],
+    clientInformation: ["назовите режим ИП", "укажите период и текущие задачи", "если вопрос только по нулёвке, откройте точную страницу"],
+    faqDirection: ["чем отличается от ООО", "если нужна только нулёвка", "какие вводные подготовить"],
+    relatedRoutePaths: ["/soprovozhdenie/", "/buhgalterskoe-soprovozhdenie-ooo/", "/deklaraciya-usn/", "/nulevaya-otchetnost-ip/"]
+  },
+  "/ausn-krym/": {
+    whenFits: ["нужно проверить применимость АУСН", "вопрос относится к Крыму и текущему режиму", "нужно отделить диагностику от перехода"],
+    clientInformation: ["назовите текущий режим", "опишите вводные бизнеса", "если решение о переходе уже принято, смотрите маршрут перехода"],
+    faqDirection: ["диагностика или переход", "какие вводные нужны", "что остаётся на проверке"],
+    relatedRoutePaths: ["/nalogi-i-rezhimy/", "/perehod-na-ausn/", "/raschet-nalogovoy-nagruzki/"]
+  },
+  "/raschet-nalogovoy-nagruzki/": {
+    whenFits: ["нужно структурировать вопрос нагрузки", "есть режим, период и операции", "нужно отделить расчёт от перехода на режим"],
+    clientInformation: ["назовите режим и период", "перечислите категории операций", "публичный расчёт без вводных не формируем"],
+    faqDirection: ["какие вводные нужны", "что является диагностикой", "когда нужен налоговый маршрут"],
+    relatedRoutePaths: ["/nalogi-i-rezhimy/", "/perehod-na-ausn/", "/nds-pri-usn-2026/"]
+  },
+  "/nds-pri-usn-2026/": {
+    whenFits: ["вопрос по НДС при УСН в 2026 году", "нужно проверить режим и период", "вопрос связан с декларацией или налоговым хабом"],
+    clientInformation: ["назовите режим и период", "отметьте связанные отчётные документы", "вопрос остаётся на проверке до изучения вводных"],
+    faqDirection: ["какой режим сейчас", "какие документы смотреть", "что остаётся на проверке"],
+    relatedRoutePaths: ["/nalogi-i-rezhimy/", "/deklaraciya-usn/", "/raschet-nalogovoy-nagruzki/"]
+  }
+};
+
+export const stage18oFullSiteQualityRoutes = Object.keys(fullSiteRouteQualityDepthByPath);
+
 const defaultBoundariesByType: Partial<Record<RouteType, string[]>> = {
   home: ["полный каталог вместо маршрута", "результат без изучения вводных", "живую отправку формы"],
   core: ["замену отдельной подготовки документов", "результат без исходных данных", "публичную загрузку файлов"],
@@ -289,7 +414,7 @@ function getActionSet(path: string, page?: RoutePage): ProductFoundationAction[]
 function buildFoundation(path: string): ProductFoundationRoute | null {
   const manifest = findManifest(path);
   const semantic = semanticRouteDataByPath[path];
-  const qualityDepth = priorityRouteQualityDepthByPath[path];
+  const qualityDepth = priorityRouteQualityDepthByPath[path] ?? fullSiteRouteQualityDepthByPath[path];
 
   if (!manifest || !manifest.approvedInRouteRegistry) return null;
 
