@@ -27,7 +27,7 @@ export function Header() {
       </a>
 
       <div className="container-premium">
-        <div className="glass-panel grid min-h-[74px] grid-cols-[1fr_auto] items-center gap-4 rounded-[8px] px-4 py-3 backdrop-blur-2xl backdrop-saturate-150 xl:grid-cols-[auto_1fr_auto]">
+        <div className="glass-panel grid min-h-[74px] grid-cols-[1fr_auto] items-center gap-4 rounded-[8px] px-4 py-3 backdrop-blur-2xl backdrop-saturate-150 2xl:grid-cols-[auto_1fr_auto]">
           <Link
             href="/"
             className="flex min-w-0 items-center gap-3 rounded-[8px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
@@ -46,7 +46,7 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden justify-self-center xl:block" aria-label="Основная навигация">
+          <nav className="hidden justify-self-center 2xl:block" aria-label="Основная навигация">
             <ul className="flex items-center gap-1 rounded-[8px] border border-[var(--line)] bg-white/46 p-1">
               {homeNavigation.map((item) => {
                 const current = isCurrentPath(pathname, item.href);
@@ -83,12 +83,12 @@ export function Header() {
             </a>
           </div>
 
-          <details className="group justify-self-end xl:hidden">
+          <details className="group justify-self-end 2xl:hidden">
             <summary className="grid size-12 cursor-pointer place-items-center rounded-[8px] bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)] shadow-sm transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]">
               <span className="sr-only">Открыть навигацию</span>
               <BrandIcon name="route" size={24} />
             </summary>
-            <div className="glass-panel fixed left-4 right-4 top-[92px] grid max-h-[calc(100vh-112px)] gap-3 overflow-y-auto overscroll-contain rounded-[8px] p-4 backdrop-blur-2xl backdrop-saturate-150">
+            <div className="fixed left-4 right-4 top-[92px] grid max-h-[calc(100vh-112px)] gap-3 overflow-y-auto overscroll-contain rounded-[8px] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-panel)]">
               <nav aria-label="Мобильная навигация">
                 <ul className="grid gap-2">
                   {homeNavigation.map((item) => {

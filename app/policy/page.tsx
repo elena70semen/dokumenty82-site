@@ -74,7 +74,7 @@ export default function PolicyPage() {
               <span>Политика конфиденциальности</span>
             </nav>
             <p className="eyebrow-line">Данные и документы</p>
-            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[#111821] md:text-7xl">
+            <h1 className="display-serif mt-6 max-w-full text-[1.82rem] font-semibold leading-[1.12] text-[#111821] [overflow-wrap:anywhere] sm:text-[2.35rem] sm:leading-[1.02] xl:text-7xl xl:leading-[0.98]">
               Политика конфиденциальности и обработки данных
             </h1>
             <p className="mt-7 text-xl leading-9 text-[#667184]">

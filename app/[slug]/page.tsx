@@ -150,7 +150,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
       <section className="section-pad">
         <div className="container-premium grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="reveal-block" data-reveal="left">
-            <nav className="mb-8 flex flex-wrap gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
+            <nav className="mb-8 flex max-w-full flex-wrap gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
               <Link href="/" className="text-[#245da7]">
                 Главная
               </Link>
@@ -163,12 +163,12 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                 </>
               ) : null}
               <span>/</span>
-              <span aria-current="page" className="text-[#111821]">
+              <span aria-current="page" className="min-w-0 break-words text-[#111821]">
                 {page.shortTitle}
               </span>
             </nav>
             <p className="eyebrow-line">{page.kicker}</p>
-            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[#111821] md:text-7xl">
+            <h1 className="display-serif mt-6 max-w-full break-words text-[1.95rem] font-semibold leading-[1.08] text-[#111821] [overflow-wrap:anywhere] sm:text-[2.35rem] sm:leading-[1.02] xl:text-7xl xl:leading-[0.98]">
               {page.title}
             </h1>
             <p className="mt-7 text-xl leading-9 text-[#667184]">{page.description}</p>

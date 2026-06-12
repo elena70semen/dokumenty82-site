@@ -52,7 +52,7 @@ export default function BlogPage() {
         <div className="container-premium grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div className="max-w-4xl reveal-block" data-reveal="left">
             <p className="eyebrow-line">Материалы, новости и обновления для бизнеса</p>
-            <h1 className="display-serif mt-6 text-6xl font-semibold leading-[0.98] text-[#111821] md:text-8xl">Блог и новости</h1>
+            <h1 className="display-serif mt-6 text-5xl font-semibold leading-[1.02] text-[#111821] sm:text-6xl sm:leading-[0.98] md:text-8xl">Блог и новости</h1>
             <p className="mt-7 text-xl leading-9 text-[#667184]">
               Материалы, новости и обновления для бизнеса. Обновления ФНС будут публиковаться только после прохождения защитных правил.
             </p>
