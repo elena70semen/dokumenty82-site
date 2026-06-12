@@ -272,7 +272,7 @@ export const routePageData: Record<(typeof routePageSlugs)[number], RoutePageCon
       included: [site.name, site.category, site.phone, site.address, site.landmark],
       boundaryTitle: "Что не добавляем",
       boundaries: [
-        "режим работы",
+        "неподтверждённые данные о приёме",
         "неподтверждённые локальные детали",
         "юридические данные",
         "дополнительные контактные каналы"
@@ -448,9 +448,9 @@ export const routePageData: Record<(typeof routePageSlugs)[number], RoutePageCon
         badgeKind: "contact"
       },
       {
-        title: "Расчёт налоговой нагрузки",
-        href: "/raschet-nalogovoy-nagruzki/",
-        copy: "Если сначала нужно собрать вводные для диагностики.",
+        title: "Электронная отчётность",
+        href: "/otchetnost-elektronno/",
+        copy: "Если вопрос в электронном маршруте сдачи и безопасном показе материалов.",
         icon: "question",
         badgeKind: "route"
       },

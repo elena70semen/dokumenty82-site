@@ -124,30 +124,51 @@ Forbidden public framing:
 - wording that implies official state partner or representative status;
 - wording that creates unapproved legal or commercial obligations.
 
-## Stage 14A build proof
+## Stage 15/16/17 source-led foundation
 
-Current Stage 14A work is CI/build proof only.
+Current Stage 15/16/17 work is a source-led website foundation, repository conformance and readiness pass.
+
+The active source package comes from:
+
+```text
+elena70semen/dokumenty-dlya-biznesa
+```
+
+Required control files in this site repository:
+
+- `docs/source-to-site/source-to-site-alignment-contract-v1.md`
+- `docs/source-to-site/source-to-site-current-sync-status-v1.md`
+- `docs/source-to-site/site-repo-stage-16-assembly-handoff-v1.md`
+- `docs/launch/stage-15-site-foundation-status-v1.md`
+- `docs/launch/stage-16-source-package-status-v1.md`
+- `docs/launch/stage-16-selling-seo-content-status-v1.md`
+- `docs/launch/stage-17-repository-conformance-checklist-v1.md`
 
 Allowed:
 
-- root-level workflow fixes;
-- package script fixes;
-- static export link checks;
-- P0 evidence/finalization guard alignment;
-- README and issue clarification.
+- sync source-backed Stage 15/16 standards;
+- strengthen source-to-site docs and traceability;
+- maintain Stage 17 repository conformance status;
+- improve route/content/metadata guardrails when source-supported;
+- keep feature flags closed;
+- add defensive checks that prevent HOLD and launch-gate violations.
 
-Not allowed in Stage 14A:
+Not allowed:
 
-- SEO/content rewrites;
-- route expansion;
-- visual redesign;
+- final visual design polish;
+- new public routes outside the source route registry;
+- public launch;
 - live deploy;
-- Beget staging;
-- public DNS;
+- public DNS changes;
 - analytics/Metrica;
 - CRM/forms;
 - public upload;
-- paid traffic.
+- paid traffic;
+- HTTP/3/QUIC enablement.
+
+If a required source file is missing, record `MISSING_EXPECTED` and continue only when the exact change remains safe.
+
+Design polish is postponed until the SEO, text, code, mobile, accessibility and QA foundation is strong.
 
 ## Required checks
 
@@ -163,10 +184,12 @@ npm run check:fns-blog-news
 npm run check:static-links
 npm run check:launch-readiness
 npm run check:finalization
+npm run check:stage16-source-to-site
 npm run brand:check
+npm run check:pricing
 ```
 
-If a check is not run, report it as `NOT_RUN` with the reason.
+Run `npm run check:local-p0-browser` when browser evidence is in scope and the local preview server is running. If a check is not run, report it as `NOT_RUN` with the reason.
 
 ## Final report requirements
 
@@ -184,6 +207,6 @@ Every final report must include:
 
 ## Release verdict
 
-`GO WITH CONDITIONS` for Stage 14A CI/build proof.
+`GO WITH CONDITIONS` for Stage 14A CI/build proof, Stage 15/16 source-to-site foundation and Stage 17 repository conformance.
 
 `PUBLIC_LIVE_ALLOWED = false`.

@@ -57,6 +57,31 @@ function getPrimaryCollector(page: RoutePage) {
   };
 }
 
+function getRelatedRoutePages(page: RoutePage) {
+  const childRoutes = routePages.filter((candidate) => candidate.parentHref === page.href && candidate.href !== page.href);
+  const sourceRelatedRoutes = (page.relatedHrefs ?? [])
+    .map((href) => routePages.find((candidate) => candidate.href === href))
+    .filter((candidate): candidate is RoutePage => candidate !== undefined && candidate.href !== page.href);
+
+  const orderedRoutes = page.pageType === "hub" ? [...childRoutes, ...sourceRelatedRoutes] : [...sourceRelatedRoutes, ...childRoutes];
+  const seen = new Set<string>();
+
+  return orderedRoutes.filter((candidate) => {
+    if (seen.has(candidate.href)) return false;
+    seen.add(candidate.href);
+    return true;
+  });
+}
+
+function getHardeningBlocks(page: RoutePage) {
+  return [
+    { title: "Что проверяем", items: page.whatWeCheck ?? [] },
+    { title: "Какие вводные нужны", items: page.documentsOrData ?? [] },
+    { title: "Как начинается работа", items: page.howWorkStarts ?? [] },
+    { title: "Что не обещаем", items: page.notPromised ?? [] }
+  ].filter((block) => block.items.length > 0);
+}
+
 export function generateStaticParams() {
   const staticRoutePageSlugs = new Set<string>(routePageSlugs);
 
@@ -98,6 +123,9 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
 
   const parent = getParentPage(page.parentHref);
   const primaryCollector = getPrimaryCollector(page);
+  const relatedRoutes = getRelatedRoutePages(page);
+  const hardeningBlocks = getHardeningBlocks(page);
+  const showDocumentsPlaceholder = p0ShowDocumentsPlaceholderSlugs.has(page.slug) || page.primaryCtaLabel === cta.docs;
   const serviceJsonLd =
     page.pageType === "money"
       ? {
@@ -198,7 +226,81 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
           </article>
         </div>
       </section>
-      {p0ShowDocumentsPlaceholderSlugs.has(page.slug) ? <ShowDocumentsPlaceholder /> : null}
+
+      {hardeningBlocks.length > 0 ? (
+        <section className="section-pad bg-white" aria-labelledby={`route-hardening-${page.slug}`}>
+          <div className="container-premium">
+            <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+              <div>
+                <p className="eyebrow-line">Маршрут задачи</p>
+                <h2 id={`route-hardening-${page.slug}`} className="display-serif mt-5 text-4xl font-semibold leading-tight text-[#111821] md:text-6xl">
+                  Сначала разбираем вводные
+                </h2>
+              </div>
+              <p className="text-lg leading-9 text-[#667184]">
+                Эта структура помогает отделить точный интент страницы от соседних маршрутов и сохранить безопасный первый шаг.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {hardeningBlocks.map((block) => (
+                <article key={block.title} className="rounded-[8px] border border-[#16284414] bg-[#f7f3ea] p-5">
+                  <h3 className="text-xl font-black leading-tight text-[#111821]">{block.title}</h3>
+                  <ul className="mt-5 grid gap-3 text-sm leading-7 text-[#667184]">
+                    {block.items.map((item) => (
+                      <li key={item} className="flex gap-3">
+                        <span className="font-black text-[#c69a47]">✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {relatedRoutes.length > 0 ? (
+        <section className="section-pad bg-[#f7f3ea]" aria-labelledby={`related-${page.slug}`}>
+          <div className="container-premium">
+            <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+              <div>
+                <p className="eyebrow-line">Связанные маршруты</p>
+                <h2 id={`related-${page.slug}`} className="display-serif mt-5 text-4xl font-semibold leading-tight text-[#111821] md:text-6xl">
+                  Не смешиваем разные задачи
+                </h2>
+              </div>
+              <p className="text-lg leading-9 text-[#667184]">
+                Ссылки ведут на утверждённые страницы и помогают сохранить один основной интент на URL.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {relatedRoutes.map((relatedRoute) => (
+                <article
+                  key={relatedRoute.href}
+                  className="flex min-h-[220px] flex-col rounded-[8px] border border-[#16284414] bg-white/84 p-5 shadow-[0_18px_46px_rgba(22,40,68,0.08)]"
+                >
+                  <p className="text-[0.72rem] font-black uppercase tracking-[0.18em] text-[#c69a47]">
+                    {relatedRoute.kicker}
+                  </p>
+                  <h3 className="mt-4 text-2xl font-black leading-tight text-[#111821]">{relatedRoute.shortTitle}</h3>
+                  <p className="mt-4 flex-1 text-sm leading-7 text-[#667184]">{relatedRoute.description}</p>
+                  <Link
+                    href={relatedRoute.href}
+                    className="mt-6 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[#162844] px-4 py-2 text-sm font-black text-white"
+                  >
+                    Открыть маршрут
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {showDocumentsPlaceholder ? <ShowDocumentsPlaceholder /> : null}
     </main>
   );
 }

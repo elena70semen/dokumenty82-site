@@ -269,6 +269,34 @@ Must review route/component contracts and source-to-site traceability before ref
 
 Must review launch gates, QA evidence requirements, legal/privacy constraints and deployment runbooks before marking anything ready.
 
+### Stage 15 — source-led site foundation
+
+Must review and sync the Stage 15 source package before changing SEO/content structure, text standards, mobile layout rules or semantic/accessibility standards.
+
+Required Stage 15 source package:
+
+- `docs/strategy/stage-15-site-seo-content-structure-roadmap-v1.md`
+- `docs/strategy/stage-15-source-to-site-content-matrix-v1.md`
+- `docs/content/stage-15-text-quality-standards-v1.md`
+- `docs/frontend/stage-15-mobile-layout-standards-v1.md`
+- `docs/frontend/stage-15-semantic-markup-accessibility-standards-v1.md`
+
+### Stage 16 — selling, SEO and content assembly
+
+Must review and sync the Stage 16 source package before changing route semantics, selling blocks, lead paths, route implementation rules or transport gates.
+
+Required Stage 16 source package:
+
+- `docs/source-to-site/site-repo-stage-16-assembly-handoff-v1.md`
+- `docs/codex/site-repo-stage-16-assembly-master-prompt-v1.md`
+- `docs/content/stage-16-selling-page-block-library-v1.md`
+- `docs/seo/stage-16-route-group-semantic-coverage-v1.md`
+- `docs/ux/stage-16-lead-path-and-conversion-architecture-v1.md`
+- `docs/frontend/stage-16-route-implementation-checklist-v1.md`
+- `docs/source-to-site/transport-protocol-launch-gate-sync-v1.md`
+
+If a requested Stage 16 source file is missing from `dokumenty-dlya-biznesa`, record `MISSING_EXPECTED`. Do not invent replacement canon, page copy, service scope or design polish.
+
 ## Release rule
 
 The site can only move toward public live when both are true:
@@ -282,6 +310,6 @@ Even then, public live remains blocked unless final launch gates explicitly pass
 
 ## Current verdict
 
-`GO WITH CONDITIONS` for Stage 14A CI/build proof.
+`GO WITH CONDITIONS` for Stage 15/16 source-led foundation with public live blocked.
 
 `PUBLIC_LIVE_ALLOWED = false`.

@@ -54,6 +54,9 @@ jobs:
       - name: Check launch readiness
         run: npm run check:launch-readiness
 
+      - name: Check Stage 16 source-to-site guardrails
+        run: npm run check:stage16-source-to-site
+
       - name: Check finalization gates
         run: npm run check:finalization
 
