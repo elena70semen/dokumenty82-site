@@ -2,7 +2,7 @@
 
 Status: passed
 
-Files scanned: 90
+Files scanned: 95
 
 - envFiles: PASS
 - privateKeys: PASS

@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-06-12T14:36:57.564Z",
+  "generatedAt": "2026-06-12T17:18:42.769Z",
   "scannedFiles": [
     "out/index.html",
     "out/razbor-situacii/index.html",
@@ -38,6 +38,8 @@
     "components/Header.tsx",
     "components/JsonLd.tsx",
     "components/RevealController.tsx",
+    "components/analytics/SourceCapture.tsx",
+    "components/analytics/YandexMetrika.tsx",
     "components/brand/BrandBadge.tsx",
     "components/brand/BrandIcon.tsx",
     "components/forms/CallbackFormPlaceholder.tsx",
@@ -88,6 +90,9 @@
     "lib/brand/brand-tokens.ts",
     "lib/graphics-proof/graphics-proof-data.ts",
     "lib/home/home-page-data.ts",
+    "lib/integrations/analytics-config.ts",
+    "lib/integrations/analytics-events.ts",
+    "lib/integrations/source-capture.ts",
     "lib/routes/route-page-data.ts",
     "lib/seo/semantic-route-data.json",
     "lib/seo/semantic-route-data.ts",

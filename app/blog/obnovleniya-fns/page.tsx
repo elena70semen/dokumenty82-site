@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Обновления ФНС",
   description:
     "Будущий раздел обновлений ФНС и ИФНС для бизнеса. Раздел noindex: автоматическая публикация и индексация не включены.",
   alternates: {
-    canonical: "/blog/obnovleniya-fns/"
+    canonical: `${site.domain}/blog/obnovleniya-fns/`
   },
   robots: {
     index: false,

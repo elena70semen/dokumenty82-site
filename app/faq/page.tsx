@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { faq } from "@/lib/content";
+import { faq, site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "FAQ",
   description: "Частые вопросы о подготовке документов для бизнеса в Симферополе.",
   alternates: {
-    canonical: "/faq/"
+    canonical: `${site.domain}/faq/`
   },
   robots: {
     index: false,

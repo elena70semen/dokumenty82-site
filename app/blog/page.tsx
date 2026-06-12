@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { blogNewsCategories } from "@/lib/blog-news";
+import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Блог и новости",
   description:
     "Материалы, новости и обновления для бизнеса. Раздел готовится к запуску и пока закрыт от индексации.",
   alternates: {
-    canonical: "/blog/"
+    canonical: `${site.domain}/blog/`
   },
   robots: {
     index: false,
