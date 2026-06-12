@@ -107,4 +107,6 @@ Owner-authored Codex output receipts were treated as status evidence only. They 
 
 Stage 18J owner/legal review response intake is recorded as pending human review.
 
+Stage 18K may continue route quality hardening while review is pending, but Stage 18K evidence must remain local QA / owner-review preparation only. It must not be treated as approval for route copy, `/policy`, lead path, live integrations or public live.
+
 `PUBLIC_LIVE_ALLOWED = false`

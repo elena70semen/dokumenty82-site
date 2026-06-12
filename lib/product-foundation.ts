@@ -18,6 +18,8 @@ export type ProductFoundationRoute = {
   title: string;
   routeType: RouteType;
   indexed: boolean;
+  stage18kQualityStatus?: "READY_FOR_OWNER_REVIEW";
+  ownerReviewStatus?: "PENDING_HUMAN_REVIEW";
   routeIntent: string;
   whenFits: string[];
   whatWeCheck: string[];
@@ -90,6 +92,122 @@ const manualCoreRouteCopy: Record<
   }
 };
 
+type RouteQualityDepth = Partial<
+  Pick<ProductFoundationRoute, "whenFits" | "whatWeCheck" | "documentsData" | "howWorkStarts" | "notPromised" | "faqDirection" | "clientInformation">
+> & {
+  relatedRoutePaths?: string[];
+};
+
+const priorityRouteQualityDepthByPath: Record<string, RouteQualityDepth> = {
+  "/": {
+    whenFits: ["пользователь не знает точную страницу", "нужно выбрать направление без каталога услуг", "важны телефон, офис и безопасный первый шаг"],
+    whatWeCheck: ["какая тема главная", "есть ли конкретный документ или запрос", "какой хаб или точная страница не смешает интенты"],
+    documentsData: ["короткое описание ситуации", "тип письма, запроса или документа", "что уже есть без публичной загрузки"],
+    faqDirection: ["если маршрут неясен", "почему главная не каталог", "как безопасно показать документы"],
+    relatedRoutePaths: ["/razbor-situacii/", "/kontakty/", "/otchetnost/", "/bank-i-115-fz/", "/nalogi-i-rezhimy/"]
+  },
+  "/razbor-situacii/": {
+    whenFits: ["вопрос смешанный", "документ есть, но маршрут неясен", "нужно понять, что показать сначала"],
+    whatWeCheck: ["источник вопроса", "какая тема главная", "какие материалы нужны только после согласования"],
+    documentsData: ["текст письма или запроса", "краткие вводные по бизнесу", "перечень материалов без открытой загрузки"],
+    faqDirection: ["чем разбор отличается от услуги", "что показать на первом шаге", "куда перейти после разбора"],
+    relatedRoutePaths: ["/kontakty/", "/srochnye-voprosy/", "/otchetnost/", "/bank-i-115-fz/"]
+  },
+  "/kontakty/": {
+    whenFits: ["нужно позвонить", "нужно найти офис", "нужно согласовать показ документов"],
+    whatWeCheck: ["подтвержденный телефон", "подтвержденный адрес", "безопасный способ контакта"],
+    documentsData: ["тема вопроса", "название документа без чувствительных данных", "что уже есть на руках"],
+    faqDirection: ["как показать документы", "какие контакты подтверждены", "почему нет часов и офиса/этажа"],
+    relatedRoutePaths: ["/razbor-situacii/", "/policy", "/"]
+  },
+  "/policy": {
+    whenFits: ["нужно понять правила данных", "есть вопрос о безопасной передаче документов", "нужен контакт по privacy"],
+    whatWeCheck: ["не добавлены ли коммерческие обещания", "нет ли live endpoint или upload", "нужна ли отдельная legal/privacy правка"],
+    documentsData: ["тема обращения без персональных данных", "подтвержденный контакт", "способ передачи после согласования"],
+    faqDirection: ["можно ли отправлять документы", "куда обращаться по данным", "что требует owner/legal review"],
+    relatedRoutePaths: ["/kontakty/", "/razbor-situacii/"]
+  },
+  "/otchetnost/": {
+    whenFits: ["нужно выбрать отчетный маршрут", "неясно, УСН это, нулевая отчетность или восстановление", "есть требование ИФНС и нужен точный вход"],
+    whatWeCheck: ["форма бизнеса", "период", "были ли операции или пробелы в данных"],
+    documentsData: ["период вопроса", "режим, если известен", "какие отчетные материалы уже есть"],
+    faqDirection: ["как отличить декларацию от нулевой отчетности", "когда идти в восстановление учета", "что делать при требовании ИФНС"],
+    relatedRoutePaths: ["/deklaraciya-usn/", "/nulevaya-otchetnost-ooo/", "/nulevaya-otchetnost-ip/", "/vosstanovlenie-buhucheta/"]
+  },
+  "/bank-i-115-fz/": {
+    whenFits: ["банк прислал запрос", "нужно понять, это один ответ или пакет по 115-ФЗ", "банковский вопрос связан с документами по операции"],
+    whatWeCheck: ["формулировку банка", "операцию и контрагента", "какие подтверждения уже есть"],
+    documentsData: ["текст запроса", "договоры, акты или платежные материалы", "краткое описание деловой ситуации"],
+    faqDirection: ["ответ или пакет документов", "что показать сначала", "чего банк решает самостоятельно"],
+    relatedRoutePaths: ["/otvet-na-zapros-banka/", "/dokumenty-dlya-banka-115-fz/", "/srochnye-voprosy/"]
+  },
+  "/otvet-na-trebovanie-ifns/": {
+    whenFits: ["на руках конкретное требование", "нужно разобрать период и тему требования", "нужно понять, какие приложения относятся к ответу"],
+    whatWeCheck: ["формулировку требования", "период и налоговый вопрос", "какие документы подтверждают позицию"],
+    documentsData: ["требование или письмо", "документы по указанному периоду", "что уже отправлялось или готовилось"],
+    faqDirection: ["что указано в требовании", "какие документы относятся к вопросу", "что не обещается без просмотра материалов"],
+    relatedRoutePaths: ["/srochnye-voprosy/", "/otchetnost/", "/deklaraciya-usn/"]
+  },
+  "/deklaraciya-usn/": {
+    whenFits: ["вопрос именно по декларации УСН", "известен период", "нужно понять, какие исходные данные подготовить"],
+    whatWeCheck: ["период декларации", "режим и форма бизнеса", "доходы, расходы и исходные материалы на уровне категорий"],
+    documentsData: ["данные по периоду", "учетные материалы на руках", "письма или требования, если они связаны с декларацией"],
+    faqDirection: ["какой период нужен", "чем отличается от нулевой отчетности", "что остается на проверке"],
+    relatedRoutePaths: ["/otchetnost/", "/nulevaya-otchetnost-ooo/", "/nulevaya-otchetnost-ip/", "/vosstanovlenie-buhucheta/"]
+  },
+  "/otvet-na-zapros-banka/": {
+    whenFits: ["банк прислал конкретные пункты", "нужно подготовить пояснения по операции", "нужно отделить ответ от широкого пакета 115-ФЗ"],
+    whatWeCheck: ["текст запроса", "операцию и контрагента", "какие документы прямо относятся к пунктам банка"],
+    documentsData: ["запрос банка", "договоры, акты или платежные материалы", "краткое описание деловой ситуации"],
+    faqDirection: ["что просит банк", "какие материалы относятся к запросу", "чем отличается от пакета по 115-ФЗ"],
+    relatedRoutePaths: ["/bank-i-115-fz/", "/dokumenty-dlya-banka-115-fz/", "/srochnye-voprosy/"]
+  },
+  "/dokumenty-dlya-banka-115-fz/": {
+    whenFits: ["вопрос шире одного банковского письма", "нужен пакет подтверждений по деятельности", "нужно собрать материалы по операции или контрагенту"],
+    whatWeCheck: ["какая деловая ситуация объясняется", "какие подтверждения уже есть", "какой объем не стоит называть универсальным"],
+    documentsData: ["операции и контрагенты", "договоры, акты, счета или платежи как категории", "пояснения по деловой цели"],
+    faqDirection: ["что входит в пакет по ситуации", "чем пакет отличается от ответа", "чего нельзя обещать по решению банка"],
+    relatedRoutePaths: ["/bank-i-115-fz/", "/otvet-na-zapros-banka/", "/srochnye-voprosy/"]
+  },
+  "/yuridicheskiy-adres-simferopol/": {
+    whenFits: ["нужен маршрут по юридическому адресу", "адрес связан с регистрацией или изменениями", "нужно понять документы по адресу без неподтвержденных деталей"],
+    whatWeCheck: ["текущие сведения компании", "какой адресный вопрос решается", "какие подтверждающие материалы есть"],
+    documentsData: ["документы по адресу", "выписка или сведения компании, если они есть", "описание связи с регистрацией или изменением"],
+    faqDirection: ["юридический адрес или смена адреса", "какие документы по адресу", "почему не обещается результат регистрации"],
+    relatedRoutePaths: ["/adres-egryul-direktor/", "/nedostovernost-yuridicheskogo-adresa/", "/smena-yuridicheskogo-adresa-ooo/"]
+  },
+  "/nedostovernost-yuridicheskogo-adresa/": {
+    whenFits: ["появилась отметка или риск по адресу", "нужно понять источник проблемы", "нужно отделить проверку от смены адреса"],
+    whatWeCheck: ["где появилась отметка или риск", "текущие сведения ЕГРЮЛ", "какие документы относятся к адресу"],
+    documentsData: ["выписка или уведомление", "документы по адресу", "краткое описание уже предпринятых действий"],
+    faqDirection: ["где появилась отметка", "когда нужна смена адреса", "чего нельзя обещать по снятию риска"],
+    relatedRoutePaths: ["/adres-egryul-direktor/", "/yuridicheskiy-adres-simferopol/", "/smena-yuridicheskogo-adresa-ooo/"]
+  },
+  "/registraciya-ooo/": {
+    whenFits: ["нужно открыть ООО", "есть вопрос по участникам, адресу или деятельности", "нужно собрать стартовый комплект без обещания регистрации"],
+    whatWeCheck: ["участников и исходные сведения", "адресный вопрос", "виды деятельности и связанные налоговые вопросы как вводные"],
+    documentsData: ["краткое описание будущего ООО", "сведения, которые уже подготовлены", "адресный или налоговый вопрос, если он есть"],
+    faqDirection: ["ООО или ИП", "что подготовить на первом шаге", "как связан юридический адрес"],
+    relatedRoutePaths: ["/registraciya-i-likvidaciya/", "/registraciya-ip/", "/yuridicheskiy-adres-simferopol/"]
+  },
+  "/registraciya-ip/": {
+    whenFits: ["нужно открыть ИП", "есть вопрос по деятельности или режиму", "нужно понять стартовые сведения без налогового вывода"],
+    whatWeCheck: ["вид деятельности", "исходные сведения", "нужен ли отдельный налоговый или режимный маршрут"],
+    documentsData: ["краткое описание деятельности", "стартовые сведения", "вопрос по режиму, если он уже есть"],
+    faqDirection: ["ИП или ООО", "какие сведения подготовить", "когда смотреть налоговый режим"],
+    relatedRoutePaths: ["/registraciya-i-likvidaciya/", "/registraciya-ooo/", "/nalogi-i-rezhimy/"]
+  },
+  "/vosstanovlenie-buhucheta/": {
+    whenFits: ["есть пробелы в учете", "нужно понять периоды и недостающие документы", "вопрос может перейти в отчетность или сопровождение"],
+    whatWeCheck: ["периоды с пробелами", "какие документы уже собраны", "какие требования или письма связаны с восстановлением"],
+    documentsData: ["имеющиеся учетные материалы", "список периодов с вопросами", "письма или требования, если они есть"],
+    faqDirection: ["какие периоды проверить", "что делать при неполном комплекте", "чем восстановление отличается от сопровождения"],
+    relatedRoutePaths: ["/otchetnost/", "/deklaraciya-usn/", "/soprovozhdenie/"]
+  }
+};
+
+export const stage18kPriorityRoutes = Object.keys(priorityRouteQualityDepthByPath);
+
 const defaultBoundariesByType: Partial<Record<RouteType, string[]>> = {
   home: ["полный каталог вместо маршрута", "результат без изучения вводных", "живую отправку формы"],
   core: ["замену отдельной подготовки документов", "результат без исходных данных", "публичную загрузку файлов"],
@@ -156,6 +274,7 @@ function getActionSet(path: string, page?: RoutePage): ProductFoundationAction[]
 function buildFoundation(path: string): ProductFoundationRoute | null {
   const manifest = findManifest(path);
   const semantic = semanticRouteDataByPath[path];
+  const qualityDepth = priorityRouteQualityDepthByPath[path];
 
   if (!manifest || !manifest.approvedInRouteRegistry) return null;
 
@@ -174,6 +293,7 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
 
   const whenFits = firstItems(
     [
+      ...(qualityDepth?.whenFits ?? []),
       ...(manual?.whenFits ?? []),
       ...(dynamicPage?.bullets ?? []),
       ...(staticPage?.situation.items.map((item) => item.title) ?? []),
@@ -185,6 +305,7 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
 
   const whatWeCheck = firstItems(
     [
+      ...(qualityDepth?.whatWeCheck ?? []),
       ...(manual?.whatWeCheck ?? []),
       ...(dynamicPage?.whatWeCheck ?? []),
       ...(staticPage?.scope.included ?? []),
@@ -195,6 +316,7 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
 
   const documentsData = firstItems(
     [
+      ...(qualityDepth?.documentsData ?? []),
       ...(manual?.documentsData ?? []),
       ...(dynamicPage?.documentsOrData ?? []),
       ...(staticPage?.documents.items.map((item) => item.title) ?? []),
@@ -205,6 +327,7 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
 
   const howWorkStarts = firstItems(
     [
+      ...(qualityDepth?.howWorkStarts ?? []),
       ...(manual?.howWorkStarts ?? []),
       ...(dynamicPage?.howWorkStarts ?? []),
       ...(staticPage?.process.steps.map((step) => step.title) ?? [])
@@ -214,6 +337,7 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
 
   const notPromised = firstItems(
     [
+      ...(qualityDepth?.notPromised ?? []),
       ...(manual?.notPromised ?? []),
       ...(dynamicPage?.notPromised ?? []),
       ...(staticPage?.scope.boundaries ?? []),
@@ -223,6 +347,7 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
   );
 
   const relatedPaths = unique([
+    ...(qualityDepth?.relatedRoutePaths ?? []),
     ...(dynamicPage?.relatedHrefs ?? []),
     ...(manifest.relatedPaths ?? []),
     ...(semantic?.relatedRoutes ?? []),
@@ -231,6 +356,7 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
 
   const faqDirection = firstItems(
     [
+      ...(qualityDepth?.faqDirection ?? []),
       ...(manual?.faqDirection ?? []),
       ...(dynamicPage?.faqTopics ?? []),
       ...(manifest.faqTopics ?? []),
@@ -241,6 +367,7 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
 
   const clientInformation = firstItems(
     [
+      ...(qualityDepth?.clientInformation ?? []),
       ...(manual?.clientInformation ?? []),
       `Можно начать с краткого описания: ${routeIntent.toLocaleLowerCase("ru-RU")}.`,
       "Чувствительные материалы не передаются через публичную загрузку.",
@@ -254,6 +381,8 @@ function buildFoundation(path: string): ProductFoundationRoute | null {
     title,
     routeType,
     indexed: manifest.indexing === "index",
+    stage18kQualityStatus: qualityDepth ? "READY_FOR_OWNER_REVIEW" : undefined,
+    ownerReviewStatus: qualityDepth ? "PENDING_HUMAN_REVIEW" : undefined,
     routeIntent,
     whenFits,
     whatWeCheck,
