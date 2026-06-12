@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checkedAt": "2026-06-12T11:05:52.017Z",
+  "checkedAt": "2026-06-12T11:56:47.673Z",
   "requiredHomeBlocks": [
     "situation_selector",
     "start_path",
@@ -17,6 +17,7 @@
     "/bank-i-115-fz/",
     "/adres-egryul-direktor/",
     "/registraciya-i-likvidaciya/",
+    "/nalogi-i-rezhimy/",
     "/kadry/",
     "/soprovozhdenie/",
     "/kontakty/"

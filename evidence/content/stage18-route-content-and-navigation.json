@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-06-12T11:56:48.038Z",
+  "indexedRoutes": 36,
+  "noindexFoundationRoutes": [
+    "/blog/",
+    "/blog/obnovleniya-fns/",
+    "/blog/razbory/"
+  ],
+  "requiredTopLevelNavigation": [
+    {
+      "label": "Разбор ситуации",
+      "href": "/razbor-situacii/"
+    },
+    {
+      "label": "Отчётность",
+      "href": "/otchetnost/"
+    },
+    {
+      "label": "Банк и 115-ФЗ",
+      "href": "/bank-i-115-fz/"
+    },
+    {
+      "label": "Адрес и ЕГРЮЛ",
+      "href": "/adres-egryul-direktor/"
+    },
+    {
+      "label": "Регистрация",
+      "href": "/registraciya-i-likvidaciya/"
+    },
+    {
+      "label": "Налоги и режимы",
+      "href": "/nalogi-i-rezhimy/"
+    },
+    {
+      "label": "Кадры",
+      "href": "/kadry/"
+    },
+    {
+      "label": "Сопровождение",
+      "href": "/soprovozhdenie/"
+    },
+    {
+      "label": "Контакты",
+      "href": "/kontakty/"
+    }
+  ],
+  "requiredProductBlockFamilies": [
+    "route_intent",
+    "when_this_page_fits",
+    "what_we_check",
+    "documents_data_needed",
+    "how_work_starts",
+    "what_is_not_promised",
+    "related_routes",
+    "faq_direction",
+    "safe_final_cta",
+    "client_information"
+  ],
+  "sourceSyncedDocs": [
+    "docs/content/stage-18h-route-copy-block-quality-plan-v1.md",
+    "docs/ux/stage-18h-navigation-menu-and-route-flow-plan-v1.md"
+  ],
+  "publicLiveAllowed": false,
+  "ownerLegalStatus": "PENDING_HUMAN_REVIEW",
+  "launchVerdict": "NOT_PUBLIC_LIVE_READY",
+  "issues": []
+}

@@ -56,7 +56,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       aria-current={current ? "page" : undefined}
-                        className={`flex min-h-10 items-center rounded-[6px] px-2.5 text-xs font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
+                      className={`flex min-h-10 items-center whitespace-nowrap rounded-[6px] px-2.5 text-xs font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
                         current ? "bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)] shadow-sm" : "text-[color:var(--text-secondary)] hover:bg-[var(--surface-raised)] hover:text-[color:var(--surface-dark-strong)]"
                       }`}
                     >
@@ -99,7 +99,7 @@ export function Header() {
                         <Link
                           href={item.href}
                           aria-current={current ? "page" : undefined}
-                          className={`block rounded-[8px] px-4 py-3 font-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
+                          className={`block rounded-[8px] px-4 py-3 font-black leading-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
                             current ? "bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)]" : "text-[color:var(--text-secondary)]"
                           }`}
                         >

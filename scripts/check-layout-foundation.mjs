@@ -11,6 +11,7 @@ const requiredNavRoutes = [
   "/bank-i-115-fz/",
   "/adres-egryul-direktor/",
   "/registraciya-i-likvidaciya/",
+  "/nalogi-i-rezhimy/",
   "/kadry/",
   "/soprovozhdenie/",
   "/kontakty/"

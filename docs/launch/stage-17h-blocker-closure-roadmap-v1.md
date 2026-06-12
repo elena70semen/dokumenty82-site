@@ -34,6 +34,7 @@ It does not close any blocker by itself. All blockers remain incomplete unless r
 - Source Stage 16 docs are now resolved for semantic service map, selling SEO content architecture, page block blueprints and client need hooks/lead path, but this does not approve public copy or launch.
 - Stage 18A semantic SEO docs, route data and local evidence strengthen route semantics, but they do not close owner/legal, Search Console/Yandex Webmaster, staging, rollback, transport or public-live blockers.
 - Stage 18B/C/D/E product foundation docs, route/homepage/layout implementation and local evidence strengthen public site readiness, but they do not close owner/legal, CRM/forms/analytics, Search Console/Yandex Webmaster, staging, rollback, transport or public-live blockers.
+- Stage 18H route content/navigation docs, menu hardening and local evidence strengthen route flow for review, but they do not close owner/legal, route copy, `/policy`, CRM/forms/analytics, Search Console/Yandex Webmaster, staging, rollback, transport or public-live blockers.
 - Owner/legal acceptance remains `MISSING_EXPECTED`.
 - CRM/forms/analytics acceptance remains `MISSING_EXPECTED`.
 - Staging, rollback and transport proof remain `MISSING_EXPECTED`.

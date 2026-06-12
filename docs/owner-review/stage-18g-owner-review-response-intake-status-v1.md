@@ -51,6 +51,8 @@ No explicit approval was found for:
 - Search Console/Yandex Webmaster setup;
 - public-live go/no-go.
 
+Stage 18H route content/navigation hardening may prepare stronger review materials, but it does not convert any pending review item into approval.
+
 ## Current Decision Records
 
 | Decision area | Current status | Evidence basis |
@@ -80,6 +82,7 @@ No explicit approval was found for:
 - owner/legal acceptance;
 - `/policy` acceptance;
 - route copy approval for 36 indexed routes;
+- Stage 18H route content/navigation hardening remains local QA evidence only;
 - CRM/forms acceptance;
 - analytics/Metrica/no-PII proof;
 - staging proof;
