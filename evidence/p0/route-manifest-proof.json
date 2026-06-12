@@ -3,8 +3,8 @@
     "lib/routes.ts",
     "lib/content.ts"
   ],
-  "totalManifestEntries": 34,
-  "approvedIndexableRouteCount": 29,
+  "totalManifestEntries": 35,
+  "approvedIndexableRouteCount": 30,
   "approvedIndexableRoutes": [
     "/",
     "/razbor-situacii/",
@@ -23,6 +23,7 @@
     "/deklaraciya-usn/",
     "/nulevaya-otchetnost-ooo/",
     "/nulevaya-otchetnost-ip/",
+    "/vosstanovlenie-buhucheta/",
     "/otvet-na-zapros-banka/",
     "/dokumenty-dlya-banka-115-fz/",
     "/yuridicheskiy-adres-simferopol/",

@@ -27,9 +27,9 @@ Paid traffic verdict: `BLOCKS_PAID_TRAFFIC`
 
 ## Results
 
-- Route manifest entries parsed: 34.
+- Route manifest entries parsed: 35.
 - P0 routes present in manifest: 14/14.
-- Sitemap URLs: 29.
+- Sitemap URLs: 30.
 - Rendered routes with one H1: 14/14.
 - Routes with title, description and canonical: 14/14.
 - Routes with safe collector/contact path: 14/14.
