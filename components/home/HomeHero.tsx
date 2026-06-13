@@ -15,7 +15,7 @@ export function HomeHero() {
     >
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(198,255,0,0.52),transparent)]" aria-hidden="true" />
 
-      <div className="container-premium grid min-h-[calc(78vh-88px)] gap-10 pb-14 lg:min-h-[calc(86vh-88px)] lg:grid-cols-[1fr_0.82fr] lg:items-center">
+      <div className="container-premium grid gap-9 pb-12 lg:min-h-[calc(86vh-88px)] lg:grid-cols-[1fr_0.82fr] lg:items-center lg:gap-10 lg:pb-14">
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-3 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-4 py-3 text-sm font-black text-[color:var(--lime-signal)]">
             <BrandIcon name="location" size={20} />

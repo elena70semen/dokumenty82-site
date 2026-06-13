@@ -159,20 +159,20 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
       <section className="section-pad">
         <div className="container-premium grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="reveal-block" data-reveal="left">
-            <nav className="mb-8 flex max-w-full flex-wrap gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
-              <Link href="/" className="text-[#245da7]">
+            <nav className="mb-8 flex max-w-full flex-wrap items-center gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
+              <Link href="/" className="inline-flex min-h-10 items-center rounded-[8px] text-[#245da7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#245da7]">
                 Главная
               </Link>
               {parent ? (
                 <>
                   <span>/</span>
-                  <Link href={parent.href} className="text-[#245da7]">
+                  <Link href={parent.href} className="inline-flex min-h-10 items-center rounded-[8px] text-[#245da7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#245da7]">
                     {parent.shortTitle}
                   </Link>
                 </>
               ) : null}
               <span>/</span>
-              <span aria-current="page" className="min-w-0 break-words text-[#111821]">
+              <span aria-current="page" className="inline-flex min-h-10 min-w-0 items-center break-words text-[#111821]">
                 {page.shortTitle}
               </span>
             </nav>
@@ -275,7 +275,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
 
             <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {hardeningBlocks.map((block) => (
-                <article key={block.title} className="flex h-full min-w-0 flex-col rounded-[8px] border border-[#16284414] bg-[#f7f3ea] p-5">
+                <article key={block.title} className="flex h-full min-w-0 flex-col rounded-[8px] border border-[#16284414] bg-[#f7f3ea] p-5 md:min-h-[220px]">
                   <h3 className="text-xl font-black leading-tight text-[#111821]">{block.title}</h3>
                   <ul className="mt-5 grid flex-1 gap-3 text-sm leading-7 text-[#667184]">
                     {block.items.map((item) => (
@@ -313,7 +313,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               {relatedRoutes.map((relatedRoute) => (
                 <article
                   key={relatedRoute.href}
-                  className="flex min-h-[220px] min-w-0 flex-col rounded-[8px] border border-[#16284414] bg-white/84 p-5 shadow-[0_18px_46px_rgba(22,40,68,0.08)]"
+                  className="flex min-w-0 flex-col rounded-[8px] border border-[#16284414] bg-white/84 p-5 shadow-[0_18px_46px_rgba(22,40,68,0.08)] md:min-h-[220px]"
                 >
                   <p className="text-[0.72rem] font-black uppercase tracking-[0.18em] text-[#c69a47]">
                     {relatedRoute.kicker}

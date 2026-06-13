@@ -31,7 +31,7 @@ export function HomeRouteCards() {
           {homeRouteCards.map((card, index) => (
             <article
               key={card.title}
-              className={`group flex min-h-[292px] min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)] ${
+              className={`group flex min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)] md:min-h-[292px] ${
                 index === 0 ? "xl:col-span-2" : ""
               }`}
             >

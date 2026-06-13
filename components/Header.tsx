@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { homeNavigation } from "@/lib/home/home-page-data";
 import { site } from "@/lib/content";
@@ -16,6 +17,11 @@ function isCurrentPath(pathname: string, href: string) {
 
 export function Header() {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  function closeMobileMenu() {
+    setMobileMenuOpen(false);
+  }
 
   return (
     <header className="fixed left-0 right-0 top-3 z-50 px-4">
@@ -83,12 +89,25 @@ export function Header() {
             </a>
           </div>
 
-          <details className="group justify-self-end 2xl:hidden">
-            <summary className="grid size-12 cursor-pointer place-items-center rounded-[8px] bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)] shadow-sm transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]">
-              <span className="sr-only">Открыть навигацию</span>
+          <details
+            className="group justify-self-end 2xl:hidden"
+            open={mobileMenuOpen}
+            onToggle={(event) => setMobileMenuOpen(event.currentTarget.open)}
+            data-mobile-menu="true"
+          >
+            <summary
+              className="grid size-12 cursor-pointer place-items-center rounded-[8px] bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)] shadow-sm transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+              aria-controls="mobile-navigation-panel"
+              aria-expanded={mobileMenuOpen}
+            >
+              <span className="sr-only">{mobileMenuOpen ? "Закрыть навигацию" : "Открыть навигацию"}</span>
               <BrandIcon name="route" size={24} />
             </summary>
-            <div className="fixed left-4 right-4 top-[92px] grid max-h-[calc(100vh-112px)] gap-3 overflow-y-auto overscroll-contain rounded-[8px] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-panel)]">
+            <div
+              id="mobile-navigation-panel"
+              className="fixed left-4 right-4 top-[92px] grid max-h-[calc(100svh-112px)] gap-3 overflow-y-auto overscroll-contain rounded-[8px] border border-[var(--line)] bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[var(--shadow-panel)]"
+              data-mobile-menu-panel="true"
+            >
               <p className="rounded-[8px] bg-[var(--paper-soft)] px-4 py-3 text-sm font-bold leading-6 text-[color:var(--text-secondary)]">
                 Если не уверены, с чего начать, откройте разбор ситуации или позвоните.
               </p>
@@ -102,9 +121,10 @@ export function Header() {
                         <Link
                           href={item.href}
                           aria-current={current ? "page" : undefined}
-                          className={`block rounded-[8px] px-4 py-3 font-black leading-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
+                          className={`flex min-h-12 items-center rounded-[8px] px-4 py-3 font-black leading-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
                             current ? "bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)]" : "text-[color:var(--text-secondary)]"
                           }`}
+                          onClick={closeMobileMenu}
                         >
                           {item.label}
                         </Link>
@@ -116,19 +136,22 @@ export function Header() {
               <div className="grid gap-2 border-t border-[var(--line)] pt-3 sm:grid-cols-3">
                 <Link
                   href="/razbor-situacii/"
-                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  onClick={closeMobileMenu}
                 >
                   Разобрать ситуацию
                 </Link>
                 <a
                   href={site.phoneHref}
-                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  onClick={closeMobileMenu}
                 >
                   {site.phone}
                 </a>
                 <Link
                   href="/kontakty/"
-                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  onClick={closeMobileMenu}
                 >
                   Построить маршрут
                 </Link>

@@ -31,14 +31,14 @@ export function Footer() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-[8px] py-1 transition hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+                className="inline-flex min-h-10 items-center rounded-[8px] py-1 transition hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
               >
                 {item.label}
               </Link>
             ))}
             <Link
               href="/policy"
-              className="rounded-[8px] py-1 transition hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              className="inline-flex min-h-10 items-center rounded-[8px] py-1 transition hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
             >
               Политика конфиденциальности
             </Link>
@@ -53,7 +53,7 @@ export function Footer() {
             <p>
               <a
                 href={homeFooter.phoneHref}
-                className="inline-flex items-center gap-2 text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+                className="inline-flex min-h-10 items-center gap-2 rounded-[8px] text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
               >
                 <BrandIcon name="phone" size={16} />
                 {homeFooter.phone}
@@ -66,19 +66,19 @@ export function Footer() {
           <div className="mt-4 grid gap-2 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             <a
               href={homeFooter.phoneHref}
-              className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-4 py-2 text-sm font-black text-[color:var(--lime-text)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-4 py-2 text-sm font-black text-[color:var(--lime-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
             >
               Позвонить
             </a>
             <Link
               href="/kontakty/"
-              className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
             >
               Построить маршрут
             </Link>
             <Link
               href="/razbor-situacii/"
-              className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
             >
               Разобрать ситуацию
             </Link>

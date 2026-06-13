@@ -87,12 +87,12 @@ export default function PolicyPage() {
       <section className="section-pad">
         <div className="container-premium grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <div className="reveal-block" data-reveal="left">
-            <nav className="mb-8 flex flex-wrap gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
-              <Link href="/" className="text-[#245da7]">
+            <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
+              <Link href="/" className="inline-flex min-h-10 items-center rounded-[8px] text-[#245da7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#245da7]">
                 Главная
               </Link>
               <span>/</span>
-              <span>Политика конфиденциальности</span>
+              <span className="inline-flex min-h-10 items-center">Политика конфиденциальности</span>
             </nav>
             <p className="eyebrow-line">Данные и документы</p>
             <h1 className="display-serif mt-6 max-w-full text-[1.82rem] font-semibold leading-[1.12] text-[#111821] [overflow-wrap:anywhere] sm:text-[2.35rem] sm:leading-[1.02] xl:text-7xl xl:leading-[0.98]">
@@ -206,9 +206,11 @@ export default function PolicyPage() {
           </div>
           <div className="grid gap-3">
             {faqItems.map((item, index) => (
-              <details key={item.question} open={index === 0} className="reveal-block rounded-[8px] border border-[#16284414] bg-white/82 p-6 shadow-[0_18px_50px_rgba(22,40,68,0.08)]" data-reveal="right">
-                <summary className="cursor-pointer text-lg font-black leading-tight text-[#111821]">{item.question}</summary>
-                <p className="mt-4 leading-8 text-[#667184]">{item.answer}</p>
+              <details key={item.question} open={index === 0} className="reveal-block rounded-[8px] border border-[#16284414] bg-white/82 shadow-[0_18px_50px_rgba(22,40,68,0.08)]" data-reveal="right">
+                <summary className="flex min-h-12 cursor-pointer items-center rounded-[8px] px-6 py-4 text-lg font-black leading-tight text-[#111821] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#245da7]">
+                  {item.question}
+                </summary>
+                <p className="px-6 pb-6 pt-1 leading-8 text-[#667184]">{item.answer}</p>
               </details>
             ))}
           </div>

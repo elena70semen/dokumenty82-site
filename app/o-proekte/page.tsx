@@ -26,12 +26,12 @@ export default function AboutProjectPage() {
       <section className="section-pad">
         <div className="container-premium grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="reveal-block" data-reveal="left">
-            <nav className="mb-8 flex max-w-full flex-wrap gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
-              <Link href="/" className="text-[#245da7]">
+            <nav className="mb-8 flex max-w-full flex-wrap items-center gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
+              <Link href="/" className="inline-flex min-h-10 items-center rounded-[8px] text-[#245da7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#245da7]">
                 Главная
               </Link>
               <span>/</span>
-              <span aria-current="page" className="min-w-0 break-words text-[#111821]">
+              <span aria-current="page" className="inline-flex min-h-10 min-w-0 items-center break-words text-[#111821]">
                 О проекте
               </span>
             </nav>

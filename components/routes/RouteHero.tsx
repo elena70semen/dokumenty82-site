@@ -83,14 +83,14 @@ export function RouteHero({ hero, pageKind, pageSlug, pageType, leadTopic }: Rou
     >
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(198,255,0,0.52),transparent)]" aria-hidden="true" />
 
-      <div className="container-premium grid min-h-[calc(78vh-88px)] gap-10 pb-14 lg:grid-cols-[1.02fr_0.88fr] lg:items-center">
+      <div className="container-premium grid gap-9 pb-12 lg:min-h-[calc(78vh-88px)] lg:grid-cols-[1.02fr_0.88fr] lg:items-center lg:gap-10 lg:pb-14">
         <div className="max-w-3xl">
-          <nav className="mb-7 flex max-w-full flex-wrap gap-2 text-sm font-black text-[color:var(--text-inverse-muted)]" aria-label="Контекст маршрута">
-            <Link href="/" className="text-[color:var(--lime-signal)]">
+          <nav className="mb-7 flex max-w-full flex-wrap items-center gap-2 text-sm font-black text-[color:var(--text-inverse-muted)]" aria-label="Контекст маршрута">
+            <Link href="/" className="inline-flex min-h-10 items-center rounded-[8px] text-[color:var(--lime-signal)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]">
               Главная
             </Link>
             <span>/</span>
-            <span aria-current="page" className="min-w-0 break-words">
+            <span aria-current="page" className="inline-flex min-h-10 min-w-0 items-center break-words">
               {hero.eyebrow}
             </span>
           </nav>

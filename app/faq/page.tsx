@@ -43,9 +43,11 @@ export default function FaqPage() {
           </div>
           <div className="grid gap-3">
             {faq.map((item, index) => (
-              <details key={item.question} open={index === 0} className="reveal-block rounded-[8px] border border-[#16284414] bg-white/82 p-6 shadow-[0_18px_50px_rgba(22,40,68,0.08)]" data-reveal="right">
-                <summary className="cursor-pointer text-lg font-black text-[#111821]">{item.question}</summary>
-                <p className="mt-4 leading-8 text-[#667184]">{item.answer}</p>
+              <details key={item.question} open={index === 0} className="reveal-block rounded-[8px] border border-[#16284414] bg-white/82 shadow-[0_18px_50px_rgba(22,40,68,0.08)]" data-reveal="right">
+                <summary className="flex min-h-12 cursor-pointer items-center rounded-[8px] px-6 py-4 text-lg font-black leading-tight text-[#111821] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#245da7]">
+                  {item.question}
+                </summary>
+                <p className="px-6 pb-6 pt-1 leading-8 text-[#667184]">{item.answer}</p>
               </details>
             ))}
           </div>

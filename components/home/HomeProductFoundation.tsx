@@ -30,7 +30,7 @@ export function HomeProductFoundation() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex min-h-[218px] min-w-0 flex-col rounded-[8px] border bg-white/88 p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
+              className={`flex min-w-0 flex-col rounded-[8px] border bg-white/88 p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] md:min-h-[218px] ${
                 index === 0 || item.href === "/razbor-situacii/" ? "border-[var(--accent-blue-border)] xl:col-span-2" : "border-[var(--line)]"
               }`}
               data-analytics-goal={analyticsGoalNames.relatedRouteClick}
@@ -88,9 +88,11 @@ export function HomeProductFoundation() {
             <h3 className="text-2xl font-black text-[color:var(--text-primary)]">FAQ первого шага</h3>
             <div className="mt-6 grid gap-3">
               {homeFaq.map((item, index) => (
-                <details key={item.question} open={index === 0} className="rounded-[8px] border border-[var(--line)] bg-white p-4">
-                  <summary className="cursor-pointer text-base font-black text-[color:var(--text-primary)]">{item.question}</summary>
-                  <p className="mt-3 text-sm leading-7 text-[color:var(--text-secondary)]">{item.answer}</p>
+                <details key={item.question} open={index === 0} className="rounded-[8px] border border-[var(--line)] bg-white">
+                  <summary className="flex min-h-12 cursor-pointer items-center rounded-[8px] px-4 py-3 text-base font-black leading-tight text-[color:var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]">
+                    {item.question}
+                  </summary>
+                  <p className="px-4 pb-4 pt-1 text-sm leading-7 text-[color:var(--text-secondary)]">{item.answer}</p>
                 </details>
               ))}
             </div>

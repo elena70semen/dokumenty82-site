@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "timestamp": "2026-06-13T08:11:35.954Z",
+  "timestamp": "2026-06-13T08:23:11.279Z",
   "git": {
-    "branch": "stage20/yandex-seo-metadata-breadcrumbs",
-    "commit": "3b477f6"
+    "branch": "stage20/mobile-layout-readability-accessibility",
+    "commit": "422bb3d"
   },
   "envExamplePath": ".env.example",
   "publicLiveAllowed": false,
@@ -34,7 +34,7 @@
   "realEnvFilesCommitted": [],
   "secretsScan": {
     "status": "passed",
-    "filesCheckedCount": 133,
+    "filesCheckedCount": 134,
     "checkedAreas": [
       ".env.example",
       ".github/workflows",

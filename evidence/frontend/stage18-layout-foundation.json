@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checkedAt": "2026-06-13T08:11:42.970Z",
+  "checkedAt": "2026-06-13T08:23:18.321Z",
   "requiredNavRoutes": [
     "/razbor-situacii/",
     "/otchetnost/",
@@ -17,6 +17,16 @@
     "footer": true,
     "skipLink": true,
     "mobileNav": true
+  },
+  "stage20eMobileUx": {
+    "menuStateControlled": true,
+    "menuPanelSmallViewportBounded": true,
+    "menuLinksCloseOnNavigation": true,
+    "footerTouchTargets": true,
+    "localContactTouchTargets": true,
+    "breadcrumbTouchTargets": true,
+    "faqTouchTargets": true,
+    "desktopOnlyTallHero": true
   },
   "issues": []
 }

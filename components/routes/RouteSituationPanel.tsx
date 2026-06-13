@@ -29,7 +29,7 @@ export function RouteSituationPanel({ section }: RouteSituationPanelProps) {
           {section.items.map((item) => (
             <article
               key={item.title}
-              className="group flex min-h-[250px] min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)]"
+              className="group flex min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)] md:min-h-[250px]"
             >
               <div className="flex items-start justify-between gap-4">
                 <BrandBadge kind={item.badgeKind} label="Ситуация" icon={item.icon} size={48} />
