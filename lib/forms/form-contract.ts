@@ -1,5 +1,3 @@
-import { attributionParamKeys } from "@/lib/tracking/event-context";
-
 export const formsLive = false;
 
 export const formVisibleFieldIds = [
@@ -20,7 +18,14 @@ export const formVisibleFieldIds = [
 ] as const;
 
 export const formHiddenAttributionFieldIds = [
-  ...attributionParamKeys,
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "yclid",
+  "ysclid",
+  "from",
   "page_slug",
   "page_type",
   "cta_label",
