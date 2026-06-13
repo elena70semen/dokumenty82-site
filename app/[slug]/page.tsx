@@ -210,7 +210,9 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
           </article>
         </div>
       </section>
-      {p0ShowDocumentsPlaceholderSlugs.has(page.slug) ? <ShowDocumentsPlaceholder /> : null}
+      {p0ShowDocumentsPlaceholderSlugs.has(page.slug) ? (
+        <ShowDocumentsPlaceholder pageSlug={page.slug} pageType={page.pageType} leadTopic={page.leadTopic ?? page.slug} />
+      ) : null}
     </main>
   );
 }
