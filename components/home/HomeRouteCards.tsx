@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { BrandBadge } from "@/components/brand/BrandBadge";
 import { BrandIcon } from "@/components/brand/BrandIcon";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { homeRouteCards } from "@/lib/home/home-page-data";
 import { brandTokens } from "@/lib/brand/brand-tokens";
 
@@ -41,12 +41,20 @@ export function HomeRouteCards() {
                 <p className="mt-4 flex-1 text-base leading-7 text-[color:var(--text-secondary)]">{card.copy}</p>
                 <div className="mt-6 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-4">
                   <span className="text-sm font-bold text-[color:var(--text-muted)]">{card.nextStep}</span>
-                  <Link
+                  <TrackedAction
                     href={card.href}
                     className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                    pageSlug="home"
+                    pageType="home"
+                    ctaLabel="Разобрать ситуацию"
+                    ctaLocation="home_route_card"
+                    leadTopic={card.href.replace(/^\//, "").replace(/\/$/, "") || "home"}
+                    collectorType="related_route"
+                    fromPageSlug="home"
+                    toPageSlug={card.href}
                   >
                     Разобрать ситуацию
-                  </Link>
+                  </TrackedAction>
                 </div>
               </div>
             </article>
