@@ -17,15 +17,15 @@ type RoutePageProps = {
 export function RoutePage({ page }: RoutePageProps) {
   return (
     <main id="main-content">
-      <RouteHero hero={page.hero} pageKind={page.kind} />
+      <RouteHero hero={page.hero} pageKind={page.kind} pageSlug={page.slug} />
       <RouteSituationPanel section={page.situation} />
       <RouteServiceScope section={page.scope} />
       <RouteProcess section={page.process} />
       <RouteDocumentsPanel section={page.documents} />
       {page.slug === "razbor-situacii" ? <SituationFormPlaceholder /> : null}
       {page.slug === "kontakty" ? <CallbackFormPlaceholder /> : null}
-      <RouteRelatedLinks links={page.related} />
-      <RouteLocalContact contact={page.localContact} />
+      <RouteRelatedLinks links={page.related} pageSlug={page.slug} pageType={page.kind} />
+      <RouteLocalContact contact={page.localContact} pageSlug={page.slug} pageType={page.kind} />
       <RouteSafetyNote note={page.safetyNote} />
     </main>
   );
