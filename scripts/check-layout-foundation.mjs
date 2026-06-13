@@ -78,8 +78,8 @@ assert(/data-product-foundation="true"/.test(productComponentText), "Product fou
 assert(/lg:min-h-\[calc\(86vh-88px\)\]/.test(homeHeroText), "Homepage hero must reserve tall hero treatment for desktop only.");
 assert(/lg:min-h-\[calc\(78vh-88px\)\]/.test(routeHeroText), "Route hero must reserve tall hero treatment for desktop only.");
 assert(/aria-label="Контекст маршрута"/.test(routeHeroText) && /min-h-10/.test(routeHeroText), "Static route breadcrumb context must keep readable tap targets.");
-assert(/min-h-10/.test(homeLocalContactText), "Homepage local contact phone link must keep mobile touch target.");
-assert(/min-h-10/.test(routeLocalContactText), "Route local contact phone link must keep mobile touch target.");
+assert(/min-h-1[012]/.test(homeLocalContactText), "Homepage local contact phone link must keep mobile touch target.");
+assert(/min-h-1[012]/.test(routeLocalContactText), "Route local contact phone link must keep mobile touch target.");
 assert(/<summary[\s\S]*min-h-12/.test(homeProductText), "Homepage FAQ summaries must keep mobile touch targets.");
 assert(/<summary[\s\S]*min-h-12/.test(policyText), "Policy FAQ summaries must keep mobile touch targets.");
 
@@ -110,7 +110,7 @@ const evidence = {
     menuPanelSmallViewportBounded: /100svh/.test(headerText),
     menuLinksCloseOnNavigation: /onClick=\{closeMobileMenu\}/.test(headerText),
     footerTouchTargets: /min-h-10/.test(footerText) && /min-h-12/.test(footerText),
-    localContactTouchTargets: /min-h-10/.test(homeLocalContactText) && /min-h-10/.test(routeLocalContactText),
+    localContactTouchTargets: /min-h-1[012]/.test(homeLocalContactText) && /min-h-1[012]/.test(routeLocalContactText),
     breadcrumbTouchTargets: /min-h-10/.test(dynamicRouteText) && /min-h-10/.test(routeHeroText),
     faqTouchTargets: /<summary[\s\S]*min-h-12/.test(homeProductText) && /<summary[\s\S]*min-h-12/.test(policyText),
     desktopOnlyTallHero: /lg:min-h-\[calc\(86vh-88px\)\]/.test(homeHeroText) && /lg:min-h-\[calc\(78vh-88px\)\]/.test(routeHeroText)

@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "timestamp": "2026-06-13T13:32:11.493Z",
+  "timestamp": "2026-06-13T13:46:06.601Z",
   "git": {
     "branch": "stage20/trust-public-info-policy-readiness",
-    "commit": "01707e4"
+    "commit": "62790c6"
   },
   "envExamplePath": ".env.example",
   "publicLiveAllowed": false,
