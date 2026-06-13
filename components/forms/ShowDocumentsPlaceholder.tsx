@@ -1,11 +1,20 @@
 import { FormPlaceholder } from "@/components/forms/FormPlaceholder";
 
-export function ShowDocumentsPlaceholder() {
+type ShowDocumentsPlaceholderProps = {
+  pageSlug?: string;
+  pageType?: string;
+  leadTopic?: string;
+};
+
+export function ShowDocumentsPlaceholder({ pageSlug = "show-documents", pageType = "money", leadTopic = "show_documents" }: ShowDocumentsPlaceholderProps) {
   return (
     <FormPlaceholder
       eyebrow="Без загрузки файлов"
       title="Показать документы"
       text="Публичная страница не принимает файлы. Сначала согласуйте безопасный способ показа документов."
+      pageSlug={pageSlug}
+      pageType={pageType}
+      leadTopic={leadTopic}
       fields={[
         {
           id: "document-topic",
