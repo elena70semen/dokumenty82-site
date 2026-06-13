@@ -1,14 +1,16 @@
-import Link from "next/link";
 import { BrandBadge } from "@/components/brand/BrandBadge";
 import { BrandIcon } from "@/components/brand/BrandIcon";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { brandTokens } from "@/lib/brand/brand-tokens";
 import type { RouteRelatedLink } from "@/lib/routes/route-page-data";
 
 type RouteRelatedLinksProps = {
   links: RouteRelatedLink[];
+  pageSlug: string;
+  pageType: string;
 };
 
-export function RouteRelatedLinks({ links }: RouteRelatedLinksProps) {
+export function RouteRelatedLinks({ links, pageSlug, pageType }: RouteRelatedLinksProps) {
   return (
     <section
       className="section-pad bg-[var(--paper-soft)]"
@@ -41,12 +43,20 @@ export function RouteRelatedLinks({ links }: RouteRelatedLinksProps) {
               <div className="mt-7 flex flex-1 flex-col">
                 <h3 className="text-2xl font-black leading-tight text-[color:var(--text-primary)]">{link.title}</h3>
                 <p className="mt-4 flex-1 text-base leading-7 text-[color:var(--text-secondary)]">{link.copy}</p>
-                <Link
+                <TrackedAction
                   href={link.href}
                   className="mt-6 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  pageSlug={pageSlug}
+                  pageType={pageType}
+                  ctaLabel="Открыть маршрут"
+                  ctaLocation="related_routes"
+                  leadTopic={link.href.replace(/^\//, "").replace(/\/$/, "") || "home"}
+                  collectorType="related_route"
+                  fromPageSlug={pageSlug}
+                  toPageSlug={link.href}
                 >
                   Открыть маршрут
-                </Link>
+                </TrackedAction>
               </div>
             </article>
           ))}
