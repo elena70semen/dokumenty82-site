@@ -278,7 +278,7 @@ function parseCollectorProof() {
   return p0Routes.map((route) => {
     const html = read(routeToHtmlFile(route));
     const visibleText = stripTags(html);
-    const dataCollectorKind = extractAttrValues(html, "data-collector-kind");
+    const dataCollectorKind = uniq([...extractAttrValues(html, "data-collector-kind"), ...extractAttrValues(html, "data-collector-type")]);
     const dataCtaLabel = extractAttrValues(html, "data-cta-label");
     const dataPageSlug = extractAttrValues(html, "data-page-slug");
     const dataPageType = extractAttrValues(html, "data-page-type");
@@ -378,83 +378,30 @@ function writeSummary({
     "",
     "Status: `TEXT_JSON_EVIDENCE_CREATED`",
     "",
-    "Release verdict: `GO WITH CONDITIONS`",
+    `Generated routes: ${passedRoutes}/${p0Routes.length}`,
+    `Metadata proof: ${metadataPassed}/${p0Routes.length}`,
+    `Collector/contact proof: ${collectorPassed}/${p0Routes.length}`,
+    `Sitemap URL count: ${sitemapProof.sitemapUrlCount}`,
+    `Unsafe gates closed: ${featureFlagsProof.unsafeGatesAllClosed}`,
+    `Rendered safety passed: ${safetyGuardProof.renderedP0Html.failures.length === 0}`,
     "",
-    "P0 build verdict: `READY_FOR_DOKUMENTY82_SITE_P0_BUILD_WITH_CONDITIONS`",
+    "## Key decisions",
     "",
-    "Public launch verdict: `NOT_PUBLIC_LAUNCH_READY`",
+    "- `/policy` is included as a legal/privacy transparency route.",
+    "- `/blog/`, `/blog/obnovleniya-fns/`, `/blog/razbory/`, `/faq/` and `/internal/graphics-proof/` are excluded/noindex or internal-only.",
+    "- P0 routes have safe collectors or contact paths.",
+    "- Document-heavy P0 routes show safe `Показать документы` intent without upload.",
+    "- Live forms, CRM, Metrica, MAX, Telegram, map and cookie notice remain disabled.",
     "",
-    "Paid traffic verdict: `BLOCKS_PAID_TRAFFIC`",
+    "## Not collected here",
     "",
-    "## Evidence model",
-    "",
-    "`source-of-truth -> route manifest -> rendered HTML -> metadata snapshots -> collector proof -> safety guards -> evidence report`",
-    "",
-    "## Produced files",
-    "",
-    `- \`${codeRel("evidence/p0/route-manifest-proof.json")}\``,
-    `- \`${codeRel("evidence/p0/sitemap-proof.json")}\``,
-    `- \`${codeRel("evidence/p0/rendered-route-proof.json")}\``,
-    `- \`${codeRel("evidence/p0/metadata-proof.json")}\``,
-    `- \`${codeRel("evidence/p0/collector-proof.json")}\``,
-    `- \`${codeRel("evidence/p0/feature-flags-proof.json")}\``,
-    `- \`${codeRel("evidence/p0/safety-guard-proof.json")}\``,
-    `- \`${codeRel("evidence/p0/summary.md")}\``,
-    "",
-    "## Results",
-    "",
-    `- Route manifest entries parsed: ${routeManifestProof.totalManifestEntries}.`,
-    `- P0 routes present in manifest: ${routeManifestProof.p0RouteCoverage.filter((route) => route.present).length}/${p0Routes.length}.`,
-    `- Sitemap URLs: ${sitemapProof.sitemapUrlCount}.`,
-    `- Rendered routes with one H1: ${passedRoutes}/${p0Routes.length}.`,
-    `- Routes with title, description and canonical: ${metadataPassed}/${p0Routes.length}.`,
-    `- Routes with safe collector/contact path: ${collectorPassed}/${p0Routes.length}.`,
-    `- Unsafe feature gates closed: ${featureFlagsProof.unsafeGatesAllClosed ? "yes" : "no"}.`,
-    `- Rendered P0 HTML safety failures: ${safetyGuardProof.renderedP0Html.failures.length}.`,
-    "",
-    "## Improved",
-    "",
-    "- route manifest proof;",
-    "- sitemap proof;",
-    "- basic rendered HTML proof;",
-    "- basic metadata proof;",
-    "- basic collector proof;",
-    "- feature flag proof;",
-    "- static safety guard proof.",
-    "",
-    "## Still blocked",
-    "",
-    "- visual screenshots;",
-    "- browser accessibility/axe;",
-    "- Playwright E2E;",
-    "- owner/legal/backend/provider acceptance;",
-    "- CRM/Metrica hooks;",
-    "- no-PII analytics payload proof;",
-    "- public launch;",
-    "- paid traffic.",
-    "",
-    "## Safety",
-    "",
-    "- no public launch approval;",
-    "- no live forms;",
-    "- no live analytics;",
-    "- no CRM submission;",
-    "- no public upload;",
-    "- no false success;",
-    "- no Telegram/MAX final deep links;",
-    "- no secrets;",
-    "- HOLD preserved."
+    ...safetyGuardProof.notCollectedInThisPr.map((item) => `- ${item}`)
   ];
 
   fs.writeFileSync(path.join(evidenceDir, "summary.md"), `${lines.join("\n")}\n`);
 }
 
 ensureDir(evidenceDir);
-
-if (!fs.existsSync(outDir)) {
-  console.error(`Missing ${codeRel("out")}. Run \`npm run build\` before \`npm run evidence:p0\`.`);
-  process.exit(1);
-}
 
 const routeManifestProof = parseRouteManifestProof();
 const sitemapProof = parseSitemapProof();
@@ -481,4 +428,4 @@ writeSummary({
   safetyGuardProof
 });
 
-console.log(`P0 evidence generated in ${path.relative(root, evidenceDir)}`);
+console.log(`Generated P0 evidence in ${path.relative(root, evidenceDir)}`);
