@@ -4,6 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealController } from "@/components/RevealController";
+import { AttributionCapture } from "@/components/tracking/AttributionCapture";
 import { site } from "@/lib/content";
 import { siteFeatureFlags } from "@/lib/feature-flags";
 
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="ru">
       <body>
+        <AttributionCapture />
         <Header />
         {children}
         <Footer />
