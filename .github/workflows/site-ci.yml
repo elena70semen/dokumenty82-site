@@ -45,6 +45,12 @@ jobs:
       - name: Check P0 evidence
         run: npm run check:p0-evidence
 
+      - name: Generate sales channel evidence
+        run: npm run evidence:sales-channels
+
+      - name: Check sales channels
+        run: npm run check:sales-channels
+
       - name: Check FNS blog/news foundation
         run: npm run check:fns-blog-news
 
