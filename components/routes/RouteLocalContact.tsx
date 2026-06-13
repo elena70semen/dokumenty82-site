@@ -1,35 +1,48 @@
-import Link from "next/link";
 import { BrandIcon } from "@/components/brand/BrandIcon";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { brandTokens } from "@/lib/brand/brand-tokens";
 import { site } from "@/lib/content";
 import type { RouteAction, RouteLocalContactConfig } from "@/lib/routes/route-page-data";
+import type { CollectorType } from "@/lib/tracking/event-context";
 
 type RouteLocalContactProps = {
   contact: RouteLocalContactConfig;
+  pageSlug: string;
+  pageType: string;
 };
 
-function ContactActionLink({ action, index }: { action: RouteAction; index: number }) {
+function collectorTypeForAction(action: RouteAction): CollectorType {
+  if (action.kind === "phone") return "phone";
+  if (action.label === "Показать документы") return "show_documents";
+  if (action.label === "Построить маршрут" || action.href.includes("route-contact")) return "route";
+  return "situation_review";
+}
+
+function ContactActionLink({ action, index, pageSlug, pageType }: { action: RouteAction; index: number; pageSlug: string; pageType: string }) {
   const className =
     index === 0
       ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
       : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-sm font-black text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]";
-
-  if (action.kind === "phone" || action.href.startsWith("#")) {
-    return (
-      <a href={action.href} className={className}>
-        {action.label}
-      </a>
-    );
-  }
+  const collectorType = collectorTypeForAction(action);
 
   return (
-    <Link href={action.href} className={className}>
+    <TrackedAction
+      href={action.href}
+      className={className}
+      pageSlug={pageSlug}
+      pageType={pageType}
+      ctaLabel={action.label}
+      ctaLocation="local_contact"
+      leadTopic={pageSlug}
+      collectorType={collectorType}
+      contactChannel={collectorType === "phone" ? "phone" : collectorType === "route" ? "office" : undefined}
+    >
       {action.label}
-    </Link>
+    </TrackedAction>
   );
 }
 
-export function RouteLocalContact({ contact }: RouteLocalContactProps) {
+export function RouteLocalContact({ contact, pageSlug, pageType }: RouteLocalContactProps) {
   return (
     <section
       id="route-contact"
@@ -73,9 +86,19 @@ export function RouteLocalContact({ contact }: RouteLocalContactProps) {
                     </span>
                     <div>
                       <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--text-muted)]">Телефон</p>
-                      <a href={site.phoneHref} className="mt-2 inline-block text-lg font-black text-[color:var(--text-primary)]">
+                      <TrackedAction
+                        href={site.phoneHref}
+                        className="mt-2 inline-block text-lg font-black text-[color:var(--text-primary)]"
+                        pageSlug={pageSlug}
+                        pageType={pageType}
+                        ctaLabel="Позвонить"
+                        ctaLocation="local_contact_phone"
+                        leadTopic={pageSlug}
+                        collectorType="phone"
+                        contactChannel="phone"
+                      >
                         {site.phone}
-                      </a>
+                      </TrackedAction>
                     </div>
                   </div>
                 </div>
@@ -83,7 +106,7 @@ export function RouteLocalContact({ contact }: RouteLocalContactProps) {
 
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 {contact.actions.map((action, index) => (
-                  <ContactActionLink key={`${action.label}-${action.href}`} action={action} index={index} />
+                  <ContactActionLink key={`${action.label}-${action.href}`} action={action} index={index} pageSlug={pageSlug} pageType={pageType} />
                 ))}
               </div>
             </div>
