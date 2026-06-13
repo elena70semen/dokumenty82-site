@@ -100,7 +100,7 @@ export function RouteHero({ hero, pageKind, pageSlug, pageType, leadTopic }: Rou
             <p className="text-sm font-black text-[color:var(--lime-signal)]">{hero.eyebrow}</p>
           </div>
 
-          <h1 id="route-hero-title" className="mt-7 max-w-full break-words text-[1.95rem] font-black leading-[1.08] tracking-normal [overflow-wrap:anywhere] md:text-[4.45rem] md:leading-[1.04] lg:text-[5rem]">
+          <h1 id="route-hero-title" className="route-title-fluid mt-7 font-black">
             {hero.title}
           </h1>
 
@@ -108,7 +108,7 @@ export function RouteHero({ hero, pageKind, pageSlug, pageType, leadTopic }: Rou
             {hero.text}
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="cta-cluster mt-9">
             <RouteActionLink action={hero.primaryAction} pageSlug={pageSlug} pageType={pageType} leadTopic={leadTopic} primary />
             {hero.secondaryActions.map((action) => (
               <RouteActionLink key={`${action.label}-${action.href}`} action={action} pageSlug={pageSlug} pageType={pageType} leadTopic={leadTopic} />

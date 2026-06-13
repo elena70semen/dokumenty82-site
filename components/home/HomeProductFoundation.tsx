@@ -109,7 +109,7 @@ export function HomeProductFoundation() {
             <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               <Link
                 href="/razbor-situacii/"
-                className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-sm font-black text-[color:var(--lime-text)]"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-sm font-black text-[color:var(--lime-text)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
                 data-analytics-goal={analyticsGoalNames.formStart}
                 data-cta-label={cta.primary}
                 data-cta-location="home_final_cta"
@@ -121,7 +121,7 @@ export function HomeProductFoundation() {
               </Link>
               <a
                 href={site.phoneHref}
-                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
                 data-analytics-goal={analyticsGoalNames.callClick}
                 data-cta-label={cta.phone}
                 data-cta-location="home_final_cta"
@@ -133,7 +133,7 @@ export function HomeProductFoundation() {
               </a>
               <Link
                 href="/kontakty/"
-                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)]"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
                 data-analytics-goal={analyticsGoalNames.routeClick}
                 data-cta-label={cta.route}
                 data-cta-location="home_final_cta"

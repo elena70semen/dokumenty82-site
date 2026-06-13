@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checkedAt": "2026-06-13T13:46:13.770Z",
+  "checkedAt": "2026-06-13T23:15:53.143Z",
   "requiredNavRoutes": [
     "/razbor-situacii/",
     "/otchetnost/",
@@ -27,6 +27,16 @@
     "breadcrumbTouchTargets": true,
     "faqTouchTargets": true,
     "desktopOnlyTallHero": true
+  },
+  "stage20mLayoutHardening": {
+    "xlDesktopNavigation": true,
+    "curatedDesktopNavigation": true,
+    "noClippedDesktopNavCapsule": true,
+    "fluidHeroTitles": true,
+    "fluidRouteTitles": true,
+    "fluidStaticTitles": true,
+    "focusWithinCards": true,
+    "detailsOpenState": true
   },
   "issues": []
 }

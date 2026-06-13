@@ -60,6 +60,11 @@
   --accent-navy-bg: rgba(22, 40, 68, 0.1);
   --accent-muted-border: rgba(102, 113, 132, 0.25);
   --accent-muted-bg: rgba(102, 113, 132, 0.1);
+  --container-max: 1200px;
+  --content-measure: 68ch;
+  --section-y: clamp(68px, 7.2vw, 104px);
+  --section-y-mobile: clamp(52px, 13vw, 68px);
+  --card-pad: clamp(20px, 2vw, 28px);
 }
 
 * {
@@ -99,9 +104,21 @@ main {
   overflow-x: clip;
 }
 
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: rgba(36, 93, 167, 0.16);
+}
+
 button,
 summary {
   font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline-offset: 4px;
 }
 
 summary::-webkit-details-marker {
@@ -109,7 +126,7 @@ summary::-webkit-details-marker {
 }
 
 .container-premium {
-  width: min(100% - 40px, 1200px);
+  width: min(100% - clamp(28px, 5vw, 56px), var(--container-max));
   margin-inline: auto;
 }
 
@@ -133,7 +150,7 @@ summary::-webkit-details-marker {
 }
 
 .section-pad {
-  padding: 92px 0;
+  padding: var(--section-y) 0;
 }
 
 .section-heading-grid {
@@ -142,20 +159,24 @@ summary::-webkit-details-marker {
 }
 
 .section-copy {
+  max-width: var(--content-measure);
   color: var(--text-secondary);
   font-size: 1.125rem;
   line-height: 1.78;
 }
 
 .premium-card {
+  position: relative;
   min-width: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.82));
   box-shadow: var(--shadow-card-sm);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .premium-card-strong {
+  position: relative;
   min-width: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -163,9 +184,11 @@ summary::-webkit-details-marker {
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(251, 250, 246, 0.9)),
     var(--paper-soft);
   box-shadow: var(--shadow-card-md);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .premium-card-dark {
+  position: relative;
   min-width: 0;
   border: 1px solid var(--border-dark-soft);
   border-radius: 8px;
@@ -174,16 +197,55 @@ summary::-webkit-details-marker {
     var(--surface-dark-strong);
   color: var(--text-inverse);
   box-shadow: var(--shadow-cta-light);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .premium-link-card {
-  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.premium-link-card:hover {
+.premium-link-card:hover,
+.premium-link-card:focus-within {
   transform: translateY(-4px);
+  border-color: var(--accent-blue-border);
   background: var(--surface-raised);
   box-shadow: var(--shadow-card-md-hover);
+}
+
+details.premium-card[open],
+details.premium-card-strong[open] {
+  border-color: var(--accent-blue-border);
+  box-shadow: var(--shadow-card-md);
+}
+
+.hero-title-fluid {
+  max-width: 12.2ch;
+  font-size: clamp(2.35rem, 8vw, 5.4rem);
+  line-height: 1.04;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.route-title-fluid {
+  max-width: 13.4ch;
+  font-size: clamp(1.95rem, 7vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.static-title-fluid {
+  max-width: 14.5ch;
+  font-size: clamp(2.2rem, 6.8vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.cta-cluster {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .cta-row {
@@ -297,6 +359,13 @@ summary::-webkit-details-marker {
   margin-top: 8px;
 }
 
+@media (min-width: 640px) {
+  .cta-cluster {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
 @media (min-width: 1024px) {
   .section-heading-grid {
     grid-template-columns: 0.74fr 1.26fr;
@@ -310,12 +379,8 @@ summary::-webkit-details-marker {
 }
 
 @media (max-width: 760px) {
-  .container-premium {
-    width: min(100% - 28px, 1200px);
-  }
-
   .section-pad {
-    padding: 58px 0;
+    padding: var(--section-y-mobile) 0;
   }
 
   .section-copy {

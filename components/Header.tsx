@@ -7,6 +7,17 @@ import { BrandIcon } from "@/components/brand/BrandIcon";
 import { homeNavigation } from "@/lib/home/home-page-data";
 import { site } from "@/lib/content";
 
+const desktopNavigationHrefs = new Set([
+  "/razbor-situacii/",
+  "/otchetnost/",
+  "/bank-i-115-fz/",
+  "/adres-egryul-direktor/",
+  "/registraciya-i-likvidaciya/",
+  "/kontakty/"
+]);
+
+const desktopNavigation = homeNavigation.filter((item) => desktopNavigationHrefs.has(item.href));
+
 function isCurrentPath(pathname: string, href: string) {
   if (href === "/#documents") {
     return false;
@@ -33,7 +44,7 @@ export function Header() {
       </a>
 
       <div className="container-premium">
-        <div className="glass-panel grid min-h-[74px] grid-cols-[1fr_auto] items-center gap-4 rounded-[8px] px-4 py-3 backdrop-blur-2xl backdrop-saturate-150 xl:grid-cols-[auto_1fr_auto] 2xl:grid-cols-[auto_1fr_auto]">
+        <div className="glass-panel grid min-h-[74px] grid-cols-[1fr_auto] items-center gap-4 rounded-[8px] px-4 py-3 backdrop-blur-2xl backdrop-saturate-150 xl:grid-cols-[auto_minmax(0,1fr)] 2xl:grid-cols-[auto_minmax(0,1fr)_auto]">
           <Link
             href="/"
             className="flex min-w-0 items-center gap-3 rounded-[8px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
@@ -52,9 +63,9 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden justify-self-center 2xl:block" aria-label="Основная навигация">
-            <ul className="flex items-center gap-1 rounded-[8px] border border-[var(--line)] bg-white/46 p-1">
-              {homeNavigation.map((item) => {
+          <nav className="hidden min-w-0 justify-self-center xl:block" aria-label="Основная навигация">
+            <ul className="flex max-w-full items-center gap-1 rounded-[8px] border border-[var(--line)] bg-white/50 p-1">
+              {desktopNavigation.map((item) => {
                 const current = isCurrentPath(pathname, item.href);
 
                 return (
@@ -62,7 +73,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       aria-current={current ? "page" : undefined}
-                      className={`flex min-h-10 items-center whitespace-nowrap rounded-[6px] px-2.5 text-xs font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
+                      className={`flex min-h-10 items-center whitespace-nowrap rounded-[6px] px-2 text-[0.72rem] font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
                         current ? "bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)] shadow-sm" : "text-[color:var(--text-secondary)] hover:bg-[var(--surface-raised)] hover:text-[color:var(--surface-dark-strong)]"
                       }`}
                     >
@@ -74,7 +85,7 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="hidden items-center justify-self-end gap-2 xl:flex">
+          <div className="hidden items-center justify-self-end gap-2 2xl:flex">
             <Link
               href="/razbor-situacii/"
               className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
@@ -90,7 +101,7 @@ export function Header() {
           </div>
 
           <details
-            className="group justify-self-end 2xl:hidden"
+            className="group justify-self-end xl:hidden"
             open={mobileMenuOpen}
             onToggle={(event) => setMobileMenuOpen(event.currentTarget.open)}
             data-mobile-menu="true"
@@ -105,7 +116,7 @@ export function Header() {
             </summary>
             <div
               id="mobile-navigation-panel"
-              className="fixed left-4 right-4 top-[92px] grid max-h-[calc(100svh-112px)] gap-3 overflow-y-auto overscroll-contain rounded-[8px] border border-[var(--line)] bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[var(--shadow-panel)]"
+              className="fixed left-4 right-4 top-[92px] grid max-h-[calc(100svh-112px)] gap-3 overflow-y-auto overscroll-contain rounded-[8px] border border-[var(--line)] bg-white/96 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[var(--shadow-panel)] backdrop-blur-xl"
               data-mobile-menu-panel="true"
             >
               <p className="rounded-[8px] bg-[var(--paper-soft)] px-4 py-3 text-sm font-bold leading-6 text-[color:var(--text-secondary)]">
@@ -121,7 +132,7 @@ export function Header() {
                         <Link
                           href={item.href}
                           aria-current={current ? "page" : undefined}
-                          className={`flex min-h-12 items-center rounded-[8px] px-4 py-3 font-black leading-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
+                          className={`flex min-h-12 items-center rounded-[8px] px-4 py-3 font-black leading-tight transition hover:bg-[var(--surface-raised)] hover:text-[color:var(--surface-dark-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${
                             current ? "bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)]" : "text-[color:var(--text-secondary)]"
                           }`}
                           onClick={closeMobileMenu}

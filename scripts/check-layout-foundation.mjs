@@ -82,6 +82,14 @@ assert(/min-h-1[012]/.test(homeLocalContactText), "Homepage local contact phone 
 assert(/min-h-1[012]/.test(routeLocalContactText), "Route local contact phone link must keep mobile touch target.");
 assert(/<summary[\s\S]*min-h-12/.test(homeProductText), "Homepage FAQ summaries must keep mobile touch targets.");
 assert(/<summary[\s\S]*min-h-12/.test(policyText), "Policy FAQ summaries must keep mobile touch targets.");
+assert(/className="[^"]*xl:block/.test(headerText) && /className="[^"]*xl:hidden/.test(headerText), "Header must expose desktop navigation by the xl breakpoint while keeping mobile menu below it.");
+assert(/desktopNavigationHrefs/.test(headerText) && /desktopNavigation\.map/.test(headerText), "Header desktop navigation must use a curated non-clipping route set.");
+assert(!/overflow-hidden rounded-\[8px\] border border-\[var\(--line\)\] bg-white\/50 p-1/.test(headerText), "Header desktop navigation must not hide clipped links inside the nav capsule.");
+assert(/hero-title-fluid/.test(globalCssText) && /hero-title-fluid/.test(homeHeroText), "Homepage hero title must use fluid, overflow-safe sizing.");
+assert(/route-title-fluid/.test(globalCssText) && /route-title-fluid/.test(routeHeroText) && /route-title-fluid/.test(dynamicRouteText), "Route hero titles must use fluid, overflow-safe sizing.");
+assert(/static-title-fluid/.test(globalCssText) && /static-title-fluid/.test(policyText), "Static utility pages must use fluid, overflow-safe title sizing.");
+assert(/premium-link-card:focus-within/.test(globalCssText), "Clickable cards must keep focus-within visual polish.");
+assert(/details\.premium-card\[open\]/.test(globalCssText), "Open details cards must keep a visible expanded state.");
 
 for (const route of requiredNavRoutes) {
   assert(homeNavText.includes(`href: "${route}"`), `Home navigation data missing required route: ${route}`);
@@ -114,6 +122,16 @@ const evidence = {
     breadcrumbTouchTargets: /min-h-10/.test(dynamicRouteText) && /min-h-10/.test(routeHeroText),
     faqTouchTargets: /<summary[\s\S]*min-h-12/.test(homeProductText) && /<summary[\s\S]*min-h-12/.test(policyText),
     desktopOnlyTallHero: /lg:min-h-\[calc\(86vh-88px\)\]/.test(homeHeroText) && /lg:min-h-\[calc\(78vh-88px\)\]/.test(routeHeroText)
+  },
+  stage20mLayoutHardening: {
+    xlDesktopNavigation: /className="[^"]*xl:block/.test(headerText) && /className="[^"]*xl:hidden/.test(headerText),
+    curatedDesktopNavigation: /desktopNavigationHrefs/.test(headerText) && /desktopNavigation\.map/.test(headerText),
+    noClippedDesktopNavCapsule: !/overflow-hidden rounded-\[8px\] border border-\[var\(--line\)\] bg-white\/50 p-1/.test(headerText),
+    fluidHeroTitles: /hero-title-fluid/.test(globalCssText) && /hero-title-fluid/.test(homeHeroText),
+    fluidRouteTitles: /route-title-fluid/.test(globalCssText) && /route-title-fluid/.test(routeHeroText) && /route-title-fluid/.test(dynamicRouteText),
+    fluidStaticTitles: /static-title-fluid/.test(globalCssText) && /static-title-fluid/.test(policyText),
+    focusWithinCards: /premium-link-card:focus-within/.test(globalCssText),
+    detailsOpenState: /details\.premium-card\[open\]/.test(globalCssText)
   },
   issues
 };

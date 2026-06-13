@@ -203,11 +203,11 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
             <p className="inline-flex items-center gap-3 rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] px-4 py-3 text-sm font-black text-[color:var(--lime-signal)]">
               {page.kicker}
             </p>
-            <h1 id={`route-title-${page.slug}`} className="mt-7 max-w-full break-words text-[1.95rem] font-black leading-[1.08] tracking-normal [overflow-wrap:anywhere] sm:text-[2.55rem] sm:leading-[1.04] xl:text-[4.9rem] xl:leading-[1.01]">
+            <h1 id={`route-title-${page.slug}`} className="route-title-fluid mt-7 font-black">
               {page.title}
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-[color:var(--text-inverse-muted)] md:text-xl md:leading-9">{page.description}</p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="cta-cluster mt-9">
               <Link
                 href={primaryCollector.href}
                 className="inline-flex min-h-12 w-full min-w-[184px] items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-center text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"

@@ -4,8 +4,9 @@ import { homeFooter } from "@/lib/home/home-page-data";
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--surface-dark)] py-12 text-[color:var(--text-inverse)]">
-      <div className="container-premium grid gap-6 lg:grid-cols-[1.1fr_0.88fr_1.02fr]">
+    <footer className="relative overflow-hidden bg-[var(--surface-dark)] py-14 text-[color:var(--text-inverse)] md:py-16">
+      <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(198,255,0,0.46),transparent)]" aria-hidden="true" />
+      <div className="container-premium grid gap-7 lg:grid-cols-[1.05fr_1.15fr_1fr]">
         <div className="min-w-0">
           <Link
             href="/"
@@ -26,7 +27,7 @@ export function Footer() {
 
         <nav className="rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] p-5 text-sm text-[color:var(--text-inverse-muted)]" aria-label="Служебная навигация">
           <strong className="mb-4 block text-[color:var(--text-inverse)]">Маршруты</strong>
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+          <div className="grid gap-2 sm:grid-cols-2">
             {homeFooter.routes.map((item) => (
               <Link
                 key={item.href}
@@ -53,7 +54,7 @@ export function Footer() {
             <p>
               <a
                 href={homeFooter.phoneHref}
-                className="inline-flex min-h-10 items-center gap-2 rounded-[8px] text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+                className="inline-flex min-h-10 items-center gap-2 rounded-[8px] text-[color:var(--text-inverse)] transition hover:text-[color:var(--lime-signal)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
               >
                 <BrandIcon name="phone" size={16} />
                 {homeFooter.phone}
@@ -66,19 +67,19 @@ export function Footer() {
           <div className="mt-4 grid gap-2 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             <a
               href={homeFooter.phoneHref}
-              className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-4 py-2 text-sm font-black text-[color:var(--lime-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-4 py-2 text-sm font-black text-[color:var(--lime-text)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
             >
               Позвонить
             </a>
             <Link
               href="/kontakty/"
-              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
             >
               Построить маршрут
             </Link>
             <Link
               href="/razbor-situacii/"
-              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
             >
               Разобрать ситуацию
             </Link>

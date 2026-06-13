@@ -108,7 +108,7 @@ export default function PolicyPage() {
               <span className="inline-flex min-h-10 items-center">Политика конфиденциальности</span>
             </nav>
             <p className="eyebrow-line">Данные и документы</p>
-            <h1 className="display-serif mt-6 max-w-full text-[1.82rem] font-semibold leading-[1.12] text-[color:var(--text-primary)] [overflow-wrap:anywhere] sm:text-[2.35rem] sm:leading-[1.02] xl:text-7xl xl:leading-[0.98]">
+            <h1 className="static-title-fluid display-serif mt-6 font-semibold text-[color:var(--text-primary)]">
               Политика конфиденциальности и обработки данных
             </h1>
             <p className="mt-7 text-xl leading-9 text-[color:var(--text-secondary)]">
@@ -117,7 +117,7 @@ export default function PolicyPage() {
             <div className="mt-9 grid gap-3 sm:grid-cols-[auto_auto] sm:justify-start">
               <a
                 href={site.phoneHref}
-                className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-7 py-4 text-center text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-7 py-4 text-center text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
                 data-collector-kind="phone"
                 data-cta-label="Позвонить"
                 data-page-slug="policy"
@@ -127,7 +127,7 @@ export default function PolicyPage() {
               </a>
               <Link
                 href="/kontakty/"
-                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white/72 px-7 py-4 text-center text-sm font-black text-[color:var(--surface-dark-strong)]"
+                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white/72 px-7 py-4 text-center text-sm font-black text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
                 data-collector-kind="contacts"
                 data-cta-label="Построить маршрут"
                 data-page-slug="policy"
@@ -152,7 +152,7 @@ export default function PolicyPage() {
             <div className="mt-7 grid gap-3 sm:grid-cols-2">
               <a
                 href={site.phoneHref}
-                className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-6 py-3 text-center text-sm font-black text-[color:var(--text-inverse)]"
+                className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-6 py-3 text-center text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
                 data-cta-label="Позвонить"
                 data-page-slug="policy"
                 data-page-type="legal"
@@ -161,7 +161,7 @@ export default function PolicyPage() {
               </a>
               <Link
                 href="/kontakty/"
-                className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] px-6 py-3 text-center text-sm font-black text-[color:var(--surface-dark-strong)]"
+                className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] px-6 py-3 text-center text-sm font-black text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
                 data-cta-label="Построить маршрут"
                 data-page-slug="policy"
                 data-page-type="legal"

@@ -120,8 +120,8 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
             {foundation.finalCta.actions.map((action, index) => {
               const className =
                 index === 0
-                  ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-center text-sm font-black text-[color:var(--lime-text)]"
-                  : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-center text-sm font-black text-[color:var(--text-inverse)]";
+                  ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-center text-sm font-black text-[color:var(--lime-text)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+                  : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-center text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]";
 
               return action.href.startsWith("tel:") ? (
                 <a

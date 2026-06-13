@@ -55,7 +55,7 @@ export default function AboutProjectPage() {
               </span>
             </nav>
             <p className="eyebrow-line">О проекте</p>
-            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[color:var(--text-primary)] md:text-8xl">
+            <h1 className="static-title-fluid display-serif mt-6 font-semibold text-[color:var(--text-primary)]">
               Локальный центр
               <br />
               <span className="script-accent">подготовки документов</span>
@@ -113,7 +113,7 @@ export default function AboutProjectPage() {
               Адрес: {site.address}. Перед визитом можно позвонить и уточнить, какие документы лучше взять на первый
               разбор.
             </p>
-            <Link href="/kontakty/" className="mt-6 inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-7 py-4 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]">
+            <Link href="/kontakty/" className="mt-6 inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-7 py-4 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]">
               Построить маршрут
             </Link>
           </div>

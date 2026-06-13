@@ -22,7 +22,7 @@ export function HomeHero() {
             {homeHero.kicker}
           </p>
 
-          <h1 id="home-hero-title" className="mt-7 text-[2.35rem] font-black leading-[1.06] tracking-normal sm:text-[3.15rem] md:text-[4.9rem] lg:text-[5.4rem]">
+          <h1 id="home-hero-title" className="hero-title-fluid mt-7 font-black">
             {homeHero.title}
           </h1>
 
@@ -30,7 +30,7 @@ export function HomeHero() {
             {homeHero.text}
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="cta-cluster mt-9">
             <Link
               href={homeHero.primaryCta.href}
               className="inline-flex min-h-12 w-full min-w-[190px] items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
