@@ -8,6 +8,7 @@ import { cta, getParentPage, getRoutePage, routePages, site } from "@/lib/conten
 import type { RoutePage } from "@/lib/content";
 import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 import { routePageSlugs } from "@/lib/routes/route-page-data";
+import { buildBreadcrumbListJsonLd } from "@/lib/seo/structured-data";
 
 const documentHeavySlugs = new Set([
   "otvet-na-trebovanie-ifns",
@@ -129,12 +130,19 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
   const relatedRoutes = getRelatedRoutePages(page);
   const hardeningBlocks = getHardeningBlocks(page);
   const showDocumentsPlaceholder = p0ShowDocumentsPlaceholderSlugs.has(page.slug) || page.primaryCtaLabel === cta.docs;
+  const breadcrumbJsonLd = buildBreadcrumbListJsonLd([
+    { name: "Главная", href: "/" },
+    ...(parent ? [{ name: parent.shortTitle, href: parent.href }] : []),
+    { name: page.shortTitle, href: page.href }
+  ]);
   const serviceJsonLd =
     page.pageType === "money"
       ? {
           "@context": "https://schema.org",
           "@type": "Service",
           name: page.title,
+          url: `${site.domain}${page.href}`,
+          description: page.description,
           provider: {
             "@id": `${site.domain}/#business`
           },
@@ -145,6 +153,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
 
   return (
     <main id="main-content" className="pt-36" data-route-page-template="dynamic" data-stage18h-route-content="true">
+      <JsonLd data={breadcrumbJsonLd} />
       {serviceJsonLd ? <JsonLd data={serviceJsonLd} /> : null}
 
       <section className="section-pad">

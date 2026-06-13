@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HomePage } from "@/components/home/HomePage";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/content";
+import { buildWebSiteJsonLd } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = {
   title: {
@@ -46,9 +47,12 @@ const businessJsonLd = {
   }
 };
 
+const webSiteJsonLd = buildWebSiteJsonLd();
+
 export default function Home() {
   return (
     <>
+      <JsonLd data={webSiteJsonLd} />
       <JsonLd data={businessJsonLd} />
       <HomePage />
     </>

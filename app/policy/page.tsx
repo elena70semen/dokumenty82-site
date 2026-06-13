@@ -3,6 +3,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { RouteProductFoundation } from "@/components/routes/RouteProductFoundation";
 import { site } from "@/lib/content";
+import { buildBreadcrumbListJsonLd } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = {
   title: "Политика конфиденциальности",
@@ -26,6 +27,11 @@ const policyJsonLd = {
   url: `${site.domain}/policy`,
   inLanguage: "ru-RU"
 };
+
+const policyBreadcrumbJsonLd = buildBreadcrumbListJsonLd([
+  { name: "Главная", href: "/" },
+  { name: "Политика конфиденциальности", href: "/policy" }
+]);
 
 const safetyItems = [
   "не публикуйте персональные данные в открытом сообщении",
@@ -57,11 +63,26 @@ const faqItems = [
   }
 ];
 
+const policyFaqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer
+    }
+  }))
+};
+
 export default function PolicyPage() {
   return (
     <main className="pt-36">
       <link rel="canonical" href={`${site.domain}/policy`} />
+      <JsonLd data={policyBreadcrumbJsonLd} />
       <JsonLd data={policyJsonLd} />
+      <JsonLd data={policyFaqJsonLd} />
 
       <section className="section-pad">
         <div className="container-premium grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">

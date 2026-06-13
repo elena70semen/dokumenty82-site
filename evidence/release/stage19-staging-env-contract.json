@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "timestamp": "2026-06-12T23:23:33.125Z",
+  "timestamp": "2026-06-13T08:11:35.954Z",
   "git": {
-    "branch": "stage20/route-page-cluster-deepening",
-    "commit": "6aeb546"
+    "branch": "stage20/yandex-seo-metadata-breadcrumbs",
+    "commit": "3b477f6"
   },
   "envExamplePath": ".env.example",
   "publicLiveAllowed": false,
@@ -50,7 +50,7 @@
   },
   "runtimeScan": {
     "status": "passed",
-    "filesCheckedCount": 437,
+    "filesCheckedCount": 438,
     "checkedAreas": [
       "app",
       "components",

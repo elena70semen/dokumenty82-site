@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { RouteProductFoundation } from "@/components/routes/RouteProductFoundation";
 import { site } from "@/lib/content";
+import { buildBreadcrumbListJsonLd } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = {
   title: "О проекте Документы для бизнеса и формате работы",
@@ -12,12 +14,27 @@ export const metadata: Metadata = {
   }
 };
 
+const aboutBreadcrumbJsonLd = buildBreadcrumbListJsonLd([
+  { name: "Главная", href: "/" },
+  { name: "О проекте", href: "/o-proekte/" }
+]);
+
 export default function AboutProjectPage() {
   return (
     <main className="pt-36">
+      <JsonLd data={aboutBreadcrumbJsonLd} />
       <section className="section-pad">
         <div className="container-premium grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="reveal-block" data-reveal="left">
+            <nav className="mb-8 flex max-w-full flex-wrap gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
+              <Link href="/" className="text-[#245da7]">
+                Главная
+              </Link>
+              <span>/</span>
+              <span aria-current="page" className="min-w-0 break-words text-[#111821]">
+                О проекте
+              </span>
+            </nav>
             <p className="eyebrow-line">О проекте</p>
             <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[#111821] md:text-8xl">
               Локальный центр
