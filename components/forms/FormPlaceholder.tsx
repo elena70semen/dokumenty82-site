@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useId, useState } from "react";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { site } from "@/lib/content";
 
 type PlaceholderField = {
@@ -17,13 +17,16 @@ type FormPlaceholderProps = {
   title: string;
   text: string;
   fields: PlaceholderField[];
+  pageSlug: string;
+  pageType: string;
+  leadTopic: string;
 };
 
 const offlineNotice =
   "Онлайн-отправка пока не подключена. Чтобы передать вопрос, позвоните или согласуйте способ показа документов.";
 const localMessage = "Отправка формы пока не подключена. Позвоните или перейдите на страницу контактов.";
 
-export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholderProps) {
+export function FormPlaceholder({ eyebrow, title, text, fields, pageSlug, pageType, leadTopic }: FormPlaceholderProps) {
   const formId = useId();
   const [message, setMessage] = useState("");
   const noticeId = `${formId}-notice`;
@@ -39,6 +42,9 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
         <form
           className="grid gap-5 rounded-[8px] border border-[var(--line)] bg-white/90 p-6 shadow-[var(--shadow-card-lg)] md:p-8"
           data-form-placeholder="true"
+          data-page-slug={pageSlug}
+          data-page-type={pageType}
+          data-lead-topic={leadTopic}
           onSubmit={(event) => {
             event.preventDefault();
             explainOffline();
@@ -86,26 +92,45 @@ export function FormPlaceholder({ eyebrow, title, text, fields }: FormPlaceholde
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
+            <TrackedAction
               className="min-h-12 rounded-[8px] bg-[var(--surface-dark-strong)] px-5 py-3 text-sm font-black text-white shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
-              aria-describedby={noticeId}
+              ariaDescribedBy={noticeId}
+              pageSlug={pageSlug}
+              pageType={pageType}
+              ctaLabel="Отправка пока не подключена"
+              ctaLocation="form_placeholder"
+              leadTopic={leadTopic}
+              collectorType="form_placeholder"
               onClick={explainOffline}
             >
               Отправка пока не подключена
-            </button>
-            <Link
+            </TrackedAction>
+            <TrackedAction
               href="/kontakty/"
               className="min-h-12 rounded-[8px] border border-[var(--line)] bg-white px-5 py-3 text-sm font-black text-[color:var(--surface-dark-strong)]"
+              pageSlug={pageSlug}
+              pageType={pageType}
+              ctaLabel="Перейти в контакты"
+              ctaLocation="form_placeholder"
+              leadTopic={leadTopic}
+              collectorType="route"
+              contactChannel="office"
             >
               Перейти в контакты
-            </Link>
-            <a
+            </TrackedAction>
+            <TrackedAction
               href={site.phoneHref}
               className="min-h-12 rounded-[8px] border border-[var(--line)] bg-white px-5 py-3 text-sm font-black text-[color:var(--surface-dark-strong)]"
+              pageSlug={pageSlug}
+              pageType={pageType}
+              ctaLabel="Позвонить"
+              ctaLocation="form_placeholder"
+              leadTopic={leadTopic}
+              collectorType="phone"
+              contactChannel="phone"
             >
               {site.phone}
-            </a>
+            </TrackedAction>
           </div>
 
           <p id={messageId} className="min-h-6 text-sm font-black leading-6 text-[color:var(--emerald)]" role="status" aria-live="polite">
