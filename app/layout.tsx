@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealController } from "@/components/RevealController";
 import { site } from "@/lib/content";
+import { siteFeatureFlags } from "@/lib/feature-flags";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
@@ -27,12 +28,12 @@ export const metadata: Metadata = {
     images: ["/assets/images/hero-premium-office.png"]
   },
   robots: {
-    index: true,
-    follow: true,
+    index: siteFeatureFlags.publicLiveAllowed,
+    follow: siteFeatureFlags.publicLiveAllowed,
     googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large"
+      index: siteFeatureFlags.publicLiveAllowed,
+      follow: siteFeatureFlags.publicLiveAllowed,
+      "max-image-preview": siteFeatureFlags.publicLiveAllowed ? "large" : "none"
     }
   }
 };
