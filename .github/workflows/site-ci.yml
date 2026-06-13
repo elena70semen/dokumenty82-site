@@ -51,6 +51,9 @@ jobs:
       - name: Check static export links
         run: npm run check:static-links
 
+      - name: Check launch live config
+        run: npm run check:launch-live-config
+
       - name: Check launch readiness
         run: npm run check:launch-readiness
 
