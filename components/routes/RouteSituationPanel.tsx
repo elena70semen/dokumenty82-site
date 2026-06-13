@@ -15,21 +15,21 @@ export function RouteSituationPanel({ section }: RouteSituationPanelProps) {
       style={{ backgroundImage: `url(${brandTokens.assets.routeGridPattern})` }}
     >
       <div className="container-premium">
-        <div className="grid gap-8 lg:grid-cols-[0.74fr_1.26fr] lg:items-end">
+        <div className="section-heading-grid">
           <div>
             <p className="eyebrow-line">{section.eyebrow}</p>
             <h2 id="route-situation-title" className="mt-5 text-4xl font-black leading-tight text-[color:var(--text-primary)] md:text-6xl">
               {section.title}
             </h2>
           </div>
-          <p className="text-lg leading-9 text-[color:var(--text-secondary)]">{section.text}</p>
+          <p className="section-copy">{section.text}</p>
         </div>
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {section.items.map((item) => (
             <article
               key={item.title}
-              className="group flex min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)] md:min-h-[250px]"
+              className="premium-card premium-link-card group flex min-w-0 flex-col p-5 md:min-h-[250px]"
             >
               <div className="flex items-start justify-between gap-4">
                 <BrandBadge kind={item.badgeKind} label="Ситуация" icon={item.icon} size={48} />

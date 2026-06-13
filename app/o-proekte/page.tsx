@@ -40,27 +40,27 @@ const trustItems = [
 
 export default function AboutProjectPage() {
   return (
-    <main className="pt-36">
+    <main id="main-content" className="pt-36">
       <JsonLd data={aboutBreadcrumbJsonLd} />
       <section className="section-pad">
         <div className="container-premium grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="reveal-block" data-reveal="left">
-            <nav className="mb-8 flex max-w-full flex-wrap items-center gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
-              <Link href="/" className="inline-flex min-h-10 items-center rounded-[8px] text-[#245da7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#245da7]">
+            <nav className="breadcrumb-trail mb-8" aria-label="Хлебные крошки">
+              <Link href="/" className="inline-flex min-h-10 items-center rounded-[8px] text-[color:var(--blue)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]">
                 Главная
               </Link>
               <span>/</span>
-              <span aria-current="page" className="inline-flex min-h-10 min-w-0 items-center break-words text-[#111821]">
+              <span aria-current="page" className="inline-flex min-h-10 min-w-0 items-center break-words text-[color:var(--text-primary)]">
                 О проекте
               </span>
             </nav>
             <p className="eyebrow-line">О проекте</p>
-            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[#111821] md:text-8xl">
+            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[color:var(--text-primary)] md:text-8xl">
               Локальный центр
               <br />
               <span className="script-accent">подготовки документов</span>
             </h1>
-            <p className="mt-7 text-xl leading-9 text-[#667184]">
+            <p className="mt-7 text-xl leading-9 text-[color:var(--text-secondary)]">
               Документы для бизнеса - спокойный деловой формат для регистрации, отчетности, изменений, адреса,
               запросов банка и других рабочих вопросов, где нужен понятный комплект документов.
             </p>
@@ -74,16 +74,16 @@ export default function AboutProjectPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/62">
+      <section className="section-pad bg-[var(--paper-soft)]">
         <div className="container-premium grid gap-6 md:grid-cols-3">
           {[
             "Сначала разбираем ситуацию",
             "Объясняем порядок действий простыми словами",
             "Готовим документы под конкретный вопрос"
           ].map((item) => (
-            <article key={item} className="reveal-block rounded-[8px] border border-[#16284414] bg-white p-7 shadow-[0_22px_58px_rgba(22,40,68,0.08)]" data-reveal="up">
-              <h2 className="text-2xl font-black leading-tight text-[#111821]">{item}</h2>
-              <p className="mt-4 leading-8 text-[#667184]">
+            <article key={item} className="reveal-block premium-card p-7" data-reveal="up">
+              <h2 className="text-2xl font-black leading-tight text-[color:var(--text-primary)]">{item}</h2>
+              <p className="mt-4 leading-8 text-[color:var(--text-secondary)]">
                 Подход без давления, без имитации ведомственного статуса и без обещаний результата до изучения документов.
               </p>
             </article>
@@ -102,7 +102,7 @@ export default function AboutProjectPage() {
           />
           <div className="rich-text reveal-block" data-reveal="right">
             <p className="eyebrow-line">Формат работы</p>
-            <h2 className="display-serif mt-5 text-5xl font-semibold leading-tight text-[#111821] md:text-6xl">
+            <h2 className="display-serif mt-5 text-5xl font-semibold leading-tight text-[color:var(--text-primary)] md:text-6xl">
               Офис рядом с налоговой - только ориентир.
             </h2>
             <p>
@@ -113,23 +113,23 @@ export default function AboutProjectPage() {
               Адрес: {site.address}. Перед визитом можно позвонить и уточнить, какие документы лучше взять на первый
               разбор.
             </p>
-            <Link href="/kontakty/" className="mt-6 inline-flex rounded-full bg-[#162844] px-7 py-4 text-sm font-black text-white">
+            <Link href="/kontakty/" className="mt-6 inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-7 py-4 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]">
               Построить маршрут
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="section-pad bg-white/62">
+      <section className="section-pad bg-[var(--paper-soft)]">
         <div className="container-premium">
           <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
             <div className="reveal-block" data-reveal="left">
               <p className="eyebrow-line">Доверие через прозрачность</p>
-              <h2 className="display-serif mt-5 text-4xl font-semibold leading-tight text-[#111821] md:text-6xl">
+              <h2 className="display-serif mt-5 text-4xl font-semibold leading-tight text-[color:var(--text-primary)] md:text-6xl">
                 Что можно проверить до обращения
               </h2>
             </div>
-            <p className="reveal-block text-lg leading-9 text-[#667184]" data-reveal="right">
+            <p className="reveal-block section-copy" data-reveal="right">
               Публичная часть сайта не подменяет консультацию и не добавляет неподтверждённые доказательства. Она
               показывает, как начать безопасно и какие границы остаются до человеческого подтверждения.
             </p>
@@ -139,11 +139,11 @@ export default function AboutProjectPage() {
             {trustItems.map((item) => (
               <article
                 key={item.title}
-                className="reveal-block rounded-[8px] border border-[#16284414] bg-white p-6 shadow-[0_22px_58px_rgba(22,40,68,0.08)]"
+                className="reveal-block premium-card p-6"
                 data-reveal="up"
               >
-                <h3 className="text-xl font-black leading-tight text-[#111821]">{item.title}</h3>
-                <p className="mt-4 leading-8 text-[#667184]">{item.copy}</p>
+                <h3 className="text-xl font-black leading-tight text-[color:var(--text-primary)]">{item.title}</h3>
+                <p className="mt-4 leading-8 text-[color:var(--text-secondary)]">{item.copy}</p>
               </article>
             ))}
           </div>

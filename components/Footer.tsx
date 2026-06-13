@@ -5,7 +5,7 @@ import { homeFooter } from "@/lib/home/home-page-data";
 export function Footer() {
   return (
     <footer className="bg-[var(--surface-dark)] py-12 text-[color:var(--text-inverse)]">
-      <div className="container-premium grid gap-9 lg:grid-cols-[1.1fr_0.88fr_1.02fr]">
+      <div className="container-premium grid gap-6 lg:grid-cols-[1.1fr_0.88fr_1.02fr]">
         <div className="min-w-0">
           <Link
             href="/"
@@ -24,28 +24,28 @@ export function Footer() {
           </p>
         </div>
 
-        <nav className="text-sm text-[color:var(--text-inverse-muted)]" aria-label="Служебная навигация">
+        <nav className="rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] p-5 text-sm text-[color:var(--text-inverse-muted)]" aria-label="Служебная навигация">
           <strong className="mb-4 block text-[color:var(--text-inverse)]">Маршруты</strong>
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
             {homeFooter.routes.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="inline-flex min-h-10 items-center rounded-[8px] py-1 transition hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+                className="inline-flex min-h-10 min-w-0 items-center rounded-[8px] px-3 py-2 leading-tight transition hover:bg-[var(--surface-dark-subtle-hover)] hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
               >
                 {item.label}
               </Link>
             ))}
             <Link
               href="/policy"
-              className="inline-flex min-h-10 items-center rounded-[8px] py-1 transition hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              className="inline-flex min-h-10 min-w-0 items-center rounded-[8px] px-3 py-2 leading-tight transition hover:bg-[var(--surface-dark-subtle-hover)] hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
             >
               Политика конфиденциальности
             </Link>
           </div>
         </nav>
 
-        <div className="text-sm leading-7 text-[color:var(--text-inverse-muted)]">
+        <div className="rounded-[8px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark-subtle)] p-5 text-sm leading-7 text-[color:var(--text-inverse-muted)]">
           <strong className="mb-3 block text-[color:var(--text-inverse)]">Контакты</strong>
           <address className="not-italic">
             <p>{homeFooter.address}</p>

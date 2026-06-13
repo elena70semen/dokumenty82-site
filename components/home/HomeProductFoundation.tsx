@@ -13,14 +13,14 @@ export function HomeProductFoundation() {
       data-required-home-blocks="situation_selector start_path priority_tasks route_groups client_information local_trust faq final_cta"
     >
       <div className="container-premium">
-        <div className="grid gap-8 lg:grid-cols-[0.76fr_1.24fr] lg:items-end">
+        <div className="section-heading-grid">
           <div>
             <p className="eyebrow-line">С чего начать</p>
             <h2 id="home-product-foundation" className="display-serif mt-5 text-4xl font-semibold leading-tight text-[color:var(--text-primary)] md:text-6xl">
               Выберите ситуацию или начните с первого шага
             </h2>
           </div>
-          <p className="text-lg leading-9 text-[color:var(--text-secondary)]">
+          <p className="section-copy">
             Если не уверены, с чего начать, начните с разбора ситуации. Посмотрим, что уже есть, что нужно подготовить и какой маршрут подходит.
           </p>
         </div>
@@ -30,8 +30,8 @@ export function HomeProductFoundation() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex min-w-0 flex-col rounded-[8px] border bg-white/88 p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] md:min-h-[218px] ${
-                index === 0 || item.href === "/razbor-situacii/" ? "border-[var(--accent-blue-border)] xl:col-span-2" : "border-[var(--line)]"
+              className={`premium-card premium-link-card flex min-w-0 flex-col p-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] md:min-h-[218px] ${
+                index === 0 || item.href === "/razbor-situacii/" ? "border-[var(--accent-blue-border)] xl:col-span-2" : ""
               }`}
               data-analytics-goal={analyticsGoalNames.relatedRouteClick}
               data-cta-label={item.title}
@@ -52,7 +52,7 @@ export function HomeProductFoundation() {
         </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[1fr_1fr]">
-          <article className="rounded-[8px] border border-[var(--line)] bg-white/88 p-6 shadow-[var(--shadow-card-md)]">
+          <article className="premium-card-strong p-6">
             <h3 className="text-2xl font-black text-[color:var(--text-primary)]">Как начинается работа</h3>
             <ol className="mt-6 grid gap-4 sm:grid-cols-2">
               {homeStartPath.map((step, index) => (
@@ -65,7 +65,7 @@ export function HomeProductFoundation() {
             </ol>
           </article>
 
-          <article className="rounded-[8px] border border-[var(--line)] bg-white/88 p-6 shadow-[var(--shadow-card-md)]">
+          <article className="premium-card-strong p-6">
             <h3 className="text-2xl font-black text-[color:var(--text-primary)]">Какая информация помогает</h3>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {homeClientInformation.map((item) => (
@@ -84,7 +84,7 @@ export function HomeProductFoundation() {
         </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[1.14fr_0.86fr] lg:items-stretch">
-          <article className="rounded-[8px] border border-[var(--line)] bg-white/88 p-6 shadow-[var(--shadow-card-md)]">
+          <article className="premium-card-strong p-6">
             <h3 className="text-2xl font-black text-[color:var(--text-primary)]">FAQ первого шага</h3>
             <div className="mt-6 grid gap-3">
               {homeFaq.map((item, index) => (
@@ -98,7 +98,7 @@ export function HomeProductFoundation() {
             </div>
           </article>
 
-          <article className="flex h-full flex-col justify-between rounded-[8px] bg-[var(--surface-dark-strong)] p-6 text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]">
+          <article className="premium-card-dark flex h-full flex-col justify-between p-6">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--lime-signal)]">Безопасный следующий шаг</p>
               <h3 className="mt-4 text-3xl font-black leading-tight">Начните с разбора ситуации</h3>

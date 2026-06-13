@@ -33,7 +33,7 @@ export function Header() {
       </a>
 
       <div className="container-premium">
-        <div className="glass-panel grid min-h-[74px] grid-cols-[1fr_auto] items-center gap-4 rounded-[8px] px-4 py-3 backdrop-blur-2xl backdrop-saturate-150 2xl:grid-cols-[auto_1fr_auto]">
+        <div className="glass-panel grid min-h-[74px] grid-cols-[1fr_auto] items-center gap-4 rounded-[8px] px-4 py-3 backdrop-blur-2xl backdrop-saturate-150 xl:grid-cols-[auto_1fr_auto] 2xl:grid-cols-[auto_1fr_auto]">
           <Link
             href="/"
             className="flex min-w-0 items-center gap-3 rounded-[8px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
@@ -74,7 +74,7 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="hidden items-center gap-2 2xl:flex">
+          <div className="hidden items-center justify-self-end gap-2 xl:flex">
             <Link
               href="/razbor-situacii/"
               className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
@@ -83,7 +83,7 @@ export function Header() {
             </Link>
             <a
               href={site.phoneHref}
-              className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-2 text-sm font-black text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+              className="hidden min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-2 text-sm font-black text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] 2xl:inline-flex"
             >
               {site.phone}
             </a>

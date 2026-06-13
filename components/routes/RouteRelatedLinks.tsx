@@ -20,14 +20,14 @@ export function RouteRelatedLinks({ links, pageSlug, pageType, leadTopic }: Rout
       style={{ backgroundImage: `url(${brandTokens.assets.routeGridPattern})` }}
     >
       <div className="container-premium">
-        <div className="grid gap-8 lg:grid-cols-[0.74fr_1.26fr] lg:items-end">
+        <div className="section-heading-grid">
           <div>
             <p className="eyebrow-line">Связанные маршруты</p>
             <h2 id="route-related-title" className="mt-5 text-4xl font-black leading-tight text-[color:var(--text-primary)] md:text-6xl">
               Перейти к точной странице
             </h2>
           </div>
-          <p className="text-lg leading-9 text-[color:var(--text-secondary)]">
+          <p className="section-copy">
             Ссылки ведут только на утверждённые страницы и помогают сохранить один основной интент на URL.
           </p>
         </div>
@@ -36,7 +36,7 @@ export function RouteRelatedLinks({ links, pageSlug, pageType, leadTopic }: Rout
           {links.map((link) => (
             <article
               key={link.href}
-              className="group flex min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)] md:min-h-[270px]"
+              className="premium-card premium-link-card group flex min-w-0 flex-col p-5 md:min-h-[270px]"
             >
               <div className="flex items-start justify-between gap-4">
                 <BrandBadge kind={link.badgeKind} label="Маршрут" icon={link.icon} size={48} />
