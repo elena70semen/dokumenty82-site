@@ -6,6 +6,9 @@ export function SituationFormPlaceholder() {
       eyebrow="Форма-заглушка"
       title="Кратко описать ситуацию"
       text="Для первого шага достаточно зафиксировать контекст без передачи конфиденциальных документов через сайт."
+      pageSlug="razbor-situacii"
+      pageType="core"
+      leadTopic="first_step"
       fields={[
         {
           id: "situation",
