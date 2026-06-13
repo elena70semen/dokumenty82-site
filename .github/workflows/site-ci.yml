@@ -57,6 +57,9 @@ jobs:
       - name: Check tracking no-PII
         run: npm run check:tracking-no-pii
 
+      - name: Check forms CRM contract
+        run: npm run check:forms-crm-contract
+
       - name: Check launch readiness
         run: npm run check:launch-readiness
 
