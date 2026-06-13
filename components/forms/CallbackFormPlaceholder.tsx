@@ -6,6 +6,9 @@ export function CallbackFormPlaceholder() {
       eyebrow="Форма-заглушка"
       title="Заказать звонок"
       text="Онлайн-заявка пока не отправляется. Используйте форму как черновик вопроса и fallback на телефон."
+      pageSlug="kontakty"
+      pageType="contact"
+      leadTopic="callback_request"
       fields={[
         {
           id: "name",
