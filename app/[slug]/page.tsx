@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ShowDocumentsPlaceholder } from "@/components/forms/ShowDocumentsPlaceholder";
 import { JsonLd } from "@/components/JsonLd";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { cta, getParentPage, getRoutePage, routePages, site } from "@/lib/content";
 import type { RoutePage } from "@/lib/content";
 import { routePageSlugs } from "@/lib/routes/route-page-data";
@@ -37,7 +38,7 @@ function getPrimaryCollector(page: RoutePage) {
       kind: page.primaryCtaLabel === cta.docs ? "show_documents" : "situation_review",
       label: page.primaryCtaLabel,
       note: page.safeCtaNote
-    };
+    } as const;
   }
 
   if (documentHeavySlugs.has(page.slug)) {
@@ -46,7 +47,7 @@ function getPrimaryCollector(page: RoutePage) {
       kind: "show_documents",
       label: cta.docs,
       note: "Без публичной загрузки файлов: сначала согласуем безопасный способ показать документы."
-    };
+    } as const;
   }
 
   return {
@@ -54,7 +55,7 @@ function getPrimaryCollector(page: RoutePage) {
     kind: "situation_review",
     label: cta.primary,
     note: null
-  };
+  } as const;
 }
 
 export function generateStaticParams() {
@@ -138,20 +139,31 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
             </h1>
             <p className="mt-7 text-xl leading-9 text-[#667184]">{page.description}</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link
+              <TrackedAction
                 href={primaryCollector.href}
                 className="rounded-full bg-[#162844] px-7 py-4 text-sm font-black text-white"
-                data-collector-kind={primaryCollector.kind}
-                data-cta-label={primaryCollector.label}
-                data-lead-topic={page.leadTopic ?? page.slug}
-                data-page-slug={page.slug}
-                data-page-type={page.pageType}
+                pageSlug={page.slug}
+                pageType={page.pageType}
+                ctaLabel={primaryCollector.label}
+                ctaLocation="dynamic_route_hero"
+                leadTopic={page.leadTopic ?? page.slug}
+                collectorType={primaryCollector.kind}
               >
                 {primaryCollector.label}
-              </Link>
-              <a href={site.phoneHref} className="rounded-full border border-[#16284422] bg-white/72 px-7 py-4 text-sm font-black text-[#162844]">
+              </TrackedAction>
+              <TrackedAction
+                href={site.phoneHref}
+                className="rounded-full border border-[#16284422] bg-white/72 px-7 py-4 text-sm font-black text-[#162844]"
+                pageSlug={page.slug}
+                pageType={page.pageType}
+                ctaLabel="Позвонить"
+                ctaLocation="dynamic_route_hero"
+                leadTopic={page.leadTopic ?? page.slug}
+                collectorType="phone"
+                contactChannel="phone"
+              >
                 Позвонить
-              </a>
+              </TrackedAction>
             </div>
             {primaryCollector.note ? (
               <p className="mt-4 max-w-xl text-sm leading-7 text-[#667184]">{primaryCollector.note}</p>
