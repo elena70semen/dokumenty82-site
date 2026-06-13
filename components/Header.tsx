@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandIcon } from "@/components/brand/BrandIcon";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { homeNavigation } from "@/lib/home/home-page-data";
 import { site } from "@/lib/content";
 
@@ -69,18 +70,31 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-2 xl:flex">
-            <Link
+            <TrackedAction
               href="/razbor-situacii/"
               className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+              pageSlug="global"
+              pageType="global"
+              ctaLabel="Разобрать ситуацию"
+              ctaLocation="header"
+              leadTopic="first_step"
+              collectorType="situation_review"
             >
               Разобрать ситуацию
-            </Link>
-            <a
+            </TrackedAction>
+            <TrackedAction
               href={site.phoneHref}
               className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-2 text-sm font-black text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+              pageSlug="global"
+              pageType="global"
+              ctaLabel="Позвонить"
+              ctaLocation="header"
+              leadTopic="phone_contact"
+              collectorType="phone"
+              contactChannel="phone"
             >
               {site.phone}
-            </a>
+            </TrackedAction>
           </div>
 
           <details className="group justify-self-end xl:hidden">
@@ -111,12 +125,31 @@ export function Header() {
                 </ul>
               </nav>
               <div className="grid gap-2 border-t border-[var(--line)] pt-3 sm:grid-cols-2">
-                <Link href="/razbor-situacii/" className="rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)]">
+                <TrackedAction
+                  href="/razbor-situacii/"
+                  className="rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)]"
+                  pageSlug="global"
+                  pageType="global"
+                  ctaLabel="Разобрать ситуацию"
+                  ctaLocation="mobile_header"
+                  leadTopic="first_step"
+                  collectorType="situation_review"
+                >
                   Разобрать ситуацию
-                </Link>
-                <a href={site.phoneHref} className="rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]">
+                </TrackedAction>
+                <TrackedAction
+                  href={site.phoneHref}
+                  className="rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)]"
+                  pageSlug="global"
+                  pageType="global"
+                  ctaLabel="Позвонить"
+                  ctaLocation="mobile_header"
+                  leadTopic="phone_contact"
+                  collectorType="phone"
+                  contactChannel="phone"
+                >
                   {site.phone}
-                </a>
+                </TrackedAction>
               </div>
             </div>
           </details>

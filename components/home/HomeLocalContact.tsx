@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { BrandIcon } from "@/components/brand/BrandIcon";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { homeContact } from "@/lib/home/home-page-data";
 import { brandTokens } from "@/lib/brand/brand-tokens";
 
@@ -46,9 +46,19 @@ export function HomeLocalContact() {
                     </span>
                     <div>
                       <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--text-muted)]">Телефон</p>
-                      <a href={homeContact.phoneHref} className="mt-2 inline-block text-lg font-black text-[color:var(--text-primary)]">
+                      <TrackedAction
+                        href={homeContact.phoneHref}
+                        className="mt-2 inline-block text-lg font-black text-[color:var(--text-primary)]"
+                        pageSlug="home"
+                        pageType="home"
+                        ctaLabel="Позвонить"
+                        ctaLocation="home_contact_phone"
+                        leadTopic="phone_contact"
+                        collectorType="phone"
+                        contactChannel="phone"
+                      >
                         {homeContact.phone}
-                      </a>
+                      </TrackedAction>
                     </div>
                   </div>
                 </div>
@@ -57,27 +67,27 @@ export function HomeLocalContact() {
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 {homeContact.actions.map((action, index) => {
                   const isPhone = action.href.startsWith("tel:");
+                  const collectorType = isPhone ? "phone" : action.label === "Построить маршрут" ? "route" : "situation_review";
                   const className =
                     index === 0
                       ? "bg-[var(--surface-dark-strong)] text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]"
                       : "border border-[var(--line)] bg-[var(--surface-raised)] text-[color:var(--surface-dark-strong)]";
 
-                  return isPhone ? (
-                    <a
+                  return (
+                    <TrackedAction
                       key={action.label}
                       href={action.href}
                       className={`inline-flex min-h-12 items-center justify-center rounded-[8px] px-4 py-3 text-sm font-black transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${className}`}
+                      pageSlug="home"
+                      pageType="home"
+                      ctaLabel={action.label}
+                      ctaLocation="home_contact_cta"
+                      leadTopic={isPhone ? "phone_contact" : action.label === "Построить маршрут" ? "office_route" : "first_step"}
+                      collectorType={collectorType}
+                      contactChannel={isPhone ? "phone" : action.label === "Построить маршрут" ? "office" : undefined}
                     >
                       {action.label}
-                    </a>
-                  ) : (
-                    <Link
-                      key={action.label}
-                      href={action.href}
-                      className={`inline-flex min-h-12 items-center justify-center rounded-[8px] px-4 py-3 text-sm font-black transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] ${className}`}
-                    >
-                      {action.label}
-                    </Link>
+                    </TrackedAction>
                   );
                 })}
               </div>

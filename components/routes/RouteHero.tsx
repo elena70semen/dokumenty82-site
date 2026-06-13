@@ -1,35 +1,57 @@
-import Link from "next/link";
 import { BrandBadge } from "@/components/brand/BrandBadge";
 import { BrandIcon } from "@/components/brand/BrandIcon";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { brandTokens } from "@/lib/brand/brand-tokens";
 import type { RouteAction, RouteHeroConfig, RoutePageKind } from "@/lib/routes/route-page-data";
+import type { CollectorType } from "@/lib/tracking/event-context";
 
 type RouteHeroProps = {
   hero: RouteHeroConfig;
   pageKind: RoutePageKind;
+  pageSlug: string;
 };
 
-function RouteActionLink({ action, primary = false }: { action: RouteAction; primary?: boolean }) {
+function collectorTypeForAction(action: RouteAction): CollectorType {
+  if (action.kind === "phone") return "phone";
+  if (action.label === "Показать документы") return "show_documents";
+  if (action.label === "Построить маршрут" || action.href.includes("route-contact")) return "route";
+  return "situation_review";
+}
+
+function RouteActionLink({
+  action,
+  pageKind,
+  pageSlug,
+  primary = false
+}: {
+  action: RouteAction;
+  pageKind: RoutePageKind;
+  pageSlug: string;
+  primary?: boolean;
+}) {
   const className = primary
     ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
     : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-5 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]";
-
-  if (action.kind === "phone" || action.href.startsWith("#")) {
-    return (
-      <a href={action.href} className={className}>
-        {action.label}
-      </a>
-    );
-  }
+  const collectorType = collectorTypeForAction(action);
 
   return (
-    <Link href={action.href} className={className}>
+    <TrackedAction
+      href={action.href}
+      className={className}
+      pageSlug={pageSlug}
+      pageType={pageKind}
+      ctaLabel={action.label}
+      ctaLocation="route_hero"
+      leadTopic={pageSlug}
+      collectorType={collectorType}
+      contactChannel={collectorType === "phone" ? "phone" : collectorType === "route" ? "office" : undefined}
+    >
       {action.label}
-    </Link>
+    </TrackedAction>
   );
 }
 
-export function RouteHero({ hero, pageKind }: RouteHeroProps) {
+export function RouteHero({ hero, pageKind, pageSlug }: RouteHeroProps) {
   return (
     <section
       className="relative isolate overflow-hidden bg-[var(--surface-dark)] pt-36 text-[color:var(--text-inverse)] md:pt-40"
@@ -56,9 +78,9 @@ export function RouteHero({ hero, pageKind }: RouteHeroProps) {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <RouteActionLink action={hero.primaryAction} primary />
+            <RouteActionLink action={hero.primaryAction} pageKind={pageKind} pageSlug={pageSlug} primary />
             {hero.secondaryActions.map((action) => (
-              <RouteActionLink key={`${action.label}-${action.href}`} action={action} />
+              <RouteActionLink key={`${action.label}-${action.href}`} action={action} pageKind={pageKind} pageSlug={pageSlug} />
             ))}
           </div>
 

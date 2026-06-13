@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { BrandIcon } from "@/components/brand/BrandIcon";
+import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { homeHero } from "@/lib/home/home-page-data";
 import { brandTokens } from "@/lib/brand/brand-tokens";
 
@@ -31,18 +31,30 @@ export function HomeHero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link
+            <TrackedAction
               href={homeHero.primaryCta.href}
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              pageSlug="home"
+              pageType="home"
+              ctaLabel={homeHero.primaryCta.label}
+              ctaLocation="home_hero"
+              leadTopic="first_step"
+              collectorType="situation_review"
             >
               {homeHero.primaryCta.label}
-            </Link>
-            <Link
+            </TrackedAction>
+            <TrackedAction
               href={homeHero.secondaryCta.href}
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-subtle)] bg-[var(--surface-dark-subtle)] px-6 py-3 text-sm font-black text-[color:var(--text-inverse)] transition hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              pageSlug="home"
+              pageType="home"
+              ctaLabel={homeHero.secondaryCta.label}
+              ctaLocation="home_hero"
+              leadTopic="show_documents"
+              collectorType="show_documents"
             >
               {homeHero.secondaryCta.label}
-            </Link>
+            </TrackedAction>
           </div>
 
           <ul className="mt-8 grid gap-3 text-sm text-[color:var(--text-inverse-soft)] sm:grid-cols-3">

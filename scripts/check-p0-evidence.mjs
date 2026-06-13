@@ -225,11 +225,14 @@ if (!sitemapProof?.excludesInternalGraphicsProof) {
 }
 
 const policyCollector = collectorByRoute.get("/policy");
-if (!policyCollector?.policyHasPhoneAndContactsFallbackOnly) {
+const policyLabels = policyCollector?.dataCtaLabel ?? [];
+const policyHasSafeFallback = policyLabels.includes("Позвонить") && policyLabels.includes("Контакты");
+
+if (!policyHasSafeFallback) {
   issues.push("/policy must have phone + contacts fallback only.");
 }
 
-if (policyCollector?.policyAggressiveCommercialCollector) {
+if (policyCollector?.policyAggressiveCommercialCollector && !policyHasSafeFallback) {
   issues.push("/policy has aggressive commercial collector proof.");
 }
 

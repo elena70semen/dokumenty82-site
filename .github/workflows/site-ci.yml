@@ -54,6 +54,9 @@ jobs:
       - name: Check launch live config
         run: npm run check:launch-live-config
 
+      - name: Check tracking no-PII
+        run: npm run check:tracking-no-pii
+
       - name: Check launch readiness
         run: npm run check:launch-readiness
 
