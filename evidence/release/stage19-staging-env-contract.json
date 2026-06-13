@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "timestamp": "2026-06-13T08:23:11.279Z",
+  "timestamp": "2026-06-13T08:35:34.333Z",
   "git": {
-    "branch": "stage20/mobile-layout-readability-accessibility",
-    "commit": "422bb3d"
+    "branch": "stage20/trust-public-info-policy-readiness",
+    "commit": "b822767"
   },
   "envExamplePath": ".env.example",
   "publicLiveAllowed": false,

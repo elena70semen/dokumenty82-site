@@ -281,6 +281,7 @@ export const homeFooter = {
     { label: "Налоги и режимы", href: "/nalogi-i-rezhimy/" },
     { label: "Кадры", href: "/kadry/" },
     { label: "Сопровождение", href: "/soprovozhdenie/" },
-    { label: "Контакты", href: "/kontakty/" }
+    { label: "Контакты", href: "/kontakty/" },
+    { label: "О проекте", href: "/o-proekte/" }
   ]
 };

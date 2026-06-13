@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checkedAt": "2026-06-13T08:23:18.701Z",
+  "checkedAt": "2026-06-13T08:35:41.766Z",
   "approvedRoutes": 39,
   "indexedRoutes": 36,
   "noindexRoutes": [
@@ -14,6 +14,21 @@
     "evidence/frontend/stage18-layout-foundation.json",
     "evidence/frontend/stage18-homepage-structure.json"
   ],
+  "publicFacts": {
+    "phone": "+7 (978) 998-72-22",
+    "phoneHref": "tel:+79789987222",
+    "address": "Республика Крым, Симферополь, ул. им. Мате Залки, 1",
+    "localMarker": "офис рядом с налоговой",
+    "publicEmailVisible": false
+  },
+  "trustReadiness": {
+    "contactsSafeDocumentShowing": true,
+    "policyReviewRequired": true,
+    "liveFormsDisabled": true,
+    "crmDisabled": true,
+    "analyticsCountersDisabled": true,
+    "publicUploadsDisabled": true
+  },
   "publicLiveAllowed": false,
   "launchVerdict": "NOT_PUBLIC_LIVE_READY",
   "issues": []

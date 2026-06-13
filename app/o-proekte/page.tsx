@@ -19,6 +19,25 @@ const aboutBreadcrumbJsonLd = buildBreadcrumbListJsonLd([
   { name: "О проекте", href: "/o-proekte/" }
 ]);
 
+const trustItems = [
+  {
+    title: "Публичные факты из одного источника",
+    copy: "Телефон, адрес, категория и локальный ориентир берутся из подтверждённого канона и повторяются без альтернативных версий."
+  },
+  {
+    title: "Процесс вместо громких заявлений",
+    copy: "Сначала фиксируем ситуацию, затем выбираем маршрут и только после этого обсуждаем подготовку документов."
+  },
+  {
+    title: "Документы без публичной загрузки",
+    copy: "Материалы можно показать при обращении, но сайт не просит прикреплять файлы в открытом интерфейсе."
+  },
+  {
+    title: "Границы остаются на проверке",
+    copy: "Юридические сведения, финальная политика, формы, интеграции и дополнительные публичные детали требуют отдельного решения."
+  }
+];
+
 export default function AboutProjectPage() {
   return (
     <main className="pt-36">
@@ -97,6 +116,36 @@ export default function AboutProjectPage() {
             <Link href="/kontakty/" className="mt-6 inline-flex rounded-full bg-[#162844] px-7 py-4 text-sm font-black text-white">
               Построить маршрут
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-white/62">
+        <div className="container-premium">
+          <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+            <div className="reveal-block" data-reveal="left">
+              <p className="eyebrow-line">Доверие через прозрачность</p>
+              <h2 className="display-serif mt-5 text-4xl font-semibold leading-tight text-[#111821] md:text-6xl">
+                Что можно проверить до обращения
+              </h2>
+            </div>
+            <p className="reveal-block text-lg leading-9 text-[#667184]" data-reveal="right">
+              Публичная часть сайта не подменяет консультацию и не добавляет неподтверждённые доказательства. Она
+              показывает, как начать безопасно и какие границы остаются до человеческого подтверждения.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {trustItems.map((item) => (
+              <article
+                key={item.title}
+                className="reveal-block rounded-[8px] border border-[#16284414] bg-white p-6 shadow-[0_22px_58px_rgba(22,40,68,0.08)]"
+                data-reveal="up"
+              >
+                <h3 className="text-xl font-black leading-tight text-[#111821]">{item.title}</h3>
+                <p className="mt-4 leading-8 text-[#667184]">{item.copy}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

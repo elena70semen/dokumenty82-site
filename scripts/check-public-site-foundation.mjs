@@ -63,6 +63,13 @@ const robotsText = read("public/robots.txt");
 const featureFlagsText = read("lib/feature-flags.ts");
 const blogNewsText = read("lib/blog-news.ts");
 const packageText = read("package.json");
+const contentText = read("lib/content.ts");
+const homeDataText = read("lib/home/home-page-data.ts");
+const routeDataText = read("lib/routes/route-page-data.ts");
+const aboutPageText = read("app/o-proekte/page.tsx");
+const policyPageText = read("app/policy/page.tsx");
+const footerText = read("components/Footer.tsx");
+const showDocumentsText = read("components/forms/ShowDocumentsPlaceholder.tsx");
 const publicFoundationDocs = [
   "docs/content/stage-18b-page-block-copy-and-leadgen-architecture-v1.md",
   "docs/frontend/stage-18c-layout-foundation-and-component-system-v1.md",
@@ -113,6 +120,32 @@ for (const scriptName of ["check:page-blocks", "check:layout", "check:homepage",
   assert(packageText.includes(`"${scriptName}"`), `package.json missing script: ${scriptName}`);
 }
 
+const approvedPublicFacts = [
+  ["name", /name:\s*"Документы для бизнеса"/],
+  ["category", /category:\s*"Центр подготовки документов"/],
+  ["domain", /domain:\s*"https:\/\/dokumenty82\.ru"/],
+  ["phone", /phone:\s*"\+7 \(978\) 998-72-22"/],
+  ["phoneHref", /phoneHref:\s*"tel:\+79789987222"/],
+  ["address", /address:\s*"Республика Крым, Симферополь, ул\. им\. Мате Залки, 1"/],
+  ["addressShort", /addressShort:\s*"Симферополь, ул\. Мате Залки, 1"/],
+  ["landmark", /landmark:\s*"офис рядом с налоговой"/]
+];
+
+for (const [label, pattern] of approvedPublicFacts) {
+  assert(pattern.test(contentText), `Approved public fact missing or changed in lib/content.ts: ${label}`);
+}
+
+assert(homeDataText.includes("Публичная страница не принимает файлы"), "Homepage must keep no-public-upload document wording.");
+assert(homeDataText.includes("Офис рядом с налоговой"), "Homepage must keep approved local marker.");
+assert(footerText.includes("Документы показываются только согласованным способом"), "Footer must keep safe document-showing boundary.");
+assert(routeDataText.includes("Показать документы") && routeDataText.includes("без публичной загрузки файлов"), "Contacts/route data must keep safe show-documents wording.");
+assert(showDocumentsText.includes("Публичная страница не принимает файлы"), "Show documents placeholder must not imply public upload.");
+assert(showDocumentsText.includes("без прикрепления файлов"), "Show documents placeholder must keep no-file-attachment wording.");
+assert(aboutPageText.includes("Публичные факты из одного источника"), "/o-proekte/ must expose public fact consistency.");
+assert(aboutPageText.includes("Границы остаются на проверке"), "/o-proekte/ must keep owner/legal review boundary visible.");
+assert(policyPageText.includes("живой прием форм, CRM-отправка, публичная загрузка и счетчики аналитики не включены"), "/policy must state current disabled forms/CRM/upload/analytics reality.");
+assert(policyPageText.includes("финальная юридическая редакция требует отдельной проверки"), "/policy must keep legal review boundary.");
+
 for (const doc of publicFoundationDocs) {
   assert(fs.existsSync(repoPath(doc)), `Missing synced Stage 18 product foundation doc: ${doc}`);
   assert(/PUBLIC_LIVE_ALLOWED\s*=\s*false/.test(read(doc)), `Stage 18 product foundation doc must keep public live false: ${doc}`);
@@ -146,6 +179,7 @@ const runtimeText = listFiles(".")
 const unsafePatterns = [
   { pattern: /PUBLIC_LIVE_ALLOWED\s*=\s*true/i, message: "PUBLIC_LIVE_ALLOWED true marker found." },
   { pattern: /Alt-Svc:\s*h3|listen\s+[^;]*quic|http3\s+on|quic_retry\s+on/i, message: "Active HTTP/3/QUIC enablement found." },
+  { pattern: /"@type"\s*:\s*"(?:Review|AggregateRating|Rating)"|"(?:priceRange|openingHours|openingHoursSpecification|legalName|taxID|vatID|sameAs|offers|potentialAction)"\s*:/i, message: "Forbidden structured-data trust/commercial field found." },
   { pattern: /<input\b[^>]*\btype=["']file["']|type:\s*["']file["']/i, message: "Public upload input found." },
   { pattern: /t\.me\/|telegram\.me\/|max:\/\//i, message: "Messaging deep link found." },
   { pattern: /sk-[A-Za-z0-9]|OPENAI_API_KEY|secret=|token=/i, message: "Secret-like runtime text found." },
@@ -158,6 +192,8 @@ for (const { pattern, message } of unsafePatterns) {
   assert(!pattern.test(runtimeText), message);
 }
 
+assert(!runtimeText.includes("info@dokumenty82.ru"), "Target email must not be exposed in public runtime until mail is confirmed.");
+
 const evidence = {
   status: issues.length === 0 ? "passed" : "failed",
   checkedAt: new Date().toISOString(),
@@ -165,6 +201,21 @@ const evidence = {
   indexedRoutes: indexedRoutes.length,
   noindexRoutes,
   evidenceInputs: evidenceFiles,
+  publicFacts: {
+    phone: "+7 (978) 998-72-22",
+    phoneHref: "tel:+79789987222",
+    address: "Республика Крым, Симферополь, ул. им. Мате Залки, 1",
+    localMarker: "офис рядом с налоговой",
+    publicEmailVisible: false
+  },
+  trustReadiness: {
+    contactsSafeDocumentShowing: true,
+    policyReviewRequired: true,
+    liveFormsDisabled: true,
+    crmDisabled: true,
+    analyticsCountersDisabled: true,
+    publicUploadsDisabled: true
+  },
   publicLiveAllowed: false,
   launchVerdict: "NOT_PUBLIC_LIVE_READY",
   issues
