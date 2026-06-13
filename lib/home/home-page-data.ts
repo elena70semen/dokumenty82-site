@@ -43,8 +43,8 @@ export const homeNavigation: HomeNavigationItem[] = [
   { label: "Разбор ситуации", href: "/razbor-situacii/" },
   { label: "Отчётность", href: "/otchetnost/" },
   { label: "Банк и 115-ФЗ", href: "/bank-i-115-fz/" },
-  { label: "Адрес и ЕГРЮЛ", href: "/adres-egryul-direktor/" },
-  { label: "Регистрация", href: "/registraciya-i-likvidaciya/" },
+  { label: "Адрес / ЕГРЮЛ / директор", href: "/adres-egryul-direktor/" },
+  { label: "Регистрация и ликвидация", href: "/registraciya-i-likvidaciya/" },
   { label: "Налоги и режимы", href: "/nalogi-i-rezhimy/" },
   { label: "Кадры", href: "/kadry/" },
   { label: "Сопровождение", href: "/soprovozhdenie/" },
@@ -52,21 +52,22 @@ export const homeNavigation: HomeNavigationItem[] = [
 ];
 
 export const homeHero = {
-  kicker: "Симферополь · офис рядом с налоговой",
+  kicker: "Документы для бизнеса · Симферополь",
   title: "Разберём ситуацию и подготовим документы",
   text:
-    "Если вопрос по документам ещё не разложен, начните с разбора ситуации. Подскажем, какой маршрут подходит: отчётность, банк, ЕГРЮЛ, адрес, регистрация или другой документальный шаг.",
+    "Центр подготовки документов в Симферополе. Если вопрос ещё не разложен, начните с разбора: посмотрим, что уже есть, что подготовить и какой маршрут подходит.",
   primaryCta: { label: "Разобрать ситуацию", href: "/razbor-situacii/" },
   secondaryCta: { label: "Показать документы", href: "/kontakty/#show-documents" },
-  signals: ["Локальный офис", "Сначала маршрут", "Без публичной загрузки"]
+  phoneCta: { label: "Позвонить", href: site.phoneHref },
+  signals: ["Офис рядом с налоговой", "Сначала разбор", "Без публичной загрузки"]
 };
 
 export const homeSituationSelector: HomeSituation[] = [
   {
-    title: "Пришло требование или запрос",
+    title: "ИФНС, требование или срочный запрос",
     href: "/srochnye-voprosy/",
     icon: "question",
-    copy: "Если документ уже на руках, сначала отделяем источник, тему и ближайший безопасный маршрут."
+    copy: "Если письмо или требование уже на руках, отделяем источник, тему и ближайший безопасный маршрут."
   },
   {
     title: "Нужна отчётность",
@@ -75,10 +76,16 @@ export const homeSituationSelector: HomeSituation[] = [
     copy: "Выберите направление по УСН, нулевой отчётности, электронной сдаче или восстановлению данных."
   },
   {
-    title: "Банк запросил документы",
-    href: "/bank-i-115-fz/",
+    title: "Банк прислал запрос документов",
+    href: "/otvet-na-zapros-banka/",
     icon: "bank",
-    copy: "Отделите ответ на конкретный запрос от пакета документов по 115-ФЗ."
+    copy: "Если есть конкретные пункты банка, сначала отделяем ответ на запрос от широкого пакета документов."
+  },
+  {
+    title: "Нужен пакет по 115-ФЗ",
+    href: "/dokumenty-dlya-banka-115-fz/",
+    icon: "bank",
+    copy: "Если вопрос шире одного письма, смотрим деловую ситуацию, операции и подтверждающие материалы."
   },
   {
     title: "Адрес, ЕГРЮЛ или директор",
@@ -103,6 +110,12 @@ export const homeSituationSelector: HomeSituation[] = [
     href: "/kadry/",
     icon: "hr",
     copy: "Если вопрос связан с сотрудниками, регулярными документами или сопровождением, начните с кадрового входа."
+  },
+  {
+    title: "Не знаю, с чего начать",
+    href: "/razbor-situacii/",
+    icon: "route",
+    copy: "Начните с разбора ситуации: посмотрим вводные и подскажем, какой маршрут не смешает разные задачи."
   }
 ];
 
@@ -157,7 +170,7 @@ export const homeRouteCards: HomeRouteCard[] = [
     href: "/otchetnost/",
     icon: "reporting",
     badgeKind: "route",
-    copy: "Выберите между УСН, нулевой отчётностью, восстановлением и требованием ИФНС.",
+    copy: "Выберите между УСН, нулевой отчётностью, восстановлением учёта, электронной сдачей и требованием ИФНС.",
     nextStep: "Выбрать отчётный вход"
   },
   {
@@ -169,11 +182,11 @@ export const homeRouteCards: HomeRouteCard[] = [
     nextStep: "Разделить банковский вопрос"
   },
   {
-    title: "Регистрация и изменения",
+    title: "Регистрация и ликвидация",
     href: "/registraciya-i-likvidaciya/",
     icon: "registration",
     badgeKind: "document",
-    copy: "Разделите регистрацию ООО, ИП, ликвидацию и связанные изменения перед подготовкой документов.",
+    copy: "Разделите регистрацию ООО, регистрацию ИП, ликвидацию и смежные адресные вопросы перед подготовкой документов.",
     nextStep: "Выбрать жизненный цикл"
   },
   {
@@ -197,8 +210,8 @@ export const homeRouteCards: HomeRouteCard[] = [
     href: "/kadry/",
     icon: "hr",
     badgeKind: "office",
-    copy: "Смотрим задачу по кадровым документам и собираем понятный перечень дальнейших действий.",
-    nextStep: "Разобрать ситуацию"
+    copy: "Отделите срочное оформление сотрудников от кадрового сопровождения и безопасного показа персональных данных.",
+    nextStep: "Отделить кадровый вопрос"
   },
   {
     title: "Восстановление и сопровождение",
@@ -240,7 +253,7 @@ export const homeMaterials: HomeMaterial[] = [
 
 export const homeContact = {
   title: "Можно начать с короткого разбора в офисе",
-  text: "Принесите то, что уже есть по вопросу, или сначала позвоните. Мы разложим ситуацию и подскажем, какой документальный шаг нужен дальше.",
+  text: "Принесите то, что уже есть по вопросу, или сначала позвоните. Документы можно показать при обращении — без загрузки файлов на сайте.",
   address: site.address,
   phone: site.phone,
   phoneHref: site.phoneHref,
@@ -263,11 +276,12 @@ export const homeFooter = {
     { label: "Разбор ситуации", href: "/razbor-situacii/" },
     { label: "Отчётность", href: "/otchetnost/" },
     { label: "Банк и 115-ФЗ", href: "/bank-i-115-fz/" },
-    { label: "Адрес и ЕГРЮЛ", href: "/adres-egryul-direktor/" },
-    { label: "Регистрация", href: "/registraciya-i-likvidaciya/" },
+    { label: "Адрес / ЕГРЮЛ / директор", href: "/adres-egryul-direktor/" },
+    { label: "Регистрация и ликвидация", href: "/registraciya-i-likvidaciya/" },
     { label: "Налоги и режимы", href: "/nalogi-i-rezhimy/" },
     { label: "Кадры", href: "/kadry/" },
     { label: "Сопровождение", href: "/soprovozhdenie/" },
-    { label: "Контакты", href: "/kontakty/" }
+    { label: "Контакты", href: "/kontakty/" },
+    { label: "О проекте", href: "/o-proekte/" }
   ]
 };

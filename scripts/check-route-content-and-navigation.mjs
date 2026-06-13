@@ -9,8 +9,8 @@ const requiredTopLevelNavigation = [
   { label: "Разбор ситуации", href: "/razbor-situacii/" },
   { label: "Отчётность", href: "/otchetnost/" },
   { label: "Банк и 115-ФЗ", href: "/bank-i-115-fz/" },
-  { label: "Адрес и ЕГРЮЛ", href: "/adres-egryul-direktor/" },
-  { label: "Регистрация", href: "/registraciya-i-likvidaciya/" },
+  { label: "Адрес / ЕГРЮЛ / директор", href: "/adres-egryul-direktor/" },
+  { label: "Регистрация и ликвидация", href: "/registraciya-i-likvidaciya/" },
   { label: "Налоги и режимы", href: "/nalogi-i-rezhimy/" },
   { label: "Кадры", href: "/kadry/" },
   { label: "Сопровождение", href: "/soprovozhdenie/" },
@@ -32,6 +32,31 @@ const requiredProductBlockFamilies = [
 
 const noindexFoundationRoutes = ["/blog/", "/blog/obnovleniya-fns/", "/blog/razbory/"];
 const blockedPublicNavigationRoutes = [...noindexFoundationRoutes, "/faq/", "/internal/graphics-proof/", "/internal/visual-detail-kit/"];
+const requiredVisibleParentRelatedRoutes = {
+  "otvet-na-trebovanie-ifns": "/srochnye-voprosy/",
+  "deklaraciya-usn": "/otchetnost/",
+  "otvet-na-zapros-banka": "/bank-i-115-fz/",
+  "dokumenty-dlya-banka-115-fz": "/bank-i-115-fz/",
+  "yuridicheskiy-adres-simferopol": "/adres-egryul-direktor/",
+  "nedostovernost-yuridicheskogo-adresa": "/adres-egryul-direktor/",
+  "smena-yuridicheskogo-adresa-ooo": "/adres-egryul-direktor/",
+  "smena-direktora-ooo": "/adres-egryul-direktor/",
+  "srochnoe-oformlenie-sotrudnikov": "/kadry/",
+  "perehod-na-ausn": "/nalogi-i-rezhimy/",
+  "nulevaya-otchetnost-ooo": "/otchetnost/",
+  "nulevaya-otchetnost-ip": "/otchetnost/",
+  "otchetnost-elektronno": "/otchetnost/",
+  "vosstanovlenie-buhucheta": "/otchetnost/",
+  "buhgalterskoe-soprovozhdenie-ooo": "/soprovozhdenie/",
+  "buhgalterskoe-soprovozhdenie-ip": "/soprovozhdenie/",
+  "kadrovoe-soprovozhdenie": "/kadry/",
+  "registraciya-ooo": "/registraciya-i-likvidaciya/",
+  "registraciya-ip": "/registraciya-i-likvidaciya/",
+  "likvidaciya-ooo": "/registraciya-i-likvidaciya/",
+  "ausn-krym": "/nalogi-i-rezhimy/",
+  "raschet-nalogovoy-nagruzki": "/nalogi-i-rezhimy/",
+  "nds-pri-usn-2026": "/nalogi-i-rezhimy/"
+};
 const unsafeFeatureFlags = [
   "formsLive",
   "crmSuccessEnabled",
@@ -85,6 +110,44 @@ function countExactNavPair(text, item) {
 
 function countToken(text, token) {
   return [...text.matchAll(new RegExp(escapeRegExp(token), "g"))].length;
+}
+
+function readObjectFrom(text, objectStart) {
+  if (objectStart === -1) return "";
+
+  let depth = 0;
+  for (let index = objectStart; index < text.length; index += 1) {
+    const char = text[index];
+    if (char === "{") depth += 1;
+    if (char === "}") depth -= 1;
+    if (depth === 0) return text.slice(objectStart, index + 1);
+  }
+
+  return "";
+}
+
+function extractRoutePageBlock(text, slug) {
+  const slugToken = `slug: "${slug}"`;
+  const slugIndex = text.indexOf(slugToken);
+  if (slugIndex === -1) return "";
+
+  return readObjectFrom(text, text.lastIndexOf("{", slugIndex));
+}
+
+function extractHardeningBlock(text, slug) {
+  const quotedToken = `"${slug}": {`;
+  const unquotedToken = `${slug}: {`;
+  const quotedIndex = text.indexOf(quotedToken);
+  const unquotedIndex = text.indexOf(unquotedToken);
+  const tokenIndex =
+    quotedIndex === -1
+      ? unquotedIndex
+      : unquotedIndex === -1
+        ? quotedIndex
+        : Math.min(quotedIndex, unquotedIndex);
+
+  if (tokenIndex === -1) return "";
+  return readObjectFrom(text, text.indexOf("{", tokenIndex));
 }
 
 function listFiles(dir) {
@@ -203,6 +266,18 @@ for (const token of ["whatWeCheck", "documentsOrData", "howWorkStarts", "notProm
   assert(countToken(contentText, token) >= 32, `Dynamic route content should define ${token} for 32 dynamic routes.`);
 }
 
+for (const [slug, parentHref] of Object.entries(requiredVisibleParentRelatedRoutes)) {
+  const routeBlock = extractRoutePageBlock(contentText, slug);
+  const hardeningBlock = extractHardeningBlock(contentText, slug);
+  const visibleRelatedSource = `${hardeningBlock}\n${routeBlock}`;
+
+  assert(routeBlock.includes(`parentHref: "${parentHref}"`), `Dynamic route ${slug} must keep parent hub ${parentHref}.`);
+  assert(
+    visibleRelatedSource.includes(`"${parentHref}"`),
+    `Dynamic route ${slug} must include parent hub ${parentHref} in visible related route data.`
+  );
+}
+
 for (const token of ["situation:", "scope:", "process:", "documents:", "related:", "localContact:", "safetyNote:"]) {
   assert(routePageDataText.includes(token), `Static route page data missing route block token: ${token}`);
 }
@@ -252,6 +327,7 @@ const evidence = {
   noindexFoundationRoutes,
   requiredTopLevelNavigation,
   requiredProductBlockFamilies,
+  requiredVisibleParentRelatedRoutes,
   sourceSyncedDocs,
   publicLiveAllowed: false,
   ownerLegalStatus: "PENDING_HUMAN_REVIEW",

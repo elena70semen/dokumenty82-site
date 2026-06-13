@@ -224,7 +224,8 @@ export const routePageData: Record<(typeof routePageSlugs)[number], RoutePageCon
     kind: "contact",
     title: "Контакты, адрес и безопасный показ документов",
     metadataTitle: "Контакты — Документы для бизнеса в Симферополе",
-    metadataDescription: "Телефон, адрес и офисный маршрут центра подготовки документов в Симферополе.",
+    metadataDescription:
+      "Телефон, адрес, офисный маршрут и безопасный способ показать документы в центре подготовки документов в Симферополе.",
     hero: {
       eyebrow: "Контакты в Симферополе",
       title: "Контакты, адрес и безопасный показ документов",
@@ -275,7 +276,8 @@ export const routePageData: Record<(typeof routePageSlugs)[number], RoutePageCon
         "неподтверждённые данные о приёме",
         "неподтверждённые локальные детали",
         "юридические данные",
-        "дополнительные контактные каналы"
+        "дополнительные контактные каналы",
+        "публичную загрузку документов"
       ]
     },
     process: {
@@ -332,7 +334,8 @@ export const routePageData: Record<(typeof routePageSlugs)[number], RoutePageCon
         { label: "Показать документы", href: "#show-documents", kind: "secondary" }
       ]
     },
-    safetyNote: "Контактная страница использует только подтверждённые NAP-данные: телефон, адрес и локальный ориентир."
+    safetyNote:
+      "Контактная страница использует только подтверждённые NAP-данные: телефон, адрес и локальный ориентир. Документы показываются только согласованным способом."
   },
   otchetnost: {
     slug: "otchetnost",

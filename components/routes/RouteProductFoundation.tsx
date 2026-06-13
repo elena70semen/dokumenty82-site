@@ -9,7 +9,7 @@ type RouteProductFoundationProps = {
 
 function ProductList({ title, items }: { title: string; items: string[] }) {
   return (
-    <article className="flex h-full min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-white/86 p-5 shadow-[var(--shadow-card-sm)]">
+    <article className="premium-card flex h-full min-w-0 flex-col p-5">
       <h3 className="text-xl font-black leading-tight text-[color:var(--text-primary)]">{title}</h3>
       <ul className="mt-5 grid flex-1 gap-3 text-sm leading-7 text-[color:var(--text-secondary)]">
         {items.map((item) => (
@@ -68,14 +68,14 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
       data-required-blocks="route_intent when_this_page_fits what_we_check documents_data_needed how_work_starts what_is_not_promised related_routes faq_direction safe_final_cta client_information"
     >
       <div className="container-premium">
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+        <div className="section-heading-grid">
           <div>
             <p className="eyebrow-line">Маршрут и первый шаг</p>
             <h2 id={`product-foundation-${foundation.path.replace(/[^a-z0-9]+/gi, "-")}`} className="display-serif mt-5 text-4xl font-semibold leading-tight text-[color:var(--text-primary)] md:text-6xl">
               {foundation.routeIntent}
             </h2>
           </div>
-          <p className="text-lg leading-9 text-[color:var(--text-secondary)]">
+          <p className="section-copy">
             Страница помогает понять, подходит ли этот маршрут, какие вводные подготовить и куда перейти без публичной загрузки файлов.
           </p>
         </div>
@@ -90,14 +90,14 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
         </div>
 
         {variant === "full" && foundation.relatedRoutes.length > 0 ? (
-          <div className="mt-8 rounded-[8px] border border-[var(--line)] bg-white/86 p-6">
+          <div className="premium-card-strong mt-8 p-6">
             <h3 className="text-xl font-black text-[color:var(--text-primary)]">Связанные маршруты</h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {foundation.relatedRoutes.map((route) => (
                 <Link
                   key={route.href}
                   href={route.href}
-                  className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-4 py-2 text-center text-sm font-black text-[color:var(--surface-dark-strong)]"
+                  className="inline-flex min-h-11 min-w-0 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-4 py-2 text-center text-sm font-black leading-tight text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
                   data-analytics-goal={shouldExposeAnalyticsData ? analyticsGoalNames.relatedRouteClick : undefined}
                   data-cta-label={shouldExposeAnalyticsData ? route.label : undefined}
                   data-cta-location={shouldExposeAnalyticsData ? "route_product_foundation_related" : undefined}
@@ -113,15 +113,15 @@ export function RouteProductFoundation({ path, variant = "summary" }: RouteProdu
           </div>
         ) : null}
 
-        <div className="mt-8 rounded-[8px] bg-[var(--surface-dark-strong)] p-6 text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)]">
+        <div className="premium-card-dark mt-8 p-6">
           <h3 className="text-2xl font-black leading-tight">{foundation.finalCta.title}</h3>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[color:var(--text-inverse-muted)]">{foundation.finalCta.copy}</p>
           <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:max-w-4xl">
             {foundation.finalCta.actions.map((action, index) => {
               const className =
                 index === 0
-                  ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-center text-sm font-black text-[color:var(--lime-text)]"
-                  : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-center text-sm font-black text-[color:var(--text-inverse)]";
+                  ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-center text-sm font-black text-[color:var(--lime-text)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+                  : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-5 py-3 text-center text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]";
 
               return action.href.startsWith("tel:") ? (
                 <a

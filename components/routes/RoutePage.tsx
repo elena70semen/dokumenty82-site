@@ -1,5 +1,6 @@
 import { CallbackFormPlaceholder } from "@/components/forms/CallbackFormPlaceholder";
 import { SituationFormPlaceholder } from "@/components/forms/SituationFormPlaceholder";
+import { JsonLd } from "@/components/JsonLd";
 import { RouteDocumentsPanel } from "@/components/routes/RouteDocumentsPanel";
 import { RouteHero } from "@/components/routes/RouteHero";
 import { RouteLocalContact } from "@/components/routes/RouteLocalContact";
@@ -10,6 +11,7 @@ import { RouteSafetyNote } from "@/components/routes/RouteSafetyNote";
 import { RouteServiceScope } from "@/components/routes/RouteServiceScope";
 import { RouteSituationPanel } from "@/components/routes/RouteSituationPanel";
 import type { RoutePageConfig } from "@/lib/routes/route-page-data";
+import { buildBreadcrumbListJsonLd } from "@/lib/seo/structured-data";
 
 type RoutePageProps = {
   page: RoutePageConfig;
@@ -31,9 +33,14 @@ function getLeadTopic(page: RoutePageConfig) {
 export function RoutePage({ page }: RoutePageProps) {
   const pageType = getPageType(page);
   const leadTopic = getLeadTopic(page);
+  const breadcrumbJsonLd = buildBreadcrumbListJsonLd([
+    { name: "Главная", href: "/" },
+    { name: page.hero.eyebrow, href: page.href }
+  ]);
 
   return (
     <main id="main-content" data-route-page-template="static" data-stage18h-route-content="true">
+      <JsonLd data={breadcrumbJsonLd} />
       <RouteHero hero={page.hero} pageKind={page.kind} pageSlug={page.slug} pageType={pageType} leadTopic={leadTopic} />
       <RouteSituationPanel section={page.situation} />
       <RouteServiceScope section={page.scope} />

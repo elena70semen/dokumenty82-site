@@ -26,7 +26,7 @@
   {
     "route": "/kontakty/",
     "title": "Контакты — Документы для бизнеса в Симферополе | Документы для бизнеса",
-    "description": "Телефон, адрес и офисный маршрут центра подготовки документов в Симферополе.",
+    "description": "Телефон, адрес, офисный маршрут и безопасный способ показать документы в центре подготовки документов в Симферополе.",
     "canonical": "https://dokumenty82.ru/kontakty/",
     "expectedCanonical": "https://dokumenty82.ru/kontakty/",
     "canonicalMatchesExpected": true,

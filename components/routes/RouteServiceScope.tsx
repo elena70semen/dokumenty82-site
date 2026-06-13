@@ -24,7 +24,7 @@ export function RouteServiceScope({ section }: RouteServiceScopeProps) {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <article className="h-full min-w-0 rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-6 shadow-[var(--shadow-card-md)]">
+            <article className="premium-card-strong h-full p-6">
               <div className="flex items-center gap-3">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--accent-emerald-bg)] text-[color:var(--emerald)]">
                   <BrandIcon name="folder" size={24} />
@@ -41,7 +41,7 @@ export function RouteServiceScope({ section }: RouteServiceScopeProps) {
               </ul>
             </article>
 
-            <article className="h-full min-w-0 rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-6 shadow-[var(--shadow-card-md)]">
+            <article className="premium-card-strong h-full p-6">
               <div className="flex items-center gap-3">
                 <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--accent-navy-bg)] text-[color:var(--navy)]">
                   <BrandIcon name="shield" size={24} />

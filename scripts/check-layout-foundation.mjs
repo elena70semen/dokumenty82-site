@@ -42,8 +42,14 @@ const layoutText = read("app/layout.tsx");
 const headerText = read("components/Header.tsx");
 const footerText = read("components/Footer.tsx");
 const homeNavText = read("lib/home/home-page-data.ts");
+const homeHeroText = read("components/home/HomeHero.tsx");
+const homeLocalContactText = read("components/home/HomeLocalContact.tsx");
+const homeProductText = read("components/home/HomeProductFoundation.tsx");
+const routeHeroText = read("components/routes/RouteHero.tsx");
+const routeLocalContactText = read("components/routes/RouteLocalContact.tsx");
 const routePageText = read("components/routes/RoutePage.tsx");
 const dynamicRouteText = read("app/[slug]/page.tsx");
+const policyText = read("app/policy/page.tsx");
 const productComponentText = read("components/routes/RouteProductFoundation.tsx");
 const globalCssText = read("app/globals.css");
 const sitemapText = read("public/sitemap.xml");
@@ -53,12 +59,37 @@ assert(/<Footer\s*\/>/.test(layoutText), "Root layout must render Footer.");
 assert(/Перейти к содержанию/.test(headerText) && /#main-content/.test(headerText), "Header must include skip link to main content.");
 assert(/<nav/.test(headerText) && /aria-label="Основная навигация"/.test(headerText), "Header must expose primary navigation landmark.");
 assert(/<details/.test(headerText) && /Мобильная навигация/.test(headerText), "Header must expose mobile-safe navigation.");
+assert(/useState/.test(headerText) && /mobileMenuOpen/.test(headerText), "Mobile menu must keep explicit open state.");
+assert(/aria-expanded=\{mobileMenuOpen\}/.test(headerText), "Mobile menu summary must expose expanded state.");
+assert(/data-mobile-menu-panel="true"/.test(headerText), "Mobile menu panel must expose Stage 20E panel marker.");
+assert(/100svh/.test(headerText), "Mobile menu panel must use small-viewport-safe height.");
+assert(/onClick=\{closeMobileMenu\}/.test(headerText), "Mobile menu links/actions must close the menu after navigation.");
+assert(/Если не уверены, с чего начать/.test(headerText), "Mobile menu must preserve safe first-step guidance.");
+assert(/Построить маршрут/.test(headerText) && /href="\/kontakty\/"/.test(headerText), "Header mobile actions must include safe contact route.");
 assert(/<footer/.test(footerText) && /aria-label="Служебная навигация"/.test(footerText), "Footer must expose service navigation landmark.");
+assert(/Разобрать ситуацию/.test(footerText) && /href="\/razbor-situacii\/"/.test(footerText), "Footer must keep situation review as a visible lead path.");
+assert(/min-h-10/.test(footerText) && /min-h-12/.test(footerText), "Footer links and actions must keep mobile touch targets.");
 assert(/id="main-content"/.test(routePageText), "Static route page template must expose main-content landmark.");
 assert(/<main/.test(dynamicRouteText), "Dynamic route page template must render a main landmark.");
+assert(/aria-label="Хлебные крошки"/.test(dynamicRouteText) && /min-h-10/.test(dynamicRouteText), "Dynamic route breadcrumbs must keep readable tap targets.");
 assert(/RouteProductFoundation/.test(routePageText), "Static route page template must include product foundation component.");
 assert(/RouteProductFoundation/.test(dynamicRouteText), "Dynamic route page template must include product foundation component.");
 assert(/data-product-foundation="true"/.test(productComponentText), "Product foundation component must expose runtime data marker.");
+assert(/lg:min-h-\[calc\(86vh-88px\)\]/.test(homeHeroText), "Homepage hero must reserve tall hero treatment for desktop only.");
+assert(/lg:min-h-\[calc\(78vh-88px\)\]/.test(routeHeroText), "Route hero must reserve tall hero treatment for desktop only.");
+assert(/aria-label="Контекст маршрута"/.test(routeHeroText) && /min-h-10/.test(routeHeroText), "Static route breadcrumb context must keep readable tap targets.");
+assert(/min-h-1[012]/.test(homeLocalContactText), "Homepage local contact phone link must keep mobile touch target.");
+assert(/min-h-1[012]/.test(routeLocalContactText), "Route local contact phone link must keep mobile touch target.");
+assert(/<summary[\s\S]*min-h-12/.test(homeProductText), "Homepage FAQ summaries must keep mobile touch targets.");
+assert(/<summary[\s\S]*min-h-12/.test(policyText), "Policy FAQ summaries must keep mobile touch targets.");
+assert(/className="[^"]*xl:block/.test(headerText) && /className="[^"]*xl:hidden/.test(headerText), "Header must expose desktop navigation by the xl breakpoint while keeping mobile menu below it.");
+assert(/desktopNavigationHrefs/.test(headerText) && /desktopNavigation\.map/.test(headerText), "Header desktop navigation must use a curated non-clipping route set.");
+assert(!/overflow-hidden rounded-\[8px\] border border-\[var\(--line\)\] bg-white\/50 p-1/.test(headerText), "Header desktop navigation must not hide clipped links inside the nav capsule.");
+assert(/hero-title-fluid/.test(globalCssText) && /hero-title-fluid/.test(homeHeroText), "Homepage hero title must use fluid, overflow-safe sizing.");
+assert(/route-title-fluid/.test(globalCssText) && /route-title-fluid/.test(routeHeroText) && /route-title-fluid/.test(dynamicRouteText), "Route hero titles must use fluid, overflow-safe sizing.");
+assert(/static-title-fluid/.test(globalCssText) && /static-title-fluid/.test(policyText), "Static utility pages must use fluid, overflow-safe title sizing.");
+assert(/premium-link-card:focus-within/.test(globalCssText), "Clickable cards must keep focus-within visual polish.");
+assert(/details\.premium-card\[open\]/.test(globalCssText), "Open details cards must keep a visible expanded state.");
 
 for (const route of requiredNavRoutes) {
   assert(homeNavText.includes(`href: "${route}"`), `Home navigation data missing required route: ${route}`);
@@ -81,6 +112,26 @@ const evidence = {
     footer: /<Footer\s*\/>/.test(layoutText),
     skipLink: /#main-content/.test(headerText),
     mobileNav: /<details/.test(headerText)
+  },
+  stage20eMobileUx: {
+    menuStateControlled: /mobileMenuOpen/.test(headerText),
+    menuPanelSmallViewportBounded: /100svh/.test(headerText),
+    menuLinksCloseOnNavigation: /onClick=\{closeMobileMenu\}/.test(headerText),
+    footerTouchTargets: /min-h-10/.test(footerText) && /min-h-12/.test(footerText),
+    localContactTouchTargets: /min-h-1[012]/.test(homeLocalContactText) && /min-h-1[012]/.test(routeLocalContactText),
+    breadcrumbTouchTargets: /min-h-10/.test(dynamicRouteText) && /min-h-10/.test(routeHeroText),
+    faqTouchTargets: /<summary[\s\S]*min-h-12/.test(homeProductText) && /<summary[\s\S]*min-h-12/.test(policyText),
+    desktopOnlyTallHero: /lg:min-h-\[calc\(86vh-88px\)\]/.test(homeHeroText) && /lg:min-h-\[calc\(78vh-88px\)\]/.test(routeHeroText)
+  },
+  stage20mLayoutHardening: {
+    xlDesktopNavigation: /className="[^"]*xl:block/.test(headerText) && /className="[^"]*xl:hidden/.test(headerText),
+    curatedDesktopNavigation: /desktopNavigationHrefs/.test(headerText) && /desktopNavigation\.map/.test(headerText),
+    noClippedDesktopNavCapsule: !/overflow-hidden rounded-\[8px\] border border-\[var\(--line\)\] bg-white\/50 p-1/.test(headerText),
+    fluidHeroTitles: /hero-title-fluid/.test(globalCssText) && /hero-title-fluid/.test(homeHeroText),
+    fluidRouteTitles: /route-title-fluid/.test(globalCssText) && /route-title-fluid/.test(routeHeroText) && /route-title-fluid/.test(dynamicRouteText),
+    fluidStaticTitles: /static-title-fluid/.test(globalCssText) && /static-title-fluid/.test(policyText),
+    focusWithinCards: /premium-link-card:focus-within/.test(globalCssText),
+    detailsOpenState: /details\.premium-card\[open\]/.test(globalCssText)
   },
   issues
 };

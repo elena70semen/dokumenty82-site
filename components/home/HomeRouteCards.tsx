@@ -14,14 +14,14 @@ export function HomeRouteCards() {
       style={{ backgroundImage: `url(${brandTokens.assets.routeGridPattern})` }}
     >
       <div className="container-premium">
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+        <div className="section-heading-grid">
           <div>
             <p className="eyebrow-line">Маршруты</p>
             <h2 id="home-route-title" className="mt-5 text-4xl font-black leading-tight text-[color:var(--text-primary)] md:text-6xl">
               Выберите ближайший вход в задачу
             </h2>
           </div>
-          <p className="text-lg leading-9 text-[color:var(--text-secondary)]">
+          <p className="section-copy">
             Если вопрос смешанный или непонятный, начните с разбора ситуации. Так проще отделить документы,
             вводные и следующий шаг.
           </p>
@@ -31,7 +31,7 @@ export function HomeRouteCards() {
           {homeRouteCards.map((card, index) => (
             <article
               key={card.title}
-              className={`group flex min-h-[292px] min-w-0 flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)] ${
+              className={`premium-card premium-link-card group flex min-w-0 flex-col p-5 md:min-h-[292px] ${
                 index === 0 ? "xl:col-span-2" : ""
               }`}
             >
@@ -46,6 +46,7 @@ export function HomeRouteCards() {
                   <span className="min-w-0 text-sm font-bold leading-6 text-[color:var(--text-muted)]">{card.nextStep}</span>
                   <Link
                     href={card.href}
+                    aria-label={`${card.nextStep}: ${card.title}`}
                     className="inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] sm:w-auto"
                     data-analytics-goal={analyticsGoalNames.relatedRouteClick}
                     data-cta-label="Разобрать ситуацию"

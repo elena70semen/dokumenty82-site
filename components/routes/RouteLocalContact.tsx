@@ -117,7 +117,7 @@ export function RouteLocalContact({ contact, pageSlug, pageType, leadTopic }: Ro
                       <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--text-muted)]">Телефон</p>
                       <a
                         href={site.phoneHref}
-                        className="mt-2 inline-block text-lg font-black text-[color:var(--text-primary)]"
+                        className="mt-2 inline-flex min-h-12 items-center rounded-[8px] text-lg font-black text-[color:var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
                         data-analytics-goal={analyticsGoalNames.callClick}
                         data-cta-label="Позвонить"
                         data-cta-location="route_local_contact_phone"

@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "timestamp": "2026-06-12T19:56:45.479Z",
+  "timestamp": "2026-06-13T23:15:45.860Z",
   "git": {
-    "branch": "stage19/staging-env-preview-contract",
-    "commit": "79bbd4f"
+    "branch": "stage20/trust-public-info-policy-readiness",
+    "commit": "d39a5c4"
   },
   "envExamplePath": ".env.example",
   "publicLiveAllowed": false,
@@ -34,7 +34,7 @@
   "realEnvFilesCommitted": [],
   "secretsScan": {
     "status": "passed",
-    "filesCheckedCount": 132,
+    "filesCheckedCount": 134,
     "checkedAreas": [
       ".env.example",
       ".github/workflows",
@@ -50,7 +50,7 @@
   },
   "runtimeScan": {
     "status": "passed",
-    "filesCheckedCount": 437,
+    "filesCheckedCount": 438,
     "checkedAreas": [
       "app",
       "components",

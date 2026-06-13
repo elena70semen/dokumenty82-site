@@ -140,6 +140,13 @@ const routeManifestText = read("lib/routes.ts");
 const contentText = read("lib/content.ts");
 const featureFlagText = read("lib/feature-flags.ts");
 const packageText = read("package.json");
+const structuredDataText = read("lib/seo/structured-data.ts");
+const homePageText = read("app/page.tsx");
+const dynamicRoutePageText = read("app/[slug]/page.tsx");
+const staticRoutePageText = read("components/routes/RoutePage.tsx");
+const policyPageText = read("app/policy/page.tsx");
+const aboutPageText = read("app/o-proekte/page.tsx");
+const staticLinkCheckText = read("scripts/check-static-site-links.mjs");
 
 const sitemapLocs = [...sitemapText.matchAll(/<loc>https:\/\/dokumenty82\.ru([^<]+)<\/loc>/g)].map((match) => match[1]);
 
@@ -284,6 +291,17 @@ assert(/pageBlockModel/.test(contentText), "Runtime content route data must incl
 assert(/faqTopics/.test(contentText), "Runtime content route data must include faqTopics.");
 assert(/schemaBoundary/.test(contentText), "Runtime content route data must include schemaBoundary.");
 assert(/holdRisks/.test(contentText), "Runtime content route data must include holdRisks.");
+
+assert(/buildBreadcrumbListJsonLd/.test(structuredDataText), "Structured data helper must expose BreadcrumbList builder.");
+assert(/buildWebSiteJsonLd/.test(structuredDataText), "Structured data helper must expose WebSite builder.");
+assert(/buildWebSiteJsonLd/.test(homePageText), "Homepage must keep WebSite structured data.");
+assert(/buildBreadcrumbListJsonLd/.test(dynamicRoutePageText), "Dynamic route template must keep BreadcrumbList structured data.");
+assert(/buildBreadcrumbListJsonLd/.test(staticRoutePageText), "Static route template must keep BreadcrumbList structured data.");
+assert(/buildBreadcrumbListJsonLd/.test(policyPageText), "Policy page must keep BreadcrumbList structured data.");
+assert(/"@type":\s*"FAQPage"/.test(policyPageText), "Policy page must keep FAQPage structured data tied to visible FAQ.");
+assert(/buildBreadcrumbListJsonLd/.test(aboutPageText), "About page must keep BreadcrumbList structured data.");
+assert(/BreadcrumbList/.test(staticLinkCheckText), "Static export check must validate BreadcrumbList output.");
+assert(/forbiddenStructuredDataPattern/.test(staticLinkCheckText), "Static export check must guard forbidden structured data.");
 
 const runtimeFiles = [
   ...listFiles(repoPath("app")),

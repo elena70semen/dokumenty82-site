@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-06-12T17:18:42.769Z",
+  "generatedAt": "2026-06-13T23:15:56.787Z",
   "scannedFiles": [
     "out/index.html",
     "out/razbor-situacii/index.html",
@@ -96,6 +96,7 @@
     "lib/routes/route-page-data.ts",
     "lib/seo/semantic-route-data.json",
     "lib/seo/semantic-route-data.ts",
+    "lib/seo/structured-data.ts",
     "lib/visual-detail-kit/visual-detail-kit-data.ts"
   ],
   "results": [
