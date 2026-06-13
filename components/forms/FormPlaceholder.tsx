@@ -1,8 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { useId, useState } from "react";
 import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { site } from "@/lib/content";
+import {
+  disabledFormSubmitMessage,
+  formHiddenAttributionFieldIds,
+  formPolicyNotice,
+  formsLive
+} from "@/lib/forms/form-contract";
 
 type PlaceholderField = {
   id: string;
@@ -24,16 +31,25 @@ type FormPlaceholderProps = {
 
 const offlineNotice =
   "Онлайн-отправка пока не подключена. Чтобы передать вопрос, позвоните или согласуйте способ показа документов.";
-const localMessage = "Отправка формы пока не подключена. Позвоните или перейдите на страницу контактов.";
 
 export function FormPlaceholder({ eyebrow, title, text, fields, pageSlug, pageType, leadTopic }: FormPlaceholderProps) {
   const formId = useId();
   const [message, setMessage] = useState("");
   const noticeId = `${formId}-notice`;
+  const policyId = `${formId}-policy`;
   const messageId = `${formId}-message`;
 
   function explainOffline() {
-    setMessage(localMessage);
+    setMessage(disabledFormSubmitMessage);
+  }
+
+  function hiddenValueFor(fieldId: string) {
+    if (fieldId === "page_slug") return pageSlug;
+    if (fieldId === "page_type") return pageType;
+    if (fieldId === "cta_label") return "Отправка пока не подключена";
+    if (fieldId === "cta_location") return "form_placeholder";
+    if (fieldId === "lead_topic_hidden") return leadTopic;
+    return "";
   }
 
   return (
@@ -42,6 +58,7 @@ export function FormPlaceholder({ eyebrow, title, text, fields, pageSlug, pageTy
         <form
           className="grid gap-5 rounded-[8px] border border-[var(--line)] bg-white/90 p-6 shadow-[var(--shadow-card-lg)] md:p-8"
           data-form-placeholder="true"
+          data-forms-live={String(formsLive)}
           data-page-slug={pageSlug}
           data-page-type={pageType}
           data-lead-topic={leadTopic}
@@ -67,18 +84,20 @@ export function FormPlaceholder({ eyebrow, title, text, fields, pageSlug, pageTy
                   {field.multiline ? (
                     <textarea
                       id={fieldId}
+                      name={field.id}
                       rows={4}
                       className="min-h-32 rounded-[8px] border border-[var(--line)] bg-white px-4 py-3 text-base font-normal leading-7 text-[color:var(--text-primary)] outline-none transition focus:border-[var(--blue)] focus:ring-4 focus:ring-[rgba(36,93,167,0.14)]"
                       placeholder={field.placeholder}
-                      aria-describedby={noticeId}
+                      aria-describedby={`${noticeId} ${policyId}`}
                     />
                   ) : (
                     <input
                       id={fieldId}
+                      name={field.id}
                       type={field.type ?? "text"}
                       className="min-h-12 rounded-[8px] border border-[var(--line)] bg-white px-4 py-3 text-base font-normal text-[color:var(--text-primary)] outline-none transition focus:border-[var(--blue)] focus:ring-4 focus:ring-[rgba(36,93,167,0.14)]"
                       placeholder={field.placeholder}
-                      aria-describedby={noticeId}
+                      aria-describedby={`${noticeId} ${policyId}`}
                       autoComplete={field.type === "tel" ? "tel" : "off"}
                     />
                   )}
@@ -87,8 +106,18 @@ export function FormPlaceholder({ eyebrow, title, text, fields, pageSlug, pageTy
             })}
           </div>
 
+          <div data-hidden-attribution-fields="true" aria-hidden="true">
+            {formHiddenAttributionFieldIds.map((fieldId) => (
+              <input key={fieldId} type="hidden" name={fieldId} value={hiddenValueFor(fieldId)} readOnly />
+            ))}
+          </div>
+
           <p id={noticeId} className="rounded-[8px] border border-[var(--accent-gold-border)] bg-[var(--accent-gold-bg)] p-4 text-sm font-bold leading-7 text-[color:var(--text-primary)]">
             {offlineNotice}
+          </p>
+
+          <p id={policyId} className="text-sm font-bold leading-7 text-[color:var(--text-secondary)]">
+            {formPolicyNotice} <Link href="/policy" className="text-[color:var(--blue)] underline underline-offset-4">Политика конфиденциальности</Link>.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
