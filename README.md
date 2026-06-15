@@ -20,11 +20,13 @@ This repository contains the standalone Next.js static-export site source, selec
 
 - Site stack: Next.js static export.
 - Repository layout: standalone root project.
-- Public release: `HOLD`.
-- Production deploy: not performed.
+- Public release: `PUBLIC LIVE observed on production`.
+- Governance status: `PUBLIC LIVE WITH GOVERNANCE DRIFT` until source-of-truth release gates, CI artifact traceability and rollback proof are fully synced.
+- Production deploy: performed manually from a static export artifact; current production is not yet proven as a GitHub Actions artifact deployment.
 - Forms: placeholder UI only.
-- Form submit, upload, CRM, analytics, Yandex Metrica, Telegram, MAX, cookie notice and live map: disabled.
-- Public launch gates remain closed until owner and legal/privacy approvals are complete.
+- Form submit, upload, CRM, paid traffic, Telegram, MAX, cookie notice and live map: disabled.
+- Yandex Metrica is installed on production; no live form/CRM success event is enabled.
+- Legal/privacy, CRM/forms, paid traffic, local profile and messaging gates remain closed until owner and evidence approval are complete.
 
 ## Build
 
@@ -77,7 +79,9 @@ Stage 14A CI scope:
 - run static export link check;
 - run launch/finalization guard checks;
 - run brand checks;
-- upload static export artifact from `out/`.
+- generate release artifact manifest under `release-proof/`;
+- upload static export artifact from `out/`;
+- upload release proof artifact from `release-proof/`.
 
 Artifact pattern:
 
@@ -118,10 +122,12 @@ Hosting reference:
 
 ## Launch rule
 
-`PUBLIC_LIVE_ALLOWED = false` until all launch gates pass.
+`PUBLIC_LIVE_ALLOWED = true` reflects the current production site state.
+
+Do not enable paid traffic, live forms, CRM submission, uploads, public messaging links or local-profile publication until their separate gates pass.
 
 ## Current release verdict
 
-`GO WITH CONDITIONS` for Stage 14A CI/build proof.
+`PUBLIC_LIVE_WITH_GOVERNANCE_DRIFT`.
 
-`PUBLIC_LIVE_ALLOWED = false`.
+Production is live; release proof, CI artifact traceability and rollback proof must stay synchronized before further promotion.

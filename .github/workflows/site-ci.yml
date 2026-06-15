@@ -57,6 +57,9 @@ jobs:
       - name: Check static export links
         run: npm run check:static-links
 
+      - name: Generate release artifact manifest
+        run: npm run release:manifest
+
       - name: Check launch live config
         run: npm run check:launch-live-config
 
@@ -80,4 +83,11 @@ jobs:
         with:
           name: dokumenty82-static-export-${{ github.sha }}
           path: out
+          if-no-files-found: error
+
+      - name: Upload release proof artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dokumenty82-release-proof-${{ github.sha }}
+          path: release-proof
           if-no-files-found: error

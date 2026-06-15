@@ -124,9 +124,9 @@ Forbidden public framing:
 - wording that implies official state partner or representative status;
 - wording that creates unapproved legal or commercial obligations.
 
-## Stage 14A build proof
+## P0-01 release-state proof
 
-Current Stage 14A work is CI/build proof only.
+Current release-state work records that production is live and must be kept traceable to repository, CI artifacts and rollback evidence.
 
 Allowed:
 
@@ -134,17 +134,17 @@ Allowed:
 - package script fixes;
 - static export link checks;
 - P0 evidence/finalization guard alignment;
+- release artifact manifest proof;
+- production URL/status/head verification;
+- rollback runbook and release-state reports;
 - README and issue clarification.
 
-Not allowed in Stage 14A:
+Not allowed in P0-01 without a separate owner-approved task:
 
 - SEO/content rewrites;
 - route expansion;
 - visual redesign;
-- live deploy;
-- Beget staging;
-- public DNS;
-- analytics/Metrica;
+- changing production deploy architecture through CI;
 - CRM/forms;
 - public upload;
 - paid traffic.
@@ -184,6 +184,8 @@ Every final report must include:
 
 ## Release verdict
 
-`GO WITH CONDITIONS` for Stage 14A CI/build proof.
+`PUBLIC_LIVE_WITH_GOVERNANCE_DRIFT`.
 
-`PUBLIC_LIVE_ALLOWED = false`.
+`PUBLIC_LIVE_ALLOWED = true` reflects the production state.
+
+Live forms, CRM submission, paid traffic, public messaging links, upload and local-profile publication remain gated until their evidence and owner approvals pass.
