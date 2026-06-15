@@ -13,17 +13,17 @@ export const metadata: Metadata = {
 
 export default function AboutProjectPage() {
   return (
-    <main className="pt-36">
-      <section className="section-pad">
+    <main id="main-content">
+      <section className="section-pad dimmed-page-section">
         <div className="container-premium grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="reveal-block" data-reveal="left">
             <p className="eyebrow-line">О проекте</p>
-            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[#111821] md:text-8xl">
+            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[color:var(--text-inverse)] md:text-8xl">
               Локальный центр
               <br />
               <span className="script-accent">подготовки документов</span>
             </h1>
-            <p className="mt-7 text-xl leading-9 text-[#667184]">
+            <p className="mt-7 text-xl leading-9 text-[color:var(--text-inverse-muted)]">
               Документы для бизнеса - спокойный деловой формат для регистрации, отчетности, изменений, адреса,
               запросов банка и других рабочих вопросов, где нужен понятный комплект документов.
             </p>
@@ -37,16 +37,16 @@ export default function AboutProjectPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/62">
+      <section className="section-pad dimmed-page-section">
         <div className="container-premium grid gap-6 md:grid-cols-3">
           {[
             "Сначала разбираем ситуацию",
             "Объясняем порядок действий простыми словами",
             "Готовим документы под конкретный вопрос"
           ].map((item) => (
-            <article key={item} className="reveal-block rounded-[8px] border border-[#16284414] bg-white p-7 shadow-[0_22px_58px_rgba(22,40,68,0.08)]" data-reveal="up">
-              <h2 className="text-2xl font-black leading-tight text-[#111821]">{item}</h2>
-              <p className="mt-4 leading-8 text-[#667184]">
+            <article key={item} className="dark-glass-card dark-glass-card-interactive reveal-block rounded-[8px] p-7" data-reveal="up">
+              <h2 className="text-2xl font-semibold leading-tight text-[color:var(--text-inverse)]">{item}</h2>
+              <p className="mt-4 leading-8 text-[color:var(--text-inverse-muted)]">
                 Подход без давления, без имитации ведомственного статуса и без обещаний результата до изучения документов.
               </p>
             </article>
@@ -54,7 +54,7 @@ export default function AboutProjectPage() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad dimmed-page-section">
         <div className="container-premium grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <img
             src="/assets/images/office-reception.png"
@@ -63,9 +63,9 @@ export default function AboutProjectPage() {
             data-reveal="left"
             loading="lazy"
           />
-          <div className="rich-text reveal-block" data-reveal="right">
+          <div className="rich-text rich-text-on-dark reveal-block" data-reveal="right">
             <p className="eyebrow-line">Формат работы</p>
-            <h2 className="display-serif mt-5 text-5xl font-semibold leading-tight text-[#111821] md:text-6xl">
+            <h2 className="display-serif mt-5 text-5xl font-semibold leading-tight text-[color:var(--text-inverse)] md:text-6xl">
               Офис рядом с налоговой - только ориентир.
             </h2>
             <p>
@@ -76,7 +76,7 @@ export default function AboutProjectPage() {
               Адрес: {site.address}. Перед визитом можно позвонить и уточнить, какие документы лучше взять на первый
               разбор.
             </p>
-            <Link href="/kontakty/" className="mt-6 inline-flex rounded-full bg-[#162844] px-7 py-4 text-sm font-black text-white">
+            <Link href="/kontakty/" className="mt-6 inline-flex rounded-[8px] bg-[var(--lime-signal)] px-7 py-4 text-sm font-semibold text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5">
               Контакты
             </Link>
           </div>

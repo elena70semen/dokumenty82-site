@@ -145,7 +145,7 @@ export function MatrixRouteVisual({ compact = false }: { compact?: boolean }) {
   return (
     <ol
       className={`relative grid gap-3 ${compact ? "md:grid-cols-2" : "md:grid-cols-4"}`}
-      aria-label="Маршрут: ситуация, разбор, документы, следующий шаг"
+      aria-label="Порядок: ситуация, разбор, документы, следующий шаг"
     >
       <span className="pointer-events-none absolute left-6 right-6 top-7 hidden h-px bg-[var(--route-gradient)] md:block" />
       {routeSteps.map((step) => (
@@ -238,7 +238,7 @@ export function ServiceContourCards() {
       <div className="container-premium">
         <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
           <div className="reveal-block" data-reveal="left">
-            <p className="eyebrow-line">Маршруты</p>
+            <p className="eyebrow-line">Разделы</p>
             <h2 className="display-serif mt-5 text-4xl font-semibold leading-tight text-[color:var(--text-primary)] md:text-6xl">
               Выберите ближайшую ситуацию.
             </h2>

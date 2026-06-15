@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = path.resolve(new URL("..", import.meta.url).pathname, "..");
-const failDirs = ["code/app", "code/components", "code/public/assets/brand"];
-const warnDirs = ["AGENTS.md", "README.md", "docs", "code/lib/pricing"];
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const standaloneSiteRepo = fs.existsSync(path.join(root, "app"));
+const failDirs = standaloneSiteRepo ? ["app", "components", "public/assets/brand"] : ["code/app", "code/components", "code/public/assets/brand"];
+const warnDirs = standaloneSiteRepo ? ["AGENTS.md", "README.md", "docs", "lib/pricing"] : ["AGENTS.md", "README.md", "docs", "code/lib/pricing"];
 const forbidden = /(цена|стоимость|скидк|тариф|руб|₽|пакет|прайс|гарант|срок|за 1 день|100%|отзыв|рейтинг|кейс|официальн|государственн|гос|решим любую|гарантируем|PUBLIC_READY|LAUNCH_READY|APPROVED|PRICE_APPROVED|READY_TO_PUBLISH|CLIENT_READY_KP|манипул|давлен|надавить|запуг|стыд|вина|психотип|диагноз|без отказа)/i;
 const safeContext = /(not approved|not public|requires .*approval|public use requires|no public|blocked|hold|forbidden|запрещ|не утвержд|не является|не использовать|остается|остаётся|требует)/i;
-const technicalPercentContext = /(linear-gradient|calc\(|width:|height:|translate|stop offset|viewbox|background-size|x1=|x2=|y1=|y2=)/i;
+const technicalPercentContext = /(linear-gradient|calc\(|min\(|max\(|clamp\(|width:|height:|translate|stop offset|viewbox|background-size|x1=|x2=|y1=|y2=)/i;
 const safetyLanguageContext = /(без давления|без имитации|без обещан|не созда[её]т впечатление связи|не связь|не имит|не гос|не официальн|no pressure|no manipulation|not official)/i;
 const documentPackageContext = /документальн(ый|ого|ому|ым|ом|ая|ой|ую|ою)? пакет/i;
 
@@ -27,11 +29,16 @@ function isTextFile(file) {
   return /\.(md|ts|tsx|js|jsx|json|css|svg|mjs)$/i.test(file);
 }
 
+function isYandexRatingWidgetContext(line) {
+  return /Рейтинг на Яндекс Картах|rating-badge|yandex\.ru\/sprav\/widget\/rating-badge/i.test(line);
+}
+
 function isAllowedFailZoneContext(line) {
   if (safeContext.test(line)) return true;
   if (/100%/.test(line) && technicalPercentContext.test(line)) return true;
   if (safetyLanguageContext.test(line)) return true;
   if (documentPackageContext.test(line)) return true;
+  if (isYandexRatingWidgetContext(line)) return true;
   return false;
 }
 

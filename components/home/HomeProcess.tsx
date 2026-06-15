@@ -3,7 +3,7 @@ import { homeProcessSteps } from "@/lib/home/home-page-data";
 
 export function HomeProcess() {
   return (
-    <section className="section-pad bg-[var(--surface-dark)] text-[color:var(--text-inverse)]" aria-labelledby="home-process-title">
+    <section className="section-pad dimmed-page-section" aria-labelledby="home-process-title">
       <div className="container-premium">
         <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <div>
@@ -12,12 +12,12 @@ export function HomeProcess() {
               Ситуация → разбор → комплект документов → следующий шаг
             </h2>
             <p className="mt-6 text-lg leading-8 text-[color:var(--text-inverse-muted)]">
-              Маршрут помогает спокойно перейти от неясного вопроса к понятному документальному действию.
+              Последовательность шагов помогает спокойно перейти от неясного вопроса к понятному документальному действию.
             </p>
           </div>
 
           <ol className="relative grid gap-4">
-            <span className="absolute bottom-8 left-6 top-8 hidden w-px bg-[linear-gradient(180deg,var(--lime-signal),rgba(255,255,255,0.12))] md:block" aria-hidden="true" />
+            <span className="absolute bottom-8 left-6 top-8 hidden w-px bg-[rgba(159,203,22,0.44)] md:block" aria-hidden="true" />
             {homeProcessSteps.map((step, index) => (
               <li
                 key={step.title}

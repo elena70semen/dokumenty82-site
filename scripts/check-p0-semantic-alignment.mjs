@@ -104,7 +104,6 @@ const requiredClosedFlags = [
   "formsLive",
   "crmSuccessEnabled",
   "analyticsEnabled",
-  "metricaEnabled",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
@@ -181,5 +180,5 @@ if (issues.length > 0) {
 }
 
 console.log(
-  `PASS P0 semantic alignment: ${sitemapLocs.length} sitemap URLs, /policy and /nedostovernost-yuridicheskogo-adresa/ included, /blog/, /faq/ and /internal/graphics-proof/ noindex/excluded, feature gates closed.`
+  `PASS P0 semantic alignment: ${sitemapLocs.length} sitemap URLs, /policy and /nedostovernost-yuridicheskogo-adresa/ included, /blog/, /faq/ and /internal/graphics-proof/ noindex/excluded, live SEO gates aligned.`
 );

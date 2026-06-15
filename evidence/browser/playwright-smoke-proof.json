@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "generatedAt": "2026-06-11T18:11:17.383Z",
+  "generatedAt": "2026-06-15T16:58:39.462Z",
   "browserSurface": "Codex Browser plugin with Playwright API",
   "manifestFile": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\screenshot-manifest.json",
-  "baseUrl": "http://127.0.0.1:4182",
+  "baseUrl": "http://127.0.0.1:4173",
   "screenshotMode": "viewport",
   "expectedScreenshotCount": 16,
   "capturedScreenshotCount": 16,

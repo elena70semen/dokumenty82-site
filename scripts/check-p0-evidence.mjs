@@ -38,7 +38,6 @@ const unsafeFlags = [
   "formsLive",
   "crmSuccessEnabled",
   "analyticsEnabled",
-  "metricaEnabled",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
@@ -146,10 +145,6 @@ for (const route of p0Routes) {
 
   if (rendered?.containsTelegramMaxDeepLink) {
     issues.push(`Final Telegram/MAX deep link found in rendered P0 HTML: ${route}`);
-  }
-
-  if (rendered?.containsMetricaOrCounter) {
-    issues.push(`Metrica/counter signal found in rendered P0 HTML: ${route}`);
   }
 
   if (rendered?.containsWebhookOrSecretPattern) {
@@ -260,7 +255,7 @@ if (renderedSafety) {
     "noForbiddenPublicPhrases",
     "noFinalTelegramMaxDeepLinks",
     "noUploadInputs",
-    "noMetricaIdOrCounter",
+    "yandexMetrikaCounterPresent",
     "noWebhookOrSecretPattern",
     "noFalseSuccessSignal"
   ];

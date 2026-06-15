@@ -7,7 +7,7 @@ type RouteProcessProps = {
 
 export function RouteProcess({ section }: RouteProcessProps) {
   return (
-    <section className="section-pad bg-[var(--surface-dark)] text-[color:var(--text-inverse)]" aria-labelledby="route-process-title">
+    <section className="section-pad dimmed-page-section" aria-labelledby="route-process-title">
       <div className="container-premium">
         <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <div>
@@ -19,7 +19,7 @@ export function RouteProcess({ section }: RouteProcessProps) {
           </div>
 
           <ol className="relative grid gap-4">
-            <span className="absolute bottom-8 left-6 top-8 hidden w-px bg-[linear-gradient(180deg,var(--lime-signal),rgba(255,255,255,0.12))] md:block" aria-hidden="true" />
+            <span className="absolute bottom-8 left-6 top-8 hidden w-px bg-[rgba(159,203,22,0.44)] md:block" aria-hidden="true" />
             {section.steps.map((step, index) => (
               <li
                 key={step.title}

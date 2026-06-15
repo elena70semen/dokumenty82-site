@@ -1,5 +1,4 @@
 import { BrandIcon } from "@/components/brand/BrandIcon";
-import { brandTokens } from "@/lib/brand/brand-tokens";
 import type { RouteScopeSection } from "@/lib/routes/route-page-data";
 
 type RouteServiceScopeProps = {
@@ -9,49 +8,48 @@ type RouteServiceScopeProps = {
 export function RouteServiceScope({ section }: RouteServiceScopeProps) {
   return (
     <section
-      className="section-pad bg-[var(--surface-raised)]"
+      className="section-pad dimmed-page-section"
       aria-labelledby="route-scope-title"
-      style={{ backgroundImage: brandTokens.gradients.paperGlow }}
     >
       <div className="container-premium">
         <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
           <div>
             <p className="eyebrow-line">{section.eyebrow}</p>
-            <h2 id="route-scope-title" className="mt-5 text-4xl font-black leading-tight text-[color:var(--text-primary)] md:text-6xl">
+            <h2 id="route-scope-title" className="mt-5 text-4xl font-semibold leading-tight text-[color:var(--text-inverse)] md:text-6xl">
               {section.title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-[color:var(--text-secondary)]">{section.text}</p>
+            <p className="mt-6 text-lg leading-8 text-[color:var(--text-inverse-muted)]">{section.text}</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <article className="rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-6 shadow-[var(--shadow-card-md)]">
+            <article className="dark-glass-card rounded-[8px] p-6">
               <div className="flex items-center gap-3">
-                <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--accent-emerald-bg)] text-[color:var(--emerald)]">
+                <span className="dark-glass-icon">
                   <BrandIcon name="folder" size={24} />
                 </span>
-                <h3 className="text-2xl font-black leading-tight text-[color:var(--text-primary)]">{section.includedTitle}</h3>
+                <h3 className="text-2xl font-semibold leading-tight text-[color:var(--text-inverse)]">{section.includedTitle}</h3>
               </div>
               <ul className="mt-6 grid gap-3">
                 {section.included.map((item) => (
-                  <li key={item} className="flex gap-3 text-base leading-7 text-[color:var(--text-secondary)]">
-                    <span className="mt-2 size-2 shrink-0 rounded-full bg-[var(--emerald)]" aria-hidden="true" />
+                  <li key={item} className="flex gap-3 text-base leading-7 text-[color:var(--text-inverse-muted)]">
+                    <span className="mt-2 size-2 shrink-0 rounded-full bg-[var(--lime-signal)]" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </article>
 
-            <article className="rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-6 shadow-[var(--shadow-card-md)]">
+            <article className="dark-glass-card rounded-[8px] p-6">
               <div className="flex items-center gap-3">
-                <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--accent-navy-bg)] text-[color:var(--navy)]">
+                <span className="dark-glass-icon">
                   <BrandIcon name="shield" size={24} />
                 </span>
-                <h3 className="text-2xl font-black leading-tight text-[color:var(--text-primary)]">{section.boundaryTitle}</h3>
+                <h3 className="text-2xl font-semibold leading-tight text-[color:var(--text-inverse)]">{section.boundaryTitle}</h3>
               </div>
               <ul className="mt-6 grid gap-3">
                 {section.boundaries.map((item) => (
-                  <li key={item} className="flex gap-3 text-base leading-7 text-[color:var(--text-secondary)]">
-                    <span className="mt-2 size-2 shrink-0 rounded-full bg-[var(--navy)]" aria-hidden="true" />
+                  <li key={item} className="flex gap-3 text-base leading-7 text-[color:var(--text-inverse-muted)]">
+                    <span className="mt-2 size-2 shrink-0 rounded-full bg-[var(--lime-signal)]" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { site } from "@/lib/content";
 
@@ -25,7 +26,7 @@ export function HeaderFooterShowcase() {
             <p className="mb-4 text-xs font-black uppercase tracking-[0.16em] text-[color:var(--blue)]">Desktop header prototype</p>
             <header className="grid gap-4 rounded-[8px] border border-[var(--line)] bg-[var(--surface-light)] p-4 lg:grid-cols-[auto_1fr_auto] lg:items-center">
               <Link href="#header-footer-title" className="flex min-w-0 items-center gap-3" aria-label="Prototype brand mark">
-                <span className="grid size-11 shrink-0 place-items-center rounded-[8px] bg-[var(--surface-dark-strong)] text-sm font-black text-[color:var(--text-inverse)]">ДБ</span>
+                <BrandLogo className="size-11" />
                 <span className="min-w-0"><strong className="block truncate text-sm font-black">{site.name}</strong><small className="block truncate text-xs text-[color:var(--text-secondary)]">{site.category}</small></span>
               </Link>
               <nav className="flex flex-wrap gap-2" aria-label="Prototype primary navigation">

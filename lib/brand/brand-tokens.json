@@ -107,7 +107,7 @@
     "shadows": {
       "darkPanel": "0 28px 70px rgba(0, 0, 0, 0.34)",
       "documentLift": "0 18px 42px rgba(11, 15, 20, 0.16)",
-      "limeSignalGlow": "0 0 34px rgba(198, 255, 0, 0.22)",
+      "limeSignalGlow": "0 0 34px rgba(159, 203, 22, 0.14)",
       "violetDepthGlow": "0 0 54px rgba(123, 97, 255, 0.18)"
     },
     "limits": {
@@ -136,7 +136,7 @@
     }
   },
   "gradients": {
-    "paperGlow": "linear-gradient(180deg, rgba(247, 243, 234, 0.96), rgba(251, 250, 246, 0.88))",
+    "paperGlow": "linear-gradient(180deg, rgba(242, 244, 246, 0.96), rgba(251, 252, 253, 0.88))",
     "paperLight": "linear-gradient(180deg, #FBFAF6 0%, #F7F3EA 100%)",
     "businessDepth": "linear-gradient(135deg, #0B0F14 0%, #111318 52%, #33215F 100%)",
     "routeAccent": "linear-gradient(90deg, #245DA7 0%, #C6FF00 100%)",

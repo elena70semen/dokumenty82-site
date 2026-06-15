@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-06-11T18:11:17.378Z",
+  "generatedAt": "2026-06-15T16:58:39.457Z",
   "screenshots": [
     {
       "file": "C:\\new\\dokumenty82-site-remote\\evidence\\rendered\\screenshots\\home-desktop.png",
@@ -71,7 +71,7 @@
     {
       "route": "/",
       "h1Count": 1,
-      "h1Text": "Разберём ситуацию и подготовим документы",
+      "h1Text": "Документы для бизнеса в Симферополе",
       "mainExists": true,
       "headerExists": true,
       "footerExists": true,

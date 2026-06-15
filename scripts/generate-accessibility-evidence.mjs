@@ -23,7 +23,7 @@ function routeAccessibilityProof(route) {
   const h1Count = countMatches(html, /<h1\b/gi);
   const headings = [...html.matchAll(/<h[1-6]\b[^>]*>([\s\S]*?)<\/h[1-6]>/gi)].map((match) => stripTags(match[1]));
   const formHtml = html.match(/<form\b[\s\S]*?<\/form>/i)?.[0] ?? "";
-  const formControlCount = countMatches(formHtml, /<(input|textarea|select)\b/gi);
+  const formControlCount = countMatches(formHtml, /<(textarea|select)\b/gi) + countMatches(formHtml, /<input\b(?![^>]*type=["']hidden["'])/gi);
   const labelCount = countMatches(formHtml, /<label\b/gi);
   const buttons = [...html.matchAll(/<button\b[^>]*>([\s\S]*?)<\/button>/gi)].map((match) => stripTags(match[1]));
   const links = [...html.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/gi)].map((match) => stripTags(match[1]));

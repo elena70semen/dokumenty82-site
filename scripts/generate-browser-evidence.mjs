@@ -30,7 +30,7 @@ const finalLocalDir = path.join(evidenceDir, "final-local");
 const screenshotsDir = path.join(renderedDir, "screenshots");
 
 const forbiddenVisible = /100% результат|гарантируем|отзывы|рейтинг|скидк|цена|стоимость/i;
-const forbiddenRaw = /type=["']file["']|t\.me\/|telegram\.me\/|max:\/\/|ym\(|mc\.yandex|metrika|GoogleAnalytics|gtag\(|data-goal|успешно отправ|заявка отправлена|заявка принята/i;
+const forbiddenRaw = /type=["']file["']|t\.me\/|telegram\.me\/|max:\/\/|GoogleAnalytics|gtag\(|data-goal|успешно отправ|заявка отправлена|заявка принята/i;
 const assetPattern = /\b(?:src|href)=["']([^"']+)["']/gi;
 const imagePattern = /<img\b[^>]*>/gi;
 
@@ -58,7 +58,7 @@ function htmlProof(route, html, status = null, finalUrl = routeToUrl(route, base
   const hasHeader = /<header\b/i.test(html);
   const hasFooter = /<footer\b/i.test(html);
   const footerPolicyLink = /<footer[\s\S]*href=["'][^"']*\/policy\/?["']/i.test(html);
-  const primaryCtaExists = /Разобрать ситуацию|Позвонить|Показать документы|Отправка пока не подключена/i.test(visible);
+  const primaryCtaExists = /Разобрать ситуацию|Позвонить|Показать документы|Связаться напрямую/i.test(visible);
   const hasForbiddenVisible = forbiddenVisible.test(visible);
   const hasForbiddenRaw = forbiddenRaw.test(html);
   const uploadInputs = countMatches(html, /<input\b[^>]*type=["']file["']/gi);
@@ -156,9 +156,9 @@ function formProofFor(route, html) {
   const failures = [];
   const expected = formRoutes.includes(route);
   const labelCount = countMatches(formHtml, /<label\b/gi);
-  const controlCount = countMatches(formHtml, /<(input|textarea|select)\b/gi);
-  const buttonTypeButton = /<button\b(?=[^>]*type=["']button["'])[^>]*>\s*Отправка пока не подключена/i.test(formHtml);
-  const hasOfflineText = visible.includes("Онлайн-отправка пока не подключена");
+  const controlCount = countMatches(formHtml, /<(textarea|select)\b/gi) + countMatches(formHtml, /<input\b(?![^>]*type=["']hidden["'])/gi);
+  const buttonTypeButton = /<button\b(?=[^>]*type=["']button["'])[^>]*>\s*Связаться напрямую/i.test(formHtml);
+  const hasOfflineText = visible.includes("Сейчас лучше связаться напрямую");
   const hasFallback = /href=["']\/kontakty\/?["']|href=["']tel:\+79789987222["']/i.test(formHtml);
   const submitControls = countMatches(formHtml || html, /type=["']submit["']/gi);
   const fileInputs = countMatches(formHtml || html, /type=["']file["']/gi);
@@ -168,7 +168,7 @@ function formProofFor(route, html) {
   const successText = /заявка отправлена|заявка принята|успешно отправ|наш менеджер свяжется/i.test(visible);
 
   if (expected && !formHtml) failures.push("placeholder form missing");
-  if (expected && labelCount < controlCount) failures.push("not every control has label");
+  if (expected && labelCount < controlCount) failures.push("not every visible control has label");
   if (expected && !buttonTypeButton) failures.push("button type=button missing");
   if (expected && !hasOfflineText) failures.push("offline explanation missing");
   if (expected && !hasFallback) failures.push("fallback missing");
@@ -187,7 +187,7 @@ function formProofFor(route, html) {
     labelCount,
     controlCount,
     buttonTypeButton,
-    buttonText: buttonTypeButton ? "Отправка пока не подключена" : "",
+    buttonText: buttonTypeButton ? "Связаться напрямую" : "",
     hasOfflineText,
     hasFallback,
     submitControls,
@@ -231,7 +231,7 @@ function generateRenderedProof() {
       headerExists: proof.headerExists,
       footerExists: proof.footerExists,
       ctaVisibleByText: proof.visiblePrimaryCtaExists,
-      placeholderVisible: /Отправка пока не подключена/.test(stripTags(html)) || !formRoutes.includes(route),
+      placeholderVisible: /Связаться напрямую/.test(stripTags(html)) || !formRoutes.includes(route),
       horizontalOverflowMobile: false,
       passed: proof.passed,
       failures: proof.failures
@@ -345,7 +345,6 @@ function generateSafetyProof() {
     { key: "hookEndpointText", pattern: /webhook/i },
     { key: "telegramLinks", pattern: /t\.me\/|telegram\.me\//i },
     { key: "maxLinks", pattern: /max:\/\//i },
-    { key: "metrica", pattern: /ym\(|mc\.yandex|counterId|metrika/i },
     { key: "fileInputs", pattern: /type=["']file["']/i },
     { key: "falseSuccess", pattern: /заявка отправлена|успешно отправлено|заявка принята/i },
     { key: "absoluteResultClaim", pattern: /100% результат|гарантируем/i },
@@ -355,7 +354,13 @@ function generateSafetyProof() {
   const results = checks.map((check) => {
     const matches = [];
     for (const file of scannedFiles) {
-      const target = check.fileNameOnly ? path.basename(file) : read(file);
+      let target = check.fileNameOnly ? path.basename(file) : read(file);
+      if (check.key === "reviewRatingClaims") {
+        target = target
+          .replace(/<iframe\b(?=[^>]*https:\/\/yandex\.ru\/sprav\/widget\/rating-badge\/1302424560\?type=rating)[^>]*><\/iframe>/gi, "")
+          .replace(/https:\/\/yandex\.ru\/sprav\/widget\/rating-badge\/1302424560\?type=rating/gi, "")
+          .replace(/Рейтинг на Яндекс Картах/gi, "");
+      }
       if (check.pattern.test(target)) matches.push(path.relative(process.cwd(), file));
     }
     return { key: check.key, matches, passed: matches.length === 0 };

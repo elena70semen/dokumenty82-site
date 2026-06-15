@@ -1,0 +1,285 @@
+{
+  "status": "generated",
+  "source": "lib/channels/sales-channel-registry.mjs",
+  "generatedAt": "2026-06-15T16:48:09.868Z",
+  "featureGates": {
+    "publicLiveAllowed": true,
+    "paidTrafficAllowed": false,
+    "localProfilesPublic": false,
+    "analyticsEnabled": false,
+    "metricaEnabled": true,
+    "crmEnabled": false,
+    "messagingEnabled": false
+  },
+  "approvedRouteCount": 35,
+  "blockedRouteCount": 3,
+  "channelCount": 16,
+  "statusCounts": {
+    "READY_WITH_CONDITIONS": 4,
+    "OWNER_REQUIRED": 4,
+    "TRACKING_REQUIRED": 1,
+    "STAGED": 4,
+    "BLOCKED": 3
+  },
+  "channels": [
+    {
+      "id": "yandex_organic",
+      "label": "Yandex organic",
+      "status": "READY_WITH_CONDITIONS",
+      "allowedLandingRoutes": [
+        "/",
+        "/razbor-situacii/",
+        "/kontakty/",
+        "/otchetnost/",
+        "/bank-i-115-fz/",
+        "/otvet-na-trebovanie-ifns/",
+        "/deklaraciya-usn/",
+        "/otvet-na-zapros-banka/",
+        "/dokumenty-dlya-banka-115-fz/",
+        "/registraciya-ooo/",
+        "/registraciya-ip/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "route_context_or_search_untracked",
+      "crmSourceValue": "yandex_organic",
+      "launchBlocker": "public_live_and_indexing_gates",
+      "stopSignal": "wrong_intent_or_unqualified_leads"
+    },
+    {
+      "id": "yandex_business",
+      "label": "Yandex Business / Maps",
+      "status": "OWNER_REQUIRED",
+      "allowedLandingRoutes": [
+        "/kontakty/",
+        "/razbor-situacii/",
+        "/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "utm_source=yandex_business_or_manual_source",
+      "crmSourceValue": "yandex_business",
+      "launchBlocker": "owner_nap_photo_profile_approval",
+      "stopSignal": "nap_mismatch_or_hold_fields_requested"
+    },
+    {
+      "id": "2gis",
+      "label": "2GIS",
+      "status": "OWNER_REQUIRED",
+      "allowedLandingRoutes": [
+        "/kontakty/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "utm_source=2gis_or_manual_source",
+      "crmSourceValue": "2gis_call",
+      "launchBlocker": "owner_nap_profile_approval",
+      "stopSignal": "nap_mismatch_or_untracked_walk_in"
+    },
+    {
+      "id": "directory",
+      "label": "Directories",
+      "status": "OWNER_REQUIRED",
+      "allowedLandingRoutes": [
+        "/kontakty/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "utm_source=directory_or_manual_source",
+      "crmSourceValue": "directory",
+      "launchBlocker": "owner_profile_approval",
+      "stopSignal": "duplicate_profile_or_wrong_nap"
+    },
+    {
+      "id": "yandex_direct",
+      "label": "Yandex Direct",
+      "status": "TRACKING_REQUIRED",
+      "allowedLandingRoutes": [
+        "/otvet-na-trebovanie-ifns/",
+        "/deklaraciya-usn/",
+        "/otvet-na-zapros-banka/",
+        "/dokumenty-dlya-banka-115-fz/",
+        "/registraciya-ooo/",
+        "/registraciya-ip/",
+        "/yuridicheskiy-adres-simferopol/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "utm_source=yandex_direct_and_yclid",
+      "crmSourceValue": "yandex_direct",
+      "launchBlocker": "paid_traffic_allowed_false_until_crm_analytics_legal_landing_qa",
+      "stopSignal": "no_attribution_or_low_quality_leads"
+    },
+    {
+      "id": "vk_organic",
+      "label": "VK organic",
+      "status": "OWNER_REQUIRED",
+      "allowedLandingRoutes": [
+        "/razbor-situacii/",
+        "/kontakty/",
+        "/otchetnost/",
+        "/bank-i-115-fz/",
+        "/registraciya-i-likvidaciya/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "utm_source=vk_or_manual_source",
+      "crmSourceValue": "vk_message",
+      "launchBlocker": "owner_community_content_moderation_approval",
+      "stopSignal": "messages_without_source_or_hold_claims"
+    },
+    {
+      "id": "vk_paid",
+      "label": "VK paid",
+      "status": "STAGED",
+      "allowedLandingRoutes": [
+        "/razbor-situacii/",
+        "/bank-i-115-fz/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "utm_source=vk_and_paid_medium",
+      "crmSourceValue": "vk_paid",
+      "launchBlocker": "paid_social_staged_until_organic_base_and_goals",
+      "stopSignal": "unqualified_or_unattributed_leads"
+    },
+    {
+      "id": "dzen_organic",
+      "label": "Dzen organic",
+      "status": "STAGED",
+      "allowedLandingRoutes": [
+        "/razbor-situacii/",
+        "/kontakty/",
+        "/otvet-na-zapros-banka/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "utm_source=dzen_or_manual_source",
+      "crmSourceValue": "dzen_article",
+      "launchBlocker": "content_approval_and_source_capture",
+      "stopSignal": "reads_without_site_clicks_or_source_capture"
+    },
+    {
+      "id": "dzen_paid",
+      "label": "Dzen paid",
+      "status": "BLOCKED",
+      "allowedLandingRoutes": [
+        "/razbor-situacii/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "utm_source=dzen_and_paid_medium",
+      "crmSourceValue": "dzen_paid",
+      "launchBlocker": "blocked_until_platform_marking_analytics_crm_and_legal_review",
+      "stopSignal": "paid_content_without_marking_or_source_capture"
+    },
+    {
+      "id": "avito",
+      "label": "Avito",
+      "status": "STAGED",
+      "allowedLandingRoutes": [
+        "/registraciya-ooo/",
+        "/registraciya-ip/",
+        "/otvet-na-zapros-banka/",
+        "/yuridicheskiy-adres-simferopol/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "manual_avito_call_or_avito_chat",
+      "crmSourceValue": "avito_call",
+      "launchBlocker": "owner_listing_photo_response_approval_and_hold_gate",
+      "stopSignal": "platform_requires_price_guarantee_review_or_rating"
+    },
+    {
+      "id": "yandex_services",
+      "label": "Yandex Services",
+      "status": "STAGED",
+      "allowedLandingRoutes": [
+        "/kontakty/",
+        "/registraciya-ooo/",
+        "/registraciya-ip/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "manual_yandex_services_profile_or_order",
+      "crmSourceValue": "yandex_services_profile",
+      "launchBlocker": "owner_profile_category_source_approval_and_hold_gate",
+      "stopSignal": "platform_requires_hold_fields_or_source_is_lost"
+    },
+    {
+      "id": "phone_direct",
+      "label": "Phone direct",
+      "status": "READY_WITH_CONDITIONS",
+      "allowedLandingRoutes": [
+        "/",
+        "/kontakty/",
+        "/razbor-situacii/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "manual_source_capture",
+      "crmSourceValue": "phone_direct",
+      "launchBlocker": "operator_source_capture_process",
+      "stopSignal": "operator_does_not_record_source"
+    },
+    {
+      "id": "walk_in",
+      "label": "Walk-in",
+      "status": "READY_WITH_CONDITIONS",
+      "allowedLandingRoutes": [
+        "/kontakty/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "manual_walk_in_source_capture",
+      "crmSourceValue": "walk_in",
+      "launchBlocker": "operator_source_capture_process",
+      "stopSignal": "walk_in_without_source_or_topic"
+    },
+    {
+      "id": "referral_manual",
+      "label": "Referral / manual",
+      "status": "READY_WITH_CONDITIONS",
+      "allowedLandingRoutes": [
+        "/razbor-situacii/",
+        "/kontakty/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "manual_source_capture",
+      "crmSourceValue": "referral_manual",
+      "launchBlocker": "operator_source_capture_process",
+      "stopSignal": "unknown_source_not_recorded"
+    },
+    {
+      "id": "telegram_message",
+      "label": "Telegram future",
+      "status": "BLOCKED",
+      "allowedLandingRoutes": [
+        "/kontakty/",
+        "/razbor-situacii/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "manual_telegram_message_after_gate",
+      "crmSourceValue": "telegram_message",
+      "launchBlocker": "final_link_privacy_crm_source_rendered_qa_required",
+      "stopSignal": "chat_contents_or_source_not_safe"
+    },
+    {
+      "id": "max_message",
+      "label": "MAX future",
+      "status": "BLOCKED",
+      "allowedLandingRoutes": [
+        "/kontakty/",
+        "/razbor-situacii/"
+      ],
+      "missingRoutes": [],
+      "blockedLandingRoutes": [],
+      "attributionRequired": "manual_max_message_after_gate",
+      "crmSourceValue": "max_message",
+      "launchBlocker": "final_link_privacy_crm_source_rendered_qa_required",
+      "stopSignal": "chat_contents_or_source_not_safe"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 {
   "status": "passed",
-  "generatedAt": "2026-06-11T18:11:18.721Z",
+  "generatedAt": "2026-06-15T16:58:40.693Z",
   "axeUsed": false,
   "note": "AXE_NOT_AVAILABLE_DOM_BASED_CHECK_ONLY",
   "routes": [
     {
       "route": "/",
       "h1Count": 1,
-      "h1Text": "Разберём ситуацию и подготовим документы",
+      "h1Text": "Документы для бизнеса в Симферополе",
       "mainLandmarkExists": true,
       "navOrHeaderExists": true,
       "footerExists": true,

@@ -10,8 +10,8 @@ export function ShowDocumentsPlaceholder({ pageSlug = "show-documents", pageType
   return (
     <FormPlaceholder
       eyebrow="Без загрузки файлов"
-      title="Показать документы"
-      text="Публичная страница не принимает файлы. Сначала согласуйте безопасный способ показа документов."
+      title="Согласуем безопасный способ"
+      text="Файлы не нужно отправлять через сайт. Сначала договоримся, как удобнее и безопаснее показать документы."
       pageSlug={pageSlug}
       pageType={pageType}
       leadTopic={leadTopic}

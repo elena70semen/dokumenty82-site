@@ -44,7 +44,6 @@ const unsafeFlags = [
   "formsLive",
   "crmSuccessEnabled",
   "analyticsEnabled",
-  "metricaEnabled",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
@@ -331,7 +330,6 @@ function parseSafetyGuardProof(renderedRouteProof) {
       route.containsForbiddenPhrase ||
       route.containsUploadInput ||
       route.containsTelegramMaxDeepLink ||
-      route.containsMetricaOrCounter ||
       route.containsWebhookOrSecretPattern ||
       route.containsFalseSuccessSignal
   );
@@ -345,7 +343,7 @@ function parseSafetyGuardProof(renderedRouteProof) {
       noForbiddenPublicPhrases: !renderedRouteProof.some((route) => route.containsForbiddenPhrase),
       noFinalTelegramMaxDeepLinks: !renderedRouteProof.some((route) => route.containsTelegramMaxDeepLink),
       noUploadInputs: !renderedRouteProof.some((route) => route.containsUploadInput),
-      noMetricaIdOrCounter: !renderedRouteProof.some((route) => route.containsMetricaOrCounter),
+      yandexMetrikaCounterPresent: renderedRouteProof.every((route) => route.containsMetricaOrCounter),
       noWebhookOrSecretPattern: !renderedRouteProof.some((route) => route.containsWebhookOrSecretPattern),
       noFalseSuccessSignal: !renderedRouteProof.some((route) => route.containsFalseSuccessSignal),
       failures: renderedFailures.map((route) => route.route)
@@ -391,7 +389,8 @@ function writeSummary({
     "- `/blog/`, `/blog/obnovleniya-fns/`, `/blog/razbory/`, `/faq/` and `/internal/graphics-proof/` are excluded/noindex or internal-only.",
     "- P0 routes have safe collectors or contact paths.",
     "- Document-heavy P0 routes show safe `Показать документы` intent without upload.",
-    "- Live forms, CRM, Metrica, MAX, Telegram, map and cookie notice remain disabled.",
+    "- Yandex Metrica is installed for pageview analytics.",
+    "- Live forms, CRM, MAX, Telegram, map and cookie notice remain disabled.",
     "",
     "## Not collected here",
     "",

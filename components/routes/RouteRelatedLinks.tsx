@@ -1,7 +1,5 @@
-import { BrandBadge } from "@/components/brand/BrandBadge";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { TrackedAction } from "@/components/tracking/TrackedAction";
-import { brandTokens } from "@/lib/brand/brand-tokens";
 import type { RouteRelatedLink } from "@/lib/routes/route-page-data";
 
 type RouteRelatedLinksProps = {
@@ -13,20 +11,19 @@ type RouteRelatedLinksProps = {
 export function RouteRelatedLinks({ links, pageSlug, pageType }: RouteRelatedLinksProps) {
   return (
     <section
-      className="section-pad bg-[var(--paper-soft)]"
+      className="section-pad dimmed-page-section"
       aria-labelledby="route-related-title"
-      style={{ backgroundImage: `url(${brandTokens.assets.routeGridPattern})` }}
     >
       <div className="container-premium">
         <div className="grid gap-8 lg:grid-cols-[0.74fr_1.26fr] lg:items-end">
           <div>
-            <p className="eyebrow-line">Связанные маршруты</p>
-            <h2 id="route-related-title" className="mt-5 text-4xl font-black leading-tight text-[color:var(--text-primary)] md:text-6xl">
-              Перейти к точной странице
+            <p className="eyebrow-line">Куда перейти дальше</p>
+            <h2 id="route-related-title" className="mt-5 text-4xl font-semibold leading-tight text-[color:var(--text-inverse)] md:text-6xl">
+              Выберите подходящий раздел
             </h2>
           </div>
-          <p className="text-lg leading-9 text-[color:var(--text-secondary)]">
-            Ссылки ведут только на утверждённые страницы и помогают сохранить один основной интент на URL.
+          <p className="text-lg leading-9 text-[color:var(--text-inverse-muted)]">
+            Если тема уже понятна, можно сразу открыть ближайшее направление и посмотреть, какие документы понадобятся.
           </p>
         </div>
 
@@ -34,28 +31,34 @@ export function RouteRelatedLinks({ links, pageSlug, pageType }: RouteRelatedLin
           {links.map((link) => (
             <article
               key={link.href}
-              className="group flex min-h-[270px] flex-col rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] p-5 shadow-[var(--shadow-card-sm)] transition hover:-translate-y-1 hover:bg-[var(--surface-raised)] hover:shadow-[var(--shadow-card-md-hover)]"
+              className="dark-glass-card dark-glass-card-interactive group grid min-h-[318px] grid-rows-[auto_auto_1fr_auto] rounded-[8px] p-5"
             >
               <div className="flex items-start justify-between gap-4">
-                <BrandBadge kind={link.badgeKind} label="Маршрут" icon={link.icon} size={48} />
-                <BrandIcon name="route" size={20} className="mt-3 text-[color:var(--text-muted)] transition group-hover:text-[color:var(--blue)]" />
+                <div className="flex items-center gap-3">
+                  <span className="dark-glass-icon">
+                    <BrandIcon name={link.icon} size={24} />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--text-inverse-soft)]">Раздел</span>
+                </div>
+                <BrandIcon name="route" size={20} className="mt-3 text-[color:var(--text-inverse-soft)] transition group-hover:text-[color:var(--lime-signal)]" />
               </div>
-              <div className="mt-7 flex flex-1 flex-col">
-                <h3 className="text-2xl font-black leading-tight text-[color:var(--text-primary)]">{link.title}</h3>
-                <p className="mt-4 flex-1 text-base leading-7 text-[color:var(--text-secondary)]">{link.copy}</p>
+              <h3 className="mt-7 min-h-[64px] text-2xl font-semibold leading-tight text-[color:var(--text-inverse)]">{link.title}</h3>
+              <p className="mt-4 text-base leading-7 text-[color:var(--text-inverse-muted)]">{link.copy}</p>
+              <div className="mt-6 border-t border-[rgba(255,255,255,0.12)] pt-4">
                 <TrackedAction
                   href={link.href}
-                  className="mt-6 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  className="dark-glass-cta inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
                   pageSlug={pageSlug}
                   pageType={pageType}
-                  ctaLabel="Открыть маршрут"
+                  ctaLabel="Перейти в раздел"
                   ctaLocation="related_routes"
                   leadTopic={link.href.replace(/^\//, "").replace(/\/$/, "") || "home"}
                   collectorType="related_route"
                   fromPageSlug={pageSlug}
                   toPageSlug={link.href}
                 >
-                  Открыть маршрут
+                  <BrandIcon name="route" size={20} />
+                  Перейти в раздел
                 </TrackedAction>
               </div>
             </article>

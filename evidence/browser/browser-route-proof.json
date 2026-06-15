@@ -1,18 +1,18 @@
 {
   "status": "passed",
-  "baseUrl": "http://127.0.0.1:4182",
-  "generatedAt": "2026-06-11T18:11:17.330Z",
+  "baseUrl": "http://127.0.0.1:4173",
+  "generatedAt": "2026-06-15T16:58:39.403Z",
   "note": "Dependency-free HTTP and rendered HTML proof. Runtime console logs are checked separately in browser automation when available.",
   "routes": [
     {
       "route": "/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/",
+      "finalUrl": "http://127.0.0.1:4173/",
       "title": "Документы для бизнеса — подготовка документов в Симферополе",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/",
       "h1Count": 1,
-      "h1Text": "Разберём ситуацию и подготовим документы",
+      "h1Text": "Документы для бизнеса в Симферополе",
       "mainExists": true,
       "headerExists": true,
       "footerExists": true,
@@ -24,7 +24,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -32,7 +32,7 @@
     {
       "route": "/razbor-situacii/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/razbor-situacii/",
+      "finalUrl": "http://127.0.0.1:4173/razbor-situacii/",
       "title": "Разбор ситуации по документам бизнеса в Симферополе | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/razbor-situacii/",
@@ -49,7 +49,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -57,7 +57,7 @@
     {
       "route": "/kontakty/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/kontakty/",
+      "finalUrl": "http://127.0.0.1:4173/kontakty/",
       "title": "Контакты — Документы для бизнеса в Симферополе | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/kontakty/",
@@ -74,7 +74,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -82,7 +82,7 @@
     {
       "route": "/policy/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/policy/",
+      "finalUrl": "http://127.0.0.1:4173/policy/",
       "title": "Политика конфиденциальности | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/policy",
@@ -99,7 +99,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -107,7 +107,7 @@
     {
       "route": "/otvet-na-trebovanie-ifns/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/otvet-na-trebovanie-ifns/",
+      "finalUrl": "http://127.0.0.1:4173/otvet-na-trebovanie-ifns/",
       "title": "Ответ на требование ИФНС | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/otvet-na-trebovanie-ifns/",
@@ -124,7 +124,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -132,7 +132,7 @@
     {
       "route": "/otvet-na-zapros-banka/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/otvet-na-zapros-banka/",
+      "finalUrl": "http://127.0.0.1:4173/otvet-na-zapros-banka/",
       "title": "Ответ на запрос банка | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/otvet-na-zapros-banka/",
@@ -149,7 +149,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -157,7 +157,7 @@
     {
       "route": "/dokumenty-dlya-banka-115-fz/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/dokumenty-dlya-banka-115-fz/",
+      "finalUrl": "http://127.0.0.1:4173/dokumenty-dlya-banka-115-fz/",
       "title": "Документы для банка по 115-ФЗ | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/",
@@ -174,7 +174,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -182,7 +182,7 @@
     {
       "route": "/deklaraciya-usn/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/deklaraciya-usn/",
+      "finalUrl": "http://127.0.0.1:4173/deklaraciya-usn/",
       "title": "Декларация УСН в Симферополе | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/deklaraciya-usn/",
@@ -199,7 +199,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -207,7 +207,7 @@
     {
       "route": "/nulevaya-otchetnost-ooo/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/nulevaya-otchetnost-ooo/",
+      "finalUrl": "http://127.0.0.1:4173/nulevaya-otchetnost-ooo/",
       "title": "Нулевая отчетность ООО | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/nulevaya-otchetnost-ooo/",
@@ -224,7 +224,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -232,7 +232,7 @@
     {
       "route": "/nulevaya-otchetnost-ip/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/nulevaya-otchetnost-ip/",
+      "finalUrl": "http://127.0.0.1:4173/nulevaya-otchetnost-ip/",
       "title": "Нулевая отчетность ИП | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/nulevaya-otchetnost-ip/",
@@ -249,7 +249,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -257,7 +257,7 @@
     {
       "route": "/registraciya-ooo/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/registraciya-ooo/",
+      "finalUrl": "http://127.0.0.1:4173/registraciya-ooo/",
       "title": "Регистрация ООО в Симферополе | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/registraciya-ooo/",
@@ -274,7 +274,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -282,7 +282,7 @@
     {
       "route": "/registraciya-ip/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/registraciya-ip/",
+      "finalUrl": "http://127.0.0.1:4173/registraciya-ip/",
       "title": "Регистрация ИП в Симферополе | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/registraciya-ip/",
@@ -299,7 +299,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -307,7 +307,7 @@
     {
       "route": "/yuridicheskiy-adres-simferopol/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/yuridicheskiy-adres-simferopol/",
+      "finalUrl": "http://127.0.0.1:4173/yuridicheskiy-adres-simferopol/",
       "title": "Юридический адрес в Симферополе | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/yuridicheskiy-adres-simferopol/",
@@ -324,7 +324,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []
@@ -332,7 +332,7 @@
     {
       "route": "/nedostovernost-yuridicheskogo-adresa/",
       "status": 200,
-      "finalUrl": "http://127.0.0.1:4182/nedostovernost-yuridicheskogo-adresa/",
+      "finalUrl": "http://127.0.0.1:4173/nedostovernost-yuridicheskogo-adresa/",
       "title": "Недостоверность юридического адреса - документы и маршрут | Документы для бизнеса",
       "metaDescriptionExists": true,
       "canonical": "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/",
@@ -349,7 +349,7 @@
       "missingLocalAssets": [],
       "uploadInputs": 0,
       "telegramMaxDeepLinks": 0,
-      "analyticsMetricaScripts": 0,
+      "analyticsMetricaScripts": 10,
       "forbiddenVisibleClaims": false,
       "passed": true,
       "failures": []

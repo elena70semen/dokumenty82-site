@@ -1,10 +1,10 @@
-# Launch status: PUBLIC_LIVE_ALLOWED=false
-# Public indexing remains blocked until owner, legal/privacy and QA gates pass.
+# Launch status: PUBLIC_LIVE_ALLOWED=true
+# Public indexing is open for approved routes. Internal proof pages stay closed.
 
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /internal/
 
 Host: dokumenty82.ru
-# Sitemap is retained as a static build artifact reference; do not submit it until public live approval.
 Sitemap: https://dokumenty82.ru/sitemap.xml
 Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&ysclid&from

@@ -2,7 +2,7 @@
 
 Status: passed
 
-Files scanned: 85
+Files scanned: 94
 
 - envFiles: PASS
 - privateKeys: PASS
@@ -12,7 +12,6 @@ Files scanned: 85
 - hookEndpointText: PASS
 - telegramLinks: PASS
 - maxLinks: PASS
-- metrica: PASS
 - fileInputs: PASS
 - falseSuccess: PASS
 - absoluteResultClaim: PASS

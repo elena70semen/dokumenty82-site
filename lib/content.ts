@@ -43,7 +43,7 @@ export const hubs: RoutePage[] = [
     href: "/srochnye-voprosy/",
     title: "Срочные и неясные вопросы по документам",
     shortTitle: "Срочные вопросы",
-    kicker: "Хаб · первый шаг",
+    kicker: "Первый шаг",
     description:
       "Когда непонятно, с чего начать, сначала разбираем ситуацию и определяем безопасный маршрут по документам.",
     image: "/assets/images/consultation-documents.png",
@@ -60,15 +60,15 @@ export const hubs: RoutePage[] = [
     href: "/otchetnost/",
     title: "Отчетность и документы для учета",
     shortTitle: "Отчетность",
-    kicker: "Хаб · отчетность",
+    kicker: "Отчетность",
     description:
-      "Маршрут для вопросов по отчетности, нулевым отчетам, электронным документам и восстановлению порядка в учете.",
+      "Раздел для вопросов по отчетности, нулевым отчетам, электронным документам и восстановлению порядка в учете.",
     image: "/assets/images/reporting-workflow.png",
     imageAlt: "Рабочий стол с документами для отчетности",
     bullets: ["декларации и отчеты", "нулевая отчетность", "электронные документы", "систематизация исходных данных"],
     longText: [
       "Здесь собраны направления, где важны аккуратность исходных данных и понятная структура документов.",
-      "Хаб не заменяет узкую посадочную страницу. Он помогает выбрать маршрут и перейти к конкретному вопросу."
+      "Этот раздел помогает выбрать подходящее направление и перейти к конкретному вопросу."
     ],
     pageType: "hub"
   },
@@ -77,7 +77,7 @@ export const hubs: RoutePage[] = [
     href: "/nalogi-i-rezhimy/",
     title: "Налоги и режимы для бизнеса",
     shortTitle: "Налоги и режимы",
-    kicker: "Хаб · налоговые вопросы",
+    kicker: "Налоговые вопросы",
     description:
       "Помогаем разобраться с документами по налоговому режиму, нагрузке и смежным вопросам без сложного канцелярита.",
     image: "/assets/images/tax-accounting-books.png",
@@ -94,9 +94,9 @@ export const hubs: RoutePage[] = [
     href: "/bank-i-115-fz/",
     title: "Банк, запросы и документы по 115-ФЗ",
     shortTitle: "Банк и 115-ФЗ",
-    kicker: "Хаб · банк",
+    kicker: "Банк",
     description:
-      "Маршрут для запросов банка, документов по операциям, контрагентам и деловой ситуации.",
+      "Раздел для запросов банка, документов по операциям, контрагентам и деловой ситуации.",
     image: "/assets/images/bank-115fz-documents.png",
     imageAlt: "Подготовка документов по запросу банка",
     bullets: ["запрос банка", "документы по операции", "пояснения", "перечень недостающих материалов"],
@@ -111,9 +111,9 @@ export const hubs: RoutePage[] = [
     href: "/adres-egryul-direktor/",
     title: "Адрес, ЕГРЮЛ и изменения в компании",
     shortTitle: "Адрес и ЕГРЮЛ",
-    kicker: "Хаб · изменения",
+    kicker: "Изменения",
     description:
-      "Маршрут для юридического адреса, изменений сведений, директора и связанных документов компании.",
+      "Раздел для юридического адреса, изменений сведений, директора и связанных документов компании.",
     image: "/assets/images/legal-address-documents.png",
     imageAlt: "Документы по юридическому адресу и ЕГРЮЛ",
     bullets: ["юридический адрес", "изменения сведений", "директор", "документы компании"],
@@ -128,7 +128,7 @@ export const hubs: RoutePage[] = [
     href: "/kadry/",
     title: "Кадровые документы для бизнеса",
     shortTitle: "Кадры",
-    kicker: "Хаб · кадровые вопросы",
+    kicker: "Кадровые вопросы",
     description:
       "Подготовка и структурирование кадровых документов, когда нужно аккуратно собрать рабочий комплект.",
     image: "/assets/images/team-specialists.png",
@@ -145,7 +145,7 @@ export const hubs: RoutePage[] = [
     href: "/soprovozhdenie/",
     title: "Сопровождение бизнеса по документам",
     shortTitle: "Сопровождение",
-    kicker: "Хаб · сопровождение",
+    kicker: "Сопровождение",
     description:
       "Документальное сопровождение рабочих вопросов бизнеса: отчетность, учет, кадры, банк и изменения.",
     image: "/assets/images/office-reception.png",
@@ -162,15 +162,15 @@ export const hubs: RoutePage[] = [
     href: "/registraciya-i-likvidaciya/",
     title: "Регистрация и ликвидация бизнеса",
     shortTitle: "Регистрация",
-    kicker: "Хаб · жизненный цикл",
+    kicker: "Жизненный цикл бизнеса",
     description:
-      "Маршрут для регистрации ООО, регистрации ИП, изменений и ликвидации с понятным комплектом документов.",
+      "Раздел для регистрации ООО, регистрации ИП, изменений и ликвидации с понятным комплектом документов.",
     image: "/assets/images/registration-changes.png",
     imageAlt: "Подписание документов для регистрации бизнеса",
     bullets: ["регистрация ООО", "регистрация ИП", "изменения", "ликвидация"],
     longText: [
       "На старте важно выбрать не самый громкий, а самый подходящий маршрут под конкретную задачу.",
-      "Хаб помогает перейти к нужной посадочной странице и начать с безопасного разбора."
+      "Раздел помогает перейти к нужной странице и начать с безопасного разбора."
     ],
     pageType: "hub"
   }
@@ -182,7 +182,7 @@ export const services: RoutePage[] = [
     href: "/otvet-na-trebovanie-ifns/",
     title: "Ответ на требование ИФНС",
     shortTitle: "Ответ на требование",
-    kicker: "Money-page · срочный вопрос",
+    kicker: "Срочный вопрос",
     description:
       "Разберем текст требования, исходные документы и подготовим понятный комплект для следующего действия.",
     image: "/assets/images/consultation-documents.png",
@@ -200,7 +200,7 @@ export const services: RoutePage[] = [
     href: "/deklaraciya-usn/",
     title: "Декларация УСН в Симферополе",
     shortTitle: "Декларация УСН",
-    kicker: "Money-page · отчетность",
+    kicker: "Отчетность",
     description:
       "Поможем собрать исходные данные и подготовить документы для вопроса по декларации УСН.",
     image: "/assets/images/reporting-workflow.png",
@@ -218,7 +218,7 @@ export const services: RoutePage[] = [
     href: "/nulevaya-otchetnost-ooo/",
     title: "Нулевая отчетность ООО",
     shortTitle: "Нулевая отчетность ООО",
-    kicker: "Money-page · отчетность",
+    kicker: "Отчетность",
     description:
       "Разберем ситуацию ООО и подготовим документы по вопросу нулевой отчетности без лишних обещаний.",
     image: "/assets/images/blog-document-route.png",
@@ -236,7 +236,7 @@ export const services: RoutePage[] = [
     href: "/nulevaya-otchetnost-ip/",
     title: "Нулевая отчетность ИП",
     shortTitle: "Нулевая отчетность ИП",
-    kicker: "Money-page · отчетность",
+    kicker: "Отчетность",
     description:
       "Поможем понять исходные данные ИП и подготовить документы по вопросу нулевой отчетности.",
     image: "/assets/images/faq-consultation.png",
@@ -257,7 +257,7 @@ export const services: RoutePage[] = [
     metadataDescription:
       "Восстановление учёта: собрать первичные документы, понять пробелы и подготовить маршрут перед отчётностью или банком.",
     shortTitle: "Восстановление бухучёта",
-    kicker: "Money-page · отчётность",
+    kicker: "Отчётность",
     description:
       "Разберём исходные документы, периоды и недостающие данные, чтобы восстановить порядок в учёте перед следующим шагом.",
     image: "/assets/images/reporting-workflow.png",
@@ -279,7 +279,7 @@ export const services: RoutePage[] = [
     href: "/otvet-na-zapros-banka/",
     title: "Ответ на запрос банка",
     shortTitle: "Ответ банку",
-    kicker: "Money-page · банк",
+    kicker: "Банк",
     description:
       "Подготовим структуру ответа по запросу банка: документы, пояснения и список недостающих материалов.",
     image: "/assets/images/bank-115fz-documents.png",
@@ -297,7 +297,7 @@ export const services: RoutePage[] = [
     href: "/dokumenty-dlya-banka-115-fz/",
     title: "Документы для банка по 115-ФЗ",
     shortTitle: "Документы 115-ФЗ",
-    kicker: "Money-page · 115-ФЗ",
+    kicker: "Банк и 115-ФЗ",
     description:
       "Соберем документы по деловой ситуации, операции или контрагенту для ответа на банковский запрос.",
     image: "/assets/images/ai-document-assistant.png",
@@ -315,7 +315,7 @@ export const services: RoutePage[] = [
     href: "/yuridicheskiy-adres-simferopol/",
     title: "Юридический адрес в Симферополе",
     shortTitle: "Юридический адрес",
-    kicker: "Money-page · адрес",
+    kicker: "Юридический адрес",
     description:
       "Разберем документы по юридическому адресу и связанным сведениям компании в Симферополе.",
     image: "/assets/images/legal-address-documents.png",
@@ -333,7 +333,7 @@ export const services: RoutePage[] = [
     href: "/smena-yuridicheskogo-adresa-ooo/",
     title: "Смена юридического адреса ООО",
     shortTitle: "Смена адреса ООО",
-    kicker: "Money-page · изменения ООО",
+    kicker: "Изменения ООО",
     description:
       "Подготовим документы для вопроса смены юридического адреса ООО после разбора исходной ситуации.",
     image: "/assets/images/registration-changes.png",
@@ -354,7 +354,7 @@ export const services: RoutePage[] = [
     metadataDescription:
       "Недостоверность юридического адреса: проверить источник отметки, текущие данные компании и возможный адресный маршрут.",
     shortTitle: "Недостоверность адреса",
-    kicker: "Money-page · адрес",
+    kicker: "Юридический адрес",
     description:
       "Если появилась отметка, риск или вопрос по достоверности адреса, сначала нужно понять источник, текущие данные компании и документы по адресу.",
     image: "/assets/images/legal-address-documents.png",
@@ -382,7 +382,7 @@ export const services: RoutePage[] = [
     href: "/smena-direktora-ooo/",
     title: "Смена директора ООО",
     shortTitle: "Смена директора",
-    kicker: "Money-page · изменения ООО",
+    kicker: "Изменения ООО",
     description:
       "Поможем подготовить документы для вопроса смены директора ООО и связанных изменений.",
     image: "/assets/images/team-specialists.png",
@@ -400,7 +400,7 @@ export const services: RoutePage[] = [
     href: "/registraciya-ooo/",
     title: "Регистрация ООО в Симферополе",
     shortTitle: "Регистрация ООО",
-    kicker: "Money-page · регистрация",
+    kicker: "Регистрация",
     description:
       "Подготовим стартовый комплект документов для регистрации ООО после спокойного разбора задачи.",
     image: "/assets/images/registration-changes.png",
@@ -418,7 +418,7 @@ export const services: RoutePage[] = [
     href: "/registraciya-ip/",
     title: "Регистрация ИП в Симферополе",
     shortTitle: "Регистрация ИП",
-    kicker: "Money-page · регистрация",
+    kicker: "Регистрация",
     description:
       "Разберем стартовую ситуацию и подготовим документы для вопроса регистрации ИП.",
     image: "/assets/images/consultation-documents.png",
@@ -436,7 +436,7 @@ export const services: RoutePage[] = [
     href: "/likvidaciya-ooo/",
     title: "Ликвидация ООО",
     shortTitle: "Ликвидация ООО",
-    kicker: "Money-page · жизненный цикл",
+    kicker: "Жизненный цикл бизнеса",
     description:
       "Поможем разобрать исходные документы и подготовить маршрут по вопросу ликвидации ООО.",
     image: "/assets/images/blog-document-route.png",
@@ -457,7 +457,7 @@ export const diagnostics: RoutePage[] = [
     href: "/ausn-krym/",
     title: "Подходит ли АУСН в Крыму",
     shortTitle: "АУСН в Крыму",
-    kicker: "Diagnostics · налоги",
+    kicker: "Налоги и режимы",
     description:
       "Диагностический разбор применимости АУСН начинается с исходных данных и документов бизнеса.",
     image: "/assets/images/tax-accounting-books.png",
@@ -475,7 +475,7 @@ export const diagnostics: RoutePage[] = [
     href: "/raschet-nalogovoy-nagruzki/",
     title: "Расчет налоговой нагрузки",
     shortTitle: "Налоговая нагрузка",
-    kicker: "Diagnostics · расчет",
+    kicker: "Расчет налоговой нагрузки",
     description:
       "Соберем исходные данные для понятного разбора налоговой нагрузки без неподтвержденных обещаний.",
     image: "/assets/images/reporting-workflow.png",
@@ -493,7 +493,7 @@ export const diagnostics: RoutePage[] = [
     href: "/nds-pri-usn-2026/",
     title: "НДС при УСН в 2026 году",
     shortTitle: "НДС при УСН",
-    kicker: "Diagnostics · 2026",
+    kicker: "НДС при УСН",
     description:
       "Разбор вопроса НДС при УСН в 2026 году начинается с режима, документов и исходной ситуации.",
     image: "/assets/images/faq-consultation.png",

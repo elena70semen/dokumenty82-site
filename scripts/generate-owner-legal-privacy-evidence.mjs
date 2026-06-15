@@ -123,7 +123,7 @@ const methodPostCount = countMatches(formsHtml, /<form\b[^>]*\smethod=["']post["
 const submitControlCount = countMatches(formsHtml, /<(button|input)\b[^>]*type=["']submit["']/gi);
 const fileInputCount = countMatches(formsHtml, /<input\b[^>]*type=["']file["']/gi);
 const formFallbackPresent = /href=["']\/kontakty\/?["']|href=["']tel:\+79789987222["']/i.test(formsHtml);
-const offlineTextPresent = renderedVisibleText.includes("Онлайн-отправка пока не подключена");
+const offlineTextPresent = renderedVisibleText.includes("Сейчас лучше связаться напрямую");
 const falseSuccessPresent = /заявка отправлена|заявка принята|успешно отправ/i.test(renderedVisibleText);
 
 const noBackendEndpoint =

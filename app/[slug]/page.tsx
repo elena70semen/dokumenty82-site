@@ -114,30 +114,30 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
       : null;
 
   return (
-    <main className="pt-36">
+    <main id="main-content">
       {serviceJsonLd ? <JsonLd data={serviceJsonLd} /> : null}
 
-      <section className="section-pad">
+      <section className="section-pad dimmed-page-section">
         <div className="container-premium grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="reveal-block" data-reveal="left">
-            <nav className="mb-8 flex flex-wrap gap-2 text-sm font-bold text-[#667184]" aria-label="Хлебные крошки">
-              <Link href="/" className="text-[#245da7]">
+            <nav className="mb-8 flex flex-wrap gap-2 text-sm font-bold text-[color:var(--text-inverse-soft)]" aria-label="Хлебные крошки">
+              <Link href="/" className="text-[color:var(--lime-signal)]">
                 Главная
               </Link>
               {parent ? (
                 <>
                   <span>/</span>
-                  <Link href={parent.href} className="text-[#245da7]">
+                  <Link href={parent.href} className="text-[color:var(--lime-signal)]">
                     {parent.shortTitle}
                   </Link>
                 </>
               ) : null}
             </nav>
             <p className="eyebrow-line">{page.kicker}</p>
-            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[#111821] md:text-7xl">
+            <h1 className="display-serif mt-6 text-[2.65rem] font-semibold leading-[0.98] text-[color:var(--text-inverse)] md:text-7xl">
               {page.title}
             </h1>
-            <p className="mt-7 text-xl leading-9 text-[#667184]">{page.description}</p>
+            <p className="mt-7 text-xl leading-9 text-[color:var(--text-inverse-muted)]">{page.description}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <TrackedAction
                 href={primaryCollector.href}
@@ -166,7 +166,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               </TrackedAction>
             </div>
             {primaryCollector.note ? (
-              <p className="mt-4 max-w-xl text-sm leading-7 text-[#667184]">{primaryCollector.note}</p>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-[color:var(--text-inverse-soft)]">{primaryCollector.note}</p>
             ) : null}
           </div>
 
@@ -179,9 +179,9 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
         </div>
       </section>
 
-      <section className="section-pad bg-white/62">
+      <section className="section-pad dimmed-page-section">
         <div className="container-premium grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="reveal-block rounded-[8px] bg-[#111821] p-8 text-white" data-reveal="left">
+          <div className="reveal-block rounded-[8px] bg-[rgba(17,24,33,0.86)] p-8 text-white backdrop-blur-[2px]" data-reveal="left">
             <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#c69a47]">Что важно на старте</p>
             <ul className="mt-6 grid gap-4">
               {page.bullets.map((bullet) => (
@@ -192,7 +192,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               ))}
             </ul>
           </div>
-          <article className="rich-text reveal-block rounded-[8px] border border-[#16284414] bg-white/82 p-8 shadow-[0_22px_58px_rgba(22,40,68,0.08)]" data-reveal="right">
+          <article className="rich-text reveal-block rounded-[8px] border border-[#16284414] bg-white/78 p-8 shadow-[0_22px_58px_rgba(22,40,68,0.08)] backdrop-blur-[1px]" data-reveal="right">
             <h2 className="display-serif mb-6 text-4xl font-semibold leading-tight text-[#111821]">
               Как мы подходим к задаче
             </h2>
@@ -200,8 +200,8 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               <p key={paragraph}>{paragraph}</p>
             ))}
             {page.pageType === "hub" ? (
-              <div className="mt-8 rounded-[8px] border border-[#16284414] bg-[#f7f3ea] p-5">
-                <p className="font-black text-[#111821]">Хаб помогает выбрать маршрут, но не заменяет разбор ситуации.</p>
+              <div className="mt-8 rounded-[8px] border border-[#16284414] bg-white/58 p-5">
+                <p className="font-black text-[#111821]">Раздел помогает выбрать направление, но не заменяет разбор ситуации.</p>
                 <p className="mt-2 text-sm leading-7 text-[#667184]">
                   Если вопрос смешанный, начните с первичного разбора и принесите документы, которые уже есть.
                 </p>

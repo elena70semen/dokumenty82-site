@@ -53,9 +53,8 @@ assert(packageJson.scripts?.["check:tracking-no-pii"] === "node scripts/check-tr
 assert(packageJson.scripts?.["check:finalization"]?.includes("check:tracking-no-pii"), "check:finalization must run check:tracking-no-pii.");
 assert(/check:tracking-no-pii/.test(workflowText), "Site CI workflow must run check:tracking-no-pii explicitly.");
 
-for (const flag of ["analyticsEnabled", "metricaEnabled"]) {
-  assert(new RegExp(`${flag}:\\s*false`).test(flagsText), `${flag} must remain false.`);
-}
+assert(/analyticsEnabled:\s*false/.test(flagsText), "analyticsEnabled must remain false until a non-Metrica provider is approved.");
+assert(/metricaEnabled:\s*true/.test(flagsText), "metricaEnabled must be true after the Yandex Metrica counter is installed.");
 
 const forbiddenKeys = ["phone", "name", "message", "document_text", "file_name", "inn", "ogrn", "passport", "bank", "crm_notes"];
 const safeBlock = eventContextText.match(/safeTrackingParamKeys\s*=\s*\[([\s\S]*?)\]\s*as const/)?.[1] ?? "";
@@ -118,4 +117,4 @@ if (issues.length > 0) {
   process.exit(1);
 }
 
-console.log("PASS tracking no-PII: CTA context and URL attribution are captured only as safe data; live analytics/Metrica remain disabled.");
+console.log("PASS tracking no-PII: CTA context and URL attribution are captured only as safe data; Yandex Metrica pageview counter is enabled.");

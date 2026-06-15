@@ -2,69 +2,26 @@
 
 Status: `TEXT_JSON_EVIDENCE_CREATED`
 
-Release verdict: `GO WITH CONDITIONS`
+Generated routes: 14/14
+Metadata proof: 14/14
+Collector/contact proof: 14/14
+Sitemap URL count: 30
+Unsafe gates closed: true
+Rendered safety passed: true
 
-P0 build verdict: `READY_FOR_DOKUMENTY82_SITE_P0_BUILD_WITH_CONDITIONS`
+## Key decisions
 
-Public launch verdict: `NOT_PUBLIC_LAUNCH_READY`
+- `/policy` is included as a legal/privacy transparency route.
+- `/blog/`, `/blog/obnovleniya-fns/`, `/blog/razbory/`, `/faq/` and `/internal/graphics-proof/` are excluded/noindex or internal-only.
+- P0 routes have safe collectors or contact paths.
+- Document-heavy P0 routes show safe `Показать документы` intent without upload.
+- Yandex Metrica is installed for pageview analytics.
+- Live forms, CRM, MAX, Telegram, map and cookie notice remain disabled.
 
-Paid traffic verdict: `BLOCKS_PAID_TRAFFIC`
+## Not collected here
 
-## Evidence model
-
-`source-of-truth -> route manifest -> rendered HTML -> metadata snapshots -> collector proof -> safety guards -> evidence report`
-
-## Produced files
-
-- `evidence/p0/route-manifest-proof.json`
-- `evidence/p0/sitemap-proof.json`
-- `evidence/p0/rendered-route-proof.json`
-- `evidence/p0/metadata-proof.json`
-- `evidence/p0/collector-proof.json`
-- `evidence/p0/feature-flags-proof.json`
-- `evidence/p0/safety-guard-proof.json`
-- `evidence/p0/summary.md`
-
-## Results
-
-- Route manifest entries parsed: 35.
-- P0 routes present in manifest: 14/14.
-- Sitemap URLs: 30.
-- Rendered routes with one H1: 14/14.
-- Routes with title, description and canonical: 14/14.
-- Routes with safe collector/contact path: 14/14.
-- Unsafe feature gates closed: yes.
-- Rendered P0 HTML safety failures: 0.
-
-## Improved
-
-- route manifest proof;
-- sitemap proof;
-- basic rendered HTML proof;
-- basic metadata proof;
-- basic collector proof;
-- feature flag proof;
-- static safety guard proof.
-
-## Still blocked
-
-- visual screenshots;
-- browser accessibility/axe;
-- Playwright E2E;
-- owner/legal/backend/provider acceptance;
-- CRM/Metrica hooks;
-- no-PII analytics payload proof;
-- public launch;
-- paid traffic.
-
-## Safety
-
-- no public launch approval;
-- no live forms;
-- no live analytics;
-- no CRM submission;
-- no public upload;
-- no false success;
-- no Telegram/MAX final deep links;
-- no secrets;
-- HOLD preserved.
+- visual screenshots
+- browser accessibility/axe
+- Playwright E2E
+- CRM/Metrica live payload proof
+- owner/legal/backend/provider acceptance

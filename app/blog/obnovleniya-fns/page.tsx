@@ -16,28 +16,28 @@ export const metadata: Metadata = {
 
 export default function FnsUpdatesPage() {
   return (
-    <main className="pt-36">
-      <section className="section-pad">
+    <main id="main-content">
+      <section className="section-pad dimmed-page-section">
         <div className="container-premium grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <div className="reveal-block" data-reveal="left">
             <p className="eyebrow-line">Блог и новости</p>
-            <h1 className="display-serif mt-6 text-6xl font-semibold leading-[0.98] text-[#111821] md:text-8xl">Обновления ФНС</h1>
-            <p className="mt-7 text-xl leading-9 text-[#667184]">
+            <h1 className="display-serif mt-6 text-6xl font-semibold leading-[0.98] text-[color:var(--text-inverse)] md:text-8xl">Обновления ФНС</h1>
+            <p className="mt-7 text-xl leading-9 text-[color:var(--text-inverse-muted)]">
               Здесь готовится раздел для кратких source-attributed обновлений ФНС и ИФНС. В этой версии нет живой ленты, парсинга,
               переписывания или автоматической публикации.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/razbor-situacii/" className="rounded-full bg-[#162844] px-7 py-4 text-sm font-black text-white">
+              <Link href="/razbor-situacii/" className="rounded-[8px] bg-[var(--lime-signal)] px-7 py-4 text-sm font-semibold text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5">
                 Разобрать ситуацию
               </Link>
-              <Link href="/kontakty/" className="rounded-full border border-[#16284422] bg-white/72 px-7 py-4 text-sm font-black text-[#162844]">
+              <Link href="/kontakty/" className="rounded-[8px] border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.08)] px-7 py-4 text-sm font-semibold text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:border-[rgba(159,203,22,0.28)] hover:bg-[rgba(255,255,255,0.12)]">
                 Контакты
               </Link>
             </div>
           </div>
-          <aside className="reveal-block rounded-[8px] border border-[#16284414] bg-white p-8 shadow-[0_22px_58px_rgba(22,40,68,0.08)]" data-reveal="right">
-            <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#245da7]">Статус раздела</p>
-            <ul className="mt-6 grid gap-4 text-sm leading-7 text-[#667184]">
+          <aside className="dark-glass-card reveal-block rounded-[8px] p-8" data-reveal="right">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--lime-signal)]">Статус раздела</p>
+            <ul className="mt-6 grid gap-4 text-sm leading-7 text-[color:var(--text-inverse-muted)]">
               <li>Источник допускается только из утверждённого allowlist.</li>
               <li>Каждый материал требует ссылки на источник, даты, проверки дубликатов и безопасной формулировки.</li>
               <li>Автоматическая публикация не включена.</li>

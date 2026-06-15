@@ -3,9 +3,9 @@ import { FormPlaceholder } from "@/components/forms/FormPlaceholder";
 export function CallbackFormPlaceholder() {
   return (
     <FormPlaceholder
-      eyebrow="Форма-заглушка"
+      eyebrow="Связаться с офисом"
       title="Заказать звонок"
-      text="Онлайн-заявка пока не отправляется. Используйте форму как черновик вопроса и fallback на телефон."
+      text="Коротко сформулируйте вопрос для себя, а затем позвоните или перейдите в контакты, чтобы согласовать следующий шаг."
       pageSlug="kontakty"
       pageType="contact"
       leadTopic="callback_request"

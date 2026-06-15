@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "generatedAt": "2026-06-11T18:11:17.597Z",
+  "generatedAt": "2026-06-15T16:58:39.735Z",
   "scannedFiles": [
     "out\\index.html",
     "out\\razbor-situacii\\index.html",
@@ -33,11 +33,13 @@
     "app\\blog\\razbory\\page.tsx",
     "app\\internal\\graphics-proof\\page.tsx",
     "app\\internal\\visual-detail-kit\\page.tsx",
+    "components\\BrandLogo.tsx",
     "components\\BrandMatrixPilot.tsx",
     "components\\Footer.tsx",
     "components\\Header.tsx",
     "components\\JsonLd.tsx",
     "components\\RevealController.tsx",
+    "components\\ScrollNavigation.tsx",
     "components\\brand\\BrandBadge.tsx",
     "components\\brand\\BrandIcon.tsx",
     "components\\forms\\CallbackFormPlaceholder.tsx",
@@ -66,6 +68,8 @@
     "components\\routes\\RouteSafetyNote.tsx",
     "components\\routes\\RouteServiceScope.tsx",
     "components\\routes\\RouteSituationPanel.tsx",
+    "components\\tracking\\AttributionCapture.tsx",
+    "components\\tracking\\TrackedAction.tsx",
     "components\\visual-detail-kit\\AvatarBadgeShowcase.tsx",
     "components\\visual-detail-kit\\BackgroundSurfaceShowcase.tsx",
     "components\\visual-detail-kit\\BannerElementsShowcase.tsx",
@@ -83,9 +87,14 @@
     "lib\\routes.ts",
     "lib\\brand\\brand-tokens.json",
     "lib\\brand\\brand-tokens.ts",
+    "lib\\channels\\sales-channel-registry.mjs",
+    "lib\\forms\\form-contract.ts",
     "lib\\graphics-proof\\graphics-proof-data.ts",
     "lib\\home\\home-page-data.ts",
     "lib\\routes\\route-page-data.ts",
+    "lib\\tracking\\attribution.ts",
+    "lib\\tracking\\event-context.ts",
+    "lib\\tracking\\tracking-adapter.ts",
     "lib\\visual-detail-kit\\visual-detail-kit-data.ts"
   ],
   "results": [
@@ -126,11 +135,6 @@
     },
     {
       "key": "maxLinks",
-      "matches": [],
-      "passed": true
-    },
-    {
-      "key": "metrica",
       "matches": [],
       "passed": true
     },

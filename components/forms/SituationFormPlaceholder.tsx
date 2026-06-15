@@ -3,7 +3,7 @@ import { FormPlaceholder } from "@/components/forms/FormPlaceholder";
 export function SituationFormPlaceholder() {
   return (
     <FormPlaceholder
-      eyebrow="Форма-заглушка"
+      eyebrow="Первый шаг"
       title="Кратко описать ситуацию"
       text="Для первого шага достаточно зафиксировать контекст без передачи конфиденциальных документов через сайт."
       pageSlug="razbor-situacii"

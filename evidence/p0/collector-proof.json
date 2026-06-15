@@ -9,10 +9,31 @@
       "Контакты",
       "+7 (978) 998-72-22"
     ],
-    "dataCollectorKind": [],
-    "dataCtaLabel": [],
-    "dataPageSlug": [],
-    "dataPageType": [],
+    "dataCollectorKind": [
+      "situation_review",
+      "phone",
+      "show_documents",
+      "related_route",
+      "route"
+    ],
+    "dataCtaLabel": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Пришло требование или письмо",
+      "Банк запросил документы",
+      "Нужна отчётность",
+      "Неясно, с чего начать",
+      "Построить маршрут"
+    ],
+    "dataPageSlug": [
+      "global",
+      "home"
+    ],
+    "dataPageType": [
+      "global",
+      "home"
+    ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
     "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
@@ -28,10 +49,31 @@
       "Контакты",
       "+7 (978) 998-72-22"
     ],
-    "dataCollectorKind": [],
-    "dataCtaLabel": [],
-    "dataPageSlug": [],
-    "dataPageType": [],
+    "dataCollectorKind": [
+      "situation_review",
+      "phone",
+      "route",
+      "show_documents",
+      "form_placeholder",
+      "related_route"
+    ],
+    "dataCtaLabel": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Перейти в раздел",
+      "Построить маршрут"
+    ],
+    "dataPageSlug": [
+      "global",
+      "razbor-situacii"
+    ],
+    "dataPageType": [
+      "global",
+      "core"
+    ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
     "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
@@ -48,10 +90,31 @@
       "Контакты",
       "+7 (978) 998-72-22"
     ],
-    "dataCollectorKind": [],
-    "dataCtaLabel": [],
-    "dataPageSlug": [],
-    "dataPageType": [],
+    "dataCollectorKind": [
+      "situation_review",
+      "phone",
+      "route",
+      "show_documents",
+      "form_placeholder",
+      "related_route"
+    ],
+    "dataCtaLabel": [
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Перейти в раздел"
+    ],
+    "dataPageSlug": [
+      "global",
+      "kontakty"
+    ],
+    "dataPageType": [
+      "global",
+      "contact"
+    ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
     "policyHasPhoneAndContactsFallbackOnly": "NOT_APPLICABLE",
@@ -68,22 +131,28 @@
     ],
     "dataCollectorKind": [
       "phone",
-      "contacts"
+      "contacts",
+      "situation_review",
+      "route"
     ],
     "dataCtaLabel": [
+      "Разобрать ситуацию",
       "Позвонить",
-      "Контакты"
+      "Контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "policy"
     ],
     "dataPageType": [
+      "global",
       "legal"
     ],
     "safeCollectorOrContactPathFound": true,
     "documentHeavyHasShowDocuments": "NOT_APPLICABLE",
-    "policyHasPhoneAndContactsFallbackOnly": true,
-    "policyAggressiveCommercialCollector": false
+    "policyHasPhoneAndContactsFallbackOnly": false,
+    "policyAggressiveCommercialCollector": true
   },
   {
     "route": "/otvet-na-trebovanie-ifns/",
@@ -96,15 +165,26 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "show_documents"
+      "situation_review",
+      "phone",
+      "show_documents",
+      "form_placeholder",
+      "route"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "otvet-na-trebovanie-ifns"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -123,15 +203,26 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "show_documents"
+      "situation_review",
+      "phone",
+      "show_documents",
+      "form_placeholder",
+      "route"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "otvet-na-zapros-banka"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -150,15 +241,26 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "show_documents"
+      "situation_review",
+      "phone",
+      "show_documents",
+      "form_placeholder",
+      "route"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "dokumenty-dlya-banka-115-fz"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -177,15 +279,26 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "show_documents"
+      "situation_review",
+      "phone",
+      "show_documents",
+      "form_placeholder",
+      "route"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "deklaraciya-usn"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -204,15 +317,26 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "show_documents"
+      "situation_review",
+      "phone",
+      "show_documents",
+      "form_placeholder",
+      "route"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "nulevaya-otchetnost-ooo"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -231,15 +355,26 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "show_documents"
+      "situation_review",
+      "phone",
+      "show_documents",
+      "form_placeholder",
+      "route"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "nulevaya-otchetnost-ip"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -257,15 +392,21 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "situation_review"
+      "situation_review",
+      "phone",
+      "route"
     ],
     "dataCtaLabel": [
-      "Разобрать ситуацию"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "registraciya-ooo"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -283,15 +424,21 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "situation_review"
+      "situation_review",
+      "phone",
+      "route"
     ],
     "dataCtaLabel": [
-      "Разобрать ситуацию"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "registraciya-ip"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -310,15 +457,26 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "show_documents"
+      "situation_review",
+      "phone",
+      "show_documents",
+      "form_placeholder",
+      "route"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "yuridicheskiy-adres-simferopol"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,
@@ -337,15 +495,26 @@
       "+7 (978) 998-72-22"
     ],
     "dataCollectorKind": [
-      "show_documents"
+      "situation_review",
+      "phone",
+      "show_documents",
+      "form_placeholder",
+      "route"
     ],
     "dataCtaLabel": [
-      "Показать документы"
+      "Разобрать ситуацию",
+      "Позвонить",
+      "Показать документы",
+      "Связаться напрямую",
+      "Перейти в контакты",
+      "Построить маршрут"
     ],
     "dataPageSlug": [
+      "global",
       "nedostovernost-yuridicheskogo-adresa"
     ],
     "dataPageType": [
+      "global",
       "money"
     ],
     "safeCollectorOrContactPathFound": true,

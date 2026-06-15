@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = path.resolve(new URL("..", import.meta.url).pathname);
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const tokens = JSON.parse(fs.readFileSync(path.join(root, "lib/brand/brand-tokens.json"), "utf8"));
 
 function hexToRgb(hex) {

@@ -37,12 +37,10 @@ const packageText = read(files.packageJson);
 const workflowText = read(files.workflow);
 
 const requiredClosedFlags = [
-  "publicLiveAllowed",
   "formsLive",
   "crmEnabled",
   "crmSuccessEnabled",
   "analyticsEnabled",
-  "metricaEnabled",
   "paidTrafficAllowed",
   "localProfilesPublic",
   "maxEnabled",
@@ -57,9 +55,11 @@ for (const flag of requiredClosedFlags) {
   assert(new RegExp(`${flag}:\\s*false`).test(flagsText), `Feature flag must default to false while launch gates are closed: ${flag}`);
 }
 
+assert(/publicLiveAllowed:\s*true/.test(flagsText), "publicLiveAllowed must be true for the production domain.");
+assert(/metricaEnabled:\s*true/.test(flagsText), "metricaEnabled must be true after the counter is installed on the production domain.");
 assert(/formPlaceholdersEnabled:\s*true/.test(flagsText), "Safe placeholder forms should remain enabled for the static contact-only candidate.");
 assert(/siteRuntimeMode/.test(flagsText), "Feature flags must expose siteRuntimeMode.");
-assert(/STATIC_CONTACT_ONLY_LAUNCH_CANDIDATE/.test(flagsText), "Closed launch mode must be named STATIC_CONTACT_ONLY_LAUNCH_CANDIDATE.");
+assert(/PUBLIC_LIVE/.test(flagsText), "Live launch mode must expose PUBLIC_LIVE.");
 
 let packageJson = {};
 try {
@@ -80,25 +80,23 @@ assert(/check:launch-live-config/.test(workflowText), "Site CI workflow must run
 
 const publicLiveDisabled = /publicLiveAllowed:\s*false/.test(flagsText);
 
-if (publicLiveDisabled) {
-  assert(/siteFeatureFlags/.test(layoutText), "app/layout.tsx must read siteFeatureFlags.");
-  assert(/index:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Root metadata robots.index must be gated by publicLiveAllowed.");
-  assert(/follow:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Root metadata robots.follow must be gated by publicLiveAllowed.");
-  assert(/googleBot:\s*{[\s\S]*?index:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Googlebot index must be gated by publicLiveAllowed.");
-  assert(/googleBot:\s*{[\s\S]*?follow:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Googlebot follow must be gated by publicLiveAllowed.");
-
-  assert(/PUBLIC_LIVE_ALLOWED=false/.test(robotsText), "robots.txt must disclose that PUBLIC_LIVE_ALLOWED=false.");
-  assert(/^Disallow:\s*\/\s*$/m.test(robotsText), "robots.txt must disallow crawling while publicLiveAllowed=false.");
-  assert(!/^Allow:\s*\/\s*$/m.test(robotsText), "robots.txt must not allow all crawling while publicLiveAllowed=false.");
-}
+assert(!publicLiveDisabled, "publicLiveAllowed must not be false for production.");
+assert(/siteFeatureFlags/.test(layoutText), "app/layout.tsx must read siteFeatureFlags.");
+assert(/index:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Root metadata robots.index must be gated by publicLiveAllowed.");
+assert(/follow:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Root metadata robots.follow must be gated by publicLiveAllowed.");
+assert(/googleBot:\s*{[\s\S]*?index:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Googlebot index must be gated by publicLiveAllowed.");
+assert(/googleBot:\s*{[\s\S]*?follow:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Googlebot follow must be gated by publicLiveAllowed.");
+assert(/PUBLIC_LIVE_ALLOWED=true/.test(robotsText), "robots.txt must disclose that PUBLIC_LIVE_ALLOWED=true.");
+assert(/^Allow:\s*\/\s*$/m.test(robotsText), "robots.txt must allow crawling for approved public routes.");
+assert(/^Disallow:\s*\/internal\/\s*$/m.test(robotsText), "robots.txt must keep internal proof routes blocked.");
+assert(!/^Disallow:\s*\/\s*$/m.test(robotsText), "robots.txt must not block the whole site in production.");
+assert(/Sitemap:\s*https:\/\/dokumenty82\.ru\/sitemap\.xml/.test(robotsText), "robots.txt must expose the canonical sitemap.");
 
 const blockedLivePatterns = [
-  [/publicLiveAllowed:\s*true/, "publicLiveAllowed must not be true."],
   [/formsLive:\s*true/, "formsLive must not be true."],
   [/crmEnabled:\s*true/, "crmEnabled must not be true."],
   [/crmSuccessEnabled:\s*true/, "crmSuccessEnabled must not be true."],
   [/analyticsEnabled:\s*true/, "analyticsEnabled must not be true."],
-  [/metricaEnabled:\s*true/, "metricaEnabled must not be true."],
   [/paidTrafficAllowed:\s*true/, "paidTrafficAllowed must not be true."],
   [/localProfilesPublic:\s*true/, "localProfilesPublic must not be true."],
   [/messagingEnabled:\s*true/, "messagingEnabled must not be true."],
@@ -117,4 +115,4 @@ if (issues.length > 0) {
   process.exit(1);
 }
 
-console.log("PASS launch live config: PUBLIC_LIVE_ALLOWED=false; indexing, live forms, CRM, analytics, Metrica, messaging, local profiles and paid traffic remain gated.");
+console.log("PASS launch live config: PUBLIC_LIVE_ALLOWED=true; indexing and Metrica are live, while forms, CRM, paid traffic, messaging and local profile publishing remain gated.");

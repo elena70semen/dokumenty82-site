@@ -1,6 +1,6 @@
 export const blogNewsSection = {
   label: "Блог и новости",
-  preferredFraming: "Материалы, новости и обновления для бизнеса",
+  preferredFraming: "Блог, новости и обновления для бизнеса",
   href: "/blog/",
   indexing: "noindex",
   includeInSitemap: false,

@@ -64,7 +64,6 @@ const unsafeFeatureFlags = [
   "formsLive",
   "crmSuccessEnabled",
   "analyticsEnabled",
-  "metricaEnabled",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
@@ -180,19 +179,13 @@ for (const file of appCodeFiles) {
 }
 
 const flagsText = read(codeRel("lib/feature-flags.ts"));
+assert(/publicLiveAllowed:\s*true/.test(flagsText), "Public live flag must be enabled for the production domain.");
+assert(/metricaEnabled:\s*true/.test(flagsText), "Yandex Metrica must be enabled for the production domain.");
 for (const flag of unsafeFeatureFlags) {
   assert(new RegExp(`${flag}:\\s*false`).test(flagsText), `Unsafe feature flag must remain false: ${flag}`);
 }
 
 const combinedFinalizationText = finalizationDocs.map(read).join("\n");
-assert(
-  /Public launch(?: verdict)?:\s*`NOT_PUBLIC_LAUNCH_READY`/.test(combinedFinalizationText),
-  "Public launch verdict must remain NOT_PUBLIC_LAUNCH_READY."
-);
-assert(
-  /PUBLIC_LIVE_ALLOWED\s*=\s*false|Public live:\s*`false`/.test(combinedFinalizationText),
-  "PUBLIC_LIVE_ALLOWED must remain false."
-);
 assert(
   /Paid traffic(?: verdict)?:\s*`BLOCKS_PAID_TRAFFIC`/.test(combinedFinalizationText),
   "Paid traffic verdict must remain BLOCKS_PAID_TRAFFIC."
@@ -258,7 +251,7 @@ if (issues.length > 0) {
   process.exit(1);
 }
 
-console.log("PASS launch finalization readiness: foundation consistent; public LIVE, paid traffic and FNS autopublish remain blocked.");
+console.log("PASS launch finalization readiness: foundation consistent; public site and Metrica are live, while paid traffic and FNS autopublish remain blocked.");
 console.log("Remaining blockers:");
 for (const blocker of blockers) {
   console.log(`- ${blocker}`);

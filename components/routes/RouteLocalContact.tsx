@@ -1,6 +1,6 @@
+import { BrandLogo } from "@/components/BrandLogo";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { TrackedAction } from "@/components/tracking/TrackedAction";
-import { brandTokens } from "@/lib/brand/brand-tokens";
 import { site } from "@/lib/content";
 import type { RouteAction, RouteLocalContactConfig } from "@/lib/routes/route-page-data";
 import type { CollectorType } from "@/lib/tracking/event-context";
@@ -21,8 +21,8 @@ function collectorTypeForAction(action: RouteAction): CollectorType {
 function ContactActionLink({ action, index, pageSlug, pageType }: { action: RouteAction; index: number; pageSlug: string; pageType: string }) {
   const className =
     index === 0
-      ? "inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
-      : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-sm font-black text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]";
+      ? "dark-glass-cta inline-flex min-h-12 items-center justify-center rounded-[8px] px-4 py-3 text-sm font-semibold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+      : "inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.08)] px-4 py-3 text-sm font-semibold text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:border-[rgba(159,203,22,0.28)] hover:bg-[rgba(255,255,255,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]";
   const collectorType = collectorTypeForAction(action);
 
   return (
@@ -46,21 +46,18 @@ export function RouteLocalContact({ contact, pageSlug, pageType }: RouteLocalCon
   return (
     <section
       id="route-contact"
-      className="section-pad bg-[var(--surface-raised)]"
+      className="section-pad dimmed-page-section"
       aria-labelledby="route-contact-title"
-      style={{ backgroundImage: brandTokens.gradients.goldBridge }}
     >
       <div className="container-premium">
-        <div className="overflow-hidden rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised-soft)] shadow-[var(--shadow-panel)]">
+        <div className="dark-glass-card overflow-hidden rounded-[8px]">
           <div className="grid gap-0 lg:grid-cols-[0.96fr_1.04fr]">
-            <div className="bg-[var(--surface-dark-strong)] p-6 text-[color:var(--text-inverse)] md:p-9">
+            <div className="bg-[rgba(8,13,22,0.26)] p-6 text-[color:var(--text-inverse)] md:p-9">
               <div className="inline-flex items-center gap-3">
-                <span className="grid size-16 place-items-center rounded-[12px] border border-[var(--border-dark-soft)] bg-[var(--surface-dark)] text-xl font-black text-[color:var(--text-inverse)]">
-                  ДБ
-                </span>
-                <span className="text-sm font-black leading-tight text-[color:var(--text-inverse)]">Локальный офис</span>
+                <BrandLogo className="size-16" />
+                <span className="text-sm font-semibold leading-tight text-[color:var(--text-inverse)]">Локальный офис</span>
               </div>
-              <h2 id="route-contact-title" className="mt-8 text-4xl font-black leading-tight md:text-5xl">
+              <h2 id="route-contact-title" className="mt-8 text-4xl font-semibold leading-tight md:text-5xl">
                 {contact.title}
               </h2>
               <p className="mt-5 text-lg leading-8 text-[color:var(--text-inverse-muted)]">{contact.text}</p>
@@ -69,26 +66,26 @@ export function RouteLocalContact({ contact, pageSlug, pageType }: RouteLocalCon
             <div className="p-6 md:p-9">
               <address className="not-italic">
                 <div className="grid gap-4">
-                  <div className="grid grid-cols-[48px_1fr] gap-4 rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] p-4">
-                    <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--accent-gold-bg)] text-[color:var(--accent-gold-text)]">
+                  <div className="grid grid-cols-[48px_1fr] gap-4 rounded-[8px] border border-[var(--border-dark-soft)] bg-[rgba(255,255,255,0.08)] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                    <span className="dark-glass-icon">
                       <BrandIcon name="location" size={24} />
                     </span>
                     <div>
-                      <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--text-muted)]">Адрес</p>
-                      <p className="mt-2 text-lg font-black leading-snug text-[color:var(--text-primary)]">{site.address}</p>
-                      <p className="mt-2 text-base text-[color:var(--text-secondary)]">{site.landmark}</p>
+                      <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--text-inverse-soft)]">Адрес</p>
+                      <p className="mt-2 text-lg font-semibold leading-snug text-[color:var(--text-inverse)]">{site.address}</p>
+                      <p className="mt-2 text-base text-[color:var(--text-inverse-muted)]">{site.landmark}</p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-[48px_1fr] gap-4 rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] p-4">
-                    <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--accent-navy-bg)] text-[color:var(--navy)]">
+                  <div className="grid grid-cols-[48px_1fr] gap-4 rounded-[8px] border border-[var(--border-dark-soft)] bg-[rgba(255,255,255,0.08)] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                    <span className="dark-glass-icon">
                       <BrandIcon name="phone" size={24} />
                     </span>
                     <div>
-                      <p className="text-sm font-black uppercase tracking-[0.12em] text-[color:var(--text-muted)]">Телефон</p>
+                      <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--text-inverse-soft)]">Телефон</p>
                       <TrackedAction
                         href={site.phoneHref}
-                        className="mt-2 inline-block text-lg font-black text-[color:var(--text-primary)]"
+                        className="mt-2 inline-block text-lg font-semibold text-[color:var(--text-inverse)]"
                         pageSlug={pageSlug}
                         pageType={pageType}
                         ctaLabel="Позвонить"

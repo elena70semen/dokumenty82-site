@@ -1,10 +1,10 @@
 export const siteFeatureFlags = {
-  publicLiveAllowed: false,
+  publicLiveAllowed: true,
   formsLive: false,
   crmEnabled: false,
   crmSuccessEnabled: false,
   analyticsEnabled: false,
-  metricaEnabled: false,
+  metricaEnabled: true,
   paidTrafficAllowed: false,
   localProfilesPublic: false,
   maxEnabled: false,

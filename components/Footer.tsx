@@ -1,20 +1,19 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { TrackedAction } from "@/components/tracking/TrackedAction";
 import { homeFooter } from "@/lib/home/home-page-data";
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--surface-dark)] py-12 text-[color:var(--text-inverse)]">
+    <footer className="bg-[rgba(17,24,33,0.86)] py-12 text-[color:var(--text-inverse)] backdrop-blur-[2px]">
       <div className="container-premium grid gap-9 lg:grid-cols-[1.1fr_0.88fr_1.02fr]">
         <div>
           <Link
             href="/"
             className="inline-flex items-center gap-3 rounded-[8px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
           >
-            <span className="grid size-12 place-items-center rounded-[8px] bg-[var(--lime-signal)] font-black text-[color:var(--lime-text)]">
-              ДБ
-            </span>
+            <BrandLogo className="size-14" />
             <span>
               <strong className="block leading-tight">{homeFooter.brand}</strong>
               <small className="text-[color:var(--text-inverse-soft)]">{homeFooter.category}</small>
@@ -23,10 +22,21 @@ export function Footer() {
           <p className="mt-5 max-w-sm text-sm leading-7 text-[color:var(--text-inverse-muted)]">
             Разберём ситуацию и подготовим документы. Спокойный первый шаг для предпринимателей и компаний в Симферополе.
           </p>
+          <div className="mt-5">
+            <iframe
+              src="https://yandex.ru/sprav/widget/rating-badge/1302424560?type=rating"
+              width={150}
+              height={50}
+              frameBorder="0"
+              title="Рейтинг на Яндекс Картах"
+              loading="lazy"
+              className="block"
+            />
+          </div>
         </div>
 
-        <nav className="grid gap-2 text-sm text-[color:var(--text-inverse-muted)]" aria-label="Служебная навигация">
-          <strong className="mb-2 text-[color:var(--text-inverse)]">Маршруты</strong>
+        <nav className="grid gap-2 text-sm text-[color:var(--text-inverse-muted)]" aria-label="Навигация по сайту">
+          <strong className="mb-2 text-[color:var(--text-inverse)]">Разделы</strong>
           {homeFooter.routes.map((item) => (
             <Link
               key={item.href}

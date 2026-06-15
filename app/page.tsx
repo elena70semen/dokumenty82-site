@@ -19,7 +19,22 @@ export const metadata: Metadata = {
     url: `${site.domain}/`,
     type: "website",
     locale: "ru_RU",
-    siteName: site.name
+    siteName: site.name,
+    images: [
+      {
+        url: "/assets/images/hero-premium-office.png",
+        width: 1200,
+        height: 630,
+        alt: "Документы для бизнеса в Симферополе"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Документы для бизнеса — подготовка документов в Симферополе",
+    description:
+      "Разберём ситуацию и подготовим документы для бизнеса: отчётность, налоговые вопросы, запросы банка, регистрация, изменения и другие деловые задачи.",
+    images: ["/assets/images/hero-premium-office.png"]
   }
 };
 
