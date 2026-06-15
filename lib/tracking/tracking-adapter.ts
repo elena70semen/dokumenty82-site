@@ -33,11 +33,19 @@ export function trackSafeEvent(eventName: SafeTrackingEventName, context: Tracki
 
   const payload = buildSafeTrackingPayload(context, attribution);
 
+  // If neither analytics nor metrica are enabled, noop early.
   if (!siteFeatureFlags.analyticsEnabled && !siteFeatureFlags.metricaEnabled) {
     return;
   }
 
+  // Metrica reachGoal bridge
+  if (siteFeatureFlags.metricaEnabled && typeof window !== "undefined") {
+    const ym = (window as any).ym;
+    if (typeof ym === "function") {
+      ym(109869928, "reachGoal", eventName, payload);
+    }
+  }
+
   // Future provider hook goes here after owner/legal/CRM/no-PII acceptance.
   // Do not call external analytics while analyticsEnabled/metricaEnabled remain false.
-  void payload;
 }
