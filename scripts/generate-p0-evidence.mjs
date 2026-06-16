@@ -90,7 +90,7 @@ function normalizePath(route) {
 
 function expectedCanonical(route) {
   if (route === "/") return `${siteHost}/`;
-  if (route === "/policy") return `${siteHost}/policy`;
+  if (route === "/policy") return `${siteHost}/policy/`;
   return `${siteHost}${normalizePath(route)}`;
 }
 
@@ -210,7 +210,7 @@ function parseSitemapProof() {
     source: codeRel("public/sitemap.xml"),
     sitemapUrlCount: locs.length,
     locs,
-    includesPolicy: has("/policy"),
+    includesPolicy: has("/policy/"),
     includesAddressUnreliability: has("/nedostovernost-yuridicheskogo-adresa/"),
     excludesBlog: !has("/blog/") && !has("/blog"),
     excludesBlogFnsUpdates: !has("/blog/obnovleniya-fns/") && !has("/blog/obnovleniya-fns"),

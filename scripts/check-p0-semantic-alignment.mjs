@@ -56,14 +56,18 @@ expectText("routes", routesText, /path:\s*"\/faq\/"[\s\S]*?ROUTE_REGISTRY_REVIEW
 expectText("routes", routesText, /path:\s*"\/internal\/graphics-proof\/"[\s\S]*?ROUTE_REGISTRY_REVIEW_REQUIRED[\s\S]*?indexing:\s*"noindex"/, "missing noindex/review handling for /internal/graphics-proof/");
 expectText("blog", blogText, /robots:\s*{[\s\S]*?index:\s*false[\s\S]*?follow:\s*true/, "missing noindex metadata");
 expectText("faq", faqText, /robots:\s*{[\s\S]*?index:\s*false[\s\S]*?follow:\s*true/, "missing noindex metadata");
-if (!/canonical:\s*"\/policy"/.test(policyText) && !/<link\s+rel="canonical"\s+href=\{`\$\{site\.domain\}\/policy`\}/.test(policyText)) {
-  issues.push("policy: missing canonical /policy");
+if (
+  !/canonical:\s*"\/policy\/?"/.test(policyText) &&
+  !/const\s+policyUrl\s*=\s*`\$\{site\.domain\}\/policy\/?`;[\s\S]*?canonical:\s*policyUrl/.test(policyText) &&
+  !/<link\s+rel="canonical"\s+href=\{`\$\{site\.domain\}\/policy\/?`\}/.test(policyText)
+) {
+  issues.push("policy: missing canonical /policy/");
 }
 expectText("policy", policyText, /<h1[\s\S]*?Политика конфиденциальности и обработки данных[\s\S]*?<\/h1>/, "missing visible policy H1");
-expectText("footer", footerText, /href="\/policy"/, "missing visible /policy footer link");
+expectText("footer", footerText, /href="\/policy\/?"/, "missing visible /policy footer link");
 
 const requiredSitemapLocs = [
-  "https://dokumenty82.ru/policy",
+  "https://dokumenty82.ru/policy/",
   "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/"
 ];
 
@@ -180,5 +184,5 @@ if (issues.length > 0) {
 }
 
 console.log(
-  `PASS P0 semantic alignment: ${sitemapLocs.length} sitemap URLs, /policy and /nedostovernost-yuridicheskogo-adresa/ included, /blog/, /faq/ and /internal/graphics-proof/ noindex/excluded, live SEO gates aligned.`
+  `PASS P0 semantic alignment: ${sitemapLocs.length} sitemap URLs, /policy/ and /nedostovernost-yuridicheskogo-adresa/ included, /blog/, /faq/ and /internal/graphics-proof/ noindex/excluded, live SEO gates aligned.`
 );

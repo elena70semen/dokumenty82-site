@@ -1,7 +1,7 @@
 {
   "status": "generated",
   "source": "lib/channels/sales-channel-registry.mjs",
-  "generatedAt": "2026-06-15T21:14:24.208Z",
+  "generatedAt": "2026-06-16T11:56:28.932Z",
   "featureGates": {
     "publicLiveAllowed": true,
     "paidTrafficAllowed": false,

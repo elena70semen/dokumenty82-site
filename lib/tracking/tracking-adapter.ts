@@ -3,6 +3,13 @@ import { forbiddenTrackingParamKeys, safeTrackingEventNames, safeTrackingParamKe
 import type { AttributionState } from "@/lib/tracking/attribution";
 import type { SafeTrackingEventName, TrackingContext } from "@/lib/tracking/event-context";
 
+type YandexMetricaGoal = (
+  counterId: number,
+  method: "reachGoal",
+  eventName: SafeTrackingEventName,
+  payload: Record<string, string>
+) => void;
+
 function isAllowedEventName(eventName: string): eventName is SafeTrackingEventName {
   return safeTrackingEventNames.includes(eventName as SafeTrackingEventName);
 }
@@ -40,9 +47,9 @@ export function trackSafeEvent(eventName: SafeTrackingEventName, context: Tracki
 
   // Metrica reachGoal bridge
   if (siteFeatureFlags.metricaEnabled && typeof window !== "undefined") {
-    const ym = (window as any).ym;
-    if (typeof ym === "function") {
-      ym(109869928, "reachGoal", eventName, payload);
+    const metrica = (window as Window & { ym?: YandexMetricaGoal }).ym;
+    if (typeof metrica === "function") {
+      metrica.call(window, 109869928, "reachGoal", eventName, payload);
     }
   }
 

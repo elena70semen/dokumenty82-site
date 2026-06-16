@@ -3,6 +3,7 @@
 Date checked: `2026-06-16`
 Repository: `elena70semen/dokumenty82-site`
 Target P0-01 commit: `9152826d2410049ea8170c7370de410c868a82f9`
+Latest remote main observed during P0-03: `6a3d390e7588e777454c2d2898b980d5244af543`
 Production: `https://dokumenty82.ru/`
 
 ## Scope
@@ -42,6 +43,14 @@ Additional checks:
 - local release manifest generation;
 - public production HTTP smoke check.
 
+P0-03 sync note:
+
+- this P0-02 evidence was first collected before syncing local work onto the latest `origin/main`;
+- `origin/main` was later confirmed ahead of P0-01 by seven commits ending at `6a3d390e7588e777454c2d2898b980d5244af543`;
+- those later commits touch policy/canonical SEO, robots/sitemap, tracking bridge and marketing/SEO handoff docs;
+- artifact visibility remains `NOT_PROVEN` until a visible Site CI run and artifacts are checked for the post-sync branch or final main commit;
+- production match remains `NOT_PROVEN` until CI artifact checksums are compared against a safe production snapshot.
+
 ## GitHub Actions Run Verification
 
 Target commit:
@@ -66,7 +75,7 @@ git ls-remote origin refs/heads/main
 6a3d390e7588e777454c2d2898b980d5244af543 refs/heads/main
 ```
 
-`git fetch origin --prune` was attempted but failed during the network connection to GitHub, so the local tracking ref was not safely updated during this pass.
+During the first P0-02 pass, `git fetch origin --prune` failed during the network connection to GitHub, so the local tracking ref was not safely updated then. During P0-03, `git fetch origin` succeeded and confirmed `origin/main` at `6a3d390e7588e777454c2d2898b980d5244af543`.
 
 Required Site CI run for the target P0-01 commit was not visible in available tooling.
 
@@ -297,7 +306,7 @@ Do not state that production is matched to the GitHub Actions artifact until the
 ## Remaining Blockers
 
 - Confirm whether `9152826d2410049ea8170c7370de410c868a82f9` is intended to be the GitHub `main` release commit.
-- Reconcile local `main` with remote `main`; `git ls-remote` observed remote `main` at `6a3d390e7588e777454c2d2898b980d5244af543`.
+- Reconcile/publish this P0-02 evidence branch against remote `main`; P0-03 rebased the evidence over `6a3d390e7588e777454c2d2898b980d5244af543`.
 - Run or locate GitHub Actions `Site CI` for the intended `main` commit.
 - Download/verify `dokumenty82-static-export-<commitSha>`.
 - Download/verify `dokumenty82-release-proof-<commitSha>`.

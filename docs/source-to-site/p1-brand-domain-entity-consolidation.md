@@ -2,6 +2,7 @@
 
 Status: `INVESTIGATION`
 Date: `2026-06-16`
+P0-03 handling: `EXTERNAL_FOLLOW_UP_NOT_P0_03_BLOCKER`
 
 Primary site repository: `elena70semen/dokumenty82-site`
 
@@ -22,6 +23,8 @@ The active website canon is consistent around:
 - public address: `Республика Крым, Симферополь, ул. им. Мате Залки, 1`.
 
 The ambiguity comes from external/public entity signals that reuse the same or similar NAP under different names and domains.
+
+This document is a P1/P0 follow-up note. It does not require an immediate production code change during P0-03, and it must not block the main-sync / CI-visibility task.
 
 ## Observed Public Signals
 
@@ -68,6 +71,7 @@ Post-stage recheck requirement:
 - after P0-02 / the next release-proof stage, repeat public resolver checks and, if tooling is available, a non-recursive authoritative DNS check;
 - expected result after owner-side DNS deletion propagates: no `A 159.194.216.36` answer for `business-helps.ru`;
 - if public resolvers still return the A record after TTL expiry, check whether REG.RU template/parking or another active DNS zone restored it.
+- this DNS/entity cleanup is an external consolidation follow-up and does not require a `dokumenty82-site` production code change during P0-03.
 
 ## Current Site State
 
