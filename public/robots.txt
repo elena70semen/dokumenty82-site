@@ -1,5 +1,6 @@
 # Launch status: PUBLIC_LIVE_ALLOWED=true
 # Public indexing is open for approved routes. Internal proof pages stay closed.
+# Noindex pages are controlled by page-level robots metadata and are intentionally not listed in sitemap.
 
 User-agent: *
 Allow: /
@@ -7,4 +8,4 @@ Disallow: /internal/
 
 Host: dokumenty82.ru
 Sitemap: https://dokumenty82.ru/sitemap.xml
-Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&ysclid&from
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&utm_id&utm_referrer&yclid&ysclid&from&gclid&fbclid
