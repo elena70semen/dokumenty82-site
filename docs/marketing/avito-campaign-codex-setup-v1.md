@@ -460,7 +460,7 @@ Forbidden wording:
 ### 5.3 Listing: Bank request response
 
 Internal key: `bank_request`
-Landing route: `/otvet-na-зapрос-banka/`
+Landing route: `/otvet-na-zapros-banka/`
 UTM URL:
 
 ```text
