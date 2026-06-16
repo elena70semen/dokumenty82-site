@@ -29,7 +29,7 @@ Before any production deploy, the owner was given a short state summary:
 | PR state before merge | `open`, `draft: true`, `mergeable: true` |
 | Action taken | Marked ready for review, then merged |
 | Merge method | `merge` |
-| Merge SHA / current main SHA | `e775973ee2d93afd17c7a1739bff4bc27a73fd8a` |
+| PR merge SHA | `e775973ee2d93afd17c7a1739bff4bc27a73fd8a` |
 | Merged at | `2026-06-16T18:19:07Z` |
 
 ## Pre-Merge CI And Artifacts
@@ -56,11 +56,13 @@ Visible pre-merge PR artifacts:
 
 ## Main CI Status After Merge
 
-`origin/main` was observed at:
+Immediately after PR #32 merge, `origin/main` was observed at:
 
 ```text
 e775973ee2d93afd17c7a1739bff4bc27a73fd8a
 ```
+
+This report itself is a follow-up documentation commit on `main`. Any future deploy must use the latest `main` `Site CI` artifact for the current `main` SHA at deploy time, not the older pre-report PR artifact.
 
 Expected next step:
 
@@ -71,8 +73,8 @@ main push -> Site CI on main -> static export artifact -> release proof artifact
 Observed status with available tools:
 
 - GitHub connector PR metadata confirms PR #32 is merged.
-- GitHub connector commit workflow-run lookup returns only PR-triggered runs for the available query path and did not expose a `main` push run for `e775973ee2d93afd17c7a1739bff4bc27a73fd8a`.
-- GitHub combined status lookup for `e775973ee2d93afd17c7a1739bff4bc27a73fd8a` returned no statuses.
+- GitHub connector commit workflow-run lookup returns only PR-triggered runs for the available query path and did not expose a `main` push run.
+- GitHub combined status lookup for the PR merge SHA returned no statuses.
 - Local `gh` CLI is installed but not authenticated, so it could not list private repository Actions runs.
 
 Main CI artifact status: not proven / not visible through the available authenticated tooling.
