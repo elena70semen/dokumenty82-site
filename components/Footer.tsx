@@ -47,7 +47,7 @@ export function Footer() {
             </Link>
           ))}
           <Link
-            href="/policy"
+            href="/policy/"
             className="transition hover:text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
           >
             Политика конфиденциальности

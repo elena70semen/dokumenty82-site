@@ -3,15 +3,20 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/content";
 
+const policyUrl = `${site.domain}/policy/`;
+
 export const metadata: Metadata = {
   title: "Политика конфиденциальности",
   description:
     "Политика конфиденциальности и обработки данных проекта «Документы для бизнеса»: правила обработки данных и безопасный контакт.",
+  alternates: {
+    canonical: policyUrl
+  },
   openGraph: {
     title: "Политика конфиденциальности",
     description:
       "Правила обработки данных и безопасного контакта для проекта «Документы для бизнеса».",
-    url: "/policy"
+    url: policyUrl
   }
 };
 
@@ -19,7 +24,7 @@ const policyJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Политика конфиденциальности и обработки данных",
-  url: `${site.domain}/policy`,
+  url: policyUrl,
   inLanguage: "ru-RU"
 };
 
@@ -56,7 +61,6 @@ const faqItems = [
 export default function PolicyPage() {
   return (
     <main id="main-content">
-      <link rel="canonical" href={`${site.domain}/policy`} />
       <JsonLd data={policyJsonLd} />
 
       <section className="section-pad dimmed-page-section">
