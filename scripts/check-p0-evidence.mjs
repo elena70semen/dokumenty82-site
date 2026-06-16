@@ -66,7 +66,7 @@ function normalizePath(route) {
 
 function expectedCanonical(route) {
   if (route === "/") return `${siteHost}/`;
-  if (route === "/policy") return `${siteHost}/policy`;
+  if (route === "/policy") return `${siteHost}/policy/`;
   return `${siteHost}${normalizePath(route)}`;
 }
 
