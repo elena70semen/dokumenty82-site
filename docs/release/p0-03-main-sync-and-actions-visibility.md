@@ -92,29 +92,50 @@ Local environment warning:
 
 ## GitHub Actions Visibility
 
-Pre-push tooling status:
+Tooling status:
 
 - `gh` installed: `2.94.0`
 - `gh auth status`: not logged into any GitHub hosts.
-- GitHub connector tools are available for PR creation and workflow visibility checks after branch push.
+- GitHub connector tools were used for PR creation and workflow visibility checks.
 
-Post-push check target:
+Post-push check result:
 
+- PR: `https://github.com/elena70semen/dokumenty82-site/pull/32`
 - Branch: `codex/p0-03-sync-p0-02-evidence`
-- Expected artifacts:
-  - `dokumenty82-static-export-<sha>`
-  - `dokumenty82-release-proof-<sha>`
-- Run found: `PENDING_POST_PUSH_CHECK`
-- Run URL: `PENDING_POST_PUSH_CHECK`
-- Commit SHA: `PENDING_POST_PUSH_CHECK`
-- Artifacts: `PENDING_POST_PUSH_CHECK`
-- Artifact verdict: `CI_ARTIFACT_NOT_VISIBLE` until a workflow run and artifacts are visible.
+- PR head SHA checked: `3a49f66a035485ab89a9f858cb6c8869d9184f08`
+- Run found: `yes`
+- Workflow: `Site CI`
+- Run ID: `27616297569`
+- Run number: `60`
+- Run URL: `https://github.com/elena70semen/dokumenty82-site/actions/runs/27616297569`
+- Run status: `completed`
+- Run conclusion: `success`
+- Job: `Build and verify static site`
+- Job conclusion: `success`
+
+Artifacts found:
+
+| Artifact | ID | Size | Digest |
+| --- | --- | ---: | --- |
+| `dokumenty82-release-proof-97f749739177304183f8cb25be29e97e79033237` | `7666249822` | `1318` | `sha256:09f49acb17f5f198be624fa29994ab2fbb85b1ff129d48ddcfe587c5d42ebdb5` |
+| `dokumenty82-static-export-97f749739177304183f8cb25be29e97e79033237` | `7666249515` | `29915674` | `sha256:b4df338dff529157ec4049237d578dbb59276305b9b27e193550051f1a9dd75b` |
+
+Artifact note:
+
+- The PR workflow artifact names use GitHub's pull-request test SHA `97f749739177304183f8cb25be29e97e79033237`.
+- The workflow run payload still records the PR branch head SHA as `3a49f66a035485ab89a9f858cb6c8869d9184f08`.
+- This proves GitHub Actions visibility and artifact visibility for the PR run, but it does not yet prove production-to-artifact checksum equality.
+- If later evidence-only commits are pushed to this branch, check the latest PR run before merging.
+
+Artifact verdict: `ACTIONS_VISIBLE_ARTIFACTS_VISIBLE_FOR_PR_RUN`
 
 ## Verdict
 
-`MAIN_SYNCED_P0_02_PUSHED_ACTIONS_NOT_VISIBLE`
+`MAIN_SYNCED_P0_02_PUSHED_ACTIONS_VISIBLE`
 
-This is the conservative release-state verdict until the post-push PR/Actions check proves a visible Site CI run and downloadable release artifacts for the pushed commit.
+The branch was rebased onto current `origin/main`, P0-02 evidence was preserved, PR #32 was opened, Site CI completed successfully, and both expected release artifacts were visible for the PR run.
+
+Production-to-CI artifact equality remains `NOT_PROVEN` until a production snapshot checksum compare is performed against the downloaded artifact.
 
 ## Remaining HOLD
 
@@ -128,7 +149,7 @@ This is the conservative release-state verdict until the post-push PR/Actions ch
 - rollback drill
 - owner/legal acceptance
 - Search Console / Yandex Webmaster setup proof
-- CI artifact traceability if Site CI artifacts remain invisible
+- production-to-CI artifact checksum comparison
 
 ## Next Recommended Task
 
