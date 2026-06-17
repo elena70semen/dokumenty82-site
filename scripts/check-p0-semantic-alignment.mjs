@@ -111,8 +111,7 @@ const requiredClosedFlags = [
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
-  "mapEnabled",
-  "cookieNoticeEnabled"
+  "mapEnabled"
 ];
 
 for (const flag of requiredClosedFlags) {
@@ -120,6 +119,10 @@ for (const flag of requiredClosedFlags) {
   if (!pattern.test(flagsText)) {
     issues.push(`feature-flags: ${flag} must default to false`);
   }
+}
+
+if (!/cookieNoticeEnabled:\s*true/.test(flagsText)) {
+  issues.push("feature-flags: cookieNoticeEnabled must be true while Metrica is live");
 }
 
 function listFiles(dir) {

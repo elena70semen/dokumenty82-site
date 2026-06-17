@@ -22,17 +22,6 @@ export function Footer() {
           <p className="mt-5 max-w-sm text-sm leading-7 text-[color:var(--text-inverse-muted)]">
             Разберём ситуацию и подготовим документы. Спокойный первый шаг для предпринимателей и компаний в Симферополе.
           </p>
-          <div className="mt-5">
-            <iframe
-              src="https://yandex.ru/sprav/widget/rating-badge/1302424560?type=rating"
-              width={150}
-              height={50}
-              frameBorder="0"
-              title="Рейтинг на Яндекс Картах"
-              loading="lazy"
-              className="block"
-            />
-          </div>
         </div>
 
         <nav className="grid gap-2 text-sm text-[color:var(--text-inverse-muted)]" aria-label="Навигация по сайту">

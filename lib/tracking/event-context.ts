@@ -24,13 +24,20 @@ export const safeTrackingParamKeys = [
 
 export const forbiddenTrackingParamKeys = [
   "phone",
+  "email",
   "name",
   "message",
+  "comment",
+  "question",
+  "documents",
   "document_text",
+  "file",
   "file_name",
+  "scan",
   "inn",
   "ogrn",
   "passport",
+  "requisites",
   "bank",
   "crm_notes"
 ] as const;

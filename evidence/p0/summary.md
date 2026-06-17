@@ -7,6 +7,7 @@ Metadata proof: 14/14
 Collector/contact proof: 14/14
 Sitemap URL count: 30
 Unsafe gates closed: true
+Cookie notice enabled: true
 Rendered safety passed: true
 
 ## Key decisions
@@ -16,7 +17,8 @@ Rendered safety passed: true
 - P0 routes have safe collectors or contact paths.
 - Document-heavy P0 routes show safe `Показать документы` intent without upload.
 - Yandex Metrica is installed for pageview analytics.
-- Live forms, CRM, MAX, Telegram, map and cookie notice remain disabled.
+- Cookie/analytics notice is enabled for the public live Metrica mode.
+- Live forms, CRM, MAX, Telegram and map remain disabled.
 
 ## Not collected here
 

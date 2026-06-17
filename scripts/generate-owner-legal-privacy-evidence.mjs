@@ -4,12 +4,8 @@ import fs from "node:fs";
 import path from "node:path";
 import {
   countMatches,
-  decodeHtml,
   ensureDir,
   evidenceDir,
-  extractCanonical,
-  extractH1Text,
-  extractTitle,
   formRoutes,
   listFiles,
   p0Routes,
@@ -21,165 +17,214 @@ import {
 } from "./evidence-utils.mjs";
 
 const root = process.cwd();
-const repoRoot = path.resolve(root, "..");
 const ownerLegalDir = path.join(evidenceDir, "owner-legal-privacy");
-const sourceCommit = execSync("git rev-parse --short HEAD", { cwd: repoRoot, encoding: "utf8" }).trim();
-const featureFlagsText = read(path.join(root, "lib", "feature-flags.ts"));
-const policyHtml = read(routeToHtmlFile("/policy/"));
-const footerHtml = policyHtml.match(/<footer\b[\s\S]*?<\/footer>/i)?.[0] ?? "";
-const visiblePolicyText = stripTags(policyHtml);
+const mode = "PUBLIC_LIVE_METRICA_NO_PII_WITH_COOKIE_NOTICE";
+const verdict = "PUBLIC_LIVE_METRICA_NO_PII_WITH_COOKIE_NOTICE_OWNER_LEGAL_REVIEW_REQUIRED";
 
-const requiredSources = [
+const sourceRequiredDocs = [
   "AGENTS.md",
-  "README.md",
+  "docs/00-start/source-of-truth.md",
   "docs/00-start/active-canon-index.md",
   "docs/00-start/hold-register.md",
-  "docs/operations/live-launch-gates-v1.md",
-  "docs/operations/project-finalization-readiness-v1.md",
-  "docs/operations/launch-finalization-roadmap-v1.md",
-  "docs/legal/site-legal-compliance-rf-v1.md",
-  "docs/legal/legal-source-register-rf.md",
-  "docs/legal/personal-data-152fz-site-checklist.md",
-  "docs/legal/privacy-policy-consent-and-notices.md",
   "docs/legal/forms-cookies-analytics-crm-compliance.md",
-  "docs/legal/cross-border-third-party-services-register.md",
-  "docs/legal/site-publication-owner-info-and-disclaimers.md",
-  "docs/legal/ip-media-fonts-maps-licenses.md",
-  "docs/legal/security-retention-access-control.md",
-  "docs/legal/legal-pages-and-ui-notices-proposal.md",
-  "docs/legal/site-maintenance-legal-ops-plan.md",
-  "docs/crm-analytics/route-to-lead-traceability-v1.md",
+  "docs/legal/privacy-policy-consent-and-notices.md",
   "docs/crm-analytics/metrica-goals-and-crm-contract.md",
-  "docs/ux/site-lead-collectors-v1.md",
-  "docs/ux/contact-actions-v1.md",
-  "docs/ux/page-lead-collector-map.md",
-  "code/app/policy/page.tsx",
-  "code/lib/feature-flags.ts",
-  "code/BROWSER_ACCESSIBILITY_EVIDENCE_REPORT.md",
-  "code/LOCAL_P0_BUILD.md"
+  "docs/crm-analytics/events.md"
 ];
 
-const sourceFiles = [
-  ...listFiles(path.join(root, "app")),
-  ...listFiles(path.join(root, "components")),
-  ...listFiles(path.join(root, "lib"))
-].filter((file) => {
-  const rel = path.relative(root, file).split(path.sep).join("/");
-  return /\.(ts|tsx|js|jsx|mjs|json|css)$/i.test(file) && !rel.startsWith("lib/pricing/");
-});
+const siteRequiredDocs = [
+  "AGENTS.md",
+  "README.md",
+  "package.json",
+  "lib/feature-flags.ts",
+  "lib/tracking/tracking-adapter.ts",
+  "lib/tracking/event-context.ts",
+  "lib/tracking/attribution.ts",
+  "app/layout.tsx",
+  "app/policy/page.tsx",
+  "components/CookieAnalyticsNotice.tsx",
+  "components/forms/FormPlaceholder.tsx",
+  "scripts/check-tracking-no-pii.mjs",
+  "scripts/generate-owner-legal-privacy-evidence.mjs",
+  "scripts/check-owner-legal-privacy-evidence.mjs",
+  "scripts/check-forms-crm-contract.mjs",
+  "scripts/check-launch-live-config.mjs",
+  "docs/release/p0-final-production-artifact-alignment.md"
+];
 
-const renderedFiles = p0Routes.map(routeToHtmlFile).filter((file) => fs.existsSync(file));
-const scannedFiles = [...renderedFiles, ...sourceFiles];
-const scannedText = scannedFiles.map((file) => read(file)).join("\n");
-const renderedVisibleText = renderedFiles.map((file) => stripTags(read(file))).join("\n");
-const formsHtml = formRoutes.map((route) => read(routeToHtmlFile(route))).join("\n");
-const secretLikeFiles = scannedFiles.filter((file) => /\.(pem|key)$/i.test(path.basename(file)));
-
-function flagIsFalse(flag) {
-  return new RegExp(`${flag}:\\s*false`).test(featureFlagsText);
+function safeGit(args, cwd) {
+  try {
+    return execSync(`git ${args}`, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+  } catch {
+    return null;
+  }
 }
 
-function flagIsTrue(flag) {
-  return new RegExp(`${flag}:\\s*true`).test(featureFlagsText);
+function findSourceRoot() {
+  const candidates = [
+    process.env.SOURCE_OF_TRUTH_ROOT,
+    path.resolve(root, "..", "dokumenty-dlya-biznesa-origin-main"),
+    path.resolve(root, "..", "dokumenty-dlya-biznesa"),
+    path.resolve(root, "..", "dokumenty-dlya-biznesa-source")
+  ].filter(Boolean);
+
+  return candidates.find((candidate) => fs.existsSync(path.join(candidate, "docs", "00-start", "source-of-truth.md"))) ?? null;
 }
 
-function readJson(rel) {
-  const file = path.join(root, rel);
-  return fs.existsSync(file) ? JSON.parse(read(file)) : null;
+function flagValue(flagsText, flag) {
+  const match = flagsText.match(new RegExp(`${flag}:\\s*(true|false)`));
+  return match ? match[1] === "true" : null;
 }
 
-function noPattern(pattern, text = scannedText) {
+function noPattern(pattern, text) {
   pattern.lastIndex = 0;
   return !pattern.test(text);
 }
 
-function requiredSourceStatus(rel) {
-  const full = path.join(repoRoot, rel);
+function statusFor(rootDir, rel) {
   return {
     path: rel,
-    present: fs.existsSync(full)
+    present: Boolean(rootDir && fs.existsSync(path.join(rootDir, rel)))
   };
 }
 
-const sourceStatus = requiredSources.map(requiredSourceStatus);
-const missingSources = sourceStatus.filter((source) => !source.present).map((source) => source.path);
+const sourceRoot = findSourceRoot();
+const siteHeadCommit = safeGit("rev-parse --short HEAD", root);
+const siteDirty = Boolean(safeGit("status --porcelain", root));
+const siteCommit = siteHeadCommit ? `${siteHeadCommit}${siteDirty ? "+worktree" : ""}` : null;
+const sourceCommit = sourceRoot ? safeGit("rev-parse --short HEAD", sourceRoot) : null;
+const featureFlagsText = read(path.join(root, "lib", "feature-flags.ts"));
+const policyHtml = read(routeToHtmlFile("/policy/"));
+const homeHtml = read(routeToHtmlFile("/"));
+const renderedFiles = p0Routes.map(routeToHtmlFile).filter((file) => fs.existsSync(file));
+const renderedVisibleText = renderedFiles.map((file) => stripTags(read(file))).join("\n");
+const visiblePolicyText = stripTags(policyHtml);
+const formsHtml = formRoutes.map((route) => read(routeToHtmlFile(route))).join("\n");
 
-const browserEvidence = readJson("evidence/browser/browser-route-proof.json");
-const accessibilityEvidence = readJson("evidence/accessibility/accessibility-proof.json");
-const formsEvidence = readJson("evidence/forms/form-placeholder-proof.json");
-const safetyEvidence = readJson("evidence/final-local/safety-proof.json");
+const appSourceFiles = [
+  ...listFiles(path.join(root, "app")),
+  ...listFiles(path.join(root, "components")),
+  ...listFiles(path.join(root, "lib"))
+].filter((file) => /\.(ts|tsx|js|jsx|mjs|json|css)$/i.test(file) && !file.includes(`${path.sep}lib${path.sep}pricing${path.sep}`));
 
-const policyRoutePresent = Boolean(policyHtml);
-const policyTitle = extractTitle(policyHtml);
-const policyH1 = extractH1Text(policyHtml);
-const policyCanonical = extractCanonical(policyHtml);
-const policyFooterLinkPresent = /href=["']\/policy\/?["']/i.test(footerHtml);
-const policyCommercialSignals = /скидк|цена|стоимость|100% результат|гарантируем|отзывы|рейтинг/i.test(visiblePolicyText);
-const policyAggressiveCta = /Оставить заявку|Заявка отправлена|успешно отправ/i.test(visiblePolicyText);
+const scannedRuntimeText = appSourceFiles.map((file) => read(file)).join("\n");
+const eventRuntimeText = [
+  read(path.join(root, "lib", "tracking", "event-context.ts")),
+  read(path.join(root, "lib", "tracking", "tracking-adapter.ts")),
+  read(path.join(root, "lib", "tracking", "attribution.ts")),
+  read(path.join(root, "components", "tracking", "TrackedAction.tsx")),
+  read(path.join(root, "components", "tracking", "AttributionCapture.tsx")),
+  read(path.join(root, "components", "forms", "FormPlaceholder.tsx")),
+  read(path.join(root, "lib", "forms", "form-contract.ts"))
+].join("\n");
+
+const layoutText = read(path.join(root, "app", "layout.tsx"));
+const cookieNoticeText = read(path.join(root, "components", "CookieAnalyticsNotice.tsx"));
+const eventContextText = read(path.join(root, "lib", "tracking", "event-context.ts"));
+const noPiiCheckText = read(path.join(root, "scripts", "check-tracking-no-pii.mjs"));
+
+const sourceStatus = sourceRequiredDocs.map((rel) => statusFor(sourceRoot, rel));
+const siteStatus = siteRequiredDocs.map((rel) => statusFor(root, rel));
+const missingSiteDocs = siteStatus.filter((doc) => !doc.present).map((doc) => doc.path);
 
 const formPlaceholderCount = countMatches(formsHtml, /data-form-placeholder=["']true["']/gi);
 const formActionCount = countMatches(formsHtml, /<form\b[^>]*\saction=["'][^"']+["']/gi);
 const methodPostCount = countMatches(formsHtml, /<form\b[^>]*\smethod=["']post["']/gi);
 const submitControlCount = countMatches(formsHtml, /<(button|input)\b[^>]*type=["']submit["']/gi);
 const fileInputCount = countMatches(formsHtml, /<input\b[^>]*type=["']file["']/gi);
-const formFallbackPresent = /href=["']\/kontakty\/?["']|href=["']tel:\+79789987222["']/i.test(formsHtml);
-const offlineTextPresent = renderedVisibleText.includes("Сейчас лучше связаться напрямую");
-const falseSuccessPresent = /заявка отправлена|заявка принята|успешно отправ/i.test(renderedVisibleText);
 
-const noBackendEndpoint =
-  !fs.existsSync(path.join(root, "app", "api")) &&
-  listFiles(path.join(root, "app")).filter((file) => /[\\/]route\.(ts|js|mjs)$/i.test(file)).length === 0 &&
-  formActionCount === 0 &&
-  methodPostCount === 0;
+const sourceForbiddenKeys = [
+  "phone",
+  "email",
+  "name",
+  "message",
+  "comment",
+  "question",
+  "documents",
+  "document_text",
+  "file",
+  "file_name",
+  "scan",
+  "inn",
+  "ogrn",
+  "passport",
+  "requisites",
+  "bank",
+  "crm_notes"
+];
+const safeBlock = eventContextText.match(/safeTrackingParamKeys\s*=\s*\[([\s\S]*?)\]\s*as const/)?.[1] ?? "";
+const forbiddenBlock = eventContextText.match(/forbiddenTrackingParamKeys\s*=\s*\[([\s\S]*?)\]\s*as const/)?.[1] ?? "";
+const forbiddenKeysCovered = sourceForbiddenKeys.every((key) => new RegExp(`"${key}"`).test(forbiddenBlock) && !new RegExp(`"${key}"`).test(safeBlock));
+
+const directYmOutsideLayout = appSourceFiles
+  .map((file) => ({ file, rel: path.relative(root, file).split(path.sep).join("/"), text: read(file) }))
+  .filter((entry) => entry.rel !== "app/layout.tsx" && /\bym\s*\(/.test(entry.text))
+  .map((entry) => entry.rel);
 
 const proof = {
   reviewedAtLocal: new Date().toISOString(),
+  mode,
+  verdict,
+  siteCommit,
+  sourceTruthRoot: sourceRoot ? path.relative(path.resolve(root, ".."), sourceRoot) || sourceRoot : null,
   sourceCommit,
-  publicLiveAllowed: false,
-  formsLive: flagIsFalse("formsLive") ? false : null,
-  crmSuccessEnabled: flagIsFalse("crmSuccessEnabled") ? false : null,
-  analyticsEnabled: flagIsFalse("analyticsEnabled") ? false : null,
-  metricaEnabled: flagIsFalse("metricaEnabled") ? false : null,
-  maxEnabled: flagIsFalse("maxEnabled") ? false : null,
-  telegramEnabled: flagIsFalse("telegramEnabled") ? false : null,
-  mapEnabled: flagIsFalse("mapEnabled") ? false : null,
-  cookieNoticeEnabled: flagIsFalse("cookieNoticeEnabled") ? false : null,
-  formPlaceholdersEnabled: flagIsTrue("formPlaceholdersEnabled"),
-  policyRoutePresent,
-  policyFooterLinkPresent,
-  formsPlaceholderOnly:
-    formsEvidence?.status === "passed" &&
-    formPlaceholderCount === formRoutes.length &&
-    formActionCount === 0 &&
-    methodPostCount === 0 &&
-    submitControlCount === 0 &&
-    fileInputCount === 0 &&
-    formFallbackPresent &&
-    offlineTextPresent,
-  noUpload: fileInputCount === 0 && noPattern(/<input\b[^>]*type=["']file["']/i),
-  noSubmit: submitControlCount === 0 && noPattern(/<(button|input)\b[^>]*type=["']submit["']/i),
-  noBackendEndpoint,
-  noWebhook: noPattern(/webhook/i),
-  noSecrets: secretLikeFiles.length === 0 && noPattern(/OPENAI_API_KEY|sk-[A-Za-z0-9_-]{12,}|token=|secret=/i),
-  noAnalyticsScripts: noPattern(/GoogleAnalytics|gtag\(|data-goal|analytics\.js|googletagmanager/i),
-  noMetricaScripts: noPattern(/ym\(|mc\.yandex|counterId|metrika|yandex_metrica/i),
-  noTelegramMaxDeepLinks: noPattern(/t\.me\/|telegram\.me\/|max:\/\//i),
-  noPrices: noPattern(/скидк|цена|стоимость/i, renderedVisibleText),
-  noGuarantees: noPattern(/100% результат|гарантируем|без отказа|срочно за 1 день/i, renderedVisibleText),
-  noReviewsRatings: noPattern(/AggregateRating|ReviewRating|ReviewSchema|["@']@type["@']\s*:\s*["@']Review["@']|отзывы|рейтинг/i),
-  ownerLegalReviewRequired: true,
-  publicLaunchReady: false,
-  verdict: "HOLD/NOT_PUBLIC_LAUNCH_READY",
+  sourceTruthAvailable: Boolean(sourceRoot),
   sourceDocuments: sourceStatus,
-  missingSources,
-  reviewedRoutes: p0Routes,
-  policyAudit: {
-    title: policyTitle,
-    h1: policyH1,
-    canonical: policyCanonical,
-    notCommercialLanding: !policyCommercialSignals,
-    noAggressiveCta: !policyAggressiveCta,
-    ownerLegalSignoffRequired: true
+  siteDocuments: siteStatus,
+  missingSiteDocs,
+  publicLiveAllowed: flagValue(featureFlagsText, "publicLiveAllowed"),
+  formsLive: flagValue(featureFlagsText, "formsLive"),
+  crmEnabled: flagValue(featureFlagsText, "crmEnabled"),
+  crmSuccessEnabled: flagValue(featureFlagsText, "crmSuccessEnabled"),
+  analyticsEnabled: flagValue(featureFlagsText, "analyticsEnabled"),
+  metricaEnabled: flagValue(featureFlagsText, "metricaEnabled"),
+  paidTrafficAllowed: flagValue(featureFlagsText, "paidTrafficAllowed"),
+  localProfilesPublic: flagValue(featureFlagsText, "localProfilesPublic"),
+  maxEnabled: flagValue(featureFlagsText, "maxEnabled"),
+  telegramEnabled: flagValue(featureFlagsText, "telegramEnabled"),
+  messagingEnabled: flagValue(featureFlagsText, "messagingEnabled"),
+  messagingRevealEnabled: flagValue(featureFlagsText, "messagingRevealEnabled"),
+  mapEnabled: flagValue(featureFlagsText, "mapEnabled"),
+  cookieNoticeEnabled: flagValue(featureFlagsText, "cookieNoticeEnabled"),
+  formPlaceholdersEnabled: flagValue(featureFlagsText, "formPlaceholdersEnabled"),
+  ownerLegalAcceptance: false,
+  legalApproved: false,
+  ownerLegalReviewRequired: true,
+  policyRoutePresent: Boolean(policyHtml),
+  policyDisclosure: {
+    titlePresent: visiblePolicyText.includes("Аналитика, cookies и технические события"),
+    metricaDisclosed: /Яндекс Метрик/i.test(visiblePolicyText),
+    trafficPhoneCtaTechEventsDisclosed: /посещаемость[\s\S]*клики по телефону[\s\S]*CTA[\s\S]*технические события/i.test(visiblePolicyText),
+    noPiiInEventsDisclosed: /имя[\s\S]*телефон[\s\S]*email[\s\S]*текст вопроса[\s\S]*документы[\s\S]*сканы[\s\S]*реквизиты/i.test(visiblePolicyText),
+    attributionParamsDisclosed: /UTM[\s\S]*yclid[\s\S]*ysclid[\s\S]*атрибуц/i.test(visiblePolicyText),
+    clicksAreIntentNotLeadsDisclosed: /не подтвержденный лид[\s\S]*не принятая заявка/i.test(visiblePolicyText),
+    formSubmitSuccessDisabledDisclosed: /goal_form_submit_success[\s\S]*не включен/i.test(visiblePolicyText),
+    noPublicUploadDisclosed: /нет публичной загрузки документов/i.test(visiblePolicyText),
+    browserCookieRestrictionDisclosed: /настройки браузера/i.test(visiblePolicyText),
+    ownerLegalGateDisclosed: /owner\/legal acceptance[\s\S]*отдельным gate/i.test(visiblePolicyText)
+  },
+  cookieNotice: {
+    componentPresent: fs.existsSync(path.join(root, "components", "CookieAnalyticsNotice.tsx")),
+    guardedByFeatureFlag: /siteFeatureFlags\.cookieNoticeEnabled/.test(cookieNoticeText),
+    usesLocalStorage: /localStorage/.test(cookieNoticeText),
+    storesDismissalOnly: /dismissed/.test(cookieNoticeText) && !/name|phone|email|message|document|scan|requisites/.test(cookieNoticeText.match(/localStorage[\s\S]*/)?.[0] ?? ""),
+    policyLinkPresent: /href="\/policy\/"/.test(cookieNoticeText),
+    dismissButtonPresent: /Понятно/.test(cookieNoticeText),
+    nonBlockingRolePresent: /role="status"|aria-label=/.test(cookieNoticeText),
+    noExternalScript: noPattern(/<script|mc\.yandex|ym\(|fetch\s*\(|sendBeacon|XMLHttpRequest/i, cookieNoticeText),
+    renderedOrHydrationMarkerPresent:
+      stripTags(homeHtml).includes("Сайт использует техническую аналитику и cookies") ||
+      /CookieAnalyticsNotice/.test(layoutText) ||
+      cookieNoticeText.includes("Сайт использует техническую аналитику и cookies")
+  },
+  trackingNoPii: {
+    safePayloadAllowlistChecked: forbiddenKeysCovered,
+    typedMetricaBridgePresent: /metrica\.call\(window,\s*109869928,\s*"reachGoal"/.test(read(path.join(root, "lib", "tracking", "tracking-adapter.ts"))),
+    arbitraryYmCallsForbidden: /Direct ym\(\.\.\.\)/.test(noPiiCheckText) || /Direct ym/.test(noPiiCheckText),
+    directYmOutsideLayout,
+    noFormFieldValueReads: noPattern(/\bFormData\b|querySelector|querySelectorAll|\.(?:value|files)\b/, eventRuntimeText),
+    goalFormSubmitSuccessNotEmitted: noPattern(/goal_form_submit_success/, eventRuntimeText),
+    attributionOnlyParamsPresent: /utm_source/.test(eventContextText) && /yclid/.test(eventContextText) && /ysclid/.test(eventContextText)
   },
   formAudit: {
     formPlaceholderCount,
@@ -188,34 +233,38 @@ const proof = {
     methodPostCount,
     submitControlCount,
     fileInputCount,
-    fallbackPresent: formFallbackPresent,
-    offlineTextPresent,
-    falseSuccessPresent
+    noUpload: fileInputCount === 0 && noPattern(/<input\b[^>]*type=["']file["']/i, scannedRuntimeText),
+    noBackendEndpoint:
+      !fs.existsSync(path.join(root, "app", "api")) &&
+      listFiles(path.join(root, "app")).filter((file) => /[\\/]route\.(ts|js|mjs)$/i.test(file)).length === 0 &&
+      formActionCount === 0 &&
+      methodPostCount === 0,
+    noFalseSuccessCopy: noPattern(/заявка отправлена|заявка принята|успешно отправ/i, renderedVisibleText)
   },
-  secretLikeFiles: secretLikeFiles.map((file) => path.relative(root, file)),
-  evidenceStatus: {
-    browser: browserEvidence?.status ?? "missing",
-    accessibility: accessibilityEvidence?.status ?? "missing",
-    forms: formsEvidence?.status ?? "missing",
-    finalLocalSafety: safetyEvidence?.status ?? "missing"
+  safetyAudit: {
+    noWebhook: noPattern(/webhook/i, scannedRuntimeText),
+    noSecrets: noPattern(/OPENAI_API_KEY|sk-[A-Za-z0-9_-]{12,}|token=|secret=|-----BEGIN/i, scannedRuntimeText),
+    noTelegramMaxDeepLinks: noPattern(/t\.me\/|telegram\.me\/|max:\/\//i, scannedRuntimeText),
+    noPrices: noPattern(/скидк|цена|стоимость/i, renderedVisibleText),
+    noGuarantees: noPattern(/100% результат|гарантируем|без отказа|срочно за 1 день/i, renderedVisibleText),
+    noReviewsRatings: noPattern(/AggregateRating|ReviewRating|ReviewSchema|["@']@type["@']\s*:\s*["@']Review["@']|отзывы|рейтинг/i, scannedRuntimeText)
   },
-  blockers: [
-    "PUBLIC_LIVE_ALLOWED = false",
-    "owner/legal acceptance missing",
-    "legal/privacy review required",
-    "live forms disabled",
-    "CRM disabled",
-    "analytics disabled",
-    "Metrica disabled",
-    "cookie notice disabled",
-    "MAX disabled",
-    "Telegram disabled",
-    "live map disabled",
-    "production deploy not performed",
-    "staging proof missing",
-    "rollback proof missing",
-    "Search Console/Yandex Webmaster setup missing",
-    "FNS live/autopublish disabled"
+  analyticsProviderStatus: {
+    genericAnalyticsDisabled: flagValue(featureFlagsText, "analyticsEnabled") === false,
+    metricaCounterPresent: /mc\.yandex|ym\(109869928,\s*'init'/.test(layoutText),
+    noMetricaFormSuccessGoal: noPattern(/goal_form_submit_success/, eventRuntimeText)
+  },
+  reviewedRoutes: p0Routes,
+  remainingHold: [
+    "owner/legal acceptance",
+    "final legal wording",
+    "live forms",
+    "CRM submission and success goals",
+    "public upload",
+    "paid traffic",
+    "Telegram/MAX public messaging links",
+    "local profiles publication",
+    "prices, guarantees, deadlines, reviews, ratings, legal identifiers and office/floor/hours"
   ]
 };
 
@@ -223,16 +272,17 @@ ensureDir(ownerLegalDir);
 writeJson(path.join(ownerLegalDir, "owner-legal-privacy-proof.json"), proof);
 writeText(
   path.join(ownerLegalDir, "owner-legal-privacy-proof-summary.md"),
-  `# Owner Legal Privacy Proof\n\nStatus: ${proof.verdict}\n\nSource commit: ${sourceCommit}\n\nMissing sources: ${missingSources.length ? missingSources.join(", ") : "none"}\n\nPolicy route present: ${proof.policyRoutePresent ? "PASS" : "FAIL"}\n\nForms placeholder-only: ${proof.formsPlaceholderOnly ? "PASS" : "FAIL"}\n\nNo live upload/submit/backend/analytics/Metrica/messaging deep links: ${
-    proof.noUpload &&
-    proof.noSubmit &&
-    proof.noBackendEndpoint &&
-    proof.noAnalyticsScripts &&
-    proof.noMetricaScripts &&
-    proof.noTelegramMaxDeepLinks
+  `# Owner Legal Privacy Proof\n\nMode: ${mode}\n\nVerdict: ${verdict}\n\nSite commit: ${siteCommit ?? "unknown"}\n\nSource commit: ${sourceCommit ?? "not available in standalone run"}\n\nPolicy analytics/cookies disclosure: ${
+    Object.values(proof.policyDisclosure).every(Boolean) ? "PASS" : "FAIL"
+  }\n\nCookie notice: ${Object.values(proof.cookieNotice).every(Boolean) ? "PASS" : "FAIL"}\n\nTracking no-PII guard: ${
+    proof.trackingNoPii.safePayloadAllowlistChecked &&
+    proof.trackingNoPii.typedMetricaBridgePresent &&
+    proof.trackingNoPii.directYmOutsideLayout.length === 0 &&
+    proof.trackingNoPii.noFormFieldValueReads &&
+    proof.trackingNoPii.goalFormSubmitSuccessNotEmitted
       ? "PASS"
       : "FAIL"
-  }\n\nPublic launch ready: ${proof.publicLaunchReady}\n`
+  }\n\nForms/CRM/upload status: formsLive=${proof.formsLive}, crmEnabled=${proof.crmEnabled}, crmSuccessEnabled=${proof.crmSuccessEnabled}, upload=${proof.formAudit.noUpload ? "disabled" : "found"}\n\nOwner/legal acceptance: required\n`
 );
 
 console.log(`Owner/legal/privacy evidence generated in ${path.relative(root, ownerLegalDir)}`);

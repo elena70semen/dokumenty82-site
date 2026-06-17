@@ -47,8 +47,7 @@ const unsafeFlags = [
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
-  "mapEnabled",
-  "cookieNoticeEnabled"
+  "mapEnabled"
 ];
 
 const safeCollectorLabels = [
@@ -68,7 +67,8 @@ const telegramMaxDeepLinks = /t\.me\/|telegram\.me\/|max:\/\//i;
 const uploadInput = /<input\b[^>]*\btype=["']file["']|type:\s*["']file["']/i;
 const metricaOrCounter = /ym\(|mc\.yandex|metrika|метрик|counterId|counter-id|yandex_metrica/i;
 const webhookOrSecret = /OPENAI_API_KEY|sk-[A-Za-z0-9]|token=|secret=|webhook/i;
-const falseSuccess = /goal_form_submit_success|заявка отправлена|заявка принята|успешно отправ/i;
+const successGoalSignal = /goal_form_submit_success/i;
+const falseSuccessCopy = /заявка отправлена|заявка принята|успешно отправ/i;
 
 function read(file) {
   return fs.existsSync(file) ? fs.readFileSync(file, "utf8") : "";
@@ -240,7 +240,7 @@ function parseRenderedRouteProof() {
       containsTelegramMaxDeepLink: telegramMaxDeepLinks.test(html),
       containsMetricaOrCounter: metricaOrCounter.test(html),
       containsWebhookOrSecretPattern: webhookOrSecret.test(html),
-      containsFalseSuccessSignal: falseSuccess.test(html),
+      containsFalseSuccessSignal: falseSuccessCopy.test(html) || (route !== "/policy" && successGoalSignal.test(html)),
       safeCollectorOrContactPathFound:
         safeCollectorLabels.some((label) => stripTags(html).includes(label)) ||
         /href=["']tel:\+79789987222["']|href=["']\/kontakty\/["']|href=["']\/razbor-situacii\/["']/i.test(html),
@@ -314,6 +314,7 @@ function parseFeatureFlagsProof() {
   return {
     source: codeRel("lib/feature-flags.ts"),
     flags,
+    cookieNoticeEnabled: flags.cookieNoticeEnabled === true,
     unsafeGatesAllClosed: Object.values(unsafeGateStatus).every(Boolean),
     unsafeGateStatus
   };
@@ -381,6 +382,7 @@ function writeSummary({
     `Collector/contact proof: ${collectorPassed}/${p0Routes.length}`,
     `Sitemap URL count: ${sitemapProof.sitemapUrlCount}`,
     `Unsafe gates closed: ${featureFlagsProof.unsafeGatesAllClosed}`,
+    `Cookie notice enabled: ${featureFlagsProof.cookieNoticeEnabled}`,
     `Rendered safety passed: ${safetyGuardProof.renderedP0Html.failures.length === 0}`,
     "",
     "## Key decisions",
@@ -390,7 +392,8 @@ function writeSummary({
     "- P0 routes have safe collectors or contact paths.",
     "- Document-heavy P0 routes show safe `Показать документы` intent without upload.",
     "- Yandex Metrica is installed for pageview analytics.",
-    "- Live forms, CRM, MAX, Telegram, map and cookie notice remain disabled.",
+    "- Cookie/analytics notice is enabled for the public live Metrica mode.",
+    "- Live forms, CRM, MAX, Telegram and map remain disabled.",
     "",
     "## Not collected here",
     "",

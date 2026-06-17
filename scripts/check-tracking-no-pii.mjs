@@ -12,6 +12,7 @@ const files = {
   eventContext: "lib/tracking/event-context.ts",
   attribution: "lib/tracking/attribution.ts",
   adapter: "lib/tracking/tracking-adapter.ts",
+  layout: "app/layout.tsx",
   trackedAction: "components/tracking/TrackedAction.tsx",
   attributionCapture: "components/tracking/AttributionCapture.tsx"
 };
@@ -39,6 +40,7 @@ const flagsText = read(files.flags);
 const eventContextText = read(files.eventContext);
 const attributionText = read(files.attribution);
 const adapterText = read(files.adapter);
+const layoutText = read(files.layout);
 const trackedActionText = read(files.trackedAction);
 const attributionCaptureText = read(files.attributionCapture);
 
@@ -56,7 +58,25 @@ assert(/check:tracking-no-pii/.test(workflowText), "Site CI workflow must run ch
 assert(/analyticsEnabled:\s*false/.test(flagsText), "analyticsEnabled must remain false until a non-Metrica provider is approved.");
 assert(/metricaEnabled:\s*true/.test(flagsText), "metricaEnabled must be true after the Yandex Metrica counter is installed.");
 
-const forbiddenKeys = ["phone", "name", "message", "document_text", "file_name", "inn", "ogrn", "passport", "bank", "crm_notes"];
+const forbiddenKeys = [
+  "phone",
+  "email",
+  "name",
+  "message",
+  "comment",
+  "question",
+  "documents",
+  "document_text",
+  "file",
+  "file_name",
+  "scan",
+  "inn",
+  "ogrn",
+  "passport",
+  "requisites",
+  "bank",
+  "crm_notes"
+];
 const safeBlock = eventContextText.match(/safeTrackingParamKeys\s*=\s*\[([\s\S]*?)\]\s*as const/)?.[1] ?? "";
 const forbiddenBlock = eventContextText.match(/forbiddenTrackingParamKeys\s*=\s*\[([\s\S]*?)\]\s*as const/)?.[1] ?? "";
 
@@ -83,12 +103,17 @@ assert(/trackSafeEvent/.test(trackedActionText), "TrackedAction must call the ga
 assert(/captureAttributionFromLocation/.test(attributionCaptureText), "AttributionCapture must capture URL attribution params.");
 assert(/sessionStorage/.test(attributionText), "Attribution capture should use browser sessionStorage only.");
 assert(/!siteFeatureFlags\.analyticsEnabled\s*&&\s*!siteFeatureFlags\.metricaEnabled/.test(adapterText), "Tracking adapter must no-op when analytics and Metrica are disabled.");
+assert(/metrica\.call\(window,\s*109869928,\s*"reachGoal"/.test(adapterText), "Metrica reachGoal must stay behind the typed tracking adapter bridge.");
+assert(!/\bym\s*\(/.test(adapterText), "Tracking adapter must not call ym(...) directly; use the typed bridge.");
+assert(/ym\(109869928,\s*'init'/.test(layoutText), "app/layout.tsx must only initialize the Yandex Metrica counter.");
+assert(!/reachGoal/.test(layoutText), "app/layout.tsx must not emit Metrica goals directly.");
 
 const trackingRuntimeText = [eventContextText, attributionText, adapterText, trackedActionText, attributionCaptureText].join("\n");
 const externalSendPatterns = [/\bym\s*\(/, /\bgtag\s*\(/, /navigator\.sendBeacon/, /XMLHttpRequest/, /\bfetch\s*\(/, /new\s+Image\s*\(/];
 for (const pattern of externalSendPatterns) {
   assert(!pattern.test(trackingRuntimeText), `Tracking layer must not send external events while disabled: ${pattern}`);
 }
+assert(!/\bFormData\b|querySelector|querySelectorAll|\.(?:value|files)\b/.test(trackingRuntimeText), "Tracking layer must not read visible form field values.");
 
 function listFiles(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -103,6 +128,12 @@ const appFiles = ["app", "components", "lib/tracking"].flatMap((dir) => listFile
 for (const file of appFiles) {
   const rel = path.relative(root, file).split(path.sep).join("/");
   const text = fs.readFileSync(file, "utf8");
+  if (rel !== "app/layout.tsx" && /\bym\s*\(/.test(text)) {
+    issues.push(`Direct ym(...) call is only allowed for counter init in app/layout.tsx: ${rel}`);
+  }
+  if (rel !== "app/policy/page.tsx" && /goal_form_submit_success/.test(text)) {
+    issues.push(`goal_form_submit_success must not be emitted before backend/CRM acceptance: ${rel}`);
+  }
   for (const key of forbiddenKeys) {
     const dataAttr = `data-${key.replaceAll("_", "-")}`;
     assert(!text.includes(dataAttr), `Forbidden PII data attribute found in ${rel}: ${dataAttr}`);

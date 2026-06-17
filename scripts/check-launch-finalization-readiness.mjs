@@ -67,8 +67,7 @@ const unsafeFeatureFlags = [
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
-  "mapEnabled",
-  "cookieNoticeEnabled"
+  "mapEnabled"
 ];
 
 const finalizationDocs = standaloneSiteRepo
@@ -94,7 +93,6 @@ const operationalBlockers = [
   "rollback proof missing expected",
   "owner/legal acceptance missing expected",
   "CRM/forms/analytics acceptance missing expected",
-  "no-PII analytics payload proof missing expected",
   "Search Console/Yandex Webmaster setup missing expected",
   "PR #49 merged foundation-only; FNS live fetch, scheduler, rewrite provider, autopublish and indexing remain blocked"
 ];
@@ -181,6 +179,7 @@ for (const file of appCodeFiles) {
 const flagsText = read(codeRel("lib/feature-flags.ts"));
 assert(/publicLiveAllowed:\s*true/.test(flagsText), "Public live flag must be enabled for the production domain.");
 assert(/metricaEnabled:\s*true/.test(flagsText), "Yandex Metrica must be enabled for the production domain.");
+assert(/cookieNoticeEnabled:\s*true/.test(flagsText), "Cookie/analytics notice must be enabled while Yandex Metrica is live.");
 for (const flag of unsafeFeatureFlags) {
   assert(new RegExp(`${flag}:\\s*false`).test(flagsText), `Unsafe feature flag must remain false: ${flag}`);
 }
@@ -251,7 +250,7 @@ if (issues.length > 0) {
   process.exit(1);
 }
 
-console.log("PASS launch finalization readiness: foundation consistent; public site and Metrica are live, while paid traffic and FNS autopublish remain blocked.");
+console.log("PASS launch finalization readiness: foundation consistent; public site, Metrica and cookie notice are live, while paid traffic and FNS autopublish remain blocked.");
 console.log("Remaining blockers:");
 for (const blocker of blockers) {
   console.log(`- ${blocker}`);

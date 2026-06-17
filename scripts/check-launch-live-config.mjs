@@ -47,8 +47,7 @@ const requiredClosedFlags = [
   "telegramEnabled",
   "messagingEnabled",
   "messagingRevealEnabled",
-  "mapEnabled",
-  "cookieNoticeEnabled"
+  "mapEnabled"
 ];
 
 for (const flag of requiredClosedFlags) {
@@ -57,6 +56,7 @@ for (const flag of requiredClosedFlags) {
 
 assert(/publicLiveAllowed:\s*true/.test(flagsText), "publicLiveAllowed must be true for the production domain.");
 assert(/metricaEnabled:\s*true/.test(flagsText), "metricaEnabled must be true after the counter is installed on the production domain.");
+assert(/cookieNoticeEnabled:\s*true/.test(flagsText), "cookieNoticeEnabled must be true while Yandex Metrica is live.");
 assert(/formPlaceholdersEnabled:\s*true/.test(flagsText), "Safe placeholder forms should remain enabled for the static contact-only candidate.");
 assert(/siteRuntimeMode/.test(flagsText), "Feature flags must expose siteRuntimeMode.");
 assert(/PUBLIC_LIVE/.test(flagsText), "Live launch mode must expose PUBLIC_LIVE.");
@@ -82,6 +82,7 @@ const publicLiveDisabled = /publicLiveAllowed:\s*false/.test(flagsText);
 
 assert(!publicLiveDisabled, "publicLiveAllowed must not be false for production.");
 assert(/siteFeatureFlags/.test(layoutText), "app/layout.tsx must read siteFeatureFlags.");
+assert(/CookieAnalyticsNotice/.test(layoutText), "app/layout.tsx must render CookieAnalyticsNotice.");
 assert(/index:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Root metadata robots.index must be gated by publicLiveAllowed.");
 assert(/follow:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Root metadata robots.follow must be gated by publicLiveAllowed.");
 assert(/googleBot:\s*{[\s\S]*?index:\s*siteFeatureFlags\.publicLiveAllowed/.test(layoutText), "Googlebot index must be gated by publicLiveAllowed.");
@@ -115,4 +116,4 @@ if (issues.length > 0) {
   process.exit(1);
 }
 
-console.log("PASS launch live config: PUBLIC_LIVE_ALLOWED=true; indexing and Metrica are live, while forms, CRM, paid traffic, messaging and local profile publishing remain gated.");
+console.log("PASS launch live config: PUBLIC_LIVE_ALLOWED=true; indexing, Metrica and cookie notice are live, while forms, CRM, paid traffic, messaging and local profile publishing remain gated.");

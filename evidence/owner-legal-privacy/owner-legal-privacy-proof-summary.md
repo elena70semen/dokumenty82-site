@@ -1,15 +1,19 @@
 # Owner Legal Privacy Proof
 
-Status: HOLD/NOT_PUBLIC_LAUNCH_READY
+Mode: PUBLIC_LIVE_METRICA_NO_PII_WITH_COOKIE_NOTICE
 
-Source commit: 9b13676
+Verdict: PUBLIC_LIVE_METRICA_NO_PII_WITH_COOKIE_NOTICE_OWNER_LEGAL_REVIEW_REQUIRED
 
-Missing sources: none
+Site commit: 62e0ece+worktree
 
-Policy route present: PASS
+Source commit: 125a866
 
-Forms placeholder-only: PASS
+Policy analytics/cookies disclosure: PASS
 
-No live upload/submit/backend/analytics/Metrica/messaging deep links: PASS
+Cookie notice: PASS
 
-Public launch ready: false
+Tracking no-PII guard: PASS
+
+Forms/CRM/upload status: formsLive=false, crmEnabled=false, crmSuccessEnabled=false, upload=disabled
+
+Owner/legal acceptance: required

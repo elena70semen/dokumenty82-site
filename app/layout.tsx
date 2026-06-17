@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import type { ReactNode } from "react";
 import "./globals.css";
+import { CookieAnalyticsNotice } from "@/components/CookieAnalyticsNotice";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealController } from "@/components/RevealController";
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           </>
         ) : null}
         <AttributionCapture />
+        <CookieAnalyticsNotice />
         <Header />
         <ScrollNavigation />
         {children}
