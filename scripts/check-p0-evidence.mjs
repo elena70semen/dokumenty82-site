@@ -41,8 +41,7 @@ const unsafeFlags = [
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
-  "mapEnabled",
-  "cookieNoticeEnabled"
+  "mapEnabled"
 ];
 
 const evidenceFiles = [
@@ -235,6 +234,10 @@ for (const flag of unsafeFlags) {
   if (featureFlagsProof?.flags?.[flag] !== false) {
     issues.push(`Unsafe feature flag must remain false: ${flag}`);
   }
+}
+
+if (featureFlagsProof?.flags?.cookieNoticeEnabled !== true) {
+  issues.push("cookieNoticeEnabled must be true while Metrica is live.");
 }
 
 if (!featureFlagsProof?.unsafeGatesAllClosed) {

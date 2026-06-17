@@ -14,9 +14,10 @@
     "messagingEnabled": false,
     "messagingRevealEnabled": false,
     "mapEnabled": false,
-    "cookieNoticeEnabled": false,
+    "cookieNoticeEnabled": true,
     "formPlaceholdersEnabled": true
   },
+  "cookieNoticeEnabled": true,
   "unsafeGatesAllClosed": true,
   "unsafeGateStatus": {
     "formsLive": true,
@@ -25,7 +26,6 @@
     "maxEnabled": true,
     "telegramEnabled": true,
     "messagingRevealEnabled": true,
-    "mapEnabled": true,
-    "cookieNoticeEnabled": true
+    "mapEnabled": true
   }
 }

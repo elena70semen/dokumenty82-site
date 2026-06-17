@@ -166,6 +166,41 @@ export default function PolicyPage() {
       </section>
 
       <section className="section-pad dimmed-page-section">
+        <div className="container-premium grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <div className="reveal-block" data-reveal="left">
+            <p className="eyebrow-line">Аналитика и cookies</p>
+            <h2 className="display-serif mt-5 text-5xl font-semibold leading-tight text-[color:var(--text-inverse)] md:text-6xl">
+              Аналитика, cookies и технические события
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-[color:var(--text-inverse-muted)]">
+              Этот блок описывает публичный live-режим сайта с технической аналитикой. Финальная юридическая редакция и owner/legal acceptance остаются отдельным gate.
+            </p>
+          </div>
+
+          <article className="rich-text reveal-block rounded-[8px] border border-[rgba(255,255,255,0.14)] bg-[rgba(17,24,33,0.78)] p-8 text-[color:var(--text-inverse-muted)] shadow-[0_24px_74px_rgba(0,0,0,0.18)] backdrop-blur-md" data-reveal="right">
+            <p>
+              Сайт может использовать Яндекс Метрику для технической аналитики. Метрика помогает понимать посещаемость страниц, клики по телефону, переходы по CTA и технические события интерфейса.
+            </p>
+            <p>
+              События аналитики не должны содержать имя, телефон, email, текст вопроса, сообщения, документы, сканы, реквизиты, ИНН, ОГРН, паспортные данные или другие чувствительные сведения.
+            </p>
+            <p>
+              UTM-метки, yclid, ysclid и похожие параметры источника используются только для атрибуции перехода. Они не являются подтверждением заявки и не заменяют ручное уточнение источника обращения.
+            </p>
+            <p>
+              Клики по телефону, маршруту, карточкам и CTA фиксируют намерение пользователя или действие на странице. Это не подтвержденный лид, не принятая заявка и не обещание обратной связи.
+            </p>
+            <p>
+              Отправка формы и цель <code>goal_form_submit_success</code> не включены до отдельной приемки backend/CRM. На сайте нет публичной загрузки документов через открытые формы.
+            </p>
+            <p>
+              Пользователь может ограничить cookies и похожие технологии через настройки браузера. Часть технической аналитики после этого может работать ограниченно.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="section-pad dimmed-page-section">
         <div className="container-premium grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="reveal-block" data-reveal="left">
             <p className="eyebrow-line">FAQ</p>

@@ -69,6 +69,12 @@ jobs:
       - name: Check forms CRM contract
         run: npm run check:forms-crm-contract
 
+      - name: Generate owner/legal/privacy evidence
+        run: npm run evidence:owner-legal-privacy
+
+      - name: Check owner/legal/privacy evidence
+        run: npm run check:owner-legal-privacy
+
       - name: Check launch readiness
         run: npm run check:launch-readiness
 

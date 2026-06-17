@@ -27,7 +27,7 @@
     "check:forms-crm-contract": "node scripts/check-forms-crm-contract.mjs",
     "check:p0-full": "npm run check:p0-semantic && npm run build && npm run evidence:p0 && npm run check:p0-evidence && npm run check:fns-blog-news && npm run check:static-links",
     "check:launch-readiness": "node scripts/check-launch-finalization-readiness.mjs",
-    "check:finalization": "npm run check:launch-live-config && npm run check:tracking-no-pii && npm run check:forms-crm-contract && npm run evidence:sales-channels && npm run check:sales-channels && npm run check:p0-semantic && npm run check:p0-evidence && npm run check:fns-blog-news && npm run check:static-links && npm run check:launch-readiness",
+    "check:finalization": "npm run check:launch-live-config && npm run check:tracking-no-pii && npm run check:forms-crm-contract && npm run evidence:owner-legal-privacy && npm run check:owner-legal-privacy && npm run evidence:sales-channels && npm run check:sales-channels && npm run check:p0-semantic && npm run evidence:p0 && npm run check:p0-evidence && npm run check:fns-blog-news && npm run check:static-links && npm run check:launch-readiness",
     "preview:local": "node scripts/serve-static.mjs out 4173",
     "evidence:browser": "node scripts/generate-browser-evidence.mjs",
     "check:browser-evidence": "node scripts/check-browser-evidence.mjs",

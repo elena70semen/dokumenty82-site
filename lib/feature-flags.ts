@@ -12,7 +12,7 @@ export const siteFeatureFlags = {
   messagingEnabled: false,
   messagingRevealEnabled: false,
   mapEnabled: false,
-  cookieNoticeEnabled: false,
+  cookieNoticeEnabled: true,
   formPlaceholdersEnabled: true
 } as const;
 

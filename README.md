@@ -24,7 +24,8 @@ This repository contains the standalone Next.js static-export site source, selec
 - Governance status: `PUBLIC LIVE WITH GOVERNANCE DRIFT` until source-of-truth release gates, CI artifact traceability and rollback proof are fully synced.
 - Production deploy: performed manually from a static export artifact; current production is not yet proven as a GitHub Actions artifact deployment.
 - Forms: placeholder UI only.
-- Form submit, upload, CRM, paid traffic, Telegram, MAX, cookie notice and live map: disabled.
+- Form submit, upload, CRM, paid traffic, Telegram, MAX and live map: disabled.
+- Cookie/analytics notice: enabled for the public live Metrica mode.
 - Yandex Metrica is installed on production; no live form/CRM success event is enabled.
 - Legal/privacy, CRM/forms, paid traffic, local profile and messaging gates remain closed until owner and evidence approval are complete.
 
