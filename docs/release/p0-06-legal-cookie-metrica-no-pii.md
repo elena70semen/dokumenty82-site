@@ -122,3 +122,21 @@ Production deploy requires a separate owner-approved deploy step after PR review
 ## Next Recommended Task
 
 After PR merge, run the approved deploy step from the verified CI artifact and re-check production HTML for the policy disclosure, cookie notice marker, no-PII tracking guard evidence and unchanged closed gates.
+
+## Production Deployment Follow-up
+
+P0-07 merged PR #33 and deployed the verified P0-06 PR CI artifact to production.
+
+| Item | Value |
+| --- | --- |
+| PR #33 merge SHA | `a4c075027cc893599c49b55467080e0f9f5c5469` |
+| Verified artifact source | `dokumenty82-static-export-c2d6324e9aac1e295ed38132a6ffaf4c21c80ffe` |
+| Production release ID | `20260617-1608-p0-06-c2d6324` |
+| Cookie notice production check | PASS |
+| Policy disclosure production check | PASS |
+| Tracking no-PII production guard | PASS |
+| Footer rating badge | ABSENT |
+| Checksum compare | PASS for all requested routes |
+| Final P0-07 verdict | `PRODUCTION_ALIGNED_TO_VERIFIED_PR_ARTIFACT_WITH_MAIN_DOCS_ONLY_DELTA_P0_06` |
+
+Strict `main` Actions artifact visibility remains unresolved in the available tooling, so P0-07 does not claim a strict main artifact deploy.
