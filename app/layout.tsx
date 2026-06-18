@@ -31,7 +31,8 @@ export const metadata: Metadata = {
   creator: site.name,
   publisher: site.name,
   icons: {
-    icon: "/assets/brand/favicon.svg"
+    icon: "/favicon.svg",
+    shortcut: "/favicon.ico"
   },
   openGraph: {
     type: "website",
