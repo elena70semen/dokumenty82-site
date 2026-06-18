@@ -106,34 +106,60 @@ PR head as the deploy artifact source.
 
 ## Deploy status
 
-`NOT_DEPLOYED_IN_THIS_TASK`
+`DEPLOYED_AND_VERIFIED`
 
-PR #34 Site CI passed. Production deploy should happen only after review, merge and verified artifact selection.
+PR #34 was merged after Site CI passed. Production was deployed from the verified
+PR CI static export artifact, not from the source-of-truth repository.
+
+| Field | Value |
+| --- | --- |
+| PR | `#34` |
+| Merge commit | `6970dc867421f69d079b8511a7415bc871061303` |
+| Final PR head | `a3e46abb4e93743795bb2272cada8af8bd931949` |
+| Verified CI run | `27758916132` / Site CI `#73` |
+| Static artifact | `dokumenty82-static-export-6653f8b5f0d7b919d84b844a87834b5f7fd484a2` |
+| Static artifact ID | `7723070227` |
+| Static artifact digest | `sha256:bac90962786f5660af921b9db815d38ffe92ffe7a4cb8c590e0d6a60fe9e3a22` |
+| Release proof artifact | `dokumenty82-release-proof-6653f8b5f0d7b919d84b844a87834b5f7fd484a2` |
+| Release proof artifact ID | `7723070610` |
+| Release proof artifact digest | `sha256:f1a856e0b6c9a491fc6393620e4d9eb0ebc6c3a6340ae857a6f8ca5536f3f976` |
+| Production release ID | `20260618-1254-p1-01-favicon-6653f8b5` |
+| Previous release ID | `20260617-1608-p0-06-c2d6324` |
+| Deploy method | versioned static release, `current` pointer switch, Nginx config test and reload inside `tmux` |
+
+No server address, SSH connection string, key path, password or provider panel
+credential is recorded in this repository.
 
 ## Post-deploy production verification
 
-Not run yet because this task has not been deployed.
+Post-deploy verification was run after production switch.
 
-Required after deploy:
-
-| Check | Expected |
+| Check | Result |
 | --- | --- |
-| `/favicon.svg` | `200` |
-| `/favicon.ico` | `200` |
-| `/assets/brand/favicon.svg` | `200` |
-| `/` | `200`, still contains Metrica `109869928` and cookie notice |
-| `/robots.txt` | `200` |
-| `/sitemap.xml` | `200` |
-| 14 key URLs | `200`, index/follow |
+| `/favicon.svg` | `200`, `image/svg+xml`, byte-matches artifact |
+| `/favicon.ico` | `200`, `image/x-icon`, byte-matches artifact |
+| `/assets/brand/favicon.svg` | `200`, byte-matches artifact |
+| `/` | `200`, contains Metrica `109869928`, cookie notice, `/favicon.svg` and `/favicon.ico` |
+| `/robots.txt` | `200`, byte-matches artifact |
+| `/sitemap.xml` | `200`, byte-matches artifact |
+| Key public URLs | `200` for all checked pages |
 | Footer rating badge | absent |
-| CRM/forms/upload | absent/closed |
-| Production checksum compare | pending, must match deployed artifact |
+| Live POST/action forms | absent |
+| Upload input | absent |
+| Production checksum compare | `16/16` checked files and pages byte-match the verified static export artifact |
+| Nginx config test | PASS before and after release switch |
+| Caddy | inactive |
+| UDP/443 | no listener observed |
+| HTTP/3/QUIC config | no active Nginx HTTP/3/QUIC directive observed |
 
 ## Verdict
 
-`FAVICON_READY_NOT_DEPLOYED`
+`FAVICON_DEPLOYED_AND_VERIFIED`
 
-Both root favicon assets are present locally, metadata points to them, and PR #34 Site CI passed. The current production favicon issue is expected to close after the reviewed PR is merged and the verified artifact is deployed.
+Both root favicon assets are present in production, metadata points to them, and
+production byte-matches the verified PR CI static export artifact for the
+checked favicon files, root files and key public pages. Yandex Webmaster can now
+re-check the root favicon.
 
 ## Remaining HOLD
 
@@ -152,8 +178,9 @@ Both root favicon assets are present locally, metadata points to them, and PR #3
 - legal IDs
 - office/floor/hours
 - rollback drill if still required
-- post-deploy favicon verification in Yandex Webmaster
+- Yandex Webmaster re-check result
 
 ## Next recommended task
 
-Open the PR, wait for Site CI, then merge/deploy the verified artifact and run the production favicon + P0-07 preservation smoke check.
+Re-check favicon status in Yandex Webmaster and keep monitoring production
+indexing after the crawler refreshes cached page data.
