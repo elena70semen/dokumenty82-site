@@ -36,6 +36,7 @@ Do not launch ads, do not merge/deploy for paid traffic, and do not enable forms
 | Canonical/index/noindex | `PASS_SOURCE` | Local finalization checks passed for canonical sitemap/noindex boundaries. |
 | 404 | `PASS_BUILD` | Static Next build includes `_not-found`; no paid-traffic GO until post-deploy smoke repeats. |
 | Yandex Metrika 109869928 | `PASS_SOURCE_BUILD_LIVE` | Source/build/live checks include `109869928`, `mc.yandex.ru`, `ym(109869928, 'init', ...)`, and `/watch/109869928`. |
+| Live Metrika init config | `BLOCKER_RECONCILE_BEFORE_ADS` | Live HTML currently initializes Metrika with Webvisor/ecommerce signals, while source/build in this PR keeps `webvisor=false` and `ecommerce=false`. Reconcile on deploy before ads. |
 | No-PII analytics payload | `PASS_SOURCE_BUILD` | `npm run check:tracking-no-pii` generated `evidence/finalization/tracking-no-pii-proof.json`. |
 | Goals/reachGoal | `PASS_SOURCE` | Safe `reachGoal` bridge exists for phone, route, contacts, situation review, documents, service cards, fallback contact; submit-success remains backend-gated. |
 | Forms/CRM | `PASS_OFF` | `formsLive=false`, `crmEnabled=false`, `crmSuccessEnabled=false`; no live CRM webhook or hidden PII collection. |
@@ -62,15 +63,17 @@ Do not launch ads, do not merge/deploy for paid traffic, and do not enable forms
 2. `DEPLOY_SOURCE_NOT_PROVEN`: live deploy pipeline/source is not independently confirmed in this run.
 3. `LIVE_REPO_SYNC_MISMATCH`: live sitemap returned 30 URLs while source/build sitemap contains 36 URLs.
 4. `LIVE_ROBOTS_MISMATCH`: live robots text differs from source robots and includes a public-live comment not present in source.
-5. `METRIKA_LK_GOALS_CONFIRMATION_REQUIRED`: source goals exist, but LK goal configuration/goal firing must be smoke-tested after deploy.
-6. `FORMS_CRM_HOLD`: forms/CRM remain off; enabling them requires a separate approved PR.
-7. `LEGAL_OWNER_SIGNOFF_REQUIRED`: sensitive ad categories require owner/legal confirmation of copy, claims and disclaimers.
+5. `LIVE_METRIKA_CONFIG_MISMATCH`: live Metrika init includes Webvisor/ecommerce signals; source/build in this PR intentionally keeps them disabled.
+6. `METRIKA_LK_GOALS_CONFIRMATION_REQUIRED`: source goals exist, but LK goal configuration/goal firing must be smoke-tested after deploy.
+7. `FORMS_CRM_HOLD`: forms/CRM remain off; enabling them requires a separate approved PR.
+8. `LEGAL_OWNER_SIGNOFF_REQUIRED`: sensitive ad categories require owner/legal confirmation of copy, claims and disclaimers.
 
 ## Should Fix
 
 - Confirm hosting/deploy pipeline for `elena70semen/dokumenty82-site`.
 - Align live artifact with this repo before paid traffic.
 - Repeat live smoke after deploy: favicon, robots, sitemap, canonical, Metrika, noindex, 404.
+- Reconcile live Metrika init with source/build: no Webvisor/ecommerce unless separately approved by owner/legal/privacy review.
 - Confirm Metrika LK goals exist for the implemented goal IDs.
 - Update privacy/legal text after owner/legal confirms actual analytics/forms state.
 - Decide whether live sitemap should remain 30 URLs or move to the 36 URL source sitemap.
@@ -157,10 +160,11 @@ Repeat after the next deploy from `dokumenty82-site`:
 6. Home HTML contains `mc.yandex.ru`.
 7. Home HTML contains `ym(109869928, 'init', ...)`.
 8. Home HTML contains `/watch/109869928`.
-9. Canonicals use `https://dokumenty82.ru/`.
-10. Noindex/internal routes are excluded from sitemap.
-11. 404 route returns the intended not-found page.
-12. Metrika LK receives test events for phone, route/contact, situation review and fallback contact.
+9. Home HTML does not enable Webvisor/ecommerce unless separately approved.
+10. Canonicals use `https://dokumenty82.ru/`.
+11. Noindex/internal routes are excluded from sitemap.
+12. 404 route returns the intended not-found page.
+13. Metrika LK receives test events for phone, route/contact, situation review and fallback contact.
 
 ## Checks
 
@@ -175,7 +179,7 @@ Repeat after the next deploy from `dokumenty82-site`:
 | `npm run check:finalization` | `PASS` | Paid traffic remains blocked; forms/CRM remain off. |
 | `npm run brand:check` | `PASS` | Brand token, contrast, SVG color/a11y and claims checks passed. |
 | Post-build artifact check | `PASS` | `out/favicon.svg`, `out/favicon.ico`, `out/robots.txt`, `out/sitemap.xml`, Metrika init/watch present. |
-| Live endpoint smoke | `WATCH` | favicon/robots/sitemap return 200; sitemap count differs from source. |
+| Live endpoint smoke | `WATCH` | favicon/robots/sitemap return 200; sitemap count and Metrika init config differ from source. |
 
 ## Owner Decision Checklist
 
@@ -184,6 +188,7 @@ Repeat after the next deploy from `dokumenty82-site`:
 - [ ] Confirm live should use source sitemap with 36 URLs or explain the 30 URL live sitemap.
 - [ ] Confirm favicon assets are approved for production.
 - [ ] Confirm Metrika goals are created in LK for the listed IDs.
+- [ ] Confirm Webvisor/ecommerce are disabled on the deployed artifact unless separately approved.
 - [ ] Confirm paid traffic copy contains no guarantees, prices, ratings, reviews or unsupported legal/tax/bank promises.
 - [ ] Confirm forms/CRM stay OFF for this PR.
 - [ ] Confirm owner GO before any ad spend.
