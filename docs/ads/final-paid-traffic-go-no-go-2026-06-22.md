@@ -296,6 +296,28 @@ Current status:
 The deploy source must be explicitly confirmed by owner/deployer before any
 paid traffic launch.
 
+## Owner Decision Intake
+
+Dedicated owner decision intake was added:
+
+`docs/ads/owner-decision-intake-2026-06-22.md`
+
+Current owner decision status:
+
+- Deploy source: `NOT_SELECTED`
+- Sitemap contour: `NOT_SELECTED`
+- Metrika privacy: `NOT_SELECTED`
+- Landing pages: `NOT_SELECTED`
+- Blocked pages: `NOT_SELECTED`
+- Forms/CRM: `NOT_SELECTED`
+- Final owner GO: `NOT_SELECTED`
+
+Until owner selections are written:
+
+- Paid traffic: `HOLD`
+- PR #36: `Draft`
+- Merge/deploy/ads: `NO`
+
 ## Owner Decision Checklist
 
 - Confirm whether current static `main` is the deploy source for live.

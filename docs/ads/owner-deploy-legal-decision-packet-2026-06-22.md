@@ -175,6 +175,22 @@ DEPLOY_SOURCE_PARTIALLY_PROVEN
 Owner/deployer still must confirm the real deploy source before any merge,
 deploy, or ads launch.
 
+## Owner Decision Intake
+
+Dedicated owner decision intake was added:
+
+`docs/ads/owner-decision-intake-2026-06-22.md`
+
+Current state:
+
+- Owner GO: `NOT_GIVEN`
+- Paid traffic: `HOLD`
+- PR #36: `Draft`
+- Recommended safe defaults are documented, but not approved.
+
+Owner must make explicit selections in PR comment or signed document before any
+merge/deploy/ads step.
+
 ## 5. Final Owner Signature Block
 
 Owner decision status:

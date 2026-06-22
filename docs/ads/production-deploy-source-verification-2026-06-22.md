@@ -157,6 +157,18 @@ confirmation has been recorded.
 
 This is not a merge, deploy, or paid traffic approval.
 
+## Owner Intake Link
+
+Owner decision intake was added:
+
+`docs/ads/owner-decision-intake-2026-06-22.md`
+
+Deploy-source status remains:
+
+`DEPLOY_SOURCE_PARTIALLY_PROVEN`
+
+Owner/deployer must explicitly confirm the deploy source before merge/deploy/ads.
+
 ## 7. Owner / Deployer Confirmation Needed
 
 Owner/deployer must confirm:
