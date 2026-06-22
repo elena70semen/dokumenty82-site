@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса - favicon</title>
+  <desc id="desc">Favicon production endpoint for dokumenty82.ru.</desc>
+  <rect width="64" height="64" rx="8" fill="#111821"/>
+  <path d="M8 8h48v48H8z" fill="#0D4A3B" opacity=".78"/>
+  <path d="M8 8h32v32H8z" fill="#C69A47" opacity=".62"/>
+  <text x="32" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">ДБ</text>
+</svg>

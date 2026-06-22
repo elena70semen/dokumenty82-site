@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checkedAt": "2026-06-13T23:15:52.935Z",
+  "checkedAt": "2026-06-22T08:16:23.037Z",
   "indexedRoutes": 36,
   "noindexFoundationRoutes": [
     "/blog/",
@@ -24,14 +24,15 @@
     "Позвонить",
     "Построить маршрут",
     "Показать документы",
-    "Контакты"
+    "Контакты",
+    "Перейти в контакты"
   ],
   "placeholderFormsChecked": true,
   "unsafeFeatureFlagsChecked": [
     "formsLive",
+    "crmEnabled",
     "crmSuccessEnabled",
-    "analyticsEnabled",
-    "metricaEnabled",
+    "paidTrafficAllowed",
     "maxEnabled",
     "telegramEnabled",
     "messagingRevealEnabled",

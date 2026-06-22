@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { homeFooter } from "@/lib/home/home-page-data";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 
 export function Footer() {
   return (
@@ -55,6 +56,13 @@ export function Footer() {
               <a
                 href={homeFooter.phoneHref}
                 className="inline-flex min-h-10 items-center gap-2 rounded-[8px] text-[color:var(--text-inverse)] transition hover:text-[color:var(--lime-signal)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+                data-analytics-goal={analyticsGoalNames.callClick}
+                data-cta-label="Позвонить"
+                data-cta-location="footer_contact"
+                data-collector-type="phone"
+                data-lead-topic="phone_contact"
+                data-page-slug="global"
+                data-page-type="global"
               >
                 <BrandIcon name="phone" size={16} />
                 {homeFooter.phone}
@@ -68,18 +76,38 @@ export function Footer() {
             <a
               href={homeFooter.phoneHref}
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-4 py-2 text-sm font-black text-[color:var(--lime-text)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              data-analytics-goal={analyticsGoalNames.callClick}
+              data-cta-label="Позвонить"
+              data-cta-location="footer_cta"
+              data-collector-type="phone"
+              data-lead-topic="phone_contact"
+              data-page-slug="global"
+              data-page-type="global"
             >
               Позвонить
             </a>
             <Link
               href="/kontakty/"
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              data-analytics-goal={analyticsGoalNames.contactsClick}
+              data-cta-label="Построить маршрут"
+              data-cta-location="footer_cta"
+              data-collector-type="route"
+              data-lead-topic="Контакт / визит"
+              data-page-slug="global"
+              data-page-type="global"
             >
               Построить маршрут
             </Link>
             <Link
               href="/razbor-situacii/"
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--border-dark-soft)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-dark-subtle-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)]"
+              data-analytics-goal={analyticsGoalNames.situationReviewClick}
+              data-cta-location="footer_cta"
+              data-collector-type="request"
+              data-lead-topic="Другое / первый шаг"
+              data-page-slug="global"
+              data-page-type="global"
             >
               Разобрать ситуацию
             </Link>

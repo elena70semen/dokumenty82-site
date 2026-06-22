@@ -6,6 +6,7 @@ import { useState } from "react";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { homeNavigation } from "@/lib/home/home-page-data";
 import { site } from "@/lib/content";
+import { analyticsGoalNames } from "@/lib/integrations/analytics-events";
 
 const desktopNavigationHrefs = new Set([
   "/razbor-situacii/",
@@ -89,12 +90,25 @@ export function Header() {
             <Link
               href="/razbor-situacii/"
               className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] shadow-[var(--shadow-cta-dark)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+              data-analytics-goal={analyticsGoalNames.situationReviewClick}
+              data-cta-location="header"
+              data-collector-type="request"
+              data-lead-topic="Другое / первый шаг"
+              data-page-slug="global"
+              data-page-type="global"
             >
               Разобрать ситуацию
             </Link>
             <a
               href={site.phoneHref}
               className="hidden min-h-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-2 text-sm font-black text-[color:var(--surface-dark-strong)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] 2xl:inline-flex"
+              data-analytics-goal={analyticsGoalNames.callClick}
+              data-cta-label="Позвонить"
+              data-cta-location="header"
+              data-collector-type="phone"
+              data-lead-topic="phone_contact"
+              data-page-slug="global"
+              data-page-type="global"
             >
               {site.phone}
             </a>
@@ -148,6 +162,12 @@ export function Header() {
                 <Link
                   href="/razbor-situacii/"
                   className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-3 text-center font-black text-[color:var(--text-inverse)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  data-analytics-goal={analyticsGoalNames.situationReviewClick}
+                  data-cta-location="mobile_menu"
+                  data-collector-type="request"
+                  data-lead-topic="Другое / первый шаг"
+                  data-page-slug="global"
+                  data-page-type="global"
                   onClick={closeMobileMenu}
                 >
                   Разобрать ситуацию
@@ -155,6 +175,13 @@ export function Header() {
                 <a
                   href={site.phoneHref}
                   className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  data-analytics-goal={analyticsGoalNames.callClick}
+                  data-cta-label="Позвонить"
+                  data-cta-location="mobile_menu"
+                  data-collector-type="phone"
+                  data-lead-topic="phone_contact"
+                  data-page-slug="global"
+                  data-page-type="global"
                   onClick={closeMobileMenu}
                 >
                   {site.phone}
@@ -162,6 +189,13 @@ export function Header() {
                 <Link
                   href="/kontakty/"
                   className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-center font-black text-[color:var(--surface-dark-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
+                  data-analytics-goal={analyticsGoalNames.contactsClick}
+                  data-cta-label="Построить маршрут"
+                  data-cta-location="mobile_menu"
+                  data-collector-type="route"
+                  data-lead-topic="Контакт / визит"
+                  data-page-slug="global"
+                  data-page-type="global"
                   onClick={closeMobileMenu}
                 >
                   Построить маршрут

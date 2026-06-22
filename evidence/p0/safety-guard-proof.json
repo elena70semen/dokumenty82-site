@@ -10,7 +10,9 @@
     "noForbiddenPublicPhrases": true,
     "noFinalTelegramMaxDeepLinks": true,
     "noUploadInputs": true,
-    "noMetricaIdOrCounter": true,
+    "approvedMetrikaPresent": true,
+    "noUnapprovedAnalyticsOrCounter": true,
+    "noMetrikaIdOrCounter": true,
     "noWebhookOrSecretPattern": true,
     "noFalseSuccessSignal": true,
     "failures": []

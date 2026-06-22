@@ -76,9 +76,9 @@ const requiredPackageScripts = [
 
 const unsafeFeatureFlags = [
   "formsLive",
+  "crmEnabled",
   "crmSuccessEnabled",
-  "analyticsEnabled",
-  "metricaEnabled",
+  "paidTrafficAllowed",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
@@ -104,13 +104,11 @@ const finalizationDocs = standaloneSiteRepo
     ];
 
 const issues = [];
-const operationalBlockers = [
+const baseOperationalBlockers = [
   "staging deploy proof missing expected",
   "rollback proof missing expected",
   "owner/legal acceptance missing expected",
   "CRM/forms/analytics acceptance missing expected",
-  "no-PII analytics payload proof missing expected",
-  "Search Console/Yandex Webmaster setup missing expected",
   "PR #49 merged foundation-only; FNS live fetch, scheduler, rewrite provider, autopublish and indexing remain blocked"
 ];
 
@@ -382,12 +380,16 @@ const browserEvidencePassed = [
 ].every(hasPassedStatus);
 const accessibilityEvidencePassed = hasPassedStatus(codeRel("evidence/accessibility/accessibility-proof.json"));
 const browserSmokePassed = hasPassedStatus(codeRel("evidence/browser/playwright-smoke-proof.json"));
+const trackingNoPiiPassed = hasPassedStatus(codeRel("evidence/finalization/tracking-no-pii-proof.json"));
+const webmasterReadinessEvidencePresent = exists("docs/ads/final-paid-traffic-go-no-go-2026-06-22.md");
 
 const blockers = [
   ...(browserEvidencePassed ? [] : ["browser evidence missing expected"]),
   ...(accessibilityEvidencePassed ? [] : ["accessibility evidence missing expected"]),
   ...(browserSmokePassed ? [] : ["Browser/Playwright smoke missing expected"]),
-  ...operationalBlockers
+  ...(trackingNoPiiPassed ? [] : ["no-PII analytics payload proof missing expected"]),
+  ...(webmasterReadinessEvidencePresent ? [] : ["Search Console/Yandex Webmaster setup missing expected"]),
+  ...baseOperationalBlockers
 ];
 
 if (issues.length > 0) {

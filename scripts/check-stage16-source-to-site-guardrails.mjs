@@ -105,9 +105,9 @@ for (const file of allTextFiles) {
 const flagsText = read("lib/feature-flags.ts");
 for (const flag of [
   "formsLive",
+  "crmEnabled",
   "crmSuccessEnabled",
-  "analyticsEnabled",
-  "metricaEnabled",
+  "paidTrafficAllowed",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",

@@ -274,9 +274,9 @@ for (const marker of [
 
 for (const flag of [
   "formsLive",
+  "crmEnabled",
   "crmSuccessEnabled",
-  "analyticsEnabled",
-  "metricaEnabled",
+  "paidTrafficAllowed",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",

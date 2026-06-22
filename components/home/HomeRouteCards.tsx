@@ -48,9 +48,10 @@ export function HomeRouteCards() {
                     href={card.href}
                     aria-label={`${card.nextStep}: ${card.title}`}
                     className="inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] sm:w-auto"
-                    data-analytics-goal={analyticsGoalNames.relatedRouteClick}
+                    data-analytics-goal={analyticsGoalNames.serviceCardClick}
                     data-cta-label="Разобрать ситуацию"
                     data-cta-location="home_route_card"
+                    data-collector-type="service_card"
                     data-lead-topic="Другое / первый шаг"
                     data-page-slug="home"
                     data-page-type="homepage"

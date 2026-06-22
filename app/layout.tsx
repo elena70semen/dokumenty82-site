@@ -4,6 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { SourceCapture } from "@/components/analytics/SourceCapture";
+import { YandexMetrika } from "@/components/analytics/YandexMetrika";
 import { RevealController } from "@/components/RevealController";
 import { site } from "@/lib/content";
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Центр подготовки документов в Симферополе. Разберём ситуацию и подготовим документы: регистрация, отчётность, ЕГРЮЛ, юридический адрес, банк и 115-ФЗ. Офис рядом с налоговой.",
   icons: {
-    icon: "/assets/brand/favicon.svg"
+    icon: "/favicon.svg"
   },
   openGraph: {
     type: "website",
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         {children}
         <Footer />
         <SourceCapture />
+        <YandexMetrika />
         <RevealController />
       </body>
     </html>

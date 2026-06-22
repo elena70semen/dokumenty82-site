@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { evidenceDir, listFiles, outDir, read, root, writeJson } from "./evidence-utils.mjs";
 
+const APPROVED_METRIKA_ID = "109869928";
 const envExampleFile = path.join(root, ".env.example");
 const proofFile = path.join(evidenceDir, "release", "stage19-staging-env-contract.json");
 const issues = [];
@@ -160,13 +161,18 @@ if (trackedForbiddenEnvFiles.length > 0) {
 const activeMatches = scanFiles(activeRuntimeFiles(), [
   { label: "public live enabled", pattern: /PUBLIC_LIVE_ALLOWED\s*=\s*true|data-public-live-allowed=["']true/i },
   { label: "live analytics enabled", pattern: /NEXT_PUBLIC_(?:ANALYTICS|YANDEX_METRIKA)_ENABLED\s*=\s*true/i },
-  { label: "real Metrika ID", pattern: /NEXT_PUBLIC_YANDEX_METRIKA_ID\s*=\s*(?!00000000\b)[1-9]\d{5,}|counterId\s*[:=]\s*(?!["']?00000000\b)[1-9]\d{5,}/i },
-  { label: "active Metrika script", pattern: /mc\.yandex\.ru|\bym\s*\(\s*[1-9]\d{5,}/i },
+  {
+    label: "unapproved Metrika ID",
+    pattern: new RegExp(
+      `NEXT_PUBLIC_YANDEX_METRIKA_ID\\s*=\\s*(?!00000000\\b|${APPROVED_METRIKA_ID}\\b)[1-9]\\d{5,}|counterId\\s*[:=]\\s*(?!["']?(?:00000000|${APPROVED_METRIKA_ID})\\b)[1-9]\\d{5,}|\\bym\\s*\\(\\s*(?!${APPROVED_METRIKA_ID}\\b)[1-9]\\d{5,}|tag\\.js\\?id=(?!${APPROVED_METRIKA_ID}\\b)[1-9]\\d{5,}|watch/(?!${APPROVED_METRIKA_ID}\\b)[1-9]\\d{5,}`,
+      "i"
+    )
+  },
   { label: "CRM webhook", pattern: /https?:\/\/[^\s"'`]*(?:crm|bitrix|amocrm|webhook)|CRM_WEBHOOK_URL\s*=\s*https?:\/\//i },
   { label: "public upload", pattern: /<input\b[^>]*type=["']file|PUBLIC_UPLOADS_ENABLED\s*=\s*true/i },
   { label: "messaging deep link", pattern: /t\.me\/|telegram\.me\/|max:\/\/|wa\.me\/|whatsapp|PUBLIC_MESSAGING_LINKS_ENABLED\s*=\s*true/i },
   { label: "staging indexing enabled", pattern: /STAGING_INDEXING_ALLOWED\s*=\s*true/i },
-  { label: "Webvisor/session replay/ecommerce", pattern: /webvisor|session\s*replay|sessionReplay|ecommerce/i }
+  { label: "Webvisor/session replay/ecommerce enabled", pattern: /webvisor\s*:\s*true|session\s*replay|sessionReplay|ecommerce\s*:\s*(?:true|["']dataLayer["'])/i }
 ]);
 
 for (const match of activeMatches) {
@@ -208,12 +214,12 @@ const proof = {
   envExamplePath: ".env.example",
   publicLiveAllowed: false,
   analytics: {
-    mode: "stub",
-    enabled: false
+    mode: "production_runtime_with_safe_local_env_defaults",
+    enabled: true
   },
   metrika: {
-    enabled: false,
-    id: "stub",
+    enabled: true,
+    id: APPROVED_METRIKA_ID,
     rawId: env.get("NEXT_PUBLIC_YANDEX_METRIKA_ID") ?? ""
   },
   webmasterPlaceholders: {

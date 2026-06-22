@@ -33,9 +33,10 @@ export function HomeProductFoundation() {
               className={`premium-card premium-link-card flex min-w-0 flex-col p-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)] md:min-h-[218px] ${
                 index === 0 || item.href === "/razbor-situacii/" ? "border-[var(--accent-blue-border)] xl:col-span-2" : ""
               }`}
-              data-analytics-goal={analyticsGoalNames.relatedRouteClick}
+              data-analytics-goal={analyticsGoalNames.serviceCardClick}
               data-cta-label={item.title}
               data-cta-location="home_situation_selector"
+              data-collector-type="service_card"
               data-lead-topic="Другое / первый шаг"
               data-page-slug="home"
               data-page-type="homepage"
@@ -110,9 +111,10 @@ export function HomeProductFoundation() {
               <Link
                 href="/razbor-situacii/"
                 className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-5 py-3 text-sm font-black text-[color:var(--lime-text)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
-                data-analytics-goal={analyticsGoalNames.formStart}
+                data-analytics-goal={analyticsGoalNames.situationReviewClick}
                 data-cta-label={cta.primary}
                 data-cta-location="home_final_cta"
+                data-collector-type="request"
                 data-lead-topic="Другое / первый шаг"
                 data-page-slug="home"
                 data-page-type="homepage"
@@ -125,6 +127,7 @@ export function HomeProductFoundation() {
                 data-analytics-goal={analyticsGoalNames.callClick}
                 data-cta-label={cta.phone}
                 data-cta-location="home_final_cta"
+                data-collector-type="phone"
                 data-lead-topic="Другое / первый шаг"
                 data-page-slug="home"
                 data-page-type="homepage"
@@ -137,6 +140,7 @@ export function HomeProductFoundation() {
                 data-analytics-goal={analyticsGoalNames.routeClick}
                 data-cta-label={cta.route}
                 data-cta-location="home_final_cta"
+                data-collector-type="route"
                 data-lead-topic="Другое / первый шаг"
                 data-page-slug="home"
                 data-page-type="homepage"

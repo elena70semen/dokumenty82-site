@@ -94,9 +94,9 @@ assert(/Sitemap:\s*https:\/\/dokumenty82\.ru\/sitemap\.xml/.test(robotsText), "r
 
 for (const flag of [
   "formsLive",
+  "crmEnabled",
   "crmSuccessEnabled",
-  "analyticsEnabled",
-  "metricaEnabled",
+  "paidTrafficAllowed",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",

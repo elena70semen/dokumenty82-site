@@ -17,6 +17,7 @@ function getActionGoal(action: RouteAction) {
   if (action.kind === "phone") return analyticsGoalNames.callClick;
   if (action.label === "Построить маршрут") return analyticsGoalNames.routeClick;
   if (action.label === "Показать документы") return analyticsGoalNames.docsShowClick;
+  if (action.label === "Разобрать ситуацию") return analyticsGoalNames.situationReviewClick;
   return analyticsGoalNames.formStart;
 }
 
@@ -47,6 +48,7 @@ function RouteActionLink({
         data-analytics-goal={analyticsGoal}
         data-cta-label={action.label}
         data-cta-location={ctaLocation}
+        data-collector-type={action.kind}
         data-lead-topic={leadTopic}
         data-page-slug={pageSlug}
         data-page-type={pageType}
@@ -63,6 +65,7 @@ function RouteActionLink({
       data-analytics-goal={analyticsGoal}
       data-cta-label={action.label}
       data-cta-location={ctaLocation}
+      data-collector-type={action.kind}
       data-lead-topic={leadTopic}
       data-page-slug={pageSlug}
       data-page-type={pageType}

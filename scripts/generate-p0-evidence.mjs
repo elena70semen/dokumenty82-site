@@ -42,9 +42,9 @@ const documentHeavyRoutes = [
 const noindexExcludedRoutes = ["/blog/", "/blog/obnovleniya-fns/", "/blog/razbory/", "/faq/", "/internal/graphics-proof/"];
 const unsafeFlags = [
   "formsLive",
+  "crmEnabled",
   "crmSuccessEnabled",
-  "analyticsEnabled",
-  "metricaEnabled",
+  "paidTrafficAllowed",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",
@@ -67,7 +67,15 @@ const forbiddenPublicPhrases =
   /официальный центр|при налоговой|партн[её]р ФНС|центр ФНС|официальный представитель|100% результат|гарантируем|без отказа|срочно за 1 день/i;
 const telegramMaxDeepLinks = /t\.me\/|telegram\.me\/|max:\/\//i;
 const uploadInput = /<input\b[^>]*\btype=["']file["']|type:\s*["']file["']/i;
-const metricaOrCounter = /ym\(|mc\.yandex|metrika|метрик|counterId|counter-id|yandex_metrica/i;
+const approvedMetrikaId = "109869928";
+const approvedMetrikaSignal = new RegExp(
+  `ym\\(\\s*${approvedMetrikaId}\\b|mc\\.yandex\\.ru/(?:metrika/tag\\.js\\?id=${approvedMetrikaId}\\b|watch/${approvedMetrikaId}\\b)`,
+  "i"
+);
+const unapprovedAnalyticsOrCounter = new RegExp(
+  `ym\\(\\s*(?!${approvedMetrikaId}\\b)[1-9]\\d{5,}|counterId\\s*[:=]\\s*(?!["']?${approvedMetrikaId}\\b)[1-9]\\d{5,}|\\bgtag\\s*\\(|googletagmanager|GoogleAnalytics|\\bG-[A-Z0-9]{6,}\\b|\\bUA-\\d+-\\d+\\b`,
+  "i"
+);
 const webhookOrSecret = /OPENAI_API_KEY|sk-[A-Za-z0-9]|token=|secret=|webhook/i;
 const falseSuccess = /goal_form_submit_success|заявка отправлена|заявка принята|успешно отправ/i;
 
@@ -239,7 +247,9 @@ function parseRenderedRouteProof() {
       containsForbiddenPhrase: forbiddenPublicPhrases.test(html),
       containsUploadInput: uploadInput.test(html),
       containsTelegramMaxDeepLink: telegramMaxDeepLinks.test(html),
-      containsMetricaOrCounter: metricaOrCounter.test(html),
+      containsApprovedMetrika: approvedMetrikaSignal.test(html),
+      containsUnapprovedAnalyticsOrCounter: unapprovedAnalyticsOrCounter.test(html),
+      containsMetricaOrCounter: unapprovedAnalyticsOrCounter.test(html),
       containsWebhookOrSecretPattern: webhookOrSecret.test(html),
       containsFalseSuccessSignal: falseSuccess.test(html),
       safeCollectorOrContactPathFound:
@@ -331,7 +341,7 @@ function parseSafetyGuardProof(renderedRouteProof) {
       route.containsForbiddenPhrase ||
       route.containsUploadInput ||
       route.containsTelegramMaxDeepLink ||
-      route.containsMetricaOrCounter ||
+      route.containsUnapprovedAnalyticsOrCounter ||
       route.containsWebhookOrSecretPattern ||
       route.containsFalseSuccessSignal
   );
@@ -345,7 +355,9 @@ function parseSafetyGuardProof(renderedRouteProof) {
       noForbiddenPublicPhrases: !renderedRouteProof.some((route) => route.containsForbiddenPhrase),
       noFinalTelegramMaxDeepLinks: !renderedRouteProof.some((route) => route.containsTelegramMaxDeepLink),
       noUploadInputs: !renderedRouteProof.some((route) => route.containsUploadInput),
-      noMetricaIdOrCounter: !renderedRouteProof.some((route) => route.containsMetricaOrCounter),
+      approvedMetrikaPresent: renderedRouteProof.some((route) => route.containsApprovedMetrika),
+      noUnapprovedAnalyticsOrCounter: !renderedRouteProof.some((route) => route.containsUnapprovedAnalyticsOrCounter),
+      noMetrikaIdOrCounter: !renderedRouteProof.some((route) => route.containsUnapprovedAnalyticsOrCounter),
       noWebhookOrSecretPattern: !renderedRouteProof.some((route) => route.containsWebhookOrSecretPattern),
       noFalseSuccessSignal: !renderedRouteProof.some((route) => route.containsFalseSuccessSignal),
       failures: renderedFailures.map((route) => route.route)

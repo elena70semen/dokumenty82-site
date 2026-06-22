@@ -34,9 +34,10 @@ export function HomeHero() {
             <Link
               href={homeHero.primaryCta.href}
               className="inline-flex min-h-12 w-full min-w-[190px] items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
-              data-analytics-goal={analyticsGoalNames.formStart}
+              data-analytics-goal={analyticsGoalNames.situationReviewClick}
               data-cta-label={homeHero.primaryCta.label}
               data-cta-location="home_hero_primary"
+              data-collector-type="request"
               data-lead-topic="Другое / первый шаг"
               data-page-slug="home"
               data-page-type="homepage"
@@ -49,6 +50,7 @@ export function HomeHero() {
               data-analytics-goal={analyticsGoalNames.docsShowClick}
               data-cta-label={homeHero.secondaryCta.label}
               data-cta-location="home_hero_secondary"
+              data-collector-type="show_documents"
               data-lead-topic="Другое / первый шаг"
               data-page-slug="home"
               data-page-type="homepage"
@@ -61,6 +63,7 @@ export function HomeHero() {
               data-analytics-goal={analyticsGoalNames.callClick}
               data-cta-label={homeHero.phoneCta.label}
               data-cta-location="home_hero_secondary"
+              data-collector-type="phone"
               data-lead-topic="Другое / первый шаг"
               data-page-slug="home"
               data-page-type="homepage"

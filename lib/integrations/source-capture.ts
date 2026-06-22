@@ -12,7 +12,9 @@ export const ctaContextKeys = [
   "page_type",
   "cta_label",
   "cta_location",
-  "lead_topic"
+  "lead_topic",
+  "collector_type",
+  "related_href"
 ] as const;
 
 export const safeSourceContextKeys = [...sourceCaptureKeys, ...ctaContextKeys] as const;
@@ -135,7 +137,9 @@ export function captureSourceFromDataset(dataset: DOMStringMap | Record<string, 
     page_type: dataset.pageType,
     cta_label: dataset.ctaLabel,
     cta_location: dataset.ctaLocation,
-    lead_topic: dataset.leadTopic
+    lead_topic: dataset.leadTopic,
+    collector_type: dataset.collectorType,
+    related_href: dataset.relatedHref
   });
 }
 

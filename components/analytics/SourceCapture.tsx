@@ -40,6 +40,7 @@ export function SourceCapture() {
         page_type: target.dataset.pageType || getPageTypeFromPath(window.location.pathname),
         cta_label: target.dataset.ctaLabel,
         cta_location: target.dataset.ctaLocation,
+        collector_type: target.dataset.collectorType,
         lead_topic: target.dataset.leadTopic,
         related_href: target.dataset.relatedHref
       };

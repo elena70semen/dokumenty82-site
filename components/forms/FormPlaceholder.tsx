@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { useId, useState } from "react";
 import { site } from "@/lib/content";
-import { trackFormStart, trackFormSubmitAttempt, trackFormSubmitFail } from "@/lib/integrations/analytics-events";
+import {
+  analyticsGoalNames,
+  trackFormStart,
+  trackFormSubmitAttempt,
+  trackFormSubmitFail
+} from "@/lib/integrations/analytics-events";
 
 type PlaceholderField = {
   id: string;
@@ -146,12 +151,26 @@ export function FormPlaceholder({
             <Link
               href="/kontakty/"
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-5 py-3 text-center text-sm font-black text-[color:var(--surface-dark-strong)]"
+              data-analytics-goal={analyticsGoalNames.fallbackContactClick}
+              data-cta-label="Перейти в контакты"
+              data-cta-location={ctaLocation}
+              data-collector-type="fallback_contact"
+              data-lead-topic={leadTopic}
+              data-page-slug={pageSlug}
+              data-page-type={pageType}
             >
               Перейти в контакты
             </Link>
             <a
               href={site.phoneHref}
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white px-5 py-3 text-center text-sm font-black text-[color:var(--surface-dark-strong)]"
+              data-analytics-goal={analyticsGoalNames.fallbackContactClick}
+              data-cta-label="Позвонить"
+              data-cta-location={ctaLocation}
+              data-collector-type="fallback_phone"
+              data-lead-topic={leadTopic}
+              data-page-slug={pageSlug}
+              data-page-type={pageType}
             >
               {site.phone}
             </a>

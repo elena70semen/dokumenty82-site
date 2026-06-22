@@ -1,25 +1,22 @@
-export type AnalyticsMode = "stub";
+export type AnalyticsMode = "production";
 
-const STUB_METRIKA_ID = "00000000";
-
-const envAnalyticsEnabled =
-  process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true" || process.env.NEXT_PUBLIC_YANDEX_METRIKA_ENABLED === "true";
-const envAnalyticsMode = process.env.NEXT_PUBLIC_ANALYTICS_MODE === "live" ? "live" : "stub";
-const envMetrikaId =
-  process.env.NEXT_PUBLIC_METRIKA_ID?.trim() || process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID?.trim() || STUB_METRIKA_ID;
-const envHasRealMetrikaId = /^[1-9]\d{5,}$/.test(envMetrikaId);
+export const YANDEX_METRIKA_ID = "109869928";
 
 export const analyticsConfig = {
-  enabled: false,
-  mode: "stub" satisfies AnalyticsMode,
-  yandexMetrikaId: STUB_METRIKA_ID,
+  enabled: true,
+  mode: "production" satisfies AnalyticsMode,
+  yandexMetrikaId: YANDEX_METRIKA_ID,
   domain: "dokumenty82.ru",
   siteUrl: "https://dokumenty82.ru/",
-  canLoadScript: false,
-  canSendEvents: false,
-  envRequestedLive: envAnalyticsEnabled && envAnalyticsMode === "live" && envHasRealMetrikaId
+  canLoadScript: true,
+  canSendEvents: true,
+  clickmap: true,
+  trackLinks: true,
+  accurateTrackBounce: true,
+  webvisor: false,
+  ecommerce: false
 } as const;
 
-export function isAnalyticsStubbed() {
-  return !analyticsConfig.enabled && !analyticsConfig.canLoadScript && !analyticsConfig.canSendEvents;
+export function isAnalyticsProductionReady() {
+  return analyticsConfig.enabled && analyticsConfig.canLoadScript && analyticsConfig.canSendEvents;
 }

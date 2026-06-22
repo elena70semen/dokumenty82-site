@@ -211,10 +211,11 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
               <Link
                 href={primaryCollector.href}
                 className="inline-flex min-h-12 w-full min-w-[184px] items-center justify-center rounded-[8px] bg-[var(--lime-signal)] px-6 py-3 text-center text-sm font-black text-[color:var(--lime-text)] shadow-[var(--shadow-signal)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-dark)] sm:w-auto"
-                data-analytics-goal={primaryCollector.label === cta.docs ? analyticsGoalNames.docsShowClick : analyticsGoalNames.formStart}
+                data-analytics-goal={primaryCollector.label === cta.docs ? analyticsGoalNames.docsShowClick : analyticsGoalNames.situationReviewClick}
                 data-collector-kind={primaryCollector.kind}
                 data-cta-label={primaryCollector.label}
                 data-cta-location="dynamic_route_hero_primary"
+                data-collector-type={primaryCollector.kind}
                 data-lead-topic={page.leadTopic ?? page.slug}
                 data-page-slug={page.slug}
                 data-page-type={page.pageType}
@@ -227,6 +228,7 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                 data-analytics-goal={analyticsGoalNames.callClick}
                 data-cta-label="Позвонить"
                 data-cta-location="dynamic_route_hero_secondary"
+                data-collector-type="phone"
                 data-lead-topic={page.leadTopic ?? page.slug}
                 data-page-slug={page.slug}
                 data-page-type={page.pageType}
@@ -358,9 +360,10 @@ export default async function CanonRoutePage({ params }: { params: Promise<{ slu
                   <Link
                     href={relatedRoute.href}
                     className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-center text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
-                    data-analytics-goal={analyticsGoalNames.relatedRouteClick}
+                    data-analytics-goal={analyticsGoalNames.serviceCardClick}
                     data-cta-label={relatedRoute.shortTitle}
                     data-cta-location="dynamic_route_related"
+                    data-collector-type="service_card"
                     data-lead-topic={page.leadTopic ?? page.slug}
                     data-page-slug={page.slug}
                     data-page-type={page.pageType}

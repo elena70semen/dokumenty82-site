@@ -53,6 +53,7 @@ export function HomeLocalContact() {
                         data-analytics-goal={analyticsGoalNames.callClick}
                         data-cta-label="Позвонить"
                         data-cta-location="home_local_contact_phone"
+                        data-collector-type="phone"
                         data-lead-topic="Контакт / визит"
                         data-page-slug="home"
                         data-page-type="homepage"
@@ -80,6 +81,7 @@ export function HomeLocalContact() {
                       data-analytics-goal={isPhone ? analyticsGoalNames.callClick : analyticsGoalNames.routeClick}
                       data-cta-label={action.label}
                       data-cta-location="home_local_contact_actions"
+                      data-collector-type={isPhone ? "phone" : "route"}
                       data-lead-topic="Контакт / визит"
                       data-page-slug="home"
                       data-page-type="homepage"
@@ -94,6 +96,7 @@ export function HomeLocalContact() {
                       data-analytics-goal={analyticsGoalNames.routeClick}
                       data-cta-label={action.label}
                       data-cta-location="home_local_contact_actions"
+                      data-collector-type="route"
                       data-lead-topic="Контакт / визит"
                       data-page-slug="home"
                       data-page-type="homepage"

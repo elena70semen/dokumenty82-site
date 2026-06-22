@@ -24,7 +24,14 @@ const priorityRoutes = [
 ];
 
 const noindexFoundationRoutes = ["/blog/", "/blog/obnovleniya-fns/", "/blog/razbory/"];
-const allowedCtaLabels = new Set(["Разобрать ситуацию", "Позвонить", "Построить маршрут", "Показать документы", "Контакты"]);
+const allowedCtaLabels = new Set([
+  "Разобрать ситуацию",
+  "Позвонить",
+  "Построить маршрут",
+  "Показать документы",
+  "Контакты",
+  "Перейти в контакты"
+]);
 const requiredBlockFamilies = [
   "route_intent",
   "when_this_page_fits",
@@ -197,9 +204,9 @@ for (const routePath of noindexFoundationRoutes) {
 
 for (const marker of [
   "formsLive: false",
+  "crmEnabled: false",
   "crmSuccessEnabled: false",
-  "analyticsEnabled: false",
-  "metricaEnabled: false",
+  "paidTrafficAllowed: false",
   "telegramEnabled: false",
   "maxEnabled: false",
   "messagingRevealEnabled: false"

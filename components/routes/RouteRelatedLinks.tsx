@@ -48,9 +48,10 @@ export function RouteRelatedLinks({ links, pageSlug, pageType, leadTopic }: Rout
                 <Link
                   href={link.href}
                   className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-[8px] bg-[var(--surface-dark-strong)] px-4 py-2 text-sm font-black text-[color:var(--text-inverse)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-on-light)]"
-                  data-analytics-goal={analyticsGoalNames.relatedRouteClick}
+                  data-analytics-goal={analyticsGoalNames.serviceCardClick}
                   data-cta-label={link.title}
                   data-cta-location="route_related_links"
+                  data-collector-type="service_card"
                   data-lead-topic={leadTopic}
                   data-page-slug={pageSlug}
                   data-page-type={pageType}

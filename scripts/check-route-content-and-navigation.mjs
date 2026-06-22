@@ -59,9 +59,9 @@ const requiredVisibleParentRelatedRoutes = {
 };
 const unsafeFeatureFlags = [
   "formsLive",
+  "crmEnabled",
   "crmSuccessEnabled",
-  "analyticsEnabled",
-  "metricaEnabled",
+  "paidTrafficAllowed",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",

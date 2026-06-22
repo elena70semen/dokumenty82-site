@@ -1,8 +1,10 @@
 export const siteFeatureFlags = {
   formsLive: false,
+  crmEnabled: false,
   crmSuccessEnabled: false,
-  analyticsEnabled: false,
-  metricaEnabled: false,
+  analyticsEnabled: true,
+  metricaEnabled: true,
+  paidTrafficAllowed: false,
   maxEnabled: false,
   telegramEnabled: false,
   messagingRevealEnabled: false,

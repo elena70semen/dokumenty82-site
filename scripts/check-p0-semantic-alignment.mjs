@@ -102,9 +102,9 @@ if (/path:\s*"\/news\/?"|href=["']\/news\/?["']|<loc>https:\/\/dokumenty82\.ru\/
 
 const requiredClosedFlags = [
   "formsLive",
+  "crmEnabled",
   "crmSuccessEnabled",
-  "analyticsEnabled",
-  "metricaEnabled",
+  "paidTrafficAllowed",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",

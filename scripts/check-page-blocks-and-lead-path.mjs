@@ -19,12 +19,19 @@ const requiredBlockFamilies = [
 ];
 
 const expectedNoindexRoutes = ["/blog/", "/blog/obnovleniya-fns/", "/blog/razbory/"];
-const allowedCtaLabels = new Set(["Разобрать ситуацию", "Позвонить", "Построить маршрут", "Показать документы", "Контакты"]);
+const allowedCtaLabels = new Set([
+  "Разобрать ситуацию",
+  "Позвонить",
+  "Построить маршрут",
+  "Показать документы",
+  "Контакты",
+  "Перейти в контакты"
+]);
 const unsafeFlags = [
   "formsLive",
+  "crmEnabled",
   "crmSuccessEnabled",
-  "analyticsEnabled",
-  "metricaEnabled",
+  "paidTrafficAllowed",
   "maxEnabled",
   "telegramEnabled",
   "messagingRevealEnabled",

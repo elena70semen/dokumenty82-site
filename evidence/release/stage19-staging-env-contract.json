@@ -1,19 +1,19 @@
 {
   "status": "passed",
-  "timestamp": "2026-06-13T23:15:45.860Z",
+  "timestamp": "2026-06-22T08:16:16.439Z",
   "git": {
-    "branch": "stage20/trust-public-info-policy-readiness",
-    "commit": "d39a5c4"
+    "branch": "codex/finalize-webmaster-paid-readiness-2026-06-22",
+    "commit": "e86a7d4"
   },
   "envExamplePath": ".env.example",
   "publicLiveAllowed": false,
   "analytics": {
-    "mode": "stub",
-    "enabled": false
+    "mode": "production_runtime_with_safe_local_env_defaults",
+    "enabled": true
   },
   "metrika": {
-    "enabled": false,
-    "id": "stub",
+    "enabled": true,
+    "id": "109869928",
     "rawId": "00000000"
   },
   "webmasterPlaceholders": {
