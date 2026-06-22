@@ -1,0 +1,5 @@
+:HL["/_next/static/chunks/1pfo4_pi4kjzu.css","style"]
+:HL["/assets/images/office-reception.png","image"]
+:HL["/assets/images/brand-logo-transparent.png","image"]
+:HL["/assets/images/bank-115fz-documents.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"slug","param":{"type":"d","key":"otvet-na-zapros-banka","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"FeHlKDnd82uFIMEzhs5cp"}
