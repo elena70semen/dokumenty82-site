@@ -1,0 +1,10 @@
+{
+  "name": "dokumenty82-site-static-snapshot",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "evidence:ad-readiness-actions": "node scripts/generate-ad-readiness-site-actions-evidence.mjs",
+    "check:ad-readiness-actions": "node scripts/check-ad-readiness-site-actions-evidence.mjs"
+  }
+}
