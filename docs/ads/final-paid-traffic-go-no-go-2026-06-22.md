@@ -262,6 +262,24 @@ Repeat after the next confirmed deploy:
 | GitHub PR mergeability | `PASS` | PR #36 reports `MERGEABLE` after force-with-lease cleanup push. |
 | GitHub checks | `NOT_REPORTED` | GitHub reports no checks on the cleaned PR branch. |
 
+## Owner / Deploy / Legal Decision Packet
+
+A dedicated decision packet was added:
+
+`docs/ads/owner-deploy-legal-decision-packet-2026-06-22.md`
+
+Current decision status:
+
+- Owner GO: `NOT_GIVEN`
+- Deploy source: `NOT_CONFIRMED`
+- Sitemap contour: `30_URL_CURRENT / OWNER_CONFIRMATION_REQUIRED`
+- Metrika Webvisor/ecommerce: `OWNER_LEGAL_DECISION_REQUIRED`
+- Landing pages: `OWNER_CONFIRMATION_REQUIRED`
+- Forms/CRM: `OFF`
+- Paid traffic: `HOLD`
+
+PR #36 remains Draft.
+
 ## Owner Decision Checklist
 
 - Confirm whether current static `main` is the deploy source for live.
