@@ -53,6 +53,7 @@ Do not launch ads, do not merge/deploy for paid traffic, and do not enable forms
 - Safe `reachGoal` dispatch is implemented.
 - UTM/source context is preserved in session storage with allowlisted fields only.
 - No PII fields are allowlisted in analytics payloads.
+- Source `robots.txt` closes `/internal/`.
 - Forms, CRM and paid traffic remain disabled.
 - `check:tracking-no-pii` added to finalization.
 - P0 evidence regenerated for approved Metrika mode.
@@ -67,6 +68,7 @@ Do not launch ads, do not merge/deploy for paid traffic, and do not enable forms
 6. `METRIKA_LK_GOALS_CONFIRMATION_REQUIRED`: source goals exist, but LK goal configuration/goal firing must be smoke-tested after deploy.
 7. `FORMS_CRM_HOLD`: forms/CRM remain off; enabling them requires a separate approved PR.
 8. `LEGAL_OWNER_SIGNOFF_REQUIRED`: sensitive ad categories require owner/legal confirmation of copy, claims and disclaimers.
+9. `PR_MERGE_CONFLICT`: GitHub reports PR #36 as `CONFLICTING` against current `main`; conflict resolution is required before any merge/deploy candidate.
 
 ## Should Fix
 
@@ -75,6 +77,7 @@ Do not launch ads, do not merge/deploy for paid traffic, and do not enable forms
 - Repeat live smoke after deploy: favicon, robots, sitemap, canonical, Metrika, noindex, 404.
 - Reconcile live Metrika init with source/build: no Webvisor/ecommerce unless separately approved by owner/legal/privacy review.
 - Confirm Metrika LK goals exist for the implemented goal IDs.
+- Align the safe analytics allowlist with the full attribution vocabulary if needed before ads: current source safely captures a narrower set than the full owner prompt/source list.
 - Update privacy/legal text after owner/legal confirms actual analytics/forms state.
 - Decide whether live sitemap should remain 30 URLs or move to the 36 URL source sitemap.
 
@@ -181,9 +184,133 @@ Repeat after the next deploy from `dokumenty82-site`:
 | Post-build artifact check | `PASS` | `out/favicon.svg`, `out/favicon.ico`, `out/robots.txt`, `out/sitemap.xml`, Metrika init/watch present. |
 | Live endpoint smoke | `WATCH` | favicon/robots/sitemap return 200; sitemap count and Metrika init config differ from source. |
 
+## PR #36 Final Reconciliation Check
+
+Date: 2026-06-22
+
+PR: `#36`
+
+PR URL: `https://github.com/elena70semen/dokumenty82-site/pull/36`
+
+Status: `Draft`
+
+Head branch: `codex/finalize-webmaster-paid-readiness-2026-06-22`
+
+Base branch: `main`
+
+Head SHA: `0989633d5f43cd922ac0abafe85119df17e4e011`
+
+Mergeable: `CONFLICTING`
+
+GitHub checks: `NOT_REPORTED`
+
+Score: `7/10`
+
+Verdict: `BLOCKED_OWNER_DECISION_REQUIRED`
+
+Paid traffic: `HOLD`
+
+Notes:
+
+- `gh pr view` confirms PR #36 is open and remains Draft.
+- `gh pr diff --stat` is not supported by the installed GitHub CLI.
+- `gh pr diff --name-only` returned GitHub API `diff too_large`; local `git diff origin/main...HEAD` was used for file/diff reconciliation.
+- GitHub currently reports no checks for the PR branch. This is not a green CI signal.
+
+### Confirmed
+
+- Favicon source/build: `PASS`.
+- Live favicon: `PASS`.
+- Metrika `109869928`: `PRESERVED` in source/build/live.
+- Safe `reachGoal` without PII: `PASS`.
+- Forms/CRM: `OFF`.
+- Paid traffic: `OFF/HOLD`.
+- Source `robots.txt` closes `/internal/`: `PASS`.
+- Webmaster: observation mode.
+
+### Remaining Blockers
+
+| Blocker | Status | Owner | Notes |
+| --- | --- | --- | --- |
+| Owner GO | `BLOCKED` | Owner | No explicit paid-traffic GO is recorded. |
+| Production deploy source | `OWNER_DECISION_REQUIRED` | Owner / Dev | Confirm whether live deploy source is this PR/site repo path and not PR #95/evidence repo output. |
+| PR #36 mergeability | `BLOCKED_DEV_RESOLUTION_REQUIRED` | Dev / Codex | PR is `CONFLICTING` against current `main`; conflicts include app, sitemap, package/check scripts and evidence paths. |
+| Live sitemap 30 vs source/build 36 | `OWNER_DECISION_REQUIRED` | SEO / Dev | Decide whether the next deploy expands live to 36 source URLs or keeps the current 30 URL contour. |
+| Live robots vs source robots | `OWNER_DECISION_REQUIRED` | SEO / Dev | Source now closes `/internal/`; remaining live/source mismatch is public-live status comments and extra clean-param values. |
+| Metrika Webvisor/ecommerce mismatch | `OWNER_LEGAL_DECISION_REQUIRED` | Owner / Legal | Live has `webvisor:true` and `ecommerce:"dataLayer"`; source/build keeps them disabled. |
+| Metrika goals UI confirmation after deploy | `WAITING_DEPLOY` | Marketing / Analytics | Source goal IDs exist; LK firing must be confirmed after deploy. |
+
+### Sitemap Decision
+
+Current comparison:
+
+- Source sitemap URLs: `36`.
+- Live sitemap URLs: `30`.
+- Common URLs: `29`.
+- Live-only URL: `https://dokumenty82.ru/policy/`.
+- Source-only canonical URL variant: `https://dokumenty82.ru/policy`.
+
+Six source-only route additions:
+
+| URL | Recommendation |
+| --- | --- |
+| `/otchetnost-elektronno/` | Keep in source/build only if owner approves the 36-route deploy; not for ads until landing/copy review. |
+| `/perehod-na-ausn/` | Keep indexable only after owner/SEO approval; blocked from ads until tax/legal review. |
+| `/srochnoe-oformlenie-sotrudnikov/` | Keep indexable only after owner/SEO approval; not for ads until urgency and personal-data copy review. |
+| `/kadrovoe-soprovozhdenie/` | Keep in source/build as a supported route; not for ads until owner landing review. |
+| `/buhgalterskoe-soprovozhdenie-ooo/` | Keep in source/build as a supported route; not for ads until owner landing review. |
+| `/buhgalterskoe-soprovozhdenie-ip/` | Keep in source/build as a supported route; not for ads until owner landing review. |
+
+Concrete sitemap recommendation:
+
+- Do not manually patch live sitemap outside the approved deploy path.
+- If owner approves PR #36 as the deploy source, resolve PR conflicts, deploy the 36 URL sitemap, then re-submit/re-check in Webmaster.
+- If owner wants to preserve the current 30 URL live contour, reduce source/build sitemap in a separate explicit SEO/deploy decision and keep the six routes out of paid traffic.
+- Align `/policy` vs `/policy/` to the source route registry canonical `/policy`; do not use policy as an ad landing page.
+
+### Robots Decision
+
+Classification:
+
+| Difference | Classification | Decision |
+| --- | --- | --- |
+| Source now includes `Disallow: /internal/` | `PASS_SOURCE` | Keep. This does not close public SEO pages. |
+| Live includes `PUBLIC_LIVE_ALLOWED=true` comments | `OWNER_DECISION_REQUIRED` | Do not copy into source unless owner confirms the public-live governance status. |
+| Live has extra `Clean-param` values: `utm_id`, `utm_referrer`, `gclid`, `fbclid` | `ACCEPTABLE_SHOULD_REVIEW` | Not a paid landing blocker, but SEO/dev should decide whether source should match live clean-param coverage. |
+
+### Metrika Decision Matrix
+
+Option A - bring source to live:
+
+- Pros: preserves current live behavior and may keep existing session replay/ecommerce signals.
+- Cons: Webvisor/ecommerce require owner/legal/privacy approval; ecommerce is likely unnecessary for a service site.
+
+Option B - bring live to source after deploy:
+
+- Pros: stricter privacy/no-PII posture; source/build already disables Webvisor/ecommerce.
+- Cons: changes current live behavior; owner must approve disabling Webvisor/ecommerce.
+
+Option C - keep mismatch as blocker:
+
+- Pros: no privacy/legal risk is accepted without owner decision.
+- Cons: paid traffic remains `HOLD`.
+
+Recommendation: use Option C now. Do not enable or disable Webvisor/ecommerce automatically. Owner/legal must choose A or B before paid traffic.
+
+### Decision Needed
+
+Concrete recommendation:
+
+1. Keep PR #36 as Draft.
+2. Do not merge, deploy or start ads.
+3. Owner/dev must confirm production deploy source and whether PR #36 should become the deploy artifact after conflict resolution.
+4. Owner/legal must decide Metrika Webvisor/ecommerce policy.
+5. If owner chooses PR #36 deploy path, resolve merge conflicts, rerun full checks, deploy, then run post-deploy smoke, Metrika goals UI check and Webmaster re-check.
+
 ## Owner Decision Checklist
 
 - [ ] Confirm `dokumenty82-site` is the deploy source of truth for live.
+- [ ] Confirm PR #36 conflict resolution path before any merge/deploy.
 - [ ] Confirm next deploy will not remove Yandex Metrika `109869928`.
 - [ ] Confirm live should use source sitemap with 36 URLs or explain the 30 URL live sitemap.
 - [ ] Confirm favicon assets are approved for production.
