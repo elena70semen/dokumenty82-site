@@ -280,6 +280,22 @@ Current decision status:
 
 PR #36 remains Draft.
 
+## Production Deploy Source Verification
+
+A dedicated deploy-source verification note was added:
+
+`docs/ads/production-deploy-source-verification-2026-06-22.md`
+
+Current status:
+
+- Deploy source: `DEPLOY_SOURCE_PARTIALLY_PROVEN`
+- Paid traffic: `HOLD`
+- PR #36: `Draft`
+- Merge/deploy/ads: `NO`
+
+The deploy source must be explicitly confirmed by owner/deployer before any
+paid traffic launch.
+
 ## Owner Decision Checklist
 
 - Confirm whether current static `main` is the deploy source for live.

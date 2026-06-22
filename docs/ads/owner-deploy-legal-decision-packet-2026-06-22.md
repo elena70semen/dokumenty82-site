@@ -160,6 +160,21 @@ Recommended path:
 8. Run post-deploy smoke-check.
 9. Final launch verdict must be a new `GO/NO-GO` note.
 
+## Production Deploy Source Verification
+
+A dedicated verification note was added:
+
+`docs/ads/production-deploy-source-verification-2026-06-22.md`
+
+Current deploy-source status:
+
+```text
+DEPLOY_SOURCE_PARTIALLY_PROVEN
+```
+
+Owner/deployer still must confirm the real deploy source before any merge,
+deploy, or ads launch.
+
 ## 5. Final Owner Signature Block
 
 Owner decision status:
