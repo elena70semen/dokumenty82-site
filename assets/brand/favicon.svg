@@ -1,8 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title id="title">Документы для бизнеса — favicon</title>
-  <desc id="desc">Нейтральный favicon сайта: знак ДБ в брендовых цветах без имитации официального статуса.</desc>
-  <rect width="64" height="64" rx="8" fill="#111821"/>
-  <path d="M8 8h48v48H8z" fill="#0D4A3B" opacity=".78"/>
-  <path d="M8 8h32v32H8z" fill="#C69A47" opacity=".62"/>
-  <text x="32" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">ДБ</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Documents for business">
+  <defs>
+    <linearGradient id="gold" x1="18" y1="6" x2="112" y2="122" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe8a4"/>
+      <stop offset="0.48" stop-color="#e4ac3f"/>
+      <stop offset="1" stop-color="#8f5c16"/>
+    </linearGradient>
+    <linearGradient id="emerald" x1="76" y1="76" x2="116" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0aa783"/>
+      <stop offset="1" stop-color="#004d3d"/>
+    </linearGradient>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="26" y="11" width="62" height="101" rx="8" fill="#09131f" stroke="url(#gold)" stroke-width="7"/>
+    <rect x="34" y="19" width="45" height="84" rx="4" fill="none" stroke="#ffe8a4" stroke-width="2" opacity="0.85"/>
+    <rect x="81" y="30" width="22" height="55" rx="3" fill="#fff7dc" stroke="url(#gold)" stroke-width="4"/>
+    <path d="M39 38h34M39 50h36M39 62h33M39 74h27" stroke="#ffe8a4" stroke-width="5" stroke-linecap="round"/>
+    <path d="M88 41h10M88 53h10M88 65h10M88 77h10" stroke="#e4ac3f" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="92" cy="94" r="25" fill="url(#emerald)" stroke="url(#gold)" stroke-width="6"/>
+    <path d="M82 94l9 9 17-24" fill="none" stroke="#ffe8a4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
 </svg>
