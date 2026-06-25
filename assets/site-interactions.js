@@ -335,3 +335,53 @@
     addFooterMessengerLinks();
   });
 })();
+
+(() => {
+  const LOGO_SRC = "/assets/images/brand-logo-open-book.png?v=20260625-logo-fix";
+
+  function isBrandLogo(img) {
+    const src = img.getAttribute("src") || "";
+    if (src.indexOf("brand-logo") !== -1) return true;
+
+    return Boolean(
+      img.closest(
+        'header a[href="/"], footer a[href="/"], header a[href="https://dokumenty82.ru/"], footer a[href="https://dokumenty82.ru/"]'
+      )
+    );
+  }
+
+  function refreshBrandLogos() {
+    document.querySelectorAll("header img, footer img").forEach((img) => {
+      if (!isBrandLogo(img)) return;
+      if (img.getAttribute("src") !== LOGO_SRC) {
+        img.setAttribute("src", LOGO_SRC);
+      }
+      img.removeAttribute("srcset");
+      img.classList.add("d82-open-book-logo");
+    });
+  }
+
+  function startBrandLogoGuard() {
+    refreshBrandLogos();
+    [120, 400, 900, 1600, 2600].forEach((delay) => {
+      window.setTimeout(refreshBrandLogos, delay);
+    });
+
+    if ("MutationObserver" in window) {
+      const observer = new MutationObserver(refreshBrandLogos);
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["src", "srcset"],
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startBrandLogoGuard, { once: true });
+  } else {
+    startBrandLogoGuard();
+  }
+  window.addEventListener("load", refreshBrandLogos, { once: true });
+})();
