@@ -2741,3 +2741,52 @@ footer .d82-footer-contact-strip .d82-footer-messenger-max span {
   }
 }
 
+/* Open-book logo sizing pass: slightly stronger mark, no layout or link changes. */
+header a[href="/"]:has(img[src*="brand-logo-open-book"]) > span:first-child {
+  width: 92px !important;
+  height: 66px !important;
+  overflow: visible !important;
+}
+
+footer a[href="/"]:has(img[src*="brand-logo-open-book"]) > span:first-child {
+  width: 84px !important;
+  height: 60px !important;
+  overflow: visible !important;
+}
+
+header img[src*="brand-logo-open-book"],
+footer img[src*="brand-logo-open-book"],
+.d82-open-book-logo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  transform: scale(1.08) !important;
+  transform-origin: center !important;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.44)) drop-shadow(0 0 10px rgba(218, 181, 103, 0.14)) !important;
+}
+
+main img[src*="brand-logo-open-book"] {
+  width: clamp(78px, 6.5vw, 104px) !important;
+  height: auto !important;
+  max-width: none !important;
+  transform: scale(1.08) !important;
+  transform-origin: center !important;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.36)) drop-shadow(0 0 10px rgba(218, 181, 103, 0.12)) !important;
+}
+
+@media (max-width: 760px) {
+  header a[href="/"]:has(img[src*="brand-logo-open-book"]) > span:first-child {
+    width: 70px !important;
+    height: 52px !important;
+  }
+
+  footer a[href="/"]:has(img[src*="brand-logo-open-book"]) > span:first-child {
+    width: 72px !important;
+    height: 52px !important;
+  }
+
+  main img[src*="brand-logo-open-book"] {
+    width: 82px !important;
+  }
+}
+
