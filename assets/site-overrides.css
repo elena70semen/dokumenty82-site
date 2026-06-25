@@ -2766,10 +2766,10 @@ footer img[src*="brand-logo-open-book"],
 }
 
 main img[src*="brand-logo-open-book"] {
-  width: clamp(78px, 6.5vw, 104px) !important;
+  width: clamp(58px, 4.8vw, 76px) !important;
   height: auto !important;
   max-width: none !important;
-  transform: scale(1.08) !important;
+  transform: none !important;
   transform-origin: center !important;
   filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.36)) drop-shadow(0 0 10px rgba(218, 181, 103, 0.12)) !important;
 }
@@ -2786,7 +2786,7 @@ main img[src*="brand-logo-open-book"] {
   }
 
   main img[src*="brand-logo-open-book"] {
-    width: 82px !important;
+    width: 64px !important;
   }
 }
 
