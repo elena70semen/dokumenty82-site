@@ -2780,7 +2780,7 @@ header a[href="/"]:has(img[src*="brand-logo-open-book"]) > span:first-child {
 
 header img[src*="brand-logo-open-book"],
 header .d82-open-book-logo {
-  transform: translateY(-5px) !important;
+  transform: translateY(-10px) !important;
   object-position: center !important;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.38)) drop-shadow(0 0 8px rgba(218, 181, 103, 0.12)) !important;
 }
@@ -2803,7 +2803,7 @@ main img[src*="brand-logo-open-book"] {
 
   header img[src*="brand-logo-open-book"],
   header .d82-open-book-logo {
-    transform: translateY(-3px) !important;
+    transform: translateY(-6px) !important;
   }
 
   footer a[href="/"]:has(img[src*="brand-logo-open-book"]) > span:first-child {

@@ -299,6 +299,30 @@
     }
   }
 
+  function wireRazborCurrentPageCtas() {
+    const path = window.location.pathname || "/";
+    if (path !== "/razbor-situacii/") return;
+
+    const target = document.getElementById("route-contact");
+    if (!target) return;
+
+    document.querySelectorAll('a[href="/razbor-situacii/"][data-collector-type="situation_review"]').forEach(function (link) {
+      link.setAttribute("href", "#route-contact");
+      link.dataset.ctaTarget = "route_contact";
+
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, "", "#route-contact");
+        } else {
+          window.location.hash = "route-contact";
+        }
+      });
+    });
+  }
+
   function wirePlaceholderForms() {
     document.querySelectorAll('form[data-form-placeholder="true"]').forEach(function (form) {
       form.setAttribute("novalidate", "");
@@ -333,6 +357,7 @@
     markActiveNavigation();
     wirePlaceholderForms();
     addFooterMessengerLinks();
+    wireRazborCurrentPageCtas();
   });
 })();
 
