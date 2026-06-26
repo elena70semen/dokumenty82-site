@@ -168,6 +168,9 @@
     if (!current) return;
 
     document.querySelectorAll("header nav a[href]").forEach(function (link) {
+      link.classList.remove("d82-nav-current");
+      link.removeAttribute("aria-current");
+
       if (link.getAttribute("href") === current.href) {
         link.classList.add("d82-nav-current");
         link.setAttribute("aria-current", path === current.href ? "page" : "location");
