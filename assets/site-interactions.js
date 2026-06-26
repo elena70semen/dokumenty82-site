@@ -212,6 +212,53 @@
     });
   }
 
+  function createHeaderMessengerStrip(isMobile) {
+    const links = document.createElement("div");
+    links.className = isMobile
+      ? "d82-header-messenger-links d82-header-messenger-links-mobile"
+      : "d82-header-messenger-links";
+    links.setAttribute("aria-label", "Quick contacts");
+
+    const telegram = document.createElement("a");
+    telegram.className = "d82-header-messenger d82-header-messenger-telegram";
+    telegram.href = TELEGRAM_HREF;
+    telegram.title = "Telegram " + TELEGRAM_PHONE;
+    telegram.setAttribute("aria-label", "Telegram");
+    telegram.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="12" fill="#2AABEE"></circle><path d="M18.7 6.5 16.8 17c-.1.8-.6 1-1.2.6l-3.4-2.5-1.7 1.6c-.2.2-.4.4-.7.4l.2-3.5 6.4-5.8c.3-.3-.1-.4-.4-.2l-7.9 5-3.4-1.1c-.7-.2-.7-.7.2-1.1l13.1-5c.6-.2 1.1.2.7 1.1Z" fill="#fff"></path></svg>';
+    links.appendChild(telegram);
+
+    const max = document.createElement("button");
+    max.type = "button";
+    max.className = "d82-header-messenger d82-header-messenger-max";
+    max.title = "MAX " + MAX_PHONE;
+    max.setAttribute("aria-label", "MAX");
+    max.innerHTML = '<span aria-hidden="true">MAX</span>';
+    max.addEventListener("click", function () {
+      openMaxContact();
+    });
+    links.appendChild(max);
+
+    const email = document.createElement("a");
+    email.className = "d82-header-messenger d82-header-messenger-email";
+    email.href = EMAIL_HREF;
+    email.title = "info@dokumenty82.ru";
+    email.setAttribute("aria-label", "Email");
+    email.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"></rect><path d="m5.5 8 6.5 5 6.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+    links.appendChild(email);
+
+    return links;
+  }
+
+  function addHeaderMessengerLinks() {
+    document.querySelectorAll('header a[data-cta-location="header"][data-collector-type="situation_review"]').forEach(function (cta) {
+      cta.replaceWith(createHeaderMessengerStrip(false));
+    });
+
+    document.querySelectorAll('header a[data-cta-location="mobile_header"][data-collector-type="situation_review"]').forEach(function (cta) {
+      cta.replaceWith(createHeaderMessengerStrip(true));
+    });
+  }
+
   function addFormContactActions(form) {
     if (form.querySelector(".d82-form-contact-actions")) return;
 
@@ -357,6 +404,7 @@
     markActiveNavigation();
     wirePlaceholderForms();
     addFooterMessengerLinks();
+    addHeaderMessengerLinks();
     wireRazborCurrentPageCtas();
   });
 })();
