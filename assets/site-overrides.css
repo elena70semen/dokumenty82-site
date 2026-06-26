@@ -2529,6 +2529,12 @@ header nav a.d82-nav-current {
     0 10px 26px rgba(0, 0, 0, 0.16) !important;
 }
 
+html:not([data-d82-current-nav="/#documents"]) header nav a[href="/#documents"] {
+  color: var(--text-inverse-muted) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 header details[open] summary {
   border-color: rgba(218, 181, 103, 0.32) !important;
   background: rgba(12, 18, 27, 0.96) !important;

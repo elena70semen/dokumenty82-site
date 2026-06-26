@@ -95,6 +95,16 @@
 
   function markActiveNavigation() {
     const path = window.location.pathname || "/";
+    const activeClasses = [
+      "bg-[rgba(159,203,22,0.16)]",
+      "text-[color:var(--text-inverse)]",
+      "shadow-[inset_0_0_0_1px_rgba(159,203,22,0.24)]",
+    ];
+    const inactiveClasses = [
+      "text-[color:var(--text-inverse-muted)]",
+      "hover:bg-[rgba(255,255,255,0.1)]",
+      "hover:text-[color:var(--text-inverse)]",
+    ];
     const groups = [
       {
         href: "/otchetnost/",
@@ -167,15 +177,71 @@
 
     if (!current) return;
 
-    document.querySelectorAll("header nav a[href]").forEach(function (link) {
-      link.classList.remove("d82-nav-current");
-      link.removeAttribute("aria-current");
+    if (document.documentElement.getAttribute("data-d82-current-nav") !== current.href) {
+      document.documentElement.setAttribute("data-d82-current-nav", current.href);
+    }
 
-      if (link.getAttribute("href") === current.href) {
+    document.querySelectorAll("header nav a[href]").forEach(function (link) {
+      const isCurrent = link.getAttribute("href") === current.href;
+
+      if (isCurrent) {
+        inactiveClasses.forEach(function (className) {
+          link.classList.remove(className);
+        });
+        activeClasses.forEach(function (className) {
+          link.classList.add(className);
+        });
         link.classList.add("d82-nav-current");
-        link.setAttribute("aria-current", path === current.href ? "page" : "location");
+        const ariaCurrent = path === current.href ? "page" : "location";
+        if (link.getAttribute("aria-current") !== ariaCurrent) {
+          link.setAttribute("aria-current", ariaCurrent);
+        }
+      } else {
+        link.classList.remove("d82-nav-current");
+        link.removeAttribute("aria-current");
+        activeClasses.forEach(function (className) {
+          link.classList.remove(className);
+        });
+        inactiveClasses.forEach(function (className) {
+          link.classList.add(className);
+        });
       }
     });
+  }
+
+  function enforceHeaderState() {
+    markActiveNavigation();
+    addHeaderMessengerLinks();
+  }
+
+  function scheduleHeaderRepair() {
+    [0, 80, 220, 520, 1000, 1800, 3200].forEach(function (delay) {
+      window.setTimeout(enforceHeaderState, delay);
+    });
+
+    const header = document.querySelector("header");
+    if (!header || !("MutationObserver" in window)) return;
+
+    let pending = false;
+    const observer = new MutationObserver(function () {
+      if (pending) return;
+      pending = true;
+      window.requestAnimationFrame(function () {
+        pending = false;
+        enforceHeaderState();
+      });
+    });
+
+    observer.observe(header, {
+      attributes: true,
+      attributeFilter: ["class", "aria-current"],
+      childList: true,
+      subtree: true,
+    });
+
+    window.setTimeout(function () {
+      observer.disconnect();
+    }, 9000);
   }
 
   function setFormStatus(form, message) {
@@ -404,11 +470,11 @@
     wireCookieNotice();
     wireQuickNavigation();
     wireMobileMenu();
-    markActiveNavigation();
+    enforceHeaderState();
     wirePlaceholderForms();
     addFooterMessengerLinks();
-    addHeaderMessengerLinks();
     wireRazborCurrentPageCtas();
+    scheduleHeaderRepair();
   });
 })();
 
