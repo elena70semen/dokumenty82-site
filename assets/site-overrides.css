@@ -2910,3 +2910,371 @@ main img[src*="brand-logo-open-book"] {
   }
 }
 
+/* Mobile rescue pass: stable header, full-width drawer and readable hero. */
+@media (max-width: 760px) {
+  :root {
+    --d82-mobile-edge: 12px;
+    --d82-mobile-panel: min(calc(100% - 24px), 430px);
+  }
+
+  body {
+    overflow-x: hidden !important;
+  }
+
+  header {
+    top: 8px !important;
+    padding-inline: var(--d82-mobile-edge) !important;
+  }
+
+  header > div {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  header > div > .dark-glass-card {
+    display: grid !important;
+    width: 100% !important;
+    min-height: 64px !important;
+    grid-template-columns: 58px minmax(0, 1fr) 46px !important;
+    gap: 0.55rem !important;
+    align-items: center !important;
+    overflow: visible !important;
+    padding: 8px 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.11) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(135deg, rgba(8, 14, 23, 0.98), rgba(14, 22, 33, 0.96)),
+      rgba(8, 14, 23, 0.98) !important;
+    box-shadow:
+      0 16px 44px rgba(0, 0, 0, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(1.08) !important;
+    backdrop-filter: blur(16px) saturate(1.08) !important;
+  }
+
+  header > div > .dark-glass-card > nav,
+  header > div > .dark-glass-card > div[class*="2xl:flex"] {
+    display: none !important;
+  }
+
+  header a[href="/"]:has(img[src*="brand-logo-open-book"]) {
+    display: contents !important;
+    min-width: 0 !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+
+  header a[href="/"]:has(img[src*="brand-logo-open-book"]) > span:first-child {
+    width: 58px !important;
+    height: 44px !important;
+    flex: 0 0 58px !important;
+    overflow: visible !important;
+    place-items: center !important;
+  }
+
+  header a[href="/"]:has(img[src*="brand-logo-open-book"]) > span:last-child {
+    display: block !important;
+    min-width: 0 !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+
+  header img[src*="brand-logo-open-book"],
+  header .d82-open-book-logo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: none !important;
+    object-position: center !important;
+  }
+
+  header a[href="/"] strong {
+    max-width: 210px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 0.92rem !important;
+    line-height: 1.15 !important;
+  }
+
+  header a[href="/"] small {
+    display: block !important;
+    max-width: 210px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 0.68rem !important;
+  }
+
+  header details {
+    position: static !important;
+    display: block !important;
+    grid-column: 3 !important;
+    justify-self: end !important;
+    width: 46px !important;
+  }
+
+  header details > summary {
+    width: 46px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    border-radius: 8px !important;
+  }
+
+  header details > summary svg {
+    display: none !important;
+  }
+
+  header details > summary::before {
+    content: "" !important;
+    display: block !important;
+    width: 22px !important;
+    height: 14px !important;
+    border-top: 2px solid currentColor !important;
+    border-bottom: 2px solid currentColor !important;
+    box-shadow: 0 6px 0 currentColor !important;
+    border-radius: 1px !important;
+  }
+
+  header details[open] > summary::before {
+    width: 20px !important;
+    height: 20px !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background:
+      linear-gradient(currentColor, currentColor) center / 20px 2px no-repeat,
+      linear-gradient(currentColor, currentColor) center / 2px 20px no-repeat !important;
+    transform: rotate(45deg) !important;
+  }
+
+  header details[open] > div {
+    position: fixed !important;
+    top: 82px !important;
+    left: var(--d82-mobile-edge) !important;
+    right: var(--d82-mobile-edge) !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: calc(100svh - 98px) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.75rem !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 14px !important;
+    border: 1px solid rgba(255, 255, 255, 0.13) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(145deg, rgba(9, 15, 24, 0.99), rgba(16, 25, 37, 0.98)),
+      rgba(9, 15, 24, 0.99) !important;
+    box-shadow:
+      0 30px 90px rgba(0, 0, 0, 0.58),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(1.08) !important;
+    backdrop-filter: blur(18px) saturate(1.08) !important;
+    z-index: 80 !important;
+  }
+
+  header details[open] > div nav {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  header details[open] > div nav ul {
+    display: grid !important;
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.5rem !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  header details[open] > div nav li {
+    min-width: 0 !important;
+  }
+
+  header details[open] > div nav a {
+    display: flex !important;
+    min-height: 44px !important;
+    min-width: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.72rem 0.5rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.045) !important;
+    color: var(--text-inverse-muted) !important;
+    text-align: center !important;
+    white-space: normal !important;
+    font-size: 0.88rem !important;
+    line-height: 1.25 !important;
+    box-shadow: none !important;
+  }
+
+  header details[open] > div nav a.d82-nav-current {
+    border-color: rgba(159, 203, 22, 0.32) !important;
+    background: rgba(159, 203, 22, 0.14) !important;
+    color: var(--text-inverse) !important;
+  }
+
+  header details[open] > div > div:last-child {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.6rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 0.75rem !important;
+  }
+
+  header details[open] .d82-header-messenger-links-mobile {
+    display: flex !important;
+    min-height: 48px !important;
+    width: 100% !important;
+    justify-content: center !important;
+    gap: 0.55rem !important;
+    padding: 0.35rem !important;
+  }
+
+  header details[open] .d82-header-messenger {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  header details[open] a[href^="tel:"] {
+    display: flex !important;
+    min-height: 44px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+  }
+
+  main > section:first-of-type,
+  section[aria-labelledby="home-hero-title"] {
+    min-height: auto !important;
+    padding-top: 6.15rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  main > section:first-of-type > .container-premium,
+  section[aria-labelledby="home-hero-title"] .container-premium {
+    width: var(--d82-mobile-panel) !important;
+    max-width: var(--d82-mobile-panel) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem !important;
+    align-items: start !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 1.8rem !important;
+  }
+
+  main > section:first-of-type:has(aside) > .container-premium[class*="grid"],
+  section[aria-labelledby="home-hero-title"] .container-premium[class*="grid"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  main > section:first-of-type > .container-premium > *,
+  section[aria-labelledby="home-hero-title"] .container-premium > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    justify-self: stretch !important;
+  }
+
+  main > section:first-of-type h1,
+  section[aria-labelledby="home-hero-title"] h1 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(2.35rem, 11.5vw, 3rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: 0 !important;
+  }
+
+  main > section:first-of-type h1 + p,
+  section[aria-labelledby="home-hero-title"] h1 + p {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 1rem !important;
+    font-size: 1rem !important;
+    line-height: 1.58 !important;
+  }
+
+  main > section:first-of-type a,
+  main > section:first-of-type button {
+    white-space: normal !important;
+  }
+
+  main > section:first-of-type img {
+    max-height: 260px !important;
+    object-fit: cover !important;
+  }
+
+  main > section:first-of-type .inline-flex,
+  section[aria-labelledby="home-hero-title"] .inline-flex {
+    max-width: 100% !important;
+  }
+
+  main > section:not(:first-of-type) {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  main section .container-premium {
+    width: var(--d82-mobile-panel) !important;
+    max-width: var(--d82-mobile-panel) !important;
+  }
+
+  .reveal-block.reveal-ready {
+    transform: translate3d(0, 22px, 0) scale(0.99) !important;
+  }
+
+  aside[role="status"][aria-label*="cookies"],
+  aside[role="status"][aria-label*="cookie"],
+  aside[role="status"][aria-label*="Cookie"] {
+    left: var(--d82-mobile-edge) !important;
+    right: var(--d82-mobile-edge) !important;
+    bottom: var(--d82-mobile-edge) !important;
+    max-height: 42svh !important;
+    max-width: none !important;
+    overflow-y: auto !important;
+    padding: 0.85rem !important;
+    gap: 0.75rem !important;
+  }
+
+  aside[role="status"] p {
+    font-size: 0.78rem !important;
+    line-height: 1.42 !important;
+  }
+
+  aside[role="status"] button {
+    min-height: 42px !important;
+    padding: 0.7rem 1rem !important;
+  }
+
+  footer {
+    padding: 1.25rem 0 !important;
+  }
+
+  footer .container-premium {
+    width: var(--d82-mobile-panel) !important;
+    max-width: var(--d82-mobile-panel) !important;
+    padding: 1.1rem !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1.2rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  header details[open] > div nav ul {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  header a[href="/"] strong,
+  header a[href="/"] small {
+    max-width: 160px !important;
+  }
+}
+
