@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+public/assets/
+public/favicon.ico
+public/favicon.png
+public/favicon.svg
+public/robots.txt
+public/sitemap.xml
+src/data/routes.json
+src/data/site.json

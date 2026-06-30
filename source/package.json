@@ -1,0 +1,14 @@
+{
+  "name": "dokumenty82-source-rebuild",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "node ../scripts/sync-source-data.mjs",
+    "build": "npm run sync && node scripts/build.mjs",
+    "dev": "npm run build && node scripts/dev.mjs --host 127.0.0.1 --port 4310",
+    "preview": "node scripts/dev.mjs --host 127.0.0.1 --port 4311",
+    "check:seo": "node ../scripts/check-seo-contract.mjs dist",
+    "check:clickable": "node ../scripts/check-clickable-contract.mjs dist"
+  }
+}
