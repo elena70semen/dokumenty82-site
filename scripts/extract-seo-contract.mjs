@@ -10,7 +10,7 @@ async function listHtmlFiles(dir) {
   const files = [];
 
   for (const entry of entries) {
-    if (entry.name === ".git" || entry.name === "_next" || entry.name === "node_modules") {
+    if (entry.name === ".git" || entry.name === "_next" || entry.name === "node_modules" || entry.name === "source") {
       continue;
     }
 
@@ -69,6 +69,11 @@ function extractLink(html, rel) {
   return attr(html, new RegExp(`<link\\s+[^>]*rel=["']${rel}["'][^>]*>`, "i"), "href");
 }
 
+function hasCookieNotice(html) {
+  const text = decodeHtml(html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()).toLowerCase();
+  return text.includes("cookie") && text.includes("политик") && text.includes("конфиденциальност");
+}
+
 function parseSitemap(xml) {
   return [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((urlMatch) => {
     const block = urlMatch[1];
@@ -113,7 +118,7 @@ for (const filePath of htmlFiles.sort()) {
     ogTitle: extractProperty(html, "og:title"),
     ogDescription: extractProperty(html, "og:description"),
     hasMetrika109869928: html.includes("109869928"),
-    hasCookieNotice: html.includes("политика конфиденциальности") && html.includes("cookies"),
+    hasCookieNotice: hasCookieNotice(html),
   });
 }
 
