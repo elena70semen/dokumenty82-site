@@ -5,9 +5,9 @@ This file is generated from the current static production snapshot. Treat it as 
 - Site: https://dokumenty82.ru
 - Metrika: 109869928
 - Sitemap URLs: 30
-- HTML files scanned: 39
+- HTML files scanned: 38
 - Public sitemap pages scanned: 30
-- Noindex / non-sitemap files scanned: 9
+- Noindex / non-sitemap files scanned: 8
 - Public pages with missing contract fields: 0
 
 ## Protected Rules

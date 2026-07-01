@@ -140,13 +140,57 @@ function compactList(items) {
   }).join("")}</ul>`;
 }
 
+function enhancementFor(page) {
+  return pageEnhancements[page.route] ?? {};
+}
+
+function displayTitle(page) {
+  return enhancementFor(page).metaTitle ?? page.title;
+}
+
+function displayDescription(page) {
+  return enhancementFor(page).metaDescription ?? page.description;
+}
+
+function displayH1(page) {
+  return enhancementFor(page).h1 ?? page.h1;
+}
+
+function displayOgTitle(page) {
+  return enhancementFor(page).ogTitle ?? enhancementFor(page).metaTitle ?? page.ogTitle ?? page.title;
+}
+
+function displayOgDescription(page) {
+  return enhancementFor(page).ogDescription ?? enhancementFor(page).metaDescription ?? page.ogDescription ?? page.description;
+}
+
+function faqJsonLd(page) {
+  const faq = enhancementFor(page).faq ?? [];
+  if (!faq.length) return "";
+
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map(([question, answer]) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer
+      }
+    }))
+  };
+
+  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
+}
+
 function homeBody(page) {
   return `
     <section class="hero hero-stack">
       <div class="glass-panel hero-copy-panel home-hero-copy">
         <p class="hero-location-badge"><span>Симферополь - офис рядом с налоговой</span></p>
-        <h1>${escapeHtml(page.h1)}</h1>
-        <p>${escapeHtml(page.description)}</p>
+        <h1>${escapeHtml(displayH1(page))}</h1>
+        <p>${escapeHtml(displayDescription(page))}</p>
         <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Разобрать ситуацию</a><a class="button button-ghost" href="#documents">Документы и услуги</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
@@ -280,8 +324,8 @@ function blogBody(page) {
     <section class="hero hero-inner">
       <div class="glass-panel hero-copy-panel">
         <p class="eyebrow">Полезные материалы</p>
-        <h1>${escapeHtml(page.h1)}</h1>
-        <p>${escapeHtml(page.description)}</p>
+        <h1>${escapeHtml(displayH1(page))}</h1>
+        <p>${escapeHtml(displayDescription(page))}</p>
         <div class="actions"><a class="button button-lime" href="/blog/razbory/">Разборы ситуаций</a><a class="button button-ghost" href="/blog/obnovleniya-fns/">Обновления ФНС</a></div>
       </div>
     </section>
@@ -296,8 +340,8 @@ function aboutBody(page) {
     <section class="hero hero-inner">
       <div class="glass-panel hero-copy-panel">
         <p class="eyebrow">О проекте</p>
-        <h1>${escapeHtml(page.h1)}</h1>
-        <p>${escapeHtml(page.description)}</p>
+        <h1>${escapeHtml(displayH1(page))}</h1>
+        <p>${escapeHtml(displayDescription(page))}</p>
         <div class="actions"><a class="button button-lime" href="/kontakty/">Связаться</a><a class="button button-ghost" href="/#documents">Документы и услуги</a></div>
       </div>
     </section>
@@ -333,8 +377,8 @@ function contactsBody(page) {
     <section class="hero hero-inner">
       <div class="glass-panel hero-copy-panel contact-hero-panel">
         <p class="eyebrow">Контакты</p>
-        <h1>${escapeHtml(page.h1)}</h1>
-        <p>${escapeHtml(page.description)}</p>
+        <h1>${escapeHtml(displayH1(page))}</h1>
+        <p>${escapeHtml(displayDescription(page))}</p>
         <div class="contact-inline">
           <a class="button button-lime" href="${escapeHtml(site.phoneHref)}">Позвонить</a>
           <a class="button button-ghost" href="https://yandex.ru/maps/?text=${encodeURIComponent(site.address)}">Построить маршрут</a>
@@ -379,8 +423,8 @@ function innerBody(page) {
     <section class="hero hero-inner hero-stack">
       <div class="${heroPanelClass}">
         <p class="eyebrow">Документы для бизнеса</p>
-        <h1>${escapeHtml(page.h1)}</h1>
-        <p>${escapeHtml(page.description)}</p>
+        <h1>${escapeHtml(displayH1(page))}</h1>
+        <p>${escapeHtml(displayDescription(page))}</p>
         <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Разобрать ситуацию</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
@@ -405,8 +449,7 @@ function innerBody(page) {
 }
 
 function metrika(id) {
-  return `
-    <script type="text/javascript">
+  return `<script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=${id}', 'ym');
       ym(${id}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
@@ -415,18 +458,19 @@ function metrika(id) {
 
 function pageHtml(page) {
   const canonical = page.canonical ? `<link rel="canonical" href="${escapeHtml(page.canonical)}" />` : "";
+  const faqSchema = faqJsonLd(page);
   return `<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${escapeHtml(page.title)}</title>
-    <meta name="description" content="${escapeHtml(page.description)}" />
+    <title>${escapeHtml(displayTitle(page))}</title>
+    <meta name="description" content="${escapeHtml(displayDescription(page))}" />
     <meta name="robots" content="${escapeHtml(page.robots ?? "index, follow")}" />
     <meta name="googlebot" content="index, follow, max-image-preview:large" />
     ${canonical}
-    <meta property="og:title" content="${escapeHtml(page.ogTitle ?? page.title)}" />
-    <meta property="og:description" content="${escapeHtml(page.ogDescription ?? page.description)}" />
+    <meta property="og:title" content="${escapeHtml(displayOgTitle(page))}" />
+    <meta property="og:description" content="${escapeHtml(displayOgDescription(page))}" />
     <meta property="og:url" content="${escapeHtml(page.canonical ?? `${site.siteUrl}${page.route}`)}" />
     <meta property="og:site_name" content="Документы для бизнеса" />
     <meta property="og:locale" content="ru_RU" />
@@ -434,7 +478,7 @@ function pageHtml(page) {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/assets/site.css?v=${assetVersion}" />
-    ${metrika(site.metrikaId)}
+${faqSchema ? `    ${faqSchema}\n` : ""}    ${metrika(site.metrikaId)}
   </head>
   <body>
     ${header(page)}
