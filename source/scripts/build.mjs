@@ -10,6 +10,7 @@ const stylesPath = path.join(sourceRoot, "src", "styles", "site.css");
 
 const routes = JSON.parse(await readFile(path.join(sourceRoot, "src", "data", "routes.json"), "utf8"));
 const site = JSON.parse(await readFile(path.join(sourceRoot, "src", "data", "site.json"), "utf8"));
+const fnsNews = JSON.parse(await readFile(path.join(sourceRoot, "src", "data", "fns-news.json"), "utf8"));
 const assetVersion = new Date().toISOString().replace(/\D/g, "").slice(0, 14);
 
 await rm(distRoot, { recursive: true, force: true });
@@ -37,15 +38,77 @@ function activeClass(pageRoute, item) {
   return "";
 }
 
+function canonicalFor(route) {
+  return `${site.siteUrl}${route === "/" ? "/" : route}`;
+}
+
+function upsertPage(page) {
+  const index = routes.pages.findIndex((item) => item.route === page.route);
+  if (index >= 0) {
+    routes.pages[index] = { ...routes.pages[index], ...page };
+    return;
+  }
+  routes.pages.push(page);
+}
+
 const navItems = [
   { href: "/razbor-situacii/", label: "\u0420\u0430\u0437\u0431\u043e\u0440 \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u0438" },
   { href: "/#documents", label: "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b" },
   { href: "/otchetnost/", label: "\u041e\u0442\u0447\u0451\u0442\u043d\u043e\u0441\u0442\u044c", match: ["/otchetnost/", "/otvet-na-trebovanie-ifns/", "/deklaraciya-usn/", "/nulevaya-otchetnost-ooo/", "/nulevaya-otchetnost-ip/", "/vosstanovlenie-buhucheta/"] },
   { href: "/bank-i-115-fz/", label: "\u0411\u0430\u043d\u043a \u0438 115-\u0424\u0417", match: ["/bank-i-115-fz/", "/otvet-na-zapros-banka/", "/dokumenty-dlya-banka-115-fz/"] },
   { href: "/blog/", label: "\u0411\u043b\u043e\u0433", match: ["/blog/"] },
+  { href: "/novosti/", label: "\u041d\u043e\u0432\u043e\u0441\u0442\u0438", match: ["/novosti/"] },
   { href: "/o-proekte/", label: "\u041e \u043d\u0430\u0441" },
   { href: "/kontakty/", label: "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b" },
 ];
+
+upsertPage({
+  route: "/blog/",
+  slug: "blog",
+  inSitemap: true,
+  title: "Блог: разборы документов для бизнеса | Документы для бизнеса",
+  description: "Разборы ситуаций, маршруты подготовки документов и переходы к полезным разделам сайта без дубля официальных новостей.",
+  robots: "index, follow",
+  canonical: canonicalFor("/blog/"),
+  h1: "Блог: разборы документов для бизнеса",
+});
+
+upsertPage({
+  route: "/blog/obnovleniya-fns/",
+  slug: "blog/obnovleniya-fns",
+  inSitemap: false,
+  title: "Новости ФНС переехали | Документы для бизнеса",
+  description: "Официальные новости ФНС теперь собраны в отдельном разделе сайта.",
+  robots: "noindex, follow",
+  canonical: canonicalFor("/blog/obnovleniya-fns/"),
+  h1: "Новости ФНС теперь в отдельном разделе",
+});
+
+upsertPage({
+  route: "/novosti/",
+  slug: "novosti",
+  inSitemap: true,
+  title: "Новости ФНС для бизнеса | Документы для бизнеса",
+  description: "Короткие обзоры официальных сообщений ФНС для предпринимателей Симферополя и Крыма.",
+  robots: "index, follow",
+  canonical: canonicalFor("/novosti/"),
+  h1: "Новости ФНС для бизнеса",
+});
+
+for (const item of fnsNews) {
+  const route = `/novosti/${item.slug}/`;
+  upsertPage({
+    route,
+    slug: `novosti/${item.slug}`,
+    inSitemap: true,
+    title: `${item.title} | Документы для бизнеса`,
+    description: item.summary,
+    robots: "index, follow",
+    canonical: canonicalFor(route),
+    h1: item.title,
+    newsItem: item,
+  });
+}
 
 const cards = [
   ["\u0420\u0430\u0437\u0434\u0435\u043b", "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b \u0434\u043b\u044f \u0431\u0438\u0437\u043d\u0435\u0441\u0430", "\u041f\u043e\u043a\u0430\u0436\u0438\u0442\u0435 \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044e - \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u043c, \u043a\u0430\u043a\u0438\u0435 \u0432\u0432\u043e\u0434\u043d\u044b\u0435 \u043d\u0443\u0436\u043d\u044b \u0434\u0430\u043b\u044c\u0448\u0435.", "/razbor-situacii/"],
@@ -314,11 +377,23 @@ function renderPageEnhancement(page) {
 }
 
 function blogBody(page) {
+  if (page.route === "/blog/obnovleniya-fns/") {
+    return `
+    <section class="hero hero-inner">
+      <div class="glass-panel hero-copy-panel">
+        <p class="eyebrow">Переходник</p>
+        <h1>${escapeHtml(page.h1)}</h1>
+        <p>Чтобы не смешивать наши разборы и официальные сообщения, новости ФНС вынесены в отдельный раздел. Здесь оставлена только навигация для старого адреса.</p>
+        <div class="actions"><a class="button button-lime" href="/novosti/">Открыть новости ФНС</a><a class="button button-ghost" href="/blog/">Вернуться в блог</a></div>
+      </div>
+    </section>`;
+  }
+
   const blogCards = [
-    ["01", "Обновления ФНС", "Короткие заметки по изменениям, которые важно не пропустить бизнесу.", "/blog/obnovleniya-fns/"],
-    ["02", "Разборы ситуаций", "Спокойные evergreen-разборы: что проверить, какие вводные собрать и куда двигаться.", "/blog/razbory/"],
-    ["03", "Срочные вопросы", "Отдельный вход для требований, запросов и ситуаций, где лучше быстро выбрать маршрут.", "/srochnye-voprosy/"],
-    ["04", "Документы и услуги", "Основные направления подготовки документов, отчётности и ответов на запросы.", "/#documents"],
+    ["01", "Разборы ситуаций", "Практические материалы: что проверить, какие вводные собрать и как выбрать безопасный документальный маршрут.", "/blog/razbory/"],
+    ["02", "Срочные вопросы", "Отдельный вход для требований, запросов банка и ситуаций, где нужно быстро понять ближайший шаг.", "/srochnye-voprosy/"],
+    ["03", "Документы и услуги", "Основные направления подготовки документов, отчетности и ответов на запросы.", "/#documents"],
+    ["04", "Новости ФНС", "Отдельная лента официальных сообщений ФНС с коротким объяснением для бизнеса.", "/novosti/"],
   ];
   return `
     <section class="hero hero-inner">
@@ -326,13 +401,81 @@ function blogBody(page) {
         <p class="eyebrow">Полезные материалы</p>
         <h1>${escapeHtml(displayH1(page))}</h1>
         <p>${escapeHtml(displayDescription(page))}</p>
-        <div class="actions"><a class="button button-lime" href="/blog/razbory/">Разборы ситуаций</a><a class="button button-ghost" href="/blog/obnovleniya-fns/">Обновления ФНС</a></div>
+        <div class="actions"><a class="button button-lime" href="/blog/razbory/">Разборы ситуаций</a><a class="button button-ghost" href="/novosti/">Новости ФНС</a></div>
       </div>
     </section>
     <section class="section">
-      ${sectionHeader("Блог", "Что здесь будет", "Раздел собирает полезные материалы без обещаний и лишнего шума: обновления, разборы и входы в нужные страницы сайта.")}
+      ${sectionHeader("Блог", "Наши разборы и маршруты", "В блоге остаются материалы проекта: как подойти к документам, где начинается разбор и когда лучше перейти на страницу услуги. Официальные новости ФНС вынесены отдельно, чтобы не дублировать одну и ту же ленту.")}
       <div class="card-grid two">${blogCards.map(([number, title, text, href]) => `<a class="glass-card" href="${href}"><span>${number}</span><h3>${title}</h3><p>${text}</p></a>`).join("")}</div>
     </section>`;
+}
+
+function newsIndexBody(page) {
+  return `
+    <section class="hero hero-inner">
+      <div class="glass-panel hero-copy-panel route-graphic-panel">
+        <p class="eyebrow">Официальные источники</p>
+        <h1>${escapeHtml(page.h1)}</h1>
+        <p>${escapeHtml(page.description)}</p>
+        <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Разобрать ситуацию</a><a class="button button-ghost" href="/blog/">Блог проекта</a></div>
+      </div>
+    </section>
+    <section class="section">
+      ${sectionHeader("Лента", "Коротко о новостях ФНС", "Мы не перепечатываем официальные сообщения полностью. На каждой карточке — спокойное резюме, что может быть важно для документов, отчетности, платежей или ответа на запрос.")}
+      <div class="news-grid">
+        ${fnsNews.map((item) => newsCard(item)).join("")}
+      </div>
+    </section>`;
+}
+
+function newsCard(item) {
+  const tags = (item.tags ?? []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+  return `
+    <article class="news-card">
+      <div class="news-meta">${formatDate(item.date)}</div>
+      <h3><a href="/novosti/${escapeHtml(item.slug)}/">${escapeHtml(item.title)}</a></h3>
+      <p>${escapeHtml(item.summary)}</p>
+      <div class="news-tags">${tags}</div>
+      <a class="news-more" href="/novosti/${escapeHtml(item.slug)}/">Открыть заметку</a>
+    </article>`;
+}
+
+function newsArticleBody(page) {
+  const item = page.newsItem;
+  if (!item) return newsIndexBody(page);
+  const related = (item.related ?? []).map((href) => {
+    const route = routes.pages.find((candidate) => candidate.route === href);
+    return `<a href="${escapeHtml(href)}">${escapeHtml(route?.h1 ?? href)}</a>`;
+  }).join("");
+
+  return `
+    <section class="hero hero-inner">
+      <article class="glass-panel news-article">
+        <p class="eyebrow">Новости ФНС · ${formatDate(item.date)}</p>
+        <h1>${escapeHtml(page.h1)}</h1>
+        <p>${escapeHtml(item.summary)}</p>
+        <div class="news-tags">${(item.tags ?? []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>
+      </article>
+    </section>
+    <section class="section news-article-section">
+      <div class="news-article-body">
+        ${(item.body ?? []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
+        <h2>Что проверить бизнесу</h2>
+        <ul>${(item.businessImpact ?? []).map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
+        <div class="news-source">
+          <span>Официальный источник:</span>
+          <a href="${escapeHtml(item.sourceUrl)}" rel="nofollow noopener" target="_blank">${escapeHtml(item.sourceTitle)}</a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      ${sectionHeader("Связанные страницы", "Куда перейти дальше", "Если новость касается вашей ситуации, лучше выбрать страницу по задаче и собрать вводные до ответа.")}
+      <div class="news-related">${related}</div>
+    </section>`;
+}
+
+function formatDate(value) {
+  return new Intl.DateTimeFormat("ru-RU", { day: "2-digit", month: "long", year: "numeric" }).format(new Date(value));
 }
 
 function aboutBody(page) {
@@ -408,6 +551,8 @@ function crmLeadForm() {
 
 function pageBody(page) {
   if (page.route === "/") return homeBody(page);
+  if (page.route === "/novosti/") return newsIndexBody(page);
+  if (page.route.startsWith("/novosti/")) return newsArticleBody(page);
   if (page.route.startsWith("/blog/")) return blogBody(page);
   if (page.route === "/o-proekte/") return aboutBody(page);
   if (page.route === "/kontakty/") return contactsBody(page);
@@ -493,7 +638,9 @@ ${faqSchema ? `    ${faqSchema}\n` : ""}    ${metrika(site.metrikaId)}
       (() => {
         const notice = document.getElementById('cookie-notice');
         if (!notice) return;
+        document.body.classList.add('cookie-open');
         const hideNotice = () => {
+          document.body.classList.remove('cookie-open');
           notice.hidden = true;
           notice.setAttribute('aria-hidden', 'true');
           notice.style.display = 'none';
@@ -514,11 +661,38 @@ ${faqSchema ? `    ${faqSchema}\n` : ""}    ${metrika(site.metrikaId)}
 </html>`;
 }
 
+function sitemapXml() {
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const entries = routes.pages
+    .filter((page) => page.inSitemap && !String(page.robots ?? "").toLowerCase().includes("noindex"))
+    .sort((a, b) => a.route.localeCompare(b.route, "ru"))
+    .map((page) => {
+      const loc = page.canonical ?? canonicalFor(page.route);
+      const changefreq = page.route.startsWith("/novosti/") ? "weekly" : "monthly";
+      const priority = page.route === "/" ? "1.0" : page.route === "/novosti/" || page.route === "/blog/" ? "0.7" : "0.6";
+      return `  <url>
+    <loc>${escapeHtml(loc)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+    })
+    .join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries}
+</urlset>
+`;
+}
+
 for (const page of routes.pages) {
   const filePath = routeToFile(page.route);
   await mkdir(path.dirname(filePath), { recursive: true });
   await writeFile(filePath, pageHtml(page), "utf8");
 }
+
+await writeFile(path.join(distRoot, "sitemap.xml"), sitemapXml(), "utf8");
 
 console.log(JSON.stringify({
   pages: routes.pages.length,
