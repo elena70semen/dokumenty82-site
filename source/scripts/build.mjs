@@ -155,7 +155,10 @@ function header(page) {
       <div class="header-actions" aria-label="Быстрые контакты">${messengerLinks()}<a class="phone-pill" href="${escapeHtml(site.phoneHref)}">${escapeHtml(site.phone)}</a></div>
       <details class="mobile-menu">
         <summary aria-label="Открыть меню"><span></span></summary>
-        <nav>${navItems.map((item) => `<a href="${item.href}">${item.label}</a>`).join("")}${messengerLinks()}<a href="${escapeHtml(site.phoneHref)}">${escapeHtml(site.phone)}</a></nav>
+        <nav>
+          <div class="mobile-nav-grid">${navItems.map((item) => `<a href="${item.href}">${item.label}</a>`).join("")}</div>
+          <div class="mobile-contact-panel">${messengerLinks()}<a class="mobile-phone-link" href="${escapeHtml(site.phoneHref)}">${escapeHtml(site.phone)}</a></div>
+        </nav>
       </details>
     </header>`;
 }
