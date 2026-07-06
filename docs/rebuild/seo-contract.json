@@ -90,6 +90,12 @@
       "priority": "0.82"
     },
     {
+      "loc": "https://dokumenty82.ru/sverka-s-nalogovoy/",
+      "lastmod": "2026-07-06",
+      "changefreq": "monthly",
+      "priority": "0.82"
+    },
+    {
       "loc": "https://dokumenty82.ru/deklaraciya-usn/",
       "lastmod": "2026-06-09",
       "changefreq": "monthly",
@@ -534,6 +540,20 @@
       "h1": "Ответ на требование ИФНС",
       "ogTitle": "Ответ на требование ИФНС",
       "ogDescription": "Разберем текст требования, исходные документы и подготовим понятный комплект для следующего действия.",
+      "hasMetrika109869928": true,
+      "hasCookieNotice": true
+    },
+    {
+      "route": "/sverka-s-nalogovoy/",
+      "file": "sverka-s-nalogovoy/index.html",
+      "inSitemap": true,
+      "title": "Сверка с налоговой в Симферополе - документы и разбор | Документы для бизнеса",
+      "description": "Сверка с налоговой: разобрать данные, требования, акты и расхождения без обещаний результата ИФНС.",
+      "robots": "index, follow",
+      "canonical": "https://dokumenty82.ru/sverka-s-nalogovoy/",
+      "h1": "Сверка с налоговой в Симферополе",
+      "ogTitle": "Сверка с налоговой в Симферополе",
+      "ogDescription": "Разбираем данные, акты, платежи и расхождения, чтобы подготовить понятный следующий шаг по документам.",
       "hasMetrika109869928": true,
       "hasCookieNotice": true
     },
