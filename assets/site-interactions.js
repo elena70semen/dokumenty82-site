@@ -19,6 +19,51 @@
     return (value || "").replace(/\s+/g, " ").trim();
   }
 
+  const METRIKA_COUNTER_ID = 109869928;
+  const METRIKA_ALLOWED_GOALS = {
+    goal_call_click: true,
+    goal_route_click: true,
+    goal_docs_show_click: true,
+    goal_form_start: true,
+    goal_form_submit_attempt: true,
+    goal_form_submit_fail: true,
+    goal_related_route_click: true,
+    consultation_cta_click: true,
+    hero_cta_click: true,
+    fallback_contact_click: true,
+    service_card_click: true,
+    scenario_card_click: true,
+    support_bridge_click: true,
+  };
+  const METRIKA_GOAL_ALIASES = {
+    contact_route_click: "goal_route_click",
+  };
+
+  function safeMetrikaGoalName(value) {
+    const raw = normalizeText(value);
+    const goalName = METRIKA_GOAL_ALIASES[raw] || raw;
+    return METRIKA_ALLOWED_GOALS[goalName] ? goalName : "";
+  }
+
+  function sendMetrikaGoal(goalName) {
+    const safeGoalName = safeMetrikaGoalName(goalName);
+    if (!safeGoalName || typeof window.ym !== "function") return;
+
+    try {
+      window.ym(METRIKA_COUNTER_ID, "reachGoal", safeGoalName);
+    } catch (_) {
+      /* Keep CTA behavior intact if Metrika is blocked or unavailable. */
+    }
+  }
+
+  function wireMetrikaGoals() {
+    document.addEventListener("click", function (event) {
+      const target = event.target.closest && event.target.closest("[data-event-name]");
+      if (!target) return;
+      sendMetrikaGoal(target.getAttribute("data-event-name"));
+    }, true);
+  }
+
   function wireCookieNotice() {
     const notice = document.querySelector('aside[aria-label*="cookies"], aside[aria-label*="cookie"], aside[aria-label*="Cookie"]');
     if (!notice) return;
@@ -468,6 +513,7 @@
 
   ready(function () {
     wireCookieNotice();
+    wireMetrikaGoals();
     wireQuickNavigation();
     wireMobileMenu();
     enforceHeaderState();
