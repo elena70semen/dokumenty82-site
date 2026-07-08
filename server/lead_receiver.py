@@ -253,6 +253,16 @@ def get_drive_url(base_url):
 
 def create_amo_lead(fields, files):
   base_url = amo_base_url()
+  if ACCEPT_LOCAL_ONLY:
+    state = load_token_state()
+    has_oauth = bool(
+      (AMO_ACCESS_TOKEN or state.get("access_token") or state.get("refresh_token"))
+      and (AMO_CLIENT_ID or state.get("client_id"))
+      and (AMO_CLIENT_SECRET or state.get("client_secret"))
+    )
+    if not base_url or not has_oauth:
+      return {"status": "stored_only", "lead_id": None, "message": "AmoCRM is not configured"}
+
   if not base_url:
     if ACCEPT_LOCAL_ONLY:
       return {"status": "stored_only", "lead_id": None, "message": "AmoCRM is not configured"}
