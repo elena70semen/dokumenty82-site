@@ -24,11 +24,30 @@ Server files:
 Required amoCRM values in `/etc/dokumenty82-form.env`:
 
 - `AMO_SUBDOMAIN`
-- `AMO_ACCESS_TOKEN`
+- `AMO_CLIENT_ID`
+- `AMO_CLIENT_SECRET`
+- `AMO_REDIRECT_URI=https://dokumenty82.ru/api/amo/oauth/callback`
+
+amoCRM external integration settings:
+
+- Redirect URL: `https://dokumenty82.ru/api/amo/oauth/callback`
+- Disconnect hook URL: `https://dokumenty82.ru/api/amo/oauth/disconnect`
+- Integration name: `dokumenty82.ru - site leads`
+- Description: `Lead form on dokumenty82.ru creates an amoCRM lead/contact and stores uploaded files on the server.`
+
+OAuth tokens are stored outside Git at:
+
+- `/var/lib/dokumenty82-leads/amo-oauth-token.json`
 
 Optional values:
 
 - `AMO_PIPELINE_ID`
 - `AMO_STATUS_ID`
 - `AMO_RESPONSIBLE_USER_ID`
+- `AMO_ACCESS_TOKEN` as a temporary legacy fallback if OAuth is not ready
 - `AMO_ATTACH_FILES=1` when the integration has the files scope
+
+Useful checks after deploy:
+
+- `curl -fsS https://dokumenty82.ru/api/amo/oauth/status`
+- `systemctl status dokumenty82-lead --no-pager`

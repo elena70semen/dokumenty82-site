@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 import cgi
+import html
 import json
 import mimetypes
 import os
 import re
 import secrets
 import shutil
+import threading
 import time
 import traceback
 import urllib.error
@@ -26,12 +28,18 @@ ACCEPT_LOCAL_ONLY = os.environ.get("D82_ACCEPT_LOCAL_ONLY", "0") == "1"
 
 AMO_SUBDOMAIN = os.environ.get("AMO_SUBDOMAIN", "").strip()
 AMO_ACCESS_TOKEN = os.environ.get("AMO_ACCESS_TOKEN", "").strip()
+AMO_CLIENT_ID = os.environ.get("AMO_CLIENT_ID", "").strip()
+AMO_CLIENT_SECRET = os.environ.get("AMO_CLIENT_SECRET", "").strip()
+AMO_REDIRECT_URI = os.environ.get("AMO_REDIRECT_URI", "https://dokumenty82.ru/api/amo/oauth/callback").strip()
+AMO_TOKEN_PATH = Path(os.environ.get("AMO_TOKEN_PATH", str(BASE_DIR / "amo-oauth-token.json")))
+AMO_EXTERNAL_STATE = os.environ.get("AMO_EXTERNAL_STATE", "").strip()
 AMO_PIPELINE_ID = os.environ.get("AMO_PIPELINE_ID", "").strip()
 AMO_STATUS_ID = os.environ.get("AMO_STATUS_ID", "").strip()
 AMO_RESPONSIBLE_USER_ID = os.environ.get("AMO_RESPONSIBLE_USER_ID", "").strip()
 AMO_TAGS = [tag.strip() for tag in os.environ.get("AMO_TAGS", "site,razbor-situacii").split(",") if tag.strip()]
 AMO_ATTACH_FILES = os.environ.get("AMO_ATTACH_FILES", "0") == "1"
 AMO_DRIVE_URL = os.environ.get("AMO_DRIVE_URL", "").strip().rstrip("/")
+TOKEN_LOCK = threading.Lock()
 
 
 def text(value):
@@ -51,8 +59,8 @@ def int_or_none(value):
     return None
 
 
-def amo_base_url():
-  subdomain = AMO_SUBDOMAIN
+def normalize_amo_base_url(subdomain):
+  subdomain = (subdomain or "").strip()
   if not subdomain:
     return ""
   if subdomain.startswith("http://") or subdomain.startswith("https://"):
@@ -60,6 +68,104 @@ def amo_base_url():
   if "." in subdomain:
     return "https://" + subdomain.rstrip("/")
   return "https://" + subdomain + ".amocrm.ru"
+
+
+def load_token_state():
+  try:
+    return json.loads(AMO_TOKEN_PATH.read_text(encoding="utf-8"))
+  except FileNotFoundError:
+    return {}
+  except json.JSONDecodeError:
+    return {}
+
+
+def save_token_state(state):
+  AMO_TOKEN_PATH.parent.mkdir(parents=True, exist_ok=True)
+  try:
+    os.chmod(AMO_TOKEN_PATH.parent, 0o700)
+  except OSError:
+    pass
+  temp = AMO_TOKEN_PATH.with_suffix(AMO_TOKEN_PATH.suffix + ".tmp")
+  temp.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
+  os.chmod(temp, 0o600)
+  temp.replace(AMO_TOKEN_PATH)
+
+
+def amo_base_url(state=None):
+  state = state or load_token_state()
+  return normalize_amo_base_url(
+    AMO_SUBDOMAIN
+    or state.get("base_url")
+    or state.get("subdomain")
+    or state.get("referer")
+  )
+
+
+def oauth_config(state=None):
+  state = state or load_token_state()
+  return {
+    "base_url": amo_base_url(state),
+    "client_id": AMO_CLIENT_ID or state.get("client_id", ""),
+    "client_secret": AMO_CLIENT_SECRET or state.get("client_secret", ""),
+    "redirect_uri": AMO_REDIRECT_URI or state.get("redirect_uri", ""),
+  }
+
+
+def save_oauth_tokens(state, token_payload, base_url=None):
+  server_time = int(token_payload.get("server_time") or time.time())
+  expires_in = int(token_payload.get("expires_in") or 86400)
+  state.update({
+    "token_type": token_payload.get("token_type", "Bearer"),
+    "access_token": token_payload["access_token"],
+    "refresh_token": token_payload["refresh_token"],
+    "expires_at": server_time + expires_in,
+    "server_time": server_time,
+    "expires_in": expires_in,
+    "updated_at": datetime.now(timezone.utc).isoformat(),
+    "redirect_uri": AMO_REDIRECT_URI,
+  })
+  if base_url:
+    state["base_url"] = base_url
+  save_token_state(state)
+  return state
+
+
+def exchange_oauth_token(base_url, payload):
+  return api_request(
+    "POST",
+    base_url.rstrip("/") + "/oauth2/access_token",
+    payload=payload,
+    headers={"Content-Type": "application/json"},
+  )
+
+
+def refresh_amo_token(state):
+  config = oauth_config(state)
+  if not config["base_url"] or not config["client_id"] or not config["client_secret"] or not state.get("refresh_token"):
+    raise RuntimeError("AmoCRM OAuth не настроен: нужен client_id, client_secret, subdomain и refresh_token.")
+  token_payload = exchange_oauth_token(config["base_url"], {
+    "client_id": config["client_id"],
+    "client_secret": config["client_secret"],
+    "grant_type": "refresh_token",
+    "refresh_token": state["refresh_token"],
+    "redirect_uri": config["redirect_uri"],
+  })
+  return save_oauth_tokens(state, token_payload, config["base_url"])
+
+
+def get_amo_access_token():
+  if AMO_ACCESS_TOKEN:
+    return AMO_ACCESS_TOKEN
+  with TOKEN_LOCK:
+    state = load_token_state()
+    if state.get("disabled_at"):
+      raise RuntimeError("AmoCRM интеграция отключена.")
+    token = state.get("access_token", "")
+    expires_at = int(state.get("expires_at") or 0)
+    if token and expires_at > int(time.time()) + 300:
+      return token
+    state = refresh_amo_token(state)
+    return state["access_token"]
 
 
 def safe_filename(name):
@@ -76,6 +182,39 @@ def json_response(handler, status, payload):
   handler.send_header("Content-Length", str(len(data)))
   handler.end_headers()
   handler.wfile.write(data)
+
+
+def html_response(handler, status, title, body):
+  page = (
+    "<!doctype html><html lang=\"ru\"><head><meta charset=\"utf-8\">"
+    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+    f"<title>{html.escape(title)}</title>"
+    "<style>body{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;"
+    "background:#101b29;color:#f6f2e8;margin:0;padding:32px;line-height:1.5}"
+    "main{max-width:720px;margin:auto;background:rgba(255,255,255,.06);"
+    "border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:24px}"
+    "a{color:#bfe451}</style></head><body><main>"
+    f"<h1>{html.escape(title)}</h1><p>{html.escape(body)}</p>"
+    "</main></body></html>"
+  ).encode("utf-8")
+  handler.send_response(status)
+  handler.send_header("Content-Type", "text/html; charset=utf-8")
+  handler.send_header("Cache-Control", "no-store")
+  handler.send_header("Content-Length", str(len(page)))
+  handler.end_headers()
+  handler.wfile.write(page)
+
+
+def read_json_or_form(handler, max_bytes=65536):
+  length = int(handler.headers.get("Content-Length", "0") or "0")
+  if length <= 0 or length > max_bytes:
+    return {}
+  raw = handler.rfile.read(length)
+  content_type = handler.headers.get("Content-Type", "")
+  if "application/json" in content_type:
+    return json.loads(raw.decode("utf-8") or "{}")
+  parsed = urllib.parse.parse_qs(raw.decode("utf-8", "replace"), keep_blank_values=True)
+  return {key: values[0] if values else "" for key, values in parsed.items()}
 
 
 def api_request(method, url, payload=None, headers=None, raw=None, timeout=20):
@@ -98,7 +237,7 @@ def api_request(method, url, payload=None, headers=None, raw=None, timeout=20):
 
 
 def amo_headers():
-  return {"Authorization": "Bearer " + AMO_ACCESS_TOKEN}
+  return {"Authorization": "Bearer " + get_amo_access_token()}
 
 
 def get_drive_url(base_url):
@@ -114,10 +253,10 @@ def get_drive_url(base_url):
 
 def create_amo_lead(fields, files):
   base_url = amo_base_url()
-  if not base_url or not AMO_ACCESS_TOKEN:
+  if not base_url:
     if ACCEPT_LOCAL_ONLY:
       return {"status": "stored_only", "lead_id": None, "message": "AmoCRM is not configured"}
-    raise RuntimeError("AmoCRM не настроена: нужен AMO_SUBDOMAIN и AMO_ACCESS_TOKEN.")
+    raise RuntimeError("AmoCRM не настроена: нужен AMO_SUBDOMAIN или OAuth-подключение.")
 
   contact_fields = []
   if fields["phone"]:
@@ -259,13 +398,27 @@ class LeadHandler(BaseHTTPRequestHandler):
     print("%s %s" % (self.log_date_time_string(), fmt % args), flush=True)
 
   def do_GET(self):
-    if self.path == "/health":
+    path = urllib.parse.urlparse(self.path).path
+    if path == "/health":
       json_response(self, 200, {"ok": True})
+      return
+    if path == "/api/amo/oauth/status":
+      self.handle_oauth_status()
+      return
+    if path == "/api/amo/oauth/callback":
+      self.handle_oauth_callback()
       return
     json_response(self, 404, {"ok": False, "message": "Not found"})
 
   def do_POST(self):
-    if urllib.parse.urlparse(self.path).path != "/api/lead":
+    path = urllib.parse.urlparse(self.path).path
+    if path == "/api/amo/external/credentials":
+      self.handle_external_credentials()
+      return
+    if path == "/api/amo/oauth/disconnect":
+      self.handle_oauth_disconnect()
+      return
+    if path != "/api/lead":
       json_response(self, 404, {"ok": False, "message": "Not found"})
       return
 
@@ -335,6 +488,106 @@ class LeadHandler(BaseHTTPRequestHandler):
         json_response(self, 503, {"ok": False, "message": "Форма подключается к CRM. Пока напишите в Telegram или позвоните."})
       else:
         json_response(self, 500, {"ok": False, "message": "Не удалось принять заявку. Позвоните или напишите в мессенджер."})
+
+  def handle_oauth_status(self):
+    state = load_token_state()
+    config = oauth_config(state)
+    connected = bool(state.get("access_token") or state.get("refresh_token"))
+    json_response(self, 200, {
+      "ok": True,
+      "connected": connected,
+      "base_url": config["base_url"],
+      "has_client": bool(config["client_id"] and config["client_secret"]),
+      "expires_at": state.get("expires_at"),
+      "disabled_at": state.get("disabled_at"),
+    })
+
+  def handle_oauth_callback(self):
+    query = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+    code = text(query.get("code"))
+    referer = text(query.get("referer")) or text(query.get("account"))
+    state_param = text(query.get("state"))
+    if AMO_EXTERNAL_STATE and state_param and state_param != AMO_EXTERNAL_STATE:
+      html_response(self, 403, "amoCRM не подключена", "Параметр state не совпал. Подключение остановлено.")
+      return
+    if not code:
+      html_response(self, 400, "amoCRM не подключена", "amoCRM не передала authorization code.")
+      return
+
+    with TOKEN_LOCK:
+      state = load_token_state()
+      if referer:
+        state["referer"] = referer
+        state["base_url"] = normalize_amo_base_url(referer)
+      config = oauth_config(state)
+      if not config["base_url"] or not config["client_id"] or not config["client_secret"]:
+        save_token_state(state)
+        html_response(
+          self,
+          503,
+          "amoCRM почти готова",
+          "Код авторизации пришел, но на сервере еще нет client_id/client_secret. Сохраните ключи интеграции в /etc/dokumenty82-form.env и повторите подключение.",
+        )
+        return
+      token_payload = exchange_oauth_token(config["base_url"], {
+        "client_id": config["client_id"],
+        "client_secret": config["client_secret"],
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": config["redirect_uri"],
+      })
+      state.update({
+        "client_id": config["client_id"],
+        "client_secret": config["client_secret"],
+        "redirect_uri": config["redirect_uri"],
+        "disabled_at": None,
+      })
+      save_oauth_tokens(state, token_payload, config["base_url"])
+
+    html_response(self, 200, "amoCRM подключена", "Готово. Токены сохранены на сервере, форму можно отправлять в amoCRM.")
+
+  def handle_external_credentials(self):
+    try:
+      payload = read_json_or_form(self)
+      if not AMO_EXTERNAL_STATE:
+        json_response(self, 503, {"ok": False, "message": "AMO_EXTERNAL_STATE is not configured"})
+        return
+      if text(payload.get("state")) != AMO_EXTERNAL_STATE:
+        json_response(self, 403, {"ok": False, "message": "Bad state"})
+        return
+      client_id = text(payload.get("client_id"))
+      client_secret = text(payload.get("client_secret"))
+      if not client_id or not client_secret:
+        json_response(self, 400, {"ok": False, "message": "client_id and client_secret are required"})
+        return
+      with TOKEN_LOCK:
+        state = load_token_state()
+        state.update({
+          "client_id": client_id,
+          "client_secret": client_secret,
+          "external_state": AMO_EXTERNAL_STATE,
+          "redirect_uri": AMO_REDIRECT_URI,
+          "credentials_updated_at": datetime.now(timezone.utc).isoformat(),
+        })
+        save_token_state(state)
+      json_response(self, 200, {"ok": True})
+    except Exception:
+      traceback.print_exc()
+      json_response(self, 500, {"ok": False, "message": "Cannot save amoCRM credentials"})
+
+  def handle_oauth_disconnect(self):
+    try:
+      payload = read_json_or_form(self)
+      with TOKEN_LOCK:
+        state = load_token_state()
+        state["disabled_at"] = datetime.now(timezone.utc).isoformat()
+        if payload:
+          state["disconnect_payload"] = payload
+        save_token_state(state)
+      json_response(self, 200, {"ok": True})
+    except Exception:
+      traceback.print_exc()
+      json_response(self, 500, {"ok": False, "message": "Cannot mark amoCRM as disconnected"})
 
   def save_files(self, form, upload_dir):
     file_fields = form["files"] if "files" in form else []
