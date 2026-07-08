@@ -1,0 +1,21 @@
+[Unit]
+Description=dokumenty82 lead form receiver
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=d82lead
+Group=d82lead
+EnvironmentFile=/etc/dokumenty82-form.env
+ExecStart=/usr/bin/python3 /opt/dokumenty82-form/lead_receiver.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/dokumenty82-leads
+
+[Install]
+WantedBy=multi-user.target

@@ -78,7 +78,7 @@
         <p class="eyebrow">Документы для бизнеса</p>
         <h1>Разберём ситуацию и подскажем документальный маршрут</h1>
         <p>Первичный разбор документов бизнеса: что уже есть, какой маршрут подходит и какие данные подготовить для следующего шага.</p>
-        <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Разобрать ситуацию</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>
+        <div class="actions"><a class="button button-lime" href="#route-contact" data-event-name="hero_cta_click">Напишите нам</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
         <p class="eyebrow">Безопасный маршрут</p>
@@ -244,6 +244,55 @@
       <p>Если вопрос чувствительный, документов много или нужен визит в офис, переходите в контакты и согласуйте безопасный способ работы.</p>
     </article></div>
     </section>
+    <section class="section lead-capture-section" id="route-contact" aria-labelledby="route-contact-title">
+      <div class="section-header">
+        <p class="eyebrow">Первый контакт</p>
+        <h2 id="route-contact-title">Напишите нам</h2>
+        <p>Коротко опишите ситуацию и приложите файлы, если они уже готовы. Заявка попадет в работу, а материалы останутся в закрытом канале.</p>
+      </div>
+      <form class="crm-lead-form lead-capture-form" action="/api/lead" method="post" enctype="multipart/form-data" data-lead-form="amo">
+        <input type="hidden" name="source_page" value="/razbor-situacii/" />
+        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-grid">
+          <label>Имя
+            <input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться" />
+          </label>
+          <label>Телефон
+            <input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." />
+          </label>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" placeholder="Для копии ответа" />
+          </label>
+          <label>Тема
+            <select name="task_type" required>
+              <option value="Разбор ситуации">Разбор ситуации</option>
+              <option value="Требование или письмо">Требование или письмо</option>
+              <option value="Запрос банка">Запрос банка</option>
+              <option value="Отчетность">Отчетность</option>
+              <option value="Регистрация или изменения">Регистрация или изменения</option>
+              <option value="Другое">Другое</option>
+            </select>
+          </label>
+          <label class="form-span-2">Что нужно разобрать
+            <textarea name="message" rows="5" required placeholder="Что произошло, кто запросил документы, какой срок указан"></textarea>
+          </label>
+          <label class="form-span-2">Файлы
+            <input type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" />
+            <span class="form-note">До 6 файлов, суммарно до 20 МБ.</span>
+          </label>
+        </div>
+        <ul class="lead-file-list" aria-live="polite"></ul>
+        <label class="lead-consent">
+          <input type="checkbox" name="privacy" value="1" required />
+          <span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span>
+        </label>
+        <div class="lead-form-actions">
+          <button class="button button-lime" type="submit" data-event-name="goal_form_submit_attempt">Отправить заявку</button>
+          <a class="button button-ghost" href="tel:+79789987222">Позвонить</a>
+        </div>
+        <p class="form-note" role="status" aria-live="polite" id="route-contact-message"></p>
+      </form>
+    </section>
     </main>
     
     <footer class="site-footer">
@@ -301,6 +350,7 @@
       <strong>Задать вопрос срочно</strong>
     </a>
     <div class="cookie-notice" id="cookie-notice"><p>Сайт использует cookies и техническую аналитику. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="/policy/">политикой конфиденциальности</a>.</p><button type="button">Понятно</button></div>
+    <script src="/assets/lead-form.js?v=202607081420" defer></script>
     <script>
       (() => {
         const notice = document.getElementById('cookie-notice');
