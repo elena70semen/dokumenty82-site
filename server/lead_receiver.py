@@ -539,13 +539,23 @@ class LeadHandler(BaseHTTPRequestHandler):
           "Код авторизации пришел, но на сервере еще нет client_id/client_secret. Сохраните ключи интеграции в /etc/dokumenty82-form.env и повторите подключение.",
         )
         return
-      token_payload = exchange_oauth_token(config["base_url"], {
-        "client_id": config["client_id"],
-        "client_secret": config["client_secret"],
-        "grant_type": "authorization_code",
-        "code": code,
-        "redirect_uri": config["redirect_uri"],
-      })
+      try:
+        token_payload = exchange_oauth_token(config["base_url"], {
+          "client_id": config["client_id"],
+          "client_secret": config["client_secret"],
+          "grant_type": "authorization_code",
+          "code": code,
+          "redirect_uri": config["redirect_uri"],
+        })
+      except Exception as error:
+        html_response(
+          self,
+          400,
+          "amoCRM не подключена",
+          "amoCRM не приняла код авторизации. Откройте OAuth-ссылку установки заново и подтвердите доступ, старый код из карточки интеграции не подойдет.",
+        )
+        print("amoCRM OAuth callback failed: %s" % error, flush=True)
+        return
       state.update({
         "client_id": config["client_id"],
         "client_secret": config["client_secret"],
