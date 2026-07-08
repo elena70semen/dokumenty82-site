@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — square bank 115-ФЗ ad template</title>
+  <desc id="desc">Квадратный рекламный шаблон 1080x1080 для контура Банк и 115-ФЗ: один запрос, один CTA, один документальный маршрут.</desc>
+  <metadata>status: V0.3 REVIEW / DRAFT; public use requires owner, design and rights approval.</metadata>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBFAF6"/>
+      <stop offset="1" stop-color="#F7F3EA"/>
+    </linearGradient>
+    <linearGradient id="risk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#162844"/>
+      <stop offset="1" stop-color="#6C2537"/>
+    </linearGradient>
+    <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
+      <path d="M54 0H0V54" fill="none" stroke="#162844" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="22" stdDeviation="28" flood-color="#111821" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="1080" height="1080" rx="48" fill="url(#paper)"/>
+  <rect width="1080" height="1080" rx="48" fill="url(#grid)"/>
+  <circle cx="932" cy="146" r="228" fill="#6C2537" opacity="0.10"/>
+  <circle cx="126" cy="962" r="260" fill="#C69A47" opacity="0.11"/>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" fill="#111821">
+    <text x="80" y="128" font-size="28" font-weight="800" letter-spacing="5" fill="#6C2537">БАНК И 115-ФЗ</text>
+    <text x="80" y="184" font-size="24" font-weight="700" fill="#667184">Документы для бизнеса · Симферополь</text>
+    <text x="80" y="318" font-size="74" font-weight="780">Банк запросил</text>
+    <text x="80" y="404" font-size="74" font-weight="780">документы?</text>
+    <text x="80" y="486" font-size="32" fill="#667184">Посмотрим запрос и соберём состав</text>
+    <text x="80" y="534" font-size="32" fill="#667184">по ситуации.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="626" y="616" width="322" height="250" rx="30" fill="#FFFFFF" stroke="#162844" stroke-opacity="0.12"/>
+    <rect x="574" y="572" width="322" height="250" rx="30" fill="#FFFFFF" stroke="#162844" stroke-opacity="0.12"/>
+    <rect x="520" y="528" width="322" height="250" rx="30" fill="#FFFFFF" stroke="#162844" stroke-opacity="0.12"/>
+  </g>
+  <path d="M572 606H742M572 658H780M572 710H722" stroke="#162844" stroke-opacity="0.18" stroke-width="12" stroke-linecap="round"/>
+  <path d="M818 548l42 42-70 70" fill="none" stroke="#6C2537" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="790" cy="662" r="14" fill="#6C2537"/>
+  <path d="M150 684C260 626 340 742 446 686S602 614 720 666" fill="none" stroke="url(#risk)" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="150" cy="684" r="20" fill="#FFFFFF" stroke="#6C2537" stroke-width="4"/>
+  <circle cx="446" cy="686" r="20" fill="#FFFFFF" stroke="#6C2537" stroke-width="4"/>
+  <circle cx="720" cy="666" r="20" fill="#FFFFFF" stroke="#6C2537" stroke-width="4"/>
+
+  <rect x="80" y="872" width="356" height="88" rx="44" fill="url(#risk)"/>
+  <text x="128" y="928" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">Показать документы</text>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" fill="#667184">
+    <text x="80" y="1012" font-size="25">Симферополь · ул. Мате Залки, 1</text>
+    <text x="684" y="1012" font-size="25" font-weight="800" fill="#162844">+7 (978) 998-72-22</text>
+  </g>
+</svg>

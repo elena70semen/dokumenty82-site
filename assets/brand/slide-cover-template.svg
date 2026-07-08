@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — V0.4 slide cover template</title>
+  <desc id="desc">Титульный слайд 16:9 для внутренней презентации V0.4: dark business surface, route field and controlled lime signal.</desc>
+  <metadata>status: V0.4 REVIEW / INTERNAL DRAFT; public use requires separate owner, design and rights review.</metadata>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B0F14"/>
+      <stop offset="0.58" stop-color="#111318"/>
+      <stop offset="1" stop-color="#33215F"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="24" stdDeviation="32" flood-color="#000000" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <path d="M980 0H1600V900H1228C1154 676 1148 420 1228 222C1268 122 1192 46 980 0Z" fill="#7B61FF" opacity="0.16"/>
+  <path d="M1278 92V808" stroke="#C6FF00" stroke-opacity="0.22" stroke-width="26"/>
+  <path d="M-40 742C224 594 376 788 596 642C808 502 1010 482 1244 584C1382 644 1488 626 1636 510" fill="none" stroke="#C6FF00" stroke-opacity="0.22" stroke-width="12" stroke-linecap="round"/>
+
+  <g filter="url(#shadow)">
+    <rect x="102" y="112" width="1396" height="676" rx="24" fill="#F2F2F2" opacity="0.08" stroke="#F2F2F2" stroke-opacity="0.18"/>
+    <rect x="1018" y="188" width="356" height="456" rx="18" fill="#FBFAF6" opacity="0.96"/>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <text x="150" y="190" font-size="22" font-weight="800" letter-spacing="5" fill="#C6FF00">V0.4 INTERNAL REVIEW</text>
+    <text x="150" y="296" font-size="76" font-weight="780" fill="#F2F2F2">Balanced Expressive</text>
+    <text x="150" y="382" font-size="76" font-weight="780" fill="#F2F2F2">Business System</text>
+    <text x="150" y="462" font-size="28" fill="#DDE3EA">Маршрут: ситуация, разбор, документы.</text>
+
+    <rect x="150" y="560" width="292" height="72" rx="12" fill="#C6FF00"/>
+    <text x="190" y="606" font-size="22" font-weight="800" fill="#111318">Разобрать ситуацию</text>
+    <text x="150" y="704" font-size="22" fill="#FFFFFF" opacity="0.74">Симферополь · офис рядом с налоговой</text>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" fill="#111821">
+    <text x="1064" y="260" font-size="18" font-weight="800" letter-spacing="4" opacity="0.58">МАРШРУТ</text>
+    <text x="1064" y="330" font-size="42" font-weight="760">01</text>
+    <text x="1132" y="330" font-size="26" font-weight="740">Ситуация</text>
+    <text x="1064" y="416" font-size="42" font-weight="760">02</text>
+    <text x="1132" y="416" font-size="26" font-weight="740">Разбор</text>
+    <text x="1064" y="502" font-size="42" font-weight="760">03</text>
+    <text x="1132" y="502" font-size="26" font-weight="740">Документы</text>
+    <text x="1064" y="588" font-size="42" font-weight="760">04</text>
+    <text x="1132" y="588" font-size="26" font-weight="740">Следующий шаг</text>
+  </g>
+  <path d="M1086 352V560" stroke="#245DA7" stroke-width="6" stroke-linecap="round" opacity="0.58"/>
+</svg>

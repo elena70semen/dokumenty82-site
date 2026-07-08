@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — V0.4 slide info template</title>
+  <desc id="desc">Информационный слайд 16:9 для одного вывода: light paper surface, calm grid and one controlled route accent.</desc>
+  <metadata>status: V0.4 REVIEW / INTERNAL DRAFT; public use requires separate owner, design and rights review.</metadata>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.64" stop-color="#F2F2F2"/>
+      <stop offset="1" stop-color="#DDE3EA"/>
+    </linearGradient>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#162844" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#paper)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <rect x="88" y="88" width="1424" height="724" rx="22" fill="#FBFAF6" fill-opacity="0.82" stroke="#162844" stroke-opacity="0.12"/>
+  <path d="M1112 88H1512V812H1058C1112 642 1138 386 1112 88Z" fill="#0B0F14"/>
+  <path d="M1308 142V758" stroke="#C6FF00" stroke-opacity="0.24" stroke-width="22"/>
+  <g font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <text x="136" y="160" font-size="20" font-weight="800" letter-spacing="4" fill="#245DA7">ONE CONCLUSION</text>
+    <text x="136" y="280" font-size="64" font-weight="780" fill="#111821">Матрица работает,</text>
+    <text x="136" y="354" font-size="64" font-weight="780" fill="#111821">когда роль ясна</text>
+    <text x="136" y="430" font-size="28" fill="#2A2D34">Сначала выбираем назначение материала, затем поверхность, контур, CTA и уровень акцента.</text>
+    <g font-size="24" fill="#111821">
+      <text x="168" y="548">01 Роль: сайт, реклама, слайд, PDF или outdoor</text>
+      <text x="168" y="612">02 Контур: один сервисный смысл</text>
+      <text x="168" y="676">03 QA: токены, contrast, render, HOLD</text>
+    </g>
+    <path d="M136 520H980" stroke="#245DA7" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="980" cy="520" r="17" fill="#C6FF00" stroke="#111318" stroke-width="4"/>
+    <text x="1160" y="360" font-size="28" font-weight="760" fill="#F2F2F2">route field</text>
+    <text x="1160" y="408" font-size="22" fill="#DDE3EA">не фон ради фона</text>
+  </g>
+</svg>

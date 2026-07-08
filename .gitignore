@@ -1,0 +1,32 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Local secrets and environment files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs, temporary files, and archives
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Dependency/build caches if sources are restored later
+node_modules/
+.next/
+dist/
+build/
+.cache/

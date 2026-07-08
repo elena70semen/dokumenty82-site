@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1400" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — matrix specimen board V0.3</title>
+  <desc id="desc">V0.4 internal specimen board: site hero, ads, story, banner, slide, local contact, palette budget, route logic and background families.</desc>
+  <metadata>status: V0.4 REVIEW / INTERNAL DRAFT; public release remains HOLD.</metadata>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B0F14"/>
+      <stop offset="0.58" stop-color="#111318"/>
+      <stop offset="1" stop-color="#33215F"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.64" stop-color="#F2F2F2"/>
+      <stop offset="1" stop-color="#DDE3EA"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#245DA7"/>
+      <stop offset="0.72" stop-color="#2E7CF6"/>
+      <stop offset="1" stop-color="#C6FF00"/>
+    </linearGradient>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#F2F2F2" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <pattern id="paperGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#162844" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <style>
+      .font { font-family: Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif; }
+      .label { font-size: 18px; font-weight: 800; letter-spacing: 4px; }
+      .title { font-size: 54px; font-weight: 820; }
+      .h { font-size: 30px; font-weight: 790; }
+      .b { font-size: 18px; font-weight: 500; }
+      .s { font-size: 14px; font-weight: 650; }
+    </style>
+  </defs>
+  <rect width="2200" height="1400" fill="url(#bg)"/>
+  <rect width="2200" height="1400" fill="url(#grid)"/>
+  <path d="M-120 1040C220 830 420 1110 710 894C986 688 1250 704 1550 822C1810 924 1980 760 2320 690" fill="none" stroke="#7B61FF" stroke-opacity="0.18" stroke-width="54" stroke-linecap="round"/>
+  <path d="M-120 1062C226 852 422 1130 718 914C992 714 1254 724 1558 846C1814 948 1984 784 2320 712" fill="none" stroke="#C6FF00" stroke-opacity="0.70" stroke-width="10" stroke-linecap="round"/>
+  <g class="font">
+    <text x="72" y="94" class="label" fill="#C6FF00">V0.4 REVIEW / INTERNAL DRAFT · PUBLIC HOLD</text>
+    <text x="72" y="164" class="title" fill="#F2F2F2">Balanced Expressive Business System</text>
+    <text x="72" y="210" class="b" fill="#DDE3EA">Документы для бизнеса: деловая ясность, route-field, document geometry, controlled bright signal.</text>
+  </g>
+  <g class="font" transform="translate(72 280)">
+    <rect width="570" height="330" rx="18" fill="url(#paper)"/>
+    <rect width="570" height="330" rx="18" fill="url(#paperGrid)"/>
+    <text x="34" y="52" class="s" fill="#245DA7">SITE HERO MINI-PREVIEW</text>
+    <text x="34" y="124" class="h" fill="#111821">Разберём ситуацию</text>
+    <text x="34" y="164" class="b" fill="#2A2D34">Маршрут через документы без каталога услуг.</text>
+    <rect x="34" y="220" width="218" height="56" rx="10" fill="#245DA7"/>
+    <text x="60" y="255" class="s" fill="#FFFFFF">Разобрать ситуацию</text>
+    <path d="M310 238H514" stroke="url(#route)" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="310" cy="238" r="16" fill="#FFFFFF" stroke="#245DA7" stroke-width="4"/>
+    <circle cx="412" cy="238" r="16" fill="#FFFFFF" stroke="#245DA7" stroke-width="4"/>
+    <circle cx="514" cy="238" r="17" fill="#C6FF00" stroke="#111318" stroke-width="4"/>
+  </g>
+  <g class="font" transform="translate(684 280)">
+    <rect width="300" height="300" rx="18" fill="url(#paper)"/>
+    <path d="M205 0H300V300H172C196 220 206 114 205 0Z" fill="#111318"/>
+    <text x="28" y="54" class="s" fill="#245DA7">SQUARE AD</text>
+    <text x="28" y="124" font-size="34" font-weight="800" fill="#111821">Разбор</text>
+    <text x="28" y="164" font-size="34" font-weight="800" fill="#111821">ситуации</text>
+    <rect x="28" y="214" width="160" height="48" rx="9" fill="#245DA7"/>
+    <text x="47" y="245" class="s" fill="#FFFFFF">CTA</text>
+    <circle cx="252" cy="220" r="16" fill="#C6FF00"/>
+  </g>
+  <g class="font" transform="translate(1024 250)">
+    <rect width="220" height="390" rx="22" fill="#111318" stroke="#F2F2F2" stroke-opacity="0.16"/>
+    <path d="M150 0H220V390H176C146 270 150 120 150 0Z" fill="#7B61FF" opacity="0.20"/>
+    <text x="26" y="58" class="s" fill="#C6FF00">STORY</text>
+    <text x="26" y="128" font-size="30" font-weight="800" fill="#F2F2F2">Сначала</text>
+    <text x="26" y="166" font-size="30" font-weight="800" fill="#F2F2F2">разбор</text>
+    <rect x="26" y="294" width="150" height="52" rx="10" fill="#C6FF00"/>
+    <text x="48" y="327" class="s" fill="#111318">CTA</text>
+  </g>
+  <g class="font" transform="translate(1288 280)">
+    <rect width="780" height="250" rx="18" fill="url(#paper)"/>
+    <path d="M500 0H780V250H456C478 190 506 94 500 0Z" fill="#162844"/>
+    <text x="34" y="58" class="s" fill="#245DA7">HORIZONTAL BANNER</text>
+    <text x="34" y="130" font-size="42" font-weight="810" fill="#111821">Сначала разберём ситуацию</text>
+    <text x="34" y="178" class="b" fill="#2A2D34">Один смысл, один CTA, один контур.</text>
+    <path d="M548 138H716" stroke="url(#route)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="716" cy="138" r="17" fill="#C6FF00" stroke="#111318" stroke-width="4"/>
+  </g>
+  <g class="font" transform="translate(72 670)">
+    <rect width="570" height="300" rx="18" fill="#111318"/>
+    <text x="34" y="58" class="s" fill="#C6FF00">SLIDE COVER</text>
+    <text x="34" y="130" font-size="42" font-weight="820" fill="#F2F2F2">Система перед</text>
+    <text x="34" y="180" font-size="42" font-weight="820" fill="#F2F2F2">материалом</text>
+    <text x="34" y="234" class="b" fill="#DDE3EA">Слайд держит один вывод.</text>
+  </g>
+  <g class="font" transform="translate(684 700)">
+    <rect width="520" height="250" rx="18" fill="url(#paper)"/>
+    <text x="32" y="58" class="s" fill="#245DA7">LOCAL CONTACT</text>
+    <text x="32" y="118" class="h" fill="#111821">Симферополь</text>
+    <text x="32" y="164" class="b" fill="#2A2D34">ул. Мате Залки, 1 · +7 (978) 998-72-22</text>
+    <path d="M32 206H420" stroke="#C69A47" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="420" cy="206" r="16" fill="#C6FF00"/>
+  </g>
+  <g class="font" transform="translate(1250 640)">
+    <text x="0" y="0" class="label" fill="#DDE3EA">PALETTE / ACCENT BUDGET</text>
+    <rect y="40" width="126" height="76" rx="12" fill="#0B0F14" stroke="#3A3F48"/>
+    <rect x="146" y="40" width="126" height="76" rx="12" fill="#111318"/>
+    <rect x="292" y="40" width="126" height="76" rx="12" fill="#2A2D34"/>
+    <rect x="438" y="40" width="126" height="76" rx="12" fill="#F2F2F2"/>
+    <rect x="584" y="40" width="126" height="76" rx="12" fill="#C6FF00"/>
+    <rect x="730" y="40" width="126" height="76" rx="12" fill="#7B61FF"/>
+    <text x="584" y="150" class="s" fill="#C6FF00">lime max 6-8%</text>
+    <text x="730" y="150" class="s" fill="#DDE3EA">violet depth</text>
+    <text x="0" y="220" class="label" fill="#DDE3EA">BACKGROUND FAMILIES</text>
+    <g class="s" fill="#DDE3EA">
+      <text x="0" y="270">Matrix paper · Calm grid · Route ribbon</text>
+      <text x="0" y="310">Document geometry · Gradient depth</text>
+      <text x="0" y="350">Dark business surface · Local contact surface</text>
+    </g>
+  </g>
+  <g class="font" transform="translate(72 1090)">
+    <text x="0" y="0" class="label" fill="#C6FF00">ROUTE LOGIC</text>
+    <path d="M0 76H890" stroke="url(#route)" stroke-width="10" stroke-linecap="round"/>
+    <g fill="#F2F2F2" stroke="#245DA7" stroke-width="4">
+      <circle cx="0" cy="76" r="22"/>
+      <circle cx="296" cy="76" r="22"/>
+      <circle cx="592" cy="76" r="22"/>
+    </g>
+    <circle cx="890" cy="76" r="24" fill="#C6FF00" stroke="#111318" stroke-width="5"/>
+    <g class="b" fill="#F2F2F2">
+      <text x="-10" y="140">ситуация</text>
+      <text x="262" y="140">разбор</text>
+      <text x="548" y="140">документы</text>
+      <text x="830" y="140">следующий шаг</text>
+    </g>
+  </g>
+</svg>

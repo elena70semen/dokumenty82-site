@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — matrix core</title>
+  <desc id="desc">Модульная графическая матрица: ситуация, разбор, документы, следующий шаг.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBFAF6"/>
+      <stop offset="0.58" stop-color="#F7F3EA"/>
+      <stop offset="1" stop-color="#DDE3EA"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#245DA7"/>
+      <stop offset="0.55" stop-color="#0D4A3B"/>
+      <stop offset="1" stop-color="#C69A47"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="22" stdDeviation="28" flood-color="#111821" flood-opacity="0.12"/>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#162844" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="760" rx="40" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="760" rx="40" fill="url(#grid)"/>
+
+  <g opacity="0.9">
+    <circle cx="1030" cy="120" r="180" fill="#245DA7" opacity="0.08"/>
+    <circle cx="102" cy="660" r="220" fill="#C69A47" opacity="0.10"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="80" y="84" width="350" height="188" rx="30" fill="#FFFFFF" opacity="0.86" stroke="#162844" stroke-opacity="0.10"/>
+    <rect x="466" y="84" width="654" height="188" rx="30" fill="#162844"/>
+    <rect x="80" y="308" width="646" height="368" rx="34" fill="#FFFFFF" opacity="0.88" stroke="#162844" stroke-opacity="0.10"/>
+    <rect x="762" y="308" width="358" height="168" rx="30" fill="#245DA7" opacity="0.96"/>
+    <rect x="762" y="508" width="358" height="168" rx="30" fill="#FFFFFF" opacity="0.88" stroke="#162844" stroke-opacity="0.10"/>
+  </g>
+
+  <g fill="none" stroke="url(#route)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M158 184 C280 184 280 396 396 396 S548 572 684 572 S814 392 940 392"/>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" fill="#111821">
+    <text x="116" y="142" font-size="18" font-weight="700" letter-spacing="4" opacity="0.74">01 СИТУАЦИЯ</text>
+    <text x="116" y="198" font-size="36" font-weight="700">Что уже есть</text>
+    <text x="116" y="234" font-size="18" opacity="0.66">приносите по вопросу</text>
+
+    <text x="516" y="142" font-size="18" font-weight="700" letter-spacing="4" fill="#FFFFFF" opacity="0.74">02 РАЗБОР</text>
+    <text x="516" y="198" font-size="44" font-weight="700" fill="#FFFFFF">Понятный маршрут</text>
+    <text x="516" y="236" font-size="18" fill="#FFFFFF" opacity="0.70">без давления и лишней сложности</text>
+
+    <text x="128" y="384" font-size="18" font-weight="700" letter-spacing="4" opacity="0.74">03 ДОКУМЕНТЫ</text>
+    <text x="128" y="452" font-size="52" font-weight="700">Комплект</text>
+    <text x="128" y="512" font-size="52" font-weight="700">под задачу</text>
+    <text x="128" y="572" font-size="21" opacity="0.64">деловая помощь, локальный офис, спокойный следующий шаг</text>
+
+    <text x="816" y="378" font-size="18" font-weight="700" letter-spacing="4" fill="#FFFFFF" opacity="0.78">CTA</text>
+    <text x="816" y="428" font-size="34" font-weight="700" fill="#FFFFFF">Разобрать</text>
+
+    <text x="808" y="580" font-size="18" font-weight="700" letter-spacing="4" opacity="0.72">04 ШАГ</text>
+    <text x="808" y="630" font-size="30" font-weight="700">Что делать дальше</text>
+  </g>
+
+  <g fill="#FFFFFF" stroke="#162844" stroke-opacity="0.14" stroke-width="2">
+    <circle cx="158" cy="184" r="18"/>
+    <circle cx="396" cy="396" r="18"/>
+    <circle cx="684" cy="572" r="18"/>
+    <circle cx="940" cy="392" r="18"/>
+  </g>
+  <g fill="#245DA7">
+    <circle cx="158" cy="184" r="7"/>
+    <circle cx="396" cy="396" r="7"/>
+    <circle cx="684" cy="572" r="7"/>
+    <circle cx="940" cy="392" r="7"/>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — V0.4 slide promo template</title>
+  <desc id="desc">Внутренний промо-слайд 16:9 без публичных обещаний: dark surface, one headline, one safe CTA and review status.</desc>
+  <metadata>status: V0.4 REVIEW / INTERNAL DRAFT; public use requires separate owner, design and rights review.</metadata>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B0F14"/>
+      <stop offset="0.50" stop-color="#111318"/>
+      <stop offset="1" stop-color="#33215F"/>
+    </linearGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#F2F2F2" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <path d="M1072 0H1600V900H1160C1088 692 1090 438 1164 236C1204 126 1172 52 1072 0Z" fill="#7B61FF" opacity="0.18"/>
+  <path d="M122 650H732" stroke="#C6FF00" stroke-width="12" stroke-linecap="round"/>
+  <g font-family="Inter, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif">
+    <text x="104" y="136" font-size="22" font-weight="800" letter-spacing="5" fill="#C6FF00">INTERNAL PROMO DRAFT</text>
+    <text x="104" y="306" font-size="88" font-weight="790" fill="#F2F2F2">Разбор ситуации</text>
+    <text x="104" y="406" font-size="88" font-weight="790" fill="#F2F2F2">перед документами</text>
+    <text x="104" y="490" font-size="30" fill="#DDE3EA">Без давления: сначала вводные, затем понятный документальный маршрут.</text>
+    <rect x="104" y="568" width="328" height="76" rx="12" fill="#C6FF00"/>
+    <text x="146" y="616" font-size="25" font-weight="830" fill="#111318">Разобрать ситуацию</text>
+    <text x="104" y="734" font-size="22" fill="#DDE3EA">Status: REVIEW / INTERNAL DRAFT</text>
+    <rect x="1050" y="238" width="360" height="360" rx="22" fill="#F2F2F2" fill-opacity="0.08" stroke="#F2F2F2" stroke-opacity="0.18"/>
+    <text x="1100" y="342" font-size="24" font-weight="780" fill="#F2F2F2">one message</text>
+    <text x="1100" y="422" font-size="24" font-weight="780" fill="#F2F2F2">one CTA</text>
+    <text x="1100" y="502" font-size="24" font-weight="780" fill="#F2F2F2">one contour</text>
+  </g>
+</svg>

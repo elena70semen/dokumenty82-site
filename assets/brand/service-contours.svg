@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Документы для бизнеса — service contours</title>
+  <desc id="desc">Карта сервисных контуров внутри единой графической матрицы.</desc>
+  <rect width="1200" height="760" rx="40" fill="#F7F3EA"/>
+  <defs>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#111821" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <text x="80" y="94" font-size="18" font-weight="700" letter-spacing="4" fill="#667184">СЕРВИСНЫЕ КОНТУРЫ</text>
+    <text x="80" y="148" font-size="44" font-weight="750" fill="#111821">Единая карта направлений</text>
+    <text x="80" y="188" font-size="20" fill="#667184">каждый контур — часть одного маршрута бренда</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="80" y="248" width="250" height="132" rx="28" fill="#FFFFFF" stroke="#245DA7" stroke-opacity="0.28"/>
+    <rect x="358" y="248" width="250" height="132" rx="28" fill="#FFFFFF" stroke="#0D4A3B" stroke-opacity="0.28"/>
+    <rect x="636" y="248" width="250" height="132" rx="28" fill="#FFFFFF" stroke="#C69A47" stroke-opacity="0.32"/>
+    <rect x="914" y="248" width="206" height="132" rx="28" fill="#FFFFFF" stroke="#6C2537" stroke-opacity="0.28"/>
+    <rect x="80" y="422" width="250" height="132" rx="28" fill="#FFFFFF" stroke="#245DA7" stroke-opacity="0.22"/>
+    <rect x="358" y="422" width="250" height="132" rx="28" fill="#FFFFFF" stroke="#162844" stroke-opacity="0.22"/>
+    <rect x="636" y="422" width="250" height="132" rx="28" fill="#FFFFFF" stroke="#0D4A3B" stroke-opacity="0.22"/>
+    <rect x="914" y="422" width="206" height="132" rx="28" fill="#FFFFFF" stroke="#C69A47" stroke-opacity="0.26"/>
+  </g>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" font-weight="700" fill="#111821">
+    <text x="112" y="306" font-size="16" fill="#245DA7">01</text><text x="112" y="340" font-size="24">Разбор</text>
+    <text x="390" y="306" font-size="16" fill="#0D4A3B">02</text><text x="390" y="340" font-size="24">Отчетность</text>
+    <text x="668" y="306" font-size="16" fill="#C69A47">03</text><text x="668" y="340" font-size="24">Налоги</text>
+    <text x="946" y="306" font-size="16" fill="#6C2537">04</text><text x="946" y="340" font-size="22">Банк 115-ФЗ</text>
+    <text x="112" y="480" font-size="16" fill="#245DA7">05</text><text x="112" y="514" font-size="23">Изменения</text>
+    <text x="390" y="480" font-size="16" fill="#162844">06</text><text x="390" y="514" font-size="23">Регистрация</text>
+    <text x="668" y="480" font-size="16" fill="#0D4A3B">07</text><text x="668" y="514" font-size="23">Кадры</text>
+    <text x="946" y="480" font-size="16" fill="#C69A47">08</text><text x="946" y="514" font-size="22">Поддержка</text>
+  </g>
+  <g fill="none" stroke="#162844" stroke-opacity="0.24" stroke-width="3" stroke-linecap="round">
+    <path d="M330 314h28M608 314h28M886 314h28"/>
+    <path d="M330 488h28M608 488h28M886 488h28"/>
+    <path d="M205 380v42M483 380v42M761 380v42M1017 380v42"/>
+  </g>
+  <g fill="#245DA7" opacity="0.92"><circle cx="296" cy="314" r="8"/><circle cx="204" cy="488" r="8"/></g>
+  <g fill="#0D4A3B" opacity="0.92"><circle cx="574" cy="314" r="8"/><circle cx="762" cy="488" r="8"/></g>
+  <g fill="#C69A47" opacity="0.92"><circle cx="852" cy="314" r="8"/><circle cx="1018" cy="488" r="8"/></g>
+  <g fill="#6C2537" opacity="0.92"><circle cx="1086" cy="314" r="8"/></g>
+</svg>
