@@ -105,8 +105,12 @@
     panel.setAttribute("aria-label", "AI-приемная");
     panel.innerHTML = [
       '<div class="ai-chat-head">',
-      '  <div><span>AI</span><strong>AI-приемная</strong></div>',
-      '  <button class="ai-chat-close" type="button" aria-label="Закрыть чат">×</button>',
+      '  <img class="ai-chat-portrait" src="/assets/images/ai-consultant-portrait.webp" alt="AI-консультант" loading="lazy" decoding="async">',
+      '  <div class="ai-chat-head-copy">',
+      '    <span>AI</span>',
+      '    <div><strong>AI-приемная</strong><small>Документы, банк, ИФНС</small></div>',
+      '  </div>',
+      '  <button class="ai-chat-close" type="button" aria-label="Закрыть чат">&times;</button>',
       '</div>',
       '<div class="ai-chat-messages" aria-live="polite"></div>',
       '<div class="ai-chat-quick">',
