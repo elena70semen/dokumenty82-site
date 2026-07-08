@@ -39,7 +39,30 @@ AMO_RESPONSIBLE_USER_ID = os.environ.get("AMO_RESPONSIBLE_USER_ID", "").strip()
 AMO_TAGS = [tag.strip() for tag in os.environ.get("AMO_TAGS", "site,razbor-situacii").split(",") if tag.strip()]
 AMO_ATTACH_FILES = os.environ.get("AMO_ATTACH_FILES", "0") == "1"
 AMO_DRIVE_URL = os.environ.get("AMO_DRIVE_URL", "").strip().rstrip("/")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "").strip()
+OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.4-mini").strip()
+AI_CHAT_ENABLED = os.environ.get("AI_CHAT_ENABLED", "1") == "1"
+AI_MAX_MESSAGES = int(os.environ.get("AI_MAX_MESSAGES", "10"))
+AI_MAX_MESSAGE_CHARS = int(os.environ.get("AI_MAX_MESSAGE_CHARS", "900"))
+AI_MAX_OUTPUT_TOKENS = int(os.environ.get("AI_MAX_OUTPUT_TOKENS", "420"))
+AI_RATE_LIMIT_WINDOW = int(os.environ.get("AI_RATE_LIMIT_WINDOW_SECONDS", "3600"))
+AI_RATE_LIMIT_MAX = int(os.environ.get("AI_RATE_LIMIT_MAX", "24"))
 TOKEN_LOCK = threading.Lock()
+AI_RATE_LOCK = threading.Lock()
+AI_RATE_STATE = {}
+
+AI_SYSTEM_PROMPT = """
+Ты AI-приемная сайта dokumenty82.ru: "Документы для бизнеса" в Симферополе.
+Помогаешь посетителю сориентироваться по документам бизнеса: запросы банка и 115-ФЗ, требования ИФНС, отчетность, регистрация и изменения ООО/ИП, кадровые и бухгалтерские документы.
+
+Правила:
+- Отвечай по-русски, спокойно и кратко: 2-5 предложений.
+- Не обещай юридический или банковский результат, не давай гарантий снятия ограничений, регистрации или решения ИФНС.
+- Не составляй окончательный юридический документ в чате и не проси присылать чувствительные персональные данные прямо в чат.
+- Если не хватает вводных, задай один главный уточняющий вопрос: что пришло, от кого, какой срок, какой период или какой документ есть.
+- Когда ситуация похожа на реальную задачу, предложи передать вопрос специалисту через форму в чате.
+- Если вопрос не про услуги сайта, мягко верни к теме документов бизнеса.
+""".strip()
 
 
 def text(value):
@@ -236,6 +259,103 @@ def api_request(method, url, payload=None, headers=None, raw=None, timeout=20):
     raise RuntimeError(f"{method} {url} failed: HTTP {error.code} {detail[:500]}") from error
 
 
+def check_ai_rate_limit(ip):
+  now = int(time.time())
+  cutoff = now - AI_RATE_LIMIT_WINDOW
+  with AI_RATE_LOCK:
+    hits = [stamp for stamp in AI_RATE_STATE.get(ip, []) if stamp >= cutoff]
+    if len(hits) >= AI_RATE_LIMIT_MAX:
+      AI_RATE_STATE[ip] = hits
+      return False
+    hits.append(now)
+    AI_RATE_STATE[ip] = hits
+    return True
+
+
+def clean_chat_message(value):
+  value = text(value)
+  value = re.sub(r"\s+", " ", value).strip()
+  return value[:AI_MAX_MESSAGE_CHARS]
+
+
+def build_ai_input(payload):
+  page = clean_chat_message(payload.get("page") or payload.get("source_page") or "")
+  raw_messages = payload.get("messages", [])
+  if not isinstance(raw_messages, list):
+    raw_messages = []
+
+  normalized = []
+  for item in raw_messages[-AI_MAX_MESSAGES:]:
+    if not isinstance(item, dict):
+      continue
+    role = text(item.get("role")).lower()
+    if role not in ("user", "assistant"):
+      continue
+    content = clean_chat_message(item.get("content"))
+    if content:
+      normalized.append({"role": role, "content": content})
+
+  if not normalized or normalized[-1]["role"] != "user":
+    raise ValueError("Напишите вопрос.")
+
+  lines = []
+  if page:
+    lines.append("Страница сайта: " + page)
+  lines.append("История диалога:")
+  for item in normalized:
+    speaker = "Посетитель" if item["role"] == "user" else "AI-приемная"
+    lines.append(f"{speaker}: {item['content']}")
+  return "\n".join(lines)
+
+
+def extract_openai_text(result):
+  if isinstance(result, dict) and isinstance(result.get("output_text"), str):
+    return result["output_text"].strip()
+
+  parts = []
+  for item in (result or {}).get("output", []):
+    if not isinstance(item, dict):
+      continue
+    for block in item.get("content", []):
+      if not isinstance(block, dict):
+        continue
+      value = block.get("text") or block.get("content")
+      if isinstance(value, str) and value.strip():
+        parts.append(value.strip())
+  return "\n".join(parts).strip()
+
+
+def create_ai_response(payload):
+  if not AI_CHAT_ENABLED:
+    raise RuntimeError("AI chat is disabled")
+  if not OPENAI_API_KEY:
+    raise RuntimeError("OPENAI_API_KEY is not configured")
+
+  user_input = build_ai_input(payload)
+  response = api_request(
+    "POST",
+    "https://api.openai.com/v1/responses",
+    payload={
+      "model": OPENAI_MODEL,
+      "instructions": AI_SYSTEM_PROMPT,
+      "input": user_input,
+      "reasoning": {"effort": "low"},
+      "text": {"verbosity": "low"},
+      "max_output_tokens": AI_MAX_OUTPUT_TOKENS,
+      "store": False,
+    },
+    headers={
+      "Authorization": "Bearer " + OPENAI_API_KEY,
+      "Content-Type": "application/json",
+    },
+    timeout=35,
+  )
+  answer = extract_openai_text(response)
+  if not answer:
+    raise RuntimeError("OpenAI returned an empty response")
+  return answer
+
+
 def amo_headers():
   return {"Authorization": "Bearer " + get_amo_access_token()}
 
@@ -428,6 +548,9 @@ class LeadHandler(BaseHTTPRequestHandler):
     if path == "/api/amo/oauth/disconnect":
       self.handle_oauth_disconnect()
       return
+    if path == "/api/ai-chat":
+      self.handle_ai_chat()
+      return
     if path != "/api/lead":
       json_response(self, 404, {"ok": False, "message": "Not found"})
       return
@@ -498,6 +621,32 @@ class LeadHandler(BaseHTTPRequestHandler):
         json_response(self, 503, {"ok": False, "message": "Форма подключается к CRM. Пока напишите в Telegram или позвоните."})
       else:
         json_response(self, 500, {"ok": False, "message": "Не удалось принять заявку. Позвоните или напишите в мессенджер."})
+
+  def handle_ai_chat(self):
+    try:
+      if not check_ai_rate_limit(self.client_address[0]):
+        json_response(self, 429, {
+          "ok": False,
+          "message": "Чат временно ограничил частоту вопросов. Оставьте телефон, и специалист вернется к ситуации.",
+        })
+        return
+
+      payload = read_json_or_form(self)
+      answer = create_ai_response(payload)
+      json_response(self, 200, {
+        "ok": True,
+        "answer": answer,
+        "suggest_lead": True,
+      })
+    except ValueError as error:
+      json_response(self, 400, {"ok": False, "message": str(error)})
+    except Exception as error:
+      traceback.print_exc()
+      if "OPENAI_API_KEY" in str(error):
+        message = "AI-чат подключается. Пока напишите вопрос и телефон, специалист посмотрит ситуацию."
+      else:
+        message = "AI-чат временно не ответил. Оставьте телефон, и специалист вернется к ситуации."
+      json_response(self, 503, {"ok": False, "message": message})
 
   def handle_oauth_status(self):
     state = load_token_state()

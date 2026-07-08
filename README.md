@@ -51,3 +51,20 @@ Useful checks after deploy:
 
 - `curl -fsS https://dokumenty82.ru/api/amo/oauth/status`
 - `systemctl status dokumenty82-lead --no-pager`
+
+## AI chat endpoint
+
+The floating `AI` button is upgraded by `/assets/ai-chat.js` and posts chat turns to `/api/ai-chat`.
+
+Required server value in `/etc/dokumenty82-form.env`:
+
+- `OPENAI_API_KEY`
+
+Default AI settings:
+
+- `OPENAI_MODEL=gpt-5.4-mini`
+- `AI_CHAT_ENABLED=1`
+- `AI_RATE_LIMIT_MAX=24`
+- `AI_RATE_LIMIT_WINDOW_SECONDS=3600`
+
+When a visitor asks to send the conversation to a specialist, the widget posts the transcript to `/api/lead`, so the request goes into amoCRM through the same lead receiver.
