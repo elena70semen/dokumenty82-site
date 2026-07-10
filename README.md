@@ -52,6 +52,30 @@ Useful checks after deploy:
 - `curl -fsS https://dokumenty82.ru/api/amo/oauth/status`
 - `systemctl status dokumenty82-lead --no-pager`
 
+## Analytics events
+
+Yandex Metrika counter `109869928` is loaded by the static pages. The shared
+`/assets/analytics-events.js` file sends allowlisted goal names only; it does not
+read or send form values, phone numbers, email addresses, messages or files.
+
+The lead form reports:
+
+- `goal_form_start` after the first form interaction;
+- `goal_form_submit_attempt` when the submit control is used;
+- `goal_form_submit_success` only after `/api/lead` returns a successful response;
+- `goal_form_submit_fail` after validation or delivery failure.
+
+Metrika UI evidence (2026-07-10): goal `580981206`, "Успешная отправка
+заявки", listens for `goal_form_submit_success` on counter `109869928`.
+
+Post-deploy SEO and tracking smoke checks:
+
+- `curl -fsS https://dokumenty82.ru/sverka-s-nalogovoy/`
+- `curl -fsS https://dokumenty82.ru/sitemap.xml | grep sverka-s-nalogovoy`
+- `curl -fsS https://dokumenty82.ru/razbor-situacii/ | grep analytics-events.js`
+- confirm the Metrika goal `goal_form_submit_success` remains active before interpreting successful submissions as conversions;
+- do not submit a real form or file as an automated smoke test.
+
 ## AI chat endpoint
 
 The floating `AI` button is upgraded by `/assets/ai-chat.js` and posts chat turns to `/api/ai-chat`.

@@ -80,6 +80,8 @@
       const trap = form.querySelector('input[name="company_website"]');
       if (trap && trap.value) return;
 
+      fireGoal("goal_form_submit_attempt");
+
       const fileMessage = renderFiles(form);
       if (fileMessage) {
         setStatus(form, fileMessage);
@@ -118,7 +120,7 @@
           form.reset();
           renderFiles(form);
           setStatus(form, "Заявка отправлена. Мы свяжемся с вами по указанному телефону.");
-          fireGoal("goal_form_submit_attempt");
+          fireGoal("goal_form_submit_success");
         })
         .catch(function (error) {
           setStatus(form, error.message || "Форма временно недоступна. Позвоните или напишите в мессенджер.");
