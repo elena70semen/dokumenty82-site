@@ -29,7 +29,7 @@ body {
   color: var(--text);
   background:
     linear-gradient(90deg, rgba(6, 10, 16, 0.86), rgba(12, 18, 27, 0.68)),
-    url("/assets/images/premium-document-ai-background1.png") center / cover fixed,
+    url("/assets/images/premium-document-ai-background1.webp") center / cover fixed,
     var(--bg);
 }
 

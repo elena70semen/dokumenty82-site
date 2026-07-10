@@ -9,4 +9,4 @@ Disallow: /internal/
 Host: dokumenty82.ru
 Sitemap: https://dokumenty82.ru/sitemap.xml
 # Services feed: https://dokumenty82.ru/services.yml
-Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&utm_id&utm_referrer&yclid&ysclid&from&gclid&fbclid&etext
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&utm_id&utm_referrer&yclid&ysclid&from&gclid&fbclid&etext&ai_live&headless-finalcheck

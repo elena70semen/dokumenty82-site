@@ -92,8 +92,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.01</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -114,8 +115,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.02</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -136,8 +138,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.03</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -158,8 +161,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.04</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -180,8 +184,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.05</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -202,8 +207,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.06</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -224,8 +230,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.07</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -246,8 +253,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.08</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -268,8 +276,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.09</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -290,8 +299,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.10</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -312,8 +322,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.11</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
@@ -334,8 +345,9 @@
         <param name="Годы опыта">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Конверсия">1.12</param>
-        <param name="Выполняется удаленно">да</param>
-        <param name="Работа по адресу">да</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
         <param name="Работа по договору">да</param>
         <param name="Безналичный расчет">да</param>
       </offer>
