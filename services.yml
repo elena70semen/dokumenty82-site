@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-07-10 00:00">
+  <shop>
+    <name>Документы для бизнеса</name>
+    <company>Документы для бизнеса</company>
+    <url>https://dokumenty82.ru/</url>
+    <email>info@dokumenty82.ru</email>
+    <currencies>
+      <currency id="RUR" rate="1" />
+    </currencies>
+    <categories>
+      <category id="1">Исполнитель</category>
+      <category id="2" parentId="1">Подготовка документов для бизнеса</category>
+      <category id="3" parentId="2">Разбор ситуации по документам бизнеса</category>
+      <category id="4" parentId="2">Отчетность и налоговые документы</category>
+      <category id="5" parentId="2">Документы для банка и 115-ФЗ</category>
+      <category id="6" parentId="2">Ответ на запрос банка</category>
+      <category id="7" parentId="2">Ответ на требование ИФНС</category>
+      <category id="8" parentId="2">Регистрация, изменения и ликвидация бизнеса</category>
+      <category id="9" parentId="2">Кадровые документы</category>
+      <category id="10" parentId="2">Документальное сопровождение бизнеса</category>
+      <category id="11" parentId="2">Регистрация ООО</category>
+      <category id="12" parentId="2">Регистрация ИП</category>
+      <category id="13" parentId="2">Ликвидация ООО</category>
+      <category id="14" parentId="2">Восстановление бухгалтерского учета</category>
+    </categories>
+    <sets>
+      <set id="s1">
+        <name>Разбор ситуации по документам бизнеса в Симферополе</name>
+        <url>https://dokumenty82.ru/razbor-situacii/</url>
+      </set>
+      <set id="s2">
+        <name>Отчетность и налоговые документы в Симферополе</name>
+        <url>https://dokumenty82.ru/otchetnost/</url>
+      </set>
+      <set id="s3">
+        <name>Документы для банка и 115-ФЗ в Симферополе</name>
+        <url>https://dokumenty82.ru/bank-i-115-fz/</url>
+      </set>
+      <set id="s4">
+        <name>Ответ на запрос банка в Симферополе</name>
+        <url>https://dokumenty82.ru/otvet-na-zapros-banka/</url>
+      </set>
+      <set id="s5">
+        <name>Ответ на требование ИФНС в Симферополе</name>
+        <url>https://dokumenty82.ru/otvet-na-trebovanie-ifns/</url>
+      </set>
+      <set id="s6">
+        <name>Регистрация, изменения и ликвидация бизнеса в Симферополе</name>
+        <url>https://dokumenty82.ru/registraciya-i-likvidaciya/</url>
+      </set>
+      <set id="s7">
+        <name>Кадровые документы в Симферополе</name>
+        <url>https://dokumenty82.ru/kadry/</url>
+      </set>
+      <set id="s8">
+        <name>Документальное сопровождение бизнеса в Симферополе</name>
+        <url>https://dokumenty82.ru/soprovozhdenie/</url>
+      </set>
+      <set id="s9">
+        <name>Регистрация ООО в Симферополе</name>
+        <url>https://dokumenty82.ru/registraciya-ooo/</url>
+      </set>
+      <set id="s10">
+        <name>Регистрация ИП в Симферополе</name>
+        <url>https://dokumenty82.ru/registraciya-ip/</url>
+      </set>
+      <set id="s11">
+        <name>Ликвидация ООО в Симферополе</name>
+        <url>https://dokumenty82.ru/likvidaciya-ooo/</url>
+      </set>
+      <set id="s12">
+        <name>Восстановление бухгалтерского учета в Симферополе</name>
+        <url>https://dokumenty82.ru/vosstanovlenie-buhucheta/</url>
+      </set>
+    </sets>
+    <offers>
+      <offer id="d82-razbor-situacii">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/razbor-situacii/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>3</categoryId>
+        <set-ids>s1</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=razbor-situacii</picture>
+        <description>Разбор ситуации по документам бизнеса. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.01</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-otchetnost">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/otchetnost/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>4</categoryId>
+        <set-ids>s2</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=otchetnost</picture>
+        <description>Отчетность и налоговые документы. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.02</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-bank-i-115-fz">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/bank-i-115-fz/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>5</categoryId>
+        <set-ids>s3</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=bank-i-115-fz</picture>
+        <description>Документы для банка и 115-ФЗ. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.03</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-otvet-na-zapros-banka">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/otvet-na-zapros-banka/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>6</categoryId>
+        <set-ids>s4</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=otvet-na-zapros-banka</picture>
+        <description>Ответ на запрос банка. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.04</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-otvet-na-trebovanie-ifns">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/otvet-na-trebovanie-ifns/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>7</categoryId>
+        <set-ids>s5</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=otvet-na-trebovanie-ifns</picture>
+        <description>Ответ на требование ИФНС. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.05</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-registraciya-i-likvidaciya">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/registraciya-i-likvidaciya/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>8</categoryId>
+        <set-ids>s6</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=registraciya-i-likvidaciya</picture>
+        <description>Регистрация, изменения и ликвидация бизнеса. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.06</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-kadry">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/kadry/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>9</categoryId>
+        <set-ids>s7</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=kadry</picture>
+        <description>Кадровые документы. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.07</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-soprovozhdenie">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/soprovozhdenie/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>10</categoryId>
+        <set-ids>s8</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=soprovozhdenie</picture>
+        <description>Документальное сопровождение бизнеса. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.08</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-registraciya-ooo">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/registraciya-ooo/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>11</categoryId>
+        <set-ids>s9</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=registraciya-ooo</picture>
+        <description>Регистрация ООО. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.09</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-registraciya-ip">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/registraciya-ip/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>12</categoryId>
+        <set-ids>s10</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=registraciya-ip</picture>
+        <description>Регистрация ИП. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.10</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-likvidaciya-ooo">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/likvidaciya-ooo/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>13</categoryId>
+        <set-ids>s11</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=likvidaciya-ooo</picture>
+        <description>Ликвидация ООО. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.11</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-vosstanovlenie-buhucheta">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/vosstanovlenie-buhucheta/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>цена договорная</sales_notes>
+        <categoryId>14</categoryId>
+        <set-ids>s12</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=vosstanovlenie-buhucheta</picture>
+        <description>Восстановление бухгалтерского учета. Подготовка документов для бизнеса в Симферополе после согласования вводных и безопасного канала передачи материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Конверсия">1.12</param>
+        <param name="Выполняется удаленно">да</param>
+        <param name="Работа по адресу">да</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

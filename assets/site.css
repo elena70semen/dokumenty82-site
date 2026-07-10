@@ -1231,6 +1231,46 @@ h2 {
   border: 0 !important;
 }
 
+.reviews-rating-panel {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.reviews-rating-panel iframe {
+  width: min(100%, 300px);
+  height: 100px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.reviews-rating-note {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.reviews-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hero-copy-panel .reviews-action-row {
+  display: flex;
+  width: auto;
+  grid-template-columns: none;
+  justify-content: flex-start;
+}
+
+.hero-copy-panel .reviews-action-row .button {
+  flex: 0 1 260px;
+  max-width: 260px;
+}
+
 .crm-lead-form {
   display: grid;
   gap: 1rem;
