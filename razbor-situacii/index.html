@@ -360,7 +360,7 @@
       <div class="section-header">
         <p class="eyebrow">Первый контакт</p>
         <h2 id="route-contact-title">Напишите нам</h2>
-        <p>Коротко опишите ситуацию и приложите файлы, если они уже готовы. Заявка попадет в работу, а материалы останутся в закрытом канале.</p>
+        <p>Коротко опишите ситуацию и при необходимости приложите только относящиеся к ней файлы. Заявка передается оператору сайта и не публикуется.</p>
       </div>
       <form class="crm-lead-form lead-capture-form" action="/api/lead" method="post" enctype="multipart/form-data" data-lead-form="amo">
         <input type="hidden" name="source_page" value="/razbor-situacii/" />
@@ -390,7 +390,7 @@
           </label>
           <label class="form-span-2">Файлы
             <input type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" />
-            <span class="form-note">До 6 файлов, суммарно до 20 МБ.</span>
+            <span class="form-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли, коды доступа и лишние персональные данные.</span>
           </label>
         </div>
         <ul class="lead-file-list" aria-live="polite"></ul>
@@ -399,7 +399,7 @@
           <span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span>
         </label>
         <div class="lead-form-actions">
-          <button class="button button-lime" type="submit" data-event-name="goal_form_submit_attempt">Отправить заявку</button>
+          <button class="button button-lime" type="submit">Отправить заявку</button>
           <a class="button button-ghost" href="tel:+79789987222">Позвонить</a>
         </div>
         <p class="form-note" role="status" aria-live="polite" id="route-contact-message"></p>
@@ -502,6 +502,7 @@
         });
       })();
     </script>
+    <script src="/assets/analytics-events.js?v=20260710-goals-v1" defer></script>
     <script src="/assets/ai-chat.js?v=202607081646" defer></script>
   </body>
 </html>
