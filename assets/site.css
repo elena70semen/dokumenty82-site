@@ -3177,3 +3177,71 @@ html:has(#route-contact) .ai-chat-widget {
     z-index: 90;
   }
 }
+
+/* Subtle office photography keeps every major content block tied to the real service context. */
+main > .section {
+  --section-photo: url("/assets/images/office-client-consultation.webp");
+}
+
+main > .section:nth-of-type(4n + 2) {
+  --section-photo: url("/assets/images/about-office-meeting.webp");
+}
+
+main > .section:nth-of-type(4n + 3) {
+  --section-photo: url("/assets/images/contact-office-reception.webp");
+}
+
+main > .section:nth-of-type(4n) {
+  --section-photo: url("/assets/images/office-document-consultation.webp");
+}
+
+main > .section::after {
+  background-image:
+    linear-gradient(105deg, rgba(7, 12, 19, 0.88) 0%, rgba(7, 12, 19, 0.54) 48%, rgba(7, 12, 19, 0.3) 100%),
+    var(--section-photo);
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(0.22) saturate(0.72) contrast(0.94) brightness(0.72);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.58), #000 58%, #000 100%);
+  mix-blend-mode: luminosity;
+  opacity: 0.14;
+}
+
+main > .hero > .glass-panel:not(.photo-hero-panel)::after {
+  background-image:
+    linear-gradient(105deg, rgba(7, 12, 19, 0.9) 0%, rgba(7, 12, 19, 0.52) 52%, rgba(7, 12, 19, 0.28) 100%),
+    url("/assets/images/office-document-consultation.webp");
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(0.2) saturate(0.74) contrast(0.94) brightness(0.72);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.46), #000 56%, #000 100%);
+  mix-blend-mode: luminosity;
+  opacity: 0.16;
+}
+
+main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
+  background-image:
+    linear-gradient(105deg, rgba(7, 12, 19, 0.9) 0%, rgba(7, 12, 19, 0.52) 52%, rgba(7, 12, 19, 0.28) 100%),
+    url("/assets/images/about-office-meeting.webp");
+}
+
+@media (min-width: 1101px) and (max-width: 1380px) {
+  .site-header .phone-pill {
+    display: none;
+  }
+
+  .desktop-nav a {
+    padding-inline: 0.48rem;
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 640px) {
+  main > .section::after,
+  main > .hero > .glass-panel:not(.photo-hero-panel)::after {
+    background-position: 62% center;
+    background-size: auto 100%;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.42), #000 72%, #000 100%);
+    opacity: 0.11;
+  }
+}
