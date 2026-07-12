@@ -3,6 +3,7 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
+const serviceFeed = fs.readFileSync(path.join(root, "services.yml"), "utf8");
 const urls = [...sitemap.matchAll(/<loc>(https:\/\/dokumenty82\.ru(?:\/[^<]*)?)<\/loc>/g)].map((match) => match[1]);
 const registry = JSON.parse(fs.readFileSync(path.join(root, "seo-route-registry.json"), "utf8"));
 
@@ -96,6 +97,11 @@ const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => fs.readFileSync(path.join(root, entry.name), "utf8").trim() === entry.name.slice(0, -4));
 
 if (indexNowKeyFiles.length !== 1) issues.push(`IndexNow key files: expected 1, found ${indexNowKeyFiles.length}`);
+if (!/<yml_catalog date="2026-07-12 \d{2}:\d{2}">/.test(serviceFeed)) issues.push("services.yml: stale or invalid catalog date");
+if ((serviceFeed.match(/<offer id="[^"]+">/g) || []).length < 20) issues.push("services.yml: expected at least 20 service offers");
+if (!serviceFeed.includes("<category id=\"2\" parentId=\"1\">Бухгалтерское и налоговое сопровождение</category>")) {
+  issues.push("services.yml: accounting services category missing");
+}
 for (const route of registryRoutes) if (!sitemapRoutes.has(route)) issues.push(`${route}: registry route missing from sitemap`);
 for (const route of sitemapRoutes) if (!registryRoutes.has(route)) issues.push(`${route}: sitemap route missing from registry`);
 
