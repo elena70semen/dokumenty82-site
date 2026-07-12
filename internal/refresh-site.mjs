@@ -242,8 +242,9 @@ const refreshRegisteredNews = (html, item) => {
   html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${escapeHtml(fullTitle)}" />`);
   html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${escapeHtml(item.summary)}" />`);
   html = html.replace('<meta property="og:type" content="website" />', '<meta property="og:type" content="article" />');
+  html = html.replace(/<meta property="article:modified_time" content="[^"]+"\s*\/?>/i, '<meta property="article:modified_time" content="2026-07-12" />');
   if (!html.includes('property="article:published_time"')) {
-    html = html.replace('<meta property="og:type" content="article" />', `<meta property="og:type" content="article" />\n    <meta property="article:published_time" content="${item.dateIso}" />\n    <meta property="article:modified_time" content="2026-07-11" />`);
+    html = html.replace('<meta property="og:type" content="article" />', `<meta property="og:type" content="article" />\n    <meta property="article:published_time" content="${item.dateIso}" />\n    <meta property="article:modified_time" content="2026-07-12" />`);
   }
 
   const newsSchema = `
@@ -254,7 +255,7 @@ const refreshRegisteredNews = (html, item) => {
       headline: item.title,
       description: item.summary,
       datePublished: item.dateIso,
-      dateModified: "2026-07-11",
+      dateModified: "2026-07-12",
       mainEntityOfPage: `https://dokumenty82.ru${item.route}`,
       isBasedOn: item.article.sourceUrl,
       author: { "@type": "Organization", name: "Документы для бизнеса", url: "https://dokumenty82.ru/" },
@@ -306,6 +307,7 @@ let changed = 0;
 let navigationUpdates = 0;
 let serviceUpdates = 0;
 let newsUpdates = 0;
+let businessTypeUpdates = 0;
 
 for (const file of walk(root)) {
   const route = routeForFile(file);
@@ -313,6 +315,14 @@ for (const file of walk(root)) {
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, "/assets/site.css?v=202607111700");
+
+  const withAccountingType = html.replaceAll('"ProfessionalService"', '"AccountingService"');
+  if (withAccountingType !== html) businessTypeUpdates += 1;
+  html = withAccountingType;
+  html = html.replace(
+    /"priceRange": "по запросу",/g,
+    '"priceRange": "от 3 000 ₽",\n            "currenciesAccepted": "RUB",',
+  );
 
   const withDesktopNews = html.replace(/(<a class="[^"]*" href="\/blog\/">Блог<\/a>)(<a class="[^"]*" href="\/ceny\/">Цены<\/a>)/g, `$1<a class="${newsClass}" href="/novosti/">Новости</a>$2`);
   const withMobileNews = withDesktopNews.replace(/(<a href="\/blog\/">Блог<\/a>)(<a href="\/ceny\/">Цены<\/a>)/g, '$1<a href="/novosti/">Новости</a>$2');
@@ -343,8 +353,9 @@ console.log(`Changed HTML files: ${changed}`);
 console.log(`Navigation updated: ${navigationUpdates}`);
 console.log(`Service routes refreshed: ${serviceUpdates}`);
 console.log(`News articles refreshed: ${newsUpdates}`);
+console.log(`Business type updated: ${businessTypeUpdates}`);
 
 const sitemapPath = path.join(root, "sitemap.xml");
 const currentSitemap = fs.readFileSync(sitemapPath, "utf8");
-const refreshedSitemap = currentSitemap.replace(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/g, "<lastmod>2026-07-11</lastmod>");
+const refreshedSitemap = currentSitemap.replace(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/g, "<lastmod>2026-07-12</lastmod>");
 if (refreshedSitemap !== currentSitemap) fs.writeFileSync(sitemapPath, refreshedSitemap, "utf8");

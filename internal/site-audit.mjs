@@ -41,6 +41,8 @@ const pages = urls.map((url) => {
     || html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i)?.[1]
     || "";
   const mainHtml = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || "";
+  const schemaBlocks = [...html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+    .map((match) => match[1].trim());
   const paragraphs = [...mainHtml.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
     .map((match) => cleanText(match[1]))
     .filter((text) => text.length >= 90 && !text.includes("Сайт использует cookies"));
@@ -57,6 +59,7 @@ const pages = urls.map((url) => {
     words: visible.split(/\s+/).filter(Boolean).length,
     visible,
     paragraphs,
+    schemaBlocks,
   };
 });
 
@@ -88,6 +91,11 @@ const repeatedParagraphs = [...paragraphOwners.entries()]
 const issues = [];
 const sitemapRoutes = new Set(pages.map((page) => page.route));
 const registryRoutes = new Set(registry.indexable_routes);
+const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
+  .filter((entry) => entry.isFile() && /^[A-Za-z0-9-]{8,128}\.txt$/.test(entry.name))
+  .filter((entry) => fs.readFileSync(path.join(root, entry.name), "utf8").trim() === entry.name.slice(0, -4));
+
+if (indexNowKeyFiles.length !== 1) issues.push(`IndexNow key files: expected 1, found ${indexNowKeyFiles.length}`);
 for (const route of registryRoutes) if (!sitemapRoutes.has(route)) issues.push(`${route}: registry route missing from sitemap`);
 for (const route of sitemapRoutes) if (!registryRoutes.has(route)) issues.push(`${route}: sitemap route missing from registry`);
 
@@ -99,6 +107,14 @@ for (const page of pages) {
   if (!page.description) issues.push(`${page.route}: missing description`);
   if (!page.h1) issues.push(`${page.route}: missing h1`);
   if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/novosti\/"/i)) issues.push(`${page.route}: News missing from desktop navigation`);
+  if (page.html.includes('"ProfessionalService"')) issues.push(`${page.route}: deprecated ProfessionalService schema type`);
+  for (const [index, block] of page.schemaBlocks.entries()) {
+    try {
+      JSON.parse(block);
+    } catch (error) {
+      issues.push(`${page.route}: invalid JSON-LD block ${index + 1}: ${error.message}`);
+    }
+  }
 
   const localReferences = [...page.html.matchAll(/(?:href|src)="(\/[^"]*)"/gi)].map((match) => match[1]);
   for (const reference of new Set(localReferences)) {
@@ -112,6 +128,18 @@ for (const page of pages) {
     if (!fs.existsSync(target)) issues.push(`${page.route}: broken local reference ${reference}`);
   }
 }
+
+const homePage = pages.find((page) => page.route === "/");
+if (!homePage?.html.includes('"AccountingService"')) issues.push("/: missing AccountingService schema type");
+if (!homePage?.html.includes('"hasOfferCatalog"')) issues.push("/: missing service catalog link in business schema");
+if (!homePage?.html.includes("https://yandex.ru/maps/org/1302424560/")) issues.push("/: missing Yandex Business sameAs link");
+
+const pricingPage = pages.find((page) => page.route === "/ceny/");
+if (!pricingPage?.html.includes('"OfferCatalog"')) issues.push("/ceny/: missing OfferCatalog schema");
+if ((pricingPage?.html.match(/"@type":"Offer"/g) || []).length < 10) issues.push("/ceny/: too few service offers in schema");
+
+const reviewsPage = pages.find((page) => page.route === "/otzyvy/");
+if (!reviewsPage?.html.includes("https://yandex.ru/maps/org/1302424560/reviews/")) issues.push("/otzyvy/: missing Yandex reviews link");
 
 console.log(`Sitemap pages: ${pages.length}`);
 console.log(`Technical issues: ${issues.length}`);
