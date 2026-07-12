@@ -48,4 +48,3 @@
 
   window.d82TrackGoal = reachGoal;
 })();
-

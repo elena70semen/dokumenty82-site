@@ -26,6 +26,20 @@ node internal/submit-indexnow.mjs --sitemap
 
 Pass individual routes instead of `--sitemap` when only a subset changed.
 
+### Yandex review eligibility
+
+The site sends these JavaScript goals to Metrika counter `109869928`:
+
+- `lead_submit_success`
+- `contact_phone`
+- `contact_email`
+- `contact_telegram`
+- `contact_max`
+- `contact_route`
+
+Create matching JavaScript-event goals in Metrika. In the counter settings, also enable
+`Allow data use for surveys and review collection` under the data security settings.
+
 ## Lead form endpoint
 
 The `/razbor-situacii/` page posts the lead form to `/api/lead`.
