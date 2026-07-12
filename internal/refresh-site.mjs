@@ -315,6 +315,15 @@ for (const file of walk(root)) {
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, "/assets/site.css?v=202607111700");
+  html = html.replace(/\/assets\/metrika-goals\.js\?v=\d+/g, "/assets/metrika-goals.js?v=202607121220");
+  html = html.replace(/\/assets\/lead-form\.js\?v=\d+/g, "/assets/lead-form.js?v=202607121220");
+  html = html.replace(/\/assets\/ai-chat\.js\?v=\d+/g, "/assets/ai-chat.js?v=202607121220");
+  if (!html.includes("/assets/metrika-goals.js")) {
+    html = html.replace(
+      /(\s*<script src="\/assets\/ai-chat\.js\?v=\d+" defer><\/script>)/,
+      '\n    <script src="/assets/metrika-goals.js?v=202607121220" defer></script>$1',
+    );
+  }
 
   const withAccountingType = html.replaceAll('"ProfessionalService"', '"AccountingService"');
   if (withAccountingType !== html) businessTypeUpdates += 1;

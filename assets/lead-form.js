@@ -118,7 +118,7 @@
           form.reset();
           renderFiles(form);
           setStatus(form, "Заявка отправлена. Мы свяжемся с вами по указанному телефону.");
-          fireGoal("goal_form_submit_attempt");
+          fireGoal("lead_submit_success");
         })
         .catch(function (error) {
           setStatus(form, error.message || "Форма временно недоступна. Позвоните или напишите в мессенджер.");
