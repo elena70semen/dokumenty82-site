@@ -89,6 +89,43 @@ const repeatedParagraphs = [...paragraphOwners.entries()]
   .filter(([, routes]) => routes.length > 1)
   .sort((a, b) => b[1].length - a[1].length || b[0].length - a[0].length);
 
+const feedTagValue = (block, tag) => decode(
+  block.match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, "i"))?.[1] || "",
+).trim();
+
+const feedParamValue = (block, name) => {
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return decode(
+    block.match(new RegExp(`<param\\s+name=["']${escaped}["'][^>]*>([\\s\\S]*?)<\\/param>`, "i"))?.[1] || "",
+  ).trim();
+};
+
+const serviceOffers = [...serviceFeed.matchAll(/<offer\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/offer>/gi)]
+  .map((match) => ({
+    id: match[1],
+    block: match[2],
+    name: feedTagValue(match[2], "name"),
+    url: feedTagValue(match[2], "url"),
+    picture: feedTagValue(match[2], "picture"),
+    price: feedTagValue(match[2], "price"),
+    priceFrom: /<price\s+[^>]*from=["']true["'][^>]*>/i.test(match[2]),
+  }));
+
+const requiredServiceParams = ["Рейтинг", "Число отзывов", "Годы опыта", "Регион", "Конверсия"];
+const numericServiceParams = new Set(["Рейтинг", "Число отзывов", "Годы опыта", "Конверсия"]);
+
+const duplicateServiceField = (field) => {
+  const groups = new Map();
+  for (const offer of serviceOffers) {
+    const value = offer[field];
+    if (!value) continue;
+    const ids = groups.get(value) || [];
+    ids.push(offer.id);
+    groups.set(value, ids);
+  }
+  return [...groups.entries()].filter(([, ids]) => ids.length > 1);
+};
+
 const issues = [];
 const sitemapRoutes = new Set(pages.map((page) => page.route));
 const registryRoutes = new Set(registry.indexable_routes);
@@ -97,11 +134,28 @@ const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => fs.readFileSync(path.join(root, entry.name), "utf8").trim() === entry.name.slice(0, -4));
 
 if (indexNowKeyFiles.length !== 1) issues.push(`IndexNow key files: expected 1, found ${indexNowKeyFiles.length}`);
-if (!/<yml_catalog date="2026-07-12 \d{2}:\d{2}">/.test(serviceFeed)) issues.push("services.yml: stale or invalid catalog date");
-if ((serviceFeed.match(/<offer id="[^"]+">/g) || []).length < 20) issues.push("services.yml: expected at least 20 service offers");
+if (!/<yml_catalog date="\d{4}-\d{2}-\d{2} \d{2}:\d{2}">/.test(serviceFeed)) issues.push("services.yml: invalid catalog date");
+if (serviceOffers.length < 18) issues.push(`services.yml: expected at least 18 unique service offers, found ${serviceOffers.length}`);
 if (!serviceFeed.includes("<category id=\"2\" parentId=\"1\">Бухгалтерское и налоговое сопровождение</category>")) {
   issues.push("services.yml: accounting services category missing");
 }
+for (const offer of serviceOffers) {
+  if (offer.name !== "Документы для бизнеса") issues.push(`services.yml: ${offer.id} has invalid performer name`);
+  if (!offer.url) issues.push(`services.yml: ${offer.id} is missing url`);
+  if (!offer.picture) issues.push(`services.yml: ${offer.id} is missing picture`);
+  if (!offer.priceFrom) issues.push(`services.yml: ${offer.id} price must use from=\"true\"`);
+  if (!Number.isFinite(Number(offer.price)) || Number(offer.price) < 0) issues.push(`services.yml: ${offer.id} has invalid price`);
+  for (const paramName of requiredServiceParams) {
+    const value = feedParamValue(offer.block, paramName);
+    if (!value) {
+      issues.push(`services.yml: ${offer.id} is missing required param ${paramName}`);
+    } else if (numericServiceParams.has(paramName) && (!Number.isFinite(Number(value)) || Number(value) < 0)) {
+      issues.push(`services.yml: ${offer.id} has invalid numeric param ${paramName}`);
+    }
+  }
+}
+for (const [url, ids] of duplicateServiceField("url")) issues.push(`services.yml: duplicate offer url ${url} (${ids.join(", ")})`);
+for (const [picture, ids] of duplicateServiceField("picture")) issues.push(`services.yml: duplicate picture url ${picture} (${ids.join(", ")})`);
 for (const route of registryRoutes) if (!sitemapRoutes.has(route)) issues.push(`${route}: registry route missing from sitemap`);
 for (const route of sitemapRoutes) if (!registryRoutes.has(route)) issues.push(`${route}: sitemap route missing from registry`);
 
@@ -149,6 +203,7 @@ const reviewsPage = pages.find((page) => page.route === "/otzyvy/");
 if (!reviewsPage?.html.includes("https://yandex.ru/maps/org/1302424560/reviews/")) issues.push("/otzyvy/: missing Yandex reviews link");
 
 console.log(`Sitemap pages: ${pages.length}`);
+console.log(`Service feed offers: ${serviceOffers.length}`);
 console.log(`Technical issues: ${issues.length}`);
 for (const issue of issues) console.log(`  ${issue}`);
 for (const field of ["title", "description", "h1"]) {
