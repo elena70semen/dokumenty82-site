@@ -2056,10 +2056,6 @@ body.ai-chat-open .cookie-notice {
   display: none !important;
 }
 
-html:has(#route-contact) .ai-chat-widget {
-  display: none;
-}
-
 .cookie-notice {
   position: fixed;
   right: 1rem;
