@@ -1113,6 +1113,15 @@ h2 {
   min-height: 172px;
 }
 
+.rich-card-grid.two > .rich-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.rich-card-grid.two > .rich-card:last-child:nth-child(odd) .rich-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(1.2rem, 3vw, 2.4rem);
+}
+
 .rich-card .rich-list {
   display: grid;
   gap: 0.55rem;
@@ -1417,6 +1426,14 @@ h2 {
   padding: 0.85rem 0.95rem;
   color: var(--text);
   font: inherit;
+}
+
+.crm-lead-form .lead-consent input[type="checkbox"] {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  padding: 0;
 }
 
 .crm-lead-form input::placeholder,
@@ -2961,6 +2978,10 @@ body.ai-chat-open .cookie-notice {
   }
 
   .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rich-card-grid.two > .rich-card:last-child:nth-child(odd) .rich-list {
     grid-template-columns: minmax(0, 1fr);
   }
 
