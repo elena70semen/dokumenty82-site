@@ -31,10 +31,18 @@
   function renderFiles(form) {
     const input = form.querySelector('input[type="file"]');
     const list = form.querySelector(".lead-file-list");
+    const pickerStatus = form.querySelector(".lead-file-picker-status");
     if (!input || !list) return "";
 
     const files = selectedFiles(input);
     list.textContent = "";
+    if (pickerStatus) {
+      pickerStatus.textContent = files.length === 0
+        ? "Файлы не выбраны"
+        : files.length === 1
+          ? files[0].name
+          : "Выбрано файлов: " + files.length;
+    }
     files.forEach(function (file) {
       const item = document.createElement("li");
       const name = document.createElement("span");

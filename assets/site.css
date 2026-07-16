@@ -605,7 +605,31 @@ b {
 
 .hero-choice-panel .compact-list {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 0.85rem;
+}
+
+.hero-choice-panel .compact-list li {
+  display: flex;
+  min-width: 0;
+}
+
+.hero-choice-panel .compact-list a,
+.hero-choice-panel .compact-list .compact-row {
+  width: 100%;
+  height: 100%;
+  min-height: 82px;
+  padding: 0.78rem 0.9rem;
+}
+
+.hero-choice-panel .compact-list strong {
+  font-size: 0.94rem;
+  line-height: 1.25;
+}
+
+.hero-choice-panel .compact-list small {
+  margin-top: 0.22rem;
+  line-height: 1.35;
 }
 
 .hero-choice-panel h2 {
@@ -1314,20 +1338,68 @@ h2 {
   font: inherit;
 }
 
-.lead-capture-form input[type="file"] {
-  min-height: 48px;
-  padding: 0.7rem 0.85rem;
+.form-file-field {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
-.lead-capture-form input[type="file"]::file-selector-button {
-  margin-right: 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+.crm-lead-form .lead-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.crm-lead-form .lead-file-picker {
+  display: flex;
+  min-height: 50px;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.lead-file-input:focus-visible + .lead-file-picker,
+.lead-file-picker:hover {
+  border-color: rgba(221, 195, 125, 0.48);
+  background: rgba(255, 255, 255, 0.095);
+  box-shadow: 0 0 0 3px rgba(221, 195, 125, 0.1);
+}
+
+.lead-file-picker-button {
+  display: inline-flex;
+  min-height: 38px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0.52rem 0.82rem;
+  border: 1px solid rgba(221, 195, 125, 0.28);
   border-radius: 8px;
   background: rgba(159, 203, 22, 0.14);
   color: var(--text);
-  padding: 0.58rem 0.8rem;
-  font: inherit;
-  cursor: pointer;
+  font-weight: 500;
+}
+
+.lead-file-picker-status {
+  min-width: 0;
+  flex: 1 1 100px;
+  overflow: hidden;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .form-span-2 {
@@ -1541,6 +1613,10 @@ h2 {
   transform: translateX(2px);
 }
 
+.footer-links a[href="/policy/"] {
+  grid-column: 1 / -1;
+}
+
 .site-footer address > span,
 .site-footer address > a {
   max-width: 390px;
@@ -1734,7 +1810,7 @@ h2 {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   min-height: 138px;
   overflow: hidden;
@@ -1825,6 +1901,7 @@ h2 {
   width: 36px;
   height: 36px;
   flex: 0 0 auto;
+  order: -1;
   border: 1px solid rgba(221, 195, 125, 0.24);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.075);
