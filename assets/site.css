@@ -1853,27 +1853,8 @@ h2 {
   display: inline-flex;
   align-items: center;
   max-width: 72%;
+  margin-left: 52px;
   gap: 0.72rem;
-}
-
-.ai-chat-head-copy span {
-  display: grid;
-  width: 40px;
-  height: 40px;
-  flex: 0 0 auto;
-  place-items: center;
-  border-radius: 8px;
-  border: 1px solid rgba(221, 195, 125, 0.28);
-  background:
-    linear-gradient(145deg, rgba(66, 12, 18, 0.94), rgba(17, 24, 33, 0.88)),
-    var(--plum);
-  box-shadow:
-    0 12px 24px rgba(35, 4, 8, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  color: #f5d794;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0;
 }
 
 .ai-chat-head-copy div {
@@ -1896,12 +1877,13 @@ h2 {
 }
 
 .ai-chat-close {
-  position: relative;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   z-index: 3;
   width: 36px;
   height: 36px;
   flex: 0 0 auto;
-  order: -1;
   border: 1px solid rgba(221, 195, 125, 0.24);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.075);
@@ -3100,13 +3082,13 @@ body.ai-chat-open .cookie-notice {
 
   .ai-chat-head-copy {
     max-width: 70%;
+    margin-left: 46px;
     gap: 0.58rem;
   }
 
-  .ai-chat-head-copy span {
-    width: 34px;
-    height: 34px;
-    font-size: 0.68rem;
+  .ai-chat-close {
+    top: 0.75rem;
+    left: 0.75rem;
   }
 
   .ai-chat-head-copy strong {
