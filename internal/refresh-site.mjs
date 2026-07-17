@@ -365,7 +365,4 @@ console.log(`Service routes refreshed: ${serviceUpdates}`);
 console.log(`News articles refreshed: ${newsUpdates}`);
 console.log(`Business type updated: ${businessTypeUpdates}`);
 
-const sitemapPath = path.join(root, "sitemap.xml");
-const currentSitemap = fs.readFileSync(sitemapPath, "utf8");
-const refreshedSitemap = currentSitemap.replace(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/g, "<lastmod>2026-07-12</lastmod>");
-if (refreshedSitemap !== currentSitemap) fs.writeFileSync(sitemapPath, refreshedSitemap, "utf8");
+console.log("Sitemap lastmod values are unchanged; update only routes whose indexable content was actually published.");

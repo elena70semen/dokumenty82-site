@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-11",
+  "version": "2026-07-17",
   "owner_decisions": {
     "/policy/": "index, follow; keep in sitemap",
     "/blog/": "approved for indexing",
