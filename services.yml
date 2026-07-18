@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<yml_catalog date="2026-07-13 12:10">
+<yml_catalog date="2026-07-18 14:30">
   <shop>
     <name>Документы для бизнеса</name>
     <company>Документы для бизнеса</company>
@@ -90,6 +90,30 @@
       <set id="s20">
         <name>Ответ на требование ИФНС</name>
         <url>https://dokumenty82.ru/otvet-na-trebovanie-ifns/</url>
+      </set>
+      <set id="s21">
+        <name>Проверка применимости АУСН в Крыму</name>
+        <url>https://dokumenty82.ru/ausn-krym/</url>
+      </set>
+      <set id="s22">
+        <name>Проверка НДС при УСН в 2026 году</name>
+        <url>https://dokumenty82.ru/nds-pri-usn-2026/</url>
+      </set>
+      <set id="s23">
+        <name>Сверка расчётов с ФНС и ЕНС</name>
+        <url>https://dokumenty82.ru/sverka-s-nalogovoy/</url>
+      </set>
+      <set id="s24">
+        <name>Срочный разбор документов</name>
+        <url>https://dokumenty82.ru/srochnye-voprosy/</url>
+      </set>
+      <set id="s25">
+        <name>Проверка отчётности бизнеса</name>
+        <url>https://dokumenty82.ru/otchetnost/</url>
+      </set>
+      <set id="s26">
+        <name>Изменения адреса, директора и ЕГРЮЛ</name>
+        <url>https://dokumenty82.ru/adres-egryul-direktor/</url>
       </set>
     </sets>
     <offers>
@@ -494,6 +518,144 @@
         <set-ids>s20</set-ids>
         <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=otvet-ifns</picture>
         <description>Ответ на требование ИФНС. Разберём требование, период и имеющиеся документы до подготовки ответа.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-ausn-krym">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/ausn-krym/</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
+        <categoryId>4</categoryId>
+        <set-ids>s21</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=ausn-krym</picture>
+        <description>Проверка применимости АУСН для ИП или ООО в Крыму: лимиты, сотрудники, активы, банк и сравнительный расчёт объектов налогообложения.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-nds-usn-2026">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/nds-pri-usn-2026/</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
+        <categoryId>4</categoryId>
+        <set-ids>s22</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=nds-usn-2026</picture>
+        <description>Проверка НДС при УСН в 2026 году: порог дохода, дата начала обязанностей, выбор ставки и перечень изменений в документах и учёте.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-sverka-fns-ens">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/sverka-s-nalogovoy/</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
+        <categoryId>4</categoryId>
+        <set-ids>s23</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=sverka-fns-ens</picture>
+        <description>Сверка расчётов с ФНС и ЕНС: проверка сальдо, начислений, платежей, уведомлений и расхождений за выбранный период.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-srochnye-dokumenty">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/srochnye-voprosy/</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
+        <categoryId>8</categoryId>
+        <set-ids>s24</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=srochnye-dokumenty</picture>
+        <description>Срочный первичный разбор письма, запроса или документального срока: фиксируем ближайшее действие и состав необходимых материалов.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-proverka-otchetnosti">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/otchetnost/</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
+        <categoryId>4</categoryId>
+        <set-ids>s25</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=proverka-otchetnosti</picture>
+        <description>Первичная проверка отчётности ИП или ООО: режим, периоды, обязательные формы, пропуски и ближайший документальный маршрут.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-izmeneniya-egryul">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/adres-egryul-direktor/</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
+        <categoryId>3</categoryId>
+        <set-ids>s26</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=izmeneniya-egryul</picture>
+        <description>Первичный разбор изменений ЕГРЮЛ: адрес, руководитель, устав и связанные документы с распределением по регистрационным процедурам.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
         <param name="Рейтинг">0</param>

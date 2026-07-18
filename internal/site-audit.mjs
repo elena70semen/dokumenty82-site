@@ -111,6 +111,11 @@ const serviceOffers = [...serviceFeed.matchAll(/<offer\s+id="([^"]+)"[^>]*>([\s\
     priceFrom: /<price\s+[^>]*from=["']true["'][^>]*>/i.test(match[2]),
   }));
 
+const serviceSets = new Map(
+  [...serviceFeed.matchAll(/<set\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/set>/gi)]
+    .map((match) => [match[1], feedTagValue(match[2], "url")]),
+);
+
 const requiredServiceParams = ["Рейтинг", "Число отзывов", "Годы опыта", "Регион", "Конверсия"];
 const numericServiceParams = new Set(["Рейтинг", "Число отзывов", "Годы опыта", "Конверсия"]);
 
@@ -135,7 +140,8 @@ const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
 
 if (indexNowKeyFiles.length !== 1) issues.push(`IndexNow key files: expected 1, found ${indexNowKeyFiles.length}`);
 if (!/<yml_catalog date="\d{4}-\d{2}-\d{2} \d{2}:\d{2}">/.test(serviceFeed)) issues.push("services.yml: invalid catalog date");
-if (serviceOffers.length < 18) issues.push(`services.yml: expected at least 18 unique service offers, found ${serviceOffers.length}`);
+if (serviceOffers.length < 24) issues.push(`services.yml: expected at least 24 unique service offers, found ${serviceOffers.length}`);
+if (serviceSets.size < 24) issues.push(`services.yml: expected at least 24 unique service sets, found ${serviceSets.size}`);
 if (!serviceFeed.includes("<category id=\"2\" parentId=\"1\">Бухгалтерское и налоговое сопровождение</category>")) {
   issues.push("services.yml: accounting services category missing");
 }
@@ -145,6 +151,9 @@ for (const offer of serviceOffers) {
   if (!offer.picture) issues.push(`services.yml: ${offer.id} is missing picture`);
   if (!offer.priceFrom) issues.push(`services.yml: ${offer.id} price must use from=\"true\"`);
   if (!Number.isFinite(Number(offer.price)) || Number(offer.price) < 0) issues.push(`services.yml: ${offer.id} has invalid price`);
+  const setIds = feedTagValue(offer.block, "set-ids").split(",").map((value) => value.trim()).filter(Boolean);
+  if (setIds.length === 0) issues.push(`services.yml: ${offer.id} is missing set-ids`);
+  for (const setId of setIds) if (!serviceSets.has(setId)) issues.push(`services.yml: ${offer.id} references unknown set ${setId}`);
   for (const paramName of requiredServiceParams) {
     const value = feedParamValue(offer.block, paramName);
     if (!value) {
