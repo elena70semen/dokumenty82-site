@@ -4,6 +4,13 @@ import path from "node:path";
 import { newsItems } from "./news-registry.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
+const refreshedNewsRoutes = new Set([
+  "/novosti/",
+  "/novosti/nalogovye-vebinary-iyul-2026/",
+  "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+  "/novosti/servis-vypiski-na-nalogovyy-vychet/",
+  "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+]);
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 const indexedRoutes = new Set(
   [...sitemap.matchAll(/<loc>https:\/\/dokumenty82\.ru([^<]*)<\/loc>/g)].map((match) => match[1] || "/"),
@@ -181,6 +188,13 @@ const refreshNewsArticle = (html) => {
 const buildNewsMain = (item) => {
   const related = item.article.related.map(([href, label]) => `<a href="${href}">${escapeHtml(label)}</a>`).join("");
   const paragraphs = item.article.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
+  const sections = (item.article.sections || []).map((section) => {
+    const sectionParagraphs = (section.paragraphs || []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
+    const sectionList = section.items?.length
+      ? `<ul>${section.items.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>`
+      : "";
+    return `<h2>${escapeHtml(section.title)}</h2>${sectionParagraphs}${sectionList}`;
+  }).join("");
   const checklist = item.article.checklist.map((point) => `<li>${escapeHtml(point)}</li>`).join("");
   const practical = item.article.practical.map(([title, description], index) => `
         <article class="glass-card rich-card">
@@ -199,8 +213,8 @@ const buildNewsMain = (item) => {
     </section>
     <section class="section news-article-section">
       <div class="news-article-body">
-        ${paragraphs}
-        <h2>Что проверить</h2>
+        ${paragraphs}${sections}
+        <h2>${escapeHtml(item.article.checklistTitle || "Что проверить")}</h2>
         <ul>${checklist}</ul>
         <div class="news-source">
           <span>Официальный источник:</span>
@@ -210,17 +224,17 @@ const buildNewsMain = (item) => {
     </section>
     <section class="section">
       <div class="section-header">
-        <p class="eyebrow">Связанные страницы</p>
-        <h2>Куда перейти дальше</h2>
-        <p>Для темы «${escapeHtml(item.title)}» выберите раздел по фактической задаче и соберите только относящиеся к ней документы.</p>
+        <p class="eyebrow">${escapeHtml(item.article.relatedEyebrow || "Связанные страницы")}</p>
+        <h2>${escapeHtml(item.article.relatedTitle || "Куда перейти дальше")}</h2>
+        <p>${escapeHtml(item.article.relatedIntro || `Для темы «${item.title}» выберите раздел по фактической задаче и соберите только относящиеся к ней документы.`)}</p>
       </div>
       <div class="news-related">${related}</div>
     </section>
     <section class="section page-rich-section route-graphic-panel">
       <div class="section-header">
-        <p class="eyebrow">Практический вывод</p>
-        <h2>Как применить официальную информацию</h2>
-        <p>${escapeHtml(item.summary)} Ниже отделены контрольные точки, которые можно проверить по документам.</p>
+        <p class="eyebrow">${escapeHtml(item.article.practicalEyebrow || "Практический вывод")}</p>
+        <h2>${escapeHtml(item.article.practicalTitle || "Как применить официальную информацию")}</h2>
+        <p>${escapeHtml(item.article.practicalIntro || `${item.summary} Ниже отделены контрольные точки, которые можно проверить по документам.`)}</p>
       </div>
       <div class="card-grid two rich-card-grid">${practical}
       </div>
@@ -233,7 +247,8 @@ const refreshRegisteredNews = (html, item) => {
   const currentCanonical = html.match(/<link[^>]+rel="canonical"[^>]+href="([^"]+)"/i)?.[1] || "";
   const expectedCanonical = `https://dokumenty82.ru${item.route}`;
   const oldDescription = html.match(/<meta[^>]+name="description"[^>]+content="([^"]*)"/i)?.[1] || "";
-  const fullTitle = `${item.title} | Документы для бизнеса`;
+  const fullTitle = `${item.seoTitle || item.title} | Документы для бизнеса`;
+  const dateModified = item.dateModified || "2026-07-12";
 
   if (currentCanonical && currentCanonical !== expectedCanonical) html = html.replaceAll(currentCanonical, expectedCanonical);
   if (context.h1) html = html.replaceAll(context.h1, item.title);
@@ -242,9 +257,9 @@ const refreshRegisteredNews = (html, item) => {
   html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${escapeHtml(fullTitle)}" />`);
   html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${escapeHtml(item.summary)}" />`);
   html = html.replace('<meta property="og:type" content="website" />', '<meta property="og:type" content="article" />');
-  html = html.replace(/<meta property="article:modified_time" content="[^"]+"\s*\/?>/i, '<meta property="article:modified_time" content="2026-07-12" />');
+  html = html.replace(/<meta property="article:modified_time" content="[^"]+"\s*\/?>/i, `<meta property="article:modified_time" content="${dateModified}" />`);
   if (!html.includes('property="article:published_time"')) {
-    html = html.replace('<meta property="og:type" content="article" />', `<meta property="og:type" content="article" />\n    <meta property="article:published_time" content="${item.dateIso}" />\n    <meta property="article:modified_time" content="2026-07-12" />`);
+    html = html.replace('<meta property="og:type" content="article" />', `<meta property="og:type" content="article" />\n    <meta property="article:published_time" content="${item.dateIso}" />\n    <meta property="article:modified_time" content="${dateModified}" />`);
   }
 
   const newsSchema = `
@@ -255,7 +270,7 @@ const refreshRegisteredNews = (html, item) => {
       headline: item.title,
       description: item.summary,
       datePublished: item.dateIso,
-      dateModified: "2026-07-12",
+      dateModified,
       mainEntityOfPage: `https://dokumenty82.ru${item.route}`,
       isBasedOn: item.article.sourceUrl,
       author: { "@type": "Organization", name: "Документы для бизнеса", url: "https://dokumenty82.ru/" },
@@ -314,7 +329,8 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  html = html.replace(/\/assets\/site\.css\?v=\d+/g, "/assets/site.css?v=202607161622");
+  const siteCssVersion = refreshedNewsRoutes.has(route) ? "202607181930" : "202607161622";
+  html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
   html = html.replace(/\/assets\/metrika-goals\.js\?v=\d+/g, "/assets/metrika-goals.js?v=202607121220");
   html = html.replace(/\/assets\/lead-form\.js\?v=\d+/g, "/assets/lead-form.js?v=202607151704");
   html = html.replace(/\/assets\/ai-chat\.js\?v=\d+/g, "/assets/ai-chat.js?v=202607161622");

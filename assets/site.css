@@ -2998,6 +2998,11 @@ body.ai-chat-open .cookie-notice {
     font-size: clamp(1.95rem, 9.6vw, 2.65rem);
   }
 
+  .news-article h1 {
+    font-size: 2rem;
+    overflow-wrap: anywhere;
+  }
+
   .card-grid,
   .card-grid.two,
   .news-grid,
