@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<yml_catalog date="2026-07-18 14:30">
+<yml_catalog date="2026-07-20 17:27">
   <shop>
     <name>Документы для бизнеса</name>
     <company>Документы для бизнеса</company>
@@ -26,6 +26,10 @@
       <set id="s2">
         <name>Бухгалтерское и налоговое сопровождение</name>
         <url>https://dokumenty82.ru/soprovozhdenie/</url>
+      </set>
+      <set id="s27">
+        <name>Бухгалтерское сопровождение ООО</name>
+        <url>https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/</url>
       </set>
       <set id="s4">
         <name>Регистрация ИП</name>
@@ -150,6 +154,29 @@
         <set-ids>s2</set-ids>
         <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=buh-soprovozhdenie-ip</picture>
         <description>Бухгалтерское сопровождение ИП. Базовый уровень сопровождения для простой модели учёта и регулярной отчётности.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-buh-soprovozhdenie-ooo">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/</url>
+        <price from="true">15000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от режима, НДС, количества операций, сотрудников и состояния учета.</sales_notes>
+        <categoryId>2</categoryId>
+        <set-ids>s27</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/office-document-consultation.webp?offer=buh-soprovozhdenie-ooo</picture>
+        <description>Бухгалтерское сопровождение ООО. Регулярный учет, обязательная отчетность, контроль налогов, документов и сотрудников.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
         <param name="Рейтинг">0</param>

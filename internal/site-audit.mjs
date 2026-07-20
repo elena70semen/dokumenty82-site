@@ -116,7 +116,15 @@ const serviceSets = new Map(
     .map((match) => [match[1], feedTagValue(match[2], "url")]),
 );
 
-const requiredServiceParams = ["Рейтинг", "Число отзывов", "Годы опыта", "Регион", "Конверсия"];
+const requiredServiceParams = [
+  "Рейтинг",
+  "Число отзывов",
+  "Годы опыта",
+  "Регион",
+  "Конверсия",
+  "Работа по договору",
+  "Безналичный расчет",
+];
 const numericServiceParams = new Set(["Рейтинг", "Число отзывов", "Годы опыта", "Конверсия"]);
 
 const duplicateServiceField = (field) => {
@@ -133,6 +141,7 @@ const duplicateServiceField = (field) => {
 
 const issues = [];
 const sitemapRoutes = new Set(pages.map((page) => page.route));
+const pagesByRoute = new Map(pages.map((page) => [page.route, page]));
 const registryRoutes = new Set(registry.indexable_routes);
 const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => entry.isFile() && /^[A-Za-z0-9-]{8,128}\.txt$/.test(entry.name))
@@ -140,8 +149,8 @@ const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
 
 if (indexNowKeyFiles.length !== 1) issues.push(`IndexNow key files: expected 1, found ${indexNowKeyFiles.length}`);
 if (!/<yml_catalog date="\d{4}-\d{2}-\d{2} \d{2}:\d{2}">/.test(serviceFeed)) issues.push("services.yml: invalid catalog date");
-if (serviceOffers.length < 24) issues.push(`services.yml: expected at least 24 unique service offers, found ${serviceOffers.length}`);
-if (serviceSets.size < 24) issues.push(`services.yml: expected at least 24 unique service sets, found ${serviceSets.size}`);
+if (serviceOffers.length < 25) issues.push(`services.yml: expected at least 25 unique service offers, found ${serviceOffers.length}`);
+if (serviceSets.size < 25) issues.push(`services.yml: expected at least 25 unique service sets, found ${serviceSets.size}`);
 if (!serviceFeed.includes("<category id=\"2\" parentId=\"1\">Бухгалтерское и налоговое сопровождение</category>")) {
   issues.push("services.yml: accounting services category missing");
 }
@@ -153,7 +162,25 @@ for (const offer of serviceOffers) {
   if (!Number.isFinite(Number(offer.price)) || Number(offer.price) < 0) issues.push(`services.yml: ${offer.id} has invalid price`);
   const setIds = feedTagValue(offer.block, "set-ids").split(",").map((value) => value.trim()).filter(Boolean);
   if (setIds.length === 0) issues.push(`services.yml: ${offer.id} is missing set-ids`);
-  for (const setId of setIds) if (!serviceSets.has(setId)) issues.push(`services.yml: ${offer.id} references unknown set ${setId}`);
+  for (const setId of setIds) {
+    if (!serviceSets.has(setId)) {
+      issues.push(`services.yml: ${offer.id} references unknown set ${setId}`);
+    } else if (serviceSets.get(setId) !== offer.url) {
+      issues.push(`services.yml: ${offer.id} and set ${setId} use different urls`);
+    }
+  }
+  if (offer.url) {
+    const route = new URL(offer.url).pathname;
+    const page = pagesByRoute.get(route);
+    if (!page) {
+      issues.push(`services.yml: ${offer.id} url is not an indexable sitemap page`);
+    } else {
+      const visiblePrice = page.visible.replace(/\s+/g, "");
+      if (!visiblePrice.includes(`${Number(offer.price)}₽`)) {
+        issues.push(`services.yml: ${offer.id} price ${offer.price} is not visible on ${route}`);
+      }
+    }
+  }
   for (const paramName of requiredServiceParams) {
     const value = feedParamValue(offer.block, paramName);
     if (!value) {
@@ -206,7 +233,7 @@ if (!homePage?.html.includes("https://yandex.ru/maps/org/1302424560/")) issues.p
 
 const pricingPage = pages.find((page) => page.route === "/ceny/");
 if (!pricingPage?.html.includes('"OfferCatalog"')) issues.push("/ceny/: missing OfferCatalog schema");
-if ((pricingPage?.html.match(/"@type":"Offer"/g) || []).length < 10) issues.push("/ceny/: too few service offers in schema");
+if ((pricingPage?.html.match(/"@type"\s*:\s*"Offer"/g) || []).length < 10) issues.push("/ceny/: too few service offers in schema");
 
 const reviewsPage = pages.find((page) => page.route === "/otzyvy/");
 if (!reviewsPage?.html.includes("https://yandex.ru/maps/org/1302424560/reviews/")) issues.push("/otzyvy/: missing Yandex reviews link");

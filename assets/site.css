@@ -644,6 +644,50 @@ b {
   line-height: 1.55;
 }
 
+.service-price-note {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.45rem 0.8rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.2rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(221, 195, 125, 0.24);
+  border-radius: 8px;
+  background: rgba(8, 17, 27, 0.36);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.service-price-note span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.service-price-note strong {
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.service-price-note small {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 680px) {
+  .service-price-note {
+    grid-template-columns: auto auto;
+    width: 100%;
+  }
+
+  .service-price-note small {
+    grid-column: 1 / -1;
+  }
+}
+
 .eyebrow {
   color: var(--lime);
   font-size: 0.74rem;
@@ -3207,7 +3251,7 @@ body.ai-chat-open .cookie-notice {
   }
 
   body.cookie-open .ai-chat-widget {
-    bottom: calc(var(--cookie-notice-offset, 136px) + env(safe-area-inset-bottom));
+    display: none;
   }
 
   .ai-chat-widget span {
