@@ -1657,7 +1657,8 @@ h2 {
   transform: translateX(2px);
 }
 
-.footer-links a[href="/policy/"] {
+.footer-links a[href="/policy/"],
+.footer-links a[href="/rekvizity/"] {
   grid-column: 1 / -1;
 }
 
