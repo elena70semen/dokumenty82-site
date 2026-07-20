@@ -6,6 +6,9 @@ const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 const serviceFeed = fs.readFileSync(path.join(root, "services.yml"), "utf8");
 const urls = [...sitemap.matchAll(/<loc>(https:\/\/dokumenty82\.ru(?:\/[^<]*)?)<\/loc>/g)].map((match) => match[1]);
 const registry = JSON.parse(fs.readFileSync(path.join(root, "seo-route-registry.json"), "utf8"));
+const legalName = "Индивидуальный предприниматель Баркова Рахима Садыковна";
+const taxId = "910216386365";
+const ogrnip = "317910200135408";
 
 const decode = (value) => value
   .replace(/&nbsp;/g, " ")
@@ -149,6 +152,7 @@ const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
 
 if (indexNowKeyFiles.length !== 1) issues.push(`IndexNow key files: expected 1, found ${indexNowKeyFiles.length}`);
 if (!/<yml_catalog date="\d{4}-\d{2}-\d{2} \d{2}:\d{2}">/.test(serviceFeed)) issues.push("services.yml: invalid catalog date");
+if (feedTagValue(serviceFeed, "company") !== legalName) issues.push("services.yml: legal performer name is missing");
 if (serviceOffers.length < 25) issues.push(`services.yml: expected at least 25 unique service offers, found ${serviceOffers.length}`);
 if (serviceSets.size < 25) issues.push(`services.yml: expected at least 25 unique service sets, found ${serviceSets.size}`);
 if (!serviceFeed.includes("<category id=\"2\" parentId=\"1\">Бухгалтерское и налоговое сопровождение</category>")) {
@@ -230,6 +234,17 @@ const homePage = pages.find((page) => page.route === "/");
 if (!homePage?.html.includes('"AccountingService"')) issues.push("/: missing AccountingService schema type");
 if (!homePage?.html.includes('"hasOfferCatalog"')) issues.push("/: missing service catalog link in business schema");
 if (!homePage?.html.includes("https://yandex.ru/maps/org/1302424560/")) issues.push("/: missing Yandex Business sameAs link");
+if (!homePage?.html.includes(`"legalName": "${legalName}"`)) issues.push("/: legal business name missing from schema");
+if (!homePage?.html.includes(`"taxID": "${taxId}"`)) issues.push("/: INN missing from business schema");
+
+const legalPage = pages.find((page) => page.route === "/rekvizity/");
+if (!legalPage) {
+  issues.push("/rekvizity/: legal details page missing");
+} else {
+  for (const value of [legalName, taxId, ogrnip, "Работа выполняется на основании согласованного договора", "Оплата производится безналично"]) {
+    if (!legalPage.visible.includes(value)) issues.push(`/rekvizity/: missing required legal detail ${value}`);
+  }
+}
 
 const pricingPage = pages.find((page) => page.route === "/ceny/");
 if (!pricingPage?.html.includes('"OfferCatalog"')) issues.push("/ceny/: missing OfferCatalog schema");
