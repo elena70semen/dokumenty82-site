@@ -17,6 +17,12 @@ const footerLinks = `<div class="footer-links">
           <a href="/kontakty/">Контакты</a>
           <a href="/rekvizity/">Реквизиты</a>
         </div>`;
+const footerNavigation = `<nav aria-label="Разделы сайта">
+        <strong>Разделы</strong>
+        ${footerLinks}
+        <a class="button button-lime footer-policy-button" href="/policy/">Конфиденциальность и безопасность</a>
+      </nav>`;
+const footerButtons = `<div class="footer-buttons"><a class="button button-lime" href="tel:+79789987222">Позвонить</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>`;
 const refreshedNewsRoutes = new Set([
   "/novosti/",
   "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
@@ -345,16 +351,10 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202607211218";
+  const siteCssVersion = "202607211445";
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
-  html = html.replace(/<div class="footer-links">[\s\S]*?<\/div>/g, footerLinks);
-  html = html.replace(/<div class="footer-buttons">[\s\S]*?<\/div>/g, (block) => {
-    if (block.includes('href="/policy/"')) return block;
-    return block.replace(
-      "</div>",
-      '<a class="button button-lime footer-policy-button" href="/policy/">Конфиденциальность и безопасность</a></div>',
-    );
-  });
+  html = html.replace(/<nav aria-label="Разделы сайта">[\s\S]*?<\/nav>/g, footerNavigation);
+  html = html.replace(/<div class="footer-buttons">[\s\S]*?<\/div>/g, footerButtons);
   if (footerOnly) {
     if (html !== before) {
       fs.writeFileSync(file, html, "utf8");
