@@ -1657,9 +1657,22 @@ h2 {
   transform: translateX(2px);
 }
 
-.footer-links a[href="/policy/"],
-.footer-links a[href="/rekvizity/"] {
+.footer-links a[href="/policy/"] {
   grid-column: 1 / -1;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-links a[href="/policy/"]:hover {
+  transform: none;
+}
+
+.footer-links a[href="/kontakty/"] {
+  grid-column: 1;
+}
+
+.footer-links a[href="/rekvizity/"] {
+  grid-column: 2;
 }
 
 .site-footer address > span,

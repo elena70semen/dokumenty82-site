@@ -4,8 +4,11 @@ import path from "node:path";
 import { newsItems } from "./news-registry.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
+const requestedRoutes = new Set(process.argv.slice(2).filter((value) => value.startsWith("/")));
+const footerOnly = process.argv.includes("--footer-only");
 const refreshedNewsRoutes = new Set([
   "/novosti/",
+  "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
   "/novosti/nalogovye-vebinary-iyul-2026/",
   "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
   "/novosti/servis-vypiski-na-nalogovyy-vychet/",
@@ -23,7 +26,7 @@ const walk = (directory) => fs.readdirSync(directory, { withFileTypes: true }).f
 });
 
 const articleTemplate = path.join(root, "novosti", "formaty-nds-s-1-iyulya-2026", "index.html");
-for (const item of newsItems.filter((entry) => entry.article)) {
+for (const item of newsItems.filter((entry) => entry.article && (!requestedRoutes.size || requestedRoutes.has(entry.route)))) {
   const target = path.join(root, item.route.slice(1), "index.html");
   if (!fs.existsSync(target)) {
     fs.mkdirSync(path.dirname(target), { recursive: true });
@@ -326,11 +329,30 @@ let businessTypeUpdates = 0;
 
 for (const file of walk(root)) {
   const route = routeForFile(file);
+  if (requestedRoutes.size && !requestedRoutes.has(route)) continue;
+  if (footerOnly && route.startsWith("/internal/")) continue;
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = refreshedNewsRoutes.has(route) ? "202607181930" : "202607161622";
+  const siteCssVersion = "202607202030";
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
+  html = html.replace(/<div class="footer-links">[\s\S]*?<\/div>/g, (block) => {
+    if (!block.includes('href="/kontakty/"') || block.includes('href="/rekvizity/"')) return block;
+    const withRequisites = block.replace(
+      /(\s*)(<a href="\/policy\/">[\s\S]*?<\/a>)/,
+      '$1<a href="/rekvizity/">Реквизиты</a>$1$2',
+    );
+    return withRequisites !== block
+      ? withRequisites
+      : block.replace(/(<a href="\/kontakty\/">[\s\S]*?<\/a>)/, '$1<a href="/rekvizity/">Реквизиты</a>');
+  });
+  if (footerOnly) {
+    if (html !== before) {
+      fs.writeFileSync(file, html, "utf8");
+      changed += 1;
+    }
+    continue;
+  }
   html = html.replace(/\/assets\/metrika-goals\.js\?v=\d+/g, "/assets/metrika-goals.js?v=202607121220");
   html = html.replace(/\/assets\/lead-form\.js\?v=\d+/g, "/assets/lead-form.js?v=202607151704");
   html = html.replace(/\/assets\/ai-chat\.js\?v=\d+/g, "/assets/ai-chat.js?v=202607161622");
@@ -360,9 +382,11 @@ for (const file of walk(root)) {
     if (refreshed !== html) serviceUpdates += 1;
     html = refreshed;
   }
-  if (indexedRoutes.has(route) && route.startsWith("/novosti/") && route !== "/novosti/") {
+  if (route.startsWith("/novosti/") && route !== "/novosti/") {
     const registered = newsItems.find((item) => item.route === route && item.article);
-    const refreshed = registered ? refreshRegisteredNews(html, registered) : refreshNewsArticle(html);
+    const refreshed = registered
+      ? refreshRegisteredNews(html, registered)
+      : indexedRoutes.has(route) ? refreshNewsArticle(html) : html;
     if (refreshed !== html) newsUpdates += 1;
     html = refreshed;
   }

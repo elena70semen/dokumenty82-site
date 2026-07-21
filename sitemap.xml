@@ -92,7 +92,13 @@
   </url>
   <url>
     <loc>https://dokumenty82.ru/novosti/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dokumenty82.ru/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
