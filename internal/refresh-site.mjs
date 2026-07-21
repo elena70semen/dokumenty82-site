@@ -6,6 +6,17 @@ import { newsItems } from "./news-registry.mjs";
 const root = path.resolve(import.meta.dirname, "..");
 const requestedRoutes = new Set(process.argv.slice(2).filter((value) => value.startsWith("/")));
 const footerOnly = process.argv.includes("--footer-only");
+const footerLinks = `<div class="footer-links">
+          <a href="/razbor-situacii/">Разбор ситуации</a>
+          <a href="/">Документы</a>
+          <a href="/otchetnost/">Отчётность</a>
+          <a href="/bank-i-115-fz/">Банк и 115-ФЗ</a>
+          <a href="/otzyvy/">Отзывы</a>
+          <a href="/novosti/">Новости</a>
+          <a href="/ceny/">Цены</a>
+          <a href="/kontakty/">Контакты</a>
+          <a href="/rekvizity/">Реквизиты</a>
+        </div>`;
 const refreshedNewsRoutes = new Set([
   "/novosti/",
   "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
@@ -334,17 +345,15 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202607202030";
+  const siteCssVersion = "202607211218";
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
-  html = html.replace(/<div class="footer-links">[\s\S]*?<\/div>/g, (block) => {
-    if (!block.includes('href="/kontakty/"') || block.includes('href="/rekvizity/"')) return block;
-    const withRequisites = block.replace(
-      /(\s*)(<a href="\/policy\/">[\s\S]*?<\/a>)/,
-      '$1<a href="/rekvizity/">Реквизиты</a>$1$2',
+  html = html.replace(/<div class="footer-links">[\s\S]*?<\/div>/g, footerLinks);
+  html = html.replace(/<div class="footer-buttons">[\s\S]*?<\/div>/g, (block) => {
+    if (block.includes('href="/policy/"')) return block;
+    return block.replace(
+      "</div>",
+      '<a class="button button-lime footer-policy-button" href="/policy/">Конфиденциальность и безопасность</a></div>',
     );
-    return withRequisites !== block
-      ? withRequisites
-      : block.replace(/(<a href="\/kontakty\/">[\s\S]*?<\/a>)/, '$1<a href="/rekvizity/">Реквизиты</a>');
   });
   if (footerOnly) {
     if (html !== before) {

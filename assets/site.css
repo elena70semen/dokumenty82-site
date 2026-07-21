@@ -1631,7 +1631,7 @@ h2 {
 
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.65rem;
 }
 
@@ -1657,24 +1657,6 @@ h2 {
   transform: translateX(2px);
 }
 
-.footer-links a[href="/policy/"] {
-  grid-column: 1 / -1;
-  justify-content: center;
-  text-align: center;
-}
-
-.footer-links a[href="/policy/"]:hover {
-  transform: none;
-}
-
-.footer-links a[href="/kontakty/"] {
-  grid-column: 1;
-}
-
-.footer-links a[href="/rekvizity/"] {
-  grid-column: 2;
-}
-
 .site-footer address > span,
 .site-footer address > a {
   max-width: 390px;
@@ -1689,7 +1671,15 @@ h2 {
 }
 
 .site-footer .footer-buttons {
+  max-width: 390px;
   margin-top: 0.25rem;
+}
+
+.site-footer .footer-policy-button {
+  width: 100%;
+  flex: 0 0 100%;
+  text-align: center;
+  white-space: normal;
 }
 
 .quick-page-nav {
