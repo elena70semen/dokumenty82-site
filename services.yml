@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<yml_catalog date="2026-07-20 18:43">
+<yml_catalog date="2026-07-22 11:31">
   <shop>
     <name>Документы для бизнеса</name>
     <company>Индивидуальный предприниматель Баркова Рахима Садыковна</company>
@@ -24,7 +24,7 @@
         <url>https://dokumenty82.ru/razbor-situacii/</url>
       </set>
       <set id="s2">
-        <name>Бухгалтерское и налоговое сопровождение</name>
+        <name>Бухгалтерское сопровождение ИП</name>
         <url>https://dokumenty82.ru/soprovozhdenie/</url>
       </set>
       <set id="s27">
@@ -118,6 +118,26 @@
       <set id="s26">
         <name>Изменения адреса, директора и ЕГРЮЛ</name>
         <url>https://dokumenty82.ru/adres-egryul-direktor/</url>
+      </set>
+      <set id="s28">
+        <name>Ликвидация ИП</name>
+        <url>https://dokumenty82.ru/likvidaciya-ip/</url>
+      </set>
+      <set id="s29">
+        <name>Сдача отчётности ИП</name>
+        <url>https://dokumenty82.ru/sdacha-otchetnosti-ip/</url>
+      </set>
+      <set id="s30">
+        <name>Сдача отчётности ООО</name>
+        <url>https://dokumenty82.ru/sdacha-otchetnosti-ooo/</url>
+      </set>
+      <set id="s31">
+        <name>Изменение кодов ОКВЭД ИП</name>
+        <url>https://dokumenty82.ru/izmenenie-okved-ip/</url>
+      </set>
+      <set id="s32">
+        <name>Изменение кодов ОКВЭД ООО</name>
+        <url>https://dokumenty82.ru/izmenenie-okved-ooo/</url>
       </set>
     </sets>
     <offers>
@@ -683,6 +703,121 @@
         <set-ids>s26</set-ids>
         <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=izmeneniya-egryul</picture>
         <description>Первичный разбор изменений ЕГРЮЛ: адрес, руководитель, устав и связанные документы с распределением по регистрационным процедурам.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-likvidaciya-ip">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/likvidaciya-ip/</url>
+        <price from="true">5000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от отчётности, сотрудников, кассы и состояния расчётов с бюджетом.</sales_notes>
+        <categoryId>3</categoryId>
+        <set-ids>s28</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/registration-changes.png?offer=likvidaciya-ip</picture>
+        <description>Ликвидация ИП: проверка статуса, ЕНС, кассы, сотрудников и отчётности, подготовка заявления и маршрута после закрытия.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-sdacha-otchetnosti-ip">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/sdacha-otchetnosti-ip/</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от режима, периода, количества форм, операций и сотрудников.</sales_notes>
+        <categoryId>4</categoryId>
+        <set-ids>s29</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/reporting-workflow.png?offer=sdacha-otchetnosti-ip</picture>
+        <description>Сдача отчётности ИП: определение обязательных форм, проверка учётных данных, подготовка комплекта и контрольных показателей.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-sdacha-otchetnosti-ooo">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/sdacha-otchetnosti-ooo/</url>
+        <price from="true">5000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от режима, НДС, сотрудников, количества форм и готовности учёта.</sales_notes>
+        <categoryId>4</categoryId>
+        <set-ids>s30</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/tax-accounting-books.png?offer=sdacha-otchetnosti-ooo</picture>
+        <description>Сдача отчётности ООО: бухгалтерские, налоговые и зарплатные формы, сверка регистров и проверка контрольных соотношений.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-izmenenie-okved-ip">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/izmenenie-okved-ip/</url>
+        <price from="true">5000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от количества направлений и специальных требований к деятельности.</sales_notes>
+        <categoryId>3</categoryId>
+        <set-ids>s31</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/registration-changes.png?offer=izmenenie-okved-ip</picture>
+        <description>Изменение ОКВЭД ИП: проверка фактической деятельности, подбор основного и дополнительных кодов, подготовка заявления.</description>
+        <adult>false</adult>
+        <expiry>P5Y</expiry>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">0</param>
+        <param name="Конверсия">0</param>
+        <param name="Регион">Симферополь</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется по адресу исполнителя">true</param>
+        <param name="Работа по договору">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="d82-izmenenie-okved-ooo">
+        <name>Документы для бизнеса</name>
+        <url>https://dokumenty82.ru/izmenenie-okved-ooo/</url>
+        <price from="true">8000</price>
+        <currencyId>RUR</currencyId>
+        <sales_notes>Цена от указанной суммы. Итог зависит от устава, состава участников и количества одновременных изменений.</sales_notes>
+        <categoryId>3</categoryId>
+        <set-ids>s32</set-ids>
+        <picture>https://dokumenty82.ru/assets/images/legal-address-documents.png?offer=izmenenie-okved-ooo</picture>
+        <description>Изменение ОКВЭД ООО: проверка устава и деятельности, корпоративные документы, форма Р13014 и контроль ЕГРЮЛ.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
         <param name="Рейтинг">0</param>

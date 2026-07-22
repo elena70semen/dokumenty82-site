@@ -153,8 +153,8 @@ const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
 if (indexNowKeyFiles.length !== 1) issues.push(`IndexNow key files: expected 1, found ${indexNowKeyFiles.length}`);
 if (!/<yml_catalog date="\d{4}-\d{2}-\d{2} \d{2}:\d{2}">/.test(serviceFeed)) issues.push("services.yml: invalid catalog date");
 if (feedTagValue(serviceFeed, "company") !== legalName) issues.push("services.yml: legal performer name is missing");
-if (serviceOffers.length < 25) issues.push(`services.yml: expected at least 25 unique service offers, found ${serviceOffers.length}`);
-if (serviceSets.size < 25) issues.push(`services.yml: expected at least 25 unique service sets, found ${serviceSets.size}`);
+if (serviceOffers.length < 30) issues.push(`services.yml: expected at least 30 unique service offers, found ${serviceOffers.length}`);
+if (serviceSets.size < 30) issues.push(`services.yml: expected at least 30 unique service sets, found ${serviceSets.size}`);
 if (!serviceFeed.includes("<category id=\"2\" parentId=\"1\">Бухгалтерское и налоговое сопровождение</category>")) {
   issues.push("services.yml: accounting services category missing");
 }
@@ -182,6 +182,26 @@ for (const offer of serviceOffers) {
       const visiblePrice = page.visible.replace(/\s+/g, "");
       if (!visiblePrice.includes(`${Number(offer.price)}₽`)) {
         issues.push(`services.yml: ${offer.id} price ${offer.price} is not visible on ${route}`);
+      }
+      const schemaNodes = page.schemaBlocks.flatMap((block) => {
+        try {
+          const schema = JSON.parse(block);
+          return Array.isArray(schema["@graph"]) ? schema["@graph"] : [schema];
+        } catch {
+          return [];
+        }
+      });
+      const serviceNode = schemaNodes.find((node) => {
+        const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+        return types.includes("Service");
+      });
+      const schemaOffer = Array.isArray(serviceNode?.offers) ? serviceNode.offers[0] : serviceNode?.offers;
+      if (!schemaOffer || schemaOffer["@type"] !== "Offer") {
+        issues.push(`services.yml: ${offer.id} is missing Offer schema on ${route}`);
+      } else {
+        if (Number(schemaOffer.price) !== Number(offer.price)) issues.push(`services.yml: ${offer.id} schema price differs from feed`);
+        if (schemaOffer.priceCurrency !== "RUB") issues.push(`services.yml: ${offer.id} schema currency must be RUB`);
+        if (schemaOffer.url !== offer.url) issues.push(`services.yml: ${offer.id} schema url differs from feed`);
       }
     }
   }

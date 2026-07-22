@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-20",
+  "version": "2026-07-22",
   "owner_decisions": {
     "/policy/": "index, follow; keep in sitemap",
     "/blog/": "approved for indexing",
@@ -18,8 +18,11 @@
     "/blog/razbory/",
     "/deklaraciya-usn/",
     "/dokumenty-dlya-banka-115-fz/",
+    "/izmenenie-okved-ip/",
+    "/izmenenie-okved-ooo/",
     "/kadry/",
     "/kontakty/",
+    "/likvidaciya-ip/",
     "/likvidaciya-ooo/",
     "/nalogi-i-rezhimy/",
     "/nds-pri-usn-2026/",
@@ -48,6 +51,8 @@
     "/registraciya-ooo/",
     "/smena-direktora-ooo/",
     "/smena-yuridicheskogo-adresa-ooo/",
+    "/sdacha-otchetnosti-ip/",
+    "/sdacha-otchetnosti-ooo/",
     "/soprovozhdenie/",
     "/srochnye-voprosy/",
     "/sverka-s-nalogovoy/",

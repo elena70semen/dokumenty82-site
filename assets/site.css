@@ -2811,7 +2811,7 @@ body.ai-chat-open .cookie-notice {
   }
 }
 
-@media (min-width: 1101px) and (max-width: 1380px) {
+@media (min-width: 1101px) and (max-width: 1520px) {
   .site-header {
     grid-template-columns: minmax(250px, 270px) minmax(560px, 1fr) auto;
     gap: 0.6rem;
@@ -3354,7 +3354,7 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
     url("/assets/images/about-office-meeting.webp");
 }
 
-@media (min-width: 1101px) and (max-width: 1380px) {
+@media (min-width: 1101px) and (max-width: 1520px) {
   .site-header .phone-pill {
     display: none;
   }

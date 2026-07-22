@@ -10,6 +10,52 @@ const offers = [...feed.matchAll(/<offer\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/offer>
 
 const formatPrice = (price) => new Intl.NumberFormat("ru-RU").format(price).replaceAll(" ", " ");
 
+const syncServiceOfferSchema = (html, offer, route) => {
+  const schemaRegion = /<!-- d82-service-schema:start -->\s*<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>\s*<!-- d82-service-schema:end -->/i;
+  const match = html.match(schemaRegion);
+  const updateSchema = (schema) => {
+    const nodes = Array.isArray(schema["@graph"]) ? schema["@graph"] : [schema];
+    const service = nodes.find((node) => {
+      const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+      return types.includes("Service");
+    });
+    if (!service) return false;
+    service.offers = {
+      "@type": "Offer",
+      price: offer.price,
+      priceCurrency: "RUB",
+      url: offer.url,
+      availability: "https://schema.org/InStock",
+    };
+    return true;
+  };
+  const serialize = (schema) => {
+    const json = JSON.stringify(schema, null, 2)
+      .split("\n")
+      .map((line) => `      ${line}`)
+      .join("\n");
+    return `<!-- d82-service-schema:start -->\n    <script type="application/ld+json">\n${json}\n    </script>\n    <!-- d82-service-schema:end -->`;
+  };
+
+  if (match) {
+    const schema = JSON.parse(match[1]);
+    if (!updateSchema(schema)) throw new Error(`Service node missing for ${offer.id}: ${route}`);
+    return html.replace(schemaRegion, serialize(schema));
+  }
+
+  const scriptPattern = /<script[^>]+type="application\/ld\+json"[^>]*>\s*([\s\S]*?)\s*<\/script>/gi;
+  for (const scriptMatch of html.matchAll(scriptPattern)) {
+    let schema;
+    try {
+      schema = JSON.parse(scriptMatch[1]);
+    } catch {
+      continue;
+    }
+    if (updateSchema(schema)) return html.replace(scriptMatch[0], serialize(schema));
+  }
+  throw new Error(`Service schema block missing for ${offer.id}: ${route}`);
+};
+
 for (const offer of offers) {
   if (!offer.url || !Number.isFinite(offer.price)) throw new Error(`Invalid feed offer ${offer.id}`);
   const route = new URL(offer.url).pathname;
@@ -34,7 +80,9 @@ for (const offer of offers) {
     html = html.replace(hero, `$1${note}$2`);
   }
 
+  html = syncServiceOfferSchema(html, offer, route);
+
   fs.writeFileSync(file, html);
 }
 
-console.log(`Synced feed prices to ${offers.length} service pages.`);
+console.log(`Synced feed prices and Offer schema to ${offers.length} service pages.`);
