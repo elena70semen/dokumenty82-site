@@ -6,9 +6,10 @@ import { newsItems } from "./news-registry.mjs";
 const root = path.resolve(import.meta.dirname, "..");
 const requestedRoutes = new Set(process.argv.slice(2).filter((value) => value.startsWith("/")));
 const footerOnly = process.argv.includes("--footer-only");
+const navigationOnly = process.argv.includes("--navigation-only");
 const footerLinks = `<div class="footer-links">
           <a href="/razbor-situacii/">Разбор ситуации</a>
-          <a href="/">Документы</a>
+          <a href="/uslugi/">Услуги</a>
           <a href="/otchetnost/">Отчётность</a>
           <a href="/bank-i-115-fz/">Банк и 115-ФЗ</a>
           <a href="/otzyvy/">Отзывы</a>
@@ -351,11 +352,20 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202607211445";
+  const siteCssVersion = "202607221131";
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
   html = html.replace(/<nav aria-label="Разделы сайта">[\s\S]*?<\/nav>/g, footerNavigation);
   html = html.replace(/<div class="footer-buttons">[\s\S]*?<\/div>/g, footerButtons);
-  if (footerOnly) {
+  html = html.replace(
+    /<a class="[^"]*" href="\/">Документы<\/a>/g,
+    `<a class="${route === "/uslugi/" ? "is-active" : ""}" href="/uslugi/">Услуги</a>`,
+  );
+  html = html.replace(
+    /<a class="[^"]*" href="\/uslugi\/">Услуги<\/a>/g,
+    `<a class="${route === "/uslugi/" ? "is-active" : ""}" href="/uslugi/">Услуги</a>`,
+  );
+  html = html.replace(/<a href="\/">Документы<\/a>/g, '<a href="/uslugi/">Услуги</a>');
+  if (footerOnly || navigationOnly) {
     if (html !== before) {
       fs.writeFileSync(file, html, "utf8");
       changed += 1;

@@ -227,6 +227,7 @@ for (const page of pages) {
   if (!page.description) issues.push(`${page.route}: missing description`);
   if (!page.h1) issues.push(`${page.route}: missing h1`);
   if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/novosti\/"/i)) issues.push(`${page.route}: News missing from desktop navigation`);
+  if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/uslugi\/"[^>]*>Услуги<\/a>/i)) issues.push(`${page.route}: Services catalog missing from desktop navigation`);
   if (!page.html.includes("/assets/metrika-goals.js?v=202607121220")) issues.push(`${page.route}: Metrika contact goals script missing`);
   if (page.html.includes('"ProfessionalService"')) issues.push(`${page.route}: deprecated ProfessionalService schema type`);
   for (const [index, block] of page.schemaBlocks.entries()) {
@@ -272,6 +273,15 @@ if ((pricingPage?.html.match(/"@type"\s*:\s*"Offer"/g) || []).length < 10) issue
 
 const reviewsPage = pages.find((page) => page.route === "/otzyvy/");
 if (!reviewsPage?.html.includes("https://yandex.ru/maps/org/1302424560/reviews/")) issues.push("/otzyvy/: missing Yandex reviews link");
+
+const servicesPage = pages.find((page) => page.route === "/uslugi/");
+if (!servicesPage?.html.includes('"@type":"ItemList"')) issues.push("/uslugi/: missing ItemList schema");
+for (const route of serviceOffers.map((offer) => new URL(offer.url).pathname)) {
+  if (!servicesPage?.html.includes(`href="${route}"`)) issues.push(`/uslugi/: missing direct link to ${route}`);
+}
+
+const faqPage = pages.find((page) => page.route === "/faq/");
+if (!faqPage?.html.includes('"@type":"FAQPage"')) issues.push("/faq/: missing FAQPage schema");
 
 console.log(`Sitemap pages: ${pages.length}`);
 console.log(`Service feed offers: ${serviceOffers.length}`);

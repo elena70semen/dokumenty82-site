@@ -6,7 +6,9 @@
     "/blog/razbory/": "approved for indexing",
     "/novosti/": "approved news hub and articles",
     "/ceny/": "approved public pricing page",
-    "/otzyvy/": "approved public reviews and Yandex rating page"
+    "/otzyvy/": "approved public reviews and Yandex rating page",
+    "/faq/": "approved for indexing after content and FAQ schema review",
+    "/uslugi/": "approved service catalog and primary navigation hub"
   },
   "indexable_routes": [
     "/",
@@ -18,6 +20,7 @@
     "/blog/razbory/",
     "/deklaraciya-usn/",
     "/dokumenty-dlya-banka-115-fz/",
+    "/faq/",
     "/izmenenie-okved-ip/",
     "/izmenenie-okved-ooo/",
     "/kadry/",
@@ -56,6 +59,7 @@
     "/soprovozhdenie/",
     "/srochnye-voprosy/",
     "/sverka-s-nalogovoy/",
+    "/uslugi/",
     "/vosstanovlenie-buhucheta/",
     "/yuridicheskiy-adres-simferopol/",
     "/otzyvy/",
@@ -65,7 +69,6 @@
     "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/"
   ],
   "noindex_follow_routes": [
-    "/faq/",
     "/blog/obnovleniya-fns/"
   ],
   "noindex_nofollow_routes": [
