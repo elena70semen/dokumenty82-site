@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<yml_catalog date="2026-07-22 11:31">
+<yml_catalog date="2026-07-22 12:20">
   <shop>
     <name>Документы для бизнеса</name>
     <company>Индивидуальный предприниматель Баркова Рахима Садыковна</company>
@@ -153,9 +153,9 @@
         <description>Разбор ситуации по документам. Определим задачу, исходные документы и ближайший безопасный шаг.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -176,9 +176,9 @@
         <description>Бухгалтерское сопровождение ИП. Базовый уровень сопровождения для простой модели учёта и регулярной отчётности.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -199,9 +199,9 @@
         <description>Бухгалтерское сопровождение ООО. Регулярный учет, обязательная отчетность, контроль налогов, документов и сотрудников.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -222,9 +222,9 @@
         <description>Регистрация ИП. Подготовим документы для старта ИП с учётом деятельности и выбранного режима.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -245,9 +245,9 @@
         <description>Регистрация ООО. Соберём данные об участниках, адресе и деятельности, подготовим стартовый комплект.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -268,9 +268,9 @@
         <description>Недостоверность юридического адреса. Разберём отметку или риск недостоверности и подготовим документы по ситуации.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -291,9 +291,9 @@
         <description>Смена директора ООО. Отделим смену директора от связанных изменений и подготовим комплект документов.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -314,9 +314,9 @@
         <description>Смена юридического адреса ООО. Проверим текущий и новый адресный маршрут, уточним вводные и документы.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -337,9 +337,9 @@
         <description>Юридический адрес в Симферополе. Разделим адресный вопрос, регистрацию, смену адреса и сведения ЕГРЮЛ.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -360,9 +360,9 @@
         <description>Ликвидация ООО. Начнём с текущего статуса, документов и обязательств, затем соберём маршрут ликвидации.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -383,9 +383,9 @@
         <description>Расчёт налоговой нагрузки. Соберём данные по деятельности, режиму, операциям и периоду для расчёта.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -406,9 +406,9 @@
         <description>Нулевая отчётность ИП. Проверим режим, период и активность ИП перед подготовкой отчётности.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -429,9 +429,9 @@
         <description>Нулевая отчётность ООО. Проверим статус ООО, период и отсутствие операций перед подготовкой отчётности.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -452,9 +452,9 @@
         <description>Декларация УСН. Проверим период, статус бизнеса, операции и исходные данные для декларации.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -475,9 +475,9 @@
         <description>Восстановление бухгалтерского учёта. Определим периоды, недостающие документы и пробелы в учёте, затем составим план восстановления.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -498,9 +498,9 @@
         <description>Кадровые документы. Определим кадровую задачу по ситуации и имеющимся исходным данным.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -521,9 +521,9 @@
         <description>Документы для банка по 115-ФЗ. Соберём комплект по операциям, деятельности, контрагентам и запросу банка.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -544,9 +544,9 @@
         <description>Ответ на запрос банка. Разберём письмо банка по пунктам и подготовим структуру ответа с документами.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -567,9 +567,9 @@
         <description>Ответ на требование ИФНС. Разберём требование, период и имеющиеся документы до подготовки ответа.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -590,9 +590,9 @@
         <description>Проверка применимости АУСН для ИП или ООО в Крыму: лимиты, сотрудники, активы, банк и сравнительный расчёт объектов налогообложения.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -613,9 +613,9 @@
         <description>Проверка НДС при УСН в 2026 году: порог дохода, дата начала обязанностей, выбор ставки и перечень изменений в документах и учёте.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -636,9 +636,9 @@
         <description>Сверка расчётов с ФНС и ЕНС: проверка сальдо, начислений, платежей, уведомлений и расхождений за выбранный период.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -659,9 +659,9 @@
         <description>Срочный первичный разбор письма, запроса или документального срока: фиксируем ближайшее действие и состав необходимых материалов.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -682,9 +682,9 @@
         <description>Первичная проверка отчётности ИП или ООО: режим, периоды, обязательные формы, пропуски и ближайший документальный маршрут.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -705,9 +705,9 @@
         <description>Первичный разбор изменений ЕГРЮЛ: адрес, руководитель, устав и связанные документы с распределением по регистрационным процедурам.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -728,9 +728,9 @@
         <description>Ликвидация ИП: проверка статуса, ЕНС, кассы, сотрудников и отчётности, подготовка заявления и маршрута после закрытия.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -751,9 +751,9 @@
         <description>Сдача отчётности ИП: определение обязательных форм, проверка учётных данных, подготовка комплекта и контрольных показателей.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -774,9 +774,9 @@
         <description>Сдача отчётности ООО: бухгалтерские, налоговые и зарплатные формы, сверка регистров и проверка контрольных соотношений.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -797,9 +797,9 @@
         <description>Изменение ОКВЭД ИП: проверка фактической деятельности, подбор основного и дополнительных кодов, подготовка заявления.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>
@@ -820,9 +820,9 @@
         <description>Изменение ОКВЭД ООО: проверка устава и деятельности, корпоративные документы, форма Р13014 и контроль ЕГРЮЛ.</description>
         <adult>false</adult>
         <expiry>P5Y</expiry>
-        <param name="Рейтинг">0</param>
-        <param name="Число отзывов">0</param>
-        <param name="Годы опыта">0</param>
+        <param name="Рейтинг">4.7</param>
+        <param name="Число отзывов">1</param>
+        <param name="Годы опыта">8</param>
         <param name="Конверсия">0</param>
         <param name="Регион">Симферополь</param>
         <param name="Выполняется удаленно">true</param>

@@ -213,6 +213,9 @@ for (const offer of serviceOffers) {
       issues.push(`services.yml: ${offer.id} has invalid numeric param ${paramName}`);
     }
   }
+  if (Number(feedParamValue(offer.block, "Рейтинг")) <= 0) issues.push(`services.yml: ${offer.id} has empty rating param`);
+  if (Number(feedParamValue(offer.block, "Число отзывов")) <= 0) issues.push(`services.yml: ${offer.id} has empty review count param`);
+  if (Number(feedParamValue(offer.block, "Годы опыта")) <= 0) issues.push(`services.yml: ${offer.id} has empty experience param`);
 }
 for (const [url, ids] of duplicateServiceField("url")) issues.push(`services.yml: duplicate offer url ${url} (${ids.join(", ")})`);
 for (const [picture, ids] of duplicateServiceField("picture")) issues.push(`services.yml: duplicate picture url ${picture} (${ids.join(", ")})`);
