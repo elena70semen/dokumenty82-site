@@ -3374,3 +3374,166 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
     opacity: 0.11;
   }
 }
+
+/* The services catalog mirrors the site's real hierarchy without overloading the main menu. */
+.service-tree-section {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.service-tree-heading {
+  margin-bottom: 0;
+}
+
+.service-tree-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.service-tree-group {
+  position: relative;
+  min-width: 0;
+  padding: clamp(1rem, 1.8vw, 1.3rem);
+  overflow: hidden;
+  border: 1px solid rgba(221, 195, 125, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(26, 35, 46, 0.88), rgba(8, 14, 22, 0.72)),
+    rgba(10, 16, 25, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.service-tree-group:last-child {
+  grid-column: 1 / -1;
+}
+
+.service-tree-group:last-child .service-tree-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.2rem;
+}
+
+.service-tree-group::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--gold), rgba(89, 4, 14, 0.86));
+  content: "";
+}
+
+.service-tree-group-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.service-tree-number,
+.service-tree-count {
+  display: grid;
+  min-width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(221, 195, 125, 0.3);
+  border-radius: 6px;
+  background: rgba(85, 8, 18, 0.48);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.service-tree-count {
+  background: rgba(151, 194, 16, 0.1);
+  color: #c8df72;
+}
+
+.service-tree-group-head > a {
+  color: var(--cream);
+  font-size: 1.04rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.service-tree-group > p {
+  min-height: 2.9em;
+  margin: 0.85rem 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.service-tree-links {
+  display: grid;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-tree-links a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  min-height: 42px;
+  padding: 0.56rem 0.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(246, 243, 233, 0.88);
+  font-size: 0.86rem;
+  line-height: 1.32;
+  text-decoration: none;
+  transition: color 180ms ease, padding 180ms ease, background 180ms ease;
+}
+
+.service-tree-links a:last-child {
+  border-bottom: 0;
+}
+
+.service-tree-links a b {
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 180ms ease;
+}
+
+.service-tree-links a:hover,
+.service-tree-links a:focus-visible {
+  padding-left: 0.45rem;
+  background: rgba(221, 195, 125, 0.06);
+  color: #fff;
+}
+
+.service-tree-links a:hover b,
+.service-tree-links a:focus-visible b {
+  transform: translateX(3px);
+}
+
+.service-tree-links a:focus-visible,
+.service-tree-group-head > a:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .service-tree-group:last-child .service-tree-links {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .service-tree-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .service-tree-group,
+  .service-tree-group:last-child {
+    grid-column: 1;
+  }
+
+  .service-tree-group > p {
+    min-height: 0;
+  }
+
+  .service-tree-links a {
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+}

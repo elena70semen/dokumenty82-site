@@ -87,6 +87,104 @@ const escapeHtml = (value) => value
   .replace(/"/g, "&quot;");
 
 const allItems = groups.flatMap((group) => group.items);
+const itemByRoute = new Map(allItems.map((item) => [item[0], item]));
+const treeGroups = [
+  {
+    number: "01",
+    title: "Бухгалтерия и налоги",
+    description: "Сопровождение, отчётность, режимы, декларации и сверки.",
+    anchor: "#uchet",
+    routes: [
+      "/soprovozhdenie/",
+      "/buhgalterskoe-soprovozhdenie-ooo/",
+      "/otchetnost/",
+      "/sdacha-otchetnosti-ip/",
+      "/sdacha-otchetnosti-ooo/",
+      "/deklaraciya-usn/",
+      "/nulevaya-otchetnost-ip/",
+      "/nulevaya-otchetnost-ooo/",
+      "/nalogi-i-rezhimy/",
+      "/sverka-s-nalogovoy/",
+    ],
+  },
+  {
+    number: "02",
+    title: "Регистрация и изменения",
+    description: "Открытие ИП и ООО, ОКВЭД, адрес, директор и сведения ЕГРЮЛ.",
+    anchor: "#registraciya",
+    routes: [
+      "/registraciya-i-likvidaciya/",
+      "/registraciya-ip/",
+      "/registraciya-ooo/",
+      "/izmenenie-okved-ip/",
+      "/izmenenie-okved-ooo/",
+      "/adres-egryul-direktor/",
+      "/yuridicheskiy-adres-simferopol/",
+      "/smena-yuridicheskogo-adresa-ooo/",
+      "/smena-direktora-ooo/",
+      "/nedostovernost-yuridicheskogo-adresa/",
+    ],
+  },
+  {
+    number: "03",
+    title: "Ликвидация бизнеса",
+    description: "Закрытие ИП и ООО с проверкой отчётности и обязательств.",
+    anchor: "#registraciya",
+    routes: [
+      "/likvidaciya-ip/",
+      "/likvidaciya-ooo/",
+      "/registraciya-i-likvidaciya/",
+    ],
+  },
+  {
+    number: "04",
+    title: "Банк, ИФНС и 115-ФЗ",
+    description: "Ответы на запросы и требования, пояснения и подтверждающие документы.",
+    anchor: "#bank",
+    routes: [
+      "/bank-i-115-fz/",
+      "/otvet-na-zapros-banka/",
+      "/dokumenty-dlya-banka-115-fz/",
+      "/otvet-na-trebovanie-ifns/",
+      "/srochnye-voprosy/",
+    ],
+  },
+  {
+    number: "05",
+    title: "Первый шаг и отдельные задачи",
+    description: "Разбор ситуации, кадры, восстановление учёта и специальные налоговые вопросы.",
+    anchor: "#start",
+    routes: [
+      "/razbor-situacii/",
+      "/kadry/",
+      "/vosstanovlenie-buhucheta/",
+      "/raschet-nalogovoy-nagruzki/",
+      "/ausn-krym/",
+      "/nds-pri-usn-2026/",
+    ],
+  },
+];
+
+for (const group of treeGroups) {
+  for (const route of group.routes) {
+    if (!itemByRoute.has(route)) throw new Error(`Unknown service tree route: ${route}`);
+  }
+}
+
+const serviceTree = treeGroups.map((group) => `
+        <article class="service-tree-group">
+          <div class="service-tree-group-head">
+            <span class="service-tree-number">${group.number}</span>
+            <a href="${group.anchor}">${escapeHtml(group.title)}</a>
+            <span class="service-tree-count">${group.routes.length}</span>
+          </div>
+          <p>${escapeHtml(group.description)}</p>
+          <nav class="service-tree-links" aria-label="${escapeHtml(group.title)}">${group.routes.map((route) => {
+            const [, title] = itemByRoute.get(route);
+            return `<a href="${route}"><span>${escapeHtml(title)}</span><b aria-hidden="true">→</b></a>`;
+          }).join("")}</nav>
+        </article>`).join("");
+
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -152,6 +250,15 @@ const main = `<main>
           <li><a href="#kadry"><span>04</span><div><strong>Кадровые документы</strong><small>Документы работодателя и кадровый учёт.</small></div></a></li>
         </ul>
       </aside>
+    </section>
+    <section class="section page-rich-section service-tree-section" aria-labelledby="service-tree-title">
+      <div class="section-header service-tree-heading">
+        <p class="eyebrow">Карта услуг</p>
+        <h2 id="service-tree-title">Все направления и страницы</h2>
+        <p>Выберите тему и сразу переходите к нужной услуге. Цифра справа показывает количество доступных маршрутов в группе.</p>
+      </div>
+      <div class="service-tree-grid">${serviceTree}
+      </div>
     </section>
     <section class="section page-rich-section rich-intro-section">
       <p class="eyebrow">Как выбрать</p>

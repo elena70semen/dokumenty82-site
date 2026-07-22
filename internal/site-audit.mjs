@@ -279,6 +279,8 @@ if (!reviewsPage?.html.includes("https://yandex.ru/maps/org/1302424560/reviews/"
 
 const servicesPage = pages.find((page) => page.route === "/uslugi/");
 if (!servicesPage?.html.includes('"@type":"ItemList"')) issues.push("/uslugi/: missing ItemList schema");
+if (!servicesPage?.html.includes('class="service-tree-grid"')) issues.push("/uslugi/: service tree navigation missing");
+if ((servicesPage?.html.match(/class="service-tree-group"/g) || []).length < 5) issues.push("/uslugi/: service tree has too few groups");
 for (const route of serviceOffers.map((offer) => new URL(offer.url).pathname)) {
   if (!servicesPage?.html.includes(`href="${route}"`)) issues.push(`/uslugi/: missing direct link to ${route}`);
 }
