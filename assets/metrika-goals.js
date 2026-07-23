@@ -10,7 +10,9 @@
   function reachGoal(name, params) {
     if (!name || typeof window.ym !== "function") return;
     try {
-      window.ym(COUNTER_ID, "reachGoal", name, params || {});
+      window.ym(COUNTER_ID, "reachGoal", name, Object.assign({
+        path: window.location.pathname,
+      }, params || {}));
     } catch (_) {}
   }
 
@@ -20,6 +22,7 @@
     if (href.startsWith("mailto:")) return "contact_email";
     if (href.startsWith("https://t.me/") || href.startsWith("tg://")) return "contact_telegram";
     if (href.startsWith("https://max.ru/")) return "contact_max";
+    if (href === "/razbor-situacii/" || href.startsWith("/razbor-situacii/#")) return "consultation_cta_click";
     if (href === "/kontakty/" || href.startsWith("/kontakty/#")) return "contact_route";
     if (href.includes("yandex.ru/maps/org/1302424560/reviews")) return "review_yandex_click";
     return "";
@@ -40,8 +43,8 @@
     const linkGoal = goalForLink(link);
     if (linkGoal) {
       reachGoal(linkGoal, {
-        path: window.location.pathname,
         href: String(link.getAttribute("href") || "").slice(0, 180),
+        text: String(link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 120),
       });
     }
   }, true);

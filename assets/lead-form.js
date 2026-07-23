@@ -57,9 +57,17 @@
     return validateFiles(files);
   }
 
-  function fireGoal(name) {
+  function fireGoal(name, params) {
+    if (typeof window.d82TrackGoal === "function") {
+      window.d82TrackGoal(name, params);
+      return;
+    }
     if (typeof window.ym !== "function") return;
-    try { window.ym(109869928, "reachGoal", name); } catch (_) {}
+    try {
+      window.ym(109869928, "reachGoal", name, Object.assign({
+        path: window.location.pathname,
+      }, params || {}));
+    } catch (_) {}
   }
 
   function wireForm(form) {
@@ -87,6 +95,10 @@
 
       const trap = form.querySelector('input[name="company_website"]');
       if (trap && trap.value) return;
+
+      fireGoal("goal_form_submit_attempt", {
+        form: "amo_lead",
+      });
 
       const fileMessage = renderFiles(form);
       if (fileMessage) {
@@ -122,11 +134,14 @@
             return payload;
           });
         })
-        .then(function () {
+        .then(function (payload) {
           form.reset();
           renderFiles(form);
           setStatus(form, "Заявка отправлена. Мы свяжемся с вами по указанному телефону.");
-          fireGoal("lead_submit_success");
+          fireGoal("lead_submit_success", {
+            form: "amo_lead",
+            crm_status: payload.crm_status || "accepted",
+          });
         })
         .catch(function (error) {
           setStatus(form, error.message || "Форма временно недоступна. Позвоните или напишите в мессенджер.");

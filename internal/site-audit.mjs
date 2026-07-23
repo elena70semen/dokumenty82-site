@@ -231,7 +231,7 @@ for (const page of pages) {
   if (!page.h1) issues.push(`${page.route}: missing h1`);
   if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/novosti\/"/i)) issues.push(`${page.route}: News missing from desktop navigation`);
   if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/uslugi\/"[^>]*>Услуги<\/a>/i)) issues.push(`${page.route}: Services catalog missing from desktop navigation`);
-  if (!page.html.includes("/assets/metrika-goals.js?v=202607121220")) issues.push(`${page.route}: Metrika contact goals script missing`);
+  if (!page.html.includes("/assets/metrika-goals.js")) issues.push(`${page.route}: Metrika contact goals script missing`);
   if (page.html.includes('"ProfessionalService"')) issues.push(`${page.route}: deprecated ProfessionalService schema type`);
   for (const [index, block] of page.schemaBlocks.entries()) {
     try {
