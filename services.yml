@@ -1,836 +1,484 @@
-<?xml version="1.0" encoding="utf-8"?>
-<yml_catalog date="2026-07-22 12:20">
-  <shop>
+<?xml version="1.0" encoding="UTF-8"?>
+<services_feed version="1.4" date="2026-07-24T12:11:18+03:00">
+  <source>
     <name>Документы для бизнеса</name>
-    <company>Индивидуальный предприниматель Баркова Рахима Садыковна</company>
     <url>https://dokumenty82.ru/</url>
-    <email>info@dokumenty82.ru</email>
-    <currencies>
-      <currency id="RUR" rate="1" />
-    </currencies>
-    <categories>
-      <category id="1">Услуги для бизнеса</category>
-      <category id="2" parentId="1">Бухгалтерское и налоговое сопровождение</category>
-      <category id="3" parentId="1">Регистрация, ЕГРЮЛ и изменения</category>
-      <category id="4" parentId="1">Отчетность и налоги</category>
-      <category id="5" parentId="1">Восстановление учета</category>
-      <category id="6" parentId="1">Кадровые документы</category>
-      <category id="7" parentId="1">Банк и требования</category>
-      <category id="8" parentId="1">Первый шаг</category>
-    </categories>
-    <sets>
-      <set id="s1">
-        <name>Разбор ситуации по документам</name>
-        <url>https://dokumenty82.ru/razbor-situacii/</url>
-      </set>
-      <set id="s2">
-        <name>Бухгалтерское сопровождение ИП</name>
-        <url>https://dokumenty82.ru/soprovozhdenie/</url>
-      </set>
-      <set id="s27">
-        <name>Бухгалтерское сопровождение ООО</name>
-        <url>https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/</url>
-      </set>
-      <set id="s4">
-        <name>Регистрация ИП</name>
-        <url>https://dokumenty82.ru/registraciya-ip/</url>
-      </set>
-      <set id="s5">
-        <name>Регистрация ООО</name>
-        <url>https://dokumenty82.ru/registraciya-ooo/</url>
-      </set>
-      <set id="s6">
-        <name>Недостоверность юридического адреса</name>
-        <url>https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/</url>
-      </set>
-      <set id="s7">
-        <name>Смена директора ООО</name>
-        <url>https://dokumenty82.ru/smena-direktora-ooo/</url>
-      </set>
-      <set id="s8">
-        <name>Смена юридического адреса ООО</name>
-        <url>https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/</url>
-      </set>
-      <set id="s9">
-        <name>Юридический адрес в Симферополе</name>
-        <url>https://dokumenty82.ru/yuridicheskiy-adres-simferopol/</url>
-      </set>
-      <set id="s10">
-        <name>Ликвидация ООО</name>
-        <url>https://dokumenty82.ru/likvidaciya-ooo/</url>
-      </set>
-      <set id="s11">
-        <name>Расчёт налоговой нагрузки</name>
-        <url>https://dokumenty82.ru/raschet-nalogovoy-nagruzki/</url>
-      </set>
-      <set id="s12">
-        <name>Нулевая отчётность ИП</name>
-        <url>https://dokumenty82.ru/nulevaya-otchetnost-ip/</url>
-      </set>
-      <set id="s13">
-        <name>Нулевая отчётность ООО</name>
-        <url>https://dokumenty82.ru/nulevaya-otchetnost-ooo/</url>
-      </set>
-      <set id="s14">
-        <name>Декларация УСН</name>
-        <url>https://dokumenty82.ru/deklaraciya-usn/</url>
-      </set>
-      <set id="s15">
-        <name>Восстановление бухгалтерского учёта</name>
-        <url>https://dokumenty82.ru/vosstanovlenie-buhucheta/</url>
-      </set>
-      <set id="s16">
-        <name>Кадровые документы и сопровождение</name>
-        <url>https://dokumenty82.ru/kadry/</url>
-      </set>
-      <set id="s18">
-        <name>Документы для банка по 115-ФЗ</name>
-        <url>https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/</url>
-      </set>
-      <set id="s19">
-        <name>Ответ на запрос банка</name>
-        <url>https://dokumenty82.ru/otvet-na-zapros-banka/</url>
-      </set>
-      <set id="s20">
-        <name>Ответ на требование ИФНС</name>
-        <url>https://dokumenty82.ru/otvet-na-trebovanie-ifns/</url>
-      </set>
-      <set id="s21">
-        <name>Проверка применимости АУСН в Крыму</name>
-        <url>https://dokumenty82.ru/ausn-krym/</url>
-      </set>
-      <set id="s22">
-        <name>Проверка НДС при УСН в 2026 году</name>
-        <url>https://dokumenty82.ru/nds-pri-usn-2026/</url>
-      </set>
-      <set id="s23">
-        <name>Сверка расчётов с ФНС и ЕНС</name>
-        <url>https://dokumenty82.ru/sverka-s-nalogovoy/</url>
-      </set>
-      <set id="s24">
-        <name>Срочный разбор документов</name>
-        <url>https://dokumenty82.ru/srochnye-voprosy/</url>
-      </set>
-      <set id="s25">
-        <name>Проверка отчётности бизнеса</name>
-        <url>https://dokumenty82.ru/otchetnost/</url>
-      </set>
-      <set id="s26">
-        <name>Изменения адреса, директора и ЕГРЮЛ</name>
-        <url>https://dokumenty82.ru/adres-egryul-direktor/</url>
-      </set>
-      <set id="s28">
-        <name>Ликвидация ИП</name>
-        <url>https://dokumenty82.ru/likvidaciya-ip/</url>
-      </set>
-      <set id="s29">
-        <name>Сдача отчётности ИП</name>
-        <url>https://dokumenty82.ru/sdacha-otchetnosti-ip/</url>
-      </set>
-      <set id="s30">
-        <name>Сдача отчётности ООО</name>
-        <url>https://dokumenty82.ru/sdacha-otchetnosti-ooo/</url>
-      </set>
-      <set id="s31">
-        <name>Изменение кодов ОКВЭД ИП</name>
-        <url>https://dokumenty82.ru/izmenenie-okved-ip/</url>
-      </set>
-      <set id="s32">
-        <name>Изменение кодов ОКВЭД ООО</name>
-        <url>https://dokumenty82.ru/izmenenie-okved-ooo/</url>
-      </set>
-    </sets>
-    <offers>
-      <offer id="d82-razbor-situacii">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/razbor-situacii/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>8</categoryId>
-        <set-ids>s1</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=razbor-situacii</picture>
-        <description>Разбор ситуации по документам. Определим задачу, исходные документы и ближайший безопасный шаг.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-buh-soprovozhdenie-ip">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/soprovozhdenie/</url>
-        <price from="true">10000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>2</categoryId>
-        <set-ids>s2</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=buh-soprovozhdenie-ip</picture>
-        <description>Бухгалтерское сопровождение ИП. Базовый уровень сопровождения для простой модели учёта и регулярной отчётности.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-buh-soprovozhdenie-ooo">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/</url>
-        <price from="true">15000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от режима, НДС, количества операций, сотрудников и состояния учета.</sales_notes>
-        <categoryId>2</categoryId>
-        <set-ids>s27</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/office-document-consultation.webp?offer=buh-soprovozhdenie-ooo</picture>
-        <description>Бухгалтерское сопровождение ООО. Регулярный учет, обязательная отчетность, контроль налогов, документов и сотрудников.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-registraciya-ip">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/registraciya-ip/</url>
-        <price from="true">5000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s4</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=registraciya-ip</picture>
-        <description>Регистрация ИП. Подготовим документы для старта ИП с учётом деятельности и выбранного режима.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-registraciya-ooo">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/registraciya-ooo/</url>
-        <price from="true">10000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s5</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=registraciya-ooo</picture>
-        <description>Регистрация ООО. Соберём данные об участниках, адресе и деятельности, подготовим стартовый комплект.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-nedostovernost-adresa">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/</url>
-        <price from="true">18000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s6</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=nedostovernost-adresa</picture>
-        <description>Недостоверность юридического адреса. Разберём отметку или риск недостоверности и подготовим документы по ситуации.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-smena-direktora">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/smena-direktora-ooo/</url>
-        <price from="true">8000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s7</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=smena-direktora</picture>
-        <description>Смена директора ООО. Отделим смену директора от связанных изменений и подготовим комплект документов.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-smena-adresa">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/</url>
-        <price from="true">13000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s8</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=smena-adresa</picture>
-        <description>Смена юридического адреса ООО. Проверим текущий и новый адресный маршрут, уточним вводные и документы.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-yuridicheskiy-adres">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/yuridicheskiy-adres-simferopol/</url>
-        <price from="true">20000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s9</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=yuridicheskiy-adres</picture>
-        <description>Юридический адрес в Симферополе. Разделим адресный вопрос, регистрацию, смену адреса и сведения ЕГРЮЛ.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-likvidaciya-ooo">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/likvidaciya-ooo/</url>
-        <price from="true">45000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s10</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=likvidaciya-ooo</picture>
-        <description>Ликвидация ООО. Начнём с текущего статуса, документов и обязательств, затем соберём маршрут ликвидации.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-nalogovaya-nagruzka">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/raschet-nalogovoy-nagruzki/</url>
-        <price from="true">5000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s11</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=nalogovaya-nagruzka</picture>
-        <description>Расчёт налоговой нагрузки. Соберём данные по деятельности, режиму, операциям и периоду для расчёта.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-nulevaya-ip">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/nulevaya-otchetnost-ip/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s12</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=nulevaya-ip</picture>
-        <description>Нулевая отчётность ИП. Проверим режим, период и активность ИП перед подготовкой отчётности.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-nulevaya-ooo">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/nulevaya-otchetnost-ooo/</url>
-        <price from="true">4000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s13</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=nulevaya-ooo</picture>
-        <description>Нулевая отчётность ООО. Проверим статус ООО, период и отсутствие операций перед подготовкой отчётности.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-deklaraciya-usn">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/deklaraciya-usn/</url>
-        <price from="true">5000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s14</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=deklaraciya-usn</picture>
-        <description>Декларация УСН. Проверим период, статус бизнеса, операции и исходные данные для декларации.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-vosstanovlenie-buhucheta">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/vosstanovlenie-buhucheta/</url>
-        <price from="true">20000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>5</categoryId>
-        <set-ids>s15</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=vosstanovlenie-buhucheta</picture>
-        <description>Восстановление бухгалтерского учёта. Определим периоды, недостающие документы и пробелы в учёте, затем составим план восстановления.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-kadrovye-dokumenty">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/kadry/</url>
-        <price from="true">5000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>6</categoryId>
-        <set-ids>s16</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=kadrovye-dokumenty</picture>
-        <description>Кадровые документы. Определим кадровую задачу по ситуации и имеющимся исходным данным.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-dokumenty-115-fz">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/</url>
-        <price from="true">15000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>7</categoryId>
-        <set-ids>s18</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=dokumenty-115-fz</picture>
-        <description>Документы для банка по 115-ФЗ. Соберём комплект по операциям, деятельности, контрагентам и запросу банка.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-otvet-banku">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/otvet-na-zapros-banka/</url>
-        <price from="true">10000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>7</categoryId>
-        <set-ids>s19</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=otvet-banku</picture>
-        <description>Ответ на запрос банка. Разберём письмо банка по пунктам и подготовим структуру ответа с документами.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-otvet-ifns">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/otvet-na-trebovanie-ifns/</url>
-        <price from="true">8000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>7</categoryId>
-        <set-ids>s20</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=otvet-ifns</picture>
-        <description>Ответ на требование ИФНС. Разберём требование, период и имеющиеся документы до подготовки ответа.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-ausn-krym">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/ausn-krym/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s21</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=ausn-krym</picture>
-        <description>Проверка применимости АУСН для ИП или ООО в Крыму: лимиты, сотрудники, активы, банк и сравнительный расчёт объектов налогообложения.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-nds-usn-2026">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/nds-pri-usn-2026/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s22</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=nds-usn-2026</picture>
-        <description>Проверка НДС при УСН в 2026 году: порог дохода, дата начала обязанностей, выбор ставки и перечень изменений в документах и учёте.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-sverka-fns-ens">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/sverka-s-nalogovoy/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s23</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=sverka-fns-ens</picture>
-        <description>Сверка расчётов с ФНС и ЕНС: проверка сальдо, начислений, платежей, уведомлений и расхождений за выбранный период.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-srochnye-dokumenty">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/srochnye-voprosy/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>8</categoryId>
-        <set-ids>s24</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=srochnye-dokumenty</picture>
-        <description>Срочный первичный разбор письма, запроса или документального срока: фиксируем ближайшее действие и состав необходимых материалов.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-proverka-otchetnosti">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/otchetnost/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s25</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=proverka-otchetnosti</picture>
-        <description>Первичная проверка отчётности ИП или ООО: режим, периоды, обязательные формы, пропуски и ближайший документальный маршрут.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-izmeneniya-egryul">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/adres-egryul-direktor/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s26</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=izmeneniya-egryul</picture>
-        <description>Первичный разбор изменений ЕГРЮЛ: адрес, руководитель, устав и связанные документы с распределением по регистрационным процедурам.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-likvidaciya-ip">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/likvidaciya-ip/</url>
-        <price from="true">5000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от отчётности, сотрудников, кассы и состояния расчётов с бюджетом.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s28</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/registration-changes.png?offer=likvidaciya-ip</picture>
-        <description>Ликвидация ИП: проверка статуса, ЕНС, кассы, сотрудников и отчётности, подготовка заявления и маршрута после закрытия.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-sdacha-otchetnosti-ip">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/sdacha-otchetnosti-ip/</url>
-        <price from="true">3000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от режима, периода, количества форм, операций и сотрудников.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s29</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/reporting-workflow.png?offer=sdacha-otchetnosti-ip</picture>
-        <description>Сдача отчётности ИП: определение обязательных форм, проверка учётных данных, подготовка комплекта и контрольных показателей.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-sdacha-otchetnosti-ooo">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/sdacha-otchetnosti-ooo/</url>
-        <price from="true">5000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от режима, НДС, сотрудников, количества форм и готовности учёта.</sales_notes>
-        <categoryId>4</categoryId>
-        <set-ids>s30</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/tax-accounting-books.png?offer=sdacha-otchetnosti-ooo</picture>
-        <description>Сдача отчётности ООО: бухгалтерские, налоговые и зарплатные формы, сверка регистров и проверка контрольных соотношений.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-izmenenie-okved-ip">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/izmenenie-okved-ip/</url>
-        <price from="true">5000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от количества направлений и специальных требований к деятельности.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s31</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/registration-changes.png?offer=izmenenie-okved-ip</picture>
-        <description>Изменение ОКВЭД ИП: проверка фактической деятельности, подбор основного и дополнительных кодов, подготовка заявления.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-      <offer id="d82-izmenenie-okved-ooo">
-        <name>Документы для бизнеса</name>
-        <url>https://dokumenty82.ru/izmenenie-okved-ooo/</url>
-        <price from="true">8000</price>
-        <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от устава, состава участников и количества одновременных изменений.</sales_notes>
-        <categoryId>3</categoryId>
-        <set-ids>s32</set-ids>
-        <picture>https://dokumenty82.ru/assets/images/legal-address-documents.png?offer=izmenenie-okved-ooo</picture>
-        <description>Изменение ОКВЭД ООО: проверка устава и деятельности, корпоративные документы, форма Р13014 и контроль ЕГРЮЛ.</description>
-        <adult>false</adult>
-        <expiry>P5Y</expiry>
-        <param name="Рейтинг">4.7</param>
-        <param name="Число отзывов">1</param>
-        <param name="Годы опыта">8</param>
-        <param name="Конверсия">0</param>
-        <param name="Регион">Симферополь</param>
-        <param name="Выполняется удаленно">true</param>
-        <param name="Организация">true</param>
-        <param name="Выполняется по адресу исполнителя">true</param>
-        <param name="Работа по договору">да</param>
-        <param name="Безналичный расчет">да</param>
-      </offer>
-    </offers>
-  </shop>
-</yml_catalog>
+    <favicon>https://dokumenty82.ru/assets/images/brand-logo-open-book.png</favicon>
+    <locale>ru</locale>
+    <redirect_service>1</redirect_service>
+  </source>
+  <categories>
+    <category>
+      <persistent_id>business_services</persistent_id>
+      <name>Услуги для бизнеса</name>
+    </category>
+    <category>
+      <persistent_id>accounting</persistent_id>
+      <name>Бухгалтерское и налоговое сопровождение</name>
+      <parent_id>business_services</parent_id>
+    </category>
+    <category>
+      <persistent_id>registration</persistent_id>
+      <name>Регистрация, ЕГРЮЛ и изменения</name>
+      <parent_id>business_services</parent_id>
+    </category>
+    <category>
+      <persistent_id>reporting_tax</persistent_id>
+      <name>Отчётность и налоги</name>
+      <parent_id>business_services</parent_id>
+    </category>
+    <category>
+      <persistent_id>accounting_recovery</persistent_id>
+      <name>Восстановление учёта</name>
+      <parent_id>business_services</parent_id>
+    </category>
+    <category>
+      <persistent_id>hr_documents</persistent_id>
+      <name>Кадровые документы</name>
+      <parent_id>business_services</parent_id>
+    </category>
+    <category>
+      <persistent_id>bank_tax_requests</persistent_id>
+      <name>Банк, 115-ФЗ и требования ИФНС</name>
+      <parent_id>business_services</parent_id>
+    </category>
+    <category>
+      <persistent_id>first_step</persistent_id>
+      <name>Первичный разбор</name>
+      <parent_id>business_services</parent_id>
+    </category>
+  </categories>
+  <executors>
+    <executor>
+      <persistent_id>d82-rakhima-barkova</persistent_id>
+      <url>https://dokumenty82.ru/o-nas/</url>
+      <is_organization>1</is_organization>
+      <is_banned>0</is_banned>
+      <name>ИП Баркова Рахима Садыковна</name>
+      <description>Бухгалтерское, налоговое и документальное сопровождение ИП и ООО в Симферополе и дистанционно.</description>
+      <contacts>
+        <phones>
+          <phone is_primary="1">+79789987222</phone>
+        </phones>
+        <sites>
+          <site>https://dokumenty82.ru/</site>
+          <site>https://yandex.ru/maps/org/1302424560/</site>
+        </sites>
+      </contacts>
+      <trust>
+        <contract>1</contract>
+        <registration_date>2017-10-20</registration_date>
+      </trust>
+      <geo_info>
+        <addresses>
+          <address>
+            <text>Россия, Республика Крым, Симферополь, улица Мате Залки, 1</text>
+          </address>
+        </addresses>
+        <service_areas>
+          <area>
+            <text>Симферополь</text>
+          </area>
+          <area>
+            <text>Республика Крым</text>
+          </area>
+        </service_areas>
+      </geo_info>
+      <photos>
+        <avatar_photo_url>https://dokumenty82.ru/assets/images/brand-logo-open-book.png</avatar_photo_url>
+      </photos>
+      <services>
+        <service>
+          <url>https://dokumenty82.ru/razbor-situacii/</url>
+          <persistent_id>d82-razbor-situacii</persistent_id>
+          <name>Разбор ситуации по документам</name>
+          <category_id>first_step</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Определим задачу, исходные документы и ближайший безопасный шаг.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/soprovozhdenie/</url>
+          <persistent_id>d82-buh-soprovozhdenie-ip</persistent_id>
+          <name>Бухгалтерское сопровождение ИП</name>
+          <category_id>accounting</category_id>
+          <price>
+            <from>
+              <value>10000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Базовый уровень сопровождения для простой модели учёта и регулярной отчётности.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/</url>
+          <persistent_id>d82-buh-soprovozhdenie-ooo</persistent_id>
+          <name>Бухгалтерское сопровождение ООО</name>
+          <category_id>accounting</category_id>
+          <price>
+            <from>
+              <value>15000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Регулярный учёт, обязательная отчётность, контроль налогов, документов и сотрудников.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/registraciya-ip/</url>
+          <persistent_id>d82-registraciya-ip</persistent_id>
+          <name>Регистрация ИП</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>5000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Подготовим документы для старта ИП с учётом деятельности и выбранного режима.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/registraciya-ooo/</url>
+          <persistent_id>d82-registraciya-ooo</persistent_id>
+          <name>Регистрация ООО</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>10000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Соберём данные об участниках, адресе и деятельности, подготовим стартовый комплект.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/</url>
+          <persistent_id>d82-nedostovernost-adresa</persistent_id>
+          <name>Недостоверность юридического адреса</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>18000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Разберём отметку или риск недостоверности и подготовим документы по ситуации.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/smena-direktora-ooo/</url>
+          <persistent_id>d82-smena-direktora</persistent_id>
+          <name>Смена директора ООО</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>8000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Отделим смену директора от связанных изменений и подготовим комплект документов.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/</url>
+          <persistent_id>d82-smena-adresa</persistent_id>
+          <name>Смена юридического адреса ООО</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>13000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим текущий и новый адресный маршрут, уточним вводные и документы.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/yuridicheskiy-adres-simferopol/</url>
+          <persistent_id>d82-yuridicheskiy-adres</persistent_id>
+          <name>Юридический адрес в Симферополе</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>20000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Разделим адресный вопрос, регистрацию, смену адреса и сведения ЕГРЮЛ.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/likvidaciya-ooo/</url>
+          <persistent_id>d82-likvidaciya-ooo</persistent_id>
+          <name>Ликвидация ООО</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>45000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Начнём с текущего статуса, документов и обязательств, затем соберём маршрут ликвидации.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/raschet-nalogovoy-nagruzki/</url>
+          <persistent_id>d82-nalogovaya-nagruzka</persistent_id>
+          <name>Расчёт налоговой нагрузки</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>5000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Соберём данные по деятельности, режиму, операциям и периоду для расчёта.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/nulevaya-otchetnost-ip/</url>
+          <persistent_id>d82-nulevaya-ip</persistent_id>
+          <name>Нулевая отчётность ИП</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим режим, период и активность ИП перед подготовкой отчётности.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/nulevaya-otchetnost-ooo/</url>
+          <persistent_id>d82-nulevaya-ooo</persistent_id>
+          <name>Нулевая отчётность ООО</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>4000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим статус ООО, период и отсутствие операций перед подготовкой отчётности.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/deklaraciya-usn/</url>
+          <persistent_id>d82-deklaraciya-usn</persistent_id>
+          <name>Декларация УСН</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>5000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим период, статус бизнеса, операции и исходные данные для декларации.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/vosstanovlenie-buhucheta/</url>
+          <persistent_id>d82-vosstanovlenie-buhucheta</persistent_id>
+          <name>Восстановление бухгалтерского учёта</name>
+          <category_id>accounting_recovery</category_id>
+          <price>
+            <from>
+              <value>20000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Определим периоды, недостающие документы и пробелы в учёте, затем составим план восстановления.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/kadry/</url>
+          <persistent_id>d82-kadrovye-dokumenty</persistent_id>
+          <name>Кадровые документы</name>
+          <category_id>hr_documents</category_id>
+          <price>
+            <from>
+              <value>5000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Определим кадровую задачу по ситуации и имеющимся исходным данным.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/</url>
+          <persistent_id>d82-dokumenty-115-fz</persistent_id>
+          <name>Документы для банка по 115-ФЗ</name>
+          <category_id>bank_tax_requests</category_id>
+          <price>
+            <from>
+              <value>15000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Соберём комплект по операциям, деятельности, контрагентам и запросу банка.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/otvet-na-zapros-banka/</url>
+          <persistent_id>d82-otvet-banku</persistent_id>
+          <name>Ответ на запрос банка</name>
+          <category_id>bank_tax_requests</category_id>
+          <price>
+            <from>
+              <value>10000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Разберём письмо банка по пунктам и подготовим структуру ответа с документами.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/otvet-na-trebovanie-ifns/</url>
+          <persistent_id>d82-otvet-ifns</persistent_id>
+          <name>Ответ на требование ИФНС</name>
+          <category_id>bank_tax_requests</category_id>
+          <price>
+            <from>
+              <value>8000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Разберём требование, период и имеющиеся документы до подготовки ответа.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/ausn-krym/</url>
+          <persistent_id>d82-ausn-krym</persistent_id>
+          <name>Проверка применимости АУСН в Крыму</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим лимиты, сотрудников, активы, банк и объекты налогообложения для ИП или ООО.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/nds-pri-usn-2026/</url>
+          <persistent_id>d82-nds-usn-2026</persistent_id>
+          <name>Проверка НДС при УСН в 2026 году</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Определим порог дохода, дату начала обязанностей, ставку и изменения в документах и учёте.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/sverka-s-nalogovoy/</url>
+          <persistent_id>d82-sverka-fns-ens</persistent_id>
+          <name>Сверка расчётов с ФНС и ЕНС</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим сальдо, начисления, платежи, уведомления и расхождения за выбранный период.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/srochnye-voprosy/</url>
+          <persistent_id>d82-srochnye-dokumenty</persistent_id>
+          <name>Срочный разбор документов</name>
+          <category_id>first_step</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Зафиксируем ближайшее действие и состав материалов по письму, запросу или документальному сроку.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/otchetnost/</url>
+          <persistent_id>d82-proverka-otchetnosti</persistent_id>
+          <name>Проверка отчётности бизнеса</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим режим, периоды, обязательные формы, пропуски и ближайший документальный маршрут.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/adres-egryul-direktor/</url>
+          <persistent_id>d82-izmeneniya-egryul</persistent_id>
+          <name>Изменения адреса, директора и ЕГРЮЛ</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Распределим изменения адреса, руководителя, устава и связанных документов по процедурам.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/likvidaciya-ip/</url>
+          <persistent_id>d82-likvidaciya-ip</persistent_id>
+          <name>Ликвидация ИП</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>5000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим статус, ЕНС, кассу, сотрудников и отчётность, подготовим заявление и дальнейший маршрут.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/sdacha-otchetnosti-ip/</url>
+          <persistent_id>d82-sdacha-otchetnosti-ip</persistent_id>
+          <name>Сдача отчётности ИП</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>3000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Определим обязательные формы, проверим учётные данные, комплект и контрольные показатели.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/sdacha-otchetnosti-ooo/</url>
+          <persistent_id>d82-sdacha-otchetnosti-ooo</persistent_id>
+          <name>Сдача отчётности ООО</name>
+          <category_id>reporting_tax</category_id>
+          <price>
+            <from>
+              <value>5000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Подготовим бухгалтерские, налоговые и зарплатные формы, сверим регистры и контрольные соотношения.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/izmenenie-okved-ip/</url>
+          <persistent_id>d82-izmenenie-okved-ip</persistent_id>
+          <name>Изменение кодов ОКВЭД ИП</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>5000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим фактическую деятельность, подберём основной и дополнительные коды, подготовим заявление.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/izmenenie-okved-ooo/</url>
+          <persistent_id>d82-izmenenie-okved-ooo</persistent_id>
+          <name>Изменение кодов ОКВЭД ООО</name>
+          <category_id>registration</category_id>
+          <price>
+            <from>
+              <value>8000</value>
+              <currency>RUB</currency>
+            </from>
+          </price>
+          <description>Проверим устав и деятельность, подготовим корпоративные документы, форму Р13014 и контроль ЕГРЮЛ.</description>
+        </service>
+      </services>
+    </executor>
+  </executors>
+</services_feed>

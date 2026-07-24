@@ -96,39 +96,31 @@ const feedTagValue = (block, tag) => decode(
   block.match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, "i"))?.[1] || "",
 ).trim();
 
-const feedParamValue = (block, name) => {
-  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return decode(
-    block.match(new RegExp(`<param\\s+name=["']${escaped}["'][^>]*>([\\s\\S]*?)<\\/param>`, "i"))?.[1] || "",
-  ).trim();
-};
+const serviceOffers = [...serviceFeed.matchAll(/<service>([\s\S]*?)<\/service>/gi)]
+  .map((match) => {
+    const priceBlock = feedTagValue(match[1], "price");
+    const fromBlock = feedTagValue(priceBlock, "from");
+    const exactBlock = feedTagValue(priceBlock, "exact");
+    return {
+      id: feedTagValue(match[1], "persistent_id"),
+      block: match[1],
+      name: feedTagValue(match[1], "name"),
+      url: feedTagValue(match[1], "url"),
+      categoryId: feedTagValue(match[1], "category_id"),
+      price: feedTagValue(fromBlock || exactBlock, "value"),
+      currency: feedTagValue(fromBlock || exactBlock, "currency"),
+      priceFrom: Boolean(fromBlock),
+    };
+  });
 
-const serviceOffers = [...serviceFeed.matchAll(/<offer\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/offer>/gi)]
-  .map((match) => ({
-    id: match[1],
-    block: match[2],
-    name: feedTagValue(match[2], "name"),
-    url: feedTagValue(match[2], "url"),
-    picture: feedTagValue(match[2], "picture"),
-    price: feedTagValue(match[2], "price"),
-    priceFrom: /<price\s+[^>]*from=["']true["'][^>]*>/i.test(match[2]),
-  }));
-
-const serviceSets = new Map(
-  [...serviceFeed.matchAll(/<set\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/set>/gi)]
-    .map((match) => [match[1], feedTagValue(match[2], "url")]),
+const serviceCategories = new Map(
+  [...serviceFeed.matchAll(/<category>([\s\S]*?)<\/category>/gi)]
+    .map((match) => [feedTagValue(match[1], "persistent_id"), feedTagValue(match[1], "name")]),
 );
 
-const requiredServiceParams = [
-  "Рейтинг",
-  "Число отзывов",
-  "Годы опыта",
-  "Регион",
-  "Конверсия",
-  "Работа по договору",
-  "Безналичный расчет",
-];
-const numericServiceParams = new Set(["Рейтинг", "Число отзывов", "Годы опыта", "Конверсия"]);
+const feedExecutorBlocks = [...serviceFeed.matchAll(/<executor>([\s\S]*?)<\/executor>/gi)].map((match) => match[1]);
+const feedExecutor = feedExecutorBlocks[0] || "";
+const sourceBlock = feedTagValue(serviceFeed, "source");
 
 const duplicateServiceField = (field) => {
   const groups = new Map();
@@ -151,28 +143,32 @@ const indexNowKeyFiles = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => fs.readFileSync(path.join(root, entry.name), "utf8").trim() === entry.name.slice(0, -4));
 
 if (indexNowKeyFiles.length !== 1) issues.push(`IndexNow key files: expected 1, found ${indexNowKeyFiles.length}`);
-if (!/<yml_catalog date="\d{4}-\d{2}-\d{2} \d{2}:\d{2}">/.test(serviceFeed)) issues.push("services.yml: invalid catalog date");
-if (feedTagValue(serviceFeed, "company") !== legalName) issues.push("services.yml: legal performer name is missing");
+if (!/<services_feed\s+version="1\.4"\s+date="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})">/.test(serviceFeed)) {
+  issues.push("services.yml: invalid services_feed root or date");
+}
+if (feedTagValue(sourceBlock, "name") !== "Документы для бизнеса") issues.push("services.yml: invalid source name");
+if (feedTagValue(sourceBlock, "url") !== "https://dokumenty82.ru/") issues.push("services.yml: invalid source url");
+if (feedExecutorBlocks.length !== 1) issues.push(`services.yml: expected 1 executor, found ${feedExecutorBlocks.length}`);
+if (feedTagValue(feedExecutor, "name") !== "ИП Баркова Рахима Садыковна") {
+  issues.push("services.yml: legal executor name is missing");
+}
+if (feedTagValue(feedExecutor, "is_organization") !== "1") issues.push("services.yml: executor must be an organization");
+if (!feedExecutor.includes("https://yandex.ru/maps/org/1302424560/")) issues.push("services.yml: Yandex Business profile link is missing");
+if (feedExecutor.includes("<ugc>")) issues.push("services.yml: do not publish unverified review aggregates");
 if (serviceOffers.length < 30) issues.push(`services.yml: expected at least 30 unique service offers, found ${serviceOffers.length}`);
-if (serviceSets.size < 30) issues.push(`services.yml: expected at least 30 unique service sets, found ${serviceSets.size}`);
-if (!serviceFeed.includes("<category id=\"2\" parentId=\"1\">Бухгалтерское и налоговое сопровождение</category>")) {
+if (serviceCategories.get("accounting") !== "Бухгалтерское и налоговое сопровождение") {
   issues.push("services.yml: accounting services category missing");
 }
 for (const offer of serviceOffers) {
-  if (offer.name !== "Документы для бизнеса") issues.push(`services.yml: ${offer.id} has invalid performer name`);
+  if (!offer.id) issues.push("services.yml: service is missing persistent_id");
+  if (!offer.name) issues.push(`services.yml: ${offer.id || "unknown"} is missing name`);
   if (!offer.url) issues.push(`services.yml: ${offer.id} is missing url`);
-  if (!offer.picture) issues.push(`services.yml: ${offer.id} is missing picture`);
-  if (!offer.priceFrom) issues.push(`services.yml: ${offer.id} price must use from=\"true\"`);
-  if (!Number.isFinite(Number(offer.price)) || Number(offer.price) < 0) issues.push(`services.yml: ${offer.id} has invalid price`);
-  const setIds = feedTagValue(offer.block, "set-ids").split(",").map((value) => value.trim()).filter(Boolean);
-  if (setIds.length === 0) issues.push(`services.yml: ${offer.id} is missing set-ids`);
-  for (const setId of setIds) {
-    if (!serviceSets.has(setId)) {
-      issues.push(`services.yml: ${offer.id} references unknown set ${setId}`);
-    } else if (serviceSets.get(setId) !== offer.url) {
-      issues.push(`services.yml: ${offer.id} and set ${setId} use different urls`);
-    }
+  if (!offer.categoryId || !serviceCategories.has(offer.categoryId)) {
+    issues.push(`services.yml: ${offer.id} references unknown category ${offer.categoryId || "missing"}`);
   }
+  if (!offer.priceFrom) issues.push(`services.yml: ${offer.id} price must use a from block`);
+  if (!Number.isFinite(Number(offer.price)) || Number(offer.price) < 0) issues.push(`services.yml: ${offer.id} has invalid price`);
+  if (offer.currency !== "RUB") issues.push(`services.yml: ${offer.id} currency must be RUB`);
   if (offer.url) {
     const route = new URL(offer.url).pathname;
     const page = pagesByRoute.get(route);
@@ -205,20 +201,9 @@ for (const offer of serviceOffers) {
       }
     }
   }
-  for (const paramName of requiredServiceParams) {
-    const value = feedParamValue(offer.block, paramName);
-    if (!value) {
-      issues.push(`services.yml: ${offer.id} is missing required param ${paramName}`);
-    } else if (numericServiceParams.has(paramName) && (!Number.isFinite(Number(value)) || Number(value) < 0)) {
-      issues.push(`services.yml: ${offer.id} has invalid numeric param ${paramName}`);
-    }
-  }
-  if (Number(feedParamValue(offer.block, "Рейтинг")) <= 0) issues.push(`services.yml: ${offer.id} has empty rating param`);
-  if (Number(feedParamValue(offer.block, "Число отзывов")) <= 0) issues.push(`services.yml: ${offer.id} has empty review count param`);
-  if (Number(feedParamValue(offer.block, "Годы опыта")) <= 0) issues.push(`services.yml: ${offer.id} has empty experience param`);
 }
+for (const [id, ids] of duplicateServiceField("id")) issues.push(`services.yml: duplicate service id ${id} (${ids.join(", ")})`);
 for (const [url, ids] of duplicateServiceField("url")) issues.push(`services.yml: duplicate offer url ${url} (${ids.join(", ")})`);
-for (const [picture, ids] of duplicateServiceField("picture")) issues.push(`services.yml: duplicate picture url ${picture} (${ids.join(", ")})`);
 for (const route of registryRoutes) if (!sitemapRoutes.has(route)) issues.push(`${route}: registry route missing from sitemap`);
 for (const route of sitemapRoutes) if (!registryRoutes.has(route)) issues.push(`${route}: sitemap route missing from registry`);
 

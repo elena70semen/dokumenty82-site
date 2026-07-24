@@ -3,9 +3,15 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 const feed = fs.readFileSync(path.join(root, "services.yml"), "utf8");
-const offers = [...feed.matchAll(/<offer\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/offer>/gi)].map((match) => {
-  const value = (tag) => match[2].match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, "i"))?.[1].trim() || "";
-  return { id: match[1], url: value("url"), price: Number(value("price")) };
+const offers = [...feed.matchAll(/<service>([\s\S]*?)<\/service>/gi)].map((match) => {
+  const value = (block, tag) => block.match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, "i"))?.[1].trim() || "";
+  const price = value(match[1], "price");
+  const from = value(price, "from");
+  return {
+    id: value(match[1], "persistent_id"),
+    url: value(match[1], "url"),
+    price: Number(value(from, "value")),
+  };
 });
 
 const formatPrice = (price) => new Intl.NumberFormat("ru-RU").format(price).replaceAll(" ", " ");
