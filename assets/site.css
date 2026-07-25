@@ -3537,3 +3537,379 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
     font-size: 0.9rem;
   }
 }
+
+/* Tax calendar */
+.calendar-promo {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 1.5rem;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(221, 195, 125, 0.32);
+  border-radius: 8px;
+  padding: clamp(1.25rem, 2.6vw, 2rem);
+  background:
+    linear-gradient(108deg, rgba(12, 24, 35, 0.96), rgba(26, 31, 37, 0.88)),
+    url("/assets/brand/route-digital-wave.png") center / cover;
+  box-shadow:
+    0 24px 54px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.calendar-promo::after {
+  position: absolute;
+  z-index: -1;
+  right: -15%;
+  bottom: -70%;
+  width: 50%;
+  height: 180%;
+  border: 1px solid rgba(159, 203, 22, 0.2);
+  border-radius: 50%;
+  content: "";
+  transform: rotate(-18deg);
+}
+
+.calendar-promo h2,
+.calendar-hero h1 {
+  margin: 0.55rem 0 0.6rem;
+}
+
+.calendar-promo p,
+.calendar-hero p {
+  max-width: 780px;
+  color: var(--muted);
+}
+
+.calendar-promo .actions {
+  margin-top: 1rem;
+}
+
+.calendar-next-date {
+  display: grid;
+  min-height: 170px;
+  place-items: center;
+  border-left: 1px solid rgba(221, 195, 125, 0.28);
+  color: var(--gold);
+  text-align: center;
+}
+
+.calendar-next-date strong {
+  display: block;
+  color: var(--text);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.calendar-next-date span {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.calendar-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.46fr);
+  gap: clamp(1.2rem, 3vw, 2.4rem);
+  align-items: stretch;
+}
+
+.calendar-hero .hero-copy-panel {
+  min-height: 360px;
+}
+
+.calendar-hero-status {
+  display: grid;
+  min-height: 360px;
+  align-content: center;
+  border: 1px solid rgba(221, 195, 125, 0.28);
+  border-radius: 8px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background:
+    linear-gradient(155deg, rgba(76, 11, 18, 0.86), rgba(9, 20, 30, 0.96)),
+    url("/assets/images/tax-accounting-books.png") center / cover;
+  box-shadow:
+    0 26px 64px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.calendar-hero-status time {
+  color: var(--gold);
+  font-size: clamp(3.6rem, 8vw, 6.5rem);
+  font-weight: 750;
+  line-height: 0.88;
+}
+
+.calendar-hero-status strong,
+.calendar-hero-status span {
+  display: block;
+}
+
+.calendar-hero-status strong {
+  margin-top: 0.9rem;
+  font-size: 1.12rem;
+}
+
+.calendar-hero-status span {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.tax-calendar-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.calendar-filter-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.calendar-filter-label {
+  width: 100%;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.calendar-filter-button {
+  min-height: 40px;
+  border: 1px solid rgba(221, 195, 125, 0.3);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  color: var(--text);
+  background: rgba(8, 18, 28, 0.74);
+  font: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.calendar-filter-button:hover,
+.calendar-filter-button:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--gold);
+}
+
+.calendar-filter-button.is-active {
+  border-color: rgba(159, 203, 22, 0.66);
+  color: #071018;
+  background: var(--lime);
+}
+
+.calendar-result-count {
+  min-width: 76px;
+  padding-bottom: 0.55rem;
+  color: var(--gold);
+  font-size: 0.8rem;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.tax-calendar-list {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.1rem;
+}
+
+.tax-calendar-entry {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr) minmax(180px, 0.34fr);
+  gap: 1rem;
+  align-items: start;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 1rem;
+  background:
+    linear-gradient(145deg, rgba(28, 38, 47, 0.92), rgba(8, 19, 29, 0.9)),
+    url("/assets/brand/route-digital-wave.png") center / cover;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.tax-calendar-entry[hidden] {
+  display: none;
+}
+
+.calendar-entry-date {
+  display: grid;
+  min-height: 98px;
+  place-content: center;
+  border-right: 1px solid rgba(221, 195, 125, 0.26);
+  color: var(--gold);
+  text-align: center;
+}
+
+.calendar-entry-date strong {
+  color: var(--text);
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.calendar-entry-date span {
+  margin-top: 0.35rem;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+
+.calendar-entry-copy h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.08rem;
+}
+
+.calendar-entry-copy p,
+.calendar-entry-action p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.calendar-entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.calendar-entry-tags span {
+  border: 1px solid rgba(221, 195, 125, 0.24);
+  border-radius: 4px;
+  padding: 0.25rem 0.42rem;
+  color: var(--gold);
+  background: rgba(6, 14, 22, 0.48);
+  font-size: 0.7rem;
+}
+
+.calendar-entry-action {
+  display: grid;
+  gap: 0.7rem;
+  justify-items: start;
+}
+
+.calendar-entry-action .news-more {
+  margin-top: 0;
+}
+
+.tax-calendar-empty {
+  margin-top: 1rem;
+  border: 1px dashed rgba(221, 195, 125, 0.36);
+  border-radius: 8px;
+  padding: 1rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.calendar-notice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  border-left: 3px solid var(--lime);
+  padding: 1rem 0 1rem 1rem;
+}
+
+.calendar-notice p {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .calendar-promo,
+  .calendar-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-next-date {
+    min-height: 120px;
+    border-top: 1px solid rgba(221, 195, 125, 0.28);
+    border-left: 0;
+  }
+
+  .calendar-hero-status {
+    min-height: 260px;
+  }
+
+  .tax-calendar-toolbar {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .calendar-result-count {
+    padding: 0;
+    text-align: left;
+  }
+
+  .tax-calendar-entry {
+    grid-template-columns: 86px minmax(0, 1fr);
+  }
+
+  .calendar-entry-action {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .calendar-promo {
+    padding: 1rem;
+  }
+
+  .calendar-hero .hero-copy-panel,
+  .calendar-hero-status {
+    min-height: auto;
+  }
+
+  .calendar-hero-status {
+    padding: 1.25rem;
+  }
+
+  .calendar-filter-set {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .calendar-filter-label {
+    grid-column: 1 / -1;
+  }
+
+  .calendar-filter-button {
+    width: 100%;
+  }
+
+  .tax-calendar-entry {
+    grid-template-columns: 1fr;
+    padding: 0.9rem;
+  }
+
+  .calendar-entry-date {
+    min-height: 72px;
+    place-content: start;
+    justify-items: start;
+    border-right: 0;
+    border-bottom: 1px solid rgba(221, 195, 125, 0.26);
+    padding-bottom: 0.7rem;
+    text-align: left;
+  }
+
+  .calendar-entry-date strong {
+    font-size: 2rem;
+  }
+
+  .calendar-entry-action {
+    grid-column: auto;
+  }
+
+  .calendar-notice {
+    grid-template-columns: 1fr;
+  }
+}

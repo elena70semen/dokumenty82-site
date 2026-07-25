@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-22",
+  "version": "2026-07-25",
   "owner_decisions": {
     "/policy/": "index, follow; keep in sitemap",
     "/blog/": "approved for indexing",
@@ -31,6 +31,9 @@
     "/nds-pri-usn-2026/",
     "/nedostovernost-yuridicheskogo-adresa/",
     "/novosti/",
+    "/novosti/nalogovyy-kalendar/",
+    "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+    "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
     "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
     "/novosti/porog-nds-usn-20-mln-do-2029/",
     "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
