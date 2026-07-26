@@ -290,6 +290,12 @@ const pricingPage = pages.find((page) => page.route === "/ceny/");
 if (!pricingPage?.html.includes('"OfferCatalog"')) issues.push("/ceny/: missing OfferCatalog schema");
 if ((pricingPage?.html.match(/"@type"\s*:\s*"Offer"/g) || []).length < 10) issues.push("/ceny/: too few service offers in schema");
 
+const ifnsPage = pages.find((page) => page.route === "/otvet-na-trebovanie-ifns/");
+const ifnsHeroActions = ifnsPage?.html.match(/<div class="actions ifns-hero-actions"[^>]*>[\s\S]*?<\/div>/i)?.[0] || "";
+if (!ifnsHeroActions.includes('href="/razbor-situacii/"')) issues.push("/otvet-na-trebovanie-ifns/: primary situation-review CTA missing");
+if (!ifnsHeroActions.includes('href="tel:+79789987222"')) issues.push("/otvet-na-trebovanie-ifns/: direct hero phone CTA missing");
+if (!ifnsHeroActions.includes('href="https://t.me/+79789987222"')) issues.push("/otvet-na-trebovanie-ifns/: direct hero Telegram CTA missing");
+
 const reviewsPage = pages.find((page) => page.route === "/otzyvy/");
 if (!reviewsPage?.html.includes("https://yandex.ru/maps/org/1302424560/reviews/")) issues.push("/otzyvy/: missing Yandex reviews link");
 
