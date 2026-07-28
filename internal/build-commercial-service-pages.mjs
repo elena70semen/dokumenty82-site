@@ -430,6 +430,9 @@ const mainHtml = (page) => `<main>
           <span>Стоимость услуги</span>
           <strong>от ${formatPrice(page.price)} ₽</strong>
           <small>Точный состав и стоимость согласуем до начала работ.</small>
+          <a class="service-rating-proof" href="https://yandex.ru/maps/org/1302424560/reviews/" target="_blank" rel="noopener">
+            Рейтинг в Яндексе: 4,7 · 49 отзывов
+          </a>
         </div>
         <!-- d82-feed-price:end -->
         <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Напишите нам</a><a class="button button-ghost" href="/ceny/">Цены</a></div>

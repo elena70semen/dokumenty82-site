@@ -2,7 +2,23 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const feed = fs.readFileSync(path.join(root, "services.yml"), "utf8");
+const feedFile = path.join(root, "services.yml");
+const yandexRating = "4.7";
+const yandexReviewCount = "49";
+let feed = fs.readFileSync(feedFile, "utf8");
+
+feed = feed
+  .replace(
+    /<param name="Рейтинг">[^<]*<\/param>/g,
+    `<param name="Рейтинг">${yandexRating}</param>`,
+  )
+  .replace(
+    /<param name="Число отзывов">[^<]*<\/param>/g,
+    `<param name="Число отзывов">${yandexReviewCount}</param>`,
+  );
+
+fs.writeFileSync(feedFile, feed);
+
 const offers = [...feed.matchAll(/<offer\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/offer>/gi)].map((match) => {
   const value = (tag) => match[2].match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, "i"))?.[1].trim() || "";
   return { id: match[1], url: value("url"), price: Number(value("price")) };
@@ -68,6 +84,9 @@ for (const offer of offers) {
           <span>Стоимость услуги</span>
           <strong>от ${formatPrice(offer.price)} ₽</strong>
           <small>Точный состав и стоимость согласуем до начала работ.</small>
+          <a class="service-rating-proof" href="https://yandex.ru/maps/org/1302424560/reviews/" target="_blank" rel="noopener">
+            Рейтинг в Яндексе: 4,7 · 49 отзывов
+          </a>
         </div>
         <!-- d82-feed-price:end -->`;
   let html = fs.readFileSync(file, "utf8");
@@ -85,4 +104,4 @@ for (const offer of offers) {
   fs.writeFileSync(file, html);
 }
 
-console.log(`Synced feed prices and Offer schema to ${offers.length} service pages.`);
+console.log(`Synced feed rating, reviews, prices and Offer schema to ${offers.length} service pages.`);

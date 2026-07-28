@@ -677,6 +677,22 @@ b {
   line-height: 1.35;
 }
 
+.service-rating-proof {
+  grid-column: 1 / -1;
+  width: fit-content;
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 650;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.service-rating-proof:hover,
+.service-rating-proof:focus-visible {
+  color: var(--text);
+  text-decoration: underline;
+}
+
 @media (max-width: 680px) {
   .service-price-note {
     grid-template-columns: auto auto;

@@ -115,6 +115,8 @@ const serviceOffers = [...serviceFeed.matchAll(/<offer\s+id="([^"]+)"[^>]*>([\s\
     categoryId: feedTagValue(match[2], "categoryId"),
     description: feedTagValue(match[2], "description"),
     priceFrom: /<price\s+[^>]*from=["']true["'][^>]*>/i.test(match[2]),
+    rating: feedParamValue(match[2], "Рейтинг"),
+    reviewCount: feedParamValue(match[2], "Число отзывов"),
   }));
 
 const serviceCategories = new Set(
@@ -197,6 +199,13 @@ for (const offer of serviceOffers) {
       const visiblePrice = page.visible.replace(/\s+/g, "");
       if (!visiblePrice.includes(`${Number(offer.price)}₽`)) {
         issues.push(`services.yml: ${offer.id} price ${offer.price} is not visible on ${route}`);
+      }
+      const visibleRating = page.visible.replaceAll(",", ".");
+      if (!visibleRating.includes(offer.rating)) {
+        issues.push(`services.yml: ${offer.id} rating ${offer.rating} is not visible on ${route}`);
+      }
+      if (!page.visible.includes(`${offer.reviewCount} отзыв`)) {
+        issues.push(`services.yml: ${offer.id} review count ${offer.reviewCount} is not visible on ${route}`);
       }
       const schemaNodes = page.schemaBlocks.flatMap((block) => {
         try {
