@@ -201,10 +201,10 @@ for (const offer of serviceOffers) {
         issues.push(`services.yml: ${offer.id} price ${offer.price} is not visible on ${route}`);
       }
       const visibleRating = page.visible.replaceAll(",", ".");
-      if (!visibleRating.includes(offer.rating)) {
+      if (Number(offer.rating) > 0 && !visibleRating.includes(offer.rating)) {
         issues.push(`services.yml: ${offer.id} rating ${offer.rating} is not visible on ${route}`);
       }
-      if (!page.visible.includes(`${offer.reviewCount} отзыв`)) {
+      if (Number(offer.reviewCount) > 0 && !page.visible.includes(`${offer.reviewCount} отзыв`)) {
         issues.push(`services.yml: ${offer.id} review count ${offer.reviewCount} is not visible on ${route}`);
       }
       const schemaNodes = page.schemaBlocks.flatMap((block) => {
@@ -237,8 +237,12 @@ for (const offer of serviceOffers) {
       issues.push(`services.yml: ${offer.id} has invalid numeric param ${paramName}`);
     }
   }
-  if (Number(feedParamValue(offer.block, "Рейтинг")) <= 0) issues.push(`services.yml: ${offer.id} has empty rating param`);
-  if (Number(feedParamValue(offer.block, "Число отзывов")) <= 0) issues.push(`services.yml: ${offer.id} has empty review count param`);
+  if (Number(feedParamValue(offer.block, "Рейтинг")) !== 0) {
+    issues.push(`services.yml: ${offer.id} must not use the organization rating as an offer rating`);
+  }
+  if (Number(feedParamValue(offer.block, "Число отзывов")) !== 0) {
+    issues.push(`services.yml: ${offer.id} must not use organization reviews as offer reviews`);
+  }
   if (Number(feedParamValue(offer.block, "Годы опыта")) <= 0) issues.push(`services.yml: ${offer.id} has empty experience param`);
 }
 for (const [id, ids] of duplicateServiceField("id")) issues.push(`services.yml: duplicate offer id ${id} (${ids.join(", ")})`);
