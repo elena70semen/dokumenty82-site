@@ -231,6 +231,24 @@ const buildNewsMain = (item) => {
           <h3>${escapeHtml(title)}</h3>
           <p>${escapeHtml(description)}</p>
         </article>`).join("");
+  const faq = (item.article.faq || []).map(([question, answer]) => `
+        <article class="glass-card faq-card">
+          <h3>${escapeHtml(question)}</h3>
+          <p>${escapeHtml(answer)}</p>
+        </article>`).join("");
+  const faqSection = faq ? `
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Частые вопросы</p>
+        <h2>${escapeHtml(item.article.faqTitle || "Что важно уточнить")}</h2>
+        <p>${escapeHtml(item.article.faqIntro || "Ответы относятся к описанной ситуации. Для решения по конкретному документу сверяйте период, основание и фактические данные.")}</p>
+      </div>
+      <div class="card-grid two faq-grid">${faq}
+      </div>
+    </section>` : "";
+  const reviewed = item.reviewed
+    ? `<span>Материал проверен редакцией: ${escapeHtml(item.reviewed)}</span>`
+    : "";
   return `<main>
     <section class="hero hero-inner">
       <article class="glass-panel news-article">
@@ -248,9 +266,10 @@ const buildNewsMain = (item) => {
         <div class="news-source">
           <span>Официальный источник:</span>
           <a href="${item.article.sourceUrl}" rel="nofollow noopener" target="_blank">${escapeHtml(item.article.sourceTitle)}</a>
+          ${reviewed}
         </div>
       </div>
-    </section>
+    </section>${faqSection}
     <section class="section">
       <div class="section-header">
         <p class="eyebrow">${escapeHtml(item.article.relatedEyebrow || "Связанные страницы")}</p>
@@ -496,21 +515,38 @@ const refreshRegisteredNews = (html, item) => {
     html = html.replace('<meta property="og:type" content="article" />', `<meta property="og:type" content="article" />\n    <meta property="article:published_time" content="${item.dateIso}" />\n    <meta property="article:modified_time" content="${dateModified}" />`);
   }
 
+  const newsArticleSchema = {
+    "@type": "NewsArticle",
+    headline: item.title,
+    description: item.summary,
+    datePublished: item.dateIso,
+    dateModified,
+    mainEntityOfPage: `https://dokumenty82.ru${item.route}`,
+    isBasedOn: item.article.sourceUrl,
+    keywords: item.tags,
+    author: { "@type": "Organization", name: "Документы для бизнеса", url: "https://dokumenty82.ru/" },
+    publisher: { "@id": "https://dokumenty82.ru/#business" },
+    inLanguage: "ru-RU",
+  };
+  const structuredData = item.article.faq?.length
+    ? {
+        "@context": "https://schema.org",
+        "@graph": [
+          newsArticleSchema,
+          {
+            "@type": "FAQPage",
+            mainEntity: item.article.faq.map(([question, answer]) => ({
+              "@type": "Question",
+              name: question,
+              acceptedAnswer: { "@type": "Answer", text: answer },
+            })),
+          },
+        ],
+      }
+    : { "@context": "https://schema.org", ...newsArticleSchema };
   const newsSchema = `
     <!-- d82-news-schema:start -->
-    <script type="application/ld+json">${JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      headline: item.title,
-      description: item.summary,
-      datePublished: item.dateIso,
-      dateModified,
-      mainEntityOfPage: `https://dokumenty82.ru${item.route}`,
-      isBasedOn: item.article.sourceUrl,
-      author: { "@type": "Organization", name: "Документы для бизнеса", url: "https://dokumenty82.ru/" },
-      publisher: { "@id": "https://dokumenty82.ru/#business" },
-      inLanguage: "ru-RU",
-    })}</script>
+    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>
     <!-- d82-news-schema:end -->`;
   if (html.includes("<!-- d82-news-schema:start -->")) {
     html = html.replace(/\s*<!-- d82-news-schema:start -->[\s\S]*?<!-- d82-news-schema:end -->/, newsSchema);
