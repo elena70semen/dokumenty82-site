@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-25",
+  "version": "2026-08-04",
   "owner_decisions": {
     "/policy/": "index, follow; keep in sitemap",
     "/blog/": "approved for indexing",
@@ -15,6 +15,7 @@
     "/adres-egryul-direktor/",
     "/ausn-krym/",
     "/bank-i-115-fz/",
+    "/buhgalterskie-uslugi/",
     "/buhgalterskoe-soprovozhdenie-ooo/",
     "/blog/",
     "/blog/razbory/",
