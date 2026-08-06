@@ -98,3 +98,18 @@ Default AI settings:
 - `AI_RATE_LIMIT_WINDOW_SECONDS=3600`
 
 When a visitor asks to send the conversation to a specialist, the widget posts the transcript to `/api/lead`, so the request goes into amoCRM through the same lead receiver.
+
+## Qualified leads and offline conversions
+
+`/assets/metrika-goals.js` keeps the first Yandex click ID and UTM values for the browser session and obtains Metrika `ClientID` through the counter API. Both the lead form and AI chat send this attribution to `/api/lead`.
+
+The receiver writes `ClientID` to the amoCRM lead tracking field. Configure its numeric field ID as `AMO_METRIKA_CLIENT_ID_FIELD_ID` in `/etc/dokumenty82-form.env`. For the current amoCRM account this is the built-in `_ym_uid` field. The receiver also writes YCLID and UTM attribution to the lead note for diagnostics.
+
+Use Metrika's official amoCRM connector under `Integrations -> CRM data transfer -> amoCRM`. In that connector:
+
+- map the amoCRM field `_ym_uid` as the Metrika `ClientID` field;
+- map `Нужна консультация` to a qualified-lead goal;
+- map `Назначена встреча` to a consultation goal;
+- map the successful sale status to the paid-order goal.
+
+The official connector imports mapped statuses every hour. Only new deals created after the connection is enabled are imported, and initial attribution is limited to 21 days after the visitor's target session.

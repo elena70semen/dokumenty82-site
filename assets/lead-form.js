@@ -70,6 +70,21 @@
     } catch (_) {}
   }
 
+  function appendAttribution(data) {
+    if (typeof window.d82GetAttribution !== "function") {
+      return Promise.resolve(data);
+    }
+    return window.d82GetAttribution()
+      .catch(function () { return {}; })
+      .then(function (attribution) {
+        Object.keys(attribution || {}).forEach(function (key) {
+          const value = String(attribution[key] || "").trim();
+          if (value) data.append(key, value);
+        });
+        return data;
+      });
+  }
+
   function wireForm(form) {
     form.setAttribute("novalidate", "");
 
@@ -121,11 +136,14 @@
       }
       setStatus(form, "Отправляем заявку.");
 
-      fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { "Accept": "application/json" },
-      })
+      appendAttribution(data)
+        .then(function (payloadData) {
+          return fetch(form.action, {
+            method: "POST",
+            body: payloadData,
+            headers: { "Accept": "application/json" },
+          });
+        })
         .then(function (response) {
           return response.json().catch(function () { return {}; }).then(function (payload) {
             if (!response.ok) {

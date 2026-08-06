@@ -256,11 +256,22 @@
     setBusy(true);
     setStatus("Передаем диалог специалисту.");
 
-    fetch(LEAD_ENDPOINT, {
-      method: "POST",
-      body: data,
-      headers: { "Accept": "application/json" },
-    })
+    const attributionPromise = typeof window.d82GetAttribution === "function"
+      ? window.d82GetAttribution().catch(function () { return {}; })
+      : Promise.resolve({});
+
+    attributionPromise
+      .then(function (attribution) {
+        Object.keys(attribution || {}).forEach(function (key) {
+          const value = String(attribution[key] || "").trim();
+          if (value) data.append(key, value);
+        });
+        return fetch(LEAD_ENDPOINT, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" },
+        });
+      })
       .then(function (response) {
         return response.json().catch(function () { return {}; }).then(function (payload) {
           if (!response.ok) throw new Error(payload.message || "Не удалось отправить заявку.");

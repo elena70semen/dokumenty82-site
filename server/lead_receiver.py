@@ -39,6 +39,7 @@ AMO_RESPONSIBLE_USER_ID = os.environ.get("AMO_RESPONSIBLE_USER_ID", "").strip()
 AMO_TAGS = [tag.strip() for tag in os.environ.get("AMO_TAGS", "site,razbor-situacii").split(",") if tag.strip()]
 AMO_ATTACH_FILES = os.environ.get("AMO_ATTACH_FILES", "0") == "1"
 AMO_DRIVE_URL = os.environ.get("AMO_DRIVE_URL", "").strip().rstrip("/")
+AMO_METRIKA_CLIENT_ID_FIELD_ID = os.environ.get("AMO_METRIKA_CLIENT_ID_FIELD_ID", "").strip()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "").strip()
 OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.4-mini").strip()
 AI_CHAT_ENABLED = os.environ.get("AI_CHAT_ENABLED", "1") == "1"
@@ -82,6 +83,10 @@ def int_or_none(value):
     return int(value)
   except (TypeError, ValueError):
     return None
+
+
+def clipped(value, limit):
+  return text(value)[:limit]
 
 
 def normalize_amo_base_url(subdomain):
@@ -413,6 +418,13 @@ def create_amo_lead(fields, files):
     },
   }
 
+  metrika_field_id = int_or_none(AMO_METRIKA_CLIENT_ID_FIELD_ID)
+  if metrika_field_id and fields["yandex_client_id"]:
+    lead["custom_fields_values"] = [{
+      "field_id": metrika_field_id,
+      "values": [{"value": fields["yandex_client_id"]}],
+    }]
+
   for key, env_value in (
     ("pipeline_id", AMO_PIPELINE_ID),
     ("status_id", AMO_STATUS_ID),
@@ -439,10 +451,17 @@ def create_amo_lead(fields, files):
   note_text = "\n".join([
     "Заявка с сайта dokumenty82.ru",
     f"Страница: {fields['source_page']}",
+    f"Первая страница: {fields['landing_page'] or '-'}",
     f"Тема: {fields['task_type']}",
     f"Имя: {fields['name']}",
     f"Телефон: {fields['phone']}",
     f"Email: {fields['email'] or '-'}",
+    f"Яндекс ClientID: {fields['yandex_client_id'] or '-'}",
+    f"YCLID: {fields['yclid'] or '-'}",
+    f"UTM source / medium: {fields['utm_source'] or '-'} / {fields['utm_medium'] or '-'}",
+    f"UTM campaign: {fields['utm_campaign'] or '-'}",
+    f"UTM content / term: {fields['utm_content'] or '-'} / {fields['utm_term'] or '-'}",
+    f"Referrer: {fields['referrer'] or '-'}",
     "",
     "Описание:",
     fields["message"],
@@ -585,6 +604,15 @@ class LeadHandler(BaseHTTPRequestHandler):
         "task_type": text(form.getfirst("task_type")) or "Разбор ситуации",
         "message": text(form.getfirst("message")),
         "source_page": text(form.getfirst("source_page")) or "/razbor-situacii/",
+        "landing_page": clipped(form.getfirst("landing_page"), 1000),
+        "referrer": clipped(form.getfirst("referrer"), 1000),
+        "yandex_client_id": clipped(form.getfirst("yandex_client_id"), 80),
+        "yclid": clipped(form.getfirst("yclid"), 500),
+        "utm_source": clipped(form.getfirst("utm_source"), 200),
+        "utm_medium": clipped(form.getfirst("utm_medium"), 200),
+        "utm_campaign": clipped(form.getfirst("utm_campaign"), 300),
+        "utm_content": clipped(form.getfirst("utm_content"), 500),
+        "utm_term": clipped(form.getfirst("utm_term"), 500),
       }
       if not fields["name"] or not fields["phone"] or not fields["message"] or text(form.getfirst("privacy")) != "1":
         json_response(self, 400, {"ok": False, "message": "Заполните обязательные поля."})

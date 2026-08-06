@@ -25,6 +25,8 @@ desktop.ini
 *.tgz
 
 # Dependency/build caches if sources are restored later
+__pycache__/
+*.py[cod]
 node_modules/
 .next/
 dist/
