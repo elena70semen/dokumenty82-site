@@ -89,6 +89,24 @@ def clipped(value, limit):
   return text(value)[:limit]
 
 
+def normalize_phone(value):
+  raw = text(value)
+  if re.search(r"[A-Za-zА-Яа-я]", raw):
+    raise ValueError("Укажите телефон цифрами с кодом страны.")
+
+  digits = re.sub(r"\D", "", raw)
+  if digits.startswith("00"):
+    digits = digits[2:]
+  if len(digits) == 10:
+    digits = "7" + digits
+  elif len(digits) == 11 and digits.startswith("8"):
+    digits = "7" + digits[1:]
+
+  if not re.fullmatch(r"[1-9]\d{7,14}", digits):
+    raise ValueError("Укажите телефон с кодом страны, например 79789987222.")
+  return digits
+
+
 def normalize_amo_base_url(subdomain):
   subdomain = (subdomain or "").strip()
   if not subdomain:
@@ -599,7 +617,7 @@ class LeadHandler(BaseHTTPRequestHandler):
 
       fields = {
         "name": text(form.getfirst("name")),
-        "phone": text(form.getfirst("phone")),
+        "phone": normalize_phone(form.getfirst("phone")),
         "email": text(form.getfirst("email")),
         "task_type": text(form.getfirst("task_type")) or "Разбор ситуации",
         "message": text(form.getfirst("message")),

@@ -60,5 +60,28 @@ class AmoLeadAttributionTests(unittest.TestCase):
     self.assertNotIn("custom_fields_values", lead)
 
 
+class PhoneNormalizationTests(unittest.TestCase):
+  def test_formats_russian_phone_for_yandex_crm_import(self):
+    cases = {
+      "+7 (978) 998-72-22": "79789987222",
+      "8 978 998 72 22": "79789987222",
+      "9789987222": "79789987222",
+      "79789987222": "79789987222",
+    }
+
+    for source, expected in cases.items():
+      with self.subTest(source=source):
+        self.assertEqual(receiver.normalize_phone(source), expected)
+
+  def test_preserves_international_country_code(self):
+    self.assertEqual(receiver.normalize_phone("+380 50 123 45 67"), "380501234567")
+
+  def test_rejects_ambiguous_or_invalid_phone(self):
+    for source in ("123", "перезвоните", "+7 978 998-72-22 доб. 15"):
+      with self.subTest(source=source):
+        with self.assertRaises(ValueError):
+          receiver.normalize_phone(source)
+
+
 if __name__ == "__main__":
   unittest.main()

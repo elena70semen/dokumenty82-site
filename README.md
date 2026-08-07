@@ -69,6 +69,9 @@ OAuth tokens are stored outside Git at:
 
 - `/var/lib/dokumenty82-leads/amo-oauth-token.json`
 
+The token file must remain owned by `d82lead:d82lead` with mode `0600`. The
+systemd unit restores those permissions before each service start.
+
 Optional values:
 
 - `AMO_PIPELINE_ID`
