@@ -3,6 +3,8 @@
 
   const COUNTER_ID = 109869928;
   const ATTRIBUTION_STORAGE_KEY = "d82_attribution_v1";
+  const CLIENT_ID_COOKIE_NAME = "_ym_uid";
+  const CLIENT_ID_WAIT_MS = 3000;
   const ATTRIBUTION_QUERY_KEYS = [
     "yclid",
     "utm_source",
@@ -48,34 +50,65 @@
   }
 
   const attribution = captureAttribution();
+  let clientIdPromise = null;
+
+  function normalizeClientId(value) {
+    const clientId = String(value || "").trim();
+    return /^\d{6,80}$/.test(clientId) ? clientId : "";
+  }
+
+  function readClientIdCookie() {
+    try {
+      const prefix = CLIENT_ID_COOKIE_NAME + "=";
+      const cookie = document.cookie.split(";").map(function (part) {
+        return part.trim();
+      }).find(function (part) {
+        return part.startsWith(prefix);
+      });
+      return normalizeClientId(cookie ? decodeURIComponent(cookie.slice(prefix.length)) : "");
+    } catch (_) {
+      return "";
+    }
+  }
+
+  function rememberClientId(value) {
+    const clientId = normalizeClientId(value);
+    if (!clientId) return "";
+    attribution.yandex_client_id = clientId;
+    storeAttribution(attribution);
+    return clientId;
+  }
 
   function getMetrikaClientId() {
-    if (attribution.yandex_client_id) {
-      return Promise.resolve(attribution.yandex_client_id);
-    }
+    const remembered = rememberClientId(attribution.yandex_client_id) || rememberClientId(readClientIdCookie());
+    if (remembered) return Promise.resolve(remembered);
+    if (clientIdPromise) return clientIdPromise;
 
-    return new Promise(function (resolve) {
+    clientIdPromise = new Promise(function (resolve) {
       let settled = false;
+      let requestedFromCounter = false;
       const startedAt = Date.now();
       const finish = function (value) {
         if (settled) return;
+        const clientId = rememberClientId(value) || rememberClientId(readClientIdCookie());
+        if (!clientId && Date.now() - startedAt < CLIENT_ID_WAIT_MS) return;
         settled = true;
-        const clientId = String(value || "").trim();
-        if (clientId) {
-          attribution.yandex_client_id = clientId.slice(0, 80);
-          storeAttribution(attribution);
-        }
+        if (!clientId) clientIdPromise = null;
         resolve(clientId);
       };
       const tryRead = function () {
-        if (typeof window.ym === "function") {
+        const cookieId = readClientIdCookie();
+        if (cookieId) {
+          finish(cookieId);
+          return;
+        }
+        if (!requestedFromCounter && typeof window.ym === "function") {
+          requestedFromCounter = true;
           try {
             window.ym(COUNTER_ID, "getClientID", finish);
-            window.setTimeout(function () { finish(""); }, 1200);
-            return;
           } catch (_) {}
         }
-        if (Date.now() - startedAt < 2200) {
+        if (Date.now() - startedAt < CLIENT_ID_WAIT_MS) {
           window.setTimeout(tryRead, 100);
         } else {
           finish("");
@@ -133,4 +166,5 @@
       return Object.assign({}, attribution);
     });
   };
+  getMetrikaClientId();
 })();

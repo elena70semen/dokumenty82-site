@@ -104,7 +104,7 @@ When a visitor asks to send the conversation to a specialist, the widget posts t
 
 ## Qualified leads and offline conversions
 
-`/assets/metrika-goals.js` keeps the first Yandex click ID and UTM values for the browser session and obtains Metrika `ClientID` through the counter API. Both the lead form and AI chat send this attribution to `/api/lead`.
+`/assets/metrika-goals.js` keeps the first Yandex click ID and UTM values for the browser session and obtains Metrika `ClientID` through the counter API, with an early first-party `_ym_uid` cookie fallback when the counter loads slowly. Both the lead form and AI chat send this attribution to `/api/lead`.
 
 The receiver writes `ClientID` to the amoCRM lead tracking field. Configure its numeric field ID as `AMO_METRIKA_CLIENT_ID_FIELD_ID` in `/etc/dokumenty82-form.env`. For the current amoCRM account this is the built-in `_ym_uid` field. The receiver also writes YCLID and UTM attribution to the lead note for diagnostics.
 
