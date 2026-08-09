@@ -3,7 +3,6 @@
 
   const COUNTER_ID = 109869928;
   const ATTRIBUTION_STORAGE_KEY = "d82_attribution_v1";
-  const CLIENT_ID_COOKIE_NAME = "_ym_uid";
   const CLIENT_ID_WAIT_MS = 3000;
   const ATTRIBUTION_QUERY_KEYS = [
     "yclid",
@@ -57,20 +56,6 @@
     return /^\d{6,80}$/.test(clientId) ? clientId : "";
   }
 
-  function readClientIdCookie() {
-    try {
-      const prefix = CLIENT_ID_COOKIE_NAME + "=";
-      const cookie = document.cookie.split(";").map(function (part) {
-        return part.trim();
-      }).find(function (part) {
-        return part.startsWith(prefix);
-      });
-      return normalizeClientId(cookie ? decodeURIComponent(cookie.slice(prefix.length)) : "");
-    } catch (_) {
-      return "";
-    }
-  }
-
   function rememberClientId(value) {
     const clientId = normalizeClientId(value);
     if (!clientId) return "";
@@ -80,8 +65,6 @@
   }
 
   function getMetrikaClientId() {
-    const remembered = rememberClientId(attribution.yandex_client_id) || rememberClientId(readClientIdCookie());
-    if (remembered) return Promise.resolve(remembered);
     if (clientIdPromise) return clientIdPromise;
 
     clientIdPromise = new Promise(function (resolve) {
@@ -90,18 +73,13 @@
       const startedAt = Date.now();
       const finish = function (value) {
         if (settled) return;
-        const clientId = rememberClientId(value) || rememberClientId(readClientIdCookie());
+        const clientId = rememberClientId(value);
         if (!clientId && Date.now() - startedAt < CLIENT_ID_WAIT_MS) return;
         settled = true;
         if (!clientId) clientIdPromise = null;
         resolve(clientId);
       };
       const tryRead = function () {
-        const cookieId = readClientIdCookie();
-        if (cookieId) {
-          finish(cookieId);
-          return;
-        }
         if (!requestedFromCounter && typeof window.ym === "function") {
           requestedFromCounter = true;
           try {
@@ -116,7 +94,12 @@
       };
       tryRead();
     });
+
+    return clientIdPromise;
   }
+
+  delete attribution.yandex_client_id;
+  storeAttribution(attribution);
 
   function reachGoal(name, params) {
     if (!name || typeof window.ym !== "function") return;
