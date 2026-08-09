@@ -1,0 +1,31 @@
+[Unit]
+Description=dokumenty82 client portal
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=d82portal
+Group=d82portal
+EnvironmentFile=/etc/dokumenty82-portal.env
+ExecStart=/usr/bin/python3 /opt/dokumenty82-portal/client_portal.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictSUIDSGID=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_INET AF_INET6
+UMask=0077
+ReadWritePaths=/var/lib/dokumenty82-portal
+
+[Install]
+WantedBy=multi-user.target

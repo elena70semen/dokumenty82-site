@@ -116,3 +116,37 @@ Use Metrika's official amoCRM connector under `Integrations -> CRM data transfer
 - map the successful sale status to the paid-order goal.
 
 The official connector imports mapped statuses every hour. Only new deals created after the connection is enabled are imported, and initial attribution is limited to 21 days after the visitor's target session.
+
+## Client portal MVP
+
+The invite-only client portal lives at `/cabinet/`. Its API is a separate Python service so portal authentication and files remain isolated from the public lead form.
+
+Local demo:
+
+```powershell
+$env:D82_PORTAL_DEV_MODE="1"
+$env:D82_PORTAL_SECURE_COOKIE="0"
+$env:D82_PORTAL_HASH_KEY="local-development-key-at-least-32-characters"
+$env:D82_PORTAL_DATA_DIR="$PWD\.codex-tmp\portal-data"
+$env:D82_PORTAL_STATIC_DIR="$PWD\cabinet"
+python server/client_portal.py --seed-demo
+python server/client_portal.py
+```
+
+Open `http://127.0.0.1:8098/cabinet/` and sign in as `demo@dokumenty82.ru`. Development mode prints and returns the one-time code. Production never returns the code to the browser.
+The demo seeder is disabled unless `D82_PORTAL_DEV_MODE=1`.
+
+Production files:
+
+- `/opt/dokumenty82-portal/client_portal.py`
+- `/etc/dokumenty82-portal.env` with mode `0600`
+- `/etc/systemd/system/dokumenty82-portal.service`
+- `/var/lib/dokumenty82-portal/` owned by `d82portal:d82portal` with mode `0700`
+
+Required production settings:
+
+- `D82_PORTAL_HASH_KEY` containing at least 32 random characters;
+- SMTP host, sender, username and password for one-time codes;
+- `D82_PORTAL_SECURE_COOKIE=1` and an HTTPS public origin.
+
+The nginx API location is documented in `server/dokumenty82-portal.nginx.conf`. Do not expose the SQLite database or portal file directory through nginx. The portal page is `noindex, nofollow`, does not load Metrika, and keeps customer data behind the authenticated API.

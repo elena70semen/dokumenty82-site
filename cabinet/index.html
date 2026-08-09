@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Личный кабинет | Документы для бизнеса</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/cabinet/portal.css?v=202608091" />
+  </head>
+  <body>
+    <a class="skip-link" href="#portal-main">Перейти к содержанию</a>
+
+    <header class="portal-header">
+      <a class="portal-brand" href="/" aria-label="Документы для бизнеса, главная">
+        <img src="assets/brand-logo-open-book.png" alt="" width="52" height="52" />
+        <span>
+          <strong>Документы для бизнеса</strong>
+          <small>Личный кабинет</small>
+        </span>
+      </a>
+      <div class="portal-header-actions">
+        <a class="header-contact" href="tel:+79789987222">
+          <i data-lucide="phone" aria-hidden="true"></i>
+          <span>+7 (978) 998-72-22</span>
+        </a>
+        <button class="icon-button is-hidden" id="logout-button" type="button" title="Выйти" aria-label="Выйти">
+          <i data-lucide="log-out" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <main id="portal-main">
+      <section class="login-view" id="login-view" aria-labelledby="login-title">
+        <div class="login-panel">
+          <div class="eyebrow"><span></span>Вход для клиентов</div>
+          <h1 id="login-title">Ваши организации и задачи</h1>
+          <p class="login-lead">Укажите email, который передавали специалисту.</p>
+
+          <form id="email-form" class="auth-form">
+            <label for="login-email">Email</label>
+            <div class="field-with-icon">
+              <i data-lucide="mail" aria-hidden="true"></i>
+              <input id="login-email" name="email" type="email" autocomplete="email" required placeholder="name@example.ru" />
+            </div>
+            <button class="primary-button" type="submit">
+              <span>Получить код</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </button>
+          </form>
+
+          <form id="code-form" class="auth-form is-hidden">
+            <label for="login-code">Код из письма</label>
+            <div class="code-row">
+              <input id="login-code" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required placeholder="000000" />
+              <button class="primary-button" type="submit">
+                <span>Войти</span>
+                <i data-lucide="log-in" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button class="text-button" id="change-email-button" type="button">Изменить email</button>
+          </form>
+
+          <p class="form-status" id="auth-status" aria-live="polite"></p>
+          <div class="demo-code is-hidden" id="demo-code"></div>
+
+          <div class="login-security">
+            <i data-lucide="shield-check" aria-hidden="true"></i>
+            <span>Одноразовый вход. Код действует 10 минут.</span>
+          </div>
+        </div>
+        <div class="login-photo" role="img" aria-label="Офис консультационного центра"></div>
+      </section>
+
+      <section class="dashboard-view is-hidden" id="dashboard-view">
+        <aside class="portal-sidebar" aria-label="Навигация кабинета">
+          <div class="sidebar-section">
+            <p class="sidebar-label">Организации</p>
+            <div class="organization-switcher" id="organization-switcher"></div>
+          </div>
+          <nav class="portal-nav" aria-label="Разделы кабинета">
+            <button class="nav-button is-active" type="button" data-view="overview">
+              <i data-lucide="layout-dashboard" aria-hidden="true"></i><span>Обзор</span>
+            </button>
+            <button class="nav-button" type="button" data-view="documents">
+              <i data-lucide="files" aria-hidden="true"></i><span>Документы</span><span class="nav-count" id="documents-count">0</span>
+            </button>
+            <button class="nav-button" type="button" data-view="messages">
+              <i data-lucide="messages-square" aria-hidden="true"></i><span>Сообщения</span>
+            </button>
+          </nav>
+          <div class="sidebar-support">
+            <span class="status-dot"></span>
+            <div><small>Ваш специалист</small><strong id="sidebar-manager">Специалист</strong></div>
+          </div>
+        </aside>
+
+        <div class="portal-workspace">
+          <header class="workspace-header">
+            <div>
+              <p class="workspace-date" id="workspace-date"></p>
+              <h1 id="welcome-title">Добрый день</h1>
+            </div>
+            <button class="secondary-button" type="button" data-view-target="messages">
+              <i data-lucide="message-circle" aria-hidden="true"></i>
+              <span>Написать специалисту</span>
+            </button>
+          </header>
+
+          <div class="workspace-status" id="workspace-status" role="status" aria-live="polite"></div>
+
+          <section class="portal-view" id="overview-view" data-portal-view="overview">
+            <div class="summary-grid" id="summary-grid"></div>
+
+            <div class="overview-grid">
+              <div class="cases-column">
+                <div class="section-heading">
+                  <div><span class="section-kicker">Текущая работа</span><h2>Ситуации и сопровождение</h2></div>
+                  <span class="muted" id="case-total"></span>
+                </div>
+                <div class="case-list" id="case-list"></div>
+              </div>
+
+              <aside class="overview-aside">
+                <section class="next-action-panel" id="next-action-panel"></section>
+                <section class="manager-panel" id="manager-panel"></section>
+              </aside>
+            </div>
+          </section>
+
+          <section class="portal-view is-hidden" id="documents-view" data-portal-view="documents">
+            <div class="section-heading">
+              <div><span class="section-kicker">Материалы</span><h2>Документы</h2></div>
+              <button class="primary-button compact" id="upload-open-button" type="button">
+                <i data-lucide="upload" aria-hidden="true"></i><span>Загрузить</span>
+              </button>
+            </div>
+            <div class="case-filter" id="document-case-filter" role="group" aria-label="Фильтр по ситуации"></div>
+            <div class="document-table-wrap">
+              <table class="document-table">
+                <thead><tr><th>Документ</th><th>Ситуация</th><th>Статус</th><th>Дата</th><th><span class="visually-hidden">Действие</span></th></tr></thead>
+                <tbody id="document-list"></tbody>
+              </table>
+            </div>
+            <form class="upload-panel is-hidden" id="upload-form">
+              <div>
+                <label for="upload-case">Ситуация</label>
+                <select id="upload-case" name="case_id" required></select>
+              </div>
+              <div>
+                <label for="upload-file">Файл</label>
+                <input id="upload-file" name="file" type="file" required accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xls,.xlsx,.zip" />
+              </div>
+              <div class="upload-actions">
+                <button class="primary-button compact" type="submit"><i data-lucide="upload" aria-hidden="true"></i><span>Загрузить файл</span></button>
+                <button class="secondary-button compact" id="upload-cancel-button" type="button">Отмена</button>
+              </div>
+              <p class="form-status" id="upload-status" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="portal-view is-hidden" id="messages-view" data-portal-view="messages">
+            <div class="section-heading">
+              <div><span class="section-kicker">Связь</span><h2>Сообщения</h2></div>
+            </div>
+            <div class="messages-layout">
+              <div class="conversation-list" id="conversation-list"></div>
+              <div class="conversation-panel">
+                <header class="conversation-header" id="conversation-header"></header>
+                <div class="message-feed" id="message-feed"></div>
+                <form class="message-form" id="message-form">
+                  <label class="visually-hidden" for="message-body">Сообщение</label>
+                  <textarea id="message-body" name="body" rows="3" maxlength="2000" placeholder="Напишите сообщение" required></textarea>
+                  <button class="icon-button send-button" type="submit" title="Отправить" aria-label="Отправить">
+                    <i data-lucide="send" aria-hidden="true"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="/cabinet/lucide.min.js?v=1.27.0" defer></script>
+    <script src="/cabinet/portal.js?v=202608091" defer></script>
+  </body>
+</html>
