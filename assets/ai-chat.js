@@ -54,6 +54,22 @@
     });
   }
 
+  function ensurePortalWidget(chatWidget) {
+    let portal = $(".client-portal-widget");
+    if (portal) return portal;
+
+    portal = create("a", "client-portal-widget");
+    portal.href = "/cabinet/";
+    portal.setAttribute("aria-label", "Открыть личный кабинет клиента");
+    portal.appendChild(create("span", "", "ЛК"));
+    portal.appendChild(create("strong", "", "Личный кабинет"));
+    portal.addEventListener("click", function () {
+      fireGoal("goal_client_portal_open");
+    });
+    chatWidget.insertAdjacentElement("beforebegin", portal);
+    return portal;
+  }
+
   function addMessage(role, content) {
     const text = cleanText(content);
     if (!text) return;
@@ -299,6 +315,7 @@
 
     const widget = $(".ai-chat-widget");
     if (!widget) return;
+    ensurePortalWidget(widget);
     widget.classList.add("is-chat-ready");
     widget.setAttribute("role", "button");
     widget.setAttribute("aria-haspopup", "dialog");

@@ -617,7 +617,7 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202607251500";
+  const siteCssVersion = "202608101300";
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
   html = html.replace(/<nav aria-label="Разделы сайта">[\s\S]*?<\/nav>/g, footerNavigation);
   html = html.replace(/<div class="footer-buttons">[\s\S]*?<\/div>/g, footerButtons);
@@ -639,7 +639,7 @@ for (const file of walk(root)) {
   }
   html = html.replace(/\/assets\/metrika-goals\.js\?v=\d+/g, "/assets/metrika-goals.js?v=202607230930");
   html = html.replace(/\/assets\/lead-form\.js\?v=\d+/g, "/assets/lead-form.js?v=202607230930");
-  html = html.replace(/\/assets\/ai-chat\.js\?v=\d+/g, "/assets/ai-chat.js?v=202607161622");
+  html = html.replace(/\/assets\/ai-chat\.js\?v=\d+/g, "/assets/ai-chat.js?v=202608101300");
   html = html.replace(/(<a[^>]*href="\/policy\/"[^>]*>)Конфиденциальность(?: и безопасность)?(<\/a>)/g, "$1Конфиденциальность и безопасность$2");
   if (!html.includes("/assets/metrika-goals.js")) {
     html = html.replace(
