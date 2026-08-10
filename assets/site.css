@@ -1757,8 +1757,10 @@ h2 {
   overflow: hidden;
   align-items: center;
   gap: 0.55rem;
+  box-sizing: border-box;
+  width: 192px;
   max-width: 192px;
-  min-height: 54px;
+  min-height: 56px;
   padding: 0.72rem 0.85rem 0.72rem 0.74rem;
   border: 1px solid var(--plum-border);
   border-right: 0;
@@ -3261,8 +3263,9 @@ body.ai-chat-open .cookie-notice {
     top: auto;
     right: 10px;
     bottom: calc(12px + env(safe-area-inset-bottom));
+    width: 184px;
     max-width: 184px;
-    min-height: 46px;
+    min-height: 50px;
     padding: 0.5rem 0.62rem;
     border-right: 1px solid var(--plum-border);
     border-radius: 8px;
