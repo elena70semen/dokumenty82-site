@@ -14,6 +14,8 @@ import threading
 import time
 import traceback
 import urllib.parse
+import urllib.error
+import urllib.request
 from contextlib import contextmanager
 from datetime import date, datetime, timedelta, timezone
 from email.message import EmailMessage
@@ -41,6 +43,12 @@ OTP_MAX_ATTEMPTS = int(os.environ.get("D82_PORTAL_OTP_MAX_ATTEMPTS", "5"))
 OTP_RATE_WINDOW_SECONDS = int(os.environ.get("D82_PORTAL_OTP_RATE_WINDOW_SECONDS", "3600"))
 OTP_RATE_MAX = int(os.environ.get("D82_PORTAL_OTP_RATE_MAX", "5"))
 MAX_UPLOAD_BYTES = int(os.environ.get("D82_PORTAL_MAX_UPLOAD_MB", "10")) * 1024 * 1024
+AMO_BRIDGE_URL = os.environ.get(
+  "D82_PORTAL_AMO_BRIDGE_URL",
+  "http://127.0.0.1:8097/api/internal/amo/client",
+).strip()
+AMO_BRIDGE_TOKEN = os.environ.get("D82_PORTAL_AMO_BRIDGE_TOKEN", "").strip()
+AMO_SYNC_TTL_SECONDS = int(os.environ.get("D82_PORTAL_AMO_SYNC_TTL_SECONDS", "300"))
 
 SMTP_HOST = os.environ.get("D82_PORTAL_SMTP_HOST", "").strip()
 SMTP_PORT = int(os.environ.get("D82_PORTAL_SMTP_PORT", "465"))
@@ -74,7 +82,9 @@ CREATE TABLE IF NOT EXISTS users (
   full_name TEXT NOT NULL,
   phone TEXT NOT NULL DEFAULT '',
   active INTEGER NOT NULL DEFAULT 1,
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  amo_contact_id INTEGER,
+  amo_synced_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS organizations (
@@ -86,7 +96,9 @@ CREATE TABLE IF NOT EXISTS organizations (
   manager_name TEXT NOT NULL DEFAULT '',
   manager_phone TEXT NOT NULL DEFAULT '',
   manager_email TEXT NOT NULL DEFAULT '',
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  amo_company_id INTEGER,
+  amo_synced_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS memberships (
@@ -106,7 +118,12 @@ CREATE TABLE IF NOT EXISTS cases (
   progress INTEGER NOT NULL DEFAULT 0 CHECK(progress BETWEEN 0 AND 100),
   next_action TEXT NOT NULL DEFAULT '',
   deadline TEXT,
-  updated_at TEXT NOT NULL
+  updated_at TEXT NOT NULL,
+  source TEXT NOT NULL DEFAULT 'portal',
+  amo_lead_id INTEGER,
+  amo_pipeline_id INTEGER,
+  amo_status_id INTEGER,
+  amo_synced_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
@@ -179,6 +196,45 @@ CREATE TABLE IF NOT EXISTS audit_events (
   details TEXT NOT NULL DEFAULT '{}'
 );
 """
+
+
+MIGRATION_COLUMNS = {
+  "users": {
+    "amo_contact_id": "INTEGER",
+    "amo_synced_at": "TEXT",
+  },
+  "organizations": {
+    "amo_company_id": "INTEGER",
+    "amo_synced_at": "TEXT",
+  },
+  "cases": {
+    "source": "TEXT NOT NULL DEFAULT 'portal'",
+    "amo_lead_id": "INTEGER",
+    "amo_pipeline_id": "INTEGER",
+    "amo_status_id": "INTEGER",
+    "amo_synced_at": "TEXT",
+  },
+}
+
+
+def migrate_schema(connection):
+  for table, columns in MIGRATION_COLUMNS.items():
+    existing = {row["name"] for row in connection.execute(f"PRAGMA table_info({table})")}
+    for column, definition in columns.items():
+      if column not in existing:
+        connection.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+  connection.execute(
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_users_amo_contact ON users(amo_contact_id) "
+    "WHERE amo_contact_id IS NOT NULL"
+  )
+  connection.execute(
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_organizations_amo_company ON organizations(amo_company_id) "
+    "WHERE amo_company_id IS NOT NULL"
+  )
+  connection.execute(
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_cases_amo_lead ON cases(amo_lead_id) "
+    "WHERE amo_lead_id IS NOT NULL"
+  )
 
 
 def iso_now():
@@ -260,6 +316,7 @@ def database(path=None):
 def init_db(path=None):
   with database(path) as connection:
     connection.executescript(SCHEMA)
+    migrate_schema(connection)
     connection.execute("PRAGMA journal_mode = WAL")
 
 
@@ -459,6 +516,233 @@ def user_can_access_case(connection, user_id, case_id):
     "WHERE cases.id = ? AND memberships.user_id = ?",
     (case_id, user_id),
   ).fetchone() is not None
+
+
+def amo_bridge_configured():
+  return bool(AMO_BRIDGE_URL and len(AMO_BRIDGE_TOKEN) >= 32)
+
+
+def fetch_amo_snapshot(email, phone=""):
+  if not amo_bridge_configured():
+    raise RuntimeError("amoCRM bridge is not configured")
+  body = json.dumps({"email": email, "phone": phone}, ensure_ascii=False).encode("utf-8")
+  request = urllib.request.Request(
+    AMO_BRIDGE_URL,
+    data=body,
+    headers={
+      "Accept": "application/json",
+      "Authorization": "Bearer " + AMO_BRIDGE_TOKEN,
+      "Content-Type": "application/json",
+    },
+    method="POST",
+  )
+  try:
+    with urllib.request.urlopen(request, timeout=20) as response:
+      payload = json.loads(response.read().decode("utf-8"))
+  except urllib.error.HTTPError as error:
+    detail = error.read().decode("utf-8", "replace")
+    raise RuntimeError(f"amoCRM bridge returned HTTP {error.code}: {detail[:300]}") from error
+  if not isinstance(payload, dict) or not payload.get("ok"):
+    raise RuntimeError("amoCRM bridge returned an invalid response")
+  return payload
+
+
+def timestamp_iso(value):
+  try:
+    stamp = int(value or 0)
+  except (TypeError, ValueError):
+    stamp = 0
+  return datetime.fromtimestamp(stamp, timezone.utc).isoformat() if stamp > 0 else iso_now()
+
+
+def timestamp_date(value):
+  try:
+    stamp = int(value or 0)
+  except (TypeError, ValueError):
+    stamp = 0
+  return datetime.fromtimestamp(stamp, timezone.utc).date().isoformat() if stamp > 0 else None
+
+
+def infer_organization_kind(name):
+  normalized = re.sub(r"[^А-Яа-яA-Za-z]", "", str(name or "")).upper()
+  return "ИП" if normalized.startswith("ИП") else "ООО"
+
+
+def organization_for_amo_snapshot(connection, user_id, contact, company):
+  company_id = int(company.get("id")) if company and company.get("id") else None
+  company_name = clipped(company.get("name"), 180) if company else ""
+  organization = None
+  if company_id:
+    organization = connection.execute(
+      "SELECT * FROM organizations WHERE amo_company_id = ?", (company_id,)
+    ).fetchone()
+  if not organization and company_name:
+    organization = connection.execute(
+      "SELECT organizations.* FROM organizations "
+      "JOIN memberships ON memberships.organization_id = organizations.id "
+      "WHERE memberships.user_id = ? AND lower(organizations.display_name) = lower(?) LIMIT 1",
+      (user_id, company_name),
+    ).fetchone()
+  if not organization:
+    existing = connection.execute(
+      "SELECT organizations.* FROM organizations "
+      "JOIN memberships ON memberships.organization_id = organizations.id "
+      "WHERE memberships.user_id = ? ORDER BY organizations.id LIMIT 1",
+      (user_id,),
+    ).fetchone()
+    if existing and not existing["amo_company_id"]:
+      organization = existing
+
+  synced_at = iso_now()
+  if organization:
+    organization_id = organization["id"]
+    connection.execute(
+      "UPDATE organizations SET amo_company_id = COALESCE(amo_company_id, ?), "
+      "display_name = CASE WHEN ? <> '' THEN ? ELSE display_name END, amo_synced_at = ? WHERE id = ?",
+      (company_id, company_name, company_name, synced_at, organization_id),
+    )
+  else:
+    contact_name = clipped((contact or {}).get("name"), 160) or "Клиент"
+    display_name = company_name or ("ИП " + contact_name)
+    cursor = connection.execute(
+      "INSERT INTO organizations(kind, display_name, inn, ogrn, manager_name, manager_phone, manager_email, "
+      "created_at, amo_company_id, amo_synced_at) VALUES (?, ?, '', '', '', '', '', ?, ?, ?)",
+      (infer_organization_kind(display_name), display_name, synced_at, company_id, synced_at),
+    )
+    organization_id = cursor.lastrowid
+  connection.execute(
+    "INSERT OR IGNORE INTO memberships(user_id, organization_id, role) VALUES (?, ?, 'owner')",
+    (user_id, organization_id),
+  )
+  return organization_id
+
+
+def apply_amo_snapshot(connection, user_id, snapshot):
+  if not snapshot.get("found") or not snapshot.get("contact"):
+    connection.execute("UPDATE users SET amo_synced_at = ? WHERE id = ?", (iso_now(), user_id))
+    return {"status": "not_found", "synced": 0}
+
+  contact = snapshot["contact"]
+  contact_id = int(contact.get("id")) if contact.get("id") else None
+  contact_name = clipped(contact.get("name"), 180)
+  companies = snapshot.get("companies") or []
+  primary_company = companies[0] if companies else None
+  organization_id = organization_for_amo_snapshot(connection, user_id, contact, primary_company)
+  synced_at = iso_now()
+  connection.execute(
+    "UPDATE users SET amo_contact_id = ?, amo_synced_at = ?, "
+    "full_name = CASE WHEN full_name = '' AND ? <> '' THEN ? ELSE full_name END WHERE id = ?",
+    (contact_id, synced_at, contact_name, contact_name, user_id),
+  )
+
+  synced = 0
+  manager_name = ""
+  for lead in snapshot.get("leads") or []:
+    lead_id = int(lead.get("id")) if lead.get("id") else None
+    if not lead_id:
+      continue
+    title = clipped(lead.get("name"), 180) or f"Сделка {lead_id}"
+    category = clipped(lead.get("pipeline_name"), 120) or "Сделки"
+    status = clipped(lead.get("status_name"), 120) or "В работе"
+    stage = status
+    progress = max(0, min(100, int(lead.get("progress") or 0)))
+    responsible = clipped(lead.get("responsible_name"), 180)
+    manager_name = manager_name or responsible
+    next_action = (
+      "Ближайшая задача назначена ответственному специалисту"
+      if lead.get("closest_task_at") else "Следующий шаг уточняет ответственный специалист"
+    )
+    deadline = timestamp_date(lead.get("closest_task_at"))
+    updated_at = timestamp_iso(lead.get("updated_at"))
+    existing = connection.execute("SELECT id FROM cases WHERE amo_lead_id = ?", (lead_id,)).fetchone()
+    values = (
+      organization_id, title, category, status, stage, progress, next_action, deadline, updated_at,
+      int(lead.get("pipeline_id")) if lead.get("pipeline_id") else None,
+      int(lead.get("status_id")) if lead.get("status_id") else None,
+      synced_at,
+    )
+    if existing:
+      connection.execute(
+        "UPDATE cases SET organization_id = ?, title = ?, category = ?, status = ?, stage = ?, progress = ?, "
+        "next_action = ?, deadline = ?, updated_at = ?, source = 'amocrm', amo_pipeline_id = ?, "
+        "amo_status_id = ?, amo_synced_at = ? WHERE id = ?",
+        (*values, existing["id"]),
+      )
+    else:
+      connection.execute(
+        "INSERT INTO cases(organization_id, title, category, status, stage, progress, next_action, deadline, "
+        "updated_at, source, amo_lead_id, amo_pipeline_id, amo_status_id, amo_synced_at) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'amocrm', ?, ?, ?, ?)",
+        (*values[:9], lead_id, *values[9:]),
+      )
+    synced += 1
+
+  if manager_name:
+    connection.execute(
+      "UPDATE organizations SET manager_name = ?, amo_synced_at = ? WHERE id = ?",
+      (manager_name, synced_at, organization_id),
+    )
+  audit(
+    connection,
+    "amocrm_snapshot_synced",
+    user_id=user_id,
+    object_type="contact",
+    object_id=contact_id,
+    details={"leads": synced},
+  )
+  return {"status": "synced", "synced": synced}
+
+
+def should_sync_amo(last_synced_at):
+  if not last_synced_at:
+    return True
+  try:
+    synced = datetime.fromisoformat(str(last_synced_at).replace("Z", "+00:00"))
+  except ValueError:
+    return True
+  if synced.tzinfo is None:
+    synced = synced.replace(tzinfo=timezone.utc)
+  return (datetime.now(timezone.utc) - synced).total_seconds() >= AMO_SYNC_TTL_SECONDS
+
+
+def sync_amo_for_user(connection, user_id, force=False):
+  if not amo_bridge_configured():
+    return {"status": "disabled", "synced": 0}
+  user = connection.execute(
+    "SELECT id, email, phone, amo_synced_at FROM users WHERE id = ?", (user_id,)
+  ).fetchone()
+  if not user:
+    return {"status": "missing_user", "synced": 0}
+  if not force and not should_sync_amo(user["amo_synced_at"]):
+    return {"status": "cached", "synced": 0}
+  snapshot = fetch_amo_snapshot(user["email"], user["phone"])
+  return apply_amo_snapshot(connection, user_id, snapshot)
+
+
+def provision_amo_user(connection, email):
+  email = normalize_email(email)
+  existing = connection.execute("SELECT id FROM users WHERE email = ?", (email,)).fetchone()
+  if existing:
+    result = sync_amo_for_user(connection, existing["id"], force=True)
+    return {"user_id": existing["id"], **result}
+
+  snapshot = fetch_amo_snapshot(email)
+  if not snapshot.get("found") or not snapshot.get("contact"):
+    return {"user_id": None, "status": "not_found", "synced": 0}
+  full_name = clipped(snapshot["contact"].get("name"), 180) or email
+  cursor = connection.execute(
+    "INSERT INTO users(email, full_name, phone, active, created_at) VALUES (?, ?, '', 1, ?)",
+    (email, full_name, iso_now()),
+  )
+  result = apply_amo_snapshot(connection, cursor.lastrowid, snapshot)
+  audit(
+    connection,
+    "amocrm_user_provisioned",
+    user_id=cursor.lastrowid,
+    object_type="user",
+    object_id=cursor.lastrowid,
+  )
+  return {"user_id": cursor.lastrowid, **result}
 
 
 def dashboard_for_user(connection, user_id):
@@ -747,7 +1031,17 @@ class PortalHandler(BaseHTTPRequestHandler):
       session = self.require_session(connection)
       if not session:
         return
-      json_response(self, 200, {"ok": True, **dashboard_for_user(connection, session["user_id"])})
+      sync_result = {"status": "disabled", "synced": 0}
+      try:
+        sync_result = sync_amo_for_user(connection, session["user_id"])
+      except Exception:
+        traceback.print_exc()
+        sync_result = {"status": "unavailable", "synced": 0}
+      json_response(self, 200, {
+        "ok": True,
+        "crm_sync": sync_result,
+        **dashboard_for_user(connection, session["user_id"]),
+      })
 
   def handle_logout(self):
     with database() as connection:
@@ -912,6 +1206,7 @@ def main():
   parser.add_argument("--init-db", action="store_true")
   parser.add_argument("--seed-demo", action="store_true")
   parser.add_argument("--demo-email", default=os.environ.get("D82_PORTAL_DEMO_EMAIL", "demo@dokumenty82.ru"))
+  parser.add_argument("--sync-email", default="", help="Create or refresh one portal user from amoCRM")
   args = parser.parse_args()
 
   if args.seed_demo:
@@ -919,6 +1214,13 @@ def main():
       parser.error("--seed-demo is available only when D82_PORTAL_DEV_MODE=1")
     init_db()
     print(json.dumps(seed_demo(email=args.demo_email), ensure_ascii=False, indent=2))
+    return
+
+  if args.sync_email:
+    init_db()
+    with database() as connection:
+      result = provision_amo_user(connection, args.sync_email)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
     return
 
   validate_production_config()

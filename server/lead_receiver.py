@@ -40,6 +40,7 @@ AMO_TAGS = [tag.strip() for tag in os.environ.get("AMO_TAGS", "site,razbor-situa
 AMO_ATTACH_FILES = os.environ.get("AMO_ATTACH_FILES", "0") == "1"
 AMO_DRIVE_URL = os.environ.get("AMO_DRIVE_URL", "").strip().rstrip("/")
 AMO_METRIKA_CLIENT_ID_FIELD_ID = os.environ.get("AMO_METRIKA_CLIENT_ID_FIELD_ID", "").strip()
+AMO_PORTAL_BRIDGE_TOKEN = os.environ.get("AMO_PORTAL_BRIDGE_TOKEN", "").strip()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "").strip()
 OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.4-mini").strip()
 AI_CHAT_ENABLED = os.environ.get("AI_CHAT_ENABLED", "1") == "1"
@@ -385,6 +386,172 @@ def amo_headers():
   return {"Authorization": "Bearer " + get_amo_access_token()}
 
 
+def normalize_lookup_phone(value):
+  digits = re.sub(r"\D", "", text(value))
+  if len(digits) == 10:
+    digits = "7" + digits
+  elif len(digits) == 11 and digits.startswith("8"):
+    digits = "7" + digits[1:]
+  return digits if 8 <= len(digits) <= 15 else ""
+
+
+def amo_field_values(entity, field_code):
+  values = []
+  for field in (entity or {}).get("custom_fields_values") or []:
+    if text(field.get("field_code")).upper() != field_code.upper():
+      continue
+    for item in field.get("values") or []:
+      value = text(item.get("value"))
+      if value:
+        values.append(value)
+  return values
+
+
+def amo_collection(payload, key):
+  return ((payload or {}).get("_embedded") or {}).get(key) or []
+
+
+def amo_entities_by_ids(base_url, entity, ids, with_value=""):
+  unique_ids = list(dict.fromkeys(int(value) for value in ids if int_or_none(value)))[:50]
+  if not unique_ids:
+    return []
+  params = [("limit", "50")]
+  if with_value:
+    params.append(("with", with_value))
+  params.extend(("filter[id][]", str(value)) for value in unique_ids)
+  response = api_request(
+    "GET",
+    base_url + f"/api/v4/{entity}?" + urllib.parse.urlencode(params),
+    headers=amo_headers(),
+  )
+  return amo_collection(response, entity)
+
+
+def amo_pipeline_catalog(base_url):
+  response = api_request(
+    "GET",
+    base_url + "/api/v4/leads/pipelines?limit=50",
+    headers=amo_headers(),
+  )
+  pipelines = {}
+  statuses = {}
+  progress = {}
+  for pipeline in amo_collection(response, "pipelines"):
+    pipeline_id = int_or_none(pipeline.get("id"))
+    if not pipeline_id:
+      continue
+    pipelines[pipeline_id] = text(pipeline.get("name")) or "Сделки"
+    status_rows = amo_collection(pipeline, "statuses")
+    ordered = sorted(status_rows, key=lambda item: (int_or_none(item.get("sort")) or 0, int_or_none(item.get("id")) or 0))
+    active = [item for item in ordered if int_or_none(item.get("id")) not in {142, 143}]
+    for index, status in enumerate(active):
+      status_id = int_or_none(status.get("id"))
+      if not status_id:
+        continue
+      statuses[status_id] = text(status.get("name")) or "В работе"
+      progress[status_id] = max(8, min(92, round((index + 1) * 90 / max(len(active), 1))))
+    for status in ordered:
+      status_id = int_or_none(status.get("id"))
+      if not status_id:
+        continue
+      statuses.setdefault(status_id, text(status.get("name")) or "В работе")
+      if status_id == 142:
+        progress[status_id] = 100
+      elif status_id == 143:
+        progress[status_id] = 0
+  return pipelines, statuses, progress
+
+
+def fetch_amo_portal_snapshot(email="", phone=""):
+  email = text(email).lower()
+  phone = normalize_lookup_phone(phone)
+  query = email or phone
+  if not query:
+    raise ValueError("Для поиска клиента нужен email или телефон.")
+
+  base_url = amo_base_url()
+  if not base_url:
+    raise RuntimeError("amoCRM не настроена.")
+  exact = []
+  for lookup in list(dict.fromkeys(value for value in (email, phone) if value)):
+    params = urllib.parse.urlencode({"with": "leads", "limit": 50, "query": lookup})
+    response = api_request(
+      "GET",
+      base_url + "/api/v4/contacts?" + params,
+      headers=amo_headers(),
+    )
+    for contact in amo_collection(response, "contacts"):
+      emails = {value.lower() for value in amo_field_values(contact, "EMAIL")}
+      phones = {normalize_lookup_phone(value) for value in amo_field_values(contact, "PHONE")}
+      if (email and email in emails) or (phone and phone in phones):
+        exact.append(contact)
+    if exact:
+      break
+  if not exact:
+    return {"found": False, "contact": None, "companies": [], "leads": []}
+
+  contact = max(exact, key=lambda item: int_or_none(item.get("updated_at")) or 0)
+  embedded = contact.get("_embedded") or {}
+  company_ids = [item.get("id") for item in embedded.get("companies") or []]
+  lead_ids = [item.get("id") for item in embedded.get("leads") or []]
+  companies = amo_entities_by_ids(base_url, "companies", company_ids)
+  leads = amo_entities_by_ids(base_url, "leads", lead_ids, "contacts")
+  pipelines, statuses, progress = amo_pipeline_catalog(base_url)
+
+  responsible_ids = [lead.get("responsible_user_id") for lead in leads]
+  users = amo_entities_by_ids(base_url, "users", responsible_ids)
+  user_names = {
+    int_or_none(user.get("id")): text(user.get("name"))
+    for user in users if int_or_none(user.get("id"))
+  }
+  company_rows = [{
+    "id": int_or_none(company.get("id")),
+    "name": clipped(company.get("name"), 180),
+  } for company in companies if int_or_none(company.get("id"))]
+  lead_rows = []
+  for lead in leads:
+    lead_id = int_or_none(lead.get("id"))
+    pipeline_id = int_or_none(lead.get("pipeline_id"))
+    status_id = int_or_none(lead.get("status_id"))
+    responsible_id = int_or_none(lead.get("responsible_user_id"))
+    if not lead_id:
+      continue
+    lead_rows.append({
+      "id": lead_id,
+      "name": clipped(lead.get("name"), 180) or f"Сделка {lead_id}",
+      "pipeline_id": pipeline_id,
+      "pipeline_name": pipelines.get(pipeline_id, "Сделки"),
+      "status_id": status_id,
+      "status_name": statuses.get(status_id, "В работе"),
+      "responsible_user_id": responsible_id,
+      "responsible_name": user_names.get(responsible_id, ""),
+      "progress": progress.get(status_id, 25),
+      "closest_task_at": int_or_none(lead.get("closest_task_at")) or 0,
+      "created_at": int_or_none(lead.get("created_at")) or 0,
+      "updated_at": int_or_none(lead.get("updated_at")) or 0,
+      "closed_at": int_or_none(lead.get("closed_at")) or 0,
+    })
+  lead_rows.sort(key=lambda item: item["updated_at"], reverse=True)
+  return {
+    "found": True,
+    "contact": {
+      "id": int_or_none(contact.get("id")),
+      "name": clipped(contact.get("name"), 180),
+    },
+    "companies": company_rows,
+    "leads": lead_rows,
+  }
+
+
+def portal_bridge_authorized(remote_addr, authorization):
+  if not AMO_PORTAL_BRIDGE_TOKEN or len(AMO_PORTAL_BRIDGE_TOKEN) < 32:
+    return False
+  supplied = text(authorization)
+  if supplied.lower().startswith("bearer "):
+    supplied = supplied[7:].strip()
+  return bool(supplied and secrets.compare_digest(supplied, AMO_PORTAL_BRIDGE_TOKEN))
+
+
 def get_drive_url(base_url):
   if AMO_DRIVE_URL:
     return AMO_DRIVE_URL
@@ -581,6 +748,9 @@ class LeadHandler(BaseHTTPRequestHandler):
 
   def do_POST(self):
     path = urllib.parse.urlparse(self.path).path
+    if path == "/api/internal/amo/client":
+      self.handle_portal_bridge()
+      return
     if path == "/api/amo/external/credentials":
       self.handle_external_credentials()
       return
@@ -805,6 +975,20 @@ class LeadHandler(BaseHTTPRequestHandler):
     except Exception:
       traceback.print_exc()
       json_response(self, 500, {"ok": False, "message": "Cannot mark amoCRM as disconnected"})
+
+  def handle_portal_bridge(self):
+    if not portal_bridge_authorized(self.client_address[0], self.headers.get("Authorization", "")):
+      json_response(self, 403, {"ok": False, "message": "Forbidden"})
+      return
+    try:
+      payload = read_json_or_form(self)
+      snapshot = fetch_amo_portal_snapshot(payload.get("email"), payload.get("phone"))
+      json_response(self, 200, {"ok": True, **snapshot})
+    except ValueError as error:
+      json_response(self, 400, {"ok": False, "message": str(error)})
+    except Exception:
+      traceback.print_exc()
+      json_response(self, 502, {"ok": False, "message": "amoCRM временно недоступна."})
 
   def save_files(self, form, upload_dir):
     file_fields = form["files"] if "files" in form else []

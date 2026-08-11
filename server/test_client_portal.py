@@ -3,6 +3,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 os.environ.setdefault("D82_PORTAL_DEV_MODE", "1")
@@ -117,6 +118,47 @@ class PortalStoreTests(unittest.TestCase):
     filename, payload = portal.multipart_file(f"multipart/form-data; boundary={boundary}", body)
     self.assertEqual(filename, "акт.pdf")
     self.assertEqual(payload, b"%PDF-test")
+
+  def test_amo_snapshot_upserts_case_without_duplication(self):
+    snapshot = {
+      "found": True,
+      "contact": {"id": 501, "name": "Клиент amoCRM"},
+      "companies": [{"id": 601, "name": "ООО Вектор"}],
+      "leads": [{
+        "id": 701,
+        "name": "Бухгалтерское сопровождение",
+        "pipeline_id": 801,
+        "pipeline_name": "Отдел продаж",
+        "status_id": 901,
+        "status_name": "В работе",
+        "responsible_name": "Елена",
+        "progress": 45,
+        "closest_task_at": 1800000000,
+        "updated_at": 1750000000,
+      }],
+    }
+    with portal.database(self.db_path) as connection:
+      first = portal.apply_amo_snapshot(connection, self.demo["user_id"], snapshot)
+      snapshot["leads"][0]["status_name"] = "Документы получены"
+      snapshot["leads"][0]["progress"] = 70
+      second = portal.apply_amo_snapshot(connection, self.demo["user_id"], snapshot)
+      rows = connection.execute("SELECT * FROM cases WHERE amo_lead_id = 701").fetchall()
+
+    self.assertEqual(first["synced"], 1)
+    self.assertEqual(second["synced"], 1)
+    self.assertEqual(len(rows), 1)
+    self.assertEqual(rows[0]["status"], "Документы получены")
+    self.assertEqual(rows[0]["progress"], 70)
+    self.assertEqual(rows[0]["source"], "amocrm")
+
+  def test_dashboard_keeps_local_data_when_bridge_is_unavailable(self):
+    with portal.database(self.db_path) as connection, \
+         mock.patch.object(portal, "AMO_BRIDGE_TOKEN", ""):
+      sync = portal.sync_amo_for_user(connection, self.demo["user_id"])
+      dashboard = portal.dashboard_for_user(connection, self.demo["user_id"])
+
+    self.assertEqual(sync["status"], "disabled")
+    self.assertEqual(len(dashboard["organizations"]), 2)
 
 
 if __name__ == "__main__":

@@ -83,5 +83,81 @@ class PhoneNormalizationTests(unittest.TestCase):
           receiver.normalize_phone(source)
 
 
+class AmoPortalBridgeTests(unittest.TestCase):
+  def test_snapshot_uses_exact_contact_and_returns_sanitized_leads(self):
+    responses = [
+      {"_embedded": {"contacts": [{
+        "id": 11,
+        "name": "Тестовый клиент",
+        "updated_at": 100,
+        "custom_fields_values": [{
+          "field_code": "EMAIL",
+          "values": [{"value": "client@example.com"}],
+        }],
+        "_embedded": {
+          "companies": [{"id": 21}],
+          "leads": [{"id": 31}],
+        },
+      }]}},
+      {"_embedded": {"companies": [{"id": 21, "name": "ООО Тест"}]}},
+      {"_embedded": {"leads": [{
+        "id": 31,
+        "name": "Бухгалтерское сопровождение",
+        "pipeline_id": 41,
+        "status_id": 52,
+        "responsible_user_id": 61,
+        "closest_task_at": 1800000000,
+        "created_at": 1700000000,
+        "updated_at": 1750000000,
+        "closed_at": 0,
+      }]}},
+      {"_embedded": {"pipelines": [{
+        "id": 41,
+        "name": "Отдел продаж",
+        "_embedded": {"statuses": [
+          {"id": 51, "name": "Новая", "sort": 10},
+          {"id": 52, "name": "В работе", "sort": 20},
+          {"id": 142, "name": "Успешно реализовано", "sort": 10000},
+        ]},
+      }]}},
+      {"_embedded": {"users": [{"id": 61, "name": "Ответственный"}]}},
+    ]
+    with mock.patch.object(receiver, "amo_base_url", return_value="https://example.amocrm.ru"), \
+         mock.patch.object(receiver, "amo_headers", return_value={"Authorization": "Bearer test"}), \
+         mock.patch.object(receiver, "api_request", side_effect=responses):
+      snapshot = receiver.fetch_amo_portal_snapshot("client@example.com")
+
+    self.assertTrue(snapshot["found"])
+    self.assertEqual(snapshot["contact"], {"id": 11, "name": "Тестовый клиент"})
+    self.assertEqual(snapshot["companies"], [{"id": 21, "name": "ООО Тест"}])
+    self.assertEqual(snapshot["leads"][0]["status_name"], "В работе")
+    self.assertEqual(snapshot["leads"][0]["responsible_name"], "Ответственный")
+    self.assertNotIn("custom_fields_values", snapshot["contact"])
+
+  def test_snapshot_rejects_loose_search_result(self):
+    response = {"_embedded": {"contacts": [{
+      "id": 11,
+      "name": "Похожий контакт",
+      "custom_fields_values": [{
+        "field_code": "EMAIL",
+        "values": [{"value": "other@example.com"}],
+      }],
+    }]}}
+    with mock.patch.object(receiver, "amo_base_url", return_value="https://example.amocrm.ru"), \
+         mock.patch.object(receiver, "amo_headers", return_value={"Authorization": "Bearer test"}), \
+         mock.patch.object(receiver, "api_request", return_value=response):
+      snapshot = receiver.fetch_amo_portal_snapshot("client@example.com")
+
+    self.assertFalse(snapshot["found"])
+    self.assertEqual(snapshot["leads"], [])
+
+  def test_bridge_requires_long_shared_secret(self):
+    with mock.patch.object(receiver, "AMO_PORTAL_BRIDGE_TOKEN", "x" * 40):
+      self.assertTrue(receiver.portal_bridge_authorized("127.0.0.1", "Bearer " + "x" * 40))
+      self.assertFalse(receiver.portal_bridge_authorized("127.0.0.1", "Bearer wrong"))
+    with mock.patch.object(receiver, "AMO_PORTAL_BRIDGE_TOKEN", "short"):
+      self.assertFalse(receiver.portal_bridge_authorized("127.0.0.1", "Bearer short"))
+
+
 if __name__ == "__main__":
   unittest.main()
