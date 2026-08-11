@@ -57,6 +57,7 @@ SMTP_PASSWORD = os.environ.get("D82_PORTAL_SMTP_PASSWORD", "")
 SMTP_FROM = os.environ.get("D82_PORTAL_SMTP_FROM", SMTP_USERNAME).strip()
 SMTP_USE_SSL = os.environ.get("D82_PORTAL_SMTP_USE_SSL", "1") == "1"
 SMTP_STARTTLS = os.environ.get("D82_PORTAL_SMTP_STARTTLS", "0") == "1"
+SMTP_RETRY_DELAYS = (0, 2, 5)
 
 COOKIE_NAME = "__Host-d82_portal" if SECURE_COOKIE else "d82_portal_dev"
 ALLOWED_UPLOAD_EXTENSIONS = {
@@ -840,10 +841,23 @@ def send_login_code(email, code):
 
 
 def send_login_code_safely(email, code):
-  try:
-    send_login_code(email, code)
-  except Exception:
-    traceback.print_exc()
+  for attempt, delay in enumerate(SMTP_RETRY_DELAYS):
+    if delay:
+      time.sleep(delay)
+    try:
+      send_login_code(email, code)
+      return True
+    except smtplib.SMTPAuthenticationError:
+      traceback.print_exc()
+      return False
+    except (OSError, smtplib.SMTPConnectError, smtplib.SMTPServerDisconnected):
+      if attempt == len(SMTP_RETRY_DELAYS) - 1:
+        traceback.print_exc()
+        return False
+    except Exception:
+      traceback.print_exc()
+      return False
+  return False
 
 
 def security_headers(handler, content_security_policy=False):

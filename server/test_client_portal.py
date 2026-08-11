@@ -161,5 +161,28 @@ class PortalStoreTests(unittest.TestCase):
     self.assertEqual(len(dashboard["organizations"]), 2)
 
 
+class PortalEmailTests(unittest.TestCase):
+  def test_login_email_retries_transient_network_errors(self):
+    with mock.patch.object(
+      portal, "send_login_code", side_effect=[OSError("dns unavailable"), OSError("timeout"), None]
+    ) as send, mock.patch.object(portal.time, "sleep") as sleep:
+      delivered = portal.send_login_code_safely("client@example.ru", "123456")
+
+    self.assertTrue(delivered)
+    self.assertEqual(send.call_count, 3)
+    self.assertEqual([call.args[0] for call in sleep.call_args_list], [2, 5])
+
+  def test_login_email_does_not_retry_authentication_errors(self):
+    error = portal.smtplib.SMTPAuthenticationError(535, b"authentication failed")
+    with mock.patch.object(portal, "send_login_code", side_effect=error) as send, \
+         mock.patch.object(portal.time, "sleep") as sleep, \
+         mock.patch.object(portal.traceback, "print_exc"):
+      delivered = portal.send_login_code_safely("client@example.ru", "123456")
+
+    self.assertFalse(delivered)
+    send.assert_called_once()
+    sleep.assert_not_called()
+
+
 if __name__ == "__main__":
   unittest.main()
