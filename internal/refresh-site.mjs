@@ -24,6 +24,10 @@ const footerNavigation = `<nav aria-label="Разделы сайта">
         <a class="button button-lime footer-policy-button" href="/policy/">Конфиденциальность и безопасность</a>
       </nav>`;
 const footerButtons = `<div class="footer-buttons"><a class="button button-lime" href="tel:+79789987222">Позвонить</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>`;
+const faviconLinks = `<link rel="icon" href="https://dokumenty82.ru/favicon.png" type="image/png" sizes="120x120" />
+    <link rel="icon" href="https://dokumenty82.ru/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="shortcut icon" href="https://dokumenty82.ru/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="https://dokumenty82.ru/apple-touch-icon.png" sizes="180x180" />`;
 const taxCalendarRoute = "/novosti/nalogovyy-kalendar/";
 const taxCalendarDescription = "Налоговый календарь для ИП и организаций: ближайшие сроки отчетности, уведомлений и платежей в июле и августе 2026 года со ссылками на ФНС.";
 const refreshedNewsRoutes = new Set([
@@ -617,7 +621,11 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202608101710";
+  const siteCssVersion = "202608121730";
+  html = html.replace(
+    /\s*<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon(?:-120)?\.(?:svg|png)"[^>]*\/>\s*(?:<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.svg"[^>]*\/>\s*)?(?:<link rel="(?:alternate|shortcut) icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.ico"[^>]*\/>\s*)?(?:<link rel="apple-touch-icon" href="(?:https:\/\/dokumenty82\.ru)?\/apple-touch-icon\.png"[^>]*\/>\s*)?/i,
+    `\n    ${faviconLinks}\n    `,
+  );
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
   html = html.replace(/<nav aria-label="Разделы сайта">[\s\S]*?<\/nav>/g, footerNavigation);
   html = html.replace(/<div class="footer-buttons">[\s\S]*?<\/div>/g, footerButtons);
