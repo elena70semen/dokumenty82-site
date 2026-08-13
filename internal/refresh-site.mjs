@@ -628,7 +628,7 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202608121730";
+  const siteCssVersion = "202608131315";
   html = html.replace(
     /\s*<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon(?:-120)?\.(?:svg|png)"[^>]*\/>\s*(?:<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.svg"[^>]*\/>\s*)?(?:<link rel="(?:alternate|shortcut) icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.ico"[^>]*\/>\s*)?(?:<link rel="apple-touch-icon" href="(?:https:\/\/dokumenty82\.ru)?\/apple-touch-icon\.png"[^>]*\/>\s*)?/i,
     `\n    ${faviconLinks}\n    `,

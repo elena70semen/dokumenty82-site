@@ -1054,7 +1054,6 @@ h2 {
 
 .news-card,
 .news-article,
-.news-article-body,
 .news-related {
   position: relative;
   overflow: hidden;
@@ -1159,7 +1158,7 @@ h2 {
   display: grid;
   gap: 0.9rem;
   max-width: 980px;
-  padding: clamp(1.2rem, 2.5vw, 1.8rem);
+  padding: 0;
 }
 
 .news-article-body h2 {
