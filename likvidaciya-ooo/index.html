@@ -18,7 +18,7 @@
     <link rel="icon" href="https://dokumenty82.ru/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="shortcut icon" href="https://dokumenty82.ru/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="https://dokumenty82.ru/apple-touch-icon.png" sizes="180x180" />
-    <link rel="stylesheet" href="/assets/site.css?v=202608121730" />
+    <link rel="stylesheet" href="/assets/site.css?v=202608131620" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Можно ли закрыть ООО, если деятельности давно нет?","acceptedAnswer":{"@type":"Answer","text":"Можно рассматривать закрытие, но сначала нужно проверить отчетность, счета, обязательства и сведения ЕГРЮЛ."}},{"@type":"Question","name":"Что делать, если есть старые долги?","acceptedAnswer":{"@type":"Answer","text":"Нужно отдельно разобрать их природу и документы. Это влияет на маршрут и сроки."}},{"@type":"Question","name":"Вы готовите документы для учредителей?","acceptedAnswer":{"@type":"Answer","text":"Мы помогаем собрать и структурировать комплект под ситуацию после проверки вводных."}},{"@type":"Question","name":"Если есть требование ИФНС, можно ли ликвидироваться?","acceptedAnswer":{"@type":"Answer","text":"Сначала нужно разобраться с требованием и понять, как оно влияет на дальнейшие действия."}}]}</script>
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109869928', 'ym');
@@ -208,7 +208,7 @@
           <small>Точный состав и стоимость согласуем до начала работ.</small>
         </div>
         <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Разобрать ситуацию</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>
+        <div class="actions"><a class="button button-lime" href="#quick-lead">Рассчитать ликвидацию</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
         <p class="eyebrow">Ориентиры</p>
@@ -221,6 +221,26 @@
           <li><div class="compact-row"><span>04</span><div><strong>Сроки и результат</strong><small>Результат — понятный план ликвидации ООО и перечень документов, которые нужно собрать или подготовить.</small></div></div></li>
         </ul>
       </aside>
+    </section>
+    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
+      <div class="section-header">
+        <p class="eyebrow">Быстрый запрос</p>
+        <h2 id="quick-lead-title">Оценить ликвидацию ООО</h2>
+        <p>Коротко опишите состояние компании. Проверим подходящий маршрут и от чего зависит итоговая стоимость.</p>
+      </div>
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+        <input type="hidden" name="source_page" value="/likvidaciya-ooo/" />
+        <input type="hidden" name="task_type" value="Ликвидация ООО" />
+        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-grid">
+          <label>Имя<input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться" /></label>
+          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
+          <label class="lead-quick-message">Состояние компании<textarea name="message" rows="3" required placeholder="Есть ли деятельность, долги, сотрудники и текущая отчетность"></textarea></label>
+        </div>
+        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчет</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить файлы</a></div>
+        <p class="form-note" role="status" aria-live="polite"></p>
+      </form>
     </section>
     <section class="section page-rich-section rich-intro-section">
       <p class="eyebrow">Закрытие компании</p>
@@ -451,6 +471,7 @@
       })();
     </script>
     <script src="/assets/metrika-goals.js?v=202608091335" defer></script>
+    <script src="/assets/lead-form.js?v=202608131620" defer></script>
     <script src="/assets/ai-chat.js?v=202608101300" defer></script>
   </body>
 </html>

@@ -18,7 +18,7 @@
     <link rel="icon" href="https://dokumenty82.ru/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="shortcut icon" href="https://dokumenty82.ru/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="https://dokumenty82.ru/apple-touch-icon.png" sizes="180x180" />
-    <link rel="stylesheet" href="/assets/site.css?v=202608121730" />
+    <link rel="stylesheet" href="/assets/site.css?v=202608131620" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Банк просит много документов, нужно отправлять все?","acceptedAnswer":{"@type":"Answer","text":"Сначала разбираем, что относится к запросу. Иногда лучше структурировать ответ по пунктам."}},{"@type":"Question","name":"Можно ли отвечать одним письмом?","acceptedAnswer":{"@type":"Answer","text":"Можно, если письмо связывает документы и объясняет операцию. Без приложений этого часто недостаточно."}},{"@type":"Question","name":"Что делать, если часть документов отсутствует?","acceptedAnswer":{"@type":"Answer","text":"Нужно честно понять, чего нет, и можно ли заменить документ другим подтверждением."}},{"@type":"Question","name":"Вы работаете с запросами по 115-ФЗ?","acceptedAnswer":{"@type":"Answer","text":"Да, но решение по счету принимает банк. Наша задача — подготовить понятный комплект."}}]}</script>
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109869928', 'ym');
@@ -208,7 +208,7 @@
           <small>Точный состав и стоимость согласуем до начала работ.</small>
         </div>
         <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Разобрать ситуацию</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>
+        <div class="actions"><a class="button button-lime" href="#quick-lead">Подготовить ответ</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
         <p class="eyebrow">Ориентиры</p>
@@ -221,6 +221,26 @@
           <li><div class="compact-row"><span>04</span><div><strong>Сроки и результат</strong><small>Результат — структура ответа банку и комплект документов, который можно использовать для дальнейшего согласования.</small></div></div></li>
         </ul>
       </aside>
+    </section>
+    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
+      <div class="section-header">
+        <p class="eyebrow">Быстрый запрос</p>
+        <h2 id="quick-lead-title">Подготовить ответ на запрос банка</h2>
+        <p>Оставьте телефон и краткое содержание запроса. Уточним, какие документы и пояснения потребуются.</p>
+      </div>
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+        <input type="hidden" name="source_page" value="/otvet-na-zapros-banka/" />
+        <input type="hidden" name="task_type" value="Ответ на запрос банка" />
+        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-grid">
+          <label>Имя<input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться" /></label>
+          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
+          <label class="lead-quick-message">Запрос банка<textarea name="message" rows="3" required placeholder="Какой банк, что запросил и какой срок ответа"></textarea></label>
+        </div>
+        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+        <div class="lead-form-actions"><button class="button button-lime" type="submit">Подготовить ответ</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить файлы</a></div>
+        <p class="form-note" role="status" aria-live="polite"></p>
+      </form>
     </section>
     <section class="section page-rich-section rich-intro-section">
       <p class="eyebrow">Банк</p>
@@ -451,6 +471,7 @@
       })();
     </script>
     <script src="/assets/metrika-goals.js?v=202608091335" defer></script>
+    <script src="/assets/lead-form.js?v=202608131620" defer></script>
     <script src="/assets/ai-chat.js?v=202608101300" defer></script>
   </body>
 </html>

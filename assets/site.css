@@ -1412,6 +1412,42 @@ h2 {
   scroll-margin-top: 96px;
 }
 
+.lead-quick-section {
+  scroll-margin-top: 96px;
+}
+
+.lead-quick-section .section-header {
+  margin-bottom: 1rem;
+}
+
+.lead-quick-section .section-header p:last-child {
+  max-width: 760px;
+}
+
+.lead-quick-form {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+}
+
+.lead-quick-form .form-grid {
+  display: contents;
+}
+
+.lead-quick-form .lead-quick-message {
+  grid-column: 1 / -1;
+}
+
+.lead-quick-form .lead-consent,
+.lead-quick-form .lead-form-actions,
+.lead-quick-form .form-note {
+  grid-column: 1 / -1;
+}
+
+.lead-quick-form textarea {
+  min-height: 98px;
+  resize: vertical;
+}
+
 .lead-capture-form {
   width: min(calc(100% - 36px), 1180px);
   margin-inline: auto;
@@ -3162,6 +3198,14 @@ body.ai-chat-open .cookie-notice {
 
   .form-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lead-quick-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lead-quick-form .form-grid {
+    display: grid;
   }
 
   .rich-card-grid.two > .rich-card:last-child:nth-child(odd) .rich-list {
