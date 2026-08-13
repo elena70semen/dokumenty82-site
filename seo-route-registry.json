@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-04",
+  "version": "2026-08-13",
   "owner_decisions": {
     "/policy/": "index, follow; keep in sitemap",
     "/blog/": "approved for indexing",
@@ -33,6 +33,8 @@
     "/nedostovernost-yuridicheskogo-adresa/",
     "/novosti/",
     "/novosti/nalogovyy-kalendar/",
+    "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+    "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
     "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
     "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
     "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",

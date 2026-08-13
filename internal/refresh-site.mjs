@@ -29,7 +29,8 @@ const faviconLinks = `<link rel="icon" href="https://dokumenty82.ru/favicon.png"
     <link rel="shortcut icon" href="https://dokumenty82.ru/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="https://dokumenty82.ru/apple-touch-icon.png" sizes="180x180" />`;
 const taxCalendarRoute = "/novosti/nalogovyy-kalendar/";
-const taxCalendarDescription = "Налоговый календарь для ИП и организаций: ближайшие сроки отчетности, уведомлений и платежей в июле и августе 2026 года со ссылками на ФНС.";
+const taxCalendarDescription = "Налоговый календарь для ИП и организаций: ближайшие сроки отчетности, уведомлений и платежей в августе и сентябре 2026 года со ссылками на ФНС.";
+const orderedNewsItems = [...newsItems].sort((left, right) => right.dateIso.localeCompare(left.dateIso));
 const refreshedNewsRoutes = new Set([
   "/novosti/",
   "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
@@ -303,14 +304,14 @@ const buildTaxCalendarMain = () => `<main>
         <div class="actions"><a class="button button-lime" href="#calendar">Показать сроки</a><a class="button button-ghost" href="/novosti/">Все новости</a></div>
       </div>
       <aside class="calendar-hero-status" aria-label="Ближайший налоговый срок">
-        <time datetime="2026-07-27">27</time>
-        <strong>июля 2026 года</strong>
-        <span>Ближайший общий срок для части отчетности и уведомлений. Состав обязанностей зависит от режима, работников, имущества и операций.</span>
+        <time datetime="2026-08-25">25</time>
+        <strong>августа 2026 года</strong>
+        <span>Ближайший общий срок для уведомлений и части отчетности. Состав обязанностей зависит от режима, работников и операций.</span>
       </aside>
     </section>
     <section class="section" id="calendar" data-tax-calendar>
       <div class="section-header">
-        <p class="eyebrow">Июль — август 2026</p>
+        <p class="eyebrow">Август — сентябрь 2026</p>
         <h2>Выберите свои контрольные даты</h2>
         <p>Календарь разделяет представление отчетности, уведомление об исчисленных суммах и фактическую уплату. Это разные действия, даже когда сроки стоят рядом.</p>
       </div>
@@ -318,8 +319,8 @@ const buildTaxCalendarMain = () => `<main>
         <div class="calendar-filter-set" aria-label="Месяц">
           <span class="calendar-filter-label">Месяц</span>
           <button class="calendar-filter-button is-active" type="button" data-calendar-month="all" aria-pressed="true">Все</button>
-          <button class="calendar-filter-button" type="button" data-calendar-month="july" aria-pressed="false">Июль</button>
           <button class="calendar-filter-button" type="button" data-calendar-month="august" aria-pressed="false">Август</button>
+          <button class="calendar-filter-button" type="button" data-calendar-month="september" aria-pressed="false">Сентябрь</button>
         </div>
         <div class="calendar-filter-set" aria-label="Кому относится">
           <span class="calendar-filter-label">Кому относится</span>
@@ -330,67 +331,43 @@ const buildTaxCalendarMain = () => `<main>
           <button class="calendar-filter-button" type="button" data-calendar-group="usn" aria-pressed="false">УСН</button>
           <button class="calendar-filter-button" type="button" data-calendar-group="vat" aria-pressed="false">НДС</button>
         </div>
-        <strong class="calendar-result-count" data-calendar-count aria-live="polite">6 сроков</strong>
+        <strong class="calendar-result-count" data-calendar-count aria-live="polite">4 срока</strong>
       </div>
       <div class="tax-calendar-list">
-        <article class="tax-calendar-entry" id="july-27" data-calendar-entry data-month="july" data-groups="ip ooo employers usn vat">
-          <time class="calendar-entry-date" datetime="2026-07-27"><strong>27</strong><span>июля</span></time>
-          <div class="calendar-entry-copy">
-            <h3>Отчетность за полугодие и уведомления об исчисленных суммах</h3>
-            <p>Для части бизнеса наступает срок декларации по НДС за II квартал, 6-НДФЛ и расчета по страховым взносам за полугодие, персонифицированных сведений за июнь, а также уведомлений по НДФЛ, УСН и имущественным авансам. Проверяйте только обязанности своего режима.</p>
-            <div class="calendar-entry-tags"><span>ИП</span><span>ООО</span><span>работодатели</span><span>УСН</span><span>НДС</span></div>
-          </div>
-          <div class="calendar-entry-action">
-            <p>Подготовить отчет, уведомление, квитанцию приема и таблицу сумм к уплате.</p>
-            <a class="news-more" href="https://www.nalog.gov.ru/rn62/news/activities_fts/16636561/" rel="nofollow noopener" target="_blank">Источник ФНС</a>
-          </div>
-        </article>
-        <article class="tax-calendar-entry" id="july-28" data-calendar-entry data-month="july" data-groups="ip ooo employers usn vat">
-          <time class="calendar-entry-date" datetime="2026-07-28"><strong>28</strong><span>июля</span></time>
-          <div class="calendar-entry-copy">
-            <h3>Уплата июльских налогов, авансов и страховых взносов</h3>
-            <p>В зависимости от ситуации перечисляются НДФЛ за 1–22 июля, страховые взносы за июнь, аванс по УСН за полугодие, имущественные авансы организаций и первая треть НДС за II квартал. До платежа сверьте начисления и сальдо ЕНС.</p>
-            <div class="calendar-entry-tags"><span>ЕНС</span><span>УСН</span><span>НДФЛ</span><span>взносы</span><span>НДС</span></div>
-          </div>
-          <div class="calendar-entry-action">
-            <p>Сопоставить платеж с отчетом или уведомлением и сохранить подтверждение банка.</p>
-            <a class="news-more" href="/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/">Разбор двух дат</a>
-          </div>
-        </article>
-        <article class="tax-calendar-entry" id="august-3" data-calendar-entry data-month="august" data-groups="ip ooo employers">
-          <time class="calendar-entry-date" datetime="2026-08-03"><strong>03</strong><span>августа</span></time>
-          <div class="calendar-entry-copy">
-            <h3>Уведомление по НДФЛ за 23–31 июля</h3>
-            <p>Налоговые агенты представляют уведомление об исчисленном и удержанном НДФЛ за последнюю часть июля. ФНС указывает для этого периода код 33/11; нулевое уведомление без начислений не требуется.</p>
-            <div class="calendar-entry-tags"><span>работодатели</span><span>НДФЛ</span><span>уведомление</span></div>
-          </div>
-          <div class="calendar-entry-action">
-            <p>Сверить выплаты, даты удержания, сумму и код периода до подписания.</p>
-            <a class="news-more" href="https://www.nalog.gov.ru/rn62/news/activities_fts/16636561/" rel="nofollow noopener" target="_blank">Источник ФНС</a>
-          </div>
-        </article>
-        <article class="tax-calendar-entry" id="august-5" data-calendar-entry data-month="august" data-groups="ip ooo employers">
-          <time class="calendar-entry-date" datetime="2026-08-05"><strong>05</strong><span>августа</span></time>
-          <div class="calendar-entry-copy">
-            <h3>Уплата НДФЛ, удержанного 23–31 июля</h3>
-            <p>После уведомления налоговые агенты перечисляют НДФЛ за завершающий период июля. Проверьте, что сумма уведомления совпадает с регистрами по зарплате и обязательство корректно отражено на ЕНС.</p>
-            <div class="calendar-entry-tags"><span>работодатели</span><span>НДФЛ</span><span>ЕНС</span></div>
-          </div>
-          <div class="calendar-entry-action">
-            <p>Проверить платеж и отражение суммы по нужному обязательству.</p>
-            <a class="news-more" href="/sverka-s-nalogovoy/">Перейти к сверке</a>
-          </div>
-        </article>
         <article class="tax-calendar-entry" id="august-25" data-calendar-entry data-month="august" data-groups="ip ooo employers vat">
           <time class="calendar-entry-date" datetime="2026-08-25"><strong>25</strong><span>августа</span></time>
           <div class="calendar-entry-copy">
             <h3>Сведения за июль и уведомление по НДФЛ за 1–22 августа</h3>
-            <p>Работодатели готовят персонифицированные сведения за июль и уведомление по НДФЛ за период с 1 по 22 августа. Для организаций на ежемесячной отчетности могут возникать отдельные обязанности по налогу на прибыль; плательщики НДС проверяют вторую часть платежного цикла за II квартал.</p>
+            <p>Работодатели готовят персонифицированные сведения за июль, уведомление по НДФЛ за период с 1 по 22 августа с кодом 33/02 и уведомление по страховым взносам за июль с кодом 33/01. Другие обязанности проверяются по режиму и операциям.</p>
             <div class="calendar-entry-tags"><span>работодатели</span><span>НДФЛ</span><span>перссведения</span><span>организации</span></div>
           </div>
           <div class="calendar-entry-action">
             <p>Разделить отчетные сведения и уведомление по конкретному налогу.</p>
-            <a class="news-more" href="https://www.nalog.gov.ru/rn77/calendar/" rel="nofollow noopener" target="_blank">Календарь ФНС</a>
+            <a class="news-more" href="/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/">Разбор 25 и 28 августа</a>
+          </div>
+        </article>
+        <article class="tax-calendar-entry" id="september-1" data-calendar-entry data-month="september" data-groups="ip ooo employers">
+          <time class="calendar-entry-date" datetime="2026-09-01"><strong>01</strong><span>сентября</span></time>
+          <div class="calendar-entry-copy">
+            <h3>Новые требования к КЭП для отчетности в СФР</h3>
+            <p>В квалифицированном сертификате, используемом для отчетности в СФР, должен присутствовать атрибут keyAgreement — «Согласование ключей». Более ранний сертификат при отсутствии атрибута нужно перевыпустить заранее.</p>
+            <div class="calendar-entry-tags"><span>КЭП</span><span>СФР</span><span>отчетность</span></div>
+          </div>
+          <div class="calendar-entry-action">
+            <p>Проверить состав сертификата, установить новый и провести тест подписи.</p>
+            <a class="news-more" href="/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/">Как проверить КЭП</a>
+          </div>
+        </article>
+        <article class="tax-calendar-entry" id="september-3" data-calendar-entry data-month="september" data-groups="ip ooo employers">
+          <time class="calendar-entry-date" datetime="2026-09-03"><strong>03</strong><span>сентября</span></time>
+          <div class="calendar-entry-copy">
+            <h3>Уведомление по НДФЛ за 23–31 августа</h3>
+            <p>Налоговые агенты представляют уведомление по НДФЛ за завершающий период августа с кодом 33/12. Нулевое уведомление при отсутствии выплат физическим лицам за этот период не требуется.</p>
+            <div class="calendar-entry-tags"><span>работодатели</span><span>НДФЛ</span><span>33/12</span></div>
+          </div>
+          <div class="calendar-entry-action">
+            <p>Сверить выплаты, удержание налога, код периода и протокол приема.</p>
+            <a class="news-more" href="https://www.nalog.gov.ru/rn16/ens/" rel="nofollow noopener" target="_blank">Правила ЕНС у ФНС</a>
           </div>
         </article>
         <article class="tax-calendar-entry" id="august-28" data-calendar-entry data-month="august" data-groups="ip ooo employers vat">
@@ -410,13 +387,13 @@ const buildTaxCalendarMain = () => `<main>
     </section>
     <section class="section page-rich-section route-graphic-panel">
       <div class="section-header">
-        <p class="eyebrow">С 1 августа</p>
-        <h2>Налоговые уведомления появятся на Госуслугах автоматически</h2>
-        <p>Это изменение касается способа доставки имущественных уведомлений физическим лицам. Оно не выполняет оплату автоматически и не заменяет проверку объектов, льгот и сумм.</p>
+        <p class="eyebrow">До 1 сентября</p>
+        <h2>Проверьте КЭП для отчетности в СФР</h2>
+        <p>Срок действия сертификата не подтверждает наличие нового обязательного атрибута. В составе должно быть значение keyAgreement — «Согласование ключей».</p>
       </div>
       <div class="calendar-notice">
-        <p>Проверьте доступ к Госуслугам и Личному кабинету ФНС заранее. Если в документе будет неверный объект или период, сначала соберите подтверждение расхождения.</p>
-        <a class="button button-lime" href="/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/">Что изменится</a>
+        <p>Сертификаты ЮЛ и ИП, выпущенные УЦ ФНС после 28 августа 2025 года, уже содержат атрибут. Более ранние сертификаты нужно проверить и при необходимости перевыпустить.</p>
+        <a class="button button-lime" href="/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/">Проверить КЭП</a>
       </div>
     </section>
     <section class="section">
@@ -434,7 +411,7 @@ const buildTaxCalendarMain = () => `<main>
     </section>
     <section class="section">
       <div class="calendar-notice">
-        <p>Даты сверены с официальными материалами ФНС на 25 июля 2026 года. Перед отправкой документа проверяйте актуальный календарь ФНС и свою фактическую обязанность.</p>
+        <p>Даты и правила сверены с официальными материалами ФНС на 13 августа 2026 года. Перед отправкой документа проверяйте актуальный календарь ФНС и свою фактическую обязанность.</p>
         <a class="button button-ghost" href="https://www.nalog.gov.ru/rn77/calendar/" rel="nofollow noopener" target="_blank">Официальный календарь ФНС</a>
       </div>
     </section>
@@ -452,27 +429,25 @@ const refreshTaxCalendarPage = (html) => {
         url: expectedCanonical,
         name: "Налоговый календарь для ИП и организаций",
         description: taxCalendarDescription,
-        dateModified: "2026-07-25",
+        dateModified: "2026-08-13",
         inLanguage: "ru-RU",
         isPartOf: { "@id": "https://dokumenty82.ru/#website" },
         about: { "@id": "https://dokumenty82.ru/#business" },
       },
       {
         "@type": "ItemList",
-        name: "Ближайшие налоговые сроки июля и августа 2026 года",
-        numberOfItems: 6,
+        name: "Ближайшие сроки августа и сентября 2026 года",
+        numberOfItems: 4,
         itemListElement: [
-          ["2026-07-27", "Отчетность и уведомления"],
-          ["2026-07-28", "Налоговые платежи"],
-          ["2026-08-03", "Уведомление по НДФЛ"],
-          ["2026-08-05", "Уплата НДФЛ"],
           ["2026-08-25", "Сведения и уведомления"],
           ["2026-08-28", "НДФЛ, взносы и НДС"],
+          ["2026-09-01", "КЭП для отчетности в СФР"],
+          ["2026-09-03", "Уведомление по НДФЛ"],
         ].map(([date, name], index) => ({
           "@type": "ListItem",
           position: index + 1,
           name: `${date}: ${name}`,
-          url: `${expectedCanonical}#${date.startsWith("2026-07") ? "july" : "august"}-${Number(date.slice(-2))}`,
+          url: `${expectedCanonical}#${date.startsWith("2026-08") ? "august" : "september"}-${Number(date.slice(-2))}`,
         })),
       },
     ],
@@ -485,7 +460,7 @@ const refreshTaxCalendarPage = (html) => {
   html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${taxCalendarDescription}" />`);
   html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/i, `<meta property="og:url" content="${expectedCanonical}" />`);
   html = html.replace(
-    /\s*<!-- d82-service-schema:start -->[\s\S]*?<!-- d82-service-schema:end -->/,
+    /\s*<!-- d82-(?:service|calendar)-schema:start -->[\s\S]*?<!-- d82-(?:service|calendar)-schema:end -->/,
     `\n    <!-- d82-calendar-schema:start -->\n    <script type="application/ld+json">${JSON.stringify(schema)}</script>\n    <!-- d82-calendar-schema:end -->`,
   );
   html = html.replace(/<main>[\s\S]*?<\/main>/i, buildTaxCalendarMain());
@@ -562,7 +537,7 @@ const refreshRegisteredNews = (html, item) => {
 };
 
 const refreshNewsHub = (html) => {
-  const cards = newsItems.map((item) => `
+  const cards = orderedNewsItems.map((item) => `
         <article class="news-card${item.badge ? " is-fresh" : ""}">
           ${item.badge ? `<div class="news-meta-row"><div class="news-meta">${escapeHtml(item.date)}</div><span class="news-fresh">${escapeHtml(item.badge)}</span></div>` : `<div class="news-meta">${escapeHtml(item.date)}</div>`}
           <h3><a href="${item.route}">${escapeHtml(item.title)}</a></h3>
@@ -573,23 +548,55 @@ const refreshNewsHub = (html) => {
   const grid = `<div class="news-grid news-feed" data-news-feed tabindex="0" aria-label="Лента новостей ФНС">${cards}
       </div>`;
   html = html.replace(/<div class="news-grid news-feed"[\s\S]*?<\/div>\s*<\/section>/i, `${grid}\n    </section>`);
-  html = html.replace(/<span class="news-feed-total">\d+ публикаций<\/span>/, `<span class="news-feed-total">${newsItems.length} публикаций</span>`);
-  html = html.replace(/<span class="news-feed-position"([^>]*)>\d+ \/ \d+<\/span>/, `<span class="news-feed-position"$1>01 / ${String(newsItems.length).padStart(2, "0")}</span>`);
+  html = html.replace(/<span class="news-feed-total">\d+ публикаций<\/span>/, `<span class="news-feed-total">${orderedNewsItems.length} публикаций</span>`);
+  html = html.replace(/<span class="news-feed-position"([^>]*)>\d+ \/ \d+<\/span>/, `<span class="news-feed-position"$1>01 / ${String(orderedNewsItems.length).padStart(2, "0")}</span>`);
   const calendarPromo = `<section class="section calendar-promo-section">
       <div class="calendar-promo">
         <div>
-          <p class="eyebrow">Новый инструмент</p>
+          <p class="eyebrow">Обновлено 13 августа</p>
           <h2>Налоговый календарь для ИП и организаций</h2>
-          <p>Ближайшие отчеты, уведомления и платежи на июль и август 2026 года. Фильтры по ИП, ООО, работодателям, УСН и НДС помогают быстро оставить только свои даты.</p>
-          <div class="actions"><a class="button button-lime" href="${taxCalendarRoute}">Открыть календарь</a><a class="button button-ghost" href="/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/">Сроки 27–28 июля</a></div>
+          <p>Ближайшие отчеты, уведомления и платежи на август и начало сентября 2026 года. Фильтры по ИП, ООО, работодателям, УСН и НДС помогают быстро оставить только свои даты.</p>
+          <div class="actions"><a class="button button-lime" href="${taxCalendarRoute}">Открыть календарь</a><a class="button button-ghost" href="/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/">Сроки 25–28 августа</a></div>
         </div>
-        <div class="calendar-next-date" aria-label="Ближайший срок 27 июля"><div><strong>27</strong><span>июля · ближайший срок</span></div></div>
+        <div class="calendar-next-date" aria-label="Ближайший срок 25 августа"><div><strong>25</strong><span>августа · ближайший срок</span></div></div>
       </div>
     </section>`;
   if (html.includes('<section class="section calendar-promo-section">')) {
     html = html.replace(/<section class="section calendar-promo-section">[\s\S]*?<\/section>/i, calendarPromo);
   } else {
     html = html.replace(/(<\/section>\s*)(<section class="section">)/i, `$1${calendarPromo}\n    $2`);
+  }
+  return html;
+};
+
+const buildBlogCurrentSection = () => `<section class="section page-rich-section route-graphic-panel blog-current-section">
+      <div class="section-header">
+        <p class="eyebrow">Актуально на 13 августа</p>
+        <h2>Что бизнесу проверить сейчас</h2>
+        <p>Три практические задачи второй половины августа: электронная подпись для СФР, отчетность и платежи 25–28 августа, контроль порога НДС у бизнеса на УСН.</p>
+      </div>
+      <div class="card-grid two rich-card-grid">
+        <a class="glass-card rich-card" href="/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/"><span>01</span><h3>Проверить КЭП до 1 сентября</h3><p>В сертификате для отчетности в СФР должен быть атрибут keyAgreement. Срок действия КЭП сам по себе этого не подтверждает.</p></a>
+        <a class="glass-card rich-card" href="/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/"><span>02</span><h3>Разделить сроки 25 и 28 августа</h3><p>Сначала документы и уведомления, затем платежи. Состав обязанностей зависит от режима, работников и операций.</p></a>
+        <a class="glass-card rich-card" href="/nds-pri-usn-2026/"><span>03</span><h3>Сверить доходы УСН для НДС</h3><p>Для 2026 года контрольная граница — 20 млн рублей. После превышения обязанности начинаются с первого числа следующего месяца.</p></a>
+        <a class="glass-card rich-card" href="/novosti/nalogovyy-kalendar/"><span>04</span><h3>Поставить ближайшие даты в контроль</h3><p>Календарь обновлен на август и начало сентября: НДФЛ, взносы, НДС, сведения и техническая готовность КЭП.</p></a>
+      </div>
+    </section>`;
+
+const refreshBlogHub = (html) => {
+  const fullTitle = "Блог для бизнеса: налоги, отчётность и документы | Документы для бизнеса";
+  const description = "Практический блог для ИП и ООО в Симферополе: актуальные разборы налогов, отчётности, требований ИФНС, запросов банка и регистрационных задач.";
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${fullTitle}</title>`);
+  html = html.replace(/<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${description}" />`);
+  html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${fullTitle}" />`);
+  html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${description}" />`);
+  html = html.replace(/(<h1>)Блог: разборы документов для бизнеса(<\/h1>)/, "$1Блог: практические разборы для бизнеса$2");
+  html = html.replace("Разборы ситуаций, маршруты подготовки документов и переходы к полезным разделам сайта без дубля официальных новостей.", "Актуальные разборы налогов, отчетности и документов: от официального изменения до понятного действия для ИП или ООО.");
+  const section = buildBlogCurrentSection();
+  if (html.includes('class="section page-rich-section route-graphic-panel blog-current-section"')) {
+    html = html.replace(/<section class="section page-rich-section route-graphic-panel blog-current-section">[\s\S]*?<\/section>/i, section);
+  } else {
+    html = html.replace(/(<\/section>\s*)(<section class="section">)/i, `$1${section}\n    $2`);
   }
   return html;
 };
@@ -687,6 +694,7 @@ for (const file of walk(root)) {
     html = refreshed;
   }
   if (route === "/novosti/") html = refreshNewsHub(html);
+  if (route === "/blog/") html = refreshBlogHub(html);
   if (route === "/blog/razbory/") html = refreshBlogRazbory(html);
 
   if (html !== before) {
