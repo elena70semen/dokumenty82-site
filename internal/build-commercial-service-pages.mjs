@@ -67,14 +67,14 @@ const pages = [
   {
     route: "/sdacha-otchetnosti-ip/",
     title: "Сдача отчётности ИП в Симферополе | от 3 000 ₽",
-    description: "Сдача отчётности ИП в Симферополе: определим обязательные формы по режиму, операциям и сотрудникам, проверим данные и подготовим комплект. От 3 000 ₽.",
+    description: "Сдача отчётности ИП в Симферополе: УСН, патент, ОСНО и формы по сотрудникам. Проверим период, операции и данные, подготовим комплект. От 3 000 ₽.",
     h1: "Сдача отчётности ИП в Симферополе",
     serviceName: "Сдача отчётности ИП",
     price: 3000,
     parentRoute: "/otchetnost/",
     parentName: "Отчётность",
     eyebrow: "Отчётность ИП",
-    hero: "Определим обязательные формы по режиму, операциям и сотрудникам, проверим исходные данные и соберём комплект для сдачи отчётности ИП.",
+    hero: "Определим обязательные формы ИП по УСН, патенту или ОСНО, учтём операции и сотрудников, проверим данные и соберём комплект для сдачи.",
     introTitle: "Состав отчётности ИП зависит не только от налогового режима",
     intro: [
       "У двух предпринимателей на одном режиме может быть разный набор обязанностей: влияют сотрудники, касса, имущество, импорт, агентские операции и дата регистрации или прекращения деятельности.",
@@ -126,14 +126,14 @@ const pages = [
   {
     route: "/sdacha-otchetnosti-ooo/",
     title: "Сдача отчётности ООО в Симферополе | от 5 000 ₽",
-    description: "Сдача отчётности ООО в Симферополе: бухгалтерская, налоговая и зарплатная отчётность, проверка учёта и контрольных показателей. Стоимость от 5 000 ₽.",
+    description: "Сдача отчётности ООО в Симферополе: бухгалтерская отчётность, налоги, НДС и формы по сотрудникам. Сверим регистры и подготовим комплект. От 5 000 ₽.",
     h1: "Сдача отчётности ООО в Симферополе",
     serviceName: "Сдача отчётности ООО",
     price: 5000,
     parentRoute: "/otchetnost/",
     parentName: "Отчётность",
     eyebrow: "Отчётность ООО",
-    hero: "Соберём бухгалтерскую, налоговую и зарплатную отчётность ООО по фактическому режиму, операциям и данным учёта.",
+    hero: "Соберём бухгалтерскую, налоговую и зарплатную отчётность ООО, учтём НДС и сотрудников, сверим показатели с регистрами и данными учёта.",
     introTitle: "Отчётность ООО должна сходиться между формами и регистрами",
     intro: [
       "Для организации недостаточно заполнить одну декларацию. Бухгалтерская отчётность, налоги, сведения по сотрудникам и уведомления должны соответствовать друг другу и данным учёта.",
@@ -396,7 +396,7 @@ const serviceSchema = (page) => {
         ],
         offers: {
           "@type": "Offer",
-          price: String(page.price),
+          price: page.price,
           priceCurrency: "RUB",
           url,
           availability: "https://schema.org/InStock",
@@ -524,7 +524,11 @@ for (const page of pages) {
   html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/>/i, `<meta property="og:description" content="${escapeHtml(page.description)}" />`);
   html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/>/i, `<meta property="og:url" content="${url}" />`);
   html = html.replace(/<script type="application\/ld\+json">\{"@context":"https:\/\/schema\.org","@type":"FAQPage"[\s\S]*?<\/script>/i, `<script type="application/ld+json">${JSON.stringify(faqSchema(page))}</script>`);
-  html = html.replace(/<!-- d82-service-schema:start -->[\s\S]*?<!-- d82-service-schema:end -->/i, `<!-- d82-service-schema:start -->\n    <script type="application/ld+json">\n${JSON.stringify(serviceSchema(page), null, 6)}\n    </script>\n    <!-- d82-service-schema:end -->`);
+  const serviceJson = JSON.stringify(serviceSchema(page), null, 2)
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+  html = html.replace(/<!-- d82-service-schema:start -->[\s\S]*?<!-- d82-service-schema:end -->/i, `<!-- d82-service-schema:start -->\n    <script type="application/ld+json">\n${serviceJson}\n    </script>\n    <!-- d82-service-schema:end -->`);
   html = html.replace(/<main>[\s\S]*?<\/main>/i, mainHtml(page));
   html = html.replace(/[ \t]+$/gm, "");
 
