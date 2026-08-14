@@ -4,8 +4,8 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const route = "/buhgalterskie-uslugi/";
 const url = `https://dokumenty82.ru${route}`;
-const title = "Бухгалтерские услуги в Симферополе для ИП и ООО | от 10 000 ₽";
-const description = "Бухгалтерские услуги в Симферополе для ИП и ООО: ведение учёта, отчётность, налоги, сотрудники, восстановление учёта и ответы ИФНС. От 10 000 ₽ в месяц.";
+const title = "Бухгалтерские услуги и сопровождение в Симферополе | ИП и ООО";
+const description = "Бухгалтерские услуги и сопровождение ИП и ООО в Симферополе: учёт, отчётность, налоги и сотрудники. От 10 000 ₽ в месяц, офис на ул. Мате Залки, 1.";
 const template = fs.readFileSync(path.join(root, "registraciya-i-likvidaciya", "index.html"), "utf8");
 
 const faq = [
@@ -30,7 +30,7 @@ const serviceSchema = {
       "@type": "WebPage",
       "@id": `${url}#webpage`,
       url,
-      name: "Бухгалтерские услуги в Симферополе для ИП и ООО",
+      name: "Бухгалтерские услуги и сопровождение ИП и ООО в Симферополе",
       description,
       inLanguage: "ru-RU",
       isPartOf: { "@id": "https://dokumenty82.ru/#website" },
@@ -87,7 +87,7 @@ const main = `<main>
     <section class="hero hero-inner hero-stack">
       <div class="glass-panel hero-copy-panel">
         <p class="eyebrow">Бухгалтерия для бизнеса</p>
-        <h1>Бухгалтерские услуги в Симферополе для ИП и ООО</h1>
+        <h1>Бухгалтерские услуги и сопровождение ИП и ООО в Симферополе</h1>
         <p>Ведём бухгалтерский и налоговый учёт, готовим отчётность, контролируем обязательные сроки и разбираем требования ИФНС. Состав работы определяем по фактической нагрузке бизнеса.</p>
         <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Обсудить задачу</a><a class="button button-ghost" href="/ceny/">Тарифы и цены</a></div>
       </div>
@@ -191,8 +191,8 @@ let html = template
   .replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
   .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${description}" />`)
   .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${url}" />`)
-  .replace(/<meta property="og:title" content="[^"]*" \/>/, '<meta property="og:title" content="Бухгалтерские услуги в Симферополе для ИП и ООО" />')
-  .replace(/<meta property="og:description" content="[^"]*" \/>/, '<meta property="og:description" content="Сопровождение, отчётность, налоги и восстановление учёта для бизнеса." />')
+  .replace(/<meta property="og:title" content="[^"]*" \/>/, '<meta property="og:title" content="Бухгалтерские услуги и сопровождение в Симферополе" />')
+  .replace(/<meta property="og:description" content="[^"]*" \/>/, '<meta property="og:description" content="Учёт, отчётность, налоги и сотрудники для ИП и ООО. Офис на ул. Мате Залки, 1." />')
   .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`)
   .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`)
   .replace(/<!-- d82-service-schema:start -->[\s\S]*?<!-- d82-service-schema:end -->/, `<!-- d82-service-schema:start -->\n    <script type="application/ld+json">${JSON.stringify(serviceSchema)}</script>\n    <!-- d82-service-schema:end -->`)
