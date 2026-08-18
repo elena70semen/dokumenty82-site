@@ -96,6 +96,19 @@ const shorten = (value, max = 150) => {
   return `${clipped.slice(0, boundary > 85 ? boundary + 1 : max).trim()}…`;
 };
 
+const orientationTargetId = (index) => `orientation-detail-${String(index + 1).padStart(2, "0")}`;
+
+const addOrientationTargetIds = (html) => {
+  let index = 0;
+  return html.replace(/<article class="glass-card[^\"]*rich-card[^\"]*"([^>]*)>/gi, (match, attributes) => {
+    if (index >= 4) return match;
+    const id = orientationTargetId(index);
+    index += 1;
+    if (/\bid\s*=/.test(attributes)) return match;
+    return match.replace(/>$/, ` id="${id}">`);
+  });
+};
+
 const removeLocation = (value) => value
   .replace(/\s+в Симферополе/gi, "")
   .replace(/\s+для бизнеса/gi, "")
@@ -145,7 +158,7 @@ const buildHeroAside = ({ topic, sectionHeaders, cards }) => {
     });
   }
   const items = selectedCards.map((card, index) => `
-          <li><div class="compact-row"><span>${String(index + 1).padStart(2, "0")}</span><div><strong>${escapeHtml(card.title)}</strong><small>${escapeHtml(shorten(card.description))}</small></div></div></li>`).join("");
+          <li><a href="#${orientationTargetId(index)}"><span>${String(index + 1).padStart(2, "0")}</span><div><strong>${escapeHtml(card.title)}</strong><small>${escapeHtml(shorten(card.description))}</small></div></a></li>`).join("");
   return `<aside class="glass-panel hero-choice-panel">
         <p class="eyebrow">${escapeHtml(lead?.eyebrow || "Ориентиры")}</p>
         <h2>Перед работой: ${escapeHtml(topic)}</h2>
@@ -161,6 +174,7 @@ const refreshServicePage = (html) => {
   if (!context.h1) return html;
 
   html = html.replace(/<aside class="glass-panel hero-choice-panel">[\s\S]*?<\/aside>/i, buildHeroAside(context));
+  html = addOrientationTargetIds(html);
   html = html.replaceAll(repeatedCopy.practical, `Ниже собраны проверки и документы именно для задачи «${context.topic}»; соседние вопросы вынесены в отдельные маршруты.`);
   html = html.replaceAll(repeatedCopy.process, `Порядок работы по теме «${context.topic}» начинается с основания и периода, затем переходит к проверке комплекта и контрольному следующему шагу.`);
   html = html.replaceAll(repeatedCopy.assurance, `По задаче «${context.topic}» мы отвечаем за логику проверки и качество подготовки материалов. Решение уполномоченного органа, банка или другой стороны процедуры зависит от фактических данных.`);
@@ -628,7 +642,7 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202608131315";
+  const siteCssVersion = "202608181225";
   html = html.replace(
     /\s*<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon(?:-120)?\.(?:svg|png)"[^>]*\/>\s*(?:<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.svg"[^>]*\/>\s*)?(?:<link rel="(?:alternate|shortcut) icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.ico"[^>]*\/>\s*)?(?:<link rel="apple-touch-icon" href="(?:https:\/\/dokumenty82\.ru)?\/apple-touch-icon\.png"[^>]*\/>\s*)?/i,
     `\n    ${faviconLinks}\n    `,

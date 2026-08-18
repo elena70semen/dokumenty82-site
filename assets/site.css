@@ -829,10 +829,18 @@ h2 {
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     inset 0 -14px 28px rgba(5, 9, 14, 0.16);
   color: inherit;
-  cursor: pointer;
+  cursor: default;
   backdrop-filter: blur(18px) saturate(1.1);
   text-decoration: none;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.compact-list a {
+  cursor: pointer;
+}
+
+[id^="orientation-detail-"] {
+  scroll-margin-top: 118px;
 }
 
 .compact-list a::before,

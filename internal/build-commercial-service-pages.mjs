@@ -411,8 +411,8 @@ const serviceSchema = (page) => {
   };
 };
 
-const cards = (items) => items.map((item, index) => `
-        <article class="glass-card rich-card">
+const cards = (items, { orientationTargets = false } = {}) => items.map((item, index) => `
+        <article class="glass-card rich-card"${orientationTargets && index < 4 ? ` id="orientation-detail-${String(index + 1).padStart(2, "0")}"` : ""}>
           <span>${String(index + 1).padStart(2, "0")}</span>
           <p>${escapeHtml(item)}</p>
         </article>`).join("");
@@ -438,7 +438,7 @@ const mainHtml = (page) => `<main>
         <p class="eyebrow">Перед началом</p>
         <h2>Что определяет маршрут</h2>
         <ul class="compact-list">
-          ${page.inputs.slice(0, 4).map((item, index) => `<li><div class="compact-row"><span>${String(index + 1).padStart(2, "0")}</span><div><strong>${index === 0 ? "Статус и период" : index === 1 ? "Операции" : index === 2 ? "Документы" : "Связанные обязанности"}</strong><small>${escapeHtml(item)}</small></div></div></li>`).join("\n          ")}
+          ${page.inputs.slice(0, 4).map((item, index) => `<li><a href="#orientation-detail-${String(index + 1).padStart(2, "0")}"><span>${String(index + 1).padStart(2, "0")}</span><div><strong>${index === 0 ? "Статус и период" : index === 1 ? "Операции" : index === 2 ? "Документы" : "Связанные обязанности"}</strong><small>${escapeHtml(item)}</small></div></a></li>`).join("\n          ")}
         </ul>
       </aside>
     </section>
@@ -453,7 +453,7 @@ const mainHtml = (page) => `<main>
         <h2>Ситуации, для которых нужна эта услуга</h2>
         <p>Ситуации ниже помогают отличить услугу «${page.h1}» от соседних процедур и сразу выбрать правильный документальный маршрут.</p>
       </div>
-      <div class="card-grid two rich-card-grid">${cards(page.situations)}
+      <div class="card-grid two rich-card-grid">${cards(page.situations, { orientationTargets: true })}
       </div>
     </section>
     <section class="section page-rich-section">
