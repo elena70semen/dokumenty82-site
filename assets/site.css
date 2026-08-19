@@ -4047,3 +4047,55 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
     grid-template-columns: 1fr;
   }
 }
+
+/* Current official guidance and route-intent links. */
+.insight-link-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 12px;
+}
+
+.insight-link-list a {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 17px 18px;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid rgba(221, 195, 125, 0.3);
+  border-left: 3px solid var(--gold);
+  background: rgba(7, 15, 24, 0.34);
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.insight-link-list a:hover,
+.insight-link-list a:focus-visible {
+  border-color: rgba(159, 203, 22, 0.65);
+  background: rgba(18, 31, 43, 0.68);
+  transform: translateY(-2px);
+}
+
+.insight-link-list strong {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.insight-link-list span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.news-verification {
+  margin: 0 0 24px;
+  padding: 12px 16px;
+  color: var(--muted);
+  border-left: 3px solid var(--lime);
+  background: rgba(159, 203, 22, 0.07);
+}
+
+@media (max-width: 720px) {
+  .insight-link-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

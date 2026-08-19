@@ -4,8 +4,8 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const route = "/buhgalterskie-uslugi/";
 const url = `https://dokumenty82.ru${route}`;
-const title = "Бухгалтерские услуги и сопровождение в Симферополе | ИП и ООО";
-const description = "Бухгалтерские услуги и сопровождение ИП и ООО в Симферополе: учёт, отчётность, налоги и сотрудники. От 10 000 ₽ в месяц, офис на ул. Мате Залки, 1.";
+const title = "Бухгалтерские услуги в Симферополе для ИП и ООО | от 10 000 ₽";
+const description = "Бухгалтерские услуги для ИП и ООО в Симферополе: учёт, отчётность, налоги, сотрудники и ответы на требования. От 10 000 ₽ в месяц.";
 const template = fs.readFileSync(path.join(root, "registraciya-i-likvidaciya", "index.html"), "utf8");
 
 const faq = [
@@ -30,7 +30,7 @@ const serviceSchema = {
       "@type": "WebPage",
       "@id": `${url}#webpage`,
       url,
-      name: "Бухгалтерские услуги и сопровождение ИП и ООО в Симферополе",
+      name: "Бухгалтерские услуги для ИП и ООО в Симферополе",
       description,
       inLanguage: "ru-RU",
       isPartOf: { "@id": "https://dokumenty82.ru/#website" },
@@ -87,7 +87,7 @@ const main = `<main>
     <section class="hero hero-inner hero-stack">
       <div class="glass-panel hero-copy-panel">
         <p class="eyebrow">Бухгалтерия для бизнеса</p>
-        <h1>Бухгалтерские услуги и сопровождение ИП и ООО в Симферополе</h1>
+        <h1>Бухгалтерские услуги для ИП и ООО в Симферополе</h1>
         <p>Ведём бухгалтерский и налоговый учёт, готовим отчётность, контролируем обязательные сроки и разбираем требования ИФНС. Состав работы определяем по фактической нагрузке бизнеса.</p>
         <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Обсудить задачу</a><a class="button button-ghost" href="/ceny/">Тарифы и цены</a></div>
       </div>
@@ -161,6 +161,20 @@ const main = `<main>
       </div>
     </section>
 
+    <section class="section page-rich-section insight-links-section">
+      <div class="section-header">
+        <p class="eyebrow">Актуально на 19 августа</p>
+        <h2>Разъяснения ФНС для бухгалтерии</h2>
+        <p>Отдельно собрали изменения по отчётности, НДС и цифровой сверке данных. Каждая заметка ведёт к официальному источнику.</p>
+      </div>
+      <nav class="insight-link-list" aria-label="Актуальные разъяснения ФНС для бухгалтерии">
+        <a href="/novosti/kachestvo-nalogovogo-administrirovaniya-2026/"><strong>Сверка данных перед отправкой</strong><span>Как проследить показатель от первичного документа до декларации.</span></a>
+        <a href="/novosti/nalogovye-vebinary-iyul-2026/"><strong>Налог на прибыль в 2026 году</strong><span>Рабочий чек-лист по итогам вебинара специалиста ФНС.</span></a>
+        <a href="/novosti/formaty-nds-s-1-iyulya-2026/"><strong>Новые электронные форматы по НДС</strong><span>Что проверить в программе, ЭДО и обязательных реквизитах.</span></a>
+        <a href="/novosti/nalogovyy-kalendar/"><strong>Налоговый календарь</strong><span>Ближайшие сроки документов, уведомлений и платежей.</span></a>
+      </nav>
+    </section>
+
     <section class="section page-rich-section faq-section">
       <div class="section-header">
         <p class="eyebrow">Частые вопросы</p>
@@ -191,7 +205,7 @@ let html = template
   .replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
   .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${description}" />`)
   .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${url}" />`)
-  .replace(/<meta property="og:title" content="[^"]*" \/>/, '<meta property="og:title" content="Бухгалтерские услуги и сопровождение в Симферополе" />')
+  .replace(/<meta property="og:title" content="[^"]*" \/>/, '<meta property="og:title" content="Бухгалтерские услуги в Симферополе для ИП и ООО" />')
   .replace(/<meta property="og:description" content="[^"]*" \/>/, '<meta property="og:description" content="Учёт, отчётность, налоги и сотрудники для ИП и ООО. Офис на ул. Мате Залки, 1." />')
   .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`)
   .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`)

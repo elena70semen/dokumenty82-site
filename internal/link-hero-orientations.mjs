@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const siteCssVersion = "202608181225";
+const siteCssVersion = "202608191545";
 
 const walk = (directory) => fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
   if ([".git", "internal", "server"].includes(entry.name)) return [];

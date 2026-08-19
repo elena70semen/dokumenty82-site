@@ -268,6 +268,9 @@ const buildNewsMain = (item) => {
   const reviewed = item.reviewed
     ? `<span>Материал проверен редакцией: ${escapeHtml(item.reviewed)}</span>`
     : "";
+  const verification = item.article.verification
+    ? `<p class="news-verification">${escapeHtml(item.article.verification)}</p>`
+    : "";
   return `<main>
     <section class="hero hero-inner">
       <article class="glass-panel news-article">
@@ -279,7 +282,7 @@ const buildNewsMain = (item) => {
     </section>
     <section class="section news-article-section">
       <div class="news-article-body">
-        ${paragraphs}${sections}
+        ${verification}${paragraphs}${sections}
         <h2>${escapeHtml(item.article.checklistTitle || "Что проверить")}</h2>
         <ul>${checklist}</ul>
         <div class="news-source">
@@ -642,7 +645,7 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202608181225";
+  const siteCssVersion = "202608191545";
   html = html.replace(
     /\s*<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon(?:-120)?\.(?:svg|png)"[^>]*\/>\s*(?:<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.svg"[^>]*\/>\s*)?(?:<link rel="(?:alternate|shortcut) icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.ico"[^>]*\/>\s*)?(?:<link rel="apple-touch-icon" href="(?:https:\/\/dokumenty82\.ru)?\/apple-touch-icon\.png"[^>]*\/>\s*)?/i,
     `\n    ${faviconLinks}\n    `,
