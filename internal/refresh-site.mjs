@@ -8,7 +8,7 @@ const requestedRoutes = new Set(process.argv.slice(2).filter((value) => value.st
 const footerOnly = process.argv.includes("--footer-only");
 const navigationOnly = process.argv.includes("--navigation-only");
 const footerLinks = `<div class="footer-links">
-          <a href="/razbor-situacii/">Разбор ситуации</a>
+          <a href="/buhgalterskie-uslugi/">Бухгалтерия</a>
           <a href="/uslugi/">Услуги</a>
           <a href="/otchetnost/">Отчётность</a>
           <a href="/bank-i-115-fz/">Банк и 115-ФЗ</a>
