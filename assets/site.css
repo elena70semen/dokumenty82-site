@@ -4160,7 +4160,7 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 
 :root:not([data-theme="dark"]) body {
   background:
-    linear-gradient(90deg, rgba(222, 231, 235, 0.4), rgba(211, 223, 228, 0.32)),
+    linear-gradient(90deg, rgba(222, 231, 235, 0.12), rgba(211, 223, 228, 0.08)),
     url("/assets/images/premium-document-ai-background1.webp") center / cover fixed,
     var(--bg);
 }
@@ -4565,18 +4565,18 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
   --muted: rgba(55, 73, 84, 0.78);
   --gold: #8b6a2d;
   --lime: #789d18;
-  border-color: rgba(255, 255, 255, 0.74);
+  border-color: rgba(255, 255, 255, 0.5);
   background:
-    radial-gradient(circle at 16% 8%, rgba(255, 255, 255, 0.42), transparent 34%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.68), rgba(226, 237, 241, 0.46)),
-    rgba(244, 248, 249, 0.34);
+    radial-gradient(circle at 16% 8%, rgba(255, 255, 255, 0.07), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.17), rgba(226, 237, 241, 0.065)),
+    rgba(244, 248, 249, 0.025);
   box-shadow:
-    0 24px 64px rgba(48, 68, 80, 0.16),
-    0 8px 22px rgba(48, 68, 80, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.94),
-    inset 0 -16px 30px rgba(140, 166, 177, 0.06);
+    0 24px 64px rgba(48, 68, 80, 0.18),
+    0 8px 22px rgba(48, 68, 80, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    inset 0 -16px 30px rgba(140, 166, 177, 0.035);
   color: var(--text);
-  backdrop-filter: blur(28px) saturate(1.08);
+  backdrop-filter: blur(14px) saturate(1.12);
 }
 
 :root:not([data-theme="dark"]) main :is(h1, h2) {
@@ -4601,9 +4601,9 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 
 :root:not([data-theme="dark"]) :is(.hero-copy-panel, .hero-choice-panel)::before {
   background:
-    radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.46), transparent 28%),
-    radial-gradient(circle at 22% 84%, rgba(201, 218, 207, 0.18), transparent 34%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(212, 229, 234, 0.08) 52%, rgba(231, 214, 217, 0.1));
+    radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 22% 84%, rgba(201, 218, 207, 0.08), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(212, 229, 234, 0.035) 52%, rgba(231, 214, 217, 0.045));
 }
 
 :root:not([data-theme="dark"]) :is(.hero .eyebrow, .section .eyebrow, .hero .hero-location-badge, .service-price-note) {
@@ -4615,19 +4615,19 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 }
 
 :root:not([data-theme="dark"]) :is(.compact-list a, .compact-list .compact-row, .home-service-shortcuts a, .insight-link-list a) {
-  border-color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(255, 255, 255, 0.48);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(224, 236, 240, 0.46)),
-    rgba(242, 247, 248, 0.42);
-  box-shadow: 0 13px 30px rgba(52, 72, 83, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.96);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(224, 236, 240, 0.085)),
+    rgba(242, 247, 248, 0.04);
+  box-shadow: 0 13px 30px rgba(52, 72, 83, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.58);
 }
 
 :root:not([data-theme="dark"]) :is(.compact-list a, .home-service-shortcuts a, .insight-link-list a):hover,
 :root:not([data-theme="dark"]) :is(.compact-list a, .home-service-shortcuts a, .insight-link-list a):focus-visible {
   border-color: rgba(164, 137, 83, 0.42);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(226, 239, 235, 0.58)),
-    rgba(244, 248, 248, 0.52);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.52), rgba(226, 239, 235, 0.26)),
+    rgba(244, 248, 248, 0.18);
   box-shadow: 0 17px 38px rgba(52, 72, 83, 0.13), inset 0 1px 0 #fff;
 }
 
@@ -4636,13 +4636,13 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
   --text: #24343e;
   --muted: rgba(55, 73, 84, 0.78);
   --gold: #8b6a2d;
-  border-color: rgba(255, 255, 255, 0.76);
+  border-color: rgba(255, 255, 255, 0.48);
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(225, 237, 241, 0.44)),
-    rgba(242, 247, 248, 0.4);
-  box-shadow: 0 18px 44px rgba(52, 72, 83, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.96);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(225, 237, 241, 0.085)),
+    rgba(242, 247, 248, 0.035);
+  box-shadow: 0 18px 44px rgba(52, 72, 83, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.58);
   color: var(--text);
-  backdrop-filter: blur(22px) saturate(1.05);
+  backdrop-filter: blur(12px) saturate(1.1);
 }
 
 :root:not([data-theme="dark"]) :is(.crm-lead-form input, .crm-lead-form textarea, .lead-capture-form select, .crm-lead-form .lead-file-picker) {
