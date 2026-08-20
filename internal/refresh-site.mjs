@@ -7,6 +7,8 @@ const root = path.resolve(import.meta.dirname, "..");
 const requestedRoutes = new Set(process.argv.slice(2).filter((value) => value.startsWith("/")));
 const footerOnly = process.argv.includes("--footer-only");
 const navigationOnly = process.argv.includes("--navigation-only");
+const themeOnly = process.argv.includes("--theme-only");
+const themeAssetVersion = "202608201530";
 const footerLinks = `<div class="footer-links">
           <a href="/buhgalterskie-uslugi/">Бухгалтерия</a>
           <a href="/uslugi/">Услуги</a>
@@ -642,15 +644,30 @@ for (const file of walk(root)) {
   const route = routeForFile(file);
   if (requestedRoutes.size && !requestedRoutes.has(route)) continue;
   if (footerOnly && route.startsWith("/internal/")) continue;
+  if (themeOnly && (route.startsWith("/internal/") || route.startsWith("/cabinet/"))) continue;
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
-  const siteCssVersion = "202608191545";
+  const siteCssVersion = themeAssetVersion;
   html = html.replace(
     /\s*<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon(?:-120)?\.(?:svg|png)"[^>]*\/>\s*(?:<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.svg"[^>]*\/>\s*)?(?:<link rel="(?:alternate|shortcut) icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.ico"[^>]*\/>\s*)?(?:<link rel="apple-touch-icon" href="(?:https:\/\/dokumenty82\.ru)?\/apple-touch-icon\.png"[^>]*\/>\s*)?/i,
     `\n    ${faviconLinks}\n    `,
   );
   html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
+  html = html.replace(/\/assets\/theme-toggle\.js\?v=\d+/g, `/assets/theme-toggle.js?v=${themeAssetVersion}`);
+  if (!html.includes("/assets/theme-toggle.js")) {
+    html = html.replace(
+      /(\s*<link rel="stylesheet" href="\/assets\/site\.css\?v=\d+" \/>)/,
+      `\n    <script src="/assets/theme-toggle.js?v=${themeAssetVersion}"></script>$1`,
+    );
+  }
+  if (themeOnly) {
+    if (html !== before) {
+      fs.writeFileSync(file, html, "utf8");
+      changed += 1;
+    }
+    continue;
+  }
   html = html.replace(/<nav aria-label="Разделы сайта">[\s\S]*?<\/nav>/g, footerNavigation);
   html = html.replace(/<div class="footer-buttons">[\s\S]*?<\/div>/g, footerButtons);
   html = html.replace(

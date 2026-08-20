@@ -4099,3 +4099,412 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Theme switcher and the default light presentation. */
+.theme-toggle {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: rgba(221, 195, 125, 0.58);
+  outline: 0;
+  background: rgba(221, 195, 125, 0.12);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22), 0 0 0 3px rgba(221, 195, 125, 0.1);
+  transform: translateY(-2px);
+}
+
+:root:not([data-theme="dark"]) {
+  color-scheme: light;
+  --bg: #edf2f4;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-soft: rgba(25, 42, 54, 0.055);
+  --border: rgba(24, 40, 52, 0.17);
+  --text: #17242e;
+  --muted: #566672;
+  --gold: #8a6924;
+  --lime: #6f9400;
+  --plum: #5a1019;
+  --plum-deep: #3b0910;
+  --plum-border: rgba(116, 28, 39, 0.36);
+  --navy: #24425c;
+  --shadow: 0 22px 62px rgba(42, 59, 70, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  --glass-shadow: 0 24px 68px rgba(42, 59, 70, 0.14), 0 8px 22px rgba(42, 59, 70, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root:not([data-theme="dark"]) body {
+  background:
+    linear-gradient(90deg, rgba(248, 250, 251, 0.96), rgba(233, 239, 242, 0.91)),
+    url("/assets/images/premium-document-ai-background1.webp") center / cover fixed,
+    var(--bg);
+}
+
+:root:not([data-theme="dark"]) h1,
+:root:not([data-theme="dark"]) h2 {
+  background: linear-gradient(110deg, #142630 0%, #263d49 48%, #9b7627 79%, #4f4632 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:root:not([data-theme="dark"]) .site-header {
+  border-color: rgba(35, 51, 62, 0.17);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(138, 105, 36, 0.1), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(244, 247, 248, 0.91)),
+    rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 24px 58px rgba(42, 58, 68, 0.17),
+    0 8px 22px rgba(42, 58, 68, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -12px 28px rgba(111, 129, 140, 0.06);
+}
+
+:root:not([data-theme="dark"]) .site-header::before {
+  background:
+    radial-gradient(ellipse at 26% 12%, rgba(138, 105, 36, 0.12), transparent 30%),
+    linear-gradient(112deg, transparent 26%, rgba(255, 255, 255, 0.78) 48%, transparent 72%);
+  opacity: 0.7;
+}
+
+:root:not([data-theme="dark"]) .desktop-nav {
+  border-color: rgba(36, 55, 67, 0.16);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(231, 237, 240, 0.5)),
+    rgba(237, 242, 244, 0.82);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 10px 24px rgba(50, 67, 78, 0.08);
+}
+
+:root:not([data-theme="dark"]) .desktop-nav a:hover,
+:root:not([data-theme="dark"]) .desktop-nav a.is-active {
+  color: var(--text);
+  background: rgba(34, 57, 72, 0.08);
+}
+
+:root:not([data-theme="dark"]) .phone-pill,
+:root:not([data-theme="dark"]) .messenger-email,
+:root:not([data-theme="dark"]) .theme-toggle,
+:root:not([data-theme="dark"]) .mobile-menu summary,
+:root:not([data-theme="dark"]) .mobile-phone-link {
+  border-color: rgba(35, 52, 64, 0.18);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 24px rgba(42, 59, 70, 0.1), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .button-ghost {
+  border-color: rgba(138, 105, 36, 0.3);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(231, 237, 240, 0.72)),
+    rgba(240, 244, 246, 0.92);
+  color: var(--text);
+  box-shadow: 0 15px 34px rgba(42, 59, 70, 0.12), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .button-ghost:hover,
+:root:not([data-theme="dark"]) .button-ghost:focus-visible {
+  background:
+    linear-gradient(135deg, #fff, rgba(228, 235, 239, 0.88)),
+    #eef2f4;
+  box-shadow: 0 18px 40px rgba(42, 59, 70, 0.16), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.glass-panel, .glass-card, .section, .site-footer) {
+  border-color: rgba(32, 50, 62, 0.17);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(236, 241, 243, 0.76)),
+    rgba(255, 255, 255, 0.78);
+  box-shadow: var(--glass-shadow);
+}
+
+:root:not([data-theme="dark"]) :is(.glass-panel, .glass-card, .section, .site-footer, .compact-list a, .compact-list .compact-row)::after {
+  filter: saturate(0.7) contrast(0.9);
+  mix-blend-mode: multiply;
+  opacity: 0.08;
+}
+
+:root:not([data-theme="dark"]) :is(.hero-copy-panel, .hero-choice-panel)::before {
+  background:
+    radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.72), transparent 30%),
+    radial-gradient(circle at 22% 84%, rgba(138, 105, 36, 0.09), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(222, 230, 234, 0.18) 52%, rgba(107, 127, 138, 0.05));
+}
+
+:root:not([data-theme="dark"]) .hero-photo-frame {
+  border-color: rgba(138, 105, 36, 0.28);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 22px 52px rgba(42, 59, 70, 0.16), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .hero-photo-frame::before {
+  background:
+    linear-gradient(90deg, rgba(238, 242, 244, 0.06), transparent 32%, rgba(238, 242, 244, 0.04)),
+    radial-gradient(circle at 18% 18%, rgba(255, 244, 211, 0.12), transparent 34%);
+}
+
+:root:not([data-theme="dark"]) .hero-photo-frame img {
+  filter: saturate(0.94) contrast(1.02) brightness(0.98);
+}
+
+:root:not([data-theme="dark"]) :is(.hero .eyebrow, .section .eyebrow, .hero .hero-location-badge, .service-price-note) {
+  border-color: rgba(138, 105, 36, 0.26);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 236, 239, 0.65)),
+    rgba(255, 255, 255, 0.72);
+  box-shadow: 0 12px 28px rgba(42, 59, 70, 0.1), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.compact-list a, .compact-list .compact-row, .home-service-shortcuts a, .insight-link-list a) {
+  border-color: rgba(34, 54, 67, 0.17);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(230, 236, 239, 0.66)),
+    rgba(247, 249, 250, 0.78);
+  box-shadow: 0 13px 30px rgba(42, 59, 70, 0.1), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.compact-list a, .home-service-shortcuts a, .insight-link-list a):hover,
+:root:not([data-theme="dark"]) :is(.compact-list a, .home-service-shortcuts a, .insight-link-list a):focus-visible {
+  border-color: rgba(138, 105, 36, 0.42);
+  background:
+    linear-gradient(135deg, #fff, rgba(225, 233, 237, 0.8)),
+    rgba(244, 247, 248, 0.92);
+  box-shadow: 0 18px 38px rgba(42, 59, 70, 0.14), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .glass-card:hover {
+  border-color: rgba(138, 105, 36, 0.34);
+  box-shadow: 0 22px 48px rgba(42, 59, 70, 0.15), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.news-card, .news-article, .news-related, .map-placeholder, .yandex-map-embed) {
+  border-color: rgba(34, 54, 67, 0.17);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 236, 239, 0.7)),
+    rgba(248, 250, 251, 0.84);
+  box-shadow: 0 20px 48px rgba(42, 59, 70, 0.13), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .news-card:hover,
+:root:not([data-theme="dark"]) .news-card.is-fresh {
+  box-shadow: 0 24px 54px rgba(42, 59, 70, 0.17), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.news-card p, .news-article p, .news-article-body p, .news-article-body li, .news-source span) {
+  color: var(--muted);
+}
+
+:root:not([data-theme="dark"]) :is(.news-related a, .news-feed-controls button) {
+  border-color: rgba(34, 54, 67, 0.17);
+  background: rgba(255, 255, 255, 0.66);
+}
+
+:root:not([data-theme="dark"]) .news-feed-controls button:hover,
+:root:not([data-theme="dark"]) .news-feed-controls button:focus-visible {
+  background: rgba(90, 16, 25, 0.1);
+}
+
+:root:not([data-theme="dark"]) :is(.lead-capture-form, .pricing-factor, .service-tree-group) {
+  border-color: rgba(34, 54, 67, 0.17);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(232, 238, 241, 0.76)),
+    rgba(255, 255, 255, 0.82);
+  box-shadow: 0 20px 50px rgba(42, 59, 70, 0.13), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.crm-lead-form input, .crm-lead-form textarea, .lead-capture-form select, .crm-lead-form .lead-file-picker) {
+  border-color: rgba(34, 54, 67, 0.2);
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--text);
+}
+
+:root:not([data-theme="dark"]) :is(.crm-lead-form input, .crm-lead-form textarea)::placeholder {
+  color: rgba(45, 62, 73, 0.48);
+}
+
+:root:not([data-theme="dark"]) .pricing-tier-card.is-featured {
+  border-color: rgba(116, 28, 39, 0.38);
+  background:
+    linear-gradient(145deg, rgba(255, 248, 245, 0.94), rgba(236, 224, 224, 0.78)),
+    rgba(255, 255, 255, 0.86);
+  box-shadow: 0 24px 58px rgba(79, 47, 51, 0.16), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.pricing-tier-price, .pricing-factors-section, .service-tree-links, .tax-calendar-toolbar) {
+  border-color: rgba(34, 54, 67, 0.13);
+}
+
+:root:not([data-theme="dark"]) .service-tree-links a {
+  border-color: rgba(34, 54, 67, 0.11);
+  color: var(--text);
+}
+
+:root:not([data-theme="dark"]) .service-tree-links a:hover,
+:root:not([data-theme="dark"]) .service-tree-links a:focus-visible {
+  background: rgba(138, 105, 36, 0.08);
+  color: var(--text);
+}
+
+:root:not([data-theme="dark"]) .calendar-promo {
+  border-color: rgba(138, 105, 36, 0.3);
+  background:
+    linear-gradient(108deg, rgba(255, 255, 255, 0.94), rgba(226, 234, 238, 0.86)),
+    url("/assets/brand/route-digital-wave.png") center / cover;
+  box-shadow: 0 22px 50px rgba(42, 59, 70, 0.14), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .calendar-hero-status {
+  border-color: rgba(138, 105, 36, 0.3);
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.78), rgba(227, 234, 237, 0.86)),
+    url("/assets/images/tax-accounting-books.png") center / cover;
+  box-shadow: 0 24px 56px rgba(42, 59, 70, 0.16), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.calendar-filter-button, .tax-calendar-entry) {
+  border-color: rgba(34, 54, 67, 0.17);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(226, 234, 238, 0.78)),
+    rgba(248, 250, 251, 0.86);
+  box-shadow: inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .calendar-entry-tags span {
+  background: rgba(255, 255, 255, 0.68);
+}
+
+:root:not([data-theme="dark"]) .site-footer {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.82), transparent 28%),
+    radial-gradient(circle at 88% 82%, rgba(138, 105, 36, 0.09), transparent 32%),
+    linear-gradient(145deg, rgba(250, 251, 252, 0.92), rgba(226, 234, 238, 0.86)),
+    rgba(239, 244, 246, 0.88);
+  box-shadow: 0 30px 72px rgba(42, 59, 70, 0.16), 0 10px 26px rgba(42, 59, 70, 0.08), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .footer-links a {
+  border-color: rgba(34, 54, 67, 0.13);
+  background: rgba(255, 255, 255, 0.48);
+}
+
+:root:not([data-theme="dark"]) .footer-links a:hover {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+:root:not([data-theme="dark"]) .mobile-menu nav,
+:root:not([data-theme="dark"]) .mobile-contact-panel,
+:root:not([data-theme="dark"]) .cookie-notice {
+  border-color: rgba(34, 54, 67, 0.17);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.97), rgba(231, 237, 240, 0.94)),
+    rgba(248, 250, 251, 0.96);
+  box-shadow: 0 22px 58px rgba(42, 59, 70, 0.18), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .ai-chat-panel {
+  border-color: rgba(138, 105, 36, 0.3);
+  background:
+    radial-gradient(circle at 28% 0%, rgba(138, 105, 36, 0.08), transparent 32%),
+    radial-gradient(circle at 92% 28%, rgba(111, 148, 0, 0.07), transparent 25%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.97), rgba(231, 237, 240, 0.96) 62%),
+    var(--panel);
+  box-shadow: -24px 26px 64px rgba(42, 59, 70, 0.22), inset 0 1px 0 #fff;
+  color: var(--text);
+}
+
+:root:not([data-theme="dark"]) .ai-chat-messages {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(111, 148, 0, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(224, 231, 235, 0.4), transparent);
+}
+
+:root:not([data-theme="dark"]) .ai-chat-message-assistant {
+  border-color: rgba(34, 54, 67, 0.14);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 24px rgba(42, 59, 70, 0.1), inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) .ai-chat-message-user {
+  background: linear-gradient(145deg, rgba(111, 148, 0, 0.16), rgba(90, 16, 25, 0.08)), rgba(244, 247, 248, 0.9);
+  color: var(--text);
+}
+
+:root:not([data-theme="dark"]) .ai-chat-quick button {
+  border-color: rgba(138, 105, 36, 0.24);
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--text);
+}
+
+:root:not([data-theme="dark"]) :is(.ai-chat-form label, .ai-chat-lead label, .ai-chat-status) {
+  color: var(--muted);
+}
+
+:root:not([data-theme="dark"]) :is(.ai-chat-form textarea, .ai-chat-lead input) {
+  border-color: rgba(34, 54, 67, 0.18);
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 #fff;
+}
+
+:root:not([data-theme="dark"]) :is(.ai-chat-form textarea, .ai-chat-lead input)::placeholder {
+  color: rgba(45, 62, 73, 0.46);
+}
+
+:root:not([data-theme="dark"]) :is(.ai-chat-form textarea, .ai-chat-lead input):focus {
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(138, 105, 36, 0.1), inset 0 1px 0 #fff;
+}
+
+@media (min-width: 1101px) and (max-width: 1520px) {
+  .theme-toggle {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .mobile-menu .mobile-contact-panel .theme-toggle {
+    width: 52px;
+    height: 52px;
+  }
+
+  .mobile-contact-panel {
+    grid-template-columns: repeat(4, 52px) minmax(160px, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .mobile-contact-panel {
+    grid-template-columns: repeat(4, 52px);
+    justify-content: center;
+  }
+
+  .mobile-phone-link {
+    grid-column: 1 / -1;
+  }
+}

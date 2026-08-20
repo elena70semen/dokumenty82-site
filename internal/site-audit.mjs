@@ -264,6 +264,10 @@ for (const page of pages) {
     issues.push(`${page.route}: Accounting services missing from footer navigation`);
   }
   if (!page.html.includes("/assets/metrika-goals.js")) issues.push(`${page.route}: Metrika contact goals script missing`);
+  if (!page.html.includes("/assets/theme-toggle.js")) issues.push(`${page.route}: Theme toggle script missing`);
+  if (page.html.indexOf("/assets/theme-toggle.js") > page.html.indexOf("/assets/site.css")) {
+    issues.push(`${page.route}: Theme toggle script must load before site.css`);
+  }
   if (page.html.includes('"ProfessionalService"')) issues.push(`${page.route}: deprecated ProfessionalService schema type`);
   for (const [index, block] of page.schemaBlocks.entries()) {
     try {
