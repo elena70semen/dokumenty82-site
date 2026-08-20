@@ -4160,7 +4160,7 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 
 :root:not([data-theme="dark"]) body {
   background:
-    linear-gradient(90deg, rgba(248, 250, 251, 0.96), rgba(233, 239, 242, 0.91)),
+    linear-gradient(90deg, rgba(211, 222, 227, 0.9), rgba(196, 211, 218, 0.86)),
     url("/assets/images/premium-document-ai-background1.webp") center / cover fixed,
     var(--bg);
 }
@@ -4235,24 +4235,24 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 }
 
 :root:not([data-theme="dark"]) :is(.glass-panel, .glass-card, .section, .site-footer) {
-  border-color: rgba(32, 50, 62, 0.17);
+  border-color: rgba(32, 50, 62, 0.21);
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(236, 241, 243, 0.76)),
-    rgba(255, 255, 255, 0.78);
+    linear-gradient(145deg, rgba(253, 254, 254, 0.99), rgba(235, 241, 243, 0.97)),
+    #f3f6f7;
   box-shadow: var(--glass-shadow);
 }
 
 :root:not([data-theme="dark"]) :is(.glass-panel, .glass-card, .section, .site-footer, .compact-list a, .compact-list .compact-row)::after {
   filter: saturate(0.7) contrast(0.9);
   mix-blend-mode: multiply;
-  opacity: 0.08;
+  opacity: 0.045;
 }
 
 :root:not([data-theme="dark"]) :is(.hero-copy-panel, .hero-choice-panel)::before {
   background:
-    radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.72), transparent 30%),
-    radial-gradient(circle at 22% 84%, rgba(138, 105, 36, 0.09), transparent 34%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(222, 230, 234, 0.18) 52%, rgba(107, 127, 138, 0.05));
+    radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.46), transparent 30%),
+    radial-gradient(circle at 22% 84%, rgba(138, 105, 36, 0.07), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(212, 222, 227, 0.12) 52%, rgba(107, 127, 138, 0.035));
 }
 
 :root:not([data-theme="dark"]) .hero-photo-frame {
@@ -4280,10 +4280,10 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 }
 
 :root:not([data-theme="dark"]) :is(.compact-list a, .compact-list .compact-row, .home-service-shortcuts a, .insight-link-list a) {
-  border-color: rgba(34, 54, 67, 0.17);
+  border-color: rgba(34, 54, 67, 0.2);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(230, 236, 239, 0.66)),
-    rgba(247, 249, 250, 0.78);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.99), rgba(231, 237, 240, 0.96)),
+    #f6f8f9;
   box-shadow: 0 13px 30px rgba(42, 59, 70, 0.1), inset 0 1px 0 #fff;
 }
 
@@ -4302,10 +4302,10 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 }
 
 :root:not([data-theme="dark"]) :is(.news-card, .news-article, .news-related, .map-placeholder, .yandex-map-embed) {
-  border-color: rgba(34, 54, 67, 0.17);
+  border-color: rgba(34, 54, 67, 0.2);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 236, 239, 0.7)),
-    rgba(248, 250, 251, 0.84);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.99), rgba(231, 237, 240, 0.96)),
+    #f5f8f9;
   box-shadow: 0 20px 48px rgba(42, 59, 70, 0.13), inset 0 1px 0 #fff;
 }
 
@@ -4329,10 +4329,10 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 }
 
 :root:not([data-theme="dark"]) :is(.lead-capture-form, .pricing-factor, .service-tree-group) {
-  border-color: rgba(34, 54, 67, 0.17);
+  border-color: rgba(34, 54, 67, 0.2);
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(232, 238, 241, 0.76)),
-    rgba(255, 255, 255, 0.82);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(232, 238, 241, 0.96)),
+    #f4f7f8;
   box-shadow: 0 20px 50px rgba(42, 59, 70, 0.13), inset 0 1px 0 #fff;
 }
 

@@ -8,7 +8,7 @@ const requestedRoutes = new Set(process.argv.slice(2).filter((value) => value.st
 const footerOnly = process.argv.includes("--footer-only");
 const navigationOnly = process.argv.includes("--navigation-only");
 const themeOnly = process.argv.includes("--theme-only");
-const themeAssetVersion = "202608201530";
+const themeAssetVersion = "202608201600";
 const footerLinks = `<div class="footer-links">
           <a href="/buhgalterskie-uslugi/">Бухгалтерия</a>
           <a href="/uslugi/">Услуги</a>
