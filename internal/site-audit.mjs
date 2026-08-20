@@ -320,6 +320,11 @@ for (const route of serviceOffers.map((offer) => new URL(offer.url).pathname)) {
 const minimumInboundSupport = new Map([
   ["/ausn-krym/", 8],
   ["/deklaraciya-usn/", 10],
+  ["/izmenenie-okved-ip/", 5],
+  ["/izmenenie-okved-ooo/", 6],
+  ["/kadry/", 7],
+  ["/likvidaciya-ip/", 6],
+  ["/nedostovernost-yuridicheskogo-adresa/", 7],
   ["/nulevaya-otchetnost-ip/", 6],
   ["/nulevaya-otchetnost-ooo/", 6],
   ["/sdacha-otchetnosti-ip/", 5],
