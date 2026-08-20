@@ -4160,7 +4160,7 @@ main > .hero > .glass-panel:nth-child(even):not(.photo-hero-panel)::after {
 
 :root:not([data-theme="dark"]) body {
   background:
-    linear-gradient(90deg, rgba(222, 231, 235, 0.96), rgba(211, 223, 228, 0.94)),
+    linear-gradient(90deg, rgba(222, 231, 235, 0.4), rgba(211, 223, 228, 0.32)),
     url("/assets/images/premium-document-ai-background1.webp") center / cover fixed,
     var(--bg);
 }
