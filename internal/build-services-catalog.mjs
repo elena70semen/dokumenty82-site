@@ -176,9 +176,7 @@ for (const group of treeGroups) {
 const serviceTree = treeGroups.map((group) => `
         <article class="service-tree-group">
           <div class="service-tree-group-head">
-            <span class="service-tree-number">${group.number}</span>
             <a href="${group.anchor}">${escapeHtml(group.title)}</a>
-            <span class="service-tree-count">${group.routes.length}</span>
           </div>
           <p>${escapeHtml(group.description)}</p>
           <nav class="service-tree-links" aria-label="${escapeHtml(group.title)}">${group.routes.map((route) => {
@@ -257,7 +255,7 @@ const main = `<main>
       <div class="section-header service-tree-heading">
         <p class="eyebrow">Карта услуг</p>
         <h2 id="service-tree-title">Все направления и страницы</h2>
-        <p>Выберите тему и сразу переходите к нужной услуге. Цифра справа показывает количество доступных маршрутов в группе.</p>
+        <p>Выберите тему и сразу переходите к нужной услуге или странице.</p>
       </div>
       <div class="service-tree-grid">${serviceTree}
       </div>
