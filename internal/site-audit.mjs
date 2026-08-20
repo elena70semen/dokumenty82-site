@@ -317,6 +317,19 @@ for (const route of serviceOffers.map((offer) => new URL(offer.url).pathname)) {
   if (!servicesPage?.html.includes(`href="${route}"`)) issues.push(`/uslugi/: missing direct link to ${route}`);
 }
 
+const minimumInboundSupport = new Map([
+  ["/ausn-krym/", 8],
+  ["/deklaraciya-usn/", 10],
+  ["/nulevaya-otchetnost-ip/", 6],
+  ["/nulevaya-otchetnost-ooo/", 6],
+  ["/sdacha-otchetnosti-ip/", 5],
+  ["/sdacha-otchetnosti-ooo/", 6],
+]);
+for (const [route, minimum] of minimumInboundSupport) {
+  const inboundPages = pages.filter((page) => page.html.includes(`href="${route}"`)).length;
+  if (inboundPages < minimum) issues.push(`${route}: only ${inboundPages} internal referring pages; expected at least ${minimum}`);
+}
+
 const faqPage = pages.find((page) => page.route === "/faq/");
 if (!faqPage?.html.includes('"@type":"FAQPage"')) issues.push("/faq/: missing FAQPage schema");
 
