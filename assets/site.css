@@ -5445,3 +5445,79 @@ option,
     font-size: 1.55rem;
   }
 }
+
+/* Light theme performance: avoid stacking expensive blur and animated layers. */
+:root:not([data-theme="dark"]) body {
+  background-attachment: scroll;
+}
+
+:root:not([data-theme="dark"]) .site-header {
+  -webkit-backdrop-filter: blur(24px) saturate(1.06);
+  backdrop-filter: blur(24px) saturate(1.06);
+}
+
+:root:not([data-theme="dark"]) :is(.desktop-nav, .phone-pill, .messenger-email, .theme-toggle,
+  .mobile-menu summary, .mobile-phone-link, .hero .eyebrow, .section .eyebrow,
+  .hero .hero-location-badge, .service-price-note) {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+:root:not([data-theme="dark"]) :is(main .glass-panel, main .section, .site-footer) {
+  -webkit-backdrop-filter: blur(28px) saturate(1.05);
+  backdrop-filter: blur(28px) saturate(1.05);
+}
+
+:root:not([data-theme="dark"]) main .glass-card,
+:root:not([data-theme="dark"]) :is(.compact-list a, .compact-list .compact-row, .home-service-shortcuts a,
+  .insight-link-list a, .news-card, .news-article, .news-related, .map-placeholder,
+  .yandex-map-embed, .lead-capture-form, .pricing-factor, .service-tree-group,
+  .tax-calendar-entry, .button-lime),
+:root:not([data-theme="dark"]) main :is(.glass-panel, .glass-card, .section) .button-ghost {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+:root:not([data-theme="dark"]) :is(.quick-page-nav button, .ai-chat-widget, .client-portal-widget) {
+  -webkit-backdrop-filter: blur(14px) saturate(1.04);
+  backdrop-filter: blur(14px) saturate(1.04);
+}
+
+:root:not([data-theme="dark"]) .ai-chat-panel {
+  -webkit-backdrop-filter: blur(28px) saturate(1.05);
+  backdrop-filter: blur(28px) saturate(1.05);
+}
+
+:root:not([data-theme="dark"]) .site-header::before {
+  filter: blur(6px);
+}
+
+:root:not([data-theme="dark"]) :is(.compact-list a, .compact-list .compact-row, .glass-card)::before,
+:root:not([data-theme="dark"]) .button::before,
+:root:not([data-theme="dark"]) .quick-page-nav button::before {
+  animation: none;
+  filter: blur(8px);
+  opacity: 0.16;
+  transform: translateX(-48%) rotate(-8deg);
+  will-change: auto;
+}
+
+:root:not([data-theme="dark"]) :is(.compact-list a, .compact-list .compact-row, .glass-card):is(:hover, :focus-within)::before,
+:root:not([data-theme="dark"]) .button:is(:hover, :focus-visible)::before,
+:root:not([data-theme="dark"]) .quick-page-nav button:is(:hover, :focus-visible)::before {
+  animation: premium-glass-sheen 1.15s ease-out 1;
+  will-change: transform, opacity;
+}
+
+:root:not([data-theme="dark"]) :is(.ai-chat-widget, .client-portal-widget)::before {
+  animation: button-red-sheen 8.4s ease-in-out infinite;
+  filter: blur(8px);
+  will-change: transform, opacity;
+}
+
+@media (max-width: 640px) {
+  :root:not([data-theme="dark"]) :is(main .glass-panel, main .section, .site-footer) {
+    -webkit-backdrop-filter: blur(20px) saturate(1.04);
+    backdrop-filter: blur(20px) saturate(1.04);
+  }
+}
