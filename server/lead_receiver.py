@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import cgi
 import html
+import ipaddress
 import json
 import mimetypes
 import os
@@ -106,6 +107,18 @@ def normalize_phone(value):
   if not re.fullmatch(r"[1-9]\d{7,14}", digits):
     raise ValueError("Укажите телефон с кодом страны, например 79789987222.")
   return digits
+
+
+def request_client_ip(handler):
+  peer = text(handler.client_address[0])
+  if peer not in ("127.0.0.1", "::1"):
+    return peer
+
+  forwarded = text(handler.headers.get("X-Real-IP"))
+  try:
+    return str(ipaddress.ip_address(forwarded))
+  except ValueError:
+    return peer
 
 
 def normalize_amo_base_url(subdomain):
@@ -817,7 +830,7 @@ class LeadHandler(BaseHTTPRequestHandler):
       metadata = {
         "id": submission_id,
         "created_at": datetime.now(timezone.utc).isoformat(),
-        "remote_addr": self.client_address[0],
+        "remote_addr": request_client_ip(self),
         "fields": fields,
         "files": files,
       }
@@ -842,7 +855,7 @@ class LeadHandler(BaseHTTPRequestHandler):
 
   def handle_ai_chat(self):
     try:
-      if not check_ai_rate_limit(self.client_address[0]):
+      if not check_ai_rate_limit(request_client_ip(self)):
         json_response(self, 429, {
           "ok": False,
           "message": "Чат временно ограничил частоту вопросов. Оставьте телефон, и специалист вернется к ситуации.",

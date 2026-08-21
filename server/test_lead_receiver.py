@@ -83,6 +83,32 @@ class PhoneNormalizationTests(unittest.TestCase):
           receiver.normalize_phone(source)
 
 
+class RequestClientIpTests(unittest.TestCase):
+  def test_uses_nginx_real_ip_for_loopback_proxy(self):
+    handler = types.SimpleNamespace(
+      client_address=("127.0.0.1", 12345),
+      headers={"X-Real-IP": "203.0.113.7"},
+    )
+
+    self.assertEqual(receiver.request_client_ip(handler), "203.0.113.7")
+
+  def test_rejects_invalid_forwarded_ip(self):
+    handler = types.SimpleNamespace(
+      client_address=("127.0.0.1", 12345),
+      headers={"X-Real-IP": "not-an-ip"},
+    )
+
+    self.assertEqual(receiver.request_client_ip(handler), "127.0.0.1")
+
+  def test_does_not_trust_header_from_non_proxy_peer(self):
+    handler = types.SimpleNamespace(
+      client_address=("198.51.100.9", 12345),
+      headers={"X-Real-IP": "203.0.113.7"},
+    )
+
+    self.assertEqual(receiver.request_client_ip(handler), "198.51.100.9")
+
+
 class AmoPortalBridgeTests(unittest.TestCase):
   def test_snapshot_uses_exact_contact_and_returns_sanitized_leads(self):
     responses = [
