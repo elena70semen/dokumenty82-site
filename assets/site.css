@@ -5448,7 +5448,7 @@ option,
 
 /* Light theme performance: avoid stacking expensive blur and animated layers. */
 :root:not([data-theme="dark"]) body {
-  background-attachment: scroll;
+  background-attachment: scroll, fixed, scroll;
 }
 
 :root:not([data-theme="dark"]) .site-header {
