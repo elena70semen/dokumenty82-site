@@ -4862,7 +4862,7 @@ option,
   --panel-soft: rgba(255, 255, 255, 0.34);
   --border: rgba(84, 76, 98, 0.18);
   --text: #292c36;
-  --muted: #5e6370;
+  --muted: #515864;
   --gold: #8b713d;
   --lime: #9784ae;
   --plum: #a68caf;
@@ -4941,7 +4941,7 @@ option,
 
 :root:not([data-theme="dark"]) :is(main .glass-panel, main .section, .site-footer) {
   --text: #292c36;
-  --muted: #5e6370;
+  --muted: #515864;
   --gold: #8b713d;
   --lime: #9784ae;
   border-color: rgba(255, 255, 255, 0.72);
@@ -4956,7 +4956,7 @@ option,
 
 :root:not([data-theme="dark"]) main .glass-card {
   --text: #2f323c;
-  --muted: #626874;
+  --muted: #555c68;
   --gold: #8b713d;
   --lime: #9784ae;
   border-color: rgba(255, 255, 255, 0.68);
@@ -5024,7 +5024,7 @@ option,
   .news-card, .news-article, .news-related, .map-placeholder, .yandex-map-embed,
   .lead-capture-form, .pricing-factor, .service-tree-group, .tax-calendar-entry) {
   --text: #2f323c;
-  --muted: #626874;
+  --muted: #555c68;
   --gold: #8b713d;
   border-color: rgba(255, 255, 255, 0.66);
   background:
@@ -5085,7 +5085,7 @@ option,
 
 :root:not([data-theme="dark"]) .ai-chat-panel {
   --text: #292c36;
-  --muted: #626874;
+  --muted: #555c68;
   --gold: #8b713d;
   border-color: rgba(255, 255, 255, 0.8);
   background:
@@ -5181,5 +5181,205 @@ option,
 
   .client-portal-widget {
     bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Light theme legibility and motion: Times needs a slightly larger optical size. */
+:root:not([data-theme="dark"]) body {
+  font-size: 17px;
+}
+
+:root:not([data-theme="dark"]) .brand strong {
+  font-size: 1.15rem;
+  line-height: 1.08;
+}
+
+:root:not([data-theme="dark"]) .brand small {
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+:root:not([data-theme="dark"]) .desktop-nav a {
+  font-size: 0.98rem;
+}
+
+:root:not([data-theme="dark"]) :is(.phone-pill, .button) {
+  font-size: 0.97rem;
+}
+
+:root:not([data-theme="dark"]) :is(.hero p, .section p, .hero-choice-description) {
+  font-size: 1.08rem;
+  line-height: 1.62;
+}
+
+:root:not([data-theme="dark"]) :is(.hero .eyebrow, .section .eyebrow, .hero .hero-location-badge) {
+  font-size: 0.9rem;
+}
+
+:root:not([data-theme="dark"]) .service-price-note span,
+:root:not([data-theme="dark"]) .service-price-note small {
+  font-size: 0.88rem;
+}
+
+:root:not([data-theme="dark"]) :is(.compact-list strong, .hero-choice-panel .compact-list strong, .home-service-shortcuts strong) {
+  font-size: 1.08rem;
+  line-height: 1.3;
+}
+
+:root:not([data-theme="dark"]) :is(.compact-list small, .home-service-shortcuts span) {
+  font-size: 1rem;
+  line-height: 1.46;
+}
+
+:root:not([data-theme="dark"]) :is(.glass-card p, .rich-card .rich-list li, .reviews-rating-note,
+  .news-card p, .news-article p, .news-article-body p, .news-article-body li,
+  .pricing-service-card p, .pricing-feature-list li) {
+  font-size: 1.03rem;
+  line-height: 1.58;
+}
+
+:root:not([data-theme="dark"]) :is(.news-tags span, .news-feed-total, .news-feed-position, .news-fresh,
+  .pricing-tier-kicker, .pricing-tier-price small, .pricing-service-label, .pricing-card-link) {
+  font-size: 0.86rem;
+}
+
+:root:not([data-theme="dark"]) :is(.crm-lead-form label, .form-file-field, .form-note,
+  .lead-file-list li, .ai-chat-form label, .ai-chat-lead label, .ai-chat-status) {
+  font-size: 0.94rem;
+}
+
+:root:not([data-theme="dark"]) :is(.crm-lead-form input, .crm-lead-form textarea, .lead-capture-form select,
+  .ai-chat-form textarea, .ai-chat-lead input, .ai-chat-message, .ai-chat-quick button) {
+  font-size: 1rem;
+}
+
+:root:not([data-theme="dark"]) :is(.footer-brand p, .footer-links a, .site-footer address > span, .site-footer address > a) {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+:root:not([data-theme="dark"]) :is(.ai-chat-widget strong, .client-portal-widget strong) {
+  font-size: 0.95rem;
+  line-height: 1.18;
+}
+
+:root:not([data-theme="dark"]) :is(.ai-chat-widget span, .client-portal-widget span) {
+  font-size: 0.78rem;
+}
+
+:root:not([data-theme="dark"]) :is(.button-lime, .ai-chat-actions .ai-chat-escalate, .ai-chat-actions .ai-chat-send, .ai-chat-lead button) {
+  background:
+    linear-gradient(135deg, rgba(229, 218, 239, 0.72), rgba(199, 181, 217, 0.62)),
+    rgba(220, 205, 231, 0.34);
+  -webkit-backdrop-filter: blur(30px) saturate(1.08);
+  backdrop-filter: blur(30px) saturate(1.08);
+}
+
+:root:not([data-theme="dark"]) :is(.button-lime, .ai-chat-actions .ai-chat-escalate, .ai-chat-actions .ai-chat-send, .ai-chat-lead button):hover,
+:root:not([data-theme="dark"]) :is(.button-lime, .ai-chat-actions .ai-chat-escalate, .ai-chat-actions .ai-chat-send, .ai-chat-lead button):focus-visible {
+  background:
+    linear-gradient(135deg, rgba(239, 231, 247, 0.82), rgba(211, 195, 225, 0.72)),
+    rgba(224, 211, 234, 0.42);
+}
+
+:root:not([data-theme="dark"]) main :is(.glass-panel, .glass-card, .section) .button-ghost {
+  background:
+    linear-gradient(138deg, rgba(255, 255, 255, 0.46), rgba(232, 225, 238, 0.28)),
+    rgba(247, 247, 249, 0.12);
+  -webkit-backdrop-filter: blur(30px) saturate(1.06);
+  backdrop-filter: blur(30px) saturate(1.06);
+}
+
+:root:not([data-theme="dark"]) .quick-page-nav button,
+:root:not([data-theme="dark"]) :is(.ai-chat-widget, .client-portal-widget) {
+  background:
+    linear-gradient(135deg, rgba(229, 217, 239, 0.72), rgba(197, 179, 215, 0.62)),
+    rgba(218, 202, 229, 0.34);
+  -webkit-backdrop-filter: blur(32px) saturate(1.08);
+  backdrop-filter: blur(32px) saturate(1.08);
+}
+
+@keyframes premium-header-drift {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateX(-9%);
+  }
+
+  50% {
+    opacity: 0.78;
+    transform: translateX(9%);
+  }
+}
+
+@keyframes premium-glass-sheen {
+  0%,
+  72%,
+  100% {
+    opacity: 0.14;
+    transform: translateX(-52%) rotate(-8deg);
+  }
+
+  40% {
+    opacity: 0.46;
+    transform: translateX(38%) rotate(-8deg);
+  }
+}
+
+:root:not([data-theme="dark"]) .site-header::before {
+  will-change: transform, opacity;
+  animation: premium-header-drift 16s ease-in-out infinite;
+}
+
+:root:not([data-theme="dark"]) :is(.compact-list a, .compact-list .compact-row, .glass-card)::before {
+  background:
+    radial-gradient(ellipse at 30% 24%, rgba(255, 255, 255, 0.66), transparent 19%),
+    linear-gradient(112deg, transparent 31%, rgba(222, 207, 239, 0.46) 46%, transparent 61%);
+  filter: blur(20px);
+  will-change: transform, opacity;
+  animation: premium-glass-sheen 11.5s ease-in-out infinite;
+}
+
+:root:not([data-theme="dark"]) .button-lime::before,
+:root:not([data-theme="dark"]) :is(.quick-page-nav button, .ai-chat-widget, .client-portal-widget)::before {
+  background:
+    radial-gradient(ellipse at 30% 24%, rgba(255, 255, 255, 0.72), transparent 19%),
+    linear-gradient(112deg, transparent 31%, rgba(238, 226, 249, 0.62) 46%, transparent 61%);
+  filter: blur(15px);
+  will-change: transform, opacity;
+  animation: button-red-sheen 6.8s ease-in-out infinite;
+}
+
+@media (min-width: 1101px) and (max-width: 1520px) {
+  :root:not([data-theme="dark"]) .brand strong {
+    font-size: 1.04rem;
+  }
+
+  :root:not([data-theme="dark"]) .brand small {
+    font-size: 0.84rem;
+  }
+
+  :root:not([data-theme="dark"]) .desktop-nav a {
+    padding-inline: 0.52rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root:not([data-theme="dark"]) body {
+    font-size: 16px;
+  }
+
+  :root:not([data-theme="dark"]) :is(.hero p, .section p, .hero-choice-description) {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-theme="dark"]) .site-header::before,
+  :root:not([data-theme="dark"]) :is(.compact-list a, .compact-list .compact-row, .glass-card)::before,
+  :root:not([data-theme="dark"]) .button-lime::before,
+  :root:not([data-theme="dark"]) :is(.quick-page-nav button, .ai-chat-widget, .client-portal-widget)::before {
+    animation: none;
   }
 }
