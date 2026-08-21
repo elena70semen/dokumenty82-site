@@ -5373,6 +5373,56 @@ option,
   :root:not([data-theme="dark"]) :is(.hero p, .section p, .hero-choice-description) {
     font-size: 1rem;
   }
+
+  .compact-list a,
+  .compact-list .compact-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+
+  .compact-list strong,
+  .compact-list small,
+  .button {
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    min-width: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: balance;
+  }
+
+  .news-grid.news-feed {
+    grid-auto-columns: 100%;
+  }
+
+  .crm-lead-form .lead-file-picker {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .lead-file-picker-button {
+    width: 100%;
+  }
+
+  .lead-file-picker-status {
+    width: 100%;
+    overflow: visible;
+    text-align: center;
+    text-overflow: clip;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5381,5 +5431,17 @@ option,
   :root:not([data-theme="dark"]) .button-lime::before,
   :root:not([data-theme="dark"]) :is(.quick-page-nav button, .ai-chat-widget, .client-portal-widget)::before {
     animation: none;
+  }
+}
+
+@media (min-width: 641px) {
+  .site-header {
+    width: min(calc(100% - 24px), 1680px);
+  }
+}
+
+@media (max-width: 340px) {
+  h1 {
+    font-size: 1.55rem;
   }
 }
