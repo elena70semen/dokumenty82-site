@@ -60,6 +60,7 @@ const pages = urls.map((url) => {
     robots: meta(html, "robots"),
     canonical,
     h1,
+    mainHtml,
     words: visible.split(/\s+/).filter(Boolean).length,
     visible,
     paragraphs,
@@ -341,6 +342,36 @@ for (const [route, minimum] of minimumInboundSupport) {
 
 const faqPage = pages.find((page) => page.route === "/faq/");
 if (!faqPage?.html.includes('"@type":"FAQPage"')) issues.push("/faq/: missing FAQPage schema");
+if (faqPage) {
+  const faqSchemas = faqPage.schemaBlocks
+    .map((block) => {
+      try { return JSON.parse(block); } catch { return null; }
+    })
+    .filter((schema) => schema?.["@type"] === "FAQPage");
+  const faqQuestions = faqSchemas.flatMap((schema) => schema.mainEntity || []);
+  if (faqQuestions.length < 8) issues.push(`/faq/: only ${faqQuestions.length} FAQ questions; expected at least 8`);
+
+  const requiredFaqLinks = [
+    "/registraciya-ip/",
+    "/registraciya-ooo/",
+    "/nalogi-i-rezhimy/",
+    "/ausn-krym/",
+    "/buhgalterskie-uslugi/",
+    "/soprovozhdenie/",
+    "/otchetnost/",
+    "/bank-i-115-fz/",
+    "/dokumenty-dlya-banka-115-fz/",
+    "/otvet-na-trebovanie-ifns/",
+  ];
+  for (const route of requiredFaqLinks) {
+    if (!faqPage.mainHtml.includes(`href="${route}"`)) issues.push(`/faq/: missing contextual link to ${route}`);
+  }
+}
+
+const reviewsContextSources = pages.filter((page) => (
+  page.route !== "/otzyvy/" && page.mainHtml.includes('href="/otzyvy/"')
+));
+if (reviewsContextSources.length === 0) issues.push("/otzyvy/: missing contextual link from another sitemap page");
 
 console.log(`Sitemap pages: ${pages.length}`);
 console.log(`Service feed offers: ${serviceOffers.length}`);
