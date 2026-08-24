@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services_feed version="1.4" date="2026-08-24T12:00:00+03:00">
+  <source>
+    <name>Документы для бизнеса</name>
+    <url>https://dokumenty82.ru/</url>
+    <favicon>https://dokumenty82.ru/favicon.ico</favicon>
+    <locale>ru</locale>
+  </source>
+  <executors>
+    <executor>
+      <persistent_id>d82-executor-ip-barkova</persistent_id>
+      <url>https://dokumenty82.ru/rekvizity/</url>
+      <is_organization>1</is_organization>
+      <is_banned>0</is_banned>
+      <name>ИП Баркова Рахима Садыковна</name>
+      <description>Документы для бизнеса в Симферополе: бухгалтерское и налоговое сопровождение ИП и ООО, отчётность, регистрационные действия, ответы ИФНС и документы для банков.</description>
+      <contacts>
+        <phones>
+          <phone is_primary="1">+79789987222</phone>
+        </phones>
+        <sites>
+          <site>https://dokumenty82.ru/</site>
+        </sites>
+      </contacts>
+      <availability>
+        <b2b>1</b2b>
+      </availability>
+      <trust>
+        <contract>1</contract>
+        <registration_date>2017-10-20</registration_date>
+      </trust>
+      <geo_info>
+        <addresses>
+          <address>
+            <text>Россия, Республика Крым, Симферополь, ул. им. Мате Залки, 1</text>
+          </address>
+        </addresses>
+      </geo_info>
+      <photos>
+        <avatar_photo_url>https://dokumenty82.ru/assets/images/brand-logo-open-book.png</avatar_photo_url>
+      </photos>
+      <services>
+        <service>
+          <url>https://dokumenty82.ru/razbor-situacii/</url>
+          <persistent_id>d82-service-razbor-situacii</persistent_id>
+          <name>Разбор ситуации по документам</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Определим задачу, проверим исходные документы и согласуем ближайший безопасный шаг.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/soprovozhdenie/</url>
+          <persistent_id>d82-service-buh-soprovozhdenie-ip</persistent_id>
+          <name>Бухгалтерское сопровождение ИП</name>
+          <price><from><value>10000</value><currency>RUB</currency></from></price>
+          <description>Сопровождение ИП с учётом режима, операций, сотрудников и состава регулярной отчётности.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/</url>
+          <persistent_id>d82-service-buh-soprovozhdenie-ooo</persistent_id>
+          <name>Бухгалтерское сопровождение ООО</name>
+          <price><from><value>15000</value><currency>RUB</currency></from></price>
+          <description>Регулярный учёт ООО, обязательная отчётность и контроль налоговых и кадровых документов.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/registraciya-ip/</url>
+          <persistent_id>d82-service-registraciya-ip</persistent_id>
+          <name>Регистрация ИП</name>
+          <price><from><value>5000</value><currency>RUB</currency></from></price>
+          <description>Подготовим документы для регистрации ИП с учётом деятельности и выбранного налогового режима.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/registraciya-ooo/</url>
+          <persistent_id>d82-service-registraciya-ooo</persistent_id>
+          <name>Регистрация ООО</name>
+          <price><from><value>10000</value><currency>RUB</currency></from></price>
+          <description>Соберём данные об участниках, адресе и деятельности и подготовим стартовый комплект ООО.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/</url>
+          <persistent_id>d82-service-nedostovernost-adresa</persistent_id>
+          <name>Недостоверность юридического адреса</name>
+          <price><from><value>18000</value><currency>RUB</currency></from></price>
+          <description>Разберём отметку или риск недостоверности адреса и подготовим документы по ситуации.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/smena-direktora-ooo/</url>
+          <persistent_id>d82-service-smena-direktora</persistent_id>
+          <name>Смена директора ООО</name>
+          <price><from><value>8000</value><currency>RUB</currency></from></price>
+          <description>Подготовим комплект для смены руководителя и отделим её от связанных изменений в ЕГРЮЛ.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/</url>
+          <persistent_id>d82-service-smena-adresa</persistent_id>
+          <name>Смена юридического адреса ООО</name>
+          <price><from><value>13000</value><currency>RUB</currency></from></price>
+          <description>Проверим текущий и новый адресный маршрут и подготовим документы для внесения изменений.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/yuridicheskiy-adres-simferopol/</url>
+          <persistent_id>d82-service-yuridicheskiy-adres</persistent_id>
+          <name>Юридический адрес в Симферополе</name>
+          <price><from><value>20000</value><currency>RUB</currency></from></price>
+          <description>Разберём адресный вопрос, регистрацию или смену адреса и необходимые сведения ЕГРЮЛ.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/likvidaciya-ooo/</url>
+          <persistent_id>d82-service-likvidaciya-ooo</persistent_id>
+          <name>Ликвидация ООО</name>
+          <price><from><value>45000</value><currency>RUB</currency></from></price>
+          <description>Проверим статус ООО, документы и обязательства и составим маршрут добровольной ликвидации.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/raschet-nalogovoy-nagruzki/</url>
+          <persistent_id>d82-service-nalogovaya-nagruzka</persistent_id>
+          <name>Расчёт налоговой нагрузки</name>
+          <price><from><value>5000</value><currency>RUB</currency></from></price>
+          <description>Соберём данные по деятельности, режиму, операциям и периоду и рассчитаем налоговую нагрузку.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/nulevaya-otchetnost-ip/</url>
+          <persistent_id>d82-service-nulevaya-ip</persistent_id>
+          <name>Нулевая отчётность ИП</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Проверим режим, период и активность ИП перед подготовкой нулевой отчётности.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/nulevaya-otchetnost-ooo/</url>
+          <persistent_id>d82-service-nulevaya-ooo</persistent_id>
+          <name>Нулевая отчётность ООО</name>
+          <price><from><value>4000</value><currency>RUB</currency></from></price>
+          <description>Проверим статус ООО, период и отсутствие операций перед подготовкой нулевой отчётности.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/deklaraciya-usn/</url>
+          <persistent_id>d82-service-deklaraciya-usn</persistent_id>
+          <name>Декларация УСН</name>
+          <price><from><value>5000</value><currency>RUB</currency></from></price>
+          <description>Проверим период, статус бизнеса, операции и исходные данные и подготовим декларацию УСН.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/vosstanovlenie-buhucheta/</url>
+          <persistent_id>d82-service-vosstanovlenie-buhucheta</persistent_id>
+          <name>Восстановление бухгалтерского учёта</name>
+          <price><from><value>20000</value><currency>RUB</currency></from></price>
+          <description>Определим периоды, недостающие документы и пробелы в учёте и составим план восстановления.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/kadry/</url>
+          <persistent_id>d82-service-kadrovye-dokumenty</persistent_id>
+          <name>Кадровые документы и сопровождение</name>
+          <price><from><value>5000</value><currency>RUB</currency></from></price>
+          <description>Определим кадровую задачу и подготовим необходимый комплект по имеющимся исходным данным.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/</url>
+          <persistent_id>d82-service-dokumenty-115-fz</persistent_id>
+          <name>Документы для банка по 115-ФЗ</name>
+          <price><from><value>15000</value><currency>RUB</currency></from></price>
+          <description>Соберём комплект по операциям, деятельности, контрагентам и конкретному запросу банка.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/otvet-na-zapros-banka/</url>
+          <persistent_id>d82-service-otvet-banku</persistent_id>
+          <name>Ответ на запрос банка</name>
+          <price><from><value>10000</value><currency>RUB</currency></from></price>
+          <description>Разберём письмо банка по пунктам и подготовим структуру ответа с подтверждающими документами.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/otvet-na-trebovanie-ifns/</url>
+          <persistent_id>d82-service-otvet-ifns</persistent_id>
+          <name>Ответ на требование ИФНС</name>
+          <price><from><value>8000</value><currency>RUB</currency></from></price>
+          <description>Разберём требование, период и имеющиеся документы и подготовим обоснованный ответ ИФНС.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/ausn-krym/</url>
+          <persistent_id>d82-service-ausn-krym</persistent_id>
+          <name>Проверка применимости АУСН в Крыму</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Проверим лимиты, сотрудников, активы и банк и сравним варианты АУСН для ИП или ООО.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/nds-pri-usn-2026/</url>
+          <persistent_id>d82-service-nds-usn-2026</persistent_id>
+          <name>Проверка НДС при УСН в 2026 году</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Проверим порог дохода, дату начала обязанностей, ставку НДС и изменения в документах и учёте.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/sverka-s-nalogovoy/</url>
+          <persistent_id>d82-service-sverka-fns-ens</persistent_id>
+          <name>Сверка расчётов с ФНС и ЕНС</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Проверим сальдо, начисления, платежи, уведомления и расхождения за выбранный период.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/srochnye-voprosy/</url>
+          <persistent_id>d82-service-srochnye-dokumenty</persistent_id>
+          <name>Срочный разбор документов</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Зафиксируем ближайшее действие по письму, запросу или сроку и состав необходимых материалов.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/otchetnost/</url>
+          <persistent_id>d82-service-proverka-otchetnosti</persistent_id>
+          <name>Проверка отчётности бизнеса</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Проверим режим, периоды, обязательные формы и пропуски и определим маршрут сдачи отчётности.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/adres-egryul-direktor/</url>
+          <persistent_id>d82-service-izmeneniya-egryul</persistent_id>
+          <name>Изменения адреса, директора и ЕГРЮЛ</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Разберём изменения адреса, руководителя и устава и распределим их по регистрационным процедурам.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/likvidaciya-ip/</url>
+          <persistent_id>d82-service-likvidaciya-ip</persistent_id>
+          <name>Ликвидация ИП</name>
+          <price><from><value>5000</value><currency>RUB</currency></from></price>
+          <description>Проверим статус, ЕНС, кассу, сотрудников и отчётность и подготовим маршрут закрытия ИП.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/sdacha-otchetnosti-ip/</url>
+          <persistent_id>d82-service-sdacha-otchetnosti-ip</persistent_id>
+          <name>Сдача отчётности ИП</name>
+          <price><from><value>3000</value><currency>RUB</currency></from></price>
+          <description>Определим обязательные формы, проверим учётные данные и подготовим комплект отчётности ИП.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/sdacha-otchetnosti-ooo/</url>
+          <persistent_id>d82-service-sdacha-otchetnosti-ooo</persistent_id>
+          <name>Сдача отчётности ООО</name>
+          <price><from><value>5000</value><currency>RUB</currency></from></price>
+          <description>Подготовим бухгалтерские, налоговые и зарплатные формы и проверим контрольные соотношения.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/izmenenie-okved-ip/</url>
+          <persistent_id>d82-service-izmenenie-okved-ip</persistent_id>
+          <name>Изменение кодов ОКВЭД ИП</name>
+          <price><from><value>5000</value><currency>RUB</currency></from></price>
+          <description>Проверим фактическую деятельность, подберём основной и дополнительные коды и подготовим заявление.</description>
+        </service>
+        <service>
+          <url>https://dokumenty82.ru/izmenenie-okved-ooo/</url>
+          <persistent_id>d82-service-izmenenie-okved-ooo</persistent_id>
+          <name>Изменение кодов ОКВЭД ООО</name>
+          <price><from><value>8000</value><currency>RUB</currency></from></price>
+          <description>Проверим устав и деятельность, подготовим корпоративные документы и форму Р13014.</description>
+        </service>
+      </services>
+    </executor>
+  </executors>
+</services_feed>
