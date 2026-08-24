@@ -228,6 +228,28 @@ for (const offer of serviceOffers) {
         if (schemaOffer.priceCurrency !== "RUB") issues.push(`services.yml: ${offer.id} schema currency must be RUB`);
         if (schemaOffer.url !== offer.url) issues.push(`services.yml: ${offer.id} schema url differs from feed`);
       }
+      if (route !== "/") {
+        const breadcrumbNode = schemaNodes.find((node) => {
+          const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+          return types.includes("BreadcrumbList");
+        });
+        const breadcrumbItems = breadcrumbNode?.itemListElement;
+        if (!Array.isArray(breadcrumbItems) || breadcrumbItems.length < 3) {
+          issues.push(`services.yml: ${offer.id} is missing BreadcrumbList schema on ${route}`);
+        } else {
+          const expectedItems = [
+            "https://dokumenty82.ru/",
+            "https://dokumenty82.ru/uslugi/",
+            offer.url,
+          ];
+          for (const [index, expectedItem] of expectedItems.entries()) {
+            const item = breadcrumbItems[index];
+            if (Number(item?.position) !== index + 1 || item?.item !== expectedItem || !item?.name) {
+              issues.push(`services.yml: ${offer.id} has invalid breadcrumb item ${index + 1} on ${route}`);
+            }
+          }
+        }
+      }
     }
   }
   for (const paramName of requiredServiceParams) {

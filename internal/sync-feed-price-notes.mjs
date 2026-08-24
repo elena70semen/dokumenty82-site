@@ -43,6 +43,51 @@ const syncServiceOfferSchema = (html, offer, route) => {
       url: offer.url,
       availability: "https://schema.org/InStock",
     };
+
+    if (route !== "/") {
+      if (!Array.isArray(schema["@graph"])) {
+        throw new Error(`Schema graph missing for ${offer.id}: ${route}`);
+      }
+      const webPage = nodes.find((node) => {
+        const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+        return types.includes("WebPage");
+      });
+      const breadcrumbData = {
+        "@type": "BreadcrumbList",
+        "@id": `${offer.url}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Главная",
+            item: "https://dokumenty82.ru/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Услуги",
+            item: "https://dokumenty82.ru/uslugi/",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: webPage?.name || service.name,
+            item: offer.url,
+          },
+        ],
+      };
+      const breadcrumb = nodes.find((node) => {
+        const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+        return types.includes("BreadcrumbList");
+      });
+      if (breadcrumb) {
+        for (const key of Object.keys(breadcrumb)) delete breadcrumb[key];
+        Object.assign(breadcrumb, breadcrumbData);
+      } else {
+        schema["@graph"].push(breadcrumbData);
+      }
+      if (webPage) webPage.breadcrumb = { "@id": breadcrumbData["@id"] };
+    }
     return true;
   };
   const serialize = (schema) => {

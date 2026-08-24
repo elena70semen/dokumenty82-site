@@ -106,6 +106,9 @@
             },
             "about": {
               "@id": "https://dokumenty82.ru/#business"
+            },
+            "breadcrumb": {
+              "@id": "https://dokumenty82.ru/razbor-situacii/#breadcrumb"
             }
           },
           {
@@ -140,11 +143,75 @@
               "url": "https://dokumenty82.ru/razbor-situacii/",
               "availability": "https://schema.org/InStock"
             }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://dokumenty82.ru/razbor-situacii/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://dokumenty82.ru/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Услуги",
+                "item": "https://dokumenty82.ru/uslugi/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Разберём ситуацию и подскажем документальный маршрут",
+                "item": "https://dokumenty82.ru/razbor-situacii/"
+              }
+            ]
           }
         ]
       }
     </script>
     <!-- d82-service-schema:end -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Можно ли начать без документов?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да. Для первого шага достаточно описать, что произошло, кто запросил информацию, за какой период и какой результат нужен."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Что делать, если срок короткий?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Сразу укажите дату из письма или запроса. Тогда можно быстрее выбрать порядок действий и понять, какие материалы критичны."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Можно ли прислать все документы сразу?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Лучше сначала согласовать, что действительно нужно. Так меньше риск передать лишние данные или запутать ответ нерелевантными файлами."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Когда переходить в контакты?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Если вопрос чувствительный, документов много или нужен визит в офис, переходите в контакты и согласуйте безопасный способ работы."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     
@@ -337,6 +404,19 @@
       <h3>Следующий шаг</h3>
       <p>Клиент понимает, что делать сейчас: позвонить, написать, подготовить перечень документов или перейти на конкретную страницу услуги.</p>
     </article></div>
+    </section>
+    <section class="section page-rich-section supplemental-section route-graphic-panel">
+      <div class="section-header">
+        <p class="eyebrow">Первое сообщение</p>
+        <h2>Какие четыре факта помогут сразу выбрать маршрут</h2>
+        <p>На первом шаге не нужны все документы: достаточно коротко зафиксировать контекст и ожидаемый результат.</p>
+      </div>
+      <div class="card-grid two rich-card-grid">
+        <article class="glass-card rich-card"><h3>Кто обратился</h3><p>Банк, ИФНС, фонд, контрагент или сама компания инициировали вопрос.</p></article>
+        <article class="glass-card rich-card"><h3>Что произошло</h3><p>Получено письмо, появилась запись в реестре, нужен отчёт или планируется изменение бизнеса.</p></article>
+        <article class="glass-card rich-card"><h3>Какой срок</h3><p>Укажите дату получения, срок из документа и ближайшее событие, которое нельзя пропустить.</p></article>
+        <article class="glass-card rich-card"><h3>Что должно получиться</h3><p>Ответ, комплект документов, регистрационное действие, расчёт или понятная последовательность шагов.</p></article>
+      </div>
     </section>
     <section class="section page-rich-section supplemental-section route-graphic-panel">
       
