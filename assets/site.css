@@ -5542,30 +5542,35 @@ option,
 
 .promotions-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
-  gap: 1rem;
-}
-
-.promotions-hero-copy,
-.promotions-hero-summary {
-  min-height: 360px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.85rem;
 }
 
 .promotions-hero-copy {
+  min-height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .promotions-hero-summary {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(1.4rem, 3vw, 2.3rem);
+  min-height: auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 2fr);
+  gap: clamp(1.4rem, 3vw, 3.5rem);
+  align-items: center;
+  padding: clamp(1.25rem, 2.4vw, 1.8rem) clamp(1.4rem, 3vw, 2.3rem);
 }
 
 .promotions-hero-summary h2 {
-  max-width: 14ch;
+  max-width: 22ch;
+  margin-bottom: 0;
+}
+
+.promotions-hero-summary .promotion-check-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  margin-top: 0;
 }
 
 .promotion-check-list,
@@ -5741,9 +5746,13 @@ option,
     grid-template-columns: 1fr;
   }
 
-  .promotions-hero-copy,
-  .promotions-hero-summary {
+  .promotions-hero-copy {
     min-height: auto;
+  }
+
+  .promotions-hero-summary {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .promotion-condition-grid,
@@ -5754,6 +5763,13 @@ option,
   .promotions-teaser-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+  .promotions-hero-summary .promotion-check-list {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
   }
 }
 

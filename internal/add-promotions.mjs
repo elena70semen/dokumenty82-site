@@ -55,8 +55,10 @@ const main = `<main>
           <div class="actions"><a class="button button-lime" href="#promotion-contact">Подобрать предложение</a><a class="button button-ghost" href="/ceny/">Посмотреть цены</a></div>
         </div>
         <aside class="glass-panel promotions-hero-summary">
-          <p class="eyebrow">Как это работает</p>
-          <h2>Предложение под задачу, а не наоборот</h2>
+          <div class="promotions-summary-intro">
+            <p class="eyebrow">Как это работает</p>
+            <h2>Предложение под задачу, а не наоборот</h2>
+          </div>
           <ul class="promotion-check-list"><li>проверяем, подходит ли акция к ситуации</li><li>согласуем границы работы до старта</li><li>не обещаем результат, который нельзя подтвердить</li></ul>
         </aside>
       </section>
