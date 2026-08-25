@@ -175,7 +175,23 @@
     });
   }
 
+  function wirePromotionLinks() {
+    const form = document.querySelector('#promotion-contact form[data-lead-form="amo"]');
+    const select = form && form.querySelector('select[name="task_type"]');
+    if (!select) return;
+
+    document.querySelectorAll("[data-promotion]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        const promotion = String(link.dataset.promotion || "").trim();
+        if (!promotion) return;
+        select.value = promotion;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('form[data-lead-form="amo"]').forEach(wireForm);
+    wirePromotionLinks();
   });
 })();

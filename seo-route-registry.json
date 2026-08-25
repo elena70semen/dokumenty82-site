@@ -1,6 +1,7 @@
 {
-  "version": "2026-08-13",
+  "version": "2026-08-25",
   "owner_decisions": {
+    "/akcii/": "approved promotions hub; index, follow; keep in sitemap",
     "/policy/": "index, follow; keep in sitemap",
     "/blog/": "approved for indexing",
     "/blog/razbory/": "approved for indexing",
@@ -12,6 +13,7 @@
   },
   "indexable_routes": [
     "/",
+    "/akcii/",
     "/adres-egryul-direktor/",
     "/ausn-krym/",
     "/bank-i-115-fz/",

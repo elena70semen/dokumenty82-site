@@ -648,6 +648,7 @@ for (const file of walk(root)) {
   let html = fs.readFileSync(file, "utf8");
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
+  const promotionsClass = route === "/akcii/" ? "nav-promo is-active" : "nav-promo";
   const siteCssVersion = themeAssetVersion;
   html = html.replace(
     /\s*<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon(?:-120)?\.(?:svg|png)"[^>]*\/>\s*(?:<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.svg"[^>]*\/>\s*)?(?:<link rel="(?:alternate|shortcut) icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.ico"[^>]*\/>\s*)?(?:<link rel="apple-touch-icon" href="(?:https:\/\/dokumenty82\.ru)?\/apple-touch-icon\.png"[^>]*\/>\s*)?/i,
@@ -707,8 +708,14 @@ for (const file of walk(root)) {
 
   const withDesktopNews = html.replace(/(<a class="[^"]*" href="\/blog\/">Блог<\/a>)(<a class="[^"]*" href="\/ceny\/">Цены<\/a>)/g, `$1<a class="${newsClass}" href="/novosti/">Новости</a>$2`);
   const withMobileNews = withDesktopNews.replace(/(<a href="\/blog\/">Блог<\/a>)(<a href="\/ceny\/">Цены<\/a>)/g, '$1<a href="/novosti/">Новости</a>$2');
-  if (withMobileNews !== html) navigationUpdates += 1;
-  html = withMobileNews;
+  const withoutDesktopPromotions = withMobileNews.replace(/<a class="[^"]*" href="\/akcii\/">Акции<\/a>/g, "");
+  const withDesktopPromotions = withoutDesktopPromotions.replace(/(<a class="[^"]*" href="\/novosti\/">Новости<\/a>)/g, `$1<a class="${promotionsClass}" href="/akcii/">Акции</a>`);
+  const withMobilePromotions = withDesktopPromotions.replace(/(<div class="mobile-nav-grid">)([\s\S]*?)(<\/div>)/g, (_match, open, links, close) => {
+    const cleaned = links.replace(/<a(?: class="[^"]*")? href="\/akcii\/">Акции<\/a>/g, "");
+    return `${open}${cleaned.replace(/(<a href="\/novosti\/">Новости<\/a>)/g, '$1<a class="nav-promo" href="/akcii/">Акции</a>')}${close}`;
+  });
+  if (withMobilePromotions !== html) navigationUpdates += 1;
+  html = withMobilePromotions;
 
   if (indexedRoutes.has(route) && html.includes("Коротко отделим главный вопрос от сопутствующих тем и выберем следующий шаг.")) {
     const refreshed = refreshServicePage(html);

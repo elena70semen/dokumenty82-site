@@ -17,6 +17,7 @@
     "goal_form_submit_attempt",
   ]);
   const COMMERCIAL_ROUTE_CLUSTERS = new Map([
+    ["/akcii/", "promotions"],
     ["/uslugi/", "catalog"],
     ["/buhgalterskie-uslugi/", "accounting"],
     ["/soprovozhdenie/", "accounting"],
@@ -177,7 +178,7 @@
     if (link.closest(".service-tree-group")) return "service_tree";
     if (link.closest(".related-section, .supplemental-section")) return "related";
     if (link.closest("footer")) return "footer";
-    if (link.closest(".desktop-nav, .mobile-nav, .mobile-drawer")) return "navigation";
+    if (link.closest(".desktop-nav, .mobile-nav-grid, .mobile-nav, .mobile-drawer")) return "navigation";
     return "content";
   }
 
@@ -189,6 +190,14 @@
     if (named) {
       const name = String(named.getAttribute("data-event-name") || "").trim();
       if (NAMED_GOALS.has(name)) reachGoal(name);
+    }
+
+    const promotion = origin.closest("[data-promotion]");
+    if (promotion) {
+      reachGoal("promotion_cta_click", {
+        promotion: String(promotion.getAttribute("data-promotion") || "").slice(0, 120),
+        placement: linkPlacement(promotion),
+      });
     }
 
     const link = origin.closest("a[href]");

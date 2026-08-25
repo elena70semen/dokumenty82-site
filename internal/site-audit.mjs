@@ -282,6 +282,7 @@ for (const page of pages) {
   if (!page.description) issues.push(`${page.route}: missing description`);
   if (!page.h1) issues.push(`${page.route}: missing h1`);
   if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/novosti\/"/i)) issues.push(`${page.route}: News missing from desktop navigation`);
+  if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/akcii\/"[^>]*>Акции<\/a>/i)) issues.push(`${page.route}: Promotions missing from desktop navigation`);
   if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/uslugi\/"[^>]*>Услуги<\/a>/i)) issues.push(`${page.route}: Services catalog missing from desktop navigation`);
   if (!page.html.match(/<nav aria-label="Разделы сайта">[\s\S]*?href="\/buhgalterskie-uslugi\/"[^>]*>Бухгалтерия<\/a>/i)) {
     issues.push(`${page.route}: Accounting services missing from footer navigation`);
