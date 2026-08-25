@@ -16,6 +16,43 @@
     "hero_cta_click",
     "goal_form_submit_attempt",
   ]);
+  const COMMERCIAL_ROUTE_CLUSTERS = new Map([
+    ["/uslugi/", "catalog"],
+    ["/buhgalterskie-uslugi/", "accounting"],
+    ["/soprovozhdenie/", "accounting"],
+    ["/buhgalterskoe-soprovozhdenie-ooo/", "accounting"],
+    ["/vosstanovlenie-buhucheta/", "accounting"],
+    ["/kadry/", "accounting"],
+    ["/otchetnost/", "reporting"],
+    ["/sdacha-otchetnosti-ip/", "reporting"],
+    ["/sdacha-otchetnosti-ooo/", "reporting"],
+    ["/nulevaya-otchetnost-ip/", "reporting"],
+    ["/nulevaya-otchetnost-ooo/", "reporting"],
+    ["/deklaraciya-usn/", "reporting"],
+    ["/nalogi-i-rezhimy/", "tax"],
+    ["/raschet-nalogovoy-nagruzki/", "tax"],
+    ["/ausn-krym/", "tax"],
+    ["/nds-pri-usn-2026/", "tax"],
+    ["/sverka-s-nalogovoy/", "tax"],
+    ["/otvet-na-trebovanie-ifns/", "tax"],
+    ["/registraciya-i-likvidaciya/", "registration"],
+    ["/registraciya-ip/", "registration"],
+    ["/registraciya-ooo/", "registration"],
+    ["/likvidaciya-ip/", "registration"],
+    ["/likvidaciya-ooo/", "registration"],
+    ["/izmenenie-okved-ip/", "registration"],
+    ["/izmenenie-okved-ooo/", "registration"],
+    ["/adres-egryul-direktor/", "registration"],
+    ["/smena-direktora-ooo/", "registration"],
+    ["/smena-yuridicheskogo-adresa-ooo/", "registration"],
+    ["/yuridicheskiy-adres-simferopol/", "registration"],
+    ["/nedostovernost-yuridicheskogo-adresa/", "registration"],
+    ["/bank-i-115-fz/", "bank"],
+    ["/dokumenty-dlya-banka-115-fz/", "bank"],
+    ["/otvet-na-zapros-banka/", "bank"],
+    ["/razbor-situacii/", "orientation"],
+    ["/srochnye-voprosy/", "orientation"],
+  ]);
 
   function readStoredAttribution() {
     try {
@@ -122,6 +159,28 @@
     return "";
   }
 
+  function commercialRouteForLink(link) {
+    const href = String(link.getAttribute("href") || "").trim();
+    if (!href || href.startsWith("#")) return null;
+    try {
+      const url = new URL(href, window.location.origin);
+      if (url.origin !== window.location.origin) return null;
+      const cluster = COMMERCIAL_ROUTE_CLUSTERS.get(url.pathname);
+      return cluster ? { path: url.pathname, cluster: cluster } : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function linkPlacement(link) {
+    if (link.closest(".hero")) return "hero";
+    if (link.closest(".service-tree-group")) return "service_tree";
+    if (link.closest(".related-section, .supplemental-section")) return "related";
+    if (link.closest("footer")) return "footer";
+    if (link.closest(".desktop-nav, .mobile-nav, .mobile-drawer")) return "navigation";
+    return "content";
+  }
+
   document.addEventListener("click", function (event) {
     const origin = event.target && event.target.closest ? event.target : null;
     if (!origin) return;
@@ -138,6 +197,17 @@
     if (linkGoal) {
       reachGoal(linkGoal, {
         href: String(link.getAttribute("href") || "").slice(0, 180),
+        text: String(link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 120),
+        placement: linkPlacement(link),
+      });
+    }
+
+    const route = commercialRouteForLink(link);
+    if (route && route.path !== window.location.pathname) {
+      reachGoal("service_route_click", {
+        destination: route.path,
+        cluster: route.cluster,
+        placement: linkPlacement(link),
         text: String(link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 120),
       });
     }

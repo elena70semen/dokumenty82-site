@@ -344,6 +344,50 @@ for (const route of serviceOffers.map((offer) => new URL(offer.url).pathname)) {
   if (!servicesPage?.html.includes(`href="${route}"`)) issues.push(`/uslugi/: missing direct link to ${route}`);
 }
 
+const commercialHubCoverage = new Map([
+  ["/buhgalterskie-uslugi/", [
+    "/soprovozhdenie/", "/buhgalterskoe-soprovozhdenie-ooo/", "/sdacha-otchetnosti-ip/",
+    "/sdacha-otchetnosti-ooo/", "/vosstanovlenie-buhucheta/", "/kadry/",
+    "/raschet-nalogovoy-nagruzki/", "/sverka-s-nalogovoy/", "/otvet-na-trebovanie-ifns/",
+  ]],
+  ["/otchetnost/", [
+    "/deklaraciya-usn/", "/sdacha-otchetnosti-ip/", "/sdacha-otchetnosti-ooo/",
+    "/nulevaya-otchetnost-ip/", "/nulevaya-otchetnost-ooo/", "/vosstanovlenie-buhucheta/",
+    "/ausn-krym/", "/nalogi-i-rezhimy/", "/otvet-na-trebovanie-ifns/", "/sverka-s-nalogovoy/",
+  ]],
+  ["/nalogi-i-rezhimy/", [
+    "/ausn-krym/", "/raschet-nalogovoy-nagruzki/", "/nds-pri-usn-2026/", "/registraciya-ip/",
+    "/izmenenie-okved-ip/", "/izmenenie-okved-ooo/", "/likvidaciya-ip/", "/likvidaciya-ooo/",
+    "/deklaraciya-usn/", "/sverka-s-nalogovoy/", "/otvet-na-trebovanie-ifns/", "/nulevaya-otchetnost-ip/",
+  ]],
+  ["/registraciya-i-likvidaciya/", [
+    "/registraciya-ip/", "/registraciya-ooo/", "/likvidaciya-ip/", "/likvidaciya-ooo/",
+    "/izmenenie-okved-ip/", "/izmenenie-okved-ooo/", "/adres-egryul-direktor/", "/smena-direktora-ooo/",
+    "/smena-yuridicheskogo-adresa-ooo/", "/yuridicheskiy-adres-simferopol/",
+    "/nedostovernost-yuridicheskogo-adresa/", "/buhgalterskoe-soprovozhdenie-ooo/",
+  ]],
+  ["/bank-i-115-fz/", [
+    "/otvet-na-zapros-banka/", "/dokumenty-dlya-banka-115-fz/", "/razbor-situacii/", "/kontakty/",
+    "/srochnye-voprosy/", "/raschet-nalogovoy-nagruzki/", "/sverka-s-nalogovoy/", "/otvet-na-trebovanie-ifns/",
+  ]],
+]);
+for (const [hubRoute, routes] of commercialHubCoverage) {
+  const hubPage = pages.find((page) => page.route === hubRoute);
+  if (!hubPage) {
+    issues.push(`${hubRoute}: commercial hub missing`);
+    continue;
+  }
+  for (const route of routes) {
+    if (!hubPage.mainHtml.includes(`href="${route}"`)) issues.push(`${hubRoute}: missing contextual commercial link to ${route}`);
+  }
+}
+
+const metrikaGoalsSource = fs.readFileSync(path.join(root, "assets", "metrika-goals.js"), "utf8");
+if (!metrikaGoalsSource.includes('reachGoal("service_route_click"')) issues.push("Metrika: service_route_click event missing");
+for (const route of new Set(serviceOffers.map((offer) => new URL(offer.url).pathname))) {
+  if (!metrikaGoalsSource.includes(`["${route}"`)) issues.push(`Metrika: commercial route mapping missing for ${route}`);
+}
+
 const minimumInboundSupport = new Map([
   ["/ausn-krym/", 8],
   ["/deklaraciya-usn/", 10],
