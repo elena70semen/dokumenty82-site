@@ -5556,21 +5556,66 @@ option,
 .promotions-hero-summary {
   min-height: auto;
   display: grid;
-  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 2fr);
-  gap: clamp(1.4rem, 3vw, 3.5rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.15rem;
   padding: clamp(1.25rem, 2.4vw, 1.8rem) clamp(1.4rem, 3vw, 2.3rem);
 }
 
+.promotions-summary-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.promotions-summary-intro .eyebrow {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
 .promotions-hero-summary h2 {
-  max-width: 22ch;
+  max-width: none;
   margin-bottom: 0;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  text-align: right;
 }
 
 .promotions-hero-summary .promotion-check-list {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: 0;
   margin-top: 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(223, 185, 92, 0.16);
+}
+
+.promotions-hero-summary .promotion-check-list li {
+  min-height: 3.5rem;
+  padding: 0 1.5rem 0 2rem;
+}
+
+.promotions-hero-summary .promotion-check-list li:not(:first-child) {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.promotions-hero-summary .promotion-check-list li::before {
+  top: 0.38rem;
+  left: 0.65rem;
+}
+
+.promotions-hero-summary .promotion-check-list strong,
+.promotions-hero-summary .promotion-check-list span {
+  display: block;
+}
+
+.promotions-hero-summary .promotion-check-list strong {
+  margin-bottom: 0.25rem;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.promotions-hero-summary .promotion-check-list span {
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
 .promotion-check-list,
@@ -5751,7 +5796,6 @@ option,
   }
 
   .promotions-hero-summary {
-    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
@@ -5767,9 +5811,30 @@ option,
 }
 
 @media (max-width: 700px) {
+  .promotions-summary-intro {
+    display: block;
+  }
+
+  .promotions-summary-intro .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .promotions-hero-summary h2 {
+    text-align: left;
+  }
+
   .promotions-hero-summary .promotion-check-list {
     grid-template-columns: 1fr;
     gap: 0.7rem;
+  }
+
+  .promotions-hero-summary .promotion-check-list li {
+    min-height: 0;
+    padding-right: 0;
+  }
+
+  .promotions-hero-summary .promotion-check-list li:not(:first-child) {
+    border-left: 0;
   }
 }
 
@@ -5786,5 +5851,94 @@ option,
   .promotion-card .button,
   .promotion-text-link {
     margin-top: 1rem;
+  }
+}
+
+/* Times has a smaller optical size, so desktop copy needs a deliberate scale. */
+@media (min-width: 701px) {
+  body {
+    font-size: 17px;
+  }
+
+  .brand strong {
+    font-size: 1.12rem;
+    line-height: 1.08;
+  }
+
+  .brand small {
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .desktop-nav a {
+    padding-inline: 0.58rem;
+    font-size: 0.92rem;
+  }
+
+  :is(.phone-pill, .button) {
+    font-size: 0.96rem;
+  }
+
+  :is(.hero p, .section p, .hero-choice-description) {
+    font-size: 1.08rem;
+    line-height: 1.62;
+  }
+
+  :is(.hero .eyebrow, .section .eyebrow, .hero .hero-location-badge) {
+    font-size: 0.88rem;
+  }
+
+  :is(.compact-list strong, .hero-choice-panel .compact-list strong, .home-service-shortcuts strong) {
+    font-size: 1.08rem;
+    line-height: 1.3;
+  }
+
+  :is(.compact-list small, .home-service-shortcuts span) {
+    font-size: 1rem;
+    line-height: 1.46;
+  }
+
+  :is(
+    .glass-card p,
+    .rich-card .rich-list li,
+    .reviews-rating-note,
+    .news-card p,
+    .news-article p,
+    .news-article-body p,
+    .news-article-body li,
+    .pricing-service-card p,
+    .pricing-feature-list li
+  ) {
+    font-size: 1.03rem;
+    line-height: 1.58;
+  }
+
+  :is(
+    .crm-lead-form label,
+    .form-file-field,
+    .form-note,
+    .lead-file-list li,
+    .ai-chat-form label,
+    .ai-chat-lead label,
+    .ai-chat-status
+  ) {
+    font-size: 0.94rem;
+  }
+
+  :is(
+    .crm-lead-form input,
+    .crm-lead-form textarea,
+    .lead-capture-form select,
+    .ai-chat-form textarea,
+    .ai-chat-lead input,
+    .ai-chat-message,
+    .ai-chat-quick button
+  ) {
+    font-size: 1rem;
+  }
+
+  :is(.footer-brand p, .footer-links a, .site-footer address > span, .site-footer address > a) {
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }
