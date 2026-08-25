@@ -5,7 +5,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const templatePath = path.join(root, "ceny", "index.html");
 const promotionsDirectory = path.join(root, "akcii");
 const promotionsPath = path.join(promotionsDirectory, "index.html");
-const assetVersion = "202608251900";
+const assetVersion = "202608252300";
 
 const schema = {
   "@context": "https://schema.org",
