@@ -294,13 +294,18 @@
           return payload;
         });
       })
-      .then(function () {
+      .then(function (payload) {
         form.reset();
         form.hidden = true;
         setStatus("Готово. Диалог передан специалисту.");
         addMessage("assistant", "Готово, передали диалог специалисту. С вами свяжутся по указанному телефону.");
-        fireGoal("goal_ai_chat_lead");
-        fireGoal("lead_submit_success");
+        fireGoal("goal_ai_chat_lead", {
+          form: "ai_chat",
+        });
+        fireGoal("lead_submit_success", {
+          form: "ai_chat",
+          crm_status: payload.crm_status || "accepted",
+        });
       })
       .catch(function (error) {
         setStatus(error.message || "Не удалось отправить заявку. Позвоните или напишите в мессенджер.");
