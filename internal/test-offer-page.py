@@ -38,6 +38,46 @@ class OfferPageTests(unittest.TestCase):
             self.assertIn(value, self.page.xpath('//*[@data-offer-paragraph=$index]', index=str(index))[0].text_content())
         self.assertEqual(self.page.xpath('//*[@data-offer-paragraph="71"]/a/@href'), ["tel:" + business["telephone"]])
         self.assertEqual(self.page.xpath('//*[@data-offer-paragraph="72"]/a/@href'), ["mailto:" + business["email"]])
+        for item in business["identifier"]:
+            if item["propertyID"] == "ОГРНИП":
+                continue
+            rows = self.page.xpath('//*[@data-offer-requisite=$key]', key=item["propertyID"])
+            self.assertEqual(len(rows), 1)
+            self.assertIn(item["value"], rows[0].text_content())
+
+    def test_current_issuer_is_consistent(self):
+        name = "Индивидуальный предприниматель Барков Андрей Андреевич"
+        site = html.parse(str(ROOT / "rekvizity/index.html"))
+        business = json.loads(site.xpath('//script[@type="application/ld+json"]/text()')[0])["@graph"][0]
+        self.assertEqual(business["legalName"], name)
+        self.assertEqual(business["taxID"], "672908329933")
+        expected = {
+            "ОГРНИП": "325670000053721", "ОКПО": "2048471463",
+            "ОКТМО": "66701000001", "Регистрационный номер СФР": "1398608057",
+            "ЭДО": "2MH019c09de934270e393e2ad87c785e2b3",
+        }
+        self.assertEqual({row["propertyID"]: row["value"] for row in business["identifier"]}, expected)
+        content = site.xpath("//main")[0].text_content()
+        self.assertIn("16 декабря 2025 года", content)
+        self.assertIn("19 декабря 2025 года", content)
+        self.assertIn("УФНС России по Смоленской области", content)
+        # The owner explicitly retained this activity after sending new requisites.
+        self.assertIn("Основной ОКВЭД: 62.01", content)
+        self.assertNotIn("68.20", content)
+        for value in expected.values():
+            self.assertIn(value, content)
+        old_values = ("910216386365", "317910200135408", "Рахима Садыковна", "Рахиму Садыковну")
+        paths = subprocess.check_output(["git", "ls-files", "-z", "*.html"], cwd=ROOT).decode().split("\0")
+        for path in paths:
+            if not path or path.split("/")[0] in {"internal", "server", "cabinet"}:
+                continue
+            text = (ROOT / path).read_text(encoding="utf-8")
+            for old in old_values:
+                self.assertNotIn(old, text, path)
+        provider = etree.parse(str(ROOT / "services.yml"))
+        self.assertEqual(provider.xpath("/yml_catalog/shop/company/text()"), [name])
+        feed = etree.parse(str(ROOT / "services-feed.xml"))
+        self.assertIn("ИП Барков Андрей Андреевич", feed.xpath("//name/text()"))
 
     def test_navigation_and_indexing(self):
         self.assertEqual(len(self.page.xpath("//h1")), 1)

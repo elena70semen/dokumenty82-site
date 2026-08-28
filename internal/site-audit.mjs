@@ -6,9 +6,9 @@ const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 const serviceFeed = fs.readFileSync(path.join(root, "services.yml"), "utf8");
 const urls = [...sitemap.matchAll(/<loc>(https:\/\/dokumenty82\.ru(?:\/[^<]*)?)<\/loc>/g)].map((match) => match[1]);
 const registry = JSON.parse(fs.readFileSync(path.join(root, "seo-route-registry.json"), "utf8"));
-const legalName = "Индивидуальный предприниматель Баркова Рахима Садыковна";
-const taxId = "910216386365";
-const ogrnip = "317910200135408";
+const legalName = "Индивидуальный предприниматель Барков Андрей Андреевич";
+const taxId = "672908329933";
+const ogrnip = "325670000053721";
 
 const decode = (value) => value
   .replace(/&nbsp;/g, " ")

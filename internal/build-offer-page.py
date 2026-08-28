@@ -111,6 +111,12 @@ def build():
                 body.append("</ul>")
         else:
             body.append(f"<p>{content}</p>")
+    for item in business["identifier"]:
+        if item["propertyID"] == "ОГРНИП":
+            continue
+        label = escape(item["propertyID"], quote=True)
+        value = escape(item["value"])
+        body.append(f'<p data-offer-requisite="{label}"><strong>{label}:</strong> {value}</p>')
     body.append("</section>")
     main = f'''<main class="offer-page">
       <section class="hero hero-inner">
