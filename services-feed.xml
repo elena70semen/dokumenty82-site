@@ -52,14 +52,14 @@
           <persistent_id>d82-service-buh-soprovozhdenie-ip</persistent_id>
           <name>Бухгалтерское сопровождение ИП</name>
           <price><from><value>10000</value><currency>RUB</currency></from></price>
-          <description>Сопровождение ИП с учётом режима, операций, сотрудников и состава регулярной отчётности.</description>
+          <description>Бухгалтерское сопровождение ИП от 10 000 ₽ в месяц. Тариф зависит от режима, операций, сотрудников и состава регулярной отчётности.</description>
         </service>
         <service>
           <url>https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/</url>
           <persistent_id>d82-service-buh-soprovozhdenie-ooo</persistent_id>
           <name>Бухгалтерское сопровождение ООО</name>
-          <price><from><value>15000</value><currency>RUB</currency></from></price>
-          <description>Регулярный учёт ООО, обязательная отчётность и контроль налоговых и кадровых документов.</description>
+          <price><from><value>10000</value><currency>RUB</currency></from></price>
+          <description>Базовое сопровождение ООО с простой моделью учёта от 10 000 ₽ в месяц. Итоговый тариф зависит от режима, операций, сотрудников и состояния учёта.</description>
         </service>
         <service>
           <url>https://dokumenty82.ru/registraciya-ip/</url>

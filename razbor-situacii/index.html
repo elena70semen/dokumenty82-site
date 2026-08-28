@@ -451,7 +451,7 @@
       <div class="section-header">
         <p class="eyebrow">Первый контакт</p>
         <h2 id="route-contact-title">Напишите нам</h2>
-        <p>Коротко опишите ситуацию и приложите файлы, если они уже готовы. Заявка попадет в работу, а материалы останутся в закрытом канале.</p>
+        <p>Выберите тему и коротко опишите задачу. Для подбора сопровождения укажите ИП или ООО, налоговый режим, сотрудников и примерный объём операций. Заявка не является оплатой: состав работы и стоимость согласуем до начала.</p>
       </div>
       <form class="crm-lead-form lead-capture-form" action="/api/lead" method="post" enctype="multipart/form-data" data-lead-form="amo">
         <input type="hidden" name="source_page" value="/razbor-situacii/" />
@@ -469,6 +469,9 @@
           <label>Тема
             <select name="task_type" required>
               <option value="Разбор ситуации">Разбор ситуации</option>
+              <option value="Подбор бухгалтерских услуг">Подбор бухгалтерских услуг</option>
+              <option value="Бухгалтерское сопровождение ИП">Бухгалтерское сопровождение ИП</option>
+              <option value="Бухгалтерское сопровождение ООО">Бухгалтерское сопровождение ООО</option>
               <option value="Требование или письмо">Требование или письмо</option>
               <option value="Запрос банка">Запрос банка</option>
               <option value="Отчетность">Отчетность</option>
@@ -476,8 +479,8 @@
               <option value="Другое">Другое</option>
             </select>
           </label>
-          <label class="form-span-2">Что нужно разобрать
-            <textarea name="message" rows="5" required placeholder="Что произошло, кто запросил документы, какой срок указан"></textarea>
+          <label class="form-span-2">Что нужно сделать
+            <textarea name="message" rows="5" required placeholder="Опишите задачу и вводные. Если есть письмо или запрос — укажите срок ответа."></textarea>
           </label>
           <div class="form-span-2 form-file-field">
             <span>Файлы</span>
@@ -562,7 +565,7 @@
       <strong>Задать вопрос срочно</strong>
     </a>
     <div class="cookie-notice" id="cookie-notice"><p>Сайт использует cookies и техническую аналитику. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="/policy/">политикой конфиденциальности</a>.</p><button type="button">Понятно</button></div>
-    <script src="/assets/lead-form.js?v=202608251900" defer></script>
+    <script src="/assets/lead-form.js?v=202608271600" defer></script>
     <script>
       (() => {
         const notice = document.getElementById('cookie-notice');

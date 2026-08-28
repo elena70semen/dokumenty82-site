@@ -169,7 +169,7 @@
         <url>https://dokumenty82.ru/soprovozhdenie/</url>
         <price from="true">10000</price>
         <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от объема и сложности задачи.</sales_notes>
+        <sales_notes>Стоимость за месяц. Итог зависит от режима, операций, сотрудников и состояния учета.</sales_notes>
         <categoryId>2</categoryId>
         <set-ids>s2</set-ids>
         <picture>https://dokumenty82.ru/assets/images/brand-logo-open-book.png?offer=buh-soprovozhdenie-ip</picture>
@@ -190,9 +190,9 @@
       <offer id="d82-buh-soprovozhdenie-ooo">
         <name>Документы для бизнеса</name>
         <url>https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/</url>
-        <price from="true">15000</price>
+        <price from="true">10000</price>
         <currencyId>RUR</currencyId>
-        <sales_notes>Цена от указанной суммы. Итог зависит от режима, НДС, количества операций, сотрудников и состояния учета.</sales_notes>
+        <sales_notes>Базовый тариф за месяц при простой модели учета. Итог зависит от режима, НДС, операций, сотрудников и состояния учета.</sales_notes>
         <categoryId>2</categoryId>
         <set-ids>s27</set-ids>
         <picture>https://dokumenty82.ru/assets/images/office-document-consultation.webp?offer=buh-soprovozhdenie-ooo</picture>
