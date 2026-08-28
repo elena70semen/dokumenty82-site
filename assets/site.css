@@ -5942,3 +5942,150 @@ option,
     line-height: 1.5;
   }
 }
+
+.site-footer nav > .footer-offer-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.4;
+  text-align: center;
+  text-underline-offset: 4px;
+}
+
+.site-footer nav > .footer-offer-link:hover,
+.site-footer nav > .footer-offer-link:focus-visible {
+  color: var(--text);
+}
+
+.offer-page .hero-copy {
+  width: 100%;
+  min-width: 0;
+}
+
+.offer-page h1 {
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.offer-page .offer-subtitle {
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.offer-page .offer-date {
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+.offer-toc {
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.offer-toc ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.offer-toc a,
+.offer-document a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+.offer-toc a {
+  display: block;
+  padding: 6px 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.offer-page .offer-document {
+  padding: 32px 40px;
+  background: rgba(19, 26, 34, 0.95);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.offer-document::before,
+.offer-document::after {
+  display: none;
+}
+
+.offer-document .offer-section {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.offer-document .offer-section + .offer-section {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.offer-document h2 {
+  margin: 0 0 20px;
+  font-size: 28px;
+  line-height: 1.3;
+  scroll-margin-top: 120px;
+}
+
+.offer-document h3 {
+  margin: 24px 0 14px;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.offer-document :is(p, li) {
+  max-width: none;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.offer-document p {
+  margin: 0 0 18px;
+}
+
+.offer-document .offer-list {
+  margin: 0 0 18px;
+  padding-left: 24px;
+}
+
+.offer-document .offer-list li + li {
+  margin-top: 8px;
+}
+
+.offer-number {
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .offer-page h1 {
+    font-size: 30px;
+  }
+
+  .offer-toc ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .offer-page .offer-document {
+    padding: 24px 18px;
+  }
+
+  .offer-document h2 {
+    font-size: 24px;
+  }
+}

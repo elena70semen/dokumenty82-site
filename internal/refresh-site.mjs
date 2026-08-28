@@ -8,7 +8,7 @@ const requestedRoutes = new Set(process.argv.slice(2).filter((value) => value.st
 const footerOnly = process.argv.includes("--footer-only");
 const navigationOnly = process.argv.includes("--navigation-only");
 const themeOnly = process.argv.includes("--theme-only");
-const themeAssetVersion = "202608252300";
+const themeAssetVersion = "202608281630";
 const footerLinks = `<div class="footer-links">
           <a href="/buhgalterskie-uslugi/">Бухгалтерия</a>
           <a href="/uslugi/">Услуги</a>
@@ -24,6 +24,7 @@ const footerNavigation = `<nav aria-label="Разделы сайта">
         <strong>Разделы</strong>
         ${footerLinks}
         <a class="button button-lime footer-policy-button" href="/policy/">Конфиденциальность и безопасность</a>
+        <a class="footer-offer-link" href="/oferta/">Публичная оферта</a>
       </nav>`;
 const footerButtons = `<div class="footer-buttons"><a class="button button-lime" href="tel:+79789987222">Позвонить</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>`;
 const faviconLinks = `<link rel="icon" href="https://dokumenty82.ru/favicon.png" type="image/png" sizes="120x120" />

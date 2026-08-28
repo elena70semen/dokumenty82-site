@@ -1,6 +1,7 @@
 {
-  "version": "2026-08-25",
+  "version": "2026-08-28",
   "owner_decisions": {
+    "/oferta/": "publication approved on 2026-08-28; supplied offer text with issuer details from the website; follows the existing legal-page indexing policy",
     "/akcii/": "approved promotions hub; index, follow; keep in sitemap",
     "/policy/": "index, follow; keep in sitemap",
     "/blog/": "approved for indexing",
@@ -50,6 +51,7 @@
     "/nulevaya-otchetnost-ip/",
     "/nulevaya-otchetnost-ooo/",
     "/o-proekte/",
+    "/oferta/",
     "/otchetnost/",
     "/otvet-na-trebovanie-ifns/",
     "/otvet-na-zapros-banka/",
