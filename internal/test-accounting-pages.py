@@ -101,11 +101,30 @@ class AccountingPagesTest(unittest.TestCase):
         contact = self.pages["/razbor-situacii/"]
         options = {a.get("value") for a in contact.attrs("option")}
         self.assertTrue(set(TOPICS.values()) <= options)
+        direct_forms = {
+            "/buhgalterskie-uslugi/": "Подбор бухгалтерских услуг",
+            "/soprovozhdenie/": "Бухгалтерское сопровождение ИП",
+            "/buhgalterskoe-soprovozhdenie-ooo/": "Бухгалтерское сопровождение ООО",
+        }
         for route, service in [("/buhgalterskie-uslugi/", "accounting"), ("/soprovozhdenie/", "accounting-ip"),
                                ("/buhgalterskoe-soprovozhdenie-ooo/", "accounting-ooo"), ("/ceny/", "accounting")]:
             page = self.pages[route]
             self.assertTrue(any(a.get("href") == f"/razbor-situacii/?service={service}#route-contact" for a in page.attrs("a")))
             self.assertTrue(any(a.get("src") == "/assets/metrika-goals.js?v=202608271600" for a in page.attrs("script")))
+            if route in direct_forms:
+                forms = [a for a in page.attrs("form") if a.get("data-lead-form") == "amo"]
+                self.assertEqual(len(forms), 1)
+                self.assertEqual(forms[0].get("action"), "/api/lead")
+                self.assertTrue(any(a.get("href") == "#quick-lead" and
+                                    a.get("data-event-name") == "hero_cta_click"
+                                    for a in page.attrs("a")))
+                inputs = {a.get("name"): a for a in page.attrs("input")}
+                self.assertEqual(inputs["task_type"].get("value"), direct_forms[route])
+                self.assertEqual(inputs["source_page"].get("value"), route)
+                for name in ["name", "phone", "privacy"]:
+                    self.assertIn("required", inputs[name])
+                self.assertTrue(any(a.get("src") == "/assets/lead-form.js?v=202608291400"
+                                    for a in page.attrs("script")))
         form = [a for a in contact.attrs("form") if a.get("data-lead-form") == "amo"]
         self.assertEqual(len(form), 1)
         self.assertEqual(form[0]["action"], "/api/lead")
@@ -123,7 +142,7 @@ class AccountingPagesTest(unittest.TestCase):
             if 'src="/assets/lead-form.js?' in html:
                 consumers.append(file)
                 self.assertIn('src="/assets/lead-form.js?v=202608291400"', html)
-        self.assertEqual(len(consumers), 20)
+        self.assertEqual(len(consumers), 23)
 
     def test_ooo_minimum_price_is_consistent_in_structured_catalog(self):
         nodes = []

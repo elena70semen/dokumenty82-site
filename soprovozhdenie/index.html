@@ -236,7 +236,7 @@
           <small>Точный состав и стоимость согласуем до начала работ.</small>
         </div>
         <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="/razbor-situacii/?service=accounting-ip#route-contact">Подобрать тариф для ИП</a><a class="button button-ghost" href="/ceny/#tarify">Цены</a></div>
+        <div class="actions"><a class="button button-lime" href="#quick-lead" data-event-name="hero_cta_click">Подобрать тариф для ИП</a><a class="button button-ghost" href="/ceny/#tarify">Цены</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
         <p class="eyebrow">Состав сопровождения</p>
@@ -249,6 +249,26 @@
           <li><a href="#orientation-detail-04"><span>04</span><div><strong>Тариф от 10 000 ₽</strong><small>Базовый, стандартный или расширенный формат определяем после короткой оценки вводных.</small></div></a></li>
         </ul>
       </aside>
+    </section>
+    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
+      <div class="section-header">
+        <p class="eyebrow">Расчёт тарифа</p>
+        <h2 id="quick-lead-title">Подобрать сопровождение ИП</h2>
+        <p>Укажите режим и нагрузку. Проверим вводные и зафиксируем состав работы до начала сопровождения.</p>
+      </div>
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+        <input type="hidden" name="source_page" value="/soprovozhdenie/" />
+        <input type="hidden" name="task_type" value="Бухгалтерское сопровождение ИП" />
+        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-grid">
+          <label>Имя<input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться" /></label>
+          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
+          <label class="lead-quick-message">Нагрузка ИП<textarea name="message" rows="3" required placeholder="Режим, сотрудники, касса, банки и примерное число операций"></textarea></label>
+        </div>
+        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+        <div class="lead-form-actions"><button class="button button-lime" type="submit">Узнать тариф</button><a class="button button-ghost" href="/razbor-situacii/?service=accounting-ip#route-contact">Прикрепить файлы</a></div>
+        <p class="form-note" role="status" aria-live="polite"></p>
+      </form>
     </section>
     <section class="section page-rich-section rich-intro-section">
       <p class="eyebrow">Бухгалтерия без авралов</p>
@@ -509,6 +529,7 @@
         });
       })();
     </script>
+    <script src="/assets/lead-form.js?v=202608291400" defer></script>
     <script src="/assets/metrika-goals.js?v=202608271600" defer></script>
     <script src="/assets/ai-chat.js?v=202608251700" defer></script>
   </body>
