@@ -5,7 +5,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const templatePath = path.join(root, "ceny", "index.html");
 const promotionsDirectory = path.join(root, "akcii");
 const promotionsPath = path.join(promotionsDirectory, "index.html");
-const assetVersion = "202608252300";
+const assetVersion = "202608291400";
 
 const schema = {
   "@context": "https://schema.org",
@@ -223,7 +223,7 @@ page = page.replace(/<meta property="og:description" content="[^"]*" \/>/, '<met
 page = page.replace(/<meta property="og:url" content="[^"]*" \/>/, '<meta property="og:url" content="https://dokumenty82.ru/akcii/" />');
 page = page.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
 page = page.replace(/<main>[\s\S]*?<\/main>/, main);
-page = page.replace(/(\s*<script src="\/assets\/metrika-goals\.js\?v=\d+" defer><\/script>)/, '\n    <script src="/assets/lead-form.js?v=202608061600" defer></script>$1');
+page = page.replace(/(\s*<script src="\/assets\/metrika-goals\.js\?v=\d+" defer><\/script>)/, '\n    <script src="/assets/lead-form.js?v=202608291400" defer></script>$1');
 page = page.replace(/lead-form\.js\?v=\d+/g, `lead-form.js?v=${assetVersion}`);
 page = updateNavigation(page, "/akcii/");
 page = page.replace(/class="is-active" href="\/ceny\/"/, 'class="" href="/ceny/"');

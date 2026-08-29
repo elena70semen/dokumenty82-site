@@ -122,8 +122,18 @@ class AccountingPagesTest(unittest.TestCase):
             html = file.read_text(encoding="utf-8")
             if 'src="/assets/lead-form.js?' in html:
                 consumers.append(file)
-                self.assertIn('src="/assets/lead-form.js?v=202608271600"', html)
+                self.assertIn('src="/assets/lead-form.js?v=202608291400"', html)
         self.assertEqual(len(consumers), 20)
+
+    def test_ooo_minimum_price_is_consistent_in_structured_catalog(self):
+        nodes = []
+        for schema in self.pages["/ceny/"].schemas:
+            nodes.extend(schema.get("@graph", [schema]))
+        catalog = next(node for node in nodes if node.get("@type") == "OfferCatalog")
+        offer = next(item for item in catalog["itemListElement"]
+                     if item.get("url") == "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/")
+        self.assertEqual(offer["price"], "10000")
+        self.assertIn("простой моделью учёта", offer["itemOffered"]["description"])
 
 
 if __name__ == "__main__":

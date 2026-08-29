@@ -689,7 +689,7 @@ for (const file of walk(root)) {
     continue;
   }
   html = html.replace(/\/assets\/metrika-goals\.js\?v=\d+/g, "/assets/metrika-goals.js?v=202608091335");
-  html = html.replace(/\/assets\/lead-form\.js\?v=\d+/g, "/assets/lead-form.js?v=202608061600");
+  html = html.replace(/\/assets\/lead-form\.js\?v=\d+/g, "/assets/lead-form.js?v=202608291400");
   html = html.replace(/\/assets\/ai-chat\.js\?v=\d+/g, "/assets/ai-chat.js?v=202608101300");
   html = html.replace(/(<a[^>]*href="\/policy\/"[^>]*>)Конфиденциальность(?: и безопасность)?(<\/a>)/g, "$1Конфиденциальность и безопасность$2");
   if (!html.includes("/assets/metrika-goals.js")) {
