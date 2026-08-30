@@ -106,9 +106,16 @@ class OfferPageTests(unittest.TestCase):
                 continue
             self.assertEqual(len(tree.xpath('//footer//a[@class="footer-offer-link" and @href="/oferta/"]')), 1, name)
             self.assertEqual(len(tree.xpath('//*[@class="footer-links"]/a')), 9, name)
-            self.assertIn("/assets/site.css?v=202608301415", tree.xpath('//link[@rel="stylesheet"]/@href'), name)
+            self.assertIn("/assets/site.css?v=202608301430", tree.xpath('//link[@rel="stylesheet"]/@href'), name)
             checked += 1
         self.assertGreaterEqual(checked, 67)
+
+    def test_mobile_offer_fills_the_last_footer_link_cell(self):
+        css = (ROOT / "assets/site.css").read_text(encoding="utf-8")
+        mobile_footer = css[css.rindex("@media (max-width: 640px) {"):]
+        self.assertIn(".site-footer nav > .footer-links {\n    display: contents;", mobile_footer)
+        self.assertIn("grid-auto-flow: row dense;", mobile_footer)
+        self.assertIn(".site-footer nav > .footer-offer-link {\n    min-height: 44px;", mobile_footer)
 
     def test_rebuild_is_deterministic(self):
         target = ROOT / "oferta/index.html"
