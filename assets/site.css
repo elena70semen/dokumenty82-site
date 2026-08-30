@@ -1479,7 +1479,13 @@ h2 {
   background: rgba(255, 255, 255, 0.07);
   padding: 0.85rem 0.95rem;
   color: var(--text);
+  color-scheme: dark;
   font: inherit;
+}
+
+.lead-capture-form select option {
+  background: #111b28;
+  color: #fff8ee;
 }
 
 .form-file-field {
@@ -5161,6 +5167,7 @@ option,
     justify-content: center;
     gap: 0;
     padding: 0.58rem;
+    opacity: 0.88;
   }
 
   .ai-chat-widget strong,
@@ -5181,6 +5188,30 @@ option,
 
   .client-portal-widget {
     bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .quick-page-nav {
+    left: 10px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    gap: 8px;
+    opacity: 0.88;
+  }
+
+  .quick-page-nav button {
+    width: 52px;
+    height: 52px;
+    border-left: 1px solid var(--plum-border);
+    border-radius: 8px;
+    font-size: 1.05rem;
+  }
+
+  .quick-page-nav:hover,
+  .quick-page-nav:focus-within,
+  .ai-chat-widget:hover,
+  .ai-chat-widget:focus-visible,
+  .client-portal-widget:hover,
+  .client-portal-widget:focus-visible {
+    opacity: 1;
   }
 }
 
