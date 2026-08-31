@@ -83,6 +83,26 @@ class PhoneNormalizationTests(unittest.TestCase):
           receiver.normalize_phone(source)
 
 
+class QuickLeadDefaultsTests(unittest.TestCase):
+  def test_quick_lead_requires_only_contact_and_keeps_context(self):
+    fields = {
+      "name": "",
+      "phone": "79789987222",
+      "task_type": "Регистрация ИП",
+      "message": "",
+    }
+
+    prepared = receiver.complete_quick_lead(fields, True)
+
+    self.assertEqual(prepared["name"], "Клиент с сайта")
+    self.assertIn("Регистрация ИП", prepared["message"])
+    self.assertEqual(fields["name"], "")
+
+  def test_detailed_lead_is_not_filled_implicitly(self):
+    fields = {"name": "", "task_type": "Разбор ситуации", "message": ""}
+    self.assertEqual(receiver.complete_quick_lead(fields, False), fields)
+
+
 class RequestClientIpTests(unittest.TestCase):
   def test_uses_nginx_real_ip_for_loopback_proxy(self):
     handler = types.SimpleNamespace(

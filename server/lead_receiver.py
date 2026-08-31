@@ -109,6 +109,19 @@ def normalize_phone(value):
   return digits
 
 
+def complete_quick_lead(fields, is_quick):
+  prepared = dict(fields)
+  if not is_quick:
+    return prepared
+
+  if not prepared.get("name"):
+    prepared["name"] = "Клиент с сайта"
+  if not prepared.get("message"):
+    task_type = clipped(prepared.get("task_type"), 200) or "услуге сайта"
+    prepared["message"] = f"Просит связаться по услуге: {task_type}. Подробности уточнить по телефону."
+  return prepared
+
+
 def request_client_ip(handler):
   peer = text(handler.client_address[0])
   if peer not in ("127.0.0.1", "::1"):
@@ -798,7 +811,8 @@ class LeadHandler(BaseHTTPRequestHandler):
         json_response(self, 200, {"ok": True})
         return
 
-      fields = {
+      is_quick_lead = text(form.getfirst("lead_mode")) == "quick"
+      fields = complete_quick_lead({
         "name": text(form.getfirst("name")),
         "phone": normalize_phone(form.getfirst("phone")),
         "email": text(form.getfirst("email")),
@@ -814,7 +828,7 @@ class LeadHandler(BaseHTTPRequestHandler):
         "utm_campaign": clipped(form.getfirst("utm_campaign"), 300),
         "utm_content": clipped(form.getfirst("utm_content"), 500),
         "utm_term": clipped(form.getfirst("utm_term"), 500),
-      }
+      }, is_quick_lead)
       if not fields["name"] or not fields["phone"] or not fields["message"] or text(form.getfirst("privacy")) != "1":
         json_response(self, 400, {"ok": False, "message": "Заполните обязательные поля."})
         return

@@ -258,11 +258,12 @@
       <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
         <input type="hidden" name="source_page" value="/yuridicheskiy-adres-simferopol/" />
         <input type="hidden" name="task_type" value="Юридический адрес в Симферополе" />
+        <input type="hidden" name="lead_mode" value="quick" />
         <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="form-grid">
-          <label>Имя<input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться" /></label>
+          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
           <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Ситуация с адресом<textarea name="message" rows="3" required placeholder="Например: регистрируем ООО, есть арендованное помещение в Симферополе"></textarea></label>
+          <label class="lead-quick-message">Ситуация с адресом (необязательно)<textarea name="message" rows="3" placeholder="Например: регистрируем ООО, есть арендованное помещение в Симферополе"></textarea></label>
         </div>
         <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
         <div class="lead-form-actions"><button class="button button-lime" type="submit">Проверить комплект</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить документы</a></div>
@@ -452,7 +453,7 @@
         });
       })();
     </script>
-    <script src="/assets/lead-form.js?v=202608291400" defer></script>
+    <script src="/assets/lead-form.js?v=202608312100" defer></script>
     <script src="/assets/metrika-goals.js?v=202608251900" defer></script>
     <script src="/assets/ai-chat.js?v=202608251700" defer></script>
   </body>

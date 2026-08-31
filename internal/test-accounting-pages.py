@@ -121,9 +121,11 @@ class AccountingPagesTest(unittest.TestCase):
                 inputs = {a.get("name"): a for a in page.attrs("input")}
                 self.assertEqual(inputs["task_type"].get("value"), direct_forms[route])
                 self.assertEqual(inputs["source_page"].get("value"), route)
-                for name in ["name", "phone", "privacy"]:
+                for name in ["phone", "privacy"]:
                     self.assertIn("required", inputs[name])
-                self.assertTrue(any(a.get("src") == "/assets/lead-form.js?v=202608291400"
+                self.assertNotIn("required", inputs["name"])
+                self.assertEqual(inputs["lead_mode"].get("value"), "quick")
+                self.assertTrue(any(a.get("src") == "/assets/lead-form.js?v=202608312100"
                                     for a in page.attrs("script")))
         form = [a for a in contact.attrs("form") if a.get("data-lead-form") == "amo"]
         self.assertEqual(len(form), 1)
@@ -141,7 +143,7 @@ class AccountingPagesTest(unittest.TestCase):
             html = file.read_text(encoding="utf-8")
             if 'src="/assets/lead-form.js?' in html:
                 consumers.append(file)
-                self.assertIn('src="/assets/lead-form.js?v=202608291400"', html)
+                self.assertIn('src="/assets/lead-form.js?v=202608312100"', html)
         self.assertEqual(len(consumers), 23)
 
     def test_ooo_minimum_price_is_consistent_in_structured_catalog(self):

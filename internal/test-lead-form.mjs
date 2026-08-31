@@ -46,6 +46,7 @@ function fixture(options = {}) {
       "Разбор ситуации", "Подбор бухгалтерских услуг", "Бухгалтерское сопровождение ИП", "Бухгалтерское сопровождение ООО",
     ].map((value) => ({ value })) }),
   };
+  if (options.quick) inputs.lead_mode = element({ value: "quick" });
   const fileInput = element({ files: options.files || [] });
   for (const [name, input] of Object.entries(inputs)) input.name = name;
   const timers = new Map();
@@ -128,6 +129,17 @@ test("whitespace-only required text does not POST", async () => {
   assert.equal(f.fail().params.field, "message");
   assert.equal(f.inputs.message.focused, true);
   assert.match(f.status.textContent, /опишите/);
+});
+
+test("quick lead can POST with only phone and consent", async () => {
+  const f = fixture({ quick: true });
+  f.inputs.name.value = "";
+  f.inputs.message.value = "";
+  f.form.emit("submit");
+  await settle();
+  await settle();
+  assert.equal(f.requests.length, 1);
+  assert.equal(f.successes().length, 1);
 });
 
 test("invalid telephone is rejected before POST without changing the server contract", async () => {

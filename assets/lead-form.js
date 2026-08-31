@@ -173,7 +173,8 @@
         return;
       }
 
-      const emptyText = ["name", "message"].map(function (name) {
+      const isQuickLead = Boolean(form.querySelector('input[name="lead_mode"][value="quick"]'));
+      const emptyText = (isQuickLead ? [] : ["name", "message"]).map(function (name) {
         return form.querySelector('[name="' + name + '"]');
       }).find(function (field) {
         return field && !String(field.value || "").trim();
