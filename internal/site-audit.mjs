@@ -383,6 +383,29 @@ for (const [hubRoute, routes] of commercialHubCoverage) {
   }
 }
 
+const commercialProofMarkers = new Map([
+  ["/registraciya-ip/", [
+    "без привязки к банку",
+    "через 3 рабочих дня",
+    "https://www.nalog.gov.ru/create_business/ip/creation/registration/step4/",
+  ]],
+  ["/likvidaciya-ooo/", [
+    "В течение 3 рабочих дней после решения",
+    "Стоимость начинается от 45 000 ₽",
+    "https://www.nalog.gov.ru/rn77/related_activities/registration_ip_yl/reg_yl/termination_activities/",
+  ]],
+  ["/buhgalterskie-uslugi/", [
+    "Простое ООО также может обслуживаться по базовому тарифу",
+    "фиксируем ежемесячный состав задач и стоимость",
+  ]],
+]);
+for (const [route, markers] of commercialProofMarkers) {
+  const page = pages.find((candidate) => candidate.route === route);
+  for (const marker of markers) {
+    if (!page?.mainHtml.includes(marker)) issues.push(`${route}: missing commercial proof marker: ${marker}`);
+  }
+}
+
 const metrikaGoalsSource = fs.readFileSync(path.join(root, "assets", "metrika-goals.js"), "utf8");
 if (!metrikaGoalsSource.includes('reachGoal("service_route_click"')) issues.push("Metrika: service_route_click event missing");
 for (const route of new Set(serviceOffers.map((offer) => new URL(offer.url).pathname))) {
