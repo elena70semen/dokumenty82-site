@@ -266,7 +266,7 @@ let html = template
   .replace(/\s*<script src="\/assets\/lead-form\.js\?v=\d+" defer><\/script>/g, "")
   .replace(
     /    <script src="\/assets\/metrika-goals\.js\?v=\d+" defer><\/script>/,
-    '    <script src="/assets/lead-form.js?v=202608312100" defer></script>\n    <script src="/assets/metrika-goals.js?v=202608271600" defer></script>',
+    '    <script src="/assets/lead-form.js?v=202609041715" defer></script>\n    <script src="/assets/metrika-goals.js?v=202608271600" defer></script>',
   );
 
 const directory = path.join(root, route.slice(1));

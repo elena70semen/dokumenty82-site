@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const assetFrom = "/assets/lead-form.js?v=202608291400";
-const assetTo = "/assets/lead-form.js?v=202608312100";
+const assetTo = "/assets/lead-form.js?v=202609041715";
 let optimized = 0;
 
 for (const entry of fs.readdirSync(root, { withFileTypes: true })) {

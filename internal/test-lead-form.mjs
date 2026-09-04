@@ -88,6 +88,7 @@ function fixture(options = {}) {
   }
   vm.runInNewContext(source, {
     document, window, FormData: MockFormData, URLSearchParams,
+    ...(options.noAbortController ? {} : { AbortController }),
     setTimeout: (callback, delay) => {
       const id = ++nextTimer;
       timers.set(id, { callback, delay });
@@ -197,6 +198,118 @@ test("network error has a fixed reason, safe message and allows a manual retry",
   await settle();
   assert.equal(f.requests.length, 2);
   assert.equal(f.successes().length, 1);
+});
+
+test("a request that never answers times out without clearing data or retrying", async () => {
+  const f = fixture({ fetch: () => new Promise(() => {}) });
+  f.form.emit("submit");
+  await settle();
+  assert.equal(f.requests.length, 1);
+  assert.equal(f.submit.disabled, true);
+  assert.equal(f.timers.size, 1);
+  assert.equal([...f.timers.values()][0].delay, 120000);
+  const signal = f.requests[0][1].signal;
+  f.expireTimers();
+  await settle();
+  assert.equal(signal.aborted, true);
+  assert.equal(f.fail().params.reason, "timeout");
+  assert.equal(f.submit.disabled, false);
+  assert.equal(f.form.classList.contains("is-sending"), false);
+  assert.equal(f.inputs.phone.value, "+7 (978) 000-00-00");
+  assert.equal(f.resets(), 0);
+  assert.equal(f.successes().length, 0);
+  assert.equal(f.requests.length, 1);
+  assert.match(f.status.textContent, /приём|приема/);
+  assert.doesNotMatch(JSON.stringify(f.goals), /978|Mock/);
+});
+
+test("a hanging response body also times out and late confirmation is ignored", async () => {
+  let finishBody;
+  const f = fixture({ fetch: async () => ({
+    ok: true, status: 200,
+    json: () => new Promise(resolve => { finishBody = resolve; }),
+  }) });
+  f.form.emit("submit");
+  await settle();
+  f.expireTimers();
+  await settle();
+  assert.equal(f.fail().params.reason, "timeout");
+  const message = f.status.textContent;
+  finishBody({ ok: true, id: "late-id", crm_status: "sent" });
+  await settle();
+  assert.equal(f.status.textContent, message);
+  assert.equal(f.successes().length, 0);
+  assert.equal(f.resets(), 0);
+  assert.equal(f.timers.size, 0);
+});
+
+test("timeout works without AbortController and ignores a late network response", async () => {
+  let finish;
+  const f = fixture({ noAbortController: true, fetch: () => new Promise(resolve => { finish = resolve; }) });
+  f.form.emit("submit");
+  await settle();
+  f.expireTimers();
+  await settle();
+  assert.equal(f.fail().params.reason, "timeout");
+  assert.equal(f.submit.disabled, false);
+  finish(response());
+  await settle();
+  assert.equal(f.successes().length, 0);
+  assert.equal(f.resets(), 0);
+  assert.equal(f.requests.length, 1);
+});
+
+test("document uploads get a longer deadline and clear it on confirmed success", async () => {
+  let finish;
+  const f = fixture({ files: [{ name: "private-name.pdf", size: 1024 }],
+    fetch: () => new Promise(resolve => { finish = resolve; }) });
+  f.form.emit("submit");
+  await settle();
+  assert.equal([...f.timers.values()][0].delay, 300000);
+  finish(response());
+  await settle();
+  assert.equal(f.successes().length, 1);
+  assert.equal(f.requests[0][1].signal.aborted, false);
+  assert.equal(f.timers.size, 0);
+  f.expireTimers();
+  await settle();
+  assert.equal(f.fail(), undefined);
+});
+
+test("aborting the transport still records timeout, not a network failure", async () => {
+  const f = fixture({ fetch: (_, { signal }) => new Promise((_, reject) => {
+    signal.addEventListener("abort", () => reject(new Error("private-abort-details")));
+  }) });
+  f.form.emit("submit");
+  await settle();
+  f.expireTimers();
+  await settle();
+  assert.equal(f.fail().params.reason, "timeout");
+  assert.equal(f.goals.filter(g => g.name === "goal_form_submit_fail").length, 1);
+  assert.doesNotMatch(JSON.stringify(f.goals), /private-abort/);
+});
+
+test("a late expired request cannot complete or unlock a newer manual attempt", async () => {
+  const pending = [];
+  const f = fixture({ fetch: () => new Promise(resolve => pending.push(resolve)) });
+  f.form.emit("submit");
+  await settle();
+  f.expireTimers();
+  await settle();
+  f.form.emit("submit");
+  await settle();
+  assert.equal(f.requests.length, 2);
+  pending[0](response());
+  await settle();
+  assert.equal(f.submit.disabled, true);
+  assert.equal(f.successes().length, 0);
+  assert.equal(f.resets(), 0);
+  pending[1](response());
+  await settle();
+  assert.equal(f.successes().length, 1);
+  assert.equal(f.submit.disabled, false);
+  assert.equal(f.resets(), 1);
+  assert.equal(f.timers.size, 0);
 });
 
 test("a successful HTTP response without the receiver confirmation is not a lead", async () => {

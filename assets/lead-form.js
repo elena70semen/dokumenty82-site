@@ -2,6 +2,8 @@
   const MAX_FILES = 6;
   const MAX_TOTAL_BYTES = 20 * 1024 * 1024;
   const ATTRIBUTION_TIMEOUT_MS = 3500;
+  const REQUEST_TIMEOUT_MS = 120000;
+  const UPLOAD_TIMEOUT_MS = 300000;
 
   function formatBytes(value) {
     if (value >= 1024 * 1024) return (value / 1024 / 1024).toFixed(1) + " МБ";
@@ -107,6 +109,35 @@
     fireGoal("goal_form_submit_fail", params);
   }
 
+  function postLead(form, data, hasFiles) {
+    const controller = typeof AbortController === "function" ? new AbortController() : null;
+    let timer;
+    const request = Promise.resolve().then(function () {
+      return fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" },
+        ...(controller ? { signal: controller.signal } : {}),
+      });
+    }).then(function (response) {
+      return response.json().catch(function () { return null; }).then(function (payload) {
+        if (!response.ok || !payload || payload.ok !== true || !payload.id
+            || !["sent", "stored_only"].includes(payload.crm_status)) {
+          throw { reason: "server", http_status: response.status };
+        }
+        return payload;
+      });
+    });
+    // Cover both headers and body; a late response must not reset a newer attempt.
+    const deadline = new Promise(function (_, reject) {
+      timer = setTimeout(function () {
+        reject({ reason: "timeout" });
+        if (controller) controller.abort();
+      }, hasFiles ? UPLOAD_TIMEOUT_MS : REQUEST_TIMEOUT_MS);
+    });
+    return Promise.race([request, deadline]).finally(function () { clearTimeout(timer); });
+  }
+
   function validPhone(value) {
     const raw = String(value || "").trim();
     if (/[A-Za-zА-Яа-я]/.test(raw)) return false;
@@ -197,6 +228,7 @@
       }
 
       const data = new FormData(form);
+      const hasFiles = selectedFiles(fileInput).length > 0;
       sending = true;
       form.classList.add("is-sending");
       if (submit) {
@@ -207,20 +239,7 @@
 
       appendAttribution(data)
         .then(function (payloadData) {
-          return fetch(form.action, {
-            method: "POST",
-            body: payloadData,
-            headers: { "Accept": "application/json" },
-          });
-        })
-        .then(function (response) {
-          return response.json().catch(function () { return null; }).then(function (payload) {
-            if (!response.ok || !payload || payload.ok !== true || !payload.id
-                || !["sent", "stored_only"].includes(payload.crm_status)) {
-              throw { reason: "server", http_status: response.status };
-            }
-            return payload;
-          });
+          return postLead(form, payloadData, hasFiles);
         })
         .then(function (payload) {
           form.reset();
@@ -233,6 +252,11 @@
         })
         .catch(function (error) {
           const serverError = error && error.reason === "server";
+          if (error && error.reason === "timeout") {
+            failForm(form, "timeout",
+              "Подтверждение от сервера не пришло вовремя. Данные сохранены в форме. Заявка могла поступить: уточните её приём по телефону или в мессенджере перед повторной отправкой.");
+            return;
+          }
           failForm(form, serverError ? "server" : "network",
             serverError
               ? "Сервер не подтвердил приём заявки. Позвоните или напишите в мессенджер, прежде чем отправлять повторно."

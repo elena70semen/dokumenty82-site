@@ -6,6 +6,7 @@ const templatePath = path.join(root, "ceny", "index.html");
 const promotionsDirectory = path.join(root, "akcii");
 const promotionsPath = path.join(promotionsDirectory, "index.html");
 const assetVersion = "202608291400";
+const leadAssetVersion = "202609041715";
 
 const schema = {
   "@context": "https://schema.org",
@@ -224,7 +225,7 @@ page = page.replace(/<meta property="og:url" content="[^"]*" \/>/, '<meta proper
 page = page.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
 page = page.replace(/<main>[\s\S]*?<\/main>/, main);
 page = page.replace(/(\s*<script src="\/assets\/metrika-goals\.js\?v=\d+" defer><\/script>)/, '\n    <script src="/assets/lead-form.js?v=202608291400" defer></script>$1');
-page = page.replace(/lead-form\.js\?v=\d+/g, `lead-form.js?v=${assetVersion}`);
+page = page.replace(/lead-form\.js\?v=\d+/g, `lead-form.js?v=${leadAssetVersion}`);
 page = updateNavigation(page, "/akcii/");
 page = page.replace(/class="is-active" href="\/ceny\/"/, 'class="" href="/ceny/"');
 fs.mkdirSync(promotionsDirectory, { recursive: true });
@@ -248,7 +249,7 @@ for (const file of walk(root)) {
   if (!before.includes('class="desktop-nav"')) continue;
   const after = updateNavigation(before, routeForFile(file))
     .replace(/site\.css\?v=\d+/g, `site.css?v=${assetVersion}`)
-    .replace(/lead-form\.js\?v=\d+/g, `lead-form.js?v=${assetVersion}`)
+    .replace(/lead-form\.js\?v=\d+/g, `lead-form.js?v=${leadAssetVersion}`)
     .replace(/metrika-goals\.js\?v=\d+/g, `metrika-goals.js?v=${assetVersion}`);
   if (after === before) continue;
   fs.writeFileSync(file, after, "utf8");
