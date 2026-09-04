@@ -397,12 +397,47 @@ const commercialProofMarkers = new Map([
   ["/buhgalterskie-uslugi/", [
     "Простое ООО также может обслуживаться по базовому тарифу",
     "фиксируем ежемесячный состав задач и стоимость",
+    "сопровождение по всему Крыму и Севастополю",
+    "Феодосии, Ялты, Евпатории, Керчи, Севастополя",
+  ]],
+  ["/soprovozhdenie/", [
+    "сопровождение ИП по всему Крыму и Севастополю",
+    "Сопровождение ИП без привязки к городу",
+  ]],
+  ["/buhgalterskoe-soprovozhdenie-ooo/", [
+    "сопровождение ООО по всему Крыму и Севастополю",
+    "Сопровождение ООО по Крыму и Севастополю",
   ]],
 ]);
 for (const [route, markers] of commercialProofMarkers) {
   const page = pages.find((candidate) => candidate.route === route);
   for (const marker of markers) {
     if (!page?.mainHtml.includes(marker)) issues.push(`${route}: missing commercial proof marker: ${marker}`);
+  }
+}
+
+for (const route of ["/buhgalterskie-uslugi/", "/soprovozhdenie/", "/buhgalterskoe-soprovozhdenie-ooo/"]) {
+  const page = pagesByRoute.get(route);
+  if (!page) continue;
+  const nodes = page.schemaBlocks.flatMap((block) => {
+    try {
+      const schema = JSON.parse(block);
+      return schema["@graph"] || [schema];
+    } catch {
+      return [];
+    }
+  });
+  for (const type of ["LocalBusiness", "Service"]) {
+    const node = nodes.find((item) => [item["@type"]].flat().includes(type));
+    if (!node?.areaServed?.some((area) => area["@type"] === "City" && area.name === "Севастополь")) {
+      issues.push(`${route}: Sevastopol missing from ${type} areaServed`);
+    }
+  }
+  if ((page.html.match(/id="quick-lead"/g) || []).length !== 1) {
+    issues.push(`${route}: expected one quick lead section`);
+  }
+  if ((page.html.match(/<script src="\/assets\/lead-form\.js\?/g) || []).length !== 1) {
+    issues.push(`${route}: expected one lead form script`);
   }
 }
 

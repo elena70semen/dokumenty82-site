@@ -17,10 +17,22 @@ const faq = [
 
 const sourceSchema = template.match(/<!-- d82-service-schema:start -->[\s\S]*?<script type="application\/ld\+json">([\s\S]*?)<\/script>[\s\S]*?<!-- d82-service-schema:end -->/)?.[1];
 if (!sourceSchema) throw new Error("Service schema template not found");
-const commonGraph = JSON.parse(sourceSchema)["@graph"].filter((node) => ["LocalBusiness", "WebSite"].some((type) => {
-  const types = Array.isArray(node["@type"]) ? node["@type"] : [node["@type"]];
-  return types.includes(type);
-}));
+const commonGraph = JSON.parse(sourceSchema)["@graph"]
+  .filter((node) => ["LocalBusiness", "WebSite"].some((type) => {
+    const types = Array.isArray(node["@type"]) ? node["@type"] : [node["@type"]];
+    return types.includes(type);
+  }))
+  .map((node) => {
+    const types = Array.isArray(node["@type"]) ? node["@type"] : [node["@type"]];
+    if (!types.includes("LocalBusiness") || node.areaServed?.some((area) => area.name === "Севастополь")) return node;
+    return {
+      ...node,
+      areaServed: [
+        ...(node.areaServed || []),
+        { "@type": "City", name: "Севастополь" },
+      ],
+    };
+  });
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -40,13 +52,14 @@ const serviceSchema = {
       "@type": "Service",
       "@id": `${url}#service`,
       name: "Бухгалтерские услуги для ИП и ООО",
-      description: "Регулярное бухгалтерское и налоговое сопровождение, отчётность, восстановление учёта и отдельные бухгалтерские задачи для бизнеса в Симферополе.",
+      description: "Регулярное бухгалтерское и налоговое сопровождение, отчётность, восстановление учёта и отдельные бухгалтерские задачи для бизнеса в Симферополе, Крыму и Севастополе.",
       serviceType: "Бухгалтерские услуги",
       url,
       provider: { "@id": "https://dokumenty82.ru/#business" },
       areaServed: [
         { "@type": "City", name: "Симферополь" },
         { "@type": "AdministrativeArea", name: "Республика Крым" },
+        { "@type": "City", name: "Севастополь" },
       ],
       offers: {
         "@type": "AggregateOffer",
@@ -89,7 +102,8 @@ const main = `<main>
         <p class="eyebrow">Бухгалтерия для бизнеса</p>
         <h1>Бухгалтерские услуги для ИП и ООО в Симферополе</h1>
         <p>Ведём бухгалтерский и налоговый учёт, готовим отчётность, контролируем обязательные сроки и разбираем требования ИФНС. Состав работы определяем по фактической нагрузке бизнеса.</p>
-        <div class="actions"><a class="button button-lime" href="/razbor-situacii/">Обсудить задачу</a><a class="button button-ghost" href="/ceny/">Тарифы и цены</a></div>
+        <p class="hero-location-badge"><span>Офис в Симферополе · сопровождение по всему Крыму и Севастополю</span></p>
+        <div class="actions"><a class="button button-lime" href="#quick-lead" data-event-name="hero_cta_click">Подобрать бухгалтерские услуги</a><a class="button button-ghost" href="/ceny/#tarify">Тарифы и цены</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
         <p class="eyebrow">Выберите формат</p>
@@ -102,6 +116,40 @@ const main = `<main>
           <li><a href="/vosstanovlenie-buhucheta/"><span>04</span><div><strong>Восстановление учёта</strong><small>Диагностика и разбор незакрытых периодов.</small></div></a></li>
         </ul>
       </aside>
+    </section>
+
+    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
+      <div class="section-header">
+        <p class="eyebrow">Расчёт сопровождения</p>
+        <h2 id="quick-lead-title">Подобрать бухгалтерские услуги</h2>
+        <p>Укажите форму бизнеса и текущую нагрузку. Состав работы и стоимость согласуем до начала сопровождения.</p>
+      </div>
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+        <input type="hidden" name="source_page" value="/buhgalterskie-uslugi/" />
+        <input type="hidden" name="task_type" value="Подбор бухгалтерских услуг" />
+        <input type="hidden" name="lead_mode" value="quick" />
+        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-grid">
+          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
+          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
+          <label class="lead-quick-message">Задача и нагрузка (необязательно)<textarea name="message" rows="3" placeholder="ИП или ООО, налоговый режим, сотрудники и примерное число операций"></textarea></label>
+        </div>
+        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчёт</button><a class="button button-ghost" href="/razbor-situacii/?service=accounting#route-contact">Прикрепить файлы</a></div>
+        <p class="form-note" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="section page-rich-section region-service-section">
+      <div class="section-header">
+        <p class="eyebrow">География работы</p>
+        <h2>Офис в Симферополе, бухгалтерия для бизнеса по всему Крыму</h2>
+        <p>Работаем с предпринимателями и компаниями из Феодосии, Ялты, Евпатории, Керчи, Севастополя и других городов. Большую часть сопровождения можно вести дистанционно, без регулярных поездок в офис.</p>
+      </div>
+      <div class="card-grid two rich-card-grid">
+        <article class="glass-card rich-card"><span>01</span><h3>Дистанционный обмен</h3><p>Банковские выписки, первичные документы и текущие вопросы передаются через заранее согласованный электронный канал. Сроки и ответственных фиксируем до начала работы.</p></article>
+        <article class="glass-card rich-card"><span>02</span><h3>Офис, когда он нужен</h3><p>Встречу, разбор исходных документов или передачу оригиналов можно провести в Симферополе на ул. им. Мате Залки, 1 по предварительной договорённости.</p></article>
+      </div>
     </section>
 
     <section class="section page-rich-section rich-intro-section">
@@ -136,7 +184,7 @@ const main = `<main>
       <div class="section-header">
         <p class="eyebrow">Стоимость</p>
         <h2>Тариф зависит от реальной сложности учёта</h2>
-        <p>Базовое сопровождение ИП и ООО с простой моделью учёта начинается от 10 000 ₽ в месяц. Простое ООО также может обслуживаться по базовому тарифу: цену определяет реальная нагрузка, а не только форма бизнеса. После диагностики фиксируем ежемесячный состав задач и стоимость, а восстановление прошлых периодов оцениваем отдельно.</p>
+        <p>Базовое сопровождение ИП и ООО с простой моделью учёта — от 10 000 ₽ в месяц. Простое ООО также может обслуживаться по базовому тарифу: цену определяет реальная нагрузка, а не только форма бизнеса. После диагностики фиксируем ежемесячный состав задач и стоимость, а восстановление прошлых периодов оцениваем отдельно.</p>
       </div>
       <div class="card-grid two rich-card-grid">
         <article class="glass-card rich-card"><span>01</span><h3>Налоговый режим</h3><p>УСН, патент, АУСН, ОСНО, НДС и совмещение режимов требуют разного состава регистров, расчётов и отчётности.</p></article>
@@ -144,7 +192,7 @@ const main = `<main>
         <article class="glass-card rich-card"><span>03</span><h3>Сотрудники</h3><p>Зарплата, кадровые события, выплаты и отчётность по персоналу формируют отдельный регулярный участок работы.</p></article>
         <article class="glass-card rich-card"><span>04</span><h3>Состояние базы</h3><p>Если документы не собраны или прошлые периоды требуют восстановления, сначала оцениваем разовую подготовительную работу.</p></article>
       </div>
-      <div class="actions"><a class="button button-lime" href="/ceny/">Сравнить тарифы</a><a class="button button-ghost" href="/razbor-situacii/">Получить расчёт</a></div>
+      <div class="actions"><a class="button button-lime" href="/ceny/#tarify">Сравнить тарифы</a><a class="button button-ghost" href="/razbor-situacii/?service=accounting#route-contact">Получить расчёт</a></div>
     </section>
 
     <section class="section page-rich-section">
@@ -197,6 +245,10 @@ const main = `<main>
         <a class="glass-card related-card" href="/nalogi-i-rezhimy/"><span>02</span><h3>Налоги и режимы</h3><p>Если нужно сравнить налоговые последствия до изменения режима или модели работы.</p></a>
         <a class="glass-card related-card" href="/sverka-s-nalogovoy/"><span>03</span><h3>Сверка с налоговой</h3><p>Если сальдо ЕНС, начисления и платежи расходятся с данными бизнеса.</p></a>
         <a class="glass-card related-card" href="/otvet-na-trebovanie-ifns/"><span>04</span><h3>Ответ на требование ИФНС</h3><p>Если налоговая уже запросила пояснения или документы за конкретный период.</p></a>
+        <a class="glass-card related-card" href="/kadry/"><span>05</span><h3>Кадровое сопровождение</h3><p>Если кадровые события, выплаты и сведения СФР нужно вести вместе с бухгалтерским контуром.</p></a>
+        <a class="glass-card related-card" href="/soprovozhdenie/"><span>06</span><h3>Бухгалтерское сопровождение ИП</h3><p>Если предпринимателю нужен регулярный учёт с согласованным составом задач и тарифом.</p></a>
+        <a class="glass-card related-card" href="/raschet-nalogovoy-nagruzki/"><span>07</span><h3>Расчёт налоговой нагрузки</h3><p>Если нужно проверить фактическую нагрузку до выбора режима, тарифа сопровождения или изменения модели работы.</p></a>
+        <a class="glass-card related-card" href="/buhgalterskoe-soprovozhdenie-ooo/"><span>08</span><h3>Бухгалтерское сопровождение ООО</h3><p>Если компании нужен постоянный учёт операций, налогов, сотрудников и отчётности с понятным составом работ.</p></a>
       </div>
     </section>
   </main>`;
@@ -210,7 +262,12 @@ let html = template
   .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`)
   .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`)
   .replace(/<!-- d82-service-schema:start -->[\s\S]*?<!-- d82-service-schema:end -->/, `<!-- d82-service-schema:start -->\n    <script type="application/ld+json">${JSON.stringify(serviceSchema)}</script>\n    <!-- d82-service-schema:end -->`)
-  .replace(/<main>[\s\S]*?<\/main>/, main);
+  .replace(/<main>[\s\S]*?<\/main>/, main)
+  .replace(/\s*<script src="\/assets\/lead-form\.js\?v=\d+" defer><\/script>/g, "")
+  .replace(
+    /    <script src="\/assets\/metrika-goals\.js\?v=\d+" defer><\/script>/,
+    '    <script src="/assets/lead-form.js?v=202608312100" defer></script>\n    <script src="/assets/metrika-goals.js?v=202608271600" defer></script>',
+  );
 
 const directory = path.join(root, route.slice(1));
 fs.mkdirSync(directory, { recursive: true });
