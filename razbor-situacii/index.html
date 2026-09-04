@@ -275,7 +275,7 @@
           <small>Точный состав и стоимость согласуем до начала работ.</small>
         </div>
         <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#route-contact" data-event-name="hero_cta_click">Напишите нам</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>
+        <div class="actions"><a class="button button-lime" href="#quick-lead" data-event-name="hero_cta_click">Обсудить задачу</a><a class="button button-ghost" href="#route-contact">Прикрепить документы</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
         <p class="eyebrow">Первый шаг</p>
@@ -285,9 +285,30 @@
           <li><a href="#orientation-detail-01"><span>01</span><div><strong>Фиксируем факт</strong><small>Что произошло, кто обратился, какой срок или период указан, какие документы упомянуты.</small></div></a></li>
           <li><a href="#orientation-detail-02"><span>02</span><div><strong>Отделяем главное</strong><small>Разделяем основной вопрос и сопутствующие темы, чтобы не смешивать отчетность, банк, регистрацию и кадровые документы.</small></div></a></li>
           <li><a href="#orientation-detail-03"><span>03</span><div><strong>Выбираем маршрут</strong><small>После первого шага становится понятно, куда идти: ответ ИФНС, запрос банка, отчетность, регистрация или сопровождение.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Согласуем передачу</strong><small>Если нужны документы, сначала выбираем безопасный канал. На публичной странице не собираем персональные данные и файлы.</small></div></a></li>
+          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Согласуем передачу</strong><small>Сначала уточняем, какие документы нужны для задачи. Переданные через форму документы не публикуются на сайте.</small></div></a></li>
         </ul>
       </aside>
+    </section>
+    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
+      <div class="section-header">
+        <p class="eyebrow">Первый контакт</p>
+        <h2 id="quick-lead-title">Обсудить задачу со специалистом</h2>
+        <p>Уточним вашу ситуацию, сроки и следующий шаг. Состав и стоимость работ согласуем до начала.</p>
+      </div>
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+        <input type="hidden" name="source_page" value="/razbor-situacii/" />
+        <input type="hidden" name="task_type" value="Первичный разбор ситуации" />
+        <input type="hidden" name="lead_mode" value="quick" />
+        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-grid">
+          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
+          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
+          <label class="lead-quick-message">Коротко о задаче (необязательно)<textarea name="message" rows="3" placeholder="С чем нужна помощь и есть ли срок ответа"></textarea></label>
+        </div>
+        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+        <div class="lead-form-actions"><button class="button button-lime" type="submit">Обсудить задачу</button><a class="button button-ghost" href="#route-contact">Прикрепить документы</a></div>
+        <p class="form-note" role="status" aria-live="polite"></p>
+      </form>
     </section>
     <section class="section page-rich-section supplemental-section route-graphic-panel">
       
@@ -315,7 +336,7 @@
     <article class="glass-card rich-card" id="orientation-detail-04">
       <span>04</span>
       <h3>Согласуем передачу</h3>
-      <p>Если нужны документы, сначала выбираем безопасный канал. На публичной странице не собираем персональные данные и файлы.</p>
+      <p>Сначала уточняем, какие документы нужны для задачи. Переданные через форму документы не публикуются на сайте.</p>
     </article></div>
     </section>
     <section class="section page-rich-section supplemental-section route-graphic-panel">

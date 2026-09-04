@@ -20,25 +20,36 @@ class Page(HTMLParser):
         self.route = route
         self.tags, self.stack, self.errors, self.schemas = [], [], [], []
         self.schema = None
+        self.forms, self.current_form = [], None
         self.feed((ROOT / route.strip("/") / "index.html").read_text(encoding="utf-8"))
         self.close()
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         self.tags.append((tag, attrs))
+        if tag == "form":
+            self.current_form = {"attrs": attrs, "tags": []}
+            self.forms.append(self.current_form)
+        elif self.current_form is not None:
+            self.current_form["tags"].append((tag, attrs))
         if tag not in self.VOID:
             self.stack.append(tag)
         if tag == "script" and attrs.get("type") == "application/ld+json":
             self.schema = ""
 
     def handle_startendtag(self, tag, attrs):
-        self.tags.append((tag, dict(attrs)))
+        attrs = dict(attrs)
+        self.tags.append((tag, attrs))
+        if self.current_form is not None:
+            self.current_form["tags"].append((tag, attrs))
 
     def handle_data(self, data):
         if self.schema is not None:
             self.schema += data
 
     def handle_endtag(self, tag):
+        if tag == "form":
+            self.current_form = None
         if tag == "script" and self.schema is not None:
             self.schemas.append(json.loads(self.schema))
             self.schema = None
@@ -127,7 +138,7 @@ class AccountingPagesTest(unittest.TestCase):
                 self.assertEqual(inputs["lead_mode"].get("value"), "quick")
                 self.assertTrue(any(a.get("src") == "/assets/lead-form.js?v=202608312100"
                                     for a in page.attrs("script")))
-        form = [a for a in contact.attrs("form") if a.get("data-lead-form") == "amo"]
+        form = [a for a in contact.attrs("form") if a.get("enctype") == "multipart/form-data"]
         self.assertEqual(len(form), 1)
         self.assertEqual(form[0]["action"], "/api/lead")
         self.assertEqual(form[0]["method"], "post")
@@ -136,6 +147,36 @@ class AccountingPagesTest(unittest.TestCase):
         for name in ["name", "phone", "privacy"]:
             self.assertIn("required", inputs[name])
         self.assertNotIn("checked", inputs["privacy"])
+
+    def test_contact_page_has_separate_quick_and_document_forms(self):
+        page = self.pages["/razbor-situacii/"]
+        forms = [form for form in page.forms if form["attrs"].get("data-lead-form") == "amo"]
+        self.assertEqual(len(forms), 2)
+        quick, detailed = forms
+        for form in forms:
+            self.assertEqual(form["attrs"]["action"], "/api/lead")
+            self.assertEqual(form["attrs"]["method"], "post")
+            inputs = {a.get("name"): a for tag, a in form["tags"] if tag == "input"}
+            self.assertEqual(inputs["source_page"]["value"], "/razbor-situacii/")
+            for name in ["phone", "privacy"]:
+                self.assertIn("required", inputs[name])
+            self.assertNotIn("checked", inputs["privacy"])
+        quick_inputs = {a.get("name"): a for tag, a in quick["tags"] if tag == "input"}
+        self.assertEqual(quick_inputs["lead_mode"]["value"], "quick")
+        self.assertNotIn("required", quick_inputs["name"])
+        self.assertEqual(quick_inputs["task_type"]["value"], "Первичный разбор ситуации")
+        self.assertNotIn("required", next(a for tag, a in quick["tags"] if tag == "textarea"))
+        self.assertTrue(any(a.get("href") == "#route-contact" for tag, a in quick["tags"] if tag == "a"))
+        self.assertEqual(detailed["attrs"]["enctype"], "multipart/form-data")
+        detailed_inputs = {a.get("name"): a for tag, a in detailed["tags"] if tag == "input"}
+        self.assertNotIn("lead_mode", detailed_inputs)
+        self.assertIn("required", detailed_inputs["name"])
+        self.assertIn("required", next(a for tag, a in detailed["tags"] if tag == "textarea"))
+        self.assertEqual(detailed_inputs["files"]["type"], "file")
+        self.assertTrue(any(a.get("href") == "#quick-lead" and a.get("data-event-name") == "hero_cta_click"
+                            for a in page.attrs("a")))
+        hub = self.pages["/buhgalterskie-uslugi/"]
+        self.assertEqual(sum(a.get("href") == "#quick-lead" for a in hub.attrs("a")), 2)
 
     def test_every_existing_form_consumer_has_new_asset_version(self):
         consumers = []
