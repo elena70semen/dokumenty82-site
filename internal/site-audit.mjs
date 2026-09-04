@@ -413,6 +413,7 @@ for (const route of new Set(serviceOffers.map((offer) => new URL(offer.url).path
 }
 
 const minimumInboundSupport = new Map([
+  ["/otvet-na-zapros-banka/", 60],
   ["/ausn-krym/", 8],
   ["/deklaraciya-usn/", 10],
   ["/izmenenie-okved-ip/", 5],

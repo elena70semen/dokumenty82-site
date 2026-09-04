@@ -13,7 +13,7 @@ const footerLinks = `<div class="footer-links">
           <a href="/buhgalterskie-uslugi/">Бухгалтерия</a>
           <a href="/uslugi/">Услуги</a>
           <a href="/otchetnost/">Отчётность</a>
-          <a href="/bank-i-115-fz/">Банк и 115-ФЗ</a>
+          <a href="/otvet-na-zapros-banka/">Ответ банку по 115-ФЗ</a>
           <a href="/otzyvy/">Отзывы</a>
           <a href="/novosti/">Новости</a>
           <a href="/ceny/">Цены</a>
