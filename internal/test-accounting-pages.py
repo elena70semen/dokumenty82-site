@@ -7,7 +7,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 ROUTES = ["/", "/buhgalterskie-uslugi/", "/soprovozhdenie/",
-          "/buhgalterskoe-soprovozhdenie-ooo/", "/ceny/", "/razbor-situacii/"]
+          "/buhgalterskoe-soprovozhdenie-ooo/", "/ceny/", "/razbor-situacii/",
+          "/registraciya-ip/", "/likvidaciya-ooo/"]
 TOPICS = {"accounting": "Подбор бухгалтерских услуг", "accounting-ip": "Бухгалтерское сопровождение ИП",
           "accounting-ooo": "Бухгалтерское сопровождение ООО"}
 
@@ -177,6 +178,40 @@ class AccountingPagesTest(unittest.TestCase):
                             for a in page.attrs("a")))
         hub = self.pages["/buhgalterskie-uslugi/"]
         self.assertEqual(sum(a.get("href") == "#quick-lead" for a in hub.attrs("a")), 2)
+
+    def test_registration_and_liquidation_attach_files_without_leaving_form(self):
+        for route, topic in [("/registraciya-ip/", "Регистрация ИП"),
+                             ("/likvidaciya-ooo/", "Ликвидация ООО")]:
+            with self.subTest(route=route):
+                page = self.pages[route]
+                forms = [form for form in page.forms if form["attrs"].get("data-lead-form") == "amo"]
+                self.assertEqual(len(forms), 1)
+                form = forms[0]
+                self.assertEqual(form["attrs"]["action"], "/api/lead")
+                self.assertEqual(form["attrs"]["method"], "post")
+                self.assertEqual(form["attrs"].get("enctype"), "multipart/form-data")
+                inputs = {a.get("name"): a for tag, a in form["tags"] if tag == "input"}
+                self.assertEqual(inputs["source_page"]["value"], route)
+                self.assertEqual(inputs["task_type"]["value"], topic)
+                self.assertEqual(inputs["lead_mode"]["value"], "quick")
+                files = inputs["files"]
+                self.assertEqual(files["type"], "file")
+                self.assertIn("multiple", files)
+                self.assertNotIn("required", files)
+                self.assertEqual(files["accept"], ".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip")
+                self.assertTrue(any(tag == "label" and a.get("for") == files["id"] for tag, a in form["tags"]))
+                self.assertTrue(any(a.get("id") == files["aria-describedby"] for tag, a in form["tags"]))
+                self.assertTrue(any(tag == "ul" and {"lead-file-list", "form-span-2"} <= set(a.get("class", "").split())
+                                    for tag, a in form["tags"]))
+                self.assertNotIn("required", inputs["name"])
+                self.assertIn("required", inputs["phone"])
+                self.assertIn("required", inputs["privacy"])
+                self.assertNotIn("checked", inputs["privacy"])
+                self.assertNotIn("required", next(a for tag, a in form["tags"] if tag == "textarea"))
+                self.assertFalse(any(tag == "a" and a.get("href", "").startswith("/razbor-situacii/")
+                                     for tag, a in form["tags"]))
+                self.assertTrue(any(a.get("href") == "/assets/lead-attachments.css?v=202609041900"
+                                    for a in page.attrs("link")))
 
     def test_every_existing_form_consumer_has_new_asset_version(self):
         consumers = []

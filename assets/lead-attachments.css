@@ -1,0 +1,29 @@
+.lead-quick-form .form-file-field,
+.lead-quick-form .lead-file-picker,
+.lead-quick-form .lead-file-list {
+  min-width: 0;
+}
+
+.lead-quick-form .form-file-field {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.lead-quick-form .lead-file-picker-status {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lead-quick-form .lead-file-list:empty {
+  display: none;
+}
+
+.lead-quick-form .lead-file-list li > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.lead-quick-form .lead-file-list li > span:last-child {
+  flex-shrink: 0;
+  white-space: nowrap;
+}

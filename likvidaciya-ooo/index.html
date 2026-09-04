@@ -20,6 +20,7 @@
     <link rel="apple-touch-icon" href="https://dokumenty82.ru/apple-touch-icon.png" sizes="180x180" />
     <script src="/assets/theme-toggle.js?v=202608301430"></script>
     <link rel="stylesheet" href="/assets/site.css?v=202608301430" />
+    <link rel="stylesheet" href="/assets/lead-attachments.css?v=202609041900" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Можно ли ликвидировать ООО, если деятельности давно нет?","acceptedAnswer":{"@type":"Answer","text":"Да, если состояние компании допускает добровольную процедуру. До решения проверяем ЕГРЮЛ, отчётность, счета, активы, долги, сотрудников и незавершённые договоры."}},{"@type":"Question","name":"Сколько длится добровольная ликвидация ООО?","acceptedAnswer":{"@type":"Answer","text":"Единый короткий срок обещать нельзя. Только период для требований кредиторов составляет не менее двух месяцев после публикации, а общий маршрут зависит от состояния компании и расчётов."}},{"@type":"Question","name":"Что входит в стоимость ликвидации ООО от 45 000 ₽?","acceptedAnswer":{"@type":"Answer","text":"После проверки фиксируем состав работы: решение, уведомления Р15016, публикации, ликвидационные балансы и финальный регистрационный комплект. Если сначала нужен отдельный бухгалтерский или правовой маршрут, согласуем его до продолжения."}},{"@type":"Question","name":"Можно ли добровольно ликвидировать ООО с долгами?","acceptedAnswer":{"@type":"Answer","text":"Сначала нужно определить состав требований и достаточность имущества для расчётов. Если активов недостаточно, добровольный маршрут может не подходить."}}]}</script>
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109869928', 'ym');
@@ -256,7 +257,7 @@
         <h2 id="quick-lead-title">Оценить ликвидацию ООО</h2>
         <p>Коротко опишите состояние компании. Проверим подходящий маршрут и от чего зависит итоговая стоимость.</p>
       </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" enctype="multipart/form-data" data-lead-form="amo">
         <input type="hidden" name="source_page" value="/likvidaciya-ooo/" />
         <input type="hidden" name="task_type" value="Ликвидация ООО" />
         <input type="hidden" name="lead_mode" value="quick" />
@@ -265,9 +266,19 @@
           <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
           <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
           <label class="lead-quick-message">Состояние компании (необязательно)<textarea name="message" rows="3" placeholder="Есть ли деятельность, долги, сотрудники и текущая отчетность"></textarea></label>
+          <div class="form-span-2 form-file-field">
+            <span>Файлы (необязательно)</span>
+            <input class="lead-file-input" id="quick-lead-files" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="quick-lead-files-note" />
+            <label class="lead-file-picker" for="quick-lead-files">
+              <span class="lead-file-picker-button">Выбрать файлы</span>
+              <span class="lead-file-picker-status">Файлы не выбраны</span>
+            </label>
+            <span class="form-note" id="quick-lead-files-note">До 6 файлов, суммарно до 20 МБ.</span>
+          </div>
         </div>
+        <ul class="lead-file-list form-span-2" aria-live="polite"></ul>
         <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчет</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить файлы</a></div>
+        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчет</button><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
         <p class="form-note" role="status" aria-live="polite"></p>
       </form>
     </section>
