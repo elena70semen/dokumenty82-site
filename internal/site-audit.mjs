@@ -184,6 +184,10 @@ if (!serviceFeed.includes("<category id=\"2\" parentId=\"1\">Бухгалтер�
   issues.push("services.yml: accounting services category missing");
 }
 for (const offer of serviceOffers) {
+  // Current service terms do not specify an advertised warranty period.
+  if (/<expiry(?:\s|\/?>)/i.test(offer.block)) {
+    issues.push(`services.yml: ${offer.id} must not advertise an unsupported expiry warranty`);
+  }
   if (offer.name !== "Документы для бизнеса") issues.push(`services.yml: ${offer.id} has invalid performer name`);
   if (!offer.url) issues.push(`services.yml: ${offer.id} is missing url`);
   if (!offer.picture) issues.push(`services.yml: ${offer.id} is missing picture`);
