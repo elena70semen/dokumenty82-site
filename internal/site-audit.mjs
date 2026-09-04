@@ -153,6 +153,18 @@ const duplicateServiceField = (field) => {
 };
 
 const issues = [];
+const cleanParamRules = fs.readFileSync(path.join(root, "robots.txt"), "utf8")
+  .split(/\r?\n/)
+  .map((line) => line.split("#", 1)[0].trim())
+  .filter((line) => /^Clean-param:/i.test(line))
+  .map((line) => line.slice(line.indexOf(":") + 1).trim());
+const globalCleanParams = new Set(cleanParamRules
+  .filter((rule) => rule.split(/\s+/).length === 1)
+  .flatMap((rule) => rule.split("&")));
+for (const param of ["utm_device", "utm_match"]) {
+  if (!globalCleanParams.has(param)) issues.push(`robots.txt: missing global Clean-param for ${param}`);
+}
+if (cleanParamRules.some((rule) => rule.length > 500)) issues.push("robots.txt: Clean-param rule exceeds 500 characters");
 const sitemapRoutes = new Set(pages.map((page) => page.route));
 const pagesByRoute = new Map(pages.map((page) => [page.route, page]));
 const registryRoutes = new Set(registry.indexable_routes);
