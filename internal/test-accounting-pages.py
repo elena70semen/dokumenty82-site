@@ -130,6 +130,7 @@ class AccountingPagesTest(unittest.TestCase):
                 self.assertTrue(any(a.get("href") == "#quick-lead" and
                                     a.get("data-event-name") == "hero_cta_click"
                                     for a in page.attrs("a")))
+                self.assertTrue(any(a.get("href") == "tel:+79789987222" for a in page.attrs("a")))
                 inputs = {a.get("name"): a for a in page.attrs("input")}
                 self.assertEqual(inputs["task_type"].get("value"), direct_forms[route])
                 self.assertEqual(inputs["source_page"].get("value"), route)
@@ -178,6 +179,8 @@ class AccountingPagesTest(unittest.TestCase):
                             for a in page.attrs("a")))
         hub = self.pages["/buhgalterskie-uslugi/"]
         self.assertEqual(sum(a.get("href") == "#quick-lead" for a in hub.attrs("a")), 2)
+        self.assertTrue(any(a.get("href") == "/ceny/#tarify" for a in hub.attrs("a")))
+        self.assertIn("от 10 000 ₽ в месяц", (ROOT / "buhgalterskie-uslugi" / "index.html").read_text(encoding="utf-8"))
 
     def test_registration_and_liquidation_attach_files_without_leaving_form(self):
         for route, topic in [("/registraciya-ip/", "Регистрация ИП"),

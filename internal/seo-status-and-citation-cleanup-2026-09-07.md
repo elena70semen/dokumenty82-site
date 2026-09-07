@@ -91,6 +91,19 @@ None of these six visits used `/api/ai-chat` or `/api/lead`. Both 7 September vi
 
 AI chat received five requests from two browser identities: four successful requests on 5 September and one client-aborted request on 6 September. The latter produced nginx `499` and a server-side `BrokenPipeError`; the service stayed active. Treat this as a response-abandonment signal, not a confirmed AI outage.
 
+### Landing conversion cleanup prepared locally
+
+The three accounting landings were reviewed at a `390 x 844` mobile viewport without starting a local server. Their quick forms are already low-friction: only the phone and privacy consent are required, while the name and workload description are optional. The confirmed mismatch is earlier in the journey. Price-intent ads can open the general accounting page, but its production first screen did not show the `from 10,000 RUB` entry price even though that value was present in the title and lower content. In addition, the second first-screen action on all three landings opened another price page instead of offering a direct contact channel.
+
+The local conversion patch therefore keeps the indexed headings and service copy unchanged and makes only these focused changes:
+
+- shows `от 10 000 ₽ в месяц` on the first screen of `/buhgalterskie-uslugi/`, with a retained link to the full tariff table;
+- renames the general primary action from a vague service-selection label to `Рассчитать стоимость`;
+- adds a first-screen phone action on the general, sole-proprietor, and LLC accounting landings;
+- keeps the existing quick form contract and Yandex Metrika goals unchanged.
+
+The static HTML, form, and tracking suites pass. After publication, compare `hero_cta_click`, `contact_phone`, `goal_form_start`, and `lead_submit_success` for paid accounting sessions. Do not call the patch successful or unsuccessful until the sample contains enough qualified visits.
+
 ### Direct search-query control: 1-7 September
 
 The authorised Direct search-query report was rechecked on 7 September with the period set to `01-07.09.2026`, clicks greater than zero, and the report's selected micro-goal `Переход по коммерческому...`. The report contains `107` impressions, `8` clicks, `747.36 RUB` spend, and `2` recorded goal completions. The displayed `25%` conversion rate and `373.68 RUB` CPA describe that selected micro-goal, not submitted leads. VPS records and CRM data still show no customer lead for the period.

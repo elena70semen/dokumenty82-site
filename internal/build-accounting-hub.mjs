@@ -103,7 +103,12 @@ const main = `<main>
         <h1>Бухгалтерские услуги для ИП и ООО в Симферополе</h1>
         <p>Ведём бухгалтерский и налоговый учёт, готовим отчётность, контролируем обязательные сроки и разбираем требования ИФНС. Состав работы определяем по фактической нагрузке бизнеса.</p>
         <p class="hero-location-badge"><span>Офис в Симферополе · сопровождение по всему Крыму и Севастополю</span></p>
-        <div class="actions"><a class="button button-lime" href="#quick-lead" data-event-name="hero_cta_click">Подобрать бухгалтерские услуги</a><a class="button button-ghost" href="/ceny/#tarify">Тарифы и цены</a></div>
+        <div class="service-price-note" aria-label="Стоимость услуги">
+          <span>Базовое сопровождение</span>
+          <strong>от 10 000 ₽ в месяц</strong>
+          <small>Для ИП и простого ООО. <a href="/ceny/#tarify">Смотреть все тарифы</a></small>
+        </div>
+        <div class="actions"><a class="button button-lime" href="#quick-lead" data-event-name="hero_cta_click">Рассчитать стоимость</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
       </div>
       <aside class="glass-panel hero-choice-panel">
         <p class="eyebrow">Выберите формат</p>
@@ -121,8 +126,8 @@ const main = `<main>
     <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
       <div class="section-header">
         <p class="eyebrow">Расчёт сопровождения</p>
-        <h2 id="quick-lead-title">Подобрать бухгалтерские услуги</h2>
-        <p>Укажите форму бизнеса и текущую нагрузку. Состав работы и стоимость согласуем до начала сопровождения.</p>
+        <h2 id="quick-lead-title">Рассчитать стоимость сопровождения</h2>
+        <p>Оставьте телефон и, если удобно, укажите форму бизнеса и нагрузку. Состав работы и стоимость согласуем до начала сопровождения.</p>
       </div>
       <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
         <input type="hidden" name="source_page" value="/buhgalterskie-uslugi/" />
