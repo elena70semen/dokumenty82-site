@@ -1,6 +1,6 @@
 # SEO status and external profile cleanup: 7 September 2026
 
-Checked without starting a local web server. Public pages were not changed. This note separates verified production data, Topvisor data supplied by the owner, and search-engine cache observations.
+Checked without starting a local web server. This note separates verified production data, Topvisor data supplied by the owner, and search-engine cache observations. The focused accounting conversion update described below was published after the initial audit.
 
 ## 1. Fresh Topvisor baseline
 
@@ -66,7 +66,7 @@ Therefore the 7 September Topvisor positions were measured after the first confi
 
 Verified on the VPS and through public HTTP checks on 7 September:
 
-- active release: `/var/www/dokumenty82/releases/20260904-service-attachments-29b706f`;
+- active release: `/var/www/dokumenty82/releases/20260907-accounting-conversion-95fa857`;
 - `nginx`, `dokumenty82-lead`, and `dokumenty82-portal` are active;
 - nginx configuration test passes;
 - homepage, commercial landings, offer, robots, sitemap, scripts, and styles respond with HTTP `200`;
@@ -91,18 +91,33 @@ None of these six visits used `/api/ai-chat` or `/api/lead`. Both 7 September vi
 
 AI chat received five requests from two browser identities: four successful requests on 5 September and one client-aborted request on 6 September. The latter produced nginx `499` and a server-side `BrokenPipeError`; the service stayed active. Treat this as a response-abandonment signal, not a confirmed AI outage.
 
-### Landing conversion cleanup prepared locally
+### Separate Yandex Metrika counters
+
+The Metrika account list shows two counters with different scopes:
+
+- counter `60585931`, owned and managed by Yandex Business, reports activity with the organization card across Yandex Search, Maps, and other Yandex surfaces. On the checked monthly view it showed `7` visits, `13` views, `7` visitors, and one `Клик на позвонить` goal;
+- counter `109869928`, owned by `OFFICE-9102`, is the website counter installed on `dokumenty82.ru`. On the same list view it showed `5` visits, `11` views, `5` visitors, and zero `Клик по телефону` goals.
+
+These figures must not be added as if they described twelve unique website visitors. The Yandex Business counter measures organization-card interaction and can overlap with people who later visit the website. Its call-click goal records pressing the phone control, not a confirmed connected call or customer lead. Production source inspection confirms that only counter `109869928` is installed on the website; counter `60585931` is not duplicated in the site code.
+
+Official references: [Yandex Business statistics](https://yandex.ru/support/business-priority/ru/manage/general-statistics), [organization-card events](https://www.yandex.ru/support/metrica/ru/general/events), and [website click goals](https://yandex.ru/support/metrica/ru/simple-goal/click-beta).
+
+### Landing conversion cleanup published
 
 The three accounting landings were reviewed at a `390 x 844` mobile viewport without starting a local server. Their quick forms are already low-friction: only the phone and privacy consent are required, while the name and workload description are optional. The confirmed mismatch is earlier in the journey. Price-intent ads can open the general accounting page, but its production first screen did not show the `from 10,000 RUB` entry price even though that value was present in the title and lower content. In addition, the second first-screen action on all three landings opened another price page instead of offering a direct contact channel.
 
-The local conversion patch therefore keeps the indexed headings and service copy unchanged and makes only these focused changes:
+The conversion patch keeps the indexed headings and service copy unchanged and makes only these focused changes:
 
 - shows `от 10 000 ₽ в месяц` on the first screen of `/buhgalterskie-uslugi/`, with a retained link to the full tariff table;
 - renames the general primary action from a vague service-selection label to `Рассчитать стоимость`;
 - adds a first-screen phone action on the general, sole-proprietor, and LLC accounting landings;
 - keeps the existing quick form contract and Yandex Metrika goals unchanged.
 
-The static HTML, form, and tracking suites pass. After publication, compare `hero_cta_click`, `contact_phone`, `goal_form_start`, and `lead_submit_success` for paid accounting sessions. Do not call the patch successful or unsuccessful until the sample contains enough qualified visits.
+The static HTML, form, tracking, and strict site-audit suites pass. Commit `95fa857` was published atomically as `/var/www/dokumenty82/releases/20260907-accounting-conversion-95fa857`; only the three accounting landing documents differ from the previous release. Local and remote SHA-256 hashes match, nginx configuration passes, the nginx, lead, and portal services remain active, and all three public URLs return HTTP `200`. No application service restart was required.
+
+The three URLs were submitted to Yandex IndexNow directly from the VPS to bypass the local VPN path. The correct root key file was verified against its public response. Yandex accepted `/buhgalterskie-uslugi/` with HTTP `202` and `/soprovozhdenie/` plus `/buhgalterskoe-soprovozhdenie-ooo/` with HTTP `200`. An initial HTTP `422` was caused by a diagnostic command selecting an unrelated root `.txt` file instead of the explicit IndexNow key; the key itself and the site were valid.
+
+Compare `hero_cta_click`, `contact_phone`, `goal_form_start`, and `lead_submit_success` for paid accounting sessions after new traffic reaches the release. Do not call the patch successful or unsuccessful until the sample contains enough qualified visits.
 
 ### Direct search-query control: 1-7 September
 
