@@ -235,6 +235,24 @@ class AccountingPagesTest(unittest.TestCase):
         self.assertEqual(offer["price"], "10000")
         self.assertIn("простой моделью учёта", offer["itemOffered"]["description"])
 
+    def test_accounting_pages_share_verified_business_identity(self):
+        for route in ["/buhgalterskie-uslugi/", "/soprovozhdenie/",
+                      "/buhgalterskoe-soprovozhdenie-ooo/"]:
+            nodes = []
+            for schema in self.pages[route].schemas:
+                nodes.extend(schema.get("@graph", [schema]))
+            business = next(node for node in nodes
+                            if node.get("@id") == "https://dokumenty82.ru/#business")
+            with self.subTest(route=route):
+                self.assertEqual(business["legalName"],
+                                 "Индивидуальный предприниматель Барков Андрей Андреевич")
+                self.assertEqual(business["taxID"], "672908329933")
+                self.assertEqual(business["identifier"], {
+                    "@type": "PropertyValue",
+                    "propertyID": "ОГРНИП",
+                    "value": "325670000053721",
+                })
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -24,13 +24,23 @@ const commonGraph = JSON.parse(sourceSchema)["@graph"]
   }))
   .map((node) => {
     const types = Array.isArray(node["@type"]) ? node["@type"] : [node["@type"]];
-    if (!types.includes("LocalBusiness") || node.areaServed?.some((area) => area.name === "Севастополь")) return node;
+    if (!types.includes("LocalBusiness")) return node;
+    const areaServed = node.areaServed?.some((area) => area.name === "Севастополь")
+      ? node.areaServed
+      : [
+          ...(node.areaServed || []),
+          { "@type": "City", name: "Севастополь" },
+        ];
     return {
       ...node,
-      areaServed: [
-        ...(node.areaServed || []),
-        { "@type": "City", name: "Севастополь" },
-      ],
+      legalName: "Индивидуальный предприниматель Барков Андрей Андреевич",
+      taxID: "672908329933",
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "ОГРНИП",
+        value: "325670000053721",
+      },
+      areaServed,
     };
   });
 
