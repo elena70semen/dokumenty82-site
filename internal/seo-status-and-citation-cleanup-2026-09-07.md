@@ -142,7 +142,58 @@ The campaign settings were then checked directly. Campaign `713957407` uses `М�
 
 The immediate Direct action is narrow: exclude the two proven irrelevant themes and stop reading the report's commercial-click micro-goal as a lead. Do not disable all autotargeting from an eight-click sample; retain the commercially relevant accounting queries and continue query-level control.
 
-## 3. External identity conflicts
+## 3. Yandex-only control baseline
+
+The site is now frozen as the measurement baseline. The accounting first-screen conversion update went live on 7 September 2026, so performance before that date must not be used to judge the updated landing pages.
+
+### Metrika: site counter `109869928`
+
+For 8 August through 7 September 2026, the site counter recorded:
+
+- `220` visits;
+- `120` visitors;
+- `429` pageviews;
+- `31.36%` bounce rate;
+- `1.95` pages per visit;
+- `2m 54s` average visit duration;
+- `95.83%` new visitors.
+
+This is not zero traffic, and the engagement totals do not support a conclusion that the site is universally broken or immediately rejected. Traffic quality and commercial intent must be analysed by source instead of combining paid search, organic traffic, owner tests, bots, and the separate Yandex Business statistics counter.
+
+### Direct: paid-search accounting
+
+The 30-day campaign grid recorded `2,963.33 RUB`, `892` impressions, `45` clicks, and `0` actual campaign conversions. The historical total is not a clean test of the current accounting offer:
+
+- stopped legacy campaigns: `2,353.14 RUB` and `38` clicks (`79.4%` of spend and `84.4%` of clicks);
+- active accounting campaign `713957407`: `610.19 RUB` and `7` clicks;
+- actual website leads from paid traffic: `0`;
+- the two conversions displayed in the search-query report are executions of `service_route_click`, the goal `Переход по коммерческому маршруту`, not submitted leads.
+
+The old FNS-demand and reporting campaigns alone produced `29` of the `45` historical clicks. Their results must not be attributed to the current accounting landing pages.
+
+### Conversion truth set
+
+Only the following outcomes count as business conversions for the next Direct test:
+
+- `lead_submit_success` (`Успешная заявка с сайта`, goal `582169328`);
+- `contact_phone` (`Контакт: телефон`, goal `582169968`);
+- `contact_telegram` (`Контакт: Telegram`, goal `582171696`);
+- `contact_max` (`Контакт: MAX`, goal `582173593`);
+- CRM meeting, created-order, and paid-order stages.
+
+Clicks on service cards, routes, related pages, hero buttons, and form starts remain useful diagnostic micro-goals, but they must never be reported as leads or used to claim that the campaign converts.
+
+### Controlled Yandex test from 7 September
+
+1. Keep all stopped legacy campaigns stopped and run only the accounting campaign.
+2. Preserve Crimea-wide targeting as requested; do not limit all groups to Simferopol.
+3. Keep the existing low weekly limit and do not raise the budget before at least `20` qualified clicks have accumulated after the 7 September landing update.
+4. Review actual search queries after every `3-5` new clicks. Add proven informational or irrelevant themes to negatives immediately; do not exclude a commercially relevant query after a single non-converting click.
+5. Judge the test only by the conversion truth set above, server-side `/api/lead` records, and CRM creation. Do not use `service_route_click` as the campaign result.
+6. If the campaign reaches `20` qualified clicks without a contact or lead, pause it and rebuild the semantic core and ads before spending further. If it produces a contact, continue until the sample is large enough to estimate cost per qualified lead.
+7. For organic Yandex growth, prioritize ownership recovery and correction of the obsolete Yandex Services profile, then remeasure the same Topvisor query set after Yandex has recrawled and propagated the entity changes.
+
+## 4. External identity conflicts
 
 ### Critical: old Yandex Services / Performers profile
 
@@ -207,7 +258,7 @@ The domain currently resolves to `155.212.142.72`, but it is not owned by this p
 
 Required outcome: keep the isolation in place and monitor cache removal. Do not add this domain to canonical markup, redirects, or `sameAs`. Only the domain owner can correct its DNS.
 
-## 4. Canonical profile data
+## 5. Canonical profile data
 
 Use the following values consistently when correcting external listings:
 
@@ -224,7 +275,7 @@ Use the following values consistently when correcting external listings:
 
 Do not publish unsupported guarantees, nationwide office locations, or a promise of a fixed result.
 
-## 5. Correction copy
+## 6. Correction copy
 
 Short correction request for directory support:
 
@@ -264,7 +315,7 @@ Subject: `Актуализация карточки компании 10341213 н
 
 Sending these requests is an external representational action and must be confirmed immediately before submission. Preparing and reviewing the text does not alter any external profile.
 
-## 6. Next checkpoint
+## 7. Next checkpoint
 
 1. Completed on 7 September: Yandex Webmaster confirms canonical indexed pages for LLC registration, response to an FNS demand, and response to a bank request; its last-visit dates lag the raw server logs.
 2. Keep the live-search finding in view: Yandex ranks `/bank-i-115-fz/` for the bank-response intent, while the intended narrow pages remain canonical and indexed. Do not change title, H1, or body copy without a new query-level URL check.
