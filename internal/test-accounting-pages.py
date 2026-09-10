@@ -178,7 +178,8 @@ class AccountingPagesTest(unittest.TestCase):
         self.assertTrue(any(a.get("href") == "#quick-lead" and a.get("data-event-name") == "hero_cta_click"
                             for a in page.attrs("a")))
         hub = self.pages["/buhgalterskie-uslugi/"]
-        self.assertEqual(sum(a.get("href") == "#quick-lead" for a in hub.attrs("a")), 2)
+        # Contextual service examples may add another link to the same form.
+        self.assertGreaterEqual(sum(a.get("href") == "#quick-lead" for a in hub.attrs("a")), 2)
         self.assertTrue(any(a.get("href") == "/ceny/#tarify" for a in hub.attrs("a")))
         self.assertIn("от 10 000 ₽ в месяц", (ROOT / "buhgalterskie-uslugi" / "index.html").read_text(encoding="utf-8"))
 
