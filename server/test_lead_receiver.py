@@ -49,16 +49,55 @@ class AmoLeadAttributionTests(unittest.TestCase):
     lead = calls[0].kwargs["payload"][0]
 
     self.assertEqual(result["lead_id"], 901)
-    self.assertEqual(lead["custom_fields_values"], [{
+    self.assertIn({
       "field_id": 1367613,
       "values": [{"value": "1730000000000000000"}],
-    }])
+    }, lead["custom_fields_values"])
+    self.assertIn({"field_code": "UTM_SOURCE", "values": [{"value": "yandex"}]}, lead["custom_fields_values"])
+    self.assertIn({"field_code": "YCLID", "values": [{"value": "test-yclid"}]}, lead["custom_fields_values"])
 
   def test_empty_client_id_does_not_add_tracking_field(self):
     _, calls = self.create(self.fields(client_id=""))
     lead = calls[0].kwargs["payload"][0]
 
-    self.assertNotIn("custom_fields_values", lead)
+    self.assertFalse(any(x.get("field_id") == 1367613 for x in lead["custom_fields_values"]))
+
+  def test_owner_qa_is_explicitly_tagged(self):
+    fields = {**self.fields(), "utm_source": "owner_qa"}
+    _, calls = self.create(fields)
+    self.assertIn({"name": "owner_qa"}, calls[0].kwargs["payload"][0]["_embedded"]["tags"])
+
+
+class AmoFollowupTaskTests(unittest.TestCase):
+  def test_creates_task_for_configured_owner_and_marks_qa(self):
+    with mock.patch.object(receiver, "AMO_RESPONSIBLE_USER_ID", "61"), \
+         mock.patch.object(receiver, "AMO_FOLLOWUP_TASK_SECONDS", 3600), \
+         mock.patch.object(receiver.time, "time", return_value=1000), \
+         mock.patch.object(receiver, "amo_headers", return_value={}), \
+         mock.patch.object(receiver, "api_request", side_effect=[None, {"_embedded": {"tasks": [{"id": 71}]}}]) as api:
+      result = receiver.ensure_amo_followup_task("https://example.amocrm.ru", 901, {"utm_source": "owner_qa", "task_type": "ИФНС"})
+    task = api.call_args.kwargs["payload"][0]
+    self.assertEqual((task["entity_id"], task["responsible_user_id"], task["complete_till"]), (901, 61, 4600))
+    self.assertIn("клиенту не звонить", task["text"])
+    self.assertEqual(result, {"status": "created", "task_id": 71})
+
+  def test_keeps_existing_open_task_instead_of_duplicating(self):
+    existing = {"_embedded": {"tasks": [{"id": 71, "entity_id": 901, "responsible_user_id": 61, "is_completed": False}]}}
+    with mock.patch.object(receiver, "AMO_RESPONSIBLE_USER_ID", "61"), \
+         mock.patch.object(receiver, "AMO_FOLLOWUP_TASK_SECONDS", 3600), \
+         mock.patch.object(receiver, "amo_headers", return_value={}), \
+         mock.patch.object(receiver, "api_request", return_value=existing) as api:
+      result = receiver.ensure_amo_followup_task("https://example.amocrm.ru", 901, {})
+    self.assertEqual(api.call_count, 1)
+    self.assertEqual(result["status"], "existing")
+
+  def test_task_failure_does_not_turn_created_lead_into_form_error(self):
+    with mock.patch.object(receiver, "AMO_FOLLOWUP_TASK_SECONDS", 3600), \
+         mock.patch.object(receiver, "ensure_amo_followup_task", side_effect=RuntimeError("unavailable")):
+      result, calls = AmoLeadAttributionTests().create(AmoLeadAttributionTests().fields())
+    self.assertEqual(result["status"], "sent")
+    self.assertEqual(result["followup_task"]["status"], "failed")
+    self.assertEqual(sum("leads/complex" in c.args[1] for c in calls), 1)
 
 
 class AmoAccountDestinationTests(unittest.TestCase):

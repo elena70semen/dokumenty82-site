@@ -2,7 +2,7 @@
   "updated_on": "2026-09-11",
   "current_crm": "https://presentationrc.amocrm.ru",
   "previous_crm": "https://rahimaconsulting.amocrm.ru",
-  "integration_status": "awaiting_new_account_authorization; old sending disabled; submissions stored locally",
+  "integration_status": "connected and verified: Presentation 32965862; sales/contact/Viktor; files and follow-up task verified; local-only disabled",
   "baseline": {
     "from": "2026-09-01",
     "through": "2026-09-11",
@@ -17,9 +17,21 @@
     "exclude": "Owner QA, test traffic, spam and duplicates; a telephone-link click alone is not a qualified lead"
   },
   "fields_for_each_real_enquiry": [
-    "crm_account", "crm_lead_id", "received_at", "source", "source_confidence",
-    "campaign_id", "landing_page", "service", "contacted_at", "qualified",
-    "qualification_reason", "order_status", "agreed_revenue_rub", "responsible", "next_action_at"
+    "crm_account",
+    "crm_lead_id",
+    "received_at",
+    "source",
+    "source_confidence",
+    "campaign_id",
+    "landing_page",
+    "service",
+    "contacted_at",
+    "qualified",
+    "qualification_reason",
+    "order_status",
+    "agreed_revenue_rub",
+    "responsible",
+    "next_action_at"
   ],
   "entries": [
     {
@@ -34,7 +46,37 @@
       "technical_delivery": "sent; verified via CRM API and user's screenshot",
       "business_delivery": "wrong CRM account; user identified presentationrc.amocrm.ru as the working account",
       "counts_as_real_lead": false,
-      "next_action": "Authorize presentationrc; send and verify a new clearly marked QA request there"
+      "next_action": "Original wrong-account QA retained as history; new Presentation delivery verified by later QA records"
+    },
+    {
+      "kind": "owner_qa",
+      "submission_id": "20260911T125909Z-17e8f031",
+      "received_at": "2026-09-11T15:59:09+03:00",
+      "crm_account": "presentationrc.amocrm.ru",
+      "crm_account_id": 32965862,
+      "crm_lead_id": 47510573,
+      "service": "IFNS requirement - delivery test",
+      "source": "owner_qa / test / presentation_delivery_20260911",
+      "technical_delivery": "HTTP 200; sent; attachment verified",
+      "business_delivery": "Correct account, sales pipeline, contact stage, responsible Viktor; visible in his CRM session",
+      "followup_task_id": null,
+      "counts_as_real_lead": false,
+      "state": "closed technical test"
+    },
+    {
+      "kind": "owner_qa",
+      "submission_id": "20260911T130342Z-cc4009d1",
+      "received_at": "2026-09-11T16:03:42+03:00",
+      "crm_account": "presentationrc.amocrm.ru",
+      "crm_account_id": 32965862,
+      "crm_lead_id": 47510737,
+      "service": "IFNS requirement - delivery test",
+      "source": "owner_qa / test / presentation_final_20260911",
+      "technical_delivery": "HTTP 200; sent; attachment verified",
+      "business_delivery": "Correct account, sales pipeline, contact stage, responsible Viktor; visible in his CRM session",
+      "followup_task_id": 55197035,
+      "counts_as_real_lead": false,
+      "state": "awaiting human receipt confirmation; QA task open"
     }
   ]
 }

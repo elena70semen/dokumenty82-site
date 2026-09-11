@@ -40,6 +40,7 @@ AMO_SETUP_EXPIRES_AT = os.environ.get("AMO_SETUP_EXPIRES_AT", "0").strip()
 AMO_PIPELINE_ID = os.environ.get("AMO_PIPELINE_ID", "").strip()
 AMO_STATUS_ID = os.environ.get("AMO_STATUS_ID", "").strip()
 AMO_RESPONSIBLE_USER_ID = os.environ.get("AMO_RESPONSIBLE_USER_ID", "").strip()
+AMO_FOLLOWUP_TASK_SECONDS = int(os.environ.get("AMO_FOLLOWUP_TASK_SECONDS", "0"))
 AMO_TAGS = [tag.strip() for tag in os.environ.get("AMO_TAGS", "site,razbor-situacii").split(",") if tag.strip()]
 AMO_ATTACH_FILES = os.environ.get("AMO_ATTACH_FILES", "0") == "1"
 AMO_DRIVE_URL = os.environ.get("AMO_DRIVE_URL", "").strip().rstrip("/")
@@ -647,11 +648,19 @@ def create_amo_lead(fields, files):
   }
 
   metrika_field_id = int_or_none(AMO_METRIKA_CLIENT_ID_FIELD_ID)
+  tracking_fields = []
   if metrika_field_id and fields["yandex_client_id"]:
-    lead["custom_fields_values"] = [{
+    tracking_fields.append({
       "field_id": metrika_field_id,
       "values": [{"value": fields["yandex_client_id"]}],
-    }]
+    })
+  for key in ("utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "yclid", "referrer"):
+    if fields.get(key):
+      tracking_fields.append({"field_code": key.upper(), "values": [{"value": fields[key]}]})
+  if tracking_fields:
+    lead["custom_fields_values"] = tracking_fields
+  if fields.get("utm_source") == "owner_qa":
+    lead["_embedded"]["tags"].append({"name": "owner_qa"})
 
   for key, env_value in (
     ("pipeline_id", AMO_PIPELINE_ID),
@@ -720,7 +729,38 @@ def create_amo_lead(fields, files):
         headers=amo_headers(),
       )
 
-  return {"status": "sent", "lead_id": lead_id, "attached_files": attached}
+  result = {"status": "sent", "lead_id": lead_id, "attached_files": attached}
+  if AMO_FOLLOWUP_TASK_SECONDS > 0:
+    try:
+      result["followup_task"] = ensure_amo_followup_task(base_url, lead_id, fields)
+    except Exception as error:
+      # The lead already exists. Do not invite a duplicate form submission if
+      # the separate task API is temporarily unavailable; retain the failure.
+      result["followup_task"] = {"status": "failed", "error_type": type(error).__name__}
+      print("amoCRM follow-up task failed for lead %s: %s" % (lead_id, type(error).__name__), flush=True)
+  return result
+
+
+def ensure_amo_followup_task(base_url, lead_id, fields):
+  responsible = int_or_none(AMO_RESPONSIBLE_USER_ID)
+  if not responsible or AMO_FOLLOWUP_TASK_SECONDS <= 0:
+    raise RuntimeError("Для задачи нужен ответственный и положительный срок.")
+  params = urllib.parse.urlencode({"filter[entity_id]": lead_id, "filter[entity_type]": "leads", "filter[is_completed]": 0})
+  existing = api_request("GET", base_url + "/api/v4/tasks?" + params, headers=amo_headers())
+  for task in amo_collection(existing, "tasks"):
+    if task.get("entity_id") == lead_id and task.get("responsible_user_id") == responsible and not task.get("is_completed"):
+      return {"status": "existing", "task_id": task["id"]}
+  is_qa = fields.get("utm_source") == "owner_qa"
+  task_text = ("ТЕСТ — проверить получение заявки и вложения; клиенту не звонить. " if is_qa
+               else "Связаться по новой заявке с dokumenty82.ru, уточнить задачу и срок. ")
+  payload = [{"entity_id": lead_id, "entity_type": "leads", "responsible_user_id": responsible,
+              "task_type_id": 1, "complete_till": int(time.time()) + AMO_FOLLOWUP_TASK_SECONDS,
+              "text": task_text + clipped(fields.get("task_type"), 150)}]
+  response = api_request("POST", base_url + "/api/v4/tasks", payload=payload, headers=amo_headers())
+  tasks = amo_collection(response, "tasks")
+  if not tasks or not tasks[0].get("id"):
+    raise RuntimeError("amoCRM не вернула ID задачи.")
+  return {"status": "created", "task_id": tasks[0]["id"]}
 
 
 def attach_files_to_lead(base_url, drive_url, lead_id, files):
