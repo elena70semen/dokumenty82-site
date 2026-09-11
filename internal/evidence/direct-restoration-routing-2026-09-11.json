@@ -1,0 +1,687 @@
+{
+  "checkedAt": "2026-09-11T07:25:42.099Z",
+  "source": "Яндекс Директ, редакторы групп; после сохранения и перезагрузки каждой изменённой группы",
+  "campaignId": "713957407",
+  "changes": [
+    {
+      "groupId": "5793729172",
+      "name": "accounting_services__core",
+      "before": [
+        "-!как заполнить",
+        "-!как отправить",
+        "-word",
+        "-бесплатно",
+        "-бланк",
+        "-вакансия",
+        "-декларация",
+        "-инструкция",
+        "-календарь",
+        "-курсы",
+        "-личный кабинет",
+        "-налог рф",
+        "-нормативный расход топлива",
+        "-образец",
+        "-обучение",
+        "-поправочный коэффициент",
+        "-порядок заполнения",
+        "-работа бухгалтером",
+        "-расход топлива",
+        "-скачать",
+        "-срок сдачи",
+        "-форум"
+      ],
+      "after": [
+        "-!как заполнить",
+        "-!как отправить",
+        "-word",
+        "-бесплатно",
+        "-бланк",
+        "-вакансия",
+        "-восстановление",
+        "-декларация",
+        "-инструкция",
+        "-календарь",
+        "-курсы",
+        "-личный кабинет",
+        "-налог рф",
+        "-нормативный расход топлива",
+        "-образец",
+        "-обучение",
+        "-поправочный коэффициент",
+        "-порядок заполнения",
+        "-работа бухгалтером",
+        "-расход топлива",
+        "-скачать",
+        "-срок сдачи",
+        "-форум"
+      ],
+      "added": [
+        "-восстановление"
+      ],
+      "removed": []
+    },
+    {
+      "groupId": "5793735347",
+      "name": "accounting_ip__core",
+      "before": [
+        "-!как заполнить",
+        "-!как отправить",
+        "-word",
+        "-бесплатно",
+        "-бланк",
+        "-вакансия",
+        "-декларация",
+        "-инструкция",
+        "-календарь",
+        "-курсы",
+        "-личный кабинет",
+        "-налог рф",
+        "-нормативный расход топлива",
+        "-образец",
+        "-обучение",
+        "-поправочный коэффициент",
+        "-порядок заполнения",
+        "-работа бухгалтером",
+        "-расход топлива",
+        "-скачать",
+        "-срок сдачи",
+        "-форум"
+      ],
+      "after": [
+        "-!как заполнить",
+        "-!как отправить",
+        "-word",
+        "-бесплатно",
+        "-бланк",
+        "-вакансия",
+        "-восстановление",
+        "-декларация",
+        "-инструкция",
+        "-календарь",
+        "-курсы",
+        "-личный кабинет",
+        "-налог рф",
+        "-нормативный расход топлива",
+        "-образец",
+        "-обучение",
+        "-поправочный коэффициент",
+        "-порядок заполнения",
+        "-работа бухгалтером",
+        "-расход топлива",
+        "-скачать",
+        "-срок сдачи",
+        "-форум"
+      ],
+      "added": [
+        "-восстановление"
+      ],
+      "removed": []
+    },
+    {
+      "groupId": "5793736377",
+      "name": "accounting_ooo__core",
+      "before": [
+        "-!как заполнить",
+        "-!как отправить",
+        "-word",
+        "-бесплатно",
+        "-бланк",
+        "-вакансия",
+        "-декларация",
+        "-инструкция",
+        "-календарь",
+        "-курсы",
+        "-личный кабинет",
+        "-налог рф",
+        "-нормативный расход топлива",
+        "-образец",
+        "-обучение",
+        "-поправочный коэффициент",
+        "-порядок заполнения",
+        "-работа бухгалтером",
+        "-расход топлива",
+        "-скачать",
+        "-срок сдачи",
+        "-форум"
+      ],
+      "after": [
+        "-!как заполнить",
+        "-!как отправить",
+        "-word",
+        "-бесплатно",
+        "-бланк",
+        "-вакансия",
+        "-восстановление",
+        "-декларация",
+        "-инструкция",
+        "-календарь",
+        "-курсы",
+        "-личный кабинет",
+        "-налог рф",
+        "-нормативный расход топлива",
+        "-образец",
+        "-обучение",
+        "-поправочный коэффициент",
+        "-порядок заполнения",
+        "-работа бухгалтером",
+        "-расход топлива",
+        "-скачать",
+        "-срок сдачи",
+        "-форум"
+      ],
+      "added": [
+        "-восстановление"
+      ],
+      "removed": []
+    }
+  ],
+  "restorationGroup": {
+    "groupId": "5797624730",
+    "status": "Идут показы",
+    "negatives": [
+      "-автомобиль",
+      "-бланк",
+      "-воинский",
+      "-гибдд",
+      "-кадастровый",
+      "-курсовая",
+      "-миграционный",
+      "-пароль",
+      "-реферат"
+    ]
+  },
+  "campaignNegatives": [
+    "-!как вести",
+    "-!своими руками",
+    "-аудит",
+    "-бесплатно",
+    "-бизнес план",
+    "-вакансия",
+    "-должностная инструкция",
+    "-зарплата",
+    "-калькулятор",
+    "-курсы",
+    "-образец",
+    "-обучение",
+    "-обязанности бухгалтера",
+    "-работа",
+    "-резюме",
+    "-самостоятельно",
+    "-скачать",
+    "-форум",
+    "-шаблон",
+    "-экзамен",
+    "-электронная ттн"
+  ],
+  "weeklyBudgetRub": 1500,
+  "strategy": "Максимум кликов с ручными ставками",
+  "webmaster": {
+    "url": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/indexing/url-tracker/",
+    "rows": [
+      {
+        "path": "/srochnye-voprosy/",
+        "lastChange": "09.09.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/servis-vypiski-na-nalogovyy-vychet/",
+        "lastChange": "09.09.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/registraciya-ip/",
+        "lastChange": "07.09.2026",
+        "lastCrawl": "04.09.2026",
+        "httpCode": "200",
+        "searchVersion": "04.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/rekvizity/",
+        "lastChange": "06.09.2026",
+        "lastCrawl": "08.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+        "lastChange": "06.09.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/buhgalterskoe-soprovozhdenie-ooo/",
+        "lastChange": "06.09.2026",
+        "lastCrawl": "07.09.2026",
+        "httpCode": "200",
+        "searchVersion": "06.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/uslugi/",
+        "lastChange": "",
+        "lastCrawl": "06.09.2026",
+        "httpCode": "200",
+        "searchVersion": "06.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/faq/",
+        "lastChange": "",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/buhgalterskie-uslugi/",
+        "lastChange": "",
+        "lastCrawl": "07.09.2026",
+        "httpCode": "200",
+        "searchVersion": "04.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/akcii/",
+        "lastChange": "",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/uplata-nalogov-i-poshlin-razdel-fns/",
+        "lastChange": "02.09.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+        "lastChange": "02.09.2026",
+        "lastCrawl": "19.07.2026",
+        "httpCode": "200",
+        "searchVersion": "19.07.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/nalogi-i-rezhimy/",
+        "lastChange": "25.08.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/",
+        "lastChange": "25.08.2026",
+        "lastCrawl": "06.09.2026",
+        "httpCode": "200",
+        "searchVersion": "06.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/yuridicheskiy-adres-simferopol/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/vosstanovlenie-buhucheta/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/registraciya-ooo/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "05.09.2026",
+        "httpCode": "200",
+        "searchVersion": "05.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/otvet-na-trebovanie-ifns/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "06.09.2026",
+        "httpCode": "200",
+        "searchVersion": "06.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/nulevaya-otchetnost-ooo/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/nulevaya-otchetnost-ip/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "03.09.2026",
+        "httpCode": "200",
+        "searchVersion": "03.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/kadry/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/izmenenie-okved-ooo/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/izmenenie-okved-ip/",
+        "lastChange": "23.08.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/sdacha-otchetnosti-ooo/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "20.08.2026",
+        "httpCode": "200",
+        "searchVersion": "20.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/sdacha-otchetnosti-ip/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/registraciya-i-likvidaciya/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/otvet-na-zapros-banka/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "04.09.2026",
+        "httpCode": "200",
+        "searchVersion": "04.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/otchetnost/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/likvidaciya-ooo/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "07.09.2026",
+        "httpCode": "200",
+        "searchVersion": "04.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/likvidaciya-ip/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/dokumenty-dlya-banka-115-fz/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/ceny/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "07.09.2026",
+        "httpCode": "200",
+        "searchVersion": "05.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/bank-i-115-fz/",
+        "lastChange": "21.08.2026",
+        "lastCrawl": "04.09.2026",
+        "httpCode": "200",
+        "searchVersion": "04.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/nalogovyy-kalendar/",
+        "lastChange": "18.08.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/blog/",
+        "lastChange": "18.08.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/smena-yuridicheskogo-adresa-ooo/",
+        "lastChange": "27.07.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/otzyvy/",
+        "lastChange": "27.07.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/nds-pri-usn-2026/",
+        "lastChange": "27.07.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/soprovozhdenie/",
+        "lastChange": "25.07.2026",
+        "lastCrawl": "05.09.2026",
+        "httpCode": "200",
+        "searchVersion": "05.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/porog-nds-usn-20-mln-do-2029/",
+        "lastChange": "",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/sverka-s-nalogovoy/",
+        "lastChange": "24.07.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/o-proekte/",
+        "lastChange": "24.07.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/kontakty/",
+        "lastChange": "24.07.2026",
+        "lastCrawl": "07.09.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/deklaraciya-usn/",
+        "lastChange": "24.07.2026",
+        "lastCrawl": "05.09.2026",
+        "httpCode": "200",
+        "searchVersion": "05.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/smena-direktora-ooo/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/raschet-nalogovoy-nagruzki/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/novosti/nalogovye-vebinary-iyul-2026/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/novosti/formaty-nds-s-1-iyulya-2026/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "28.08.2026",
+        "httpCode": "200",
+        "searchVersion": "28.08.2026",
+        "searchStatus": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/nedostovernost-yuridicheskogo-adresa/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/blog/razbory/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/ausn-krym/",
+        "lastChange": "23.07.2026",
+        "lastCrawl": "03.09.2026",
+        "httpCode": "200",
+        "searchVersion": "03.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/policy/",
+        "lastChange": "16.07.2026",
+        "lastCrawl": "31.08.2026",
+        "httpCode": "200",
+        "searchVersion": "31.08.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/adres-egryul-direktor/",
+        "lastChange": "14.07.2026",
+        "lastCrawl": "02.09.2026",
+        "httpCode": "200",
+        "searchVersion": "02.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/novosti/",
+        "lastChange": "07.07.2026",
+        "lastCrawl": "01.09.2026",
+        "httpCode": "200",
+        "searchVersion": "01.09.2026",
+        "searchStatus": "В поиске"
+      },
+      {
+        "path": "/razbor-situacii/",
+        "lastChange": "05.07.2026",
+        "lastCrawl": "04.09.2026",
+        "httpCode": "200",
+        "searchVersion": "04.09.2026",
+        "searchStatus": "В поиске"
+      }
+    ]
+  }
+}
