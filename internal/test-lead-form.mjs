@@ -43,7 +43,7 @@ function fixture(options = {}) {
     privacy: element({ value: "1", checked: true }),
     company_website: element(),
     task_type: element({ value: options.topic || "Разбор ситуации", options: [
-      "Разбор ситуации", "Подбор бухгалтерских услуг", "Бухгалтерское сопровождение ИП", "Бухгалтерское сопровождение ООО",
+      "Разбор ситуации", "Подбор бухгалтерских услуг", "Бухгалтерское сопровождение ИП", "Бухгалтерское сопровождение ООО", "Разовый отчёт (РСВ или другая форма)",
     ].map((value) => ({ value })) }),
   };
   if (options.quick) inputs.lead_mode = element({ value: "quick" });
@@ -61,6 +61,8 @@ function fixture(options = {}) {
     action: "/api/lead",
     checkValidity: () => nativeValid && inputs.privacy.checked,
     querySelector(selector) {
+      if (selector === 'select[name="task_type"]') return options.quick ? null : inputs.task_type;
+      if (selector === 'input[type="hidden"][name="task_type"]') return options.quick ? inputs.task_type : null;
       if (selector === 'input[type="file"]') return options.noFileInput ? null : fileInput;
       if (selector === 'button[type="submit"]') return submit;
       if (selector === '[role="status"][aria-live]') return status;
@@ -111,6 +113,16 @@ function fixture(options = {}) {
     fail: () => goals.find((goal) => goal.name === "goal_form_submit_fail"),
     successes: () => goals.filter((goal) => goal.name === "lead_submit_success") };
 }
+
+test("one-off report selection reaches the submitted quick and detailed forms", async () => {
+  for (const quick of [true, false]) {
+    const f = fixture({ quick, topic: quick ? "Первичный разбор ситуации" : "Разбор ситуации", search: "?service=one-off-report" });
+    f.form.emit("submit");
+    await settle();
+    assert.equal(f.requests.length, 1);
+    assert.equal(f.requests[0][1].body.taskType, "Разовый отчёт (РСВ или другая форма)");
+  }
+});
 
 test("invalid native fields/consent do not POST and keep the existing failure goal", async () => {
   const f = fixture({ nativeValid: false });

@@ -158,12 +158,17 @@
         ["accounting", "Подбор бухгалтерских услуг"],
         ["accounting-ip", "Бухгалтерское сопровождение ИП"],
         ["accounting-ooo", "Бухгалтерское сопровождение ООО"],
+        ["one-off-report", "Разовый отчёт (РСВ или другая форма)"],
       ]);
       const topic = topics.get(new URLSearchParams(window.location.search).get("service"));
       const select = form.querySelector('select[name="task_type"]');
       if (topic && select && select.value === "Разбор ситуации" &&
           Array.from(select.options).some(function (option) { return option.value === topic; })) {
         select.value = topic;
+      }
+      const quickTopic = form.querySelector('input[type="hidden"][name="task_type"]');
+      if (topic && quickTopic && quickTopic.value === "Первичный разбор ситуации") {
+        quickTopic.value = topic;
       }
     }
 

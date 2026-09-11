@@ -1,0 +1,40 @@
+{
+  "updated_on": "2026-09-11",
+  "current_crm": "https://presentationrc.amocrm.ru",
+  "previous_crm": "https://rahimaconsulting.amocrm.ru",
+  "integration_status": "awaiting_new_account_authorization; old sending disabled; submissions stored locally",
+  "baseline": {
+    "from": "2026-09-01",
+    "through": "2026-09-11",
+    "confirmed_new_yandex_enquiries": 0,
+    "source": "User confirmation; server had no September submissions before the mobile QA test"
+  },
+  "counting_rules": {
+    "enquiry": "A real request received through form, telephone or messenger; count the same person and task once",
+    "contacted": "A two-way conversation took place",
+    "qualified": "The request concerns an offered business service; the task, deadline and willingness to discuss a paid service are confirmed",
+    "order": "The client accepted the scope and price; record actual agreed revenue separately",
+    "exclude": "Owner QA, test traffic, spam and duplicates; a telephone-link click alone is not a qualified lead"
+  },
+  "fields_for_each_real_enquiry": [
+    "crm_account", "crm_lead_id", "received_at", "source", "source_confidence",
+    "campaign_id", "landing_page", "service", "contacted_at", "qualified",
+    "qualification_reason", "order_status", "agreed_revenue_rub", "responsible", "next_action_at"
+  ],
+  "entries": [
+    {
+      "kind": "owner_qa",
+      "submission_id": "20260911T100659Z-3c61dd5d",
+      "received_at": "2026-09-11T13:06:59+03:00",
+      "source": "owner_qa / test / delivery_check_20260911",
+      "landing_page": "/otvet-na-trebovanie-ifns/",
+      "service": "IFNS requirement",
+      "crm_account": "rahimaconsulting.amocrm.ru",
+      "crm_lead_id": 46570903,
+      "technical_delivery": "sent; verified via CRM API and user's screenshot",
+      "business_delivery": "wrong CRM account; user identified presentationrc.amocrm.ru as the working account",
+      "counts_as_real_lead": false,
+      "next_action": "Authorize presentationrc; send and verify a new clearly marked QA request there"
+    }
+  ]
+}

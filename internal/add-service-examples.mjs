@@ -48,6 +48,8 @@ function update(html, example) {
   const cta = clean.includes('id="quick-lead"') ? "#quick-lead"
     : clean.includes('id="route-contact"') ? "#route-contact" : "/razbor-situacii/#quick-lead";
   const eol = clean.includes("\r\n") ? "\r\n" : "\n";
+  const documents = Array.isArray(example.documents)
+    ? `<ul class="rich-list">${example.documents.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "";
   const block = `
     <!-- d82-service-example:start -->
     <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
@@ -58,8 +60,8 @@ function update(html, example) {
       </div>
       <div class="card-grid two rich-card-grid">
         <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>${escapeHtml(example.situation)}</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Как разберём задачу</h3><p>${escapeHtml(example.work)}</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>${escapeHtml(example.deliverable)}</p></article>
+        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>${escapeHtml(example.work)}</p></article>
+        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>${escapeHtml(example.deliverable)}</p>${documents}</article>
       </div>
       <p class="actions"><a class="button button-lime" href="${cta}">Обсудить похожую задачу</a></p>
     </section>

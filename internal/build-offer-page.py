@@ -156,7 +156,7 @@ def build():
     result = re.sub(r'(<script type="application/ld\+json">)[\s\S]*?(</script>)', lambda match: match[1] + "\n" + json.dumps(schema, ensure_ascii=False, indent=2) + "\n    " + match[2], result, count=1)
     target = ROOT / "oferta" / "index.html"
     target.parent.mkdir(exist_ok=True)
-    target.write_text(result, encoding="utf-8")
+    target.write_text(result, encoding="utf-8", newline="\n")
     print(json.dumps({"page": "oferta/index.html", "paragraphs": len(paragraphs), "sections": len(section_links), "requisites": "rekvizity/index.html"}))
 
 
