@@ -1,0 +1,181 @@
+{
+  "observed_at": "2026-09-11T12:22:00+03:00",
+  "scope": "Read-only marketing audit. No advertising settings, budgets or production files changed.",
+  "site_counter": 109869928,
+  "metrika": {
+    "period": [
+      "2026-09-01",
+      "2026-09-11"
+    ],
+    "robots": "Люди",
+    "sampling_percent": 100,
+    "attribution": "Последний значимый переход, кросс-девайс",
+    "views": 115,
+    "visits": 72,
+    "visitors": 47,
+    "sources": [
+      {
+        "source": "direct",
+        "views": 30,
+        "visits": 22,
+        "visitors": 16,
+        "seconds": 49,
+        "bounce_percent": 36.36
+      },
+      {
+        "source": "messengers",
+        "views": 26,
+        "visits": 17,
+        "visitors": 2,
+        "seconds": 133,
+        "bounce_percent": 5.88
+      },
+      {
+        "source": "advertising",
+        "views": 26,
+        "visits": 16,
+        "visitors": 16,
+        "seconds": 32,
+        "bounce_percent": 31.25
+      },
+      {
+        "source": "referrals",
+        "views": 18,
+        "visits": 8,
+        "visitors": 6,
+        "seconds": 38,
+        "bounce_percent": 12.5
+      },
+      {
+        "source": "organic_yandex",
+        "views": 14,
+        "visits": 8,
+        "visitors": 8,
+        "seconds": 17,
+        "bounce_percent": 25
+      },
+      {
+        "source": "organic_google",
+        "views": 1,
+        "visits": 1,
+        "visitors": 1,
+        "seconds": 15,
+        "bounce_percent": 0
+      }
+    ],
+    "limitation": "Registered visits, not all possible visits or unique customers. Owner/QA visits remain possible. Historical server referrers are not directly comparable."
+  },
+  "direct": {
+    "campaign_id": 713957407,
+    "period": [
+      "2026-09-01",
+      "2026-09-11"
+    ],
+    "cost_rub": 1147.66,
+    "vat_included": false,
+    "clicks": 16,
+    "selected_main_conversions": 0,
+    "attribution": "Автоматическая",
+    "conditions": "Search; clicked rows only; current accounting campaign",
+    "all_clicks_autotargeting": true,
+    "reported_impressions_in_clicked_rows": 370,
+    "earlier_all_impressions": 869,
+    "rows": [
+      {
+        "query": "Запрос скрыт",
+        "clicks": 2,
+        "cost_rub_displayed": 122.76,
+        "editorial_classification": "unknown"
+      },
+      {
+        "query": "бухгалтерские услуги феодосия",
+        "clicks": 1,
+        "cost_rub_displayed": 95.39,
+        "editorial_classification": "commercial"
+      },
+      {
+        "query": "ориентировочная стоимость за восстановление бух деятельности предприятия",
+        "clicks": 1,
+        "cost_rub_displayed": 27.04,
+        "editorial_classification": "mismatch"
+      },
+      {
+        "query": "бухгалтерский учет в севастополе",
+        "clicks": 1,
+        "cost_rub_displayed": 72.73,
+        "editorial_classification": "ambiguous"
+      },
+      {
+        "query": "рассчитать стоимость бухгалтерского обслуживания ндс сдача отчетности",
+        "clicks": 1,
+        "cost_rub_displayed": 132.05,
+        "editorial_classification": "commercial"
+      },
+      {
+        "query": "стоимость ведения бухгалтерского учета для ип на усн доходы",
+        "clicks": 2,
+        "cost_rub_displayed": 204.66,
+        "editorial_classification": "commercial"
+      },
+      {
+        "query": "налог рф",
+        "clicks": 1,
+        "cost_rub_displayed": 79.33,
+        "editorial_classification": "irrelevant"
+      },
+      {
+        "query": "нормативный расход топлива с учетом поправочных коэффициентов",
+        "clicks": 1,
+        "cost_rub_displayed": 40.84,
+        "editorial_classification": "irrelevant"
+      },
+      {
+        "query": "сколько стоит аудит в крыму",
+        "clicks": 1,
+        "cost_rub_displayed": 35.97,
+        "editorial_classification": "irrelevant"
+      },
+      {
+        "query": "сколько стоит отчет рсв",
+        "clicks": 1,
+        "cost_rub_displayed": 42.58,
+        "editorial_classification": "mismatch"
+      },
+      {
+        "query": "сколько стоит составить электронную ттн",
+        "clicks": 1,
+        "cost_rub_displayed": 46.95,
+        "editorial_classification": "irrelevant"
+      },
+      {
+        "query": "стоимость ведения нулевого ооо",
+        "clicks": 1,
+        "cost_rub_displayed": 46.66,
+        "editorial_classification": "mismatch"
+      },
+      {
+        "query": "услуги бухгалтера для ип на усн цена",
+        "clicks": 1,
+        "cost_rub_displayed": 127.03,
+        "editorial_classification": "commercial"
+      },
+      {
+        "query": "услуги по ведению ип",
+        "clicks": 1,
+        "cost_rub_displayed": 73.68,
+        "editorial_classification": "commercial"
+      }
+    ],
+    "rounding_note": "Displayed row costs total 1147.67 RUB; report aggregate is 1147.66 RUB (1 kopeck difference). Use the aggregate for total spend.",
+    "classification_note": "Commercial means query plausibly fits monthly accounting, not a qualified lead. Three mismatch rows include zero-company ambiguity. Current minuses already exclude audit/e-TTN; historical spend is not proof of continued delivery."
+  },
+  "business_result": {
+    "yandex_enquiries_since_sept1": 0,
+    "source": "User's explicit reply before audit, includes phone and messages"
+  },
+  "availability": {
+    "iab": "ERR_CONNECTION_CLOSED on public accounting landing from this machine",
+    "external_web_reader": "Retrieved public accounting landing including current typical example",
+    "conclusion": "No proof of global outage; current external mobile E2E delivery not verified in this audit"
+  }
+}
