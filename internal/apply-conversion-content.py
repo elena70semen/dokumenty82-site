@@ -82,7 +82,7 @@ team_profiles = [
 ]
 team_items = ''
 for i, (name, role, bio) in enumerate(team_profiles, 1):
-    team_items += f'''<article class="team-card" aria-labelledby="team-person-{i}">
+    team_items += f'''<article class="glass-card team-card" aria-labelledby="team-person-{i}">
         <header class="team-card-heading"><h3 id="team-person-{i}">{name}</h3><p class="team-card-role">{role}</p></header>
         <p class="team-card-bio">{bio}</p>
       </article>'''
@@ -93,7 +93,7 @@ team = f'''<section class="section page-rich-section team-section" id="team">
 
 
 def with_team_styles(text):
-    link = '<link rel="stylesheet" href="/assets/team.css?v=20260911-strict" />'
+    link = '<link rel="stylesheet" href="/assets/team.css?v=20260911-glass" />'
     if re.search(r'<link\b[^>]*href="/assets/team\.css[^\"]*"[^>]*>', text):
         return re.sub(r'<link\b[^>]*href="/assets/team\.css[^\"]*"[^>]*>', lambda m: link, text, count=1)
     return text.replace('</head>', '    ' + link + '\n  </head>', 1)

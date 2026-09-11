@@ -6186,10 +6186,6 @@ main :is(.glass-card, .news-card, .service-tree-group, .tax-calendar-entry) {
   box-shadow: none;
 }
 
-main :is(.glass-card, .compact-list a, .compact-list .compact-row)::before {
-  content: none;
-}
-
 main :is(.glass-card, .news-card):hover {
   transform: none;
   box-shadow: none;
@@ -6299,5 +6295,9 @@ main .calendar-promo::after {
 @media (prefers-reduced-motion: reduce) {
   main :is(.glass-card, .compact-list a, .home-service-shortcuts a, .news-card, .service-tree-links a) {
     transition: none;
+  }
+
+  main :is(.glass-card, .compact-list a, .compact-list .compact-row)::before {
+    animation: none;
   }
 }
