@@ -1,0 +1,84 @@
+{
+  "date": "2026-09-11",
+  "timezone": "Europe/Moscow",
+  "userReportedYandexEnquiries": {
+    "periodStart": "2026-09-01",
+    "throughDate": "2026-09-11",
+    "count": 0,
+    "scope": "New-client calls and messages from Yandex, at time of user reply",
+    "source": "Direct user answer: 0"
+  },
+  "activeAccountingCampaign": {
+    "campaignId": "713957407",
+    "period": "2026-08-12/2026-09-11",
+    "impressions": 868,
+    "clicks": 16,
+    "spendRub": 1147.66,
+    "selectedMainConversions": 0,
+    "weeklyBudgetRub": 1500,
+    "changed": false
+  },
+  "adChange": {
+    "campaignId": "710770028",
+    "groupId": "5760953594",
+    "adId": "1916257741031696698",
+    "editorUrl": "https://direct.yandex.ru/dna/banners-edit?ulogin=office-9102&campaigns-ids=710770028&banners-ids=1916257741031696698",
+    "before": {
+      "headline": "Получили требование ИФНС? Подготовим ответ",
+      "text": "Разберём требование, срок и исходные документы. Подготовим комплект ответа.",
+      "priceEnabled": false
+    },
+    "after": {
+      "headline": "Ответ на требование ИФНС от 8 000 ₽",
+      "text": "Пояснения и опись приложений для ИП и ООО. Стоимость согласуем до начала работ.",
+      "priceEnabled": true,
+      "priceRub": 8000,
+      "pricePrefix": "от",
+      "oldPrice": null,
+      "url": "https://dokumenty82.ru/otvet-na-trebovanie-ifns/",
+      "status": "Остановлено"
+    },
+    "savedOnce": true,
+    "verifiedAfterFullReload": true,
+    "mobilePreviewTextVerified": true,
+    "contactsAndSitelinksPreserved": true,
+    "otherAdId": "17752377046",
+    "otherAdHeadlineAndTextUnchanged": true,
+    "campaignActivated": false,
+    "moderationApprovalConfirmed": false,
+    "personalizationNoticePresent": true
+  },
+  "taxCampaignSettingsReadOnly": {
+    "status": "Остановлено",
+    "weeklyBudgetRub": 1000,
+    "strategy": "Максимум кликов с ручными ставками",
+    "placements": ["search"],
+    "counterId": "109869928",
+    "goals": [
+      {"id": "582169328", "name": "Успешная заявка с сайта", "valueRub": 200},
+      {"id": "582169968", "name": "Контакт: телефон", "valueRub": 100},
+      {"id": "593556280", "name": "CRM: Заказ создан", "valueRub": 500}
+    ],
+    "urlParams": "utm_source=yandex_direct&utm_medium=cpc&utm_campaign=direct_search_ifns_requirement&utm_content=cid_{campaign_id}_gid_{gbid}_ad_{ad_id}_{position_type}_{position}&utm_term={keyword}&utm_device={device_type}&utm_match={match_type}",
+    "automaticRecommendations": false,
+    "scheduledHoursPerWeek": 45,
+    "changed": false
+  },
+  "publicProfiles": {
+    "maps": {
+      "newShortDescriptionsVisible": false,
+      "catalogDateShown": "Обновлено 7 сентября",
+      "savedAgain": false
+    },
+    "executor": {
+      "profileId": "2536333",
+      "name": "Центр подготовки документов",
+      "location": "Котельниковское сельское поселение",
+      "liquidationPriceRub": 40000,
+      "websiteLinkVerifiedInThisCheck": false,
+      "changed": false
+    }
+  },
+  "websiteChanged": false,
+  "messagesSentToOthers": false
+}
