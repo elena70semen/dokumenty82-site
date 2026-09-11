@@ -1,0 +1,90 @@
+{
+  "checkedDate": "2026-09-11",
+  "timezone": "Europe/Moscow",
+  "source": "Visible authenticated Yandex UI and aggregate VPS records",
+  "wordstat": {
+    "periodFrom": "2026-08-11",
+    "periodTo": "2026-09-09",
+    "regionId": 977,
+    "regionName": "Республика Крым",
+    "devices": ["desktop", "smartphone", "tablet"],
+    "mode": "Популярные; словоформы и расширения, без операторов",
+    "queries": [
+      {"query": "115 фз", "count": 3194},
+      {"query": "ответ на запрос банка", "count": 18},
+      {"query": "помощь 115 фз", "count": 10},
+      {"query": "документы 115 фз банк", "count": 23},
+      {"query": "ответ на требование налоговой", "count": 177},
+      {"query": "ответ на требование ифнс", "count": 37}
+    ],
+    "selectedChildRows": [
+      {"parent": "ответ на запрос банка", "query": "ответы банка на запросы клиентов", "count": 8},
+      {"parent": "помощь 115 фз", "query": "помощь по 115 фз", "count": 5},
+      {"parent": "помощь 115 фз", "query": "юрист помощь по 115 фз", "count": 2},
+      {"parent": "документы 115 фз банк", "query": "115 фз запрос документов банком", "count": 5},
+      {"parent": "документы 115 фз банк", "query": "банк просит документы по 115 фз", "count": 2},
+      {"parent": "ответ на требование налоговой", "query": "ответ на требование налоговой образец", "count": 38},
+      {"parent": "ответ на требование налоговой", "query": "примеры ответов на требования налоговой", "count": 10},
+      {"parent": "ответ на требование налоговой", "query": "ответ на требование налоговой 1с", "count": 7},
+      {"parent": "ответ на требование налоговой", "query": "ответ на требование налоговой стоимость", "count": 1},
+      {"parent": "ответ на требование ифнс", "query": "срок ответа на требование ифнс", "count": 11}
+    ],
+    "limitations": "Overlapping search counts, not unique customers, exact-match frequencies or forecast clicks. Broad 115-ФЗ includes migration-law and personal-card queries."
+  },
+  "taxDraftChange": {
+    "campaignId": "710770028",
+    "groupId": "5760953594",
+    "beforeKeywordCount": 16,
+    "afterKeywordCount": 17,
+    "added": ["\"ответ на требование налоговой стоимость\""],
+    "removed": [],
+    "beforeNegativeCount": 50,
+    "afterNegativeCount": 50,
+    "unchangedAllPreviousKeywordsAndNegatives": true,
+    "keywordId": "58036735717",
+    "bidRub": 70,
+    "verification": "Saved once, editor fully reloaded and all values compared. New bid read in Ставки и фразы table.",
+    "campaignStatusAfter": "Остановлено",
+    "groupStatusAfter": "Остановлено",
+    "campaignActivated": false
+  },
+  "bankDraftAudit": {
+    "campaignId": "710764849",
+    "groupId": "5760879033",
+    "keywordCount": 13,
+    "negativeCount": 48,
+    "status": "Остановлено",
+    "changed": false
+  },
+  "activeAccountingCampaign": {
+    "campaignId": "713957407",
+    "period": "2026-08-12/2026-09-11",
+    "impressions": 860,
+    "clicks": 16,
+    "spendRub": 1147.66,
+    "selectedMainConversions": 0,
+    "weeklyBudgetRub": 1500,
+    "changed": false,
+    "restoration": {"groupId": "5797624730", "status": "Идут показы", "impressions": 0, "clicks": 0, "spendRub": 0}
+  },
+  "leadAggregate": {
+    "checkedAt": "2026-09-11T08:37:43.463263+00:00",
+    "files": 8,
+    "dated": 8,
+    "parseErrors": 0,
+    "missingDates": 0,
+    "lastCreatedAt": "2026-08-30T11:52:29.832092+00:00",
+    "since20260911_1017Msk": 0,
+    "services": {"nginx": "active", "dokumenty82-lead": "active", "dokumenty82-portal": "active"}
+  },
+  "publicMaps": {
+    "url": "https://yandex.com/maps/org/dokumenty_dlya_biznesa/1302424560/prices/",
+    "catalogDateShown": "Обновлено 7 сентября",
+    "bankShort": "Разберём письмо банка по пунктам",
+    "taxShort": "Покажите требование — выберем маршрут",
+    "newPublicCopyConfirmed": false,
+    "savedAgain": false
+  },
+  "adCopyDraftsPublished": false,
+  "websiteChanged": false
+}
