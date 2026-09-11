@@ -28,12 +28,15 @@ MAX_FILES = int(os.environ.get("D82_MAX_FILES", "6"))
 ACCEPT_LOCAL_ONLY = os.environ.get("D82_ACCEPT_LOCAL_ONLY", "0") == "1"
 
 AMO_SUBDOMAIN = os.environ.get("AMO_SUBDOMAIN", "").strip()
+AMO_EXPECTED_ACCOUNT_ID = os.environ.get("AMO_EXPECTED_ACCOUNT_ID", "").strip()
 AMO_ACCESS_TOKEN = os.environ.get("AMO_ACCESS_TOKEN", "").strip()
 AMO_CLIENT_ID = os.environ.get("AMO_CLIENT_ID", "").strip()
 AMO_CLIENT_SECRET = os.environ.get("AMO_CLIENT_SECRET", "").strip()
 AMO_REDIRECT_URI = os.environ.get("AMO_REDIRECT_URI", "https://dokumenty82.ru/api/amo/oauth/callback").strip()
 AMO_TOKEN_PATH = Path(os.environ.get("AMO_TOKEN_PATH", str(BASE_DIR / "amo-oauth-token.json")))
 AMO_EXTERNAL_STATE = os.environ.get("AMO_EXTERNAL_STATE", "").strip()
+AMO_SETUP_TOKEN = os.environ.get("AMO_SETUP_TOKEN", "").strip()
+AMO_SETUP_EXPIRES_AT = os.environ.get("AMO_SETUP_EXPIRES_AT", "0").strip()
 AMO_PIPELINE_ID = os.environ.get("AMO_PIPELINE_ID", "").strip()
 AMO_STATUS_ID = os.environ.get("AMO_STATUS_ID", "").strip()
 AMO_RESPONSIBLE_USER_ID = os.environ.get("AMO_RESPONSIBLE_USER_ID", "").strip()
@@ -412,6 +415,18 @@ def amo_headers():
   return {"Authorization": "Bearer " + get_amo_access_token()}
 
 
+def verify_amo_account(base_url, headers=None):
+  """Check the configured account before sending or reading customer data."""
+  if not AMO_EXPECTED_ACCOUNT_ID:
+    return
+  expected = int_or_none(AMO_EXPECTED_ACCOUNT_ID)
+  if not expected or expected < 1:
+    raise RuntimeError("Некорректный контрольный номер аккаунта amoCRM.")
+  account = api_request("GET", base_url + "/api/v4/account", headers=headers or amo_headers())
+  if int_or_none((account or {}).get("id")) != expected:
+    raise RuntimeError("Аккаунт amoCRM не совпадает с настроенным получателем. Передача данных остановлена.")
+
+
 def normalize_lookup_phone(value):
   digits = re.sub(r"\D", "", text(value))
   if len(digits) == 10:
@@ -498,6 +513,7 @@ def fetch_amo_portal_snapshot(email="", phone=""):
   base_url = amo_base_url()
   if not base_url:
     raise RuntimeError("amoCRM не настроена.")
+  verify_amo_account(base_url)
   exact = []
   for lookup in list(dict.fromkeys(value for value in (email, phone) if value)):
     params = urllib.parse.urlencode({"with": "leads", "limit": 50, "query": lookup})
@@ -607,6 +623,7 @@ def create_amo_lead(fields, files):
     raise RuntimeError("AmoCRM не настроена: нужен AMO_SUBDOMAIN или OAuth-подключение.")
 
   contact_fields = []
+  verify_amo_account(base_url)
   if fields["phone"]:
     contact_fields.append({
       "field_code": "PHONE",
@@ -757,7 +774,8 @@ class LeadHandler(BaseHTTPRequestHandler):
   server_version = "D82LeadReceiver/1.0"
 
   def log_message(self, fmt, *args):
-    print("%s %s" % (self.log_date_time_string(), fmt % args), flush=True)
+    message = re.sub(r'(/api/amo/[^\s?\"]+)\?[^\s\"]+', r'\1?[redacted]', fmt % args)
+    print("%s %s" % (self.log_date_time_string(), message), flush=True)
 
   def do_GET(self):
     path = urllib.parse.urlparse(self.path).path
@@ -766,6 +784,9 @@ class LeadHandler(BaseHTTPRequestHandler):
       return
     if path == "/api/amo/oauth/status":
       self.handle_oauth_status()
+      return
+    if path == "/api/amo/oauth/connect":
+      self.handle_oauth_connect()
       return
     if path == "/api/amo/oauth/callback":
       self.handle_oauth_callback()
@@ -893,6 +914,48 @@ class LeadHandler(BaseHTTPRequestHandler):
         message = "AI-чат временно не ответил. Оставьте телефон, и специалист вернется к ситуации."
       json_response(self, 503, {"ok": False, "message": message})
 
+  def handle_oauth_connect(self):
+    query = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+    supplied = text(query.get("setup"))
+    if (len(AMO_SETUP_TOKEN) < 32 or not secrets.compare_digest(supplied, AMO_SETUP_TOKEN)
+        or time.time() >= (int_or_none(AMO_SETUP_EXPIRES_AT) or 0)
+        or not AMO_EXTERNAL_STATE or load_token_state().get("access_token")):
+      html_response(self, 404, "Ссылка подключения недоступна", "Запросите новую ссылку у администратора сайта.")
+      return
+    target = html.escape(amo_base_url(), quote=True)
+    attrs = {
+      "data-name": "dokumenty82.ru — заявки с сайта",
+      "data-description": "Приём заявок и файлов с dokumenty82.ru в рабочий аккаунт Presentation.",
+      "data-redirect_uri": AMO_REDIRECT_URI,
+      "data-secrets_uri": "https://dokumenty82.ru/api/amo/external/credentials",
+      "data-logo": "https://dokumenty82.ru/assets/images/brand-logo-open-book.png",
+      "data-scopes": "crm,files" if AMO_ATTACH_FILES else "crm",
+      "data-title": "Подключить Presentation",
+      "data-state": AMO_EXTERNAL_STATE,
+      "data-mode": "popup",
+    }
+    attributes = " ".join(f'{key}="{html.escape(value, quote=True)}"' for key, value in attrs.items())
+    page = ("<!doctype html><html lang=\"ru\"><head><meta charset=\"utf-8\">"
+      "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"
+      "<meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"referrer\" content=\"no-referrer\">"
+      "<title>Подключение Presentation</title><style>body{font:18px/1.6 system-ui;max-width:720px;"
+      "margin:60px auto;padding:24px;background:#101b29;color:#f6f2e8}a{color:#bfe451}</style></head><body>"
+      "<h1>Подключить сайт к Presentation</h1>"
+      f"<p>Выберите только <strong>{target}</strong> — аккаунт №{html.escape(AMO_EXPECTED_ACCOUNT_ID)}.</p>"
+      "<p>Разрешите сайту создавать обращения и прикладывать переданные клиентом документы. "
+      "Тексты заявок не публикуются на сайте. Ключи подключения поступят напрямую на сервер.</p>"
+      f'<script class="amocrm_oauth" charset="utf-8" {attributes} src="https://www.amocrm.ru/auth/button.min.js"></script>'
+      "<p>Если amoCRM сообщает о недостаточных правах, войдите в неё под администратором.</p>"
+      "</body></html>").encode("utf-8")
+    self.send_response(200)
+    self.send_header("Content-Type", "text/html; charset=utf-8")
+    self.send_header("Cache-Control", "no-store")
+    self.send_header("Referrer-Policy", "no-referrer")
+    self.send_header("X-Robots-Tag", "noindex, nofollow")
+    self.send_header("Content-Length", str(len(page)))
+    self.end_headers()
+    self.wfile.write(page)
+
   def handle_oauth_status(self):
     state = load_token_state()
     config = oauth_config(state)
@@ -911,11 +974,14 @@ class LeadHandler(BaseHTTPRequestHandler):
     code = text(query.get("code"))
     referer = text(query.get("referer")) or text(query.get("account"))
     state_param = text(query.get("state"))
-    if AMO_EXTERNAL_STATE and state_param and state_param != AMO_EXTERNAL_STATE:
+    if AMO_EXTERNAL_STATE and not secrets.compare_digest(state_param, AMO_EXTERNAL_STATE):
       html_response(self, 403, "amoCRM не подключена", "Параметр state не совпал. Подключение остановлено.")
       return
     if not code:
       html_response(self, 400, "amoCRM не подключена", "amoCRM не передала authorization code.")
+      return
+    if AMO_SUBDOMAIN and referer and normalize_amo_base_url(referer) != normalize_amo_base_url(AMO_SUBDOMAIN):
+      html_response(self, 403, "Выбран другой аккаунт", "Подключите рабочий аккаунт, указанный в настройках сайта.")
       return
 
     with TOKEN_LOCK:
@@ -941,6 +1007,7 @@ class LeadHandler(BaseHTTPRequestHandler):
           "code": code,
           "redirect_uri": config["redirect_uri"],
         })
+        verify_amo_account(config["base_url"], {"Authorization": "Bearer " + token_payload["access_token"]})
       except Exception as error:
         html_response(
           self,

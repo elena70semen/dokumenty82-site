@@ -1,4 +1,5 @@
 import importlib.util
+import io
 import sys
 import types
 import unittest
@@ -58,6 +59,100 @@ class AmoLeadAttributionTests(unittest.TestCase):
     lead = calls[0].kwargs["payload"][0]
 
     self.assertNotIn("custom_fields_values", lead)
+
+
+class AmoAccountDestinationTests(unittest.TestCase):
+  def test_wrong_account_prevents_lead_and_contact_creation(self):
+    with mock.patch.object(receiver, "ACCEPT_LOCAL_ONLY", False), \
+         mock.patch.object(receiver, "AMO_EXPECTED_ACCOUNT_ID", "32965862"), \
+         mock.patch.object(receiver, "amo_base_url", return_value="https://presentationrc.amocrm.ru"), \
+         mock.patch.object(receiver, "amo_headers", return_value={"Authorization": "Bearer test"}), \
+         mock.patch.object(receiver, "api_request", return_value={"id": 111}) as api:
+      with self.assertRaisesRegex(RuntimeError, "Передача данных остановлена"):
+        receiver.create_amo_lead(AmoLeadAttributionTests().fields(), [])
+    self.assertEqual(len(api.call_args_list), 1)
+    self.assertEqual(api.call_args.args, ("GET", "https://presentationrc.amocrm.ru/api/v4/account"))
+    self.assertNotIn("payload", api.call_args.kwargs)
+
+  def test_wrong_account_prevents_contact_search_in_portal(self):
+    with mock.patch.object(receiver, "AMO_EXPECTED_ACCOUNT_ID", "32965862"), \
+         mock.patch.object(receiver, "amo_base_url", return_value="https://presentationrc.amocrm.ru"), \
+         mock.patch.object(receiver, "amo_headers", return_value={"Authorization": "Bearer test"}), \
+         mock.patch.object(receiver, "api_request", return_value={"id": 111}) as api:
+      with self.assertRaisesRegex(RuntimeError, "Передача данных остановлена"):
+        receiver.fetch_amo_portal_snapshot("test@example.com")
+    self.assertEqual(len(api.call_args_list), 1)
+    self.assertTrue(api.call_args.args[1].endswith("/account"))
+
+  def test_expected_account_allows_delivery(self):
+    with mock.patch.object(receiver, "ACCEPT_LOCAL_ONLY", False), \
+         mock.patch.object(receiver, "AMO_EXPECTED_ACCOUNT_ID", "32965862"), \
+         mock.patch.object(receiver, "amo_base_url", return_value="https://presentationrc.amocrm.ru"), \
+         mock.patch.object(receiver, "amo_headers", return_value={"Authorization": "Bearer test"}), \
+         mock.patch.object(receiver, "api_request", side_effect=[{"id": 32965862}, [{"id": 901}], None]) as api:
+      result = receiver.create_amo_lead(AmoLeadAttributionTests().fields(), [])
+    self.assertEqual(result["status"], "sent")
+    self.assertEqual(api.call_args_list[1].args[0], "POST")
+
+  def test_callback_rejects_wrong_host_before_token_exchange(self):
+    handler = object.__new__(receiver.LeadHandler)
+    handler.path = "/api/amo/oauth/callback?state=test-state&code=test-code&referer=wrong.amocrm.ru"
+    with mock.patch.object(receiver, "AMO_EXTERNAL_STATE", "test-state"), \
+         mock.patch.object(receiver, "AMO_SUBDOMAIN", "presentationrc.amocrm.ru"), \
+         mock.patch.object(receiver, "exchange_oauth_token") as exchange, \
+         mock.patch.object(receiver, "save_token_state") as save, \
+         mock.patch.object(receiver, "html_response") as response:
+      handler.handle_oauth_callback()
+    self.assertEqual(response.call_args.args[1], 403)
+    exchange.assert_not_called()
+    save.assert_not_called()
+
+  def test_callback_requires_configured_state(self):
+    handler = object.__new__(receiver.LeadHandler)
+    handler.path = "/api/amo/oauth/callback?code=test-code"
+    with mock.patch.object(receiver, "AMO_EXTERNAL_STATE", "test-state"), \
+         mock.patch.object(receiver, "exchange_oauth_token") as exchange, \
+         mock.patch.object(receiver, "html_response") as response:
+      handler.handle_oauth_callback()
+    self.assertEqual(response.call_args.args[1], 403)
+    exchange.assert_not_called()
+
+
+class AmoSetupLinkTests(unittest.TestCase):
+  def request(self, supplied="s" * 40, expires="2000", state=None):
+    handler = object.__new__(receiver.LeadHandler)
+    handler.path = "/api/amo/oauth/connect?setup=" + supplied
+    handler.wfile = io.BytesIO()
+    handler.send_response = mock.Mock()
+    handler.send_header = mock.Mock()
+    handler.end_headers = mock.Mock()
+    with mock.patch.object(receiver, "AMO_SETUP_TOKEN", "s" * 40), \
+         mock.patch.object(receiver, "AMO_SETUP_EXPIRES_AT", expires), \
+         mock.patch.object(receiver, "AMO_EXTERNAL_STATE", 'private\"state'), \
+         mock.patch.object(receiver, "AMO_EXPECTED_ACCOUNT_ID", "32965862"), \
+         mock.patch.object(receiver, "amo_base_url", return_value="https://presentationrc.amocrm.ru"), \
+         mock.patch.object(receiver.time, "time", return_value=1000), \
+         mock.patch.object(receiver, "load_token_state", return_value=state or {}):
+      handler.handle_oauth_connect()
+    return handler
+
+  def test_rejects_wrong_expired_and_used_links(self):
+    for kwargs in ({"supplied": "wrong"}, {"expires": "1000"}, {"state": {"access_token": "already-connected"}}):
+      with self.subTest(kwargs=kwargs):
+        handler = self.request(**kwargs)
+        handler.send_response.assert_called_once_with(404)
+        self.assertNotIn(b"button.min.js", handler.wfile.getvalue())
+
+  def test_valid_link_names_pinned_account_and_disables_caching(self):
+    handler = self.request()
+    handler.send_response.assert_called_once_with(200)
+    handler.send_header.assert_any_call("Cache-Control", "no-store")
+    handler.send_header.assert_any_call("Referrer-Policy", "no-referrer")
+    body = handler.wfile.getvalue().decode("utf-8")
+    self.assertIn("https://presentationrc.amocrm.ru", body)
+    self.assertIn("32965862", body)
+    self.assertIn('data-state="private&quot;state"', body)
+    self.assertIn('src="https://www.amocrm.ru/auth/button.min.js"', body)
 
 
 class PhoneNormalizationTests(unittest.TestCase):
