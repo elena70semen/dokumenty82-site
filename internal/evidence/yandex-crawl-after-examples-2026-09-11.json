@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-09-11T07:45:35.490903+00:00",
+  "since": "2026-09-10T15:02:00+00:00",
+  "release": "/var/www/dokumenty82/releases/20260910-service-examples-823727b",
+  "example_routes": 34,
+  "yandexbot_requests": 1,
+  "dns_verified_requests": 1,
+  "routes": {
+    "/soprovozhdenie/": {
+      "requests": 1,
+      "verified_requests": 1,
+      "statuses": { "200": 1 },
+      "latest": "2026-09-10T21:38:38+00:00"
+    }
+  },
+  "direct_fetcher_requests": {},
+  "bot_line_parse_errors": 0,
+  "verification": "Reverse DNS suffix yandex.ru/yandex.net/yandex.com and forward DNS address match; visitor IP addresses not retained",
+  "source_logs": ["/var/log/nginx/access.log.1", "/var/log/nginx/access.log"]
+}
