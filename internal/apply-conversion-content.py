@@ -80,19 +80,10 @@ team_profiles = [
     ('Мария', 'Бухгалтер по налоговому учёту',
      'Помогает с вопросами применения налогового режима, расчётом налогов и подготовкой отчётности. Проверяет исходные данные для расчётов, готовит пояснения по показателям и документы для ответа на требования ИФНС. Объясняет, какие сведения и подтверждения нужны по конкретному вопросу.'),
 ]
-team_accents = [
-    ('Руководство', 'АБ', 'Собственник', 'initials'),
-    ('Технологии', '25+', 'Лет опыта', 'experience'),
-    ('Бухгалтерия', '25+', 'Лет опыта', 'experience'),
-    ('Документы', '20+', 'Лет опыта', 'experience'),
-    ('Клиентский сервис', 'В', 'Работа с клиентами', 'initials'),
-    ('Налоги', 'М', 'Налоговый учёт', 'initials'),
-]
 team_items = ''
-for i, ((name, role, bio), (label, accent, caption, kind)) in enumerate(zip(team_profiles, team_accents, strict=True), 1):
+for i, (name, role, bio) in enumerate(team_profiles, 1):
     team_items += f'''<article class="team-card" aria-labelledby="team-person-{i}">
-        <header class="team-card-heading"><p class="team-card-label">{label}</p><h3 id="team-person-{i}">{name}</h3><p class="team-card-role">{role}</p></header>
-        <div class="team-card-signature team-card-signature--{kind}" aria-hidden="true"><span class="team-card-accent">{accent}</span><span class="team-card-caption">{caption}</span></div>
+        <header class="team-card-heading"><h3 id="team-person-{i}">{name}</h3><p class="team-card-role">{role}</p></header>
         <p class="team-card-bio">{bio}</p>
       </article>'''
 team = f'''<section class="section page-rich-section team-section" id="team">
@@ -102,7 +93,7 @@ team = f'''<section class="section page-rich-section team-section" id="team">
 
 
 def with_team_styles(text):
-    link = '<link rel="stylesheet" href="/assets/team.css?v=20260911-premium" />'
+    link = '<link rel="stylesheet" href="/assets/team.css?v=20260911-strict" />'
     if re.search(r'<link\b[^>]*href="/assets/team\.css[^\"]*"[^>]*>', text):
         return re.sub(r'<link\b[^>]*href="/assets/team\.css[^\"]*"[^>]*>', lambda m: link, text, count=1)
     return text.replace('</head>', '    ' + link + '\n  </head>', 1)

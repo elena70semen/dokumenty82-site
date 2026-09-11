@@ -1,16 +1,31 @@
-/* Team cards share the calendar's navy, gold rules and typographic accents. */
+/* Restrained team profiles: clear typography, quiet surfaces and thin rules. */
 #team.team-section {
   scroll-margin-top: 128px;
-  border-color: rgba(221, 195, 125, .22);
-  background: linear-gradient(135deg, rgba(13, 23, 32, .95), rgba(13, 21, 29, .88));
+  border-color: rgba(221, 195, 125, .18);
+  background: #101b24;
 }
 
 #team.team-section::after {
-  opacity: .04;
+  content: none;
 }
 
 #team .section-header {
   max-width: 880px;
+}
+
+#team .section-header .eyebrow {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #c7b68e;
+  backdrop-filter: none;
+}
+
+#team .section-header .eyebrow::before {
+  content: none;
 }
 
 #team .section-header h2 {
@@ -35,150 +50,39 @@
 }
 
 #team .team-card {
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 108px;
-  grid-template-rows: auto 1fr;
-  gap: 1.3rem 1.15rem;
   min-width: 0;
   padding: clamp(1.3rem, 2.3vw, 1.9rem);
-  overflow: hidden;
-  border: 1px solid rgba(221, 195, 125, .3);
-  border-radius: 9px;
-  background: linear-gradient(112deg, rgba(10, 23, 34, .98), rgba(23, 31, 38, .93));
-  box-shadow: 0 18px 42px rgba(0, 0, 0, .22), inset 0 1px 0 rgba(255, 247, 221, .06);
-}
-
-#team .team-card::before {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: url('/assets/brand/route-digital-wave.png') right center / auto 125% no-repeat;
-  opacity: .17;
-  mask-image: linear-gradient(105deg, transparent 20%, #000 100%);
-  content: '';
-  pointer-events: none;
-}
-
-#team .team-card::after {
-  position: absolute;
-  z-index: -1;
-  top: -60px;
-  right: -190px;
-  width: 310px;
-  height: 460px;
-  border: 1px solid rgba(221, 195, 125, .15);
-  border-radius: 50%;
-  transform: rotate(24deg);
-  content: '';
-  pointer-events: none;
-}
-
-#team .team-card-heading {
-  min-width: 0;
-}
-
-#team .team-card-label {
-  display: inline-block;
-  margin: 0 0 1rem;
-  padding: .36rem .6rem;
-  border: 1px solid rgba(221, 195, 125, .23);
-  border-radius: 5px;
-  background: rgba(221, 195, 125, .045);
-  color: #ddc37d;
-  font-size: .68rem;
-  font-weight: 400;
-  line-height: 1.35;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  border: 1px solid rgba(203, 194, 170, .21);
+  border-radius: 6px;
+  background: #16212a;
 }
 
 #team .team-card h3 {
-  margin: 0 0 .6rem;
+  margin: 0 0 .55rem;
   color: #f7f5ed;
-  font-size: clamp(1.75rem, 2.6vw, 2.2rem);
+  font-size: clamp(1.7rem, 2.3vw, 2rem);
   font-weight: 400;
-  line-height: 1.14;
-  letter-spacing: -.02em;
-  overflow-wrap: normal;
+  line-height: 1.2;
+  letter-spacing: -.015em;
 }
 
 #team .team-card-role {
   margin: 0;
-  color: #dfcd9a;
+  color: #cebc94;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.45;
-}
-
-#team .team-card-signature {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  min-width: 0;
-  padding-left: 1.1rem;
-  border-left: 1px solid rgba(221, 195, 125, .25);
-  text-align: center;
-}
-
-#team .team-card-accent {
-  display: block;
-  color: #f7f5ed;
-  font-size: clamp(3.15rem, 5.3vw, 4.4rem);
-  font-weight: 400;
-  font-style: italic;
-  line-height: .95;
-  letter-spacing: -.07em;
-  white-space: nowrap;
-}
-
-#team .team-card-signature--initials .team-card-accent {
-  color: #e8d7aa;
-  font-size: 3.6rem;
-  letter-spacing: -.035em;
-}
-
-#team .team-card-caption {
-  display: block;
-  margin-top: .7rem;
-  color: #ddc37d;
-  font-size: .65rem;
-  font-weight: 400;
   line-height: 1.5;
-  letter-spacing: .075em;
-  text-transform: uppercase;
 }
 
 #team .team-card-bio {
-  grid-column: 1 / -1;
-  margin: 0;
+  margin: 1.25rem 0 0;
   padding-top: 1.15rem;
-  border-top: 1px solid rgba(221, 195, 125, .15);
-  color: #dedfd9;
+  border-top: 1px solid rgba(203, 194, 170, .14);
+  color: #d5d9da;
   font-size: 1.02rem;
   font-weight: 400;
   line-height: 1.7;
   overflow-wrap: anywhere;
-}
-
-@media (max-width: 900px) {
-  #team .team-card {
-    grid-template-columns: minmax(0, 1fr) 80px;
-    gap: 1.05rem .8rem;
-    padding: 1.3rem;
-  }
-
-  #team .team-card-signature {
-    padding-left: .75rem;
-  }
-
-  #team .team-card-accent,
-  #team .team-card-signature--initials .team-card-accent {
-    font-size: 3.2rem;
-  }
 }
 
 @media (max-width: 700px) {
@@ -194,16 +98,11 @@
   }
 
   #team .team-card {
-    grid-template-columns: minmax(0, 1fr) 92px;
     padding: 1.25rem;
   }
 
   #team .team-card h3 {
-    font-size: 1.9rem;
-  }
-
-  #team .team-card-accent {
-    font-size: 3.6rem;
+    font-size: 1.8rem;
   }
 
   #team .team-card-bio {
@@ -214,15 +113,10 @@
 
 @media (max-width: 380px) {
   #team .team-card {
-    grid-template-columns: minmax(0, 1fr) 70px;
     padding: 1rem;
   }
 
   #team .team-card h3 {
     font-size: 1.65rem;
-  }
-
-  #team .team-card-accent {
-    font-size: 3rem;
   }
 }
