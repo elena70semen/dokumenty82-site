@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { siteCssVersion } from "./site-style-version.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const template = fs.readFileSync(path.join(root, "blog", "obnovleniya-fns", "index.html"), "utf8");
@@ -283,7 +284,7 @@ html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/>/i, '<link rel="can
 html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/>/i, '<meta property="og:title" content="Услуги для бизнеса в Симферополе" />');
 html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/>/i, '<meta property="og:description" content="Каталог бухгалтерских, налоговых и регистрационных услуг, отчётности и документов для банка." />');
 html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/>/i, '<meta property="og:url" content="https://dokumenty82.ru/uslugi/" />');
-html = html.replace(/\/assets\/site\.css\?v=\d+/g, "/assets/site.css?v=202608252300");
+html = html.replace(/\/assets\/site\.css\?v=\d+/g, `/assets/site.css?v=${siteCssVersion}`);
 html = html.replace("  </head>", `    <script type="application/ld+json">${JSON.stringify(schema)}</script>\n  </head>`);
 html = html.replace(/<main>[\s\S]*?<\/main>/i, main);
 html = html.replace(/<a class="[^"]*" href="\/">Документы<\/a>/g, '<a class="is-active" href="/uslugi/">Услуги</a>');

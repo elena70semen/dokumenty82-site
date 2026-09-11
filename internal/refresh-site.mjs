@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { siteCssVersion } from "./site-style-version.mjs";
 
 import { newsItems } from "./news-registry.mjs";
 
@@ -650,7 +651,6 @@ for (const file of walk(root)) {
   const before = html;
   const newsClass = route.startsWith("/novosti/") || route === "/novosti/" ? "is-active" : "";
   const promotionsClass = route === "/akcii/" ? "nav-promo is-active" : "nav-promo";
-  const siteCssVersion = themeAssetVersion;
   html = html.replace(
     /\s*<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon(?:-120)?\.(?:svg|png)"[^>]*\/>\s*(?:<link rel="icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.svg"[^>]*\/>\s*)?(?:<link rel="(?:alternate|shortcut) icon" href="(?:https:\/\/dokumenty82\.ru)?\/favicon\.ico"[^>]*\/>\s*)?(?:<link rel="apple-touch-icon" href="(?:https:\/\/dokumenty82\.ru)?\/apple-touch-icon\.png"[^>]*\/>\s*)?/i,
     `\n    ${faviconLinks}\n    `,

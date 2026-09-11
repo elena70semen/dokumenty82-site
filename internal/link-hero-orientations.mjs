@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
+import { siteCssVersion } from "./site-style-version.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const siteCssVersion = "202608252300";
 
 const walk = (directory) => fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
   if ([".git", "internal", "server"].includes(entry.name)) return [];

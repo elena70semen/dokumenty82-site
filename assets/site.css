@@ -6156,3 +6156,148 @@ option,
     font-size: 24px;
   }
 }
+
+/* September 11: a consistent, restrained finish for public content blocks. */
+:root {
+  --section-title: #d8bd80;
+  --content-rule: rgba(206, 190, 154, .22);
+}
+
+main h2 {
+  color: var(--section-title);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+
+main :is(.section, .glass-panel) h3 {
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+main > .section {
+  border-color: var(--content-rule);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
+}
+
+main :is(.glass-card, .news-card, .service-tree-group, .tax-calendar-entry) {
+  border-color: var(--content-rule);
+  box-shadow: none;
+}
+
+main :is(.glass-card, .compact-list a, .compact-list .compact-row)::before {
+  content: none;
+}
+
+main :is(.glass-card, .news-card):hover {
+  transform: none;
+  box-shadow: none;
+}
+
+main :is(.glass-card, .news-card) {
+  padding: clamp(1.15rem, 1.8vw, 1.5rem);
+}
+
+main :is(.glass-card p, .glass-card .rich-list li, .news-card p, .section-header > p:last-child, .rich-copy p) {
+  color: #d3d8dc;
+  line-height: 1.65;
+}
+
+main .section-header > p:last-child {
+  margin-bottom: 0;
+}
+
+main .section-header + :is(.card-grid, .rich-copy, .news-grid, .service-tree-grid, .promotion-grid) {
+  margin-top: 1.6rem;
+}
+
+main .glass-card > h3:first-child {
+  margin-top: 0;
+}
+
+main .glass-card > p:last-child {
+  margin-bottom: 0;
+}
+
+main :is(.rich-step-card, .faq-card, .related-card) {
+  min-height: 0;
+}
+
+main :is(.hero, .section) .eyebrow {
+  padding: .4rem .65rem;
+  border-color: var(--content-rule);
+  border-radius: 4px;
+  background: rgba(216, 189, 128, .035);
+  box-shadow: none;
+  backdrop-filter: none;
+  color: #cbb98f;
+}
+
+main :is(.hero, .section) .eyebrow::before {
+  content: none;
+}
+
+main :is(.glass-card, .compact-list a, .home-service-shortcuts a, .news-card, .service-tree-links a) {
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+main a.glass-card:is(:hover, :focus-visible),
+main .news-card:focus-within {
+  border-color: var(--section-title);
+}
+
+main a.glass-card:is(:hover, :focus-visible) h3,
+main .news-card h3 a:is(:hover, :focus-visible) {
+  color: var(--section-title);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+
+main :is(a, button, input, textarea, select, summary):focus-visible {
+  outline: 2px solid var(--section-title);
+  outline-offset: 3px;
+}
+
+main .crm-lead-form :is(input, textarea)::placeholder {
+  color: rgba(247, 245, 237, .64);
+}
+
+main .crm-lead-form :is(input, textarea, select):focus-visible {
+  border-color: var(--section-title);
+}
+
+main .lead-consent input[type="checkbox"] {
+  accent-color: var(--section-title);
+}
+
+main :is(.lead-consent, .form-note) a {
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+main .calendar-promo::after {
+  content: none;
+}
+
+@media (max-width: 700px) {
+  main :is(.glass-card, .news-card) {
+    padding: 1.1rem;
+  }
+
+  main :is(.glass-card, .news-card, .section-header, .rich-copy) {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  main .section-header + :is(.card-grid, .rich-copy, .news-grid, .service-tree-grid, .promotion-grid) {
+    margin-top: 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main :is(.glass-card, .compact-list a, .home-service-shortcuts a, .news-card, .service-tree-links a) {
+    transition: none;
+  }
+}

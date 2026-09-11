@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { siteCssVersion } from "./site-style-version.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const templatePath = path.join(root, "ceny", "index.html");
@@ -248,7 +249,7 @@ for (const file of walk(root)) {
   const before = fs.readFileSync(file, "utf8");
   if (!before.includes('class="desktop-nav"')) continue;
   const after = updateNavigation(before, routeForFile(file))
-    .replace(/site\.css\?v=\d+/g, `site.css?v=${assetVersion}`)
+    .replace(/site\.css\?v=\d+/g, `site.css?v=${siteCssVersion}`)
     .replace(/lead-form\.js\?v=\d+/g, `lead-form.js?v=${leadAssetVersion}`)
     .replace(/metrika-goals\.js\?v=\d+/g, `metrika-goals.js?v=${assetVersion}`);
   if (after === before) continue;
