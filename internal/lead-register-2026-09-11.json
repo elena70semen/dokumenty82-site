@@ -76,7 +76,10 @@
       "business_delivery": "Correct account, sales pipeline, contact stage, responsible Viktor; visible in his CRM session",
       "followup_task_id": 55197035,
       "counts_as_real_lead": false,
-      "state": "awaiting human receipt confirmation; QA task open"
+      "state": "closed technical test; QA task completed after human receipt confirmation",
+      "human_receipt_confirmed": true,
+      "confirmation_source": "User replied yes to seeing the final Presentation card",
+      "followup_task_completed": true
     }
   ]
 }
