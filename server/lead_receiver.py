@@ -55,6 +55,8 @@ AI_MAX_OUTPUT_TOKENS = int(os.environ.get("AI_MAX_OUTPUT_TOKENS", "420"))
 AI_RATE_LIMIT_WINDOW = int(os.environ.get("AI_RATE_LIMIT_WINDOW_SECONDS", "3600"))
 AI_RATE_LIMIT_MAX = int(os.environ.get("AI_RATE_LIMIT_MAX", "24"))
 TOKEN_LOCK = threading.Lock()
+FOLLOWUP_QUEUE_LOCK = threading.Lock()
+FOLLOWUP_PROCESS_LOCK = threading.Lock()
 AI_RATE_LOCK = threading.Lock()
 AI_RATE_STATE = {}
 
@@ -732,7 +734,8 @@ def create_amo_lead(fields, files):
   result = {"status": "sent", "lead_id": lead_id, "attached_files": attached}
   if AMO_FOLLOWUP_TASK_SECONDS > 0:
     try:
-      result["followup_task"] = ensure_amo_followup_task(base_url, lead_id, fields)
+      job_path = queue_amo_followup_task(base_url, lead_id, fields)
+      result["followup_task"] = process_amo_followup_job(job_path)
     except Exception as error:
       # The lead already exists. Do not invite a duplicate form submission if
       # the separate task API is temporarily unavailable; retain the failure.
@@ -741,26 +744,132 @@ def create_amo_lead(fields, files):
   return result
 
 
-def ensure_amo_followup_task(base_url, lead_id, fields):
+def ensure_amo_followup_task(base_url, lead_id, fields, complete_till=None):
   responsible = int_or_none(AMO_RESPONSIBLE_USER_ID)
   if not responsible or AMO_FOLLOWUP_TASK_SECONDS <= 0:
     raise RuntimeError("Для задачи нужен ответственный и положительный срок.")
-  params = urllib.parse.urlencode({"filter[entity_id]": lead_id, "filter[entity_type]": "leads", "filter[is_completed]": 0})
-  existing = api_request("GET", base_url + "/api/v4/tasks?" + params, headers=amo_headers())
-  for task in amo_collection(existing, "tasks"):
-    if task.get("entity_id") == lead_id and task.get("responsible_user_id") == responsible and not task.get("is_completed"):
-      return {"status": "existing", "task_id": task["id"]}
+  marker = "[d82-followup:%s]" % lead_id
+  # Include completed tasks: a POST may have succeeded even if its response was
+  # lost, and a colleague may have completed/reassigned that task before retry.
+  for page in range(1, 21):
+    params = urllib.parse.urlencode({"filter[entity_id]": lead_id, "filter[entity_type]": "leads", "limit": 250, "page": page})
+    existing = api_request("GET", base_url + "/api/v4/tasks?" + params, headers=amo_headers())
+    tasks = amo_collection(existing, "tasks")
+    for task in tasks:
+      if task.get("entity_id") == lead_id and (marker in text(task.get("text")) or
+          (task.get("responsible_user_id") == responsible and not task.get("is_completed"))):
+        return {"status": "existing", "task_id": task["id"]}
+    if not ((existing or {}).get("_links") or {}).get("next") and len(tasks) < 250:
+      break
+  else:
+    raise RuntimeError("Список задач слишком велик для безопасного повтора.")
   is_qa = fields.get("utm_source") == "owner_qa"
   task_text = ("ТЕСТ — проверить получение заявки и вложения; клиенту не звонить. " if is_qa
                else "Связаться по новой заявке с dokumenty82.ru, уточнить задачу и срок. ")
   payload = [{"entity_id": lead_id, "entity_type": "leads", "responsible_user_id": responsible,
-              "task_type_id": 1, "complete_till": int(time.time()) + AMO_FOLLOWUP_TASK_SECONDS,
-              "text": task_text + clipped(fields.get("task_type"), 150)}]
+              "task_type_id": 1, "complete_till": complete_till or int(time.time()) + AMO_FOLLOWUP_TASK_SECONDS,
+              "text": task_text + clipped(fields.get("task_type"), 150) + " " + marker}]
   response = api_request("POST", base_url + "/api/v4/tasks", payload=payload, headers=amo_headers())
   tasks = amo_collection(response, "tasks")
   if not tasks or not tasks[0].get("id"):
     raise RuntimeError("amoCRM не вернула ID задачи.")
   return {"status": "created", "task_id": tasks[0]["id"]}
+
+
+def write_followup_job(path, job):
+  temporary = path.with_suffix(".%s.tmp" % secrets.token_hex(6))
+  try:
+    fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, "w", encoding="utf-8") as stream:
+      json.dump(job, stream, ensure_ascii=False, indent=2)
+      stream.flush()
+      os.fsync(stream.fileno())
+    os.replace(temporary, path)
+  finally:
+    temporary.unlink(missing_ok=True)
+
+
+def queue_amo_followup_task(base_url, lead_id, fields):
+  """Persist before the first task POST; never queue a second lead creation."""
+  account_id = int_or_none(AMO_EXPECTED_ACCOUNT_ID)
+  responsible = int_or_none(AMO_RESPONSIBLE_USER_ID)
+  if ACCEPT_LOCAL_ONLY or not account_id or not responsible or AMO_FOLLOWUP_TASK_SECONDS <= 0:
+    raise RuntimeError("Для очереди задач нужны рабочий аккаунт и ответственный.")
+  directory = BASE_DIR / "followup-tasks"
+  directory.mkdir(mode=0o700, parents=True, exist_ok=True)
+  path = directory / ("%s-%s.json" % (account_id, int(lead_id)))
+  with FOLLOWUP_QUEUE_LOCK:
+    if not path.exists():
+      now = int(time.time())
+      write_followup_job(path, {
+        "status": "pending", "lead_id": int(lead_id), "base_url": base_url,
+        "account_id": account_id, "responsible_user_id": responsible,
+        "created_at": now, "complete_till": now + AMO_FOLLOWUP_TASK_SECONDS,
+        "attempts": 0, "next_attempt_at": now,
+        "fields": {"task_type": clipped(fields.get("task_type"), 150),
+                   "utm_source": "owner_qa" if fields.get("utm_source") == "owner_qa" else ""},
+      })
+  return path
+
+
+def process_amo_followup_job(path):
+  # One API writer in this service. A busy worker must not delay a form response.
+  if not FOLLOWUP_PROCESS_LOCK.acquire(blocking=False):
+    return {"status": "queued"}
+  try:
+    job = json.loads(path.read_text(encoding="utf-8"))
+    if job["status"] != "pending":
+      return job.get("result", {"status": job["status"]})
+    if ACCEPT_LOCAL_ONLY or AMO_FOLLOWUP_TASK_SECONDS <= 0 or job["next_attempt_at"] > time.time():
+      return {"status": "queued"}
+    try:
+      base_url = amo_base_url()
+      if (job["base_url"] != base_url or job["account_id"] != int_or_none(AMO_EXPECTED_ACCOUNT_ID)
+          or job["responsible_user_id"] != int_or_none(AMO_RESPONSIBLE_USER_ID)):
+        raise RuntimeError("Получатель очереди не совпадает с текущей конфигурацией.")
+      verify_amo_account(base_url)
+      lead = api_request("GET", base_url + "/api/v4/leads/%s" % job["lead_id"], headers=amo_headers())
+      if not lead or lead.get("id") != job["lead_id"]:
+        raise RuntimeError("Не удалось проверить сделку перед созданием задачи.")
+      if lead.get("status_id") in (142, 143):
+        result = {"status": "skipped_closed"}
+      elif lead.get("responsible_user_id") != job["responsible_user_id"]:
+        result = {"status": "skipped_reassigned"}
+      else:
+        result = ensure_amo_followup_task(base_url, job["lead_id"], job["fields"], complete_till=job["complete_till"])
+      job.update(status="done", result=result, finished_at=int(time.time()))
+      job.pop("last_error_type", None)
+    except Exception as error:
+      job["attempts"] += 1
+      delay = min(3600, 60 * 2 ** min(job["attempts"] - 1, 6))
+      job.update(next_attempt_at=int(time.time()) + delay, last_error_type=type(error).__name__)
+      result = {"status": "queued", "error_type": type(error).__name__}
+      print("amoCRM follow-up queued for lead %s, retry in %ss: %s" %
+            (job["lead_id"], delay, type(error).__name__), flush=True)
+    write_followup_job(path, job)
+    return result
+  finally:
+    FOLLOWUP_PROCESS_LOCK.release()
+
+
+def retry_amo_followup_tasks():
+  if ACCEPT_LOCAL_ONLY or AMO_FOLLOWUP_TASK_SECONDS <= 0:
+    return
+  for path in sorted((BASE_DIR / "followup-tasks").glob("*.json")):
+    try:
+      process_amo_followup_job(path)
+    except Exception as error:
+      # A corrupt/unwritable job must not kill retries for other submissions.
+      print("amoCRM follow-up queue file error %s: %s" % (path.name, type(error).__name__), flush=True)
+
+
+def amo_followup_worker():
+  while True:
+    try:
+      retry_amo_followup_tasks()
+    except Exception as error:
+      print("amoCRM follow-up worker error: %s" % type(error).__name__, flush=True)
+    time.sleep(30)
 
 
 def attach_files_to_lead(base_url, drive_url, lead_id, files):
@@ -1158,6 +1267,7 @@ def main():
   BASE_DIR.mkdir(parents=True, exist_ok=True)
   os.chmod(BASE_DIR, 0o700)
   server = ThreadingHTTPServer((HOST, PORT), LeadHandler)
+  threading.Thread(target=amo_followup_worker, name="amo-followup", daemon=True).start()
   print(f"Listening on {HOST}:{PORT}", flush=True)
   server.serve_forever()
 

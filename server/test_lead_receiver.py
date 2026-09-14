@@ -1,6 +1,8 @@
 import importlib.util
 import io
+import json
 import sys
+import tempfile
 import types
 import unittest
 from pathlib import Path
@@ -93,11 +95,138 @@ class AmoFollowupTaskTests(unittest.TestCase):
 
   def test_task_failure_does_not_turn_created_lead_into_form_error(self):
     with mock.patch.object(receiver, "AMO_FOLLOWUP_TASK_SECONDS", 3600), \
-         mock.patch.object(receiver, "ensure_amo_followup_task", side_effect=RuntimeError("unavailable")):
+         mock.patch.object(receiver, "queue_amo_followup_task", return_value=Path("unused")), \
+         mock.patch.object(receiver, "process_amo_followup_job", return_value={"status": "queued"}):
       result, calls = AmoLeadAttributionTests().create(AmoLeadAttributionTests().fields())
     self.assertEqual(result["status"], "sent")
-    self.assertEqual(result["followup_task"]["status"], "failed")
+    self.assertEqual(result["followup_task"]["status"], "queued")
     self.assertEqual(sum("leads/complex" in c.args[1] for c in calls), 1)
+
+
+class AmoFollowupQueueTests(unittest.TestCase):
+  def setUp(self):
+    directory = tempfile.TemporaryDirectory()
+    self.addCleanup(directory.cleanup)
+    for name, value in (("BASE_DIR", Path(directory.name)), ("AMO_EXPECTED_ACCOUNT_ID", "42"),
+                        ("AMO_RESPONSIBLE_USER_ID", "61"), ("AMO_FOLLOWUP_TASK_SECONDS", 3600),
+                        ("ACCEPT_LOCAL_ONLY", False)):
+      patch = mock.patch.object(receiver, name, value)
+      patch.start()
+      self.addCleanup(patch.stop)
+    for name, value in (("amo_base_url", "https://example.amocrm.ru"), ("amo_headers", {})):
+      patch = mock.patch.object(receiver, name, return_value=value)
+      patch.start()
+      self.addCleanup(patch.stop)
+    clock_patch = mock.patch.object(receiver.time, "time", return_value=1000)
+    self.clock = clock_patch.start()
+    self.addCleanup(clock_patch.stop)
+
+  def queue(self):
+    return receiver.queue_amo_followup_task("https://example.amocrm.ru", 901,
+                                          {"task_type": "ИФНС", "utm_source": "owner_qa", "phone": "private"})
+
+  def api(self, status=88168838, owner=61):
+    return [{"id": 42}, {"id": 901, "status_id": status, "responsible_user_id": owner}]
+
+  def test_failure_is_durable_backed_off_and_recovers_without_new_lead(self):
+    path = self.queue()
+    with mock.patch.object(receiver, "api_request", side_effect=self.api() + [TimeoutError()]) as api:
+      self.assertEqual(receiver.process_amo_followup_job(path)["status"], "queued")
+      self.assertTrue(all(call.args[0] == "GET" for call in api.call_args_list))
+    saved = json.loads(path.read_text(encoding="utf-8"))
+    self.assertEqual((saved["attempts"], saved["next_attempt_at"]), (1, 1060))
+    self.assertNotIn("phone", saved["fields"])
+    with mock.patch.object(receiver, "api_request") as api:
+      receiver.retry_amo_followup_tasks()
+      api.assert_not_called()
+    self.clock.return_value = 1060
+    with mock.patch.object(receiver, "api_request", side_effect=self.api() + [None, {"_embedded": {"tasks": [{"id": 71}]}}]) as api:
+      # A fresh scan uses only files, as after a process restart.
+      receiver.retry_amo_followup_tasks()
+      self.assertEqual(api.call_args.kwargs["payload"][0]["complete_till"], 4600)
+      self.assertEqual(sum(call.args[0] == "POST" for call in api.call_args_list), 1)
+      receiver.retry_amo_followup_tasks()
+      self.assertEqual(api.call_count, 4)
+    self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["result"], {"status": "created", "task_id": 71})
+
+  def test_ambiguous_post_does_not_duplicate_completed_reassigned_task(self):
+    path = self.queue()
+    with mock.patch.object(receiver, "api_request", side_effect=self.api() + [None, TimeoutError()]):
+      receiver.process_amo_followup_job(path)
+    self.clock.return_value = 1060
+    task = {"id": 71, "entity_id": 901, "responsible_user_id": 999,
+            "is_completed": True, "text": "Done [d82-followup:901]"}
+    with mock.patch.object(receiver, "api_request", side_effect=self.api() + [{"_embedded": {"tasks": [task]}}]) as api:
+      result = receiver.process_amo_followup_job(path)
+    self.assertEqual(result, {"status": "existing", "task_id": 71})
+    self.assertTrue(all(call.args[0] == "GET" for call in api.call_args_list))
+
+  def test_checks_later_task_pages_before_posting(self):
+    pages = [{"_links": {"next": {"href": "https://irrelevant.invalid"}}, "_embedded": {"tasks": []}},
+             {"_embedded": {"tasks": [{"id": 71, "entity_id": 901, "responsible_user_id": 61, "is_completed": False}]}}]
+    with mock.patch.object(receiver, "api_request", side_effect=pages) as api:
+      self.assertEqual(receiver.ensure_amo_followup_task("https://example.amocrm.ru", 901, {})["status"], "existing")
+      self.assertIn("page=2", api.call_args.args[1])
+      self.assertTrue(api.call_args.args[1].startswith("https://example.amocrm.ru/"))
+
+  def test_closed_or_reassigned_lead_is_not_contacted_again(self):
+    for status, owner, expected in ((142, 61, "skipped_closed"), (143, 61, "skipped_closed"),
+                                    (88168838, 999, "skipped_reassigned")):
+      with self.subTest(status=status, owner=owner):
+        path = self.queue()
+        with mock.patch.object(receiver, "api_request", side_effect=self.api(status, owner)) as api:
+          self.assertEqual(receiver.process_amo_followup_job(path)["status"], expected)
+          self.assertEqual(api.call_count, 2)
+        path.unlink()
+
+  def test_changed_destination_and_local_only_never_send_queue_data(self):
+    path = self.queue()
+    for name, value in (("AMO_EXPECTED_ACCOUNT_ID", "99"), ("AMO_RESPONSIBLE_USER_ID", "99"),
+                        ("ACCEPT_LOCAL_ONLY", True), ("AMO_FOLLOWUP_TASK_SECONDS", 0)):
+      with self.subTest(name=name), mock.patch.object(receiver, name, value), \
+           mock.patch.object(receiver, "api_request") as api:
+        self.assertEqual(receiver.process_amo_followup_job(path)["status"], "queued")
+        api.assert_not_called()
+      self.clock.return_value += 3600
+
+  def test_wrong_account_api_response_keeps_job_pending(self):
+    path = self.queue()
+    with mock.patch.object(receiver, "api_request", return_value={"id": 99}) as api:
+      self.assertEqual(receiver.process_amo_followup_job(path)["status"], "queued")
+      self.assertEqual(api.call_count, 1)
+      self.assertTrue(api.call_args.args[1].endswith("/account"))
+
+  def test_queue_is_not_overwritten_and_busy_worker_does_not_block_form(self):
+    path = self.queue()
+    original = path.read_bytes()
+    self.clock.return_value = 9000
+    self.queue()
+    self.assertEqual(path.read_bytes(), original)
+    receiver.FOLLOWUP_PROCESS_LOCK.acquire()
+    try:
+      with mock.patch.object(receiver, "api_request") as api:
+        self.assertEqual(receiver.process_amo_followup_job(path)["status"], "queued")
+        api.assert_not_called()
+    finally:
+      receiver.FOLLOWUP_PROCESS_LOCK.release()
+
+
+  def test_repeated_failures_back_off_to_one_hour_and_preserve_job(self):
+    path = self.queue()
+    with mock.patch.object(receiver, "api_request", side_effect=TimeoutError()):
+      for delay in (60, 120, 240, 480, 960, 1920, 3600, 3600):
+        receiver.process_amo_followup_job(path)
+        job = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(job["status"], "pending")
+        self.assertEqual(job["next_attempt_at"], self.clock.return_value + delay)
+        self.clock.return_value = job["next_attempt_at"]
+
+  def test_corrupt_job_does_not_stop_other_jobs(self):
+    path = self.queue()
+    path.with_name("0-corrupt.json").write_text("{", encoding="utf-8")
+    with mock.patch.object(receiver, "api_request", side_effect=self.api(status=142)):
+      receiver.retry_amo_followup_tasks()
+    self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["result"]["status"], "skipped_closed")
 
 
 class AmoAccountDestinationTests(unittest.TestCase):
