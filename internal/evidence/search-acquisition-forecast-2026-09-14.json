@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-14",
+  "source": "https://direct.yandex.ru/registered/main.pl?cmd=advancedForecast",
+  "method": "Read rendered authorized calculator UI; no campaign mutation",
+  "region": "Республика Крым",
+  "period": "week",
+  "devices": "all",
+  "currency": "RUB",
+  "vat_included": false,
+  "automatic_cross_minus": true,
+  "automatic_stopwords": true,
+  "common_negatives": "-бесплатно -вакансия -резюме -зарплата -обучение -курс -диплом -реферат -скачать -образец -шаблон -инструкция -самостоятельно -\"как вести\" -\"ищу работу\" -аудит -\"электронная ттн\"",
+  "accounting": {
+    "keywords": ["бухгалтерские услуги", "услуги бухгалтера", "бухгалтерское обслуживание", "бухгалтерское сопровождение", "бухгалтерский аутсорсинг", "аутсорсинг бухгалтерии", "ведение бухгалтерии", "ведение бухгалтерского учета", "бухгалтер для ип", "бухгалтер для ооо", "бухгалтер на аутсорсе"],
+    "scenarios": [
+      {"traffic_volume": 100, "queries": 248, "impressions": 205, "clicks": 23, "budget": 2287.40},
+      {"traffic_volume": 62, "queries": 248, "impressions": 202, "clicks": 22, "budget": 1033.60}
+    ],
+    "verified": "All eleven selected radios read back after each change"
+  },
+  "reporting": {
+    "keywords": ["сдача отчетности", "подготовка отчетности", "сдать отчетность", "заказать отчетность", "помощь сдача отчетности", "нулевая отчетность", "подготовка декларации усн", "заполнение декларации усн", "заказать декларацию усн", "декларация усн стоимость"],
+    "extra_negatives": "-календарь -сроки -\"как сдать\" -\"личный кабинет\" -контур -сбис -тензор -3ндфл -3-ндфл -вычет",
+    "scenarios": [
+      {"traffic_volume": 100, "queries": 257, "impressions": 158, "clicks": 10, "budget": 831.00},
+      {"traffic_volume": 62, "queries": 257, "impressions": 156, "clicks": 10, "budget": 264.10}
+    ],
+    "rows_at_62": [
+      {"phrase": "декларация усн стоимость", "queries": 1, "impressions": 1, "clicks": 1, "budget": 0.60},
+      {"phrase": "заказать декларацию усн", "queries": 0, "impressions": 0, "clicks": 0, "budget": 0},
+      {"phrase": "заказать отчетность", "queries": 0, "impressions": 0, "clicks": 0, "budget": 0},
+      {"phrase": "заполнение декларации усн", "queries": 11, "impressions": 8, "clicks": 1, "budget": 20.20},
+      {"phrase": "нулевая отчетность", "queries": 13, "impressions": 9, "clicks": 1, "budget": 49.20},
+      {"phrase": "подготовка декларации усн", "queries": 0, "impressions": 0, "clicks": 0, "budget": 0},
+      {"phrase": "подготовка отчетности", "queries": 6, "impressions": 4, "clicks": 1, "budget": 1.00},
+      {"phrase": "помощь сдача отчетности", "queries": 0, "impressions": 1, "clicks": 1, "budget": 0.10},
+      {"phrase": "сдать отчетность", "queries": 109, "impressions": 57, "clicks": 2, "budget": 70.00},
+      {"phrase": "сдача отчетности -помощь", "queries": 117, "impressions": 76, "clicks": 3, "budget": 123.00}
+    ],
+    "note": "Low-volume values are rounded by calculator; e.g. 0 queries and 1 impression is the displayed estimate, not an observed event. Hidden template row excluded."
+  },
+  "bank_business": {
+    "keywords": ["ответ на запрос банка", "ответ банку по 115 фз", "подготовить ответ банку", "пояснения банку по операциям", "документы для банка 115 фз", "банк запросил документы 115 фз", "банк просит документы по 115 фз", "подготовить документы по 115 фз", "подтверждение деятельности для банка", "заблокировали расчетный счет 115 фз", "помощь бизнесу 115 фз"],
+    "extra_negatives": "-личная карта -кредитная карта -физлицо -физическое лицо -мигрант -иностранный гражданин -внж -рвп -гражданство -ипотека -ответ банка клиенту -отказ от страховки",
+    "scenarios": [
+      {"traffic_volume": 100, "queries": 5, "impressions": 5, "clicks": 4, "budget": 2.60},
+      {"traffic_volume": 62, "queries": 5, "impressions": 5, "clicks": 4, "budget": 1.70}
+    ],
+    "verified": "All eleven selected radios and totals read back after each change",
+    "note": "Nearly all rows rounded to zero demand. Do not treat 1.70/2.60 RUB as an actionable purchasing budget or reliable CPC; this is a signal of insufficient forecasting data for this narrow set."
+  },
+  "limitations": [
+    "Forecast is not actual traffic or guaranteed CPC; no lead forecast was calculated.",
+    "This base-keyword comparison is not the exact segmented draft with all group-routing negatives.",
+    "Full local search demand and all synonyms were not measured."
+  ]
+}
