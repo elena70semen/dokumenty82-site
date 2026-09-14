@@ -189,6 +189,7 @@
     </script>
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=2026091405" />
+    <link rel="stylesheet" href="/assets/accounting-entry.css?v=20260914-1" />
   </head>
   <body>
     
@@ -256,24 +257,19 @@
         <p class="conversion-one-off-link">Нужен один отчёт или нулевая отчётность? <a href="#one-off-services">Выбрать разовую услугу</a> — без ежемесячного сопровождения.</p>
         <div class="actions"><a class="button button-lime" href="#quick-lead" data-event-name="hero_cta_click">Подобрать тариф для ИП</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
       </div>
-      <aside class="glass-panel hero-choice-panel">
+      <aside class="glass-panel hero-choice-panel accounting-overview" aria-labelledby="accounting-overview-title">
         <p class="eyebrow">Состав сопровождения</p>
-        <h2>Что берём под регулярный контроль</h2>
-        <p class="hero-choice-description">Сначала разбираем модель работы ИП, затем фиксируем состав задач и контрольные даты. Предпринимателю без сотрудников и ИП с НДС, кассой и большим документооборотом нужны разные тарифы.</p>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Учет и первичные документы</strong><small>Операции, банк, касса, договоры, акты, накладные и контроль недостающих документов.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>Отчетность и налоги</strong><small>Календарь деклараций, расчетов, уведомлений и платежей по вашему налоговому режиму.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>ИФНС, банк и сотрудники</strong><small>Требования, сверки, запросы банка и кадровые задачи подключаются по фактической нагрузке.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Тариф от 10 000 ₽</strong><small>Базовый, стандартный или расширенный формат определяем после короткой оценки вводных.</small></div></a></li>
+        <h2 id="accounting-overview-title">Что бухгалтер делает для ИП</h2>
+        <p class="hero-choice-description">Состав работы зависит от налогового режима, операций и сотрудников. Перечень задач и ежемесячную стоимость согласуем до начала сопровождения.</p>
+        <ul class="accounting-results-list">
+          <li><h3>Учёт доходов, расходов и документов</h3><p>Проверяем первичные документы и банковские выписки. Отражаем операции и запрашиваем недостающие сведения.</p></li>
+          <li><h3>Отчётность предпринимателя</h3><p>Определяем обязательные формы по режиму и сотрудникам, готовим отчётность по данным учёта и контролируем сроки отправки.</p></li>
+          <li><h3>Налоги и обязательные платежи</h3><p>Рассчитываем налоги по данным бизнеса и сообщаем сроки платежей. Объясняем, какие сведения нужны для расчёта.</p></li>
         </ul>
+        <p class="accounting-scope-note">Зарплату и кадровые задачи включаем по согласованному составу. Восстановление прошлых периодов, сложные требования ИФНС и запросы банка оцениваем отдельно.</p>
       </aside>
     </section>
-<!-- d82-one-off:start -->
-<section class="section page-rich-section" id="one-off-services">
-      <div class="section-header"><p class="eyebrow">Разовая задача</p><h2>Нужен отдельный отчёт, а не бухгалтер на месяц?</h2><p>Разовые услуги не требуют перехода на ежемесячное сопровождение. Цена 10 000 ₽ в месяц относится к постоянному ведению учёта.</p></div>
-      <div class="card-grid two rich-card-grid"><a class="glass-card rich-card" href="/nulevaya-otchetnost-ip/"><span>01</span><h3>Нулевая отчётность ИП — от 3 000 ₽</h3><p>Проверим режим и отсутствие операций, подготовим согласованные формы за нужный период.</p></a><a class="glass-card rich-card" href="/nulevaya-otchetnost-ooo/"><span>02</span><h3>Нулевая отчётность ООО — от 4 000 ₽</h3><p>Проверим обязанности компании и подготовим согласованный комплект нулевой отчётности.</p></a><a class="glass-card rich-card" href="/deklaraciya-usn/"><span>03</span><h3>Декларация УСН — от 5 000 ₽</h3><p>Отдельная декларация за выбранный период. Стоимость зависит от исходных данных.</p></a><a class="glass-card rich-card" href="/razbor-situacii/?service=one-off-report#quick-lead"><span>04</span><h3>Один РСВ или другая форма</h3><p>Укажите ИП или ООО, форму, период и сотрудников. Состав и цену этой задачи согласуем отдельно.</p></a><a class="glass-card rich-card" href="/sdacha-otchetnosti-ip/"><span>05</span><h3>Отчётность ИП</h3><p>Подготовка обязательных форм за конкретный период по режиму, операциям и сотрудникам.</p></a><a class="glass-card rich-card" href="/sdacha-otchetnosti-ooo/"><span>06</span><h3>Отчётность ООО</h3><p>Подготовка согласованных форм организации за нужный период.</p></a></div>
-    </section>
-<!-- d82-one-off:end -->
+
 <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
       <div class="section-header">
         <p class="eyebrow">Расчёт тарифа</p>
@@ -295,6 +291,22 @@
         <p class="form-note" role="status" aria-live="polite"></p>
       </form>
     </section>
+
+    <!-- d82-one-off:start -->
+    <section class="section page-rich-section accounting-oneoff" id="one-off-services" aria-labelledby="one-off-title">
+      <div class="section-header">
+        <p class="eyebrow">Разовые услуги</p>
+        <h2 id="one-off-title">Разовая отчётность для ИП</h2>
+        <p>Можно заказать отдельно. Ежемесячное сопровождение для этого не требуется.</p>
+      </div>
+      <ul class="accounting-oneoff-links">
+        <li><a href="/sdacha-otchetnosti-ip/"><strong>Отчётность ИП за период</strong><span>Согласованный комплект форм без месячного сопровождения.</span></a></li>
+        <li><a href="/nulevaya-otchetnost-ip/"><strong>Нулевая отчётность ИП — от 3 000 ₽</strong><span>Проверка обязанностей и подготовка нулевых форм.</span></a></li>
+        <li><a href="/deklaraciya-usn/"><strong>Декларация УСН — от 5 000 ₽</strong><span>Отдельная декларация за выбранный период.</span></a></li>
+        <li><a href="/razbor-situacii/?service=one-off-report#quick-lead"><strong>Один РСВ или другая форма</strong><span>Укажите форму и период — согласуем состав и цену.</span></a></li>
+      </ul>
+    </section>
+<!-- d82-one-off:end -->
     <section class="section page-rich-section region-service-section">
       <div class="section-header">
         <p class="eyebrow">Работа по Крыму</p>
