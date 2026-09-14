@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(import.meta.dirname, "..");
 const footer = fs.readFileSync(path.join(root, "internal/compact-footer.html"), "utf8").trim();
-export const footerStylesheet = "/assets/footer.css?v=2026091403";
+export const footerStylesheet = "/assets/footer.css?v=2026091404";
 
 export function applyCompactFooter(html) {
   const pattern = /<footer\b[^>]*class="[^"]*\bsite-footer\b[^"]*"[^>]*>[\s\S]*?<\/footer>/g;

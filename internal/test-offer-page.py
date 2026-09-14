@@ -105,8 +105,8 @@ class OfferPageTests(unittest.TestCase):
             if not tree.xpath('//*[@class="footer-links"]'):
                 continue
             self.assertEqual(len(tree.xpath('//footer//a[@class="footer-offer-link" and @href="/oferta/"]')), 1, name)
-            self.assertEqual(len(tree.xpath('//*[@class="footer-links"]/a')), 10, name)
-            self.assertIn("/assets/footer.css?v=2026091403", tree.xpath('//link[@rel="stylesheet"]/@href'), name)
+            self.assertEqual(len(tree.xpath('//*[@class="footer-links"]/a')), 12, name)
+            self.assertIn("/assets/footer.css?v=2026091404", tree.xpath('//link[@rel="stylesheet"]/@href'), name)
             self.assertIn("/assets/site.css?v=202609112002", tree.xpath('//link[@rel="stylesheet"]/@href'), name)
             checked += 1
         self.assertGreaterEqual(checked, 67)
