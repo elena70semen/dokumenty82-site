@@ -1,0 +1,9 @@
+[Unit]
+Description=Renew the certificate for the redesight IP preview
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/redesight-certbot/bin/certbot renew --cert-name 159.194.223.106 --quiet
+TimeoutStartSec=10min
