@@ -1,4 +1,4 @@
-/* White glass monochrome without photography, logos or decorative images.
+/* White glass monochrome with the AI receptionist portrait restored.
    Geometry, type, content and animation timing stay in the original styles.
    Never filter a page/panel: it traps fixed widgets and flattens nested glass. */
 :root {
@@ -38,8 +38,8 @@ body,
   background-color: #fff;
 }
 
-/* Keep the original document and its dimensions, suppress all image artwork. */
-img,
+/* Keep the original dimensions; the AI receptionist portrait remains visible. */
+img:not(.ai-chat-portrait),
 .yandex-map-embed iframe,
 .yandex-map-embed > ymaps,
 .yandex-map-embed > div {
