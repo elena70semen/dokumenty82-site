@@ -1,0 +1,130 @@
+{
+  "checked_at": "2026-09-14",
+  "phase": "after_both_link_fixes",
+  "original_broken_paths": [
+    "/buhgalterskoe-soprovozhdenie-ip/",
+    "/kadrovoe-soprovozhdenie/"
+  ],
+  "checks": [
+    {
+      "path": "/raschet-nalogovoy-nagruzki/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/raschet-nalogovoy-nagruzki/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=tax_load&utm_term=tax_load_calculation",
+      "final_url": "https://dokumenty82.ru/raschet-nalogovoy-nagruzki/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=tax_load&utm_term=tax_load_calculation"
+    },
+    {
+      "path": "/vosstanovlenie-buhucheta/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/vosstanovlenie-buhucheta/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=accounting_recovery&utm_term=accounting_recovery",
+      "final_url": "https://dokumenty82.ru/vosstanovlenie-buhucheta/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=accounting_recovery&utm_term=accounting_recovery"
+    },
+    {
+      "path": "/nedostovernost-yuridicheskogo-adresa/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=unreliable_address&utm_term=unreliable_legal_address",
+      "final_url": "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=unreliable_address&utm_term=unreliable_legal_address"
+    },
+    {
+      "path": "/kadry/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/kadry/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=hr_support&utm_term=hr_support",
+      "final_url": "https://dokumenty82.ru/kadry/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=hr_support&utm_term=hr_support"
+    },
+    {
+      "path": "/kadry/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/kadry/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=hr_documents&utm_term=hr_documents",
+      "final_url": "https://dokumenty82.ru/kadry/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=hr_documents&utm_term=hr_documents"
+    },
+    {
+      "path": "/soprovozhdenie/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/soprovozhdenie/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=support_ip&utm_term=accounting_support_ip",
+      "final_url": "https://dokumenty82.ru/soprovozhdenie/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=support_ip&utm_term=accounting_support_ip"
+    },
+    {
+      "path": "/buhgalterskoe-soprovozhdenie-ooo/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=support_ooo&utm_term=accounting_support_ooo",
+      "final_url": "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=support_ooo&utm_term=accounting_support_ooo"
+    },
+    {
+      "path": "/likvidaciya-ooo/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/likvidaciya-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=liquidation_ooo&utm_term=ooo_liquidation",
+      "final_url": "https://dokumenty82.ru/likvidaciya-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=liquidation_ooo&utm_term=ooo_liquidation"
+    },
+    {
+      "path": "/smena-direktora-ooo/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/smena-direktora-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=change_director&utm_term=change_director_ooo",
+      "final_url": "https://dokumenty82.ru/smena-direktora-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=change_director&utm_term=change_director_ooo"
+    },
+    {
+      "path": "/smena-yuridicheskogo-adresa-ooo/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=change_address&utm_term=change_address_ooo",
+      "final_url": "https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=change_address&utm_term=change_address_ooo"
+    },
+    {
+      "path": "/yuridicheskiy-adres-simferopol/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/yuridicheskiy-adres-simferopol/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=legal_address&utm_term=legal_address_simferopol",
+      "final_url": "https://dokumenty82.ru/yuridicheskiy-adres-simferopol/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=legal_address&utm_term=legal_address_simferopol"
+    },
+    {
+      "path": "/registraciya-ip/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/registraciya-ip/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=registration_ip&utm_term=ip_registration",
+      "final_url": "https://dokumenty82.ru/registraciya-ip/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=registration_ip&utm_term=ip_registration"
+    },
+    {
+      "path": "/registraciya-ooo/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/registraciya-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=registration_ooo&utm_term=ooo_registration",
+      "final_url": "https://dokumenty82.ru/registraciya-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=registration_ooo&utm_term=ooo_registration"
+    },
+    {
+      "path": "/nulevaya-otchetnost-ip/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/nulevaya-otchetnost-ip/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=zero_ip&utm_term=zero_reporting_ip",
+      "final_url": "https://dokumenty82.ru/nulevaya-otchetnost-ip/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=zero_ip&utm_term=zero_reporting_ip"
+    },
+    {
+      "path": "/nulevaya-otchetnost-ooo/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/nulevaya-otchetnost-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=zero_ooo&utm_term=zero_reporting_ooo",
+      "final_url": "https://dokumenty82.ru/nulevaya-otchetnost-ooo/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=zero_ooo&utm_term=zero_reporting_ooo"
+    },
+    {
+      "path": "/deklaraciya-usn/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/deklaraciya-usn/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=deklaraciya_usn&utm_term=usn_declaration",
+      "final_url": "https://dokumenty82.ru/deklaraciya-usn/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=deklaraciya_usn&utm_term=usn_declaration"
+    },
+    {
+      "path": "/dokumenty-dlya-banka-115-fz/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=bank_115fz&utm_term=bank_115fz_docs",
+      "final_url": "https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=bank_115fz&utm_term=bank_115fz_docs"
+    },
+    {
+      "path": "/otvet-na-zapros-banka/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/otvet-na-zapros-banka/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=otvet_bank&utm_term=bank_request",
+      "final_url": "https://dokumenty82.ru/otvet-na-zapros-banka/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=otvet_bank&utm_term=bank_request"
+    },
+    {
+      "path": "/otvet-na-trebovanie-ifns/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/otvet-na-trebovanie-ifns/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=otvet_ifns&utm_term=ifns_requirement",
+      "final_url": "https://dokumenty82.ru/otvet-na-trebovanie-ifns/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=otvet_ifns&utm_term=ifns_requirement"
+    },
+    {
+      "path": "/razbor-situacii/",
+      "status": 200,
+      "url": "https://dokumenty82.ru/razbor-situacii/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=razbor_situacii&utm_term=first_step",
+      "final_url": "https://dokumenty82.ru/razbor-situacii/?utm_source=yandex_business&utm_medium=local_profile&utm_campaign=services_catalog&utm_content=razbor_situacii&utm_term=first_step"
+    }
+  ]
+}
