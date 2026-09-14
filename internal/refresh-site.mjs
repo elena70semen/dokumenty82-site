@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { siteCssVersion } from "./site-style-version.mjs";
+import { applyCompactFooter } from "./apply-compact-footer.mjs";
 
 import { newsItems } from "./news-registry.mjs";
 
@@ -10,24 +11,6 @@ const footerOnly = process.argv.includes("--footer-only");
 const navigationOnly = process.argv.includes("--navigation-only");
 const themeOnly = process.argv.includes("--theme-only");
 const themeAssetVersion = "202608301430";
-const footerLinks = `<div class="footer-links">
-          <a href="/buhgalterskie-uslugi/">Бухгалтерия</a>
-          <a href="/uslugi/">Услуги</a>
-          <a href="/otchetnost/">Отчётность</a>
-          <a href="/otvet-na-zapros-banka/">Ответ банку по 115-ФЗ</a>
-          <a href="/otzyvy/">Отзывы</a>
-          <a href="/novosti/">Новости</a>
-          <a href="/ceny/">Цены</a>
-          <a href="/kontakty/">Контакты</a>
-          <a href="/rekvizity/">Реквизиты</a>
-        </div>`;
-const footerNavigation = `<nav aria-label="Разделы сайта">
-        <strong>Разделы</strong>
-        ${footerLinks}
-        <a class="button button-lime footer-policy-button" href="/policy/">Конфиденциальность и безопасность</a>
-        <a class="footer-offer-link" href="/oferta/">Публичная оферта</a>
-      </nav>`;
-const footerButtons = `<div class="footer-buttons"><a class="button button-lime" href="tel:+79789987222">Позвонить</a><a class="button button-ghost" href="/kontakty/">Контакты</a></div>`;
 const faviconLinks = `<link rel="icon" href="https://dokumenty82.ru/favicon.png" type="image/png" sizes="120x120" />
     <link rel="icon" href="https://dokumenty82.ru/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="shortcut icon" href="https://dokumenty82.ru/favicon.ico" type="image/x-icon" />
@@ -670,8 +653,7 @@ for (const file of walk(root)) {
     }
     continue;
   }
-  html = html.replace(/<nav aria-label="Разделы сайта">[\s\S]*?<\/nav>/g, footerNavigation);
-  html = html.replace(/<div class="footer-buttons">[\s\S]*?<\/div>/g, footerButtons);
+  html = applyCompactFooter(html);
   html = html.replace(
     /<a class="[^"]*" href="\/">Документы<\/a>/g,
     `<a class="${route === "/uslugi/" ? "is-active" : ""}" href="/uslugi/">Услуги</a>`,
