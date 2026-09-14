@@ -1,0 +1,121 @@
+/* White glass monochrome without photography, logos or decorative images.
+   Geometry, type, content and animation timing stay in the original styles.
+   Never filter a page/panel: it traps fixed widgets and flattens nested glass. */
+:root {
+  --bg: #fff;
+  --text: #202020;
+  --muted: rgba(32, 32, 32, .78);
+  --gold: #242424;
+  --lime: #303030;
+  --section-title: #242424;
+  --plum: rgba(255, 255, 255, .68);
+  --plum-border: rgba(0, 0, 0, .2);
+  --surface: rgba(255, 255, 255, .76);
+  --surface-soft: rgba(255, 255, 255, .64);
+  --surface-strong: rgba(255, 255, 255, .84);
+  accent-color: #303030;
+  caret-color: #202020;
+}
+
+/* theme-toggle.js currently fixes the stored theme key to dark; only its
+   presentation is overridden here, preserving the existing script behavior. */
+html { color-scheme: light !important; }
+::selection { color: #fff; background: #303030; }
+
+main :is(h1, h2, h3) {
+  color: #202020;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+}
+
+/* Solid white canvas beneath translucent surfaces. */
+body,
+.calendar-promo,
+.calendar-hero-status,
+.tax-calendar-entry.is-next,
+.login-photo {
+  background-color: #fff;
+}
+
+/* Keep the original document and its dimensions, suppress all image artwork. */
+img,
+.yandex-map-embed iframe,
+.yandex-map-embed > ymaps,
+.yandex-map-embed > div {
+  visibility: hidden;
+}
+
+/* Functional vector symbols and rating stars remain neutral. */
+svg,
+iframe {
+  filter: grayscale(1);
+}
+
+/* Primary actions and messenger tiles use transparent white glass. */
+.button-lime,
+.messenger-telegram,
+.messenger-max,
+.primary-button,
+.cookie-notice button,
+.ai-chat-actions button,
+.ai-chat-lead button,
+.quick-page-nav button,
+.ai-chat-widget,
+.client-portal-widget {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, .12)), rgba(255, 255, 255, .6);
+  border-color: rgba(0, 0, 0, .24);
+  color: #202020;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .1), inset 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+:is(.button-lime, .messenger-telegram, .messenger-max, .primary-button, .ai-chat-widget, .client-portal-widget):is(:hover, :focus-visible),
+.cookie-notice button:is(:hover, :focus-visible),
+.ai-chat-actions button:is(:hover, :focus-visible),
+.ai-chat-lead button:is(:hover, :focus-visible),
+.quick-page-nav button:is(:hover, :focus-visible) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .65), rgba(255, 255, 255, .2)), rgba(255, 255, 255, .76);
+  border-color: rgba(0, 0, 0, .5);
+  color: #111;
+}
+
+:is(.button-lime, .messenger, .primary-button, .ai-chat-widget, .client-portal-widget):active,
+.quick-page-nav button:active {
+  background-color: rgba(255, 255, 255, .94);
+}
+
+.messenger svg [fill="#fff"] { fill: currentColor; }
+.messenger svg circle[fill] { fill: #fff; }
+
+/* Native controls and keyboard focus must not fall back to browser blue. */
+:is(a, button, input, textarea, select, summary):focus-visible {
+  outline: 2px solid #303030;
+  outline-offset: 3px;
+}
+
+.ai-chat-panel :is(button, input, textarea):focus-visible,
+.cookie-notice button:focus-visible {
+  outline: 2px solid #303030;
+  outline-offset: 3px;
+}
+
+.ai-chat-panel :is(input, textarea)::placeholder,
+.auth-form input::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #202020;
+  -webkit-box-shadow: inset 0 0 0 1000px #fff;
+  caret-color: #202020;
+}
+
+/* Long legal copy retains its layout with a translucent reading surface. */
+.offer-page .offer-document {
+  background: rgba(255, 255, 255, .76);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}

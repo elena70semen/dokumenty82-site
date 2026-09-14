@@ -42,7 +42,7 @@
 .accounting-overview .accounting-scope-note {
   margin-top: 1.25rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(210, 180, 110, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
   color: var(--muted);
 }
 
