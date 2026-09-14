@@ -1,4 +1,4 @@
-/* White glass monochrome with the AI receptionist portrait restored.
+/* White glass monochrome with the AI receptionist portrait and office map.
    Geometry, type, content and animation timing stay in the original styles.
    Never filter a page/panel: it traps fixed widgets and flattens nested glass. */
 :root {
@@ -39,10 +39,7 @@ body,
 }
 
 /* Keep the original dimensions; the AI receptionist portrait remains visible. */
-img:not(.ai-chat-portrait),
-.yandex-map-embed iframe,
-.yandex-map-embed > ymaps,
-.yandex-map-embed > div {
+img:not(.ai-chat-portrait) {
   visibility: hidden;
 }
 
@@ -51,6 +48,8 @@ svg,
 iframe {
   filter: grayscale(1);
 }
+
+.yandex-map-embed iframe { filter: none; }
 
 /* Primary actions and messenger tiles use transparent white glass. */
 .button-lime,
@@ -118,4 +117,52 @@ input:-webkit-autofill:focus {
   background: rgba(255, 255, 255, .76);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+}
+
+/* A bright upper bevel and a deeper lower shadow give white glass thickness. */
+:root body main :is(.section, .glass-panel),
+:root body .site-footer {
+  border-color: rgba(255, 255, 255, .98) rgba(0, 0, 0, .18) rgba(0, 0, 0, .25) rgba(255, 255, 255, .92);
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, .98), transparent 54%),
+    linear-gradient(135deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .32) 46%, rgba(255, 255, 255, .76)),
+    rgba(255, 255, 255, .68);
+  box-shadow:
+    0 32px 52px -24px rgba(0, 0, 0, .34),
+    0 12px 24px -14px rgba(0, 0, 0, .24),
+    0 2px 4px rgba(0, 0, 0, .06),
+    inset 0 2px 0 #fff,
+    inset 2px 0 0 rgba(255, 255, 255, .86),
+    inset 0 -2px 0 rgba(0, 0, 0, .07),
+    inset 0 -20px 32px rgba(0, 0, 0, .035);
+}
+
+/* Nested cards sit visibly above their parent panel without changing layout. */
+:root body main :is(.glass-card, .compact-list a, .compact-list .compact-row,
+  .home-service-shortcuts a, .insight-link-list a, .news-card, .news-article,
+  .news-related, .lead-capture-form, .service-tree-group, .tax-calendar-entry) {
+  border-color: rgba(255, 255, 255, .98) rgba(0, 0, 0, .17) rgba(0, 0, 0, .23) rgba(255, 255, 255, .9);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .28) 52%, rgba(255, 255, 255, .74)),
+    rgba(255, 255, 255, .66);
+  box-shadow:
+    0 16px 24px -14px rgba(0, 0, 0, .34),
+    0 5px 10px -5px rgba(0, 0, 0, .16),
+    inset 0 2px 0 #fff,
+    inset 1px 0 0 rgba(255, 255, 255, .9),
+    inset 0 -2px 0 rgba(0, 0, 0, .07),
+    inset 0 -12px 24px rgba(0, 0, 0, .035);
+  transition-property: border-color, background-color, color, box-shadow, transform;
+}
+
+:root body main :is(.glass-card, .compact-list a, .home-service-shortcuts a,
+  .insight-link-list a, .news-card):is(:hover, :focus-visible) {
+  border-color: #fff rgba(0, 0, 0, .23) rgba(0, 0, 0, .3) rgba(255, 255, 255, .96);
+  box-shadow:
+    0 22px 30px -14px rgba(0, 0, 0, .38),
+    0 8px 14px -7px rgba(0, 0, 0, .2),
+    inset 0 2px 0 #fff,
+    inset 1px 0 0 rgba(255, 255, 255, .96),
+    inset 0 -2px 0 rgba(0, 0, 0, .08),
+    inset 0 -12px 24px rgba(0, 0, 0, .025);
 }
