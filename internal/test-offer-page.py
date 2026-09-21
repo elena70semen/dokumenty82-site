@@ -104,8 +104,12 @@ class OfferPageTests(unittest.TestCase):
             tree = html.parse(str(ROOT / name))
             if not tree.xpath('//*[@class="footer-links"]'):
                 continue
-            self.assertEqual(len(tree.xpath('//footer//a[@class="footer-offer-link" and @href="/oferta/"]')), 1, name)
-            self.assertEqual(len(tree.xpath('//*[@class="footer-links"]/a')), 12, name)
+            if tree.xpath('//footer[contains(concat(" ", normalize-space(@class), " "), " db-footer ")]'):
+                self.assertEqual(len(tree.xpath('//footer//a[@data-link="footer.19" and @href="/oferta/"]')), 1, name)
+                self.assertEqual(len(tree.xpath('//*[@class="footer-links"]//a')), 12, name)
+            else:
+                self.assertEqual(len(tree.xpath('//footer//a[@class="footer-offer-link" and @href="/oferta/"]')), 1, name)
+                self.assertEqual(len(tree.xpath('//*[@class="footer-links"]/a')), 12, name)
             self.assertTrue(any(href.split("?", 1)[0] == "/assets/footer.css"
                                 for href in tree.xpath('//link[@rel="stylesheet"]/@href')), name)
             self.assertTrue(any(href.split("?", 1)[0] == "/assets/site.css"

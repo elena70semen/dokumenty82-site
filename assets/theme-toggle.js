@@ -3,13 +3,13 @@
 
   const root = document.documentElement;
 
-  root.dataset.theme = "dark";
-  root.style.colorScheme = "dark";
+  root.dataset.theme = "light";
+  root.style.colorScheme = "light";
 
   try {
-    localStorage.setItem("d82_theme", "dark");
+    localStorage.setItem("d82_theme", "light");
   } catch (_error) {
-    // Dark mode remains active when storage is unavailable.
+    // The light presentation remains active when storage is unavailable.
   }
 
   const removeThemeControls = () => {
