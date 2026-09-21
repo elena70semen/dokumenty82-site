@@ -1,0 +1,299 @@
+/* Main-only precision pass v2.0.
+   Approved .uh header and compact .db-footer retain their original markup/assets/styles.
+   These rules are a review component layer, not a replacement for production templates. */
+#main{
+ --space-unit:4px;--section-space:80px;--card-space:24px;--card-gap:20px;
+ --head-size:2.375rem;--body-size:1rem;--copy-size:.96875rem;--title-size:1.25rem;
+ --soft-shadow:0 2px 4px -2px #0B24400C,0 12px 22px -20px #0B244035;
+ --hover-shadow:0 3px 7px -4px #0B244026,0 18px 30px -22px #0B24403A;
+ --ease:cubic-bezier(.2,.7,.3,1);--ui-time:160ms;
+ font-size:1rem;
+}
+#main :where([data-copy],.card-copy,.card-title,.hero-copy,.fallback>div){min-width:0}
+#main :where([data-copy]){overflow-wrap:break-word}
+#main :where(a,button){scroll-margin-block:24px 90px}
+#main a:focus-visible{outline:3px solid #007783;outline-offset:4px;z-index:2}
+#main .button{min-height:54px;font-size:.9375rem;line-height:1.4;padding:13px 22px;gap:18px;border-radius:11px;transition:background var(--ui-time),border-color var(--ui-time),box-shadow var(--ui-time)}
+#main .button-primary{box-shadow:0 4px 12px -9px #0B24404D}
+#main .button-primary:hover{background:#153C59;box-shadow:var(--hover-shadow)}
+#main .button-primary:active{background:#061A2C;box-shadow:none}
+#main .button-secondary{background:#fff;border-color:#718D9F}
+#main .button-secondary:hover{background:#ECF7F9;border-color:#007783}
+#main .button-secondary:active{background:#DFEFF2}
+#main .button .icon{width:19px;height:19px}
+/* Hero. No redrawing, no new commercial claims. Original H1 and slogan retained. */
+#main .hero{padding:28px 24px 20px;background:linear-gradient(180deg,#EFF6FA 0%,#FFF 94%)}
+#main .hero-frame{max-width:1536px;border-radius:28px;background:linear-gradient(115deg,#FFFFFF 41%,#F1F9FC);border-color:#D7E7F0;box-shadow:0 10px 28px -24px #0B244033;overflow:hidden}
+#main .hero-grid{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1.12fr);gap:28px;align-items:center;padding-block:48px}
+#main .home-location{font-size:1rem;line-height:1.6;font-weight:650;margin-bottom:22px;max-width:34rem}
+#main .hero-slogan{font-size:2.5rem;font-weight:700;line-height:1.13;letter-spacing:-.037em;color:#0B2440;max-width:35rem;overflow-wrap:normal}
+#main .hero-slogan span{color:#007F99}
+#main .hero-lead{font-size:1rem;line-height:1.75;margin-top:24px;max-width:35rem;color:#506A81}
+#main .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;align-items:stretch}
+#main .hero-geo{font-size:.8125rem;line-height:1.65;margin-top:22px;align-items:flex-start}
+#main .hero-geo .icon{width:16px;height:16px;margin-top:3px}
+#main .hero-figure{margin:0;min-width:0;align-self:center}
+#main .hero-figure picture{display:block;position:relative;aspect-ratio:970/599;mask-image:linear-gradient(90deg,transparent,#000 2.5%,#000 98%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 2.5%,#000 98%,transparent)}
+#main .hero-art{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+#main .hero-figure figcaption{display:grid;grid-template-columns:.76fr 1.25fr 1.15fr;gap:14px;max-width:100%;margin-top:17px;padding:14px 4px 0;border-top:1px solid #DDEAF1;font-size:.75rem;line-height:1.55;text-align:left;color:#506A81}
+#main .hero-figure figcaption span{position:relative;padding-left:13px;min-width:0}
+#main .hero-figure figcaption span::before{content:'';position:absolute;width:5px;height:5px;left:0;top:.55em;border-radius:50%;background:#1FB6C1}
+#main .hero-figure figcaption i{display:none}
+/* Hierarchy: measured reading widths instead of a full-width ribbon of small text. */
+#main .u-section{padding-block:var(--section-space);border-top:1px solid #EAF1F5}
+#main .u-first{background:#fff;border-top:0;padding-top:60px}
+#main .u-services{background:#F4F9FC}
+#main .u-process{background:#fff}
+#main .u-provider{background:#F3F9FC}
+#main .block-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:64px;row-gap:16px;align-items:end;max-width:100%;margin:0 0 32px}
+#main .eyebrow{grid-column:1;grid-row:1;justify-self:start;width:max-content;max-width:100%;font-size:.6875rem;font-weight:650;line-height:1.55;letter-spacing:.075em;padding:7px 11px;border-radius:8px;background:#ECF8FA;border-color:#C6E4E9}
+#main .block-head h2{grid-column:1;grid-row:2;margin:0;font-size:var(--head-size);font-weight:700;line-height:1.16;letter-spacing:-.035em;max-width:36rem;overflow-wrap:normal;text-wrap:pretty}
+#main .block-head .intro{grid-column:2;grid-row:2;margin:0;font-size:1rem;line-height:1.75;max-width:33rem;color:#506A81;align-self:end}
+#main .card-title{font-size:var(--title-size);line-height:1.38;font-weight:650;letter-spacing:-.02em;color:#0B2440;display:block}
+#main .card-description{font-size:var(--copy-size);line-height:1.7;color:#506A81;display:block;margin:0;overflow-wrap:break-word}
+#main .price{display:block;font-size:1.1875rem;line-height:1.5;font-weight:650;color:#007783;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:0}
+#main .price-variable{font-size:.9375rem;line-height:1.6;font-weight:400;letter-spacing:0;color:#506A81;max-width:none}
+#main .money{white-space:nowrap}
+#main .icon-tile{width:68px;height:72px;display:grid;place-items:center;border:1px solid #DCEBF3;border-radius:16px;background:linear-gradient(145deg,#F0F8FC,#FCFEFF);position:relative;flex:none;align-self:start}
+#main .icon-tile img{width:62px;height:66px;object-fit:contain;mix-blend-mode:multiply}
+#main :is(.choice-card,.service-card,.provider-card){position:relative;display:grid;height:100%;min-height:0;padding:var(--card-space);gap:12px 20px;border:1px solid #D6E5EE;border-radius:20px;background:#FFF;box-shadow:var(--soft-shadow);transition:border-color var(--ui-time),box-shadow var(--ui-time),background var(--ui-time);isolation:isolate}
+#main .card-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid #CEE6ED;border-radius:10px;background:#EFF8FA;color:#007783;align-self:end;justify-self:end;flex:none;transition:background var(--ui-time),border-color var(--ui-time),color var(--ui-time)}
+#main .card-arrow .icon{width:18px;height:18px;transition:transform var(--ui-time) var(--ease)}
+@media(hover:hover) and (pointer:fine){
+ #main :is(.choice-card,.service-card,.provider-card):hover{border-color:#91C6D1;box-shadow:var(--hover-shadow)}
+ #main :is(.choice-card,.service-card,.provider-card):hover .card-arrow{background:#0B2440;border-color:#0B2440;color:#A5EBED}
+ #main :is(.choice-card,.service-card,.provider-card):hover .card-arrow .icon{transform:translateX(1px)}
+}
+#main :is(.choice-card,.service-card,.provider-card):focus-visible{border-color:#007783;box-shadow:none}
+#main :is(.choice-card,.service-card,.provider-card):focus-visible .card-arrow{background:#0B2440;color:#A5EBED;border-color:#0B2440}
+#main :is(.choice-card,.service-card,.provider-card):active{border-color:#72A8B7;box-shadow:none}
+/* First step: short route cards, single target each. Missing prices stay missing. */
+#main .choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#main .choice-card{grid-template-columns:68px minmax(0,1fr) 34px;grid-template-rows:auto 1fr auto;align-items:start}
+#main .choice-card .icon-tile{grid-column:1;grid-row:1/3}
+#main .choice-card .card-copy{display:contents}
+#main .choice-card .card-title{grid-column:2/-1;grid-row:1}
+#main .choice-card .card-description{grid-column:2/-1;grid-row:2}
+#main .choice-card .price{grid-column:2;grid-row:3;align-self:end}
+#main .choice-card .card-arrow{grid-column:3;grid-row:3}
+#main .fallback{display:grid;grid-template-columns:48px minmax(0,1fr) auto;column-gap:18px;row-gap:18px;align-items:center;padding:24px 28px;margin-top:24px;border:1px solid #D6E8EF;background:#F4FAFC;border-radius:20px}
+#main .fallback-icon{width:48px;height:48px;border-radius:14px;background:#E0F2F6}
+#main .fallback-icon .icon{width:26px;height:26px}
+#main .fallback-title{font-size:1.1875rem;line-height:1.4;font-weight:650;letter-spacing:-.02em}
+#main .fallback-text{font-size:.9375rem;line-height:1.65;margin-top:6px}
+#main .fallback .button{margin:0;min-width:200px}
+/* Ten services. A price rail separates tariff/terms from the description. */
+#main .services-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#main .service-card{grid-template-columns:68px minmax(0,1fr);grid-template-rows:auto 1fr auto;gap:12px 20px}
+#main .service-card .card-copy{display:contents}
+#main .service-card .icon-tile{grid-column:1;grid-row:1/3}
+#main .service-card .card-title{grid-column:2;grid-row:1}
+#main .service-card .card-description{grid-column:2;grid-row:2;margin:0}
+#main .card-foot{grid-column:2;grid-row:3;display:grid;grid-template-columns:minmax(0,1fr) 34px;align-items:center;gap:14px;margin:4px 0 0;padding-top:14px;border-top:1px solid #E8EFF4}
+#main .card-foot .price{margin:0;align-self:center}
+#main .card-foot .card-arrow{align-self:center}
+/* Four stages. Intrinsic grid rows, no fixed height for the headings. */
+#main .process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+#main .step{display:grid;grid-template-rows:auto 1fr;gap:20px;min-width:0}
+#main .step-rail{height:42px;padding:0;display:flex;align-items:center;position:relative}
+#main .step-number{width:42px;height:42px;border:1px solid #A4CFD8;color:#007783;background:#fff;border-radius:50%;font-size:.8125rem;line-height:1;font-variant-numeric:tabular-nums;display:grid;place-items:center;flex:none}
+#main .step:last-child .step-number{background:#0B2440;color:#fff;border-color:#0B2440}
+#main .step:not(:last-child) .step-rail::after{content:'';position:absolute;left:56px;right:-10px;top:21px;width:auto;height:1px;background:#A8D3DC}
+#main .step:not(:last-child) .step-rail::before{content:'';position:absolute;right:-9px;top:18px;width:7px;height:7px;border-top:1px solid #6AADB9;border-right:1px solid #6AADB9;transform:rotate(45deg)}
+#main .step-card{display:grid;grid-template-rows:auto auto 1fr;align-content:start;gap:18px;padding:24px;border:1px solid #D6E5EE;border-radius:20px;background:#fff;box-shadow:var(--soft-shadow);min-width:0}
+#main .step-card .icon-tile{width:68px;height:72px}
+#main .step-card .icon-tile img{width:66px;height:68px}
+#main .step-card h3{font-size:1.25rem;line-height:1.38;font-weight:650;letter-spacing:-.025em;color:#0B2440;margin:0;min-height:0;overflow-wrap:break-word}
+#main .step-card .card-description{margin:0}
+/* Provider. Keep four original items. Identifiers are selectable plain text. */
+#main .provider-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#main .provider-card{grid-template-columns:68px minmax(0,1fr);grid-template-rows:auto 1fr auto;gap:12px 20px}
+#main .provider-card .icon-tile{grid-column:1;grid-row:1/3}
+#main .provider-card .card-copy{display:contents}
+#main .provider-card .card-title{grid-column:2;grid-row:1}
+#main .provider-card .card-description{grid-column:2;grid-row:2}
+#main .provider-card .card-arrow{grid-column:2;grid-row:3}
+#main .provider-card-primary{border-color:#AAD8E3;background:linear-gradient(115deg,#F8FDFF,#FFF 70%)}
+#main .identity-token{font-variant-numeric:tabular-nums;white-space:normal;color:#31566F}
+/* Optional shared rows align peer cards across a pair without clipping text.
+   Accessible names are retained on original title/price nodes. */
+@supports(grid-template-rows:subgrid){
+ @media(min-width:700px){
+  #main :where(.choice-grid,.services-grid,.provider-grid)>li{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:12px}
+  #main :is(.choice-card,.service-card,.provider-card){grid-row:span 3;grid-template-rows:subgrid;row-gap:12px}
+  #main .process-grid .step{grid-row:span 4;grid-template-rows:subgrid;row-gap:18px}
+  #main .process-grid .step-rail{grid-row:1}
+  #main .process-grid .step-card{grid-row:2/5;grid-template-rows:subgrid;row-gap:18px}
+ }
+}
+/* Media failure. No false success message or invented staff/ratings. */
+#main .icon-tile>.asset-fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:#568997}
+#main .asset-fallback .icon{width:28px;height:28px}
+#main .icon-tile.media-failed>img{visibility:hidden}
+#main .icon-tile.media-failed>.asset-fallback{display:flex}
+#main .hero-image-fallback{display:none;position:absolute;inset:0;background:linear-gradient(145deg,#F5FBFC,#EAF5F8);border:1px solid #D7E8F0;border-radius:16px;align-items:center;justify-content:center;color:#446E85}
+#main .hero-image-fallback .icon{width:72px;height:72px}
+#main .hero-figure.media-failed picture{opacity:0}
+#main .hero-figure.media-failed .hero-image-fallback{display:flex}
+#main .hero-media{position:relative;min-width:0}
+.back-top{transition:opacity 120ms}
+.back-top.is-focus-obstruction{opacity:0;visibility:hidden;pointer-events:none}
+/* Medium screens retain two-column task selection, not narrow paragraph columns. */
+@media(max-width:1279px){
+ #main{--section-space:64px;--head-size:2.125rem;--card-space:22px;--title-size:1.1875rem}
+ #main .hero-grid{gap:22px;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);padding-block:42px}
+ #main .hero-slogan{font-size:2.25rem}
+ #main .hero-lead{font-size:.96875rem}
+ #main .hero-actions .button{padding-inline:17px;gap:12px;font-size:.875rem}
+ #main .block-head{column-gap:40px}
+ #main .icon-tile,#main .step-card .icon-tile{width:62px;height:66px;border-radius:15px}
+ #main .icon-tile img{width:58px;height:62px}
+ #main .step-card .icon-tile img{width:60px;height:62px}
+ #main :is(.service-card,.provider-card){grid-template-columns:62px minmax(0,1fr);column-gap:18px}
+ #main .choice-card{grid-template-columns:62px minmax(0,1fr) 34px;column-gap:18px}
+ #main .process-grid{gap:20px}
+ #main .step-card{padding:22px 20px}
+ #main .step-card h3{font-size:1.1875rem}
+}
+@media(max-width:999px){
+ #main .hero-grid{display:grid;grid-template-columns:1fr;padding-block:36px;gap:26px}
+ #main .hero-copy{max-width:100%}
+ #main .hero-slogan{font-size:2.625rem;max-width:42rem}
+ #main .hero-lead{font-size:1rem;max-width:43rem}
+ #main .hero-figure{max-width:710px;width:100%;margin:0 auto}
+ #main .hero-figure picture{mask-image:none;-webkit-mask-image:none}
+ #main .hero-figure figcaption{font-size:.8125rem}
+ #main .block-head{grid-template-columns:minmax(0,1fr);gap:14px;max-width:43rem;margin-bottom:28px}
+ #main .eyebrow{grid-row:1;grid-column:1}
+ #main .block-head h2{grid-row:2;grid-column:1}
+ #main .block-head .intro{grid-row:3;grid-column:1;max-width:100%}
+ #main :where(.service-card,.provider-card,.choice-card){grid-template-columns:52px minmax(0,1fr);gap:14px}
+ #main .icon-tile{width:52px;height:56px;border-radius:13px}
+ #main .icon-tile img{width:48px;height:52px}
+ #main :is(.service-card,.choice-card,.provider-card) .icon-tile{grid-column:1;grid-row:1}
+ #main :is(.service-card,.choice-card,.provider-card) .card-title{grid-column:2;grid-row:1;align-self:center}
+ #main :is(.service-card,.choice-card,.provider-card) .card-description{grid-column:1/-1;grid-row:2}
+ #main .service-card .card-foot{grid-column:1/-1;grid-row:3}
+ #main .choice-card .price{grid-column:1/-1;grid-row:3;padding-right:42px;align-self:center}
+ #main :is(.choice-card,.provider-card) .card-arrow{grid-column:2;grid-row:3}
+ #main .fallback{grid-template-columns:44px minmax(0,1fr) auto;padding:22px;gap:15px}
+ #main .fallback-icon{width:44px;height:44px}
+ #main .fallback .button{min-width:175px}
+ #main .process-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+ #main .step-card{padding:24px}
+ #main .step:nth-child(2) .step-rail::after,#main .step:nth-child(2) .step-rail::before{display:none}
+}
+@media(max-width:699px){
+ #main{--section-space:48px;--head-size:1.875rem;--card-space:21px;--copy-size:.9375rem;--title-size:1.1875rem}
+ #main .hero{padding:18px 12px 12px}
+ #main .hero-frame{border-radius:24px}
+ #main .hero-grid{width:calc(100% - 32px);padding-block:28px 22px;gap:26px}
+ #main .home-location{font-size:.875rem;line-height:1.6;margin-bottom:18px;max-width:none}
+ #main .hero-slogan{font-size:clamp(1.875rem,6.4vw,2.5rem);line-height:1.15;letter-spacing:-.035em;max-width:none;overflow-wrap:break-word}
+ #main .hero-slogan br{display:none}
+ #main .hero-lead{font-size:.96875rem;line-height:1.72;margin-top:20px}
+ #main .hero-actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:24px}
+ #main .hero-actions .button{font-size:.9375rem;min-height:52px;padding:13px 16px;justify-content:space-between}
+ #main .hero-geo{font-size:.75rem;margin-top:17px;line-height:1.65}
+ #main .hero-figure picture{aspect-ratio:697/444;mask-image:none;-webkit-mask-image:none}
+ #main .hero-art{border-radius:13px}
+ #main .hero-figure figcaption{display:grid;grid-template-columns:1fr;gap:7px;padding:14px 0 0;margin-top:12px;font-size:.8125rem;text-align:left}
+ #main .hero-figure figcaption span{padding-left:15px;flex-basis:auto;text-align:left}
+ #main .hero-figure figcaption span:last-child{flex-basis:auto;text-align:left}
+ #main .u-first{padding-top:36px}
+ #main .block-head{margin-bottom:24px;row-gap:14px}
+ #main .eyebrow{font-size:.625rem;line-height:1.6;letter-spacing:.07em;padding:6px 10px}
+ #main .block-head h2{font-size:var(--head-size);line-height:1.17;letter-spacing:-.03em;overflow-wrap:break-word}
+ #main .block-head .intro{font-size:.96875rem;line-height:1.72}
+ #main .choice-grid,#main .services-grid,#main .provider-grid{display:grid;grid-template-columns:1fr;gap:14px}
+ #main :where(.choice-grid,.services-grid,.provider-grid)>li{display:list-item;grid-row:auto}
+ #main :is(.choice-card,.service-card,.provider-card){grid-row:auto;grid-template-columns:52px minmax(0,1fr);grid-template-rows:auto auto auto;gap:14px 16px;padding:21px;border-radius:18px}
+ #main .card-title{font-size:var(--title-size);line-height:1.4}
+ #main .card-description{font-size:var(--copy-size);line-height:1.72}
+ #main .price{font-size:1.125rem;line-height:1.5}
+ #main .price-variable{font-size:.875rem;line-height:1.65}
+ #main .card-foot{margin-top:0;padding-top:12px;grid-template-columns:minmax(0,1fr) 32px;gap:12px}
+ #main .card-arrow{width:32px;height:32px;border-radius:9px}
+ #main .card-arrow .icon{width:18px;height:18px}
+ #main .fallback{grid-template-columns:44px minmax(0,1fr);padding:22px 20px;gap:16px;margin-top:20px;border-radius:18px}
+ #main .fallback-title{font-size:1.125rem;line-height:1.4}
+ #main .fallback-text{font-size:.9375rem;line-height:1.65;margin-top:7px}
+ #main .fallback .button{grid-column:1/-1;min-width:0;width:100%;margin:0;justify-content:space-between;font-size:.9375rem}
+ #main .process-grid{display:grid;grid-template-columns:1fr;gap:18px;margin:0}
+ #main .step{display:grid;grid-row:auto;grid-template-columns:28px minmax(0,1fr);grid-template-rows:auto;gap:12px;margin:0}
+ #main .step-rail{grid-column:1;grid-row:1;height:100%;padding-top:21px;align-items:start}
+ #main .step-number{width:28px;height:28px;font-size:.6875rem;position:relative;z-index:1}
+ #main .step:not(:last-child) .step-rail::after{display:block;left:13px;right:auto;top:56px;bottom:-31px;width:1px;height:auto}
+ #main .step:not(:last-child) .step-rail::before{display:none}
+ #main .step-card{grid-column:2;grid-row:1;grid-template-columns:52px minmax(0,1fr);grid-template-rows:auto auto;gap:16px;padding:21px 18px;border-radius:18px}
+ #main .step-card .icon-tile{grid-row:1;grid-column:1;width:52px;height:56px;border-radius:13px}
+ #main .step-card .icon-tile img{width:50px;height:52px}
+ #main .step-card h3{grid-column:2;grid-row:1;margin:0;align-self:center;font-size:1.125rem;line-height:1.42;min-height:0}
+ #main .step-card .card-description{grid-column:1/-1;grid-row:2;margin:0;font-size:.9375rem;line-height:1.72}
+}
+@media(max-width:359px){
+ #main{--head-size:1.6875rem}
+ #main .hero-grid{width:calc(100% - 28px)}
+ #main .hero-slogan{font-size:1.75rem}
+ #main :is(.choice-card,.service-card,.provider-card){padding:20px;grid-template-columns:48px minmax(0,1fr);column-gap:14px}
+ #main .icon-tile{width:48px;height:52px;border-radius:12px}
+ #main .icon-tile img{width:45px;height:49px}
+ #main .card-title{font-size:1.0625rem}
+ #main .step{grid-template-columns:26px minmax(0,1fr);gap:10px}
+ #main .step-number{width:26px;height:26px}
+ #main .step-card{grid-template-columns:1fr;padding:21px 18px;gap:13px}
+ #main .step-card .icon-tile{grid-column:1;grid-row:1}
+ #main .step-card h3{grid-column:1;grid-row:2}
+ #main .step-card .card-description{grid-column:1;grid-row:3}
+ #main .step:not(:last-child) .step-rail::after{left:12px;top:54px}
+}
+@media(prefers-reduced-motion:reduce){#main *,#main *::before,#main *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}#main .card-arrow .icon{transform:none!important}}
+@media(forced-colors:active){
+ #main :where(.hero,.u-section,.hero-frame,.choice-card,.service-card,.provider-card,.step-card,.fallback){background:Canvas;color:CanvasText;box-shadow:none;border-color:CanvasText}
+ #main :where(h1,h2,h3,.hero-slogan,.hero-slogan span,.card-title,.price,.card-description,.intro,.hero-lead,.hero-geo){color:CanvasText}
+ #main :where(.button,.card-arrow,.icon-tile){border:1px solid ButtonText;color:ButtonText;background:ButtonFace}
+ #main .hero-grid{grid-template-columns:1fr}#main .hero-figure{display:none}
+ #main a:focus-visible{outline-color:Highlight}
+}
+@media print{
+ #main .hero-grid{display:block;width:100%;padding-block:16px}#main .hero-figure{display:none}#main .hero{padding:0}#main .hero-frame{border:0;box-shadow:none}
+ #main .u-section{padding-block:24px;background:white;break-inside:auto}#main .block-head{display:block;margin-bottom:16px}#main .block-head .intro{margin-top:10px}
+ #main .choice-grid,#main .services-grid,#main .provider-grid,#main .process-grid{display:block}
+ #main .choice-card,#main .service-card,#main .provider-card,#main .step{break-inside:avoid;margin-bottom:14px;box-shadow:none;grid-template-rows:auto auto auto;grid-row:auto}
+ #main .step{display:block}#main .step-rail{display:none}#main .step-card{display:block;box-shadow:none}#main .step-card h3{margin-block:12px}
+ #main .card-foot{grid-row:3}
+}
+
+/* Final optical pass, keeping the original mobile lead legible without an extra forced line. */
+@media(max-width:699px){
+ #main .hero-lead{font-size:.9375rem;line-height:1.72}
+ #main .hero-figure figcaption{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;font-size:.75rem;line-height:1.6}
+ #main .hero-figure figcaption span{padding-left:0;padding-top:11px}
+ #main .hero-figure figcaption span::before{top:0;left:0}
+}
+@media(max-width:359px){
+ #main .hero-figure figcaption{grid-template-columns:1fr;gap:7px}
+ #main .hero-figure figcaption span{padding-top:0;padding-left:13px}
+ #main .hero-figure figcaption span::before{top:.55em}
+}
+
+/* Flexible labels and explicit footer cells also cover 200% text on 320 px. */
+#main .block-head{min-width:0}
+#main .eyebrow{width:fit-content;min-width:0;max-width:100%;overflow-wrap:anywhere}
+#main .choice-foot{grid-column:2/-1;grid-row:3;display:grid;grid-template-columns:minmax(0,1fr) 34px;gap:14px;align-items:center;min-width:0}
+#main .choice-foot .price{grid-column:1;grid-row:1;padding-right:0;align-self:center}
+#main .choice-foot .card-arrow{grid-column:2;grid-row:1;align-self:center}
+@media(max-width:999px){#main .block-head{grid-template-columns:minmax(0,1fr)}#main .choice-foot{grid-column:1/-1}}
+@media(max-width:699px){#main .choice-foot{grid-template-columns:minmax(0,1fr) 32px;gap:12px}}
+
+#main .hero-phrase{display:inline-block;max-width:100%;vertical-align:baseline;overflow-wrap:break-word}
+
+/* Eyebrow and heading form a unit, so a long intro cannot detach the label from its title. */
+#main .heading-copy{display:grid;grid-template-columns:minmax(0,1fr);row-gap:16px;grid-column:1;grid-row:1;min-width:0}
+#main .block-head .intro{grid-row:1;grid-column:2}
+#main .phone-copy{display:inline-block;max-width:100%;vertical-align:bottom}
+#main .phone-part{white-space:nowrap}
+@media(max-width:999px){#main .heading-copy{grid-row:1}#main .block-head .intro{grid-column:1;grid-row:2}}
+@media(max-width:699px){#main .heading-copy{row-gap:14px}}
+
+

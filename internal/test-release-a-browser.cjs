@@ -63,12 +63,12 @@ const mimeTypes = {
       assert.deepEqual(visibleFloating, ["ai-chat-widget is-chat-ready"], `Floating actions at ${width}px`);
     }
 
-    const summary = page.locator(".mobile-menu summary");
+    const summary = page.locator("#menu-toggle");
     await summary.click();
-    const cabinet = page.locator('.mobile-nav-grid a[href="/cabinet/"]');
+    const cabinet = page.locator('.uh-nav a[href="/cabinet/"]');
     assert.equal(await cabinet.isVisible(), true);
     await page.keyboard.press("Escape");
-    assert.equal(await page.locator(".mobile-menu").getAttribute("open"), null);
+    assert.equal(await summary.getAttribute("aria-expanded"), "false");
     assert.equal(await summary.evaluate((node) => document.activeElement === node), true);
 
     const widget = page.locator(".ai-chat-widget");
