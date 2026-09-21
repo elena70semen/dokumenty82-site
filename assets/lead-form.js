@@ -1,63 +1,10 @@
 (function () {
-  const MAX_FILES = 6;
-  const MAX_TOTAL_BYTES = 20 * 1024 * 1024;
   const ATTRIBUTION_TIMEOUT_MS = 3500;
   const REQUEST_TIMEOUT_MS = 120000;
-  const UPLOAD_TIMEOUT_MS = 300000;
-
-  function formatBytes(value) {
-    if (value >= 1024 * 1024) return (value / 1024 / 1024).toFixed(1) + " МБ";
-    if (value >= 1024) return Math.round(value / 1024) + " КБ";
-    return value + " Б";
-  }
 
   function setStatus(form, message) {
     const status = form.querySelector('[role="status"][aria-live]');
     if (status) status.textContent = message;
-  }
-
-  function selectedFiles(input) {
-    return Array.prototype.slice.call(input && input.files ? input.files : []);
-  }
-
-  function validateFiles(files) {
-    const total = files.reduce(function (sum, file) { return sum + file.size; }, 0);
-    if (files.length > MAX_FILES) {
-      return "Можно приложить не больше 6 файлов.";
-    }
-    if (total > MAX_TOTAL_BYTES) {
-      return "Файлы весят " + formatBytes(total) + ". Лимит - 20 МБ.";
-    }
-    return "";
-  }
-
-  function renderFiles(form) {
-    const input = form.querySelector('input[type="file"]');
-    const list = form.querySelector(".lead-file-list");
-    const pickerStatus = form.querySelector(".lead-file-picker-status");
-    if (!input || !list) return "";
-
-    const files = selectedFiles(input);
-    list.textContent = "";
-    if (pickerStatus) {
-      pickerStatus.textContent = files.length === 0
-        ? "Файлы не выбраны"
-        : files.length === 1
-          ? files[0].name
-          : "Выбрано файлов: " + files.length;
-    }
-    files.forEach(function (file) {
-      const item = document.createElement("li");
-      const name = document.createElement("span");
-      const size = document.createElement("span");
-      name.textContent = file.name;
-      size.textContent = formatBytes(file.size);
-      item.appendChild(name);
-      item.appendChild(size);
-      list.appendChild(item);
-    });
-
-    return validateFiles(files);
   }
 
   function fireGoal(name, params) {
@@ -109,7 +56,7 @@
     fireGoal("goal_form_submit_fail", params);
   }
 
-  function postLead(form, data, hasFiles) {
+  function postLead(form, data) {
     const controller = typeof AbortController === "function" ? new AbortController() : null;
     let timer;
     const request = Promise.resolve().then(function () {
@@ -133,7 +80,7 @@
       timer = setTimeout(function () {
         reject({ reason: "timeout" });
         if (controller) controller.abort();
-      }, hasFiles ? UPLOAD_TIMEOUT_MS : REQUEST_TIMEOUT_MS);
+      }, REQUEST_TIMEOUT_MS);
     });
     return Promise.race([request, deadline]).finally(function () { clearTimeout(timer); });
   }
@@ -172,17 +119,9 @@
       }
     }
 
-    const fileInput = form.querySelector('input[type="file"]');
     const submit = form.querySelector('button[type="submit"]');
     const submitLabel = submit ? submit.textContent : "Отправить заявку";
     let sending = false;
-
-    if (fileInput) {
-      fileInput.addEventListener("change", function () {
-        const message = renderFiles(form);
-        setStatus(form, message || "");
-      });
-    }
 
     form.addEventListener("input", function () {
       if (!form.dataset.started) {
@@ -201,13 +140,6 @@
       fireGoal("goal_form_submit_attempt", {
         form: "amo_lead",
       });
-
-      const fileMessage = renderFiles(form);
-      if (fileMessage) {
-        failForm(form, "files", fileMessage);
-        if (fileInput) fileInput.focus();
-        return;
-      }
 
       const isQuickLead = Boolean(form.querySelector('input[name="lead_mode"][value="quick"]'));
       const emptyText = (isQuickLead ? [] : ["name", "message"]).map(function (name) {
@@ -233,7 +165,6 @@
       }
 
       const data = new FormData(form);
-      const hasFiles = selectedFiles(fileInput).length > 0;
       sending = true;
       form.classList.add("is-sending");
       if (submit) {
@@ -244,11 +175,10 @@
 
       appendAttribution(data)
         .then(function (payloadData) {
-          return postLead(form, payloadData, hasFiles);
+          return postLead(form, payloadData);
         })
         .then(function (payload) {
           form.reset();
-          renderFiles(form);
           setStatus(form, "Заявка отправлена. Мы свяжемся с вами по указанному телефону.");
           fireGoal("lead_submit_success", {
             form: "amo_lead",

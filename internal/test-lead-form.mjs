@@ -47,12 +47,9 @@ function fixture(options = {}) {
     ].map((value) => ({ value })) }),
   };
   if (options.quick) inputs.lead_mode = element({ value: "quick" });
-  const fileInput = element({ files: options.files || [] });
   for (const [name, input] of Object.entries(inputs)) input.name = name;
   const timers = new Map();
   let nextTimer = 0;
-  const list = element();
-  const picker = element();
   const status = element();
   const submit = element({ textContent: "Отправить заявку" });
   let resets = 0;
@@ -63,16 +60,13 @@ function fixture(options = {}) {
     querySelector(selector) {
       if (selector === 'select[name="task_type"]') return options.quick ? null : inputs.task_type;
       if (selector === 'input[type="hidden"][name="task_type"]') return options.quick ? inputs.task_type : null;
-      if (selector === 'input[type="file"]') return options.noFileInput ? null : fileInput;
       if (selector === 'button[type="submit"]') return submit;
       if (selector === '[role="status"][aria-live]') return status;
-      if (selector === ".lead-file-list") return list;
-      if (selector === ".lead-file-picker-status") return picker;
       if (selector === ":invalid") return !inputs.privacy.checked ? inputs.privacy : options.invalidField ? inputs[options.invalidField] : null;
       const name = selector.match(/\[name="([^"]+)"\]/)?.[1];
       return name ? inputs[name] || null : null;
     },
-    reset() { resets++; fileInput.files = []; nativeValid = false; },
+    reset() { resets++; nativeValid = false; },
   });
   const document = element({
     querySelectorAll: (selector) => selector === 'form[data-lead-form="amo"]' ? [form] : [],
@@ -103,7 +97,7 @@ function fixture(options = {}) {
     },
   });
   document.emit("DOMContentLoaded");
-  return { form, inputs, fileInput, status, submit, goals, requests, resets: () => resets,
+  return { form, inputs, status, submit, goals, requests, resets: () => resets,
     timers,
     expireTimers: () => {
       const pending = [...timers.values()];
@@ -168,20 +162,6 @@ test("invalid telephone is rejected before POST without changing the server cont
     assert.doesNotMatch(JSON.stringify(f.goals), /перезвоните|доб\./);
   }
 });
-
-for (const [label, files] of [
-  ["too many files", Array.from({ length: 7 }, () => ({ name: "private-name.pdf", size: 1 }))],
-  ["files above 20 MiB", [{ name: "private-name.pdf", size: 20 * 1024 * 1024 + 1 }]],
-]) {
-  test(`${label}: no POST and no filename in analytics`, async () => {
-    const f = fixture({ files });
-    f.form.emit("submit");
-    await settle();
-    assert.equal(f.requests.length, 0);
-    assert.equal(f.fail().params.reason, "files");
-    assert.doesNotMatch(JSON.stringify(f.goals), /private-name/);
-  });
-}
 
 test("server refusal restores the form and sends only a fixed reason and status", async () => {
   const f = fixture({ fetch: async () => response(503, { message: "private-response@example.invalid" }) });
@@ -269,23 +249,6 @@ test("timeout works without AbortController and ignores a late network response"
   assert.equal(f.successes().length, 0);
   assert.equal(f.resets(), 0);
   assert.equal(f.requests.length, 1);
-});
-
-test("document uploads get a longer deadline and clear it on confirmed success", async () => {
-  let finish;
-  const f = fixture({ files: [{ name: "private-name.pdf", size: 1024 }],
-    fetch: () => new Promise(resolve => { finish = resolve; }) });
-  f.form.emit("submit");
-  await settle();
-  assert.equal([...f.timers.values()][0].delay, 300000);
-  finish(response());
-  await settle();
-  assert.equal(f.successes().length, 1);
-  assert.equal(f.requests[0][1].signal.aborted, false);
-  assert.equal(f.timers.size, 0);
-  f.expireTimers();
-  await settle();
-  assert.equal(f.fail(), undefined);
 });
 
 test("aborting the transport still records timeout, not a network failure", async () => {
@@ -445,15 +408,6 @@ test("supported phone formats pass without rewriting the field", async () => {
     assert.equal(f.requests.length, 1);
     assert.equal(f.inputs.phone.value, phone);
   }
-});
-
-test("six files at exactly 20 MiB remain valid", async () => {
-  const files = Array.from({ length: 6 }, (_, i) => ({ name: `mock-${i}.pdf`, size: i ? 1 : 20 * 1024 * 1024 - 5 }));
-  const f = fixture({ files });
-  f.form.emit("submit");
-  await settle();
-  assert.equal(f.requests.length, 1);
-  assert.equal(f.successes().length, 1);
 });
 
 test("service links select only the fixed accounting topic without sending a lead or goal", async () => {

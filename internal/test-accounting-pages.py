@@ -9,6 +9,12 @@ ROOT = Path(__file__).resolve().parents[1]
 ROUTES = ["/", "/buhgalterskie-uslugi/", "/soprovozhdenie/",
           "/buhgalterskoe-soprovozhdenie-ooo/", "/ceny/", "/razbor-situacii/",
           "/registraciya-ip/", "/likvidaciya-ooo/"]
+NO_UPLOAD_ROUTES = [
+    "/buhgalterskie-uslugi/", "/buhgalterskoe-soprovozhdenie-ooo/", "/deklaraciya-usn/",
+    "/likvidaciya-ooo/", "/nulevaya-otchetnost-ip/", "/nulevaya-otchetnost-ooo/",
+    "/otvet-na-trebovanie-ifns/", "/registraciya-ip/", "/sdacha-otchetnosti-ip/",
+    "/sdacha-otchetnosti-ooo/", "/soprovozhdenie/", "/razbor-situacii/",
+]
 TOPICS = {"accounting": "Подбор бухгалтерских услуг", "accounting-ip": "Бухгалтерское сопровождение ИП",
           "accounting-ooo": "Бухгалтерское сопровождение ООО"}
 
@@ -138,19 +144,23 @@ class AccountingPagesTest(unittest.TestCase):
                     self.assertIn("required", inputs[name])
                 self.assertNotIn("required", inputs["name"])
                 self.assertEqual(inputs["lead_mode"].get("value"), "quick")
-                self.assertTrue(any(a.get("src") == "/assets/lead-form.js?v=20260911-conversion"
+                self.assertTrue(any(a.get("src") == "/assets/lead-form.js?v=20260921-v11a"
                                     for a in page.attrs("script")))
-        form = [a for a in contact.attrs("form") if a.get("enctype") == "multipart/form-data"]
+        form = [f for f in contact.forms
+                if f["attrs"].get("data-lead-form") == "amo"
+                and not any(tag == "input" and attrs.get("name") == "lead_mode"
+                            for tag, attrs in f["tags"])]
+        # Both contact forms use the same safe public endpoint without multipart uploads.
         self.assertEqual(len(form), 1)
-        self.assertEqual(form[0]["action"], "/api/lead")
-        self.assertEqual(form[0]["method"], "post")
-        self.assertEqual(form[0]["enctype"], "multipart/form-data")
+        self.assertEqual(form[0]["attrs"]["action"], "/api/lead")
+        self.assertEqual(form[0]["attrs"]["method"], "post")
+        self.assertNotIn("enctype", form[0]["attrs"])
         inputs = {a.get("name"): a for a in contact.attrs("input")}
         for name in ["name", "phone", "privacy"]:
             self.assertIn("required", inputs[name])
         self.assertNotIn("checked", inputs["privacy"])
 
-    def test_contact_page_has_separate_quick_and_document_forms(self):
+    def test_contact_page_has_separate_quick_and_detailed_forms(self):
         page = self.pages["/razbor-situacii/"]
         forms = [form for form in page.forms if form["attrs"].get("data-lead-form") == "amo"]
         self.assertEqual(len(forms), 2)
@@ -169,53 +179,39 @@ class AccountingPagesTest(unittest.TestCase):
         self.assertEqual(quick_inputs["task_type"]["value"], "Первичный разбор ситуации")
         self.assertNotIn("required", next(a for tag, a in quick["tags"] if tag == "textarea"))
         self.assertTrue(any(a.get("href") == "#route-contact" for tag, a in quick["tags"] if tag == "a"))
-        self.assertEqual(detailed["attrs"]["enctype"], "multipart/form-data")
+        self.assertNotIn("enctype", detailed["attrs"])
         detailed_inputs = {a.get("name"): a for tag, a in detailed["tags"] if tag == "input"}
         self.assertNotIn("lead_mode", detailed_inputs)
         self.assertIn("required", detailed_inputs["name"])
         self.assertIn("required", next(a for tag, a in detailed["tags"] if tag == "textarea"))
-        self.assertEqual(detailed_inputs["files"]["type"], "file")
+        self.assertNotIn("files", detailed_inputs)
         self.assertTrue(any(a.get("href") == "#quick-lead" and a.get("data-event-name") == "hero_cta_click"
                             for a in page.attrs("a")))
         hub = self.pages["/buhgalterskie-uslugi/"]
         # Contextual service examples may add another link to the same form.
         self.assertGreaterEqual(sum(a.get("href") == "#quick-lead" for a in hub.attrs("a")), 2)
         self.assertTrue(any(a.get("href") == "/ceny/#tarify" for a in hub.attrs("a")))
-        self.assertIn("от 10 000 ₽ в месяц", (ROOT / "buhgalterskie-uslugi" / "index.html").read_text(encoding="utf-8"))
+        hub_text = (ROOT / "buhgalterskie-uslugi" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("10 000 ₽ один раз", hub_text)
+        self.assertIn("от 15 000 ₽/месяц", hub_text)
 
-    def test_registration_and_liquidation_attach_files_without_leaving_form(self):
-        for route, topic in [("/registraciya-ip/", "Регистрация ИП"),
-                             ("/likvidaciya-ooo/", "Ликвидация ООО")]:
+    def test_public_lead_forms_do_not_accept_files(self):
+        note = "Для первого обращения документы не нужны."
+        for route in NO_UPLOAD_ROUTES:
             with self.subTest(route=route):
-                page = self.pages[route]
+                page = self.pages.get(route) or Page(route)
                 forms = [form for form in page.forms if form["attrs"].get("data-lead-form") == "amo"]
-                self.assertEqual(len(forms), 1)
-                form = forms[0]
-                self.assertEqual(form["attrs"]["action"], "/api/lead")
-                self.assertEqual(form["attrs"]["method"], "post")
-                self.assertEqual(form["attrs"].get("enctype"), "multipart/form-data")
-                inputs = {a.get("name"): a for tag, a in form["tags"] if tag == "input"}
-                self.assertEqual(inputs["source_page"]["value"], route)
-                self.assertEqual(inputs["task_type"]["value"], topic)
-                self.assertEqual(inputs["lead_mode"]["value"], "quick")
-                files = inputs["files"]
-                self.assertEqual(files["type"], "file")
-                self.assertIn("multiple", files)
-                self.assertNotIn("required", files)
-                self.assertEqual(files["accept"], ".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip")
-                self.assertTrue(any(tag == "label" and a.get("for") == files["id"] for tag, a in form["tags"]))
-                self.assertTrue(any(a.get("id") == files["aria-describedby"] for tag, a in form["tags"]))
-                self.assertTrue(any(tag == "ul" and {"lead-file-list", "form-span-2"} <= set(a.get("class", "").split())
-                                    for tag, a in form["tags"]))
-                self.assertNotIn("required", inputs["name"])
-                self.assertIn("required", inputs["phone"])
-                self.assertIn("required", inputs["privacy"])
-                self.assertNotIn("checked", inputs["privacy"])
-                self.assertNotIn("required", next(a for tag, a in form["tags"] if tag == "textarea"))
-                self.assertFalse(any(tag == "a" and a.get("href", "").startswith("/razbor-situacii/")
-                                     for tag, a in form["tags"]))
-                self.assertTrue(any(a.get("href") == "/assets/lead-attachments.css?v=202609041900"
-                                    for a in page.attrs("link")))
+                self.assertGreaterEqual(len(forms), 1)
+                for form in forms:
+                    self.assertEqual(form["attrs"]["action"], "/api/lead")
+                    self.assertEqual(form["attrs"]["method"], "post")
+                    self.assertNotIn("enctype", form["attrs"])
+                    inputs = {a.get("name"): a for tag, a in form["tags"] if tag == "input"}
+                    self.assertNotIn("files", inputs)
+                html = (ROOT / route.strip("/") / "index.html").read_text(encoding="utf-8")
+                self.assertIn(note, html)
+                self.assertNotIn('type="file"', html)
+                self.assertNotIn("lead-file-list", html)
 
     def test_every_existing_form_consumer_has_new_asset_version(self):
         consumers = []
@@ -223,7 +219,7 @@ class AccountingPagesTest(unittest.TestCase):
             html = file.read_text(encoding="utf-8")
             if 'src="/assets/lead-form.js?' in html:
                 consumers.append(file)
-                self.assertIn('src="/assets/lead-form.js?v=20260911-conversion"', html)
+                self.assertIn('src="/assets/lead-form.js?v=20260921-v11a"', html)
         self.assertEqual(len(consumers), 23)
 
     def test_ooo_minimum_price_is_consistent_in_structured_catalog(self):
@@ -233,8 +229,9 @@ class AccountingPagesTest(unittest.TestCase):
         catalog = next(node for node in nodes if node.get("@type") == "OfferCatalog")
         offer = next(item for item in catalog["itemListElement"]
                      if item.get("url") == "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/")
-        self.assertEqual(offer["price"], "10000")
-        self.assertIn("простой моделью учёта", offer["itemOffered"]["description"])
+        self.assertEqual(offer["price"], "15000")
+        self.assertIn("10 000 ₽ один раз", offer["itemOffered"]["description"])
+        self.assertIn("15 000 ₽ в месяц", offer["itemOffered"]["description"])
 
     def test_accounting_pages_share_verified_business_identity(self):
         for route in ["/buhgalterskie-uslugi/", "/soprovozhdenie/",

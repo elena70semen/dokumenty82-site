@@ -3,11 +3,9 @@ import cgi
 import html
 import ipaddress
 import json
-import mimetypes
 import os
 import re
 import secrets
-import shutil
 import threading
 import time
 import traceback
@@ -23,8 +21,6 @@ HOST = os.environ.get("D82_FORM_HOST", "127.0.0.1")
 PORT = int(os.environ.get("D82_FORM_PORT", "8097"))
 BASE_DIR = Path(os.environ.get("D82_LEADS_DIR", "/var/lib/dokumenty82-leads"))
 MAX_REQUEST_BYTES = int(os.environ.get("D82_MAX_REQUEST_MB", "25")) * 1024 * 1024
-MAX_TOTAL_BYTES = int(os.environ.get("D82_MAX_UPLOAD_MB", "20")) * 1024 * 1024
-MAX_FILES = int(os.environ.get("D82_MAX_FILES", "6"))
 ACCEPT_LOCAL_ONLY = os.environ.get("D82_ACCEPT_LOCAL_ONLY", "0") == "1"
 
 AMO_SUBDOMAIN = os.environ.get("AMO_SUBDOMAIN", "").strip()
@@ -42,8 +38,6 @@ AMO_STATUS_ID = os.environ.get("AMO_STATUS_ID", "").strip()
 AMO_RESPONSIBLE_USER_ID = os.environ.get("AMO_RESPONSIBLE_USER_ID", "").strip()
 AMO_FOLLOWUP_TASK_SECONDS = int(os.environ.get("AMO_FOLLOWUP_TASK_SECONDS", "0"))
 AMO_TAGS = [tag.strip() for tag in os.environ.get("AMO_TAGS", "site,razbor-situacii").split(",") if tag.strip()]
-AMO_ATTACH_FILES = os.environ.get("AMO_ATTACH_FILES", "0") == "1"
-AMO_DRIVE_URL = os.environ.get("AMO_DRIVE_URL", "").strip().rstrip("/")
 AMO_METRIKA_CLIENT_ID_FIELD_ID = os.environ.get("AMO_METRIKA_CLIENT_ID_FIELD_ID", "").strip()
 AMO_PORTAL_BRIDGE_TOKEN = os.environ.get("AMO_PORTAL_BRIDGE_TOKEN", "").strip()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "").strip()
@@ -70,10 +64,20 @@ AI_SYSTEM_PROMPT = """
 - Не используй Markdown-разметку, звездочки, таблицы или блоки кода; пиши обычным текстом.
 - Не обещай юридический или банковский результат, не давай гарантий снятия ограничений, регистрации или решения ИФНС.
 - Не составляй окончательный юридический документ в чате и не проси присылать чувствительные персональные данные прямо в чат.
+- Никогда не проси присылать в чат документы, пароли, SMS-коды, паспортные данные или банковские секреты.
+- Если спрашивают о регулярной бухгалтерии: для нового клиента стартовый полный период при простом объёме стоит 10 000 ₽ один раз, далее сопровождение — от 15 000 ₽ в месяц. Точный состав и цену определяет специалист после оценки нагрузки.
+- Бесплатна только экспресс-диагностика «Карта рисков и точек роста бизнеса» со страницы акций. Не называй бесплатными другие разборы или диагностики.
+- Платные диагностические и разовые услуги могут начинаться от 3 000 ₽, но состав и точную цену всегда подтверждает специалист.
+- Не придумывай скидки и не называй окончательную цену для индивидуальной или разовой задачи.
 - Если не хватает вводных, задай один главный уточняющий вопрос: что пришло, от кого, какой срок, какой период или какой документ есть.
 - Когда ситуация похожа на реальную задачу, предложи передать вопрос специалисту через форму в чате.
 - Если вопрос не про услуги сайта, мягко верни к теме документов бизнеса.
 """.strip()
+
+
+def has_public_upload(form):
+  """Return True for any multipart item carrying a client filename."""
+  return any(bool(getattr(item, "filename", "")) for item in (getattr(form, "list", None) or []))
 
 
 def text(value):
@@ -247,12 +251,6 @@ def get_amo_access_token():
       return token
     state = refresh_amo_token(state)
     return state["access_token"]
-
-
-def safe_filename(name):
-  name = Path(name or "file").name
-  name = re.sub(r"[\x00-\x1f<>:\"/\\|?*]+", "_", name).strip(" .")
-  return name[:140] or "file"
 
 
 def json_response(handler, status, payload):
@@ -597,18 +595,7 @@ def portal_bridge_authorized(remote_addr, authorization):
   return bool(supplied and secrets.compare_digest(supplied, AMO_PORTAL_BRIDGE_TOKEN))
 
 
-def get_drive_url(base_url):
-  if AMO_DRIVE_URL:
-    return AMO_DRIVE_URL
-  account = api_request(
-    "GET",
-    base_url + "/api/v4/account?with=drive_url",
-    headers=amo_headers(),
-  )
-  return (account or {}).get("drive_url", "").rstrip("/")
-
-
-def create_amo_lead(fields, files):
+def create_amo_lead(fields, files=None):
   base_url = amo_base_url()
   if ACCEPT_LOCAL_ONLY:
     state = load_token_state()
@@ -683,10 +670,6 @@ def create_amo_lead(fields, files):
   if not lead_id:
     raise RuntimeError("AmoCRM не вернула ID сделки.")
 
-  file_lines = []
-  for item in files:
-    file_lines.append(f"- {item['original_name']} ({item['size']} bytes), сохранен на сервере: {item['stored_path']}")
-
   note_text = "\n".join([
     "Заявка с сайта dokumenty82.ru",
     f"Страница: {fields['source_page']}",
@@ -704,9 +687,6 @@ def create_amo_lead(fields, files):
     "",
     "Описание:",
     fields["message"],
-    "",
-    "Файлы:",
-    "\n".join(file_lines) if file_lines else "- не приложены",
   ])
   api_request(
     "POST",
@@ -715,23 +695,7 @@ def create_amo_lead(fields, files):
     headers=amo_headers(),
   )
 
-  attached = []
-  if AMO_ATTACH_FILES and files:
-    try:
-      drive_url = get_drive_url(base_url)
-      attached = attach_files_to_lead(base_url, drive_url, lead_id, files)
-    except Exception as error:
-      api_request(
-        "POST",
-        base_url + f"/api/v4/leads/{lead_id}/notes",
-        payload=[{
-          "note_type": "common",
-          "params": {"text": "Файлы сохранены на сервере, но не прикреплены через Files API: " + str(error)},
-        }],
-        headers=amo_headers(),
-      )
-
-  result = {"status": "sent", "lead_id": lead_id, "attached_files": attached}
+  result = {"status": "sent", "lead_id": lead_id}
   if AMO_FOLLOWUP_TASK_SECONDS > 0:
     try:
       job_path = queue_amo_followup_task(base_url, lead_id, fields)
@@ -872,53 +836,6 @@ def amo_followup_worker():
     time.sleep(30)
 
 
-def attach_files_to_lead(base_url, drive_url, lead_id, files):
-  if not drive_url:
-    raise RuntimeError("drive_url not found")
-  attached = []
-  for item in files:
-    path = Path(item["stored_path"])
-    mime = item.get("content_type") or mimetypes.guess_type(item["original_name"])[0] or "application/octet-stream"
-    session = api_request(
-      "POST",
-      drive_url + "/v1.0/sessions",
-      payload={"file_name": item["original_name"], "file_size": item["size"], "content_type": mime},
-      headers=amo_headers(),
-    )
-    upload_url = session.get("upload_url")
-    max_part_size = int(session.get("max_part_size") or 524288)
-    if not upload_url:
-      raise RuntimeError("upload_url not returned")
-
-    upload_result = None
-    with path.open("rb") as source:
-      while True:
-        chunk = source.read(max_part_size)
-        if not chunk:
-          break
-        upload_result = api_request(
-          "POST",
-          upload_url,
-          raw=chunk,
-          headers={**amo_headers(), "Content-Type": "application/octet-stream"},
-          timeout=40,
-        )
-        upload_url = (upload_result or {}).get("next_url") or upload_url
-
-    file_uuid = (upload_result or {}).get("uuid")
-    if not file_uuid:
-      raise RuntimeError("file uuid not returned")
-
-    api_request(
-      "PUT",
-      base_url + f"/api/v4/leads/{lead_id}/files",
-      payload=[{"file_uuid": file_uuid}],
-      headers=amo_headers(),
-    )
-    attached.append({"file_uuid": file_uuid, "name": item["original_name"]})
-  return attached
-
-
 class LeadHandler(BaseHTTPRequestHandler):
   server_version = "D82LeadReceiver/1.0"
 
@@ -981,6 +898,13 @@ class LeadHandler(BaseHTTPRequestHandler):
         json_response(self, 200, {"ok": True})
         return
 
+      if has_public_upload(form):
+        json_response(self, 400, {
+          "ok": False,
+          "message": "Документы через открытую форму не принимаются. Отправьте заявку без файла — специалист согласует защищённый способ передачи.",
+        })
+        return
+
       is_quick_lead = text(form.getfirst("lead_mode")) == "quick"
       fields = complete_quick_lead({
         "name": text(form.getfirst("name")),
@@ -1005,23 +929,18 @@ class LeadHandler(BaseHTTPRequestHandler):
 
       submission_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + secrets.token_hex(4)
       submission_dir = BASE_DIR / "submissions" / submission_id
-      upload_dir = submission_dir / "files"
-      upload_dir.mkdir(parents=True, exist_ok=False)
+      submission_dir.mkdir(parents=True, exist_ok=False)
       os.chmod(submission_dir, 0o700)
-      os.chmod(upload_dir, 0o700)
-
-      files = self.save_files(form, upload_dir)
       metadata = {
         "id": submission_id,
         "created_at": datetime.now(timezone.utc).isoformat(),
         "remote_addr": request_client_ip(self),
         "fields": fields,
-        "files": files,
       }
       (submission_dir / "lead.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
       os.chmod(submission_dir / "lead.json", 0o600)
 
-      crm = create_amo_lead(fields, files)
+      crm = create_amo_lead(fields)
       (submission_dir / "crm.json").write_text(json.dumps(crm, ensure_ascii=False, indent=2), encoding="utf-8")
       os.chmod(submission_dir / "crm.json", 0o600)
 
@@ -1074,11 +993,11 @@ class LeadHandler(BaseHTTPRequestHandler):
     target = html.escape(amo_base_url(), quote=True)
     attrs = {
       "data-name": "dokumenty82.ru — заявки с сайта",
-      "data-description": "Приём заявок и файлов с dokumenty82.ru в рабочий аккаунт Presentation.",
+      "data-description": "Приём заявок с dokumenty82.ru в рабочий аккаунт Presentation.",
       "data-redirect_uri": AMO_REDIRECT_URI,
       "data-secrets_uri": "https://dokumenty82.ru/api/amo/external/credentials",
       "data-logo": "https://dokumenty82.ru/assets/images/brand-logo-open-book.png",
-      "data-scopes": "crm,files" if AMO_ATTACH_FILES else "crm",
+      "data-scopes": "crm",
       "data-title": "Подключить Presentation",
       "data-state": AMO_EXTERNAL_STATE,
       "data-mode": "popup",
@@ -1091,7 +1010,7 @@ class LeadHandler(BaseHTTPRequestHandler):
       "margin:60px auto;padding:24px;background:#101b29;color:#f6f2e8}a{color:#bfe451}</style></head><body>"
       "<h1>Подключить сайт к Presentation</h1>"
       f"<p>Выберите только <strong>{target}</strong> — аккаунт №{html.escape(AMO_EXPECTED_ACCOUNT_ID)}.</p>"
-      "<p>Разрешите сайту создавать обращения и прикладывать переданные клиентом документы. "
+      "<p>Разрешите сайту создавать обращения. "
       "Тексты заявок не публикуются на сайте. Ключи подключения поступят напрямую на сервер.</p>"
       f'<script class="amocrm_oauth" charset="utf-8" {attributes} src="https://www.amocrm.ru/auth/button.min.js"></script>'
       "<p>Если amoCRM сообщает о недостаточных правах, войдите в неё под администратором.</p>"
@@ -1232,36 +1151,6 @@ class LeadHandler(BaseHTTPRequestHandler):
     except Exception:
       traceback.print_exc()
       json_response(self, 502, {"ok": False, "message": "amoCRM временно недоступна."})
-
-  def save_files(self, form, upload_dir):
-    file_fields = form["files"] if "files" in form else []
-    if not isinstance(file_fields, list):
-      file_fields = [file_fields]
-
-    saved = []
-    total_size = 0
-    for index, item in enumerate(file_fields, start=1):
-      if not getattr(item, "filename", ""):
-        continue
-      if len(saved) >= MAX_FILES:
-        raise ValueError("Можно приложить не больше 6 файлов.")
-      original = safe_filename(item.filename)
-      target = upload_dir / f"{index:02d}-{original}"
-      with target.open("wb") as output:
-        shutil.copyfileobj(item.file, output)
-      size = target.stat().st_size
-      total_size += size
-      if total_size > MAX_TOTAL_BYTES:
-        raise ValueError("Суммарный размер файлов больше 20 МБ.")
-      os.chmod(target, 0o600)
-      saved.append({
-        "original_name": original,
-        "stored_path": str(target),
-        "size": size,
-        "content_type": item.type or mimetypes.guess_type(original)[0] or "application/octet-stream",
-      })
-    return saved
-
 
 def main():
   BASE_DIR.mkdir(parents=True, exist_ok=True)

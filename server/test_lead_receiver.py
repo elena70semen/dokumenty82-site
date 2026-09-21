@@ -18,6 +18,43 @@ receiver = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(receiver)
 
 
+class PublicLeadUploadPolicyTests(unittest.TestCase):
+  def test_public_file_part_is_rejected_by_policy(self):
+    form = types.SimpleNamespace(list=[
+      types.SimpleNamespace(name="phone", filename=None),
+      types.SimpleNamespace(name="files", filename="document.pdf"),
+    ])
+    self.assertTrue(receiver.has_public_upload(form))
+
+  def test_regular_lead_without_file_remains_allowed(self):
+    form = types.SimpleNamespace(list=[types.SimpleNamespace(name="phone", filename=None)])
+    self.assertFalse(receiver.has_public_upload(form))
+    fields = AmoLeadAttributionTests().fields()
+    with mock.patch.object(receiver, "amo_base_url", return_value="https://example.amocrm.ru"), \
+         mock.patch.object(receiver, "amo_headers", return_value={"Authorization": "Bearer test"}), \
+         mock.patch.object(receiver, "api_request", side_effect=[[{"id": 901}], None]) as api:
+      result = receiver.create_amo_lead(fields)
+    self.assertEqual(result, {"status": "sent", "lead_id": 901})
+    note = api.call_args_list[1].kwargs["payload"][0]["params"]["text"]
+    self.assertNotIn("Файлы:", note)
+    self.assertNotIn("document.pdf", note)
+
+
+class AiCommercialGuidanceTests(unittest.TestCase):
+  def test_prompt_covers_the_five_price_dialogues_without_inventing_a_quote(self):
+    prompt = receiver.AI_SYSTEM_PROMPT
+    for fact in (
+      "10 000 ₽ один раз",
+      "15 000 ₽ в месяц",
+      "Бесплатна только экспресс-диагностика",
+      "начинаться от 3 000 ₽",
+      "индивидуальной или разовой задачи",
+    ):
+      self.assertIn(fact, prompt)
+    self.assertIn("Точный состав и цену определяет специалист", prompt)
+    self.assertIn("Не придумывай скидки", prompt)
+
+
 class AmoLeadAttributionTests(unittest.TestCase):
   def fields(self, client_id="1730000000000000000"):
     return {

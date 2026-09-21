@@ -55,6 +55,13 @@
   }
 
   function ensurePortalWidget(chatWidget) {
+    const mobileNav = $(".mobile-nav-grid");
+    if (mobileNav && !mobileNav.querySelector('a[href="/cabinet/"]')) {
+      const mobileLink = create("a", "mobile-cabinet-link", "Личный кабинет");
+      mobileLink.href = "/cabinet/";
+      mobileNav.appendChild(mobileLink);
+    }
+
     let portal = $(".client-portal-widget");
     if (portal) return portal;
 
@@ -118,6 +125,7 @@
 
     const panel = create("section", "ai-chat-panel");
     panel.hidden = true;
+    panel.setAttribute("role", "dialog");
     panel.setAttribute("aria-label", "AI-приемная");
     panel.innerHTML = [
       '<div class="ai-chat-head">',
@@ -128,6 +136,7 @@
       '  <button class="ai-chat-close" type="button" aria-label="Закрыть чат">&times;</button>',
       '</div>',
       '<div class="ai-chat-messages" aria-live="polite"></div>',
+      '<p class="ai-chat-safety">Не отправляйте пароли, SMS-коды, паспортные данные, банковские секреты и документы.</p>',
       '<div class="ai-chat-quick">',
       '  <button type="button" data-ai-prompt="Банк запросил документы, не понимаю что отвечать.">Банк запросил документы</button>',
       '  <button type="button" data-ai-prompt="Пришло требование из налоговой, с чего начать?">Требование ИФНС</button>',
@@ -138,13 +147,14 @@
       '  <textarea id="ai-chat-text" name="message" rows="3" maxlength="900" placeholder="Коротко опишите, что произошло"></textarea>',
       '  <div class="ai-chat-actions">',
       '    <button class="ai-chat-send" type="submit">Отправить</button>',
-      '    <button class="ai-chat-escalate" type="button">Передать специалисту</button>',
+      '    <button class="ai-chat-escalate" type="button" aria-expanded="false">Передать специалисту</button>',
       '  </div>',
       '</form>',
       '<form class="ai-chat-lead" hidden>',
+      '  <p class="ai-chat-lead-note">Специалист получит переписку, ваше имя и телефон.</p>',
       '  <label>Имя<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться"></label>',
       '  <label>Телефон<input type="tel" name="phone" autocomplete="tel" placeholder="+7"></label>',
-      '  <label class="ai-chat-consent"><input type="checkbox" name="privacy" value="1"> Согласен на обработку данных</label>',
+      '  <label class="ai-chat-consent"><input type="checkbox" name="privacy" value="1"> <span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a></span></label>',
       '  <button type="submit">Отправить специалисту</button>',
       '</form>',
       '<p class="ai-chat-status" role="status" aria-live="polite"></p>'
@@ -176,6 +186,8 @@
     panel.hidden = false;
     state.open = true;
     document.body.classList.add("ai-chat-open");
+    const widget = $(".ai-chat-widget");
+    if (widget) widget.setAttribute("aria-expanded", "true");
     fireGoal("goal_ai_chat_open");
     window.setTimeout(function () {
       const textarea = $("#ai-chat-text", panel);
@@ -188,6 +200,11 @@
     if (panel) panel.hidden = true;
     state.open = false;
     document.body.classList.remove("ai-chat-open");
+    const widget = $(".ai-chat-widget");
+    if (widget) {
+      widget.setAttribute("aria-expanded", "false");
+      widget.focus();
+    }
     syncCookieOffset();
   }
 
@@ -196,10 +213,12 @@
     const form = $(".ai-chat-lead");
     if (form) {
       form.hidden = false;
+      const button = $(".ai-chat-escalate");
+      if (button) button.setAttribute("aria-expanded", "true");
       const name = form.querySelector('input[name="name"]');
       if (name) name.focus();
     }
-    setStatus("Оставьте телефон, и специалист увидит переписку.");
+    setStatus("Оставьте имя и телефон. Специалист получит эту переписку.");
   }
 
   function sendUserMessage() {
@@ -231,15 +250,11 @@
       })
       .then(function (payload) {
         addMessage("assistant", payload.answer || "Лучше передать ситуацию специалисту. Оставьте телефон, и мы посмотрим вводные.");
-        if (payload.suggest_lead && state.messages.filter(function (item) { return item.role === "user"; }).length >= 2) {
-          showLeadForm();
-        } else {
-          setStatus("");
-        }
+        setStatus(payload.suggest_lead ? "Если хотите, нажмите «Передать специалисту»." : "");
       })
       .catch(function (error) {
-        addMessage("assistant", error.message || "AI-чат временно не ответил. Оставьте телефон, и специалист вернется к ситуации.");
-        showLeadForm();
+        addMessage("assistant", error.message || "AI-чат временно не ответил. Можно передать вопрос специалисту отдельной кнопкой.");
+        setStatus("Если хотите, нажмите «Передать специалисту».");
       })
       .finally(function () {
         setBusy(false);
@@ -297,6 +312,8 @@
       .then(function (payload) {
         form.reset();
         form.hidden = true;
+        const button = $(".ai-chat-escalate");
+        if (button) button.setAttribute("aria-expanded", "false");
         setStatus("Готово. Диалог передан специалисту.");
         addMessage("assistant", "Готово, передали диалог специалисту. С вами свяжутся по указанному телефону.");
         fireGoal("goal_ai_chat_lead", {
@@ -324,9 +341,19 @@
     widget.classList.add("is-chat-ready");
     widget.setAttribute("role", "button");
     widget.setAttribute("aria-haspopup", "dialog");
+    widget.setAttribute("aria-expanded", "false");
     widget.addEventListener("click", function (event) {
       event.preventDefault();
       openChat();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+      if (state.open) closeChat();
+      document.querySelectorAll("header details.mobile-menu[open]").forEach(function (menu) {
+        menu.open = false;
+        const summary = menu.querySelector("summary");
+        if (summary) summary.focus();
+      });
     });
   });
 })();
