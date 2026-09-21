@@ -52,6 +52,29 @@ const mimeTypes = {
     assert.ok(cookieHeight < 844 * 0.55, `Cookie notice is too tall: ${cookieHeight}`);
     await cookie.getByRole("button", { name: "Понятно" }).click();
 
+    await page.setViewportSize({ width: 1440, height: 900 });
+    const homeColors = await page.evaluate(() => {
+      const pick = (selector) => {
+        const style = getComputedStyle(document.querySelector(selector));
+        return { color: style.color, background: style.backgroundColor, textFill: style.webkitTextFillColor };
+      };
+      return {
+        nav: pick(".uh-navlink:nth-child(2)"),
+        primary: pick(".hero-actions .button-primary"),
+        secondary: pick(".hero-actions .button-secondary"),
+        heading: pick("#services-heading"),
+        footerLink: pick(".db-footer .footer-links a"),
+      };
+    });
+    assert.deepEqual(homeColors.nav, { color: "rgb(11, 36, 64)", background: "rgb(255, 255, 255)", textFill: "rgb(11, 36, 64)" });
+    assert.deepEqual(homeColors.primary, { color: "rgb(255, 255, 255)", background: "rgb(11, 36, 64)", textFill: "rgb(255, 255, 255)" });
+    assert.deepEqual(homeColors.secondary, { color: "rgb(11, 36, 64)", background: "rgb(255, 255, 255)", textFill: "rgb(11, 36, 64)" });
+    assert.deepEqual(homeColors.heading, { color: "rgb(11, 36, 64)", background: "rgba(0, 0, 0, 0)", textFill: "rgb(11, 36, 64)" });
+    assert.deepEqual(homeColors.footerLink, { color: "rgb(227, 237, 246)", background: "rgba(0, 0, 0, 0)", textFill: "rgb(227, 237, 246)" });
+    assert.ok((await page.locator(".uh-navlink").allInnerTexts()).every((text) => text.trim().length > 0));
+    assert.ok((await page.locator(".u-section h2").allInnerTexts()).every((text) => text.trim().length > 0));
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth <= 1), "Desktop horizontal overflow");
+
     for (const width of [320, 360, 390, 430]) {
       await page.setViewportSize({ width, height: 844 });
       const visibleFloating = await page.locator(".ai-chat-widget, .client-portal-widget, .quick-page-nav").evaluateAll((nodes) =>
@@ -61,12 +84,14 @@ const mimeTypes = {
           return style.display !== "none" && style.visibility !== "hidden" && box.width > 0 && box.height > 0;
         }).map((node) => node.className));
       assert.deepEqual(visibleFloating, ["ai-chat-widget is-chat-ready"], `Floating actions at ${width}px`);
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth <= 1), `Horizontal overflow at ${width}px`);
     }
 
     const summary = page.locator("#menu-toggle");
     await summary.click();
     const cabinet = page.locator('.uh-nav a[href="/cabinet/"]');
     assert.equal(await cabinet.isVisible(), true);
+    assert.ok((await page.locator(".uh-navlink").allInnerTexts()).every((text) => text.trim().length > 0));
     await page.keyboard.press("Escape");
     assert.equal(await summary.getAttribute("aria-expanded"), "false");
     assert.equal(await summary.evaluate((node) => document.activeElement === node), true);

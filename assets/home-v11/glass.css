@@ -13,6 +13,19 @@
     inset 0 -1px 0 rgba(91, 130, 151, 0.08);
 }
 
+/* The legacy light theme declares --navy with a more specific root selector.
+   Reassert the homepage palette after the shared styles so text and actions
+   cannot become white on white. */
+:root:not([data-theme="dark"]) {
+  --navy: #0b2440;
+  --ink: #17354f;
+  --muted: #536b81;
+  --accent: #007783;
+  --teal: #1fb6c1;
+  --line: #dce8ef;
+  --light: #f5f9fc;
+}
+
 body {
   background:
     radial-gradient(circle at 18% 5%, rgba(209, 240, 246, 0.48), transparent 31rem),
@@ -50,6 +63,23 @@ body {
 
 .uh-cabinet-link {
   display: none;
+}
+
+/* Shared footer rules use a higher-specificity light-theme selector. */
+:root:not([data-theme="dark"]) .db-footer .footer-links a {
+  color: #e3edf6 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+:root:not([data-theme="dark"]) #main .u-section h2 {
+  color: var(--navy) !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-shadow: none !important;
 }
 
 #main > .hero {
