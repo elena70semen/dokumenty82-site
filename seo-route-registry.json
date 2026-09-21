@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-28",
+  "version": "2026-09-21",
   "owner_decisions": {
     "/oferta/": "publication approved on 2026-08-28; supplied offer text with issuer details from the website; follows the existing legal-page indexing policy",
     "/akcii/": "approved promotions hub; index, follow; keep in sitemap",
@@ -10,7 +10,8 @@
     "/ceny/": "approved public pricing page",
     "/otzyvy/": "approved public reviews and Yandex rating page",
     "/faq/": "approved for indexing after content and FAQ schema review",
-    "/uslugi/": "approved service catalog and primary navigation hub"
+    "/uslugi/": "approved service catalog and primary navigation hub",
+    "/smena-buhgaltera/": "approved expansion draft 2026-09-20; separate intent for transfer from a previous accountant; does not replace IP, LLC, pricing or accounting-recovery routes"
   },
   "indexable_routes": [
     "/",
@@ -63,6 +64,7 @@
     "/registraciya-ip/",
     "/registraciya-ooo/",
     "/smena-direktora-ooo/",
+    "/smena-buhgaltera/",
     "/smena-yuridicheskogo-adresa-ooo/",
     "/sdacha-otchetnosti-ip/",
     "/sdacha-otchetnosti-ooo/",

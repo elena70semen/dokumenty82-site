@@ -36,7 +36,7 @@ async function routeLocal(route) {
     const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, serviceWorkers: "block" });
     await context.route("**/*", routeLocal);
     const page = await context.newPage();
-    const pages = ["/ceny/", "/buhgalterskie-uslugi/", "/kontakty/", "/novosti/formaty-nds-s-1-iyulya-2026/"];
+    const pages = ["/ceny/", "/buhgalterskie-uslugi/", "/smena-buhgaltera/", "/kontakty/", "/novosti/formaty-nds-s-1-iyulya-2026/"];
 
     for (const pathname of pages) {
       await page.goto(origin + pathname, { waitUntil: "load" });

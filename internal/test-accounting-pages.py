@@ -220,7 +220,7 @@ class AccountingPagesTest(unittest.TestCase):
             if 'src="/assets/lead-form.js?' in html:
                 consumers.append(file)
                 self.assertIn('src="/assets/lead-form.js?v=20260921-v11a"', html)
-        self.assertEqual(len(consumers), 23)
+        self.assertEqual(len(consumers), 24)
 
     def test_ooo_minimum_price_is_consistent_in_structured_catalog(self):
         nodes = []

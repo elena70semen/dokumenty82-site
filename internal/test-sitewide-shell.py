@@ -21,7 +21,7 @@ class SitewideShellTest(unittest.TestCase):
         return ROOT / relative / "index.html" if relative else ROOT / "index.html"
 
     def test_every_internal_public_page_loads_shared_shell(self):
-        self.assertEqual(len(self.urls), 64)
+        self.assertEqual(len(self.urls), 65)
         for url in self.urls[1:]:
             text = self.page_file(url).read_text(encoding="utf-8")
             with self.subTest(url=url):
