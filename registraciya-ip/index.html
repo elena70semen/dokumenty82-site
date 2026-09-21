@@ -175,7 +175,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260921-v11c" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/registration-ip-v1/page.css?v=20260921-regip1" />
   </head>
   <body>
     
@@ -226,230 +230,106 @@
         </nav>
       </details>
     </header>
-    <main>
-    <section class="hero hero-inner hero-stack">
-      <div class="glass-panel hero-copy-panel">
-        <p class="eyebrow">Документы для бизнеса</p>
-        <h1>Регистрация ИП в Симферополе</h1>
-        <p>Поможем открыть ИП без привязки к банку: подберём ОКВЭД и налоговый режим, подготовим форму Р21001, согласуем способ подачи и первые действия после регистрации.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 5 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#quick-lead">Открыть ИП</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-      </div>
-      <aside class="glass-panel hero-choice-panel">
-        <p class="eyebrow">Перед началом</p>
-        <h2>Что определяет старт ИП</h2>
-        <p class="hero-choice-description">Регистрация занимает один маршрут, а налоговый режим, касса и отчётность требуют решений до первых операций.</p>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Будущая деятельность</strong><small>Товары, работы, услуги, регион, клиенты и планируемые способы расчётов.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>ОКВЭД</strong><small>Основной и дополнительные коды под фактическую модель работы, а не случайный список.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>Налоговый режим</strong><small>Доходы, расходы, сотрудники, НДС, касса и региональные условия.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Подача и старт</strong><small>Форма Р21001, способ подачи и действия после появления записи в ЕГРИП.</small></div></a></li>
-        </ul>
-      </aside>
-    </section>
-    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
-      <div class="section-header">
-        <p class="eyebrow">Быстрый запрос</p>
-        <h2 id="quick-lead-title">Рассчитать подготовку регистрации ИП</h2>
-        <p>Коротко опишите будущую деятельность. Уточним ОКВЭД, режим и состав документов до начала работы.</p>
-      </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-        <input type="hidden" name="source_page" value="/registraciya-ip/" />
-        <input type="hidden" name="task_type" value="Регистрация ИП" />
-        <input type="hidden" name="lead_mode" value="quick" />
-        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-grid">
-          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Будущая деятельность (необязательно)<textarea name="message" rows="3" placeholder="Чем планируете заниматься, будут ли сотрудники и касса"></textarea></label>
-        </div>
-        <p class="form-note lead-transfer-note">Для первого обращения документы не нужны. После уточнения задачи согласуем защищённый способ передачи через личный кабинет или другой подходящий канал.</p>
-        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчёт</button><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-        <p class="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="section page-rich-section rich-intro-section">
-      <p class="eyebrow">Старт ИП</p>
-      <h2>Открываем ИП с понятной моделью работы, а не только с формой Р21001</h2>
-      <div class="rich-copy"><p>Регистрация ИП технически проще создания ООО, но решения на старте влияют на налоги и ежедневную работу. До подачи связываем фактическую деятельность с ОКВЭД, сравниваем доступные режимы и определяем, потребуются ли сотрудники, онлайн-касса, расчётный счёт и отдельные уведомления.</p><p>Подготовка документов стоит от 5 000 ₽. Это стоимость разбора и согласованного комплекта, а не государственная пошлина. Мы не требуем открывать счёт в конкретном банке: клиент выбирает банк и тариф отдельно. Принимаем в Симферополе на ул. Мате Залки, 1 и заранее фиксируем действия после записи в ЕГРИП.</p></div>
-    </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">Мастер открывает ИП для работы с организациями</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>Специалист планирует оказывать ремонтные услуги и заключать договоры с компаниями. Ему нужны подходящие виды деятельности и понятный порядок начала работы.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Разберём будущие услуги, клиентов и способ расчётов. Подберём коды деятельности, обсудим налоговый режим и подготовим регистрационные документы для выбранного способа подачи.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>Комплект для регистрации ИП и список первых действий после неё: расчёты, учёт, документы для клиентов и проверка отчётных обязанностей.</p></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Состав услуги</p>
-      <h2>Что важно проверить</h2>
-      <p>Проверяем будущую деятельность, заявление Р21001 и решения, которые влияют на налоги и работу сразу после регистрации.</p>
-    </div>
-      <div class="card-grid two rich-card-grid">
-    <article class="glass-card rich-card" id="orientation-detail-01">
-      <span>01</span>
-      <h3>Когда нужна услуга</h3>
-      <ul class="rich-list"><li>Вы планируете открыть ИП в Симферополе или Крыму и хотите подготовить документы спокойно.</li><li>Нужно выбрать деятельность, режим и понять, какие данные понадобятся для регистрации.</li><li>Предприниматель хочет сразу связать регистрацию с отчетностью, банком и налоговой нагрузкой.</li><li>Есть сомнения, стоит ли открывать ИП или лучше рассмотреть ООО.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-02">
-      <span>02</span>
-      <h3>Что подготовим и проверим</h3>
-      <ul class="rich-list"><li>Подберем основной и дополнительные коды ОКВЭД под фактическую деятельность.</li><li>Подготовим заявление Р21001 и сверим персональные сведения перед подачей.</li><li>Проверим доступные налоговые режимы и срок подачи уведомления, если оно требуется.</li><li>Согласуем способ подачи и контрольные действия после получения листа записи ЕГРИП.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-03">
-      <span>03</span>
-      <h3>Что нужно от клиента</h3>
-      <ul class="rich-list"><li>Краткое описание будущей деятельности и региона работы.</li><li>Понимание, будут ли сотрудники, касса, онлайн-продажи или регулярные платежи от организаций.</li><li>Контактные данные для согласования безопасной передачи персональных документов.</li><li>Вопросы по режиму, банку или стартовой отчетности, если они уже есть.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-04">
-      <span>04</span>
-      <h3>Что будет в комплекте</h3>
-      <ul class="rich-list"><li>Согласованный перечень кодов ОКВЭД для основной и дополнительной деятельности.</li><li>Заполненное заявление Р21001 с проверенными регистрационными данными.</li><li>Решение по налоговому режиму и уведомление, когда оно входит в согласованный маршрут.</li><li>Инструкция по подаче и список ближайших действий после регистрации ИП.</li></ul>
-    </article></div>
-    </section>
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Как проходит работа</p>
-      <h2>От будущей деятельности до записи в ЕГРИП</h2>
-      <p>Каждый этап заканчивается проверяемым результатом: выбранной моделью, согласованными кодами, подготовленной формой и списком действий после регистрации.</p>
-    </div>
-      <div class="card-grid two rich-step-grid">
-    <article class="glass-card rich-card rich-step-card">
-      <span>01</span>
-      <h3>Разбираем товары, работы, услуги, клиентов, расчёты и планируемый регион работы.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>02</span>
-      <h3>Подбираем основной и дополнительные ОКВЭД, сравниваем применимые налоговые режимы.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>03</span>
-      <h3>Готовим форму Р21001, уведомления и инструкцию для выбранного способа подачи.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>04</span>
-      <h3>После регистрации сверяем запись ЕГРИП и фиксируем банк, кассу, учёт и первую отчётность.</h3>
-    </article></div>
-    </section>
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Сроки, результат и риски</p>
-      <h2>Что входит в стоимость и что происходит после подачи</h2>
-      <p>Состав услуги и цена согласуются до начала работы. Решение о государственной регистрации принимает регистрирующий орган по фактически поданным сведениям.</p>
-    </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card">
-          <span>01</span>
-          <h3>Результат подготовки</h3>
-          <p>Согласованные ОКВЭД и режим, подготовленная форма Р21001, относящиеся к маршруту уведомления и инструкция по подаче.</p><p>Если документы в порядке, ФНС направляет регистрационные документы в электронном виде через 3 рабочих дня после подачи. Срок нашей подготовки зависит от готовности вводных и выбранного способа подачи.</p><p><a href="https://www.nalog.gov.ru/create_business/ip/creation/registration/step4/" target="_blank" rel="noopener">Проверить официальный срок регистрации на сайте ФНС</a></p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>02</span>
-          <h3>Цена и госпошлина</h3>
-          <p>Подготовка документов стоит от 5 000 ₽. Итог зависит от количества направлений и налогового разбора. Услуга не привязана к открытию счёта или тарифу конкретного банка.</p><p>При электронной подаче регистрационных документов государственная пошлина не уплачивается.</p><p><a href="https://www.nalog.gov.ru/create_business/ip/creation/registration/step2/" target="_blank" rel="noopener">Проверить пакет документов и госпошлину на сайте ФНС</a></p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>03</span>
-          <h3>После регистрации</h3>
-          <ul class="rich-list"><li>Проверяем запись ЕГРИП и применяемый налоговый режим.</li><li>Определяем необходимость расчётного счёта и онлайн-кассы.</li><li>Фиксируем порядок учёта, взносов и первой отчётности.</li></ul>
-        </article>
-        <article class="glass-card rich-card">
-          <span>04</span>
-          <h3>Риски случайного старта</h3>
-          <ul class="rich-list"><li>Неподходящий основной ОКВЭД не описывает источник выручки.</li><li>Поздний выбор режима может увеличить налоговую нагрузку.</li><li>Старт продаж без проверки кассы и отчётности создаёт пропущенные обязанности.</li></ul>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section faq-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">FAQ</p>
-      <h2>Частые вопросы</h2>
-      <p>Стоимость, регистрационная форма, налоговый режим и действия после открытия ИП.</p>
-    </div>
-      <div class="card-grid two faq-grid">
-    <article class="glass-card rich-card faq-card">
-      <span>01</span>
-      <h3>Сколько стоит открыть ИП в Симферополе?</h3>
-      <p>Подготовка документов стоит от 5 000 ₽. Цена зависит от деятельности, режима и состава сопровождения. Услуга не привязана к открытию счёта в конкретном банке. При электронной подаче регистрационных документов госпошлина не уплачивается.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>02</span>
-      <h3>Какая форма нужна для регистрации ИП?</h3>
-      <p>Используется форма Р21001. Перед подачей сверяем персональные данные и коды ОКВЭД.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>03</span>
-      <h3>Какой налоговый режим выбрать при открытии ИП?</h3>
-      <p>Универсального режима нет. Сравниваем деятельность, доходы и расходы, сотрудников, кассу, НДС и региональные условия.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>04</span>
-      <h3>Что делать после регистрации ИП?</h3>
-      <p>Проверяем режим, расчётный счёт, онлайн-кассу, учёт и календарь первой отчётности с учётом фактической деятельности.</p>
-    </article></div>
-    </section>
-    
-    <section class="section page-rich-section related-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Смежные страницы</p>
-      <h2>Другие задачи по документам</h2>
-      <p>Связанные страницы помогают выбрать форму бизнеса и налоговую модель до подачи документов.</p>
-    </div>
-      <div class="card-grid two related-grid">
-        
-          <a class="glass-card related-card" href="/registraciya-i-likvidaciya/">
-            <span>01</span>
-            <h3>Регистрация и прекращение бизнеса</h3>
-            <p>Сравнить самостоятельные маршруты для ИП и ООО.</p>
-          </a>
-          <a class="glass-card related-card" href="/ausn-krym/">
-            <span>02</span>
-            <h3>АУСН в Крыму</h3>
-            <p>Проверить применимость режима, ограничения и порядок старта после регистрации.</p>
-          </a>
-          <a class="glass-card related-card" href="/raschet-nalogovoy-nagruzki/">
-            <span>03</span>
-            <h3>Расчёт налоговой нагрузки</h3>
-            <p>Сравнить режимы по будущим доходам, расходам и операциям.</p>
-          </a>
-          <a class="glass-card related-card" href="/registraciya-ooo/">
-            <span>04</span>
-            <h3>Регистрация ООО в Симферополе</h3>
-            <p>Сравнить маршрут ООО, если важны участники, отдельная ответственность, юридический адрес или корпоративная структура.</p>
-          </a>
-          <a class="glass-card related-card" href="/likvidaciya-ip/">
-            <span>05</span>
-            <h3>Закрытие ИП</h3>
-            <p>Проверить обратный маршрут: заявление Р26001, отчётность, взносы, кассу и незавершённые обязательства.</p>
-          </a>
-          <a class="glass-card related-card" href="/izmenenie-okved-ip/">
-            <span>06</span>
-            <h3>Изменение ОКВЭД ИП</h3>
-            <p>Обновить виды деятельности действующего предпринимателя без повторной регистрации.</p>
-          </a>
-      </div>
-    </section></main>
+    <main class="service-page registration-ip-page" data-ui-version="approved-home-derived-v4-ad-banner-integrated" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero">
+<div class="service-hero-frame">
+<div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Регистрация бизнеса</p>
+<h1 id="service-title">Регистрация <span>ИП</span> в Симферополе</h1>
+<p class="service-lead">Поможем открыть ИП, подобрать ОКВЭД и режим налогообложения, подготовим заявление Р21001 и сопроводим регистрацию.</p>
+<div aria-label="Ключевые этапы услуги" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h5M9.5 12h6M9.5 16h4"></path></svg></span><span><strong>Подготовка документов</strong><small>Заявление Р21001, ОКВЭД и необходимые сведения.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg></span><span><strong>Подача и сопровождение</strong><small>Подскажем порядок подачи и проконтролируем процесс.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 19V9l7-5 7 5v10"></path><path d="M8 19v-5h8v5M3.5 19.5h17"></path></svg></span><span><strong>Готовый результат</strong><small>Вы получаете зарегистрированное ИП и комплект документов.</small></span></div>
+</div>
+<div class="hero-commerce hero-commerce--banner"><a class="button button-primary hero-consult-button" href="#request"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a><div aria-label="Стоимость сопровождения регистрации ИП от 5 000 рублей" class="hero-price-inline"><strong>от 5 000 ₽</strong><span>Состав и стоимость согласуем до начала работы.</span></div></div>
+<div aria-label="Преимущества работы" class="hero-facts"><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg><b>Конфиденциально</b></span><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><b>Оперативно</b></span><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20v-2.2C3 15.7 4.7 14 6.8 14h2.4c2.1 0 3.8 1.7 3.8 3.8V20M13 14h2.2c3.2 0 5.8 2.6 5.8 5.8V20"></path></svg><b>Опытная команда</b></span></div>
+</div>
+<figure aria-label="Регистрация ИП — документы и сопровождение" class="service-hero-visual"><div class="hero-banner-media"><img alt="Регистрация ИП в Симферополе — ОКВЭД, форма Р21001, подача и ЕГРИП" class="hero-banner-image" decoding="async" fetchpriority="high" height="1105" loading="eager" src="/assets/registration-ip-v1/registration-ip-hero-right.webp" width="1100"/></div><figcaption class="sr-only">Подготовка документов для регистрации ИП: ОКВЭД, форма Р21001, подача и получение записи ЕГРИП.</figcaption></figure>
+</div>
+</div>
+</section>
+<section aria-labelledby="decision-title" class="service-section">
+<div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Перед началом</span><h2 id="decision-title">Что определяет старт ИП</h2></div><p class="section-intro">До подачи документов важно определить будущую деятельность, подходящие ОКВЭД, налоговый режим и удобный способ подачи заявления.</p></div>
+<ul class="decision-grid">
+<li class="decision-card" data-card="01"><span class="decision-number">01</span><strong>Чем будете заниматься</strong><p>Какие товары, работы или услуги планируете, кто ваши клиенты и как будут проходить расчёты.</p></li>
+<li class="decision-card" data-card="02"><span class="decision-number">02</span><strong>ОКВЭД</strong><p>Подбираем основной и дополнительные коды под фактическую деятельность, без случайного набора.</p></li>
+<li class="decision-card" data-card="03"><span class="decision-number">03</span><strong>Налоговый режим</strong><p>Сравниваем доступные варианты с учётом доходов, расходов, сотрудников, НДС и кассы.</p></li>
+<li class="decision-card" data-card="04"><span class="decision-number">04</span><strong>Как подать документы</strong><p>Определяем способ подачи Р21001 и заранее фиксируем, что проверить после появления записи в ЕГРИП.</p></li>
+</ul>
+</div></section>
+<section aria-labelledby="request-title" class="service-section soft" id="request">
+<div class="container"><div class="request-panel">
+<div class="request-copy"><span class="eyebrow eyebrow-dark">Консультация</span><h2 id="request-title">Получить консультацию по регистрации ИП</h2><p>Оставьте телефон и, при желании, коротко опишите вопрос. Специалист уточнит вашу ситуацию и объяснит, что потребуется для регистрации и старта работы.</p><div class="request-price"><span>Сопровождение регистрации</span><strong>от 5 000 ₽</strong></div></div>
+<form action="/api/lead" aria-label="Получить консультацию по регистрации ИП" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<input type="hidden" name="source_page" value="/registraciya-ip/" />
+<input type="hidden" name="task_type" value="Регистрация ИП" />
+<input type="hidden" name="lead_mode" value="quick" />
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field wide"><span>Ваш вопрос <small>(необязательно)</small></span><textarea aria-label="Ваш вопрос" name="message" placeholder="Например: чем планируете заниматься, будут ли сотрудники, нужна ли касса, какой режим рассматриваете" rows="4"></textarea></label>
+<p class="form-note wide">Свяжемся, чтобы уточнить детали и ответить на вопросы. Решение по составу сопровождения принимаете после консультации.</p>
+<label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
+<p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+</form>
+</div></div></section>
+<section aria-labelledby="expert-title" class="service-section"><div class="container expert-grid"><div class="expert-heading"><span class="eyebrow">Старт ИП</span><h2 id="expert-title">До подачи документов важно понять, как ИП будет работать после регистрации</h2><div aria-label="Ключевые условия" class="expert-proof"><span><small>Сопровождение</small><strong>от 5 000 ₽</strong></span><span><small>Консультация</small><strong>до подачи</strong></span></div></div><div class="expert-copy"><p>Регистрация ИП начинается не с заполнения Р21001, а с понимания будущей деятельности. До подачи документов важно определить подходящие ОКВЭД, налоговый режим и понять, понадобятся ли онлайн-касса, сотрудники и дополнительные уведомления.</p><p>На консультации разбираем исходные данные и объясняем порядок действий. После этого готовим согласованный комплект документов и способ подачи. Открытие расчётного счёта в конкретном банке не является условием услуги.</p></div></div></section>
+<section aria-labelledby="case-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">На консультации</span><h2 id="case-title">Разберём вашу ситуацию до подачи документов</h2></div><p class="section-intro">Исходим из вашей фактической деятельности, клиентов и планов — без шаблонных сценариев.</p></div>
+<ol class="case-grid">
+<li class="case-card case-card--1"><span class="case-number">01</span><h3>Деятельность и клиенты</h3><p>Что вы планируете продавать или оказывать, кому, в каком регионе и как будут проходить расчёты.</p></li>
+<li class="case-card case-card--2"><span class="case-number">02</span><h3>ОКВЭД и налоги</h3><p>Какие коды подходят под деятельность и какие налоговые режимы имеет смысл сравнить до регистрации.</p></li>
+<li class="case-card case-card--3"><span class="case-number">03</span><h3>Подача и старт работы</h3><p>Как подать Р21001 и что проверить после регистрации: ЕГРИП, кассу, учёт, взносы и отчётность — если это требуется вашей модели работы.</p></li>
+</ol><div class="section-action"><a class="button button-secondary" href="#request"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div>
+</div></section>
+<section aria-labelledby="composition-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Состав услуги</span><h2 id="composition-title">Что входит в сопровождение регистрации ИП</h2></div><p class="section-intro">Собираем в одном процессе консультацию, подготовку документов и понятный порядок действий после регистрации.</p></div>
+<div class="content-grid">
+<article class="content-card content-card--1"><span class="card-number">01</span><h3>До подачи документов</h3><ul><li>Уточняем, чем вы планируете заниматься, где и с кем будете работать.</li><li>Определяем, какие ОКВЭД нужны для основной и дополнительной деятельности.</li><li>Обсуждаем налоговый режим и сроки уведомлений, если они требуются.</li><li>Проверяем, есть ли вопросы по кассе, сотрудникам и расчётам с клиентами.</li></ul></article>
+<article class="content-card content-card--2"><span class="card-number">02</span><h3>Подготовка регистрации</h3><ul><li>Готовим заявление Р21001 и проверяем регистрационные сведения.</li><li>Формируем согласованный перечень ОКВЭД.</li><li>Подготавливаем необходимые уведомления, если они входят в выбранный маршрут.</li><li>Согласуем способ подачи документов и порядок контроля результата.</li></ul></article>
+<article class="content-card content-card--3"><span class="card-number">03</span><h3>Что нужно от вас</h3><ul><li>Паспортные и контактные данные — передаются безопасным способом после согласования работы.</li><li>Краткое описание будущей деятельности, клиентов и способов расчётов.</li><li>Информация о сотрудниках, онлайн-продажах или кассе, если это планируется.</li><li>Ваши вопросы по регистрации, налогам и первым действиям после открытия ИП.</li></ul></article>
+<article class="content-card content-card--4"><span class="card-number">04</span><h3>Что получите</h3><ul><li>Подготовленное заявление Р21001 и согласованные коды ОКВЭД.</li><li>Понятное решение по налоговому режиму с учётом предоставленных вводных.</li><li>Инструкцию по выбранному способу подачи документов.</li><li>Список действий после регистрации: что проверить и что подключать только при необходимости.</li></ul></article>
+</div></div></section>
+<section aria-labelledby="process-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Как проходит работа</span><h2 id="process-title">Как проходит регистрация ИП с нашей помощью</h2></div><p class="section-intro">Сначала консультация и решения, затем документы и подача. На каждом этапе понятно, что готово и что происходит дальше.</p></div>
+<ol class="process-grid process-service">
+<li class="step" data-step="01"><div class="step-rail"><span class="step-number">01</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/registration-ip-v1/process-step-01.svg"/></span><h3>На консультации уточняем будущую деятельность, клиентов, регион работы и ваши вопросы.</h3></article></li>
+<li class="step" data-step="02"><div class="step-rail"><span class="step-number">02</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/registration-ip-v1/process-step-02.svg"/></span><h3>Подбираем основной и дополнительные ОКВЭД и обсуждаем подходящий налоговый режим.</h3></article></li>
+<li class="step" data-step="03"><div class="step-rail"><span class="step-number">03</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/registration-ip-v1/process-step-03.svg"/></span><h3>Готовим форму Р21001, необходимые уведомления и согласуем способ подачи.</h3></article></li>
+<li class="step" data-step="04"><div class="step-rail"><span class="step-number">04</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/registration-ip-v1/process-step-04.svg"/></span><h3>После регистрации проверяем запись ЕГРИП и даём список следующих действий по кассе, учёту и отчётности — если они нужны.</h3></article></li>
+</ol></div></section>
+<section aria-labelledby="outcome-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Стоимость и результат</span><h2 id="outcome-title">Стоимость, срок и результат регистрации</h2></div><p class="section-intro">До начала работы согласуем состав сопровождения и стоимость. Решение о государственной регистрации принимает ФНС по поданным сведениям.</p></div>
+<div class="result-grid">
+<article class="result-card result-card--1"><span class="card-number">01</span><h3>Что вы получаете</h3><p>Согласованные ОКВЭД и налоговый режим, подготовленную форму Р21001, необходимые уведомления по выбранному маршруту и инструкцию по подаче.</p><p>После подачи контролируем результат по согласованному способу и объясняем, что проверить после получения записи в ЕГРИП.</p></article>
+<article class="result-card result-card--2"><span class="card-number">02</span><h3>Стоимость и госпошлина</h3><p>Сопровождение регистрации ИП стоит от 5 000 ₽. Точную стоимость согласуем после консультации и до начала работы — она зависит от состава сопровождения.</p><p>По информации ФНС, при направлении документов на государственную регистрацию в электронной форме государственная пошлина не уплачивается.</p><a aria-label="Проверить пакет документов и госпошлину на сайте ФНС — откроется в новой вкладке" class="official-link official-link--external" href="https://www.nalog.gov.ru/create_business/ip/creation/registration/step2/" rel="noopener noreferrer" target="_blank">Проверить пакет документов и госпошлину на сайте ФНС ↗</a></article>
+<article class="result-card result-card--3"><span class="card-number">03</span><h3>Срок регистрации</h3><p>ФНС указывает срок государственной регистрации ИП — не более 3 рабочих дней со дня представления документов. Срок нашей подготовки зависит от полноты исходных данных и выбранного способа подачи.</p><a aria-label="Проверить официальный срок регистрации на сайте ФНС — откроется в новой вкладке" class="official-link official-link--external" href="https://www.nalog.gov.ru/create_business/ip/creation/registration/step4/" rel="noopener noreferrer" target="_blank">Проверить официальный срок регистрации на сайте ФНС ↗</a></article>
+<article class="result-card result-card--4"><span class="card-number">04</span><h3>После регистрации</h3><ul><li>Проверяем запись ЕГРИП и выбранный налоговый режим.</li><li>Определяем, нужен ли расчётный счёт и применяется ли онлайн-касса в вашей модели работы.</li><li>Фиксируем порядок учёта, страховых взносов и первой отчётности.</li></ul></article>
+</div></div></section>
+<section aria-labelledby="faq-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы</h2></div><p class="section-intro">Коротко отвечаем на вопросы о стоимости, форме Р21001, налоговом режиме и действиях после регистрации.</p></div>
+<div class="faq-grid">
+<article class="faq-card faq-card--1"><span class="faq-number">01</span><h3>Сколько стоит открыть ИП в Симферополе?</h3><p>Сопровождение регистрации ИП стоит от 5 000 ₽. Точную стоимость согласуем после консультации, когда понятны деятельность, ОКВЭД, налоговый режим и способ подачи. При электронной подаче регистрационных документов госпошлина не уплачивается.</p></article>
+<article class="faq-card faq-card--2"><span class="faq-number">02</span><h3>Какая форма нужна для регистрации ИП?</h3><p>Для государственной регистрации физического лица в качестве индивидуального предпринимателя используется заявление по форме Р21001. Перед подачей проверяем персональные данные и выбранные коды ОКВЭД.</p></article>
+<article class="faq-card faq-card--3"><span class="faq-number">03</span><h3>Какой налоговый режим выбрать при открытии ИП?</h3><p>Универсального режима нет. На консультации сравниваем варианты с учётом вида деятельности, доходов и расходов, сотрудников, НДС, кассы и региональных условий.</p></article>
+<article class="faq-card faq-card--4"><span class="faq-number">04</span><h3>Что делать после регистрации ИП?</h3><p>После регистрации проверяем запись ЕГРИП и налоговый режим, затем определяем, нужен ли расчётный счёт, применяется ли онлайн-касса, и фиксируем порядок учёта, взносов и первой отчётности.</p></article>
+</div></div></section>
+
+<nav class="service-related-links" aria-label="Связанные услуги">
+  <div class="container">
+    <a href="/registraciya-i-likvidaciya/">Регистрация и прекращение бизнеса</a>
+    <a href="/ausn-krym/">АУСН в Крыму</a>
+    <a href="/raschet-nalogovoy-nagruzki/">Расчёт налоговой нагрузки</a>
+    <a href="/registraciya-ooo/">Регистрация ООО</a>
+    <a href="/likvidaciya-ip/">Закрытие ИП</a>
+    <a href="/izmenenie-okved-ip/">Изменение ОКВЭД ИП</a>
+  </div>
+</nav>
+</main>
     
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">
