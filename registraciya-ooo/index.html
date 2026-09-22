@@ -175,7 +175,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260921-v11c" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/registration-ooo-v1/page.css?v=20260922-v1" />
   </head>
   <body>
     
@@ -226,229 +230,130 @@
         </nav>
       </details>
     </header>
-    <main>
-    <section class="hero hero-inner hero-stack">
-      <div class="glass-panel hero-copy-panel">
-        <p class="eyebrow">Документы для бизнеса</p>
-        <h1>Регистрация ООО в Симферополе</h1>
-        <p>Поможем открыть ООО: согласуем участников, директора и юридический адрес, подготовим устав, ОКВЭД, форму Р11001 и действия после регистрации.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 10 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#quick-lead">Открыть ООО</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-      </div>
-      <aside class="glass-panel hero-choice-panel">
-        <p class="eyebrow">Перед началом</p>
-        <h2>Что определяет старт ООО</h2>
-        <p class="hero-choice-description">Регистрационный комплект зависит от корпоративной структуры, адреса, устава и будущей модели работы компании.</p>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Структура общества</strong><small>Один или несколько участников, размеры долей, директор и порядок принятия решений.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>Адрес и устав</strong><small>Подтверждение юридического адреса, собственный или подходящий типовой устав.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>ОКВЭД и налоги</strong><small>Фактическая деятельность, основной код, дополнительные направления и налоговый режим.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Подача и старт</strong><small>Форма Р11001, решение или протокол, способ подачи и действия после записи в ЕГРЮЛ.</small></div></a></li>
-        </ul>
-      </aside>
-    </section>
-    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
-      <div class="section-header">
-        <p class="eyebrow">Быстрый запрос</p>
-        <h2 id="quick-lead-title">Рассчитать подготовку регистрации ООО</h2>
-        <p>Коротко опишите структуру будущей компании. Уточним адрес, устав, ОКВЭД и состав документов до начала работы.</p>
-      </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-        <input type="hidden" name="source_page" value="/registraciya-ooo/" />
-        <input type="hidden" name="task_type" value="Регистрация ООО" />
-        <input type="hidden" name="lead_mode" value="quick" />
-        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-grid">
-          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Структура будущего ООО (необязательно)<textarea name="message" rows="3" placeholder="Участники, директор, адрес и планируемая деятельность"></textarea></label>
-        </div>
-        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчёт</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить файлы</a></div>
-        <p class="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="section page-rich-section rich-intro-section">
-      <p class="eyebrow">Старт ООО</p>
-      <h2>Открываем ООО с согласованной корпоративной и налоговой моделью</h2>
-      <div class="rich-copy"><p>ООО отличается от ИП не только комплектом документов. Доли участников, полномочия директора, юридический адрес и положения устава влияют на решения внутри компании, сведения ЕГРЮЛ, банковскую проверку и дальнейший учёт. До подачи связываем эти условия с видами деятельности и налоговым режимом.</p><p>Подготовка документов стоит от 10 000 ₽. При электронной подаче или подаче через нотариуса государственная пошлина не уплачивается. Если структуре общества подходит типовой устав, рассматриваем этот вариант отдельно. Принимаем в Симферополе на ул. Мате Залки, 1.</p></div>
-    </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">Два партнёра создают компанию для совместного проекта</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>Партнёры договорились о работе, но ещё не зафиксировали доли, руководителя и адрес. Они хотят подготовить согласованный комплект до подачи на регистрацию.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Уточним состав участников, модель управления, адрес и деятельность. Проверим согласованность решений и исходных сведений, подготовим документы по выбранному маршруту.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>Регистрационный комплект ООО и перечень организационных вопросов после создания компании, включая настройку учёта и передачу документов.</p></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Состав услуги</p>
-      <h2>Что важно проверить</h2>
-      <p>Проверяем корпоративные решения, сведения для ЕГРЮЛ и документы, от которых зависит работа компании после регистрации.</p>
-    </div>
-      <div class="card-grid two rich-card-grid">
-    <article class="glass-card rich-card" id="orientation-detail-01">
-      <span>01</span>
-      <h3>Когда нужна услуга</h3>
-      <ul class="rich-list"><li>Планируется открыть ООО с одним или несколькими учредителями.</li><li>Нужно заранее понять, какой юридический адрес и директор будут отражены в ЕГРЮЛ.</li><li>Есть вопрос по налоговому режиму, банку или будущей отчетности.</li><li>Нужно собрать комплект без лишней путаницы между уставом, решением и регистрационными данными.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-02">
-      <span>02</span>
-      <h3>Что подготовим и проверим</h3>
-      <ul class="rich-list"><li>Соберем сведения об участниках, директоре, адресе, названии и видах деятельности.</li><li>Подготовим решение или протокол, устав и заявление Р11001 для согласованной структуры ООО.</li><li>Проверим подтверждение юридического адреса и связность данных во всем комплекте.</li><li>Сверим налоговый режим и действия, которые потребуются после внесения записи в ЕГРЮЛ.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-03">
-      <span>03</span>
-      <h3>Что нужно от клиента</h3>
-      <ul class="rich-list"><li>Название, участники, директор, будущий адрес и описание деятельности.</li><li>Понимание, будут ли сотрудники, крупные контрагенты, банк или специальные требования к документам.</li><li>Персональные данные и документы только через согласованный безопасный канал.</li><li>Вопросы по режиму, адресу или структуре управления, если они уже есть.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-04">
-      <span>04</span>
-      <h3>Что будет в комплекте</h3>
-      <ul class="rich-list"><li>Решение единственного участника или протокол собрания для создания общества.</li><li>Устав и заявление Р11001 с согласованными сведениями об ООО.</li><li>Перечень документов по юридическому адресу и выбранному способу подачи.</li><li>Карта действий после регистрации: налоги, банк, учет и внутренние документы.</li></ul>
-    </article></div>
-    </section>
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Как проходит работа</p>
-      <h2>От структуры общества до записи в ЕГРЮЛ</h2>
-      <p>Каждый этап заканчивается проверяемым результатом: согласованными решениями, регистрационным комплектом и планом запуска компании.</p>
-    </div>
-      <div class="card-grid two rich-step-grid">
-    <article class="glass-card rich-card rich-step-card">
-      <span>01</span>
-      <h3>Фиксируем участников, размеры долей, директора и порядок принятия ключевых решений.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>02</span>
-      <h3>Проверяем юридический адрес, выбираем устав, ОКВЭД и налоговый режим.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>03</span>
-      <h3>Готовим решение или протокол, форму Р11001, устав и документы по адресу.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>04</span>
-      <h3>После регистрации фиксируем банк, бухгалтерский учёт, внутренние документы и сотрудников.</h3>
-    </article></div>
-    </section>
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Сроки, результат и риски</p>
-      <h2>Что входит в стоимость и что происходит после подачи</h2>
-      <p>До подготовки фиксируем структуру общества, состав комплекта и цену. Итог регистрации зависит от достоверности сведений об участниках, директоре, адресе и других данных, поданных в регистрирующий орган.</p>
-    </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card">
-          <span>01</span>
-          <h3>Результат подготовки</h3>
-          <p>Согласованная структура, решение или протокол, форма Р11001, устав либо выбранный типовой устав, документы по адресу и инструкция по подаче.</p><p>Срок подготовки зависит от готовности участников, адреса и выбранного маршрута.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>02</span>
-          <h3>Цена и госпошлина</h3>
-          <p>Подготовка документов стоит от 10 000 ₽. Итог зависит от числа участников, устава, адреса и состава налогового разбора.</p><p>При электронной подаче или подаче через нотариуса государственная пошлина не уплачивается.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>03</span>
-          <h3>После регистрации</h3>
-          <ul class="rich-list"><li>Проверяем запись ЕГРЮЛ и применяемый налоговый режим.</li><li>Открываем расчётный счёт и организуем бухгалтерский учёт.</li><li>Оформляем внутренние документы и сотрудников при их наличии.</li></ul>
-        </article>
-        <article class="glass-card rich-card">
-          <span>04</span>
-          <h3>Риски несогласованного старта</h3>
-          <ul class="rich-list"><li>Неподтверждённый адрес может вызвать вопросы при регистрации и после неё.</li><li>Расхождения в данных участников, директора и устава требуют исправлений.</li><li>Поздний выбор режима и учёта осложняет первые операции компании.</li></ul>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section faq-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">FAQ</p>
-      <h2>Частые вопросы</h2>
-      <p>Стоимость, регистрационный комплект, типовой устав и действия после открытия ООО.</p>
-    </div>
-      <div class="card-grid two faq-grid">
-    <article class="glass-card rich-card faq-card">
-      <span>01</span>
-      <h3>Сколько стоит открыть ООО в Симферополе?</h3>
-      <p>Подготовка документов стоит от 10 000 ₽. Цена зависит от числа участников, устава, адреса и сопровождения. При электронной подаче или подаче через нотариуса госпошлина не уплачивается.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>02</span>
-      <h3>Какие документы нужны для регистрации ООО?</h3>
-      <p>Форма Р11001, решение или протокол, устав либо типовой устав, а также сведения об адресе, участниках, директоре и деятельности.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>03</span>
-      <h3>Можно ли зарегистрировать ООО на типовом уставе?</h3>
-      <p>Да, если подходящий типовой устав соответствует структуре общества. Собственный текст устава тогда в регистрирующий орган не представляют.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>04</span>
-      <h3>Что делать после регистрации ООО?</h3>
-      <p>Проверяем запись ЕГРЮЛ и режим, открываем счёт, организуем учёт и оформляем внутренние документы и сотрудников.</p>
-    </article></div>
-    </section>
-    
-    <section class="section page-rich-section related-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Смежные страницы</p>
-      <h2>Другие задачи по документам</h2>
-      <p>Связанные страницы помогают подготовить адрес, налоговую модель и бухгалтерский старт компании.</p>
-    </div>
-      <div class="card-grid two related-grid">
-        
-          <a class="glass-card related-card" href="/yuridicheskiy-adres-simferopol/">
-            <span>01</span>
-            <h3>Юридический адрес</h3>
-            <p>Проверить требования к адресу и документам, которыми подтверждается использование помещения.</p>
-          </a>
-          <a class="glass-card related-card" href="/nalogi-i-rezhimy/">
-            <span>02</span>
-            <h3>Налоги и режимы</h3>
-            <p>Сравнить режимы до первых операций и определить будущий состав отчётности.</p>
-          </a>
-          <a class="glass-card related-card" href="/buhgalterskoe-soprovozhdenie-ooo/">
-            <span>03</span>
-            <h3>Бухгалтерское сопровождение ООО</h3>
-            <p>Организовать учёт, отчётность и контроль первых обязательств после регистрации.</p>
-          </a>
-          <a class="glass-card related-card" href="/registraciya-ip/">
-            <span>04</span>
-            <h3>Регистрация ИП в Симферополе</h3>
-            <p>Сравнить более простой маршрут ИП, если бизнес запускает один предприниматель без корпоративной структуры.</p>
-          </a>
-          <a class="glass-card related-card" href="/izmenenie-okved-ooo/">
-            <span>05</span>
-            <h3>Изменение ОКВЭД ООО</h3>
-            <p>Разобрать порядок добавления и исключения видов деятельности после регистрации компании.</p>
-          </a>
-          <a class="glass-card related-card" href="/nedostovernost-yuridicheskogo-adresa/">
-            <span>06</span>
-            <h3>Недостоверность адреса</h3>
-            <p>Понять последствия отметки в ЕГРЮЛ и подготовить подтверждение либо смену адреса.</p>
-          </a>
-      </div>
-    </section></main>
+    <main class="service-page registration-ooo-page" data-ui-version="approved-home-derived-v1-seo-safe" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero">
+<div class="service-hero-frame">
+<div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Регистрация бизнеса</p>
+<h1 id="service-title">Регистрация <span>ООО</span> в Симферополе</h1>
+<p class="service-lead">Согласуем структуру будущей компании, подготовим решение или протокол, устав, форму Р11001 и сопроводим регистрацию.</p>
+<div aria-label="Ключевые этапы услуги" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20v-2.2C3 15.7 4.7 14 6.8 14h2.4c2.1 0 3.8 1.7 3.8 3.8V20M13 14h2.2c3.2 0 5.8 2.6 5.8 5.8V20"></path></svg></span><span><strong>Структура компании</strong><small>Участники, доли, директор и ключевые решения.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h5M9.5 12h6M9.5 16h4"></path></svg></span><span><strong>Документы и адрес</strong><small>Устав, Р11001 и юридический адрес без несогласованных данных.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 19V9l7-5 7 5v10"></path><path d="M8 19v-5h8v5M3.5 19.5h17"></path></svg></span><span><strong>Регистрация и старт</strong><small>Сопроводим подачу и определим действия после записи в ЕГРЮЛ.</small></span></div>
+</div>
+<div class="hero-commerce hero-commerce--banner"><a class="button button-primary hero-consult-button" href="#request"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a><div aria-label="Стоимость сопровождения регистрации ООО от 10 000 рублей" class="hero-price-inline"><strong>от 10 000 ₽</strong><span>Состав и стоимость согласуем до начала работы.</span></div></div>
+<div aria-label="Преимущества работы" class="hero-facts"><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg><b>Конфиденциально</b></span><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><b>Оперативно</b></span><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20v-2.2C3 15.7 4.7 14 6.8 14h2.4c2.1 0 3.8 1.7 3.8 3.8V20M13 14h2.2c3.2 0 5.8 2.6 5.8 5.8V20"></path></svg><b>Опытная команда</b></span></div>
+</div>
+<figure aria-label="Регистрация ООО — структура, документы и сопровождение" class="service-hero-visual"><div class="hero-banner-media"><img alt="Регистрация ООО в Симферополе — участники, устав, форма Р11001 и ЕГРЮЛ" class="hero-banner-image" decoding="async" fetchpriority="high" height="1145" loading="eager" src="/assets/registration-ooo-v1/registration-ooo-hero-right.webp" width="1124"/></div><figcaption class="sr-only">Подготовка регистрации ООО: структура общества, устав, форма Р11001, подача и получение записи ЕГРЮЛ.</figcaption></figure>
+</div>
+</div>
+</section>
+<section aria-labelledby="decision-title" class="service-section">
+<div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Перед началом</span><h2 id="decision-title">Что определяет старт ООО</h2></div><p class="section-intro">Регистрационный комплект зависит от корпоративной структуры, юридического адреса, устава, будущей деятельности и налоговой модели компании.</p></div>
+<ul class="decision-grid">
+<li class="decision-card" data-card="01"><span class="decision-number">01</span><strong>Структура общества</strong><p>Один или несколько участников, размеры долей, директор и порядок принятия ключевых решений.</p></li>
+<li class="decision-card" data-card="02"><span class="decision-number">02</span><strong>Адрес и устав</strong><p>Проверяем юридический адрес и определяем, нужен собственный устав или подходит типовой.</p></li>
+<li class="decision-card" data-card="03"><span class="decision-number">03</span><strong>ОКВЭД и налоги</strong><p>Связываем фактическую деятельность с кодами ОКВЭД и обсуждаем налоговый режим до первых операций.</p></li>
+<li class="decision-card" data-card="04"><span class="decision-number">04</span><strong>Подача и старт</strong><p>Форма Р11001, решение или протокол, способ подачи и действия после появления записи в ЕГРЮЛ.</p></li>
+</ul>
+</div>
+</section>
+<section aria-labelledby="request-title" class="service-section soft" id="request">
+<div class="container">
+<div class="request-panel">
+<div class="request-copy"><span class="eyebrow eyebrow-dark">Консультация</span><h2 id="request-title">Получить консультацию по регистрации ООО</h2><p>Расскажите, сколько будет участников, кто станет директором и чем планирует заниматься компания. Уточним структуру, адрес, устав и порядок регистрации до начала подготовки документов.</p><div class="request-price"><span>Сопровождение регистрации</span><strong>от 10 000 ₽</strong></div></div>
+<form action="/api/lead" aria-label="Получить консультацию" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<input type="hidden" name="source_page" value="/registraciya-ooo/" />
+<input type="hidden" name="task_type" value="Регистрация ООО" />
+<input type="hidden" name="lead_mode" value="quick" />
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field wide"><span>О будущей компании или ваш вопрос <small>(необязательно)</small></span><textarea aria-label="О будущей компании или ваш вопрос" name="message" placeholder="Например: сколько будет участников, кто станет директором, какой адрес и деятельность планируются" rows="4"></textarea></label>
+<p class="form-note wide">Свяжемся, уточним исходные данные и объясним, какой комплект потребуется. Решение по составу сопровождения принимаете после консультации.</p>
+<label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
+<p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+</form>
+</div>
+</div>
+</section>
+<section aria-labelledby="expert-title" class="service-section">
+<div class="container expert-grid">
+<div class="expert-heading"><span class="eyebrow">Старт ООО</span><h2 id="expert-title">Открываем ООО с согласованной корпоративной и налоговой моделью</h2><div aria-label="Ключевые условия" class="expert-proof"><span><small>Сопровождение</small><strong>от 10 000 ₽</strong></span><span><small>Консультация</small><strong>до подачи</strong></span></div></div>
+<div class="expert-copy"><p>ООО отличается от ИП не только комплектом документов. До подачи важно согласовать участников и доли, директора, юридический адрес, устав и виды деятельности — эти сведения должны быть связаны между собой и соответствовать фактической модели будущей компании.</p><p>На консультации разбираем исходные решения и налоговые вопросы, после чего готовим согласованный регистрационный комплект. Отдельно определяем, что потребуется сразу после появления записи в ЕГРЮЛ: расчётный счёт, бухгалтерский учёт, внутренние документы и оформление сотрудников, если они будут.</p></div>
+</div>
+</section>
+<section aria-labelledby="case-title" class="service-section soft">
+<div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">До подачи</span><h2 id="case-title">Что нужно согласовать до подачи документов на регистрацию ООО</h2></div><p class="section-intro">Фиксируем решения именно по вашей будущей компании: состав участников, управление, адрес, устав, деятельность и налоговую модель.</p></div>
+<ol class="case-grid">
+<li class="case-card case-card--1"><span class="case-number">01</span><h3>Участники и управление</h3><p>Кто входит в общество, как распределяются доли, кто будет директором и какие решения важно закрепить до подготовки регистрационного комплекта.</p></li>
+<li class="case-card case-card--2"><span class="case-number">02</span><h3>Адрес и устав</h3><p>Какой юридический адрес указывается, чем он подтверждается и подходит ли компании типовой устав или нужен собственный текст.</p></li>
+<li class="case-card case-card--3"><span class="case-number">03</span><h3>Деятельность и налоги</h3><p>Чем компания будет заниматься, какие ОКВЭД отражают фактическую деятельность и какой налоговый режим нужно рассмотреть до первых операций.</p></li>
+</ol>
+<div class="section-action"><a class="button button-secondary" href="#request"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div>
+</div>
+</section>
+<section aria-labelledby="composition-title" class="service-section">
+<div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Состав услуги</span><h2 id="composition-title">Что важно проверить</h2></div><p class="section-intro">Проверяем корпоративные решения, сведения для ЕГРЮЛ и документы, от которых зависит работа компании после регистрации.</p></div>
+<div class="content-grid">
+<article class="content-card content-card--1"><span class="card-number">01</span><h3>Когда нужна услуга</h3><ul><li>Планируется открыть ООО с одним или несколькими учредителями.</li><li>Нужно заранее определить юридический адрес, директора и модель управления.</li><li>Есть вопросы по налоговому режиму, банку или будущей отчётности.</li><li>Нужно собрать комплект без путаницы между уставом, решением и регистрационными данными.</li></ul></article>
+<article class="content-card content-card--2"><span class="card-number">02</span><h3>Что подготовим и проверим</h3><ul><li>Соберём и сверим сведения об участниках, директоре, адресе, названии и видах деятельности.</li><li>Подготовим решение или протокол, устав и заявление Р11001 для согласованной структуры ООО.</li><li>Проверим документы по юридическому адресу и связность данных во всём комплекте.</li><li>Сверим налоговый режим и действия после внесения записи в ЕГРЮЛ.</li></ul></article>
+<article class="content-card content-card--3"><span class="card-number">03</span><h3>Что нужно от клиента</h3><ul><li>Название, состав участников, директор, будущий адрес и описание деятельности.</li><li>Понимание, будут ли сотрудники, крупные контрагенты или специальные требования к документам.</li><li>Персональные данные и документы — только через согласованный безопасный канал после начала работы.</li><li>Ваши вопросы по режиму, адресу или структуре управления.</li></ul></article>
+<article class="content-card content-card--4"><span class="card-number">04</span><h3>Что будет в комплекте</h3><ul><li>Решение единственного участника или протокол собрания учредителей.</li><li>Устав либо согласованный вариант типового устава и заявление Р11001.</li><li>Перечень документов по юридическому адресу и выбранному способу подачи.</li><li>Карта действий после регистрации: налоги, банк, учёт и внутренние документы.</li></ul></article>
+</div>
+</div>
+</section>
+<section aria-labelledby="process-title" class="service-section soft">
+<div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Как проходит работа</span><h2 id="process-title">От структуры общества до записи в ЕГРЮЛ</h2></div><p class="section-intro">Каждый этап заканчивается понятным результатом: согласованными решениями, регистрационным комплектом и планом запуска компании.</p></div>
+<ol class="process-grid process-service">
+<li class="step" data-step="01"><div class="step-rail"><span class="step-number">01</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/registration-ooo-v1/process-step-01.svg"/></span><h3>Фиксируем участников, размеры долей, директора и порядок принятия ключевых решений.</h3></article></li>
+<li class="step" data-step="02"><div class="step-rail"><span class="step-number">02</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/registration-ooo-v1/process-step-02.svg"/></span><h3>Проверяем юридический адрес, выбираем устав, ОКВЭД и обсуждаем налоговый режим.</h3></article></li>
+<li class="step" data-step="03"><div class="step-rail"><span class="step-number">03</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/registration-ooo-v1/process-step-03.svg"/></span><h3>Готовим решение или протокол, форму Р11001, устав и документы по адресу.</h3></article></li>
+<li class="step" data-step="04"><div class="step-rail"><span class="step-number">04</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/registration-ooo-v1/process-step-04.svg"/></span><h3>После регистрации проверяем ЕГРЮЛ и фиксируем банк, бухгалтерский учёт, внутренние документы и сотрудников.</h3></article></li>
+</ol>
+</div>
+</section>
+<section aria-labelledby="outcome-title" class="service-section">
+<div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Стоимость и результат</span><h2 id="outcome-title">Что входит в стоимость и что происходит после подачи</h2></div><p class="section-intro">До подготовки фиксируем структуру общества, состав комплекта и цену. Решение о государственной регистрации принимает регистрирующий орган по фактически поданным сведениям.</p></div>
+<div class="result-grid">
+<article class="result-card result-card--1"><span class="card-number">01</span><h3>Результат подготовки</h3><p>Согласованная структура ООО, решение или протокол, форма Р11001, устав либо выбранный типовой устав, документы по адресу и инструкция по выбранному способу подачи.</p><p>Комплект формируется под фактические исходные данные компании, а не как универсальный шаблон.</p></article>
+<article class="result-card result-card--2"><span class="card-number">02</span><h3>Цена и госпошлина</h3><p>Сопровождение регистрации ООО стоит от 10 000 ₽. Точную стоимость согласуем после консультации и до начала работы — она зависит от числа участников, устава, адреса и состава сопровождения.</p><p>По информации ФНС, при электронной подаче документов, подписанных усиленной квалифицированной электронной подписью, в том числе через сервис ФНС, либо через нотариуса государственная пошлина за регистрацию не уплачивается.</p><a aria-label="Проверить комплект документов и госпошлину на сайте ФНС — откроется в новой вкладке" class="official-link official-link--external" href="https://www.nalog.gov.ru/create_business/ul/creation/registration/step4/" rel="noopener noreferrer" target="_blank">Проверить комплект документов и госпошлину на сайте ФНС ↗</a></article>
+<article class="result-card result-card--3"><span class="card-number">03</span><h3>Срок регистрации</h3><p>ФНС указывает срок государственной регистрации юридического лица при создании — не более 3 рабочих дней со дня представления документов в регистрирующий орган. Срок нашей подготовки зависит от готовности исходных данных и выбранного способа подачи.</p><a aria-label="Проверить официальный срок регистрации ООО на сайте ФНС — откроется в новой вкладке" class="official-link official-link--external" href="https://www.nalog.gov.ru/create_business/ul/creation/registration/step6/" rel="noopener noreferrer" target="_blank">Проверить официальный срок регистрации на сайте ФНС ↗</a></article>
+<article class="result-card result-card--4"><span class="card-number">04</span><h3>После регистрации</h3><ul><li>Проверяем запись ЕГРЮЛ и применяемый налоговый режим.</li><li>Определяем порядок открытия расчётного счёта и организации бухгалтерского учёта.</li><li>Фиксируем внутренние документы и оформление сотрудников при их наличии.</li><li>Отдельно отмечаем вопросы по адресу, данным участников и директора, которые важно контролировать после старта.</li></ul></article>
+</div>
+</div>
+</section>
+<section aria-labelledby="faq-title" class="service-section soft">
+<div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы</h2></div><p class="section-intro">Коротко отвечаем на вопросы о стоимости, регистрационном комплекте, типовом уставе и действиях после открытия ООО.</p></div>
+<div class="faq-grid">
+<article class="faq-card faq-card--1"><span class="faq-number">01</span><h3>Сколько стоит открыть ООО в Симферополе?</h3><p>Сопровождение регистрации ООО стоит от 10 000 ₽. Цена зависит от числа участников, устава, адреса и состава сопровождения. Точную стоимость согласуем после консультации и до начала работы.</p></article>
+<article class="faq-card faq-card--2"><span class="faq-number">02</span><h3>Какие документы нужны для регистрации ООО?</h3><p>В базовый регистрационный комплект входят форма Р11001, решение единственного учредителя или протокол общего собрания, устав либо выбранный типовой устав, а также сведения об адресе, участниках, директоре и деятельности. Конкретный состав зависит от структуры общества.</p></article>
+<article class="faq-card faq-card--3"><span class="faq-number">03</span><h3>Можно ли зарегистрировать ООО на типовом уставе?</h3><p>Да. ФНС указывает, что ООО может действовать на основании типового устава. Если выбран подходящий типовой устав, собственный текст устава в регистрирующий орган не представляется.</p></article>
+<article class="faq-card faq-card--4"><span class="faq-number">04</span><h3>Что делать после регистрации ООО?</h3><p>После регистрации проверяем запись ЕГРЮЛ и налоговый режим, затем определяем порядок открытия расчётного счёта, организации бухгалтерского учёта, оформления внутренних документов и сотрудников, если они будут.</p></article>
+</div>
+</div>
+</section>
+
+<nav class="service-related-links" aria-label="Связанные услуги">
+  <div class="container">
+    <a href="/yuridicheskiy-adres-simferopol/">01 Юридический адрес Проверить требования к адресу и документам, которыми подтверждается использование помещения.</a>
+    <a href="/nalogi-i-rezhimy/">02 Налоги и режимы Сравнить режимы до первых операций и определить будущий состав отчётности.</a>
+    <a href="/buhgalterskoe-soprovozhdenie-ooo/">03 Бухгалтерское сопровождение ООО Организовать учёт, отчётность и контроль первых обязательств после регистрации.</a>
+    <a href="/registraciya-ip/">04 Регистрация ИП в Симферополе Сравнить более простой маршрут ИП, если бизнес запускает один предприниматель без корпоративной структуры.</a>
+    <a href="/izmenenie-okved-ooo/">05 Изменение ОКВЭД ООО Разобрать порядок добавления и исключения видов деятельности после регистрации компании.</a>
+    <a href="/nedostovernost-yuridicheskogo-adresa/">06 Недостоверность адреса Понять последствия отметки в ЕГРЮЛ и подготовить подтверждение либо смену адреса.</a>
+  </div>
+</nav>
+</main>
     
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">

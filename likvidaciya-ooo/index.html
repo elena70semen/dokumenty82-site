@@ -175,7 +175,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260921-v11c" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/liquidation-ooo-v1/page.css?v=20260922-v1" />
   </head>
   <body>
     
@@ -226,220 +230,101 @@
         </nav>
       </details>
     </header>
-    <main>
-    <section class="hero hero-inner hero-stack">
-      <div class="glass-panel hero-copy-panel">
-        <p class="eyebrow">Документы для бизнеса</p>
-        <h1>Добровольная ликвидация ООО в Симферополе</h1>
-        <p>Проверим состояние компании и подготовим последовательность добровольной ликвидации: решение, форму Р15016, публикации, расчёты и ликвидационные балансы.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 45 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#quick-lead">Рассчитать ликвидацию</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-      </div>
-      <aside class="glass-panel hero-choice-panel">
-        <p class="eyebrow">Перед началом</p>
-        <h2>Что определяет маршрут ликвидации</h2>
-        <p class="hero-choice-description">Добровольная процедура подходит не каждой компании. До решения проверяем документы, обязательства и возможность рассчитаться с кредиторами.</p>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Когда нужна услуга</strong><small>Учредители решили закрыть ООО и хотят понять, с чего начать без хаотичной подачи документов.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>Состояние компании</strong><small>ЕГРЮЛ, учёт, отчётность, активы, долги, сотрудники, договоры и банковские счета.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>Корпоративная процедура</strong><small>Решение участников, ликвидатор, форма Р15016 и обязательные публикации.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Кредиторы и балансы</strong><small>Требования кредиторов, расчёты, промежуточный и итоговый ликвидационные балансы.</small></div></a></li>
-        </ul>
-      </aside>
-    </section>
-    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
-      <div class="section-header">
-        <p class="eyebrow">Быстрый запрос</p>
-        <h2 id="quick-lead-title">Оценить ликвидацию ООО</h2>
-        <p>Коротко опишите состояние компании. Проверим подходящий маршрут и от чего зависит итоговая стоимость.</p>
-      </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-        <input type="hidden" name="source_page" value="/likvidaciya-ooo/" />
-        <input type="hidden" name="task_type" value="Ликвидация ООО" />
-        <input type="hidden" name="lead_mode" value="quick" />
-        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-grid">
-          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Состояние компании (необязательно)<textarea name="message" rows="3" placeholder="Есть ли деятельность, долги, сотрудники и текущая отчетность"></textarea></label>
-        </div>
-        <p class="form-note lead-transfer-note">Для первого обращения документы не нужны. После уточнения задачи согласуем защищённый способ передачи через личный кабинет или другой подходящий канал.</p>
-        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчет</button><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-        <p class="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="section page-rich-section rich-intro-section">
-      <p class="eyebrow">Закрытие компании</p>
-      <h2>Ликвидация ООО начинается с проверки, а не с подачи формы</h2>
-      <div class="rich-copy"><p>Добровольная ликвидация прекращает юридическое лицо без перехода его прав и обязанностей к другому лицу. До принятия решения важно проверить отчётность, активы, долги, сотрудников, договоры, расчётные счета и сведения ЕГРЮЛ. Если имущества недостаточно для расчётов, нужен другой правовой маршрут.</p><p>Процедура включает решение участников и назначение ликвидатора, уведомление регистрирующего органа, сообщения в Федресурсе и «Вестнике государственной регистрации», выявление кредиторов, промежуточный баланс, расчёты и итоговый ликвидационный баланс. Состав документов и стоимость фиксируем после проверки компании, до начала согласованного маршрута.</p></div>
-    </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">Участники ООО хотят завершить проект без незакрытых вопросов</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>Компания больше не принимает заказы. Участникам нужно понять, можно ли переходить к ликвидации и какие расчёты, документы и сведения проверить заранее.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Изучим состояние компании, учёта и обязательств. Составим последовательность процедуры и подготовим документы для согласованного этапа с учётом выявленных обстоятельств.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>План ликвидационных действий и комплект по выбранному этапу. Незавершённые расчёты и отчётные задачи будут выделены отдельно.</p></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Состав услуги</p>
-      <h2>Что проверим и подготовим</h2>
-      <p>Состав работы относится именно к добровольной ликвидации ООО. Закрытие ИП, смена директора или адреса вынесены в самостоятельные услуги.</p>
-    </div>
-      <div class="card-grid two rich-card-grid">
-    <article class="glass-card rich-card" id="orientation-detail-01">
-      <span>01</span>
-      <h3>Когда нужна услуга</h3>
-      <ul class="rich-list"><li>Учредители решили закрыть ООО и хотят понять, с чего начать без хаотичной подачи документов.</li><li>Компания давно не ведет деятельность, но остались счета, отчетность, сотрудники или вопросы по адресу.</li><li>Есть риск, что перед ликвидацией нужно восстановить учет или закрыть вопросы с ИФНС и банком.</li><li>Нужно понять, подходит ли обычный маршрут или сначала требуется разбор проблемных вводных.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-02">
-      <span>02</span>
-      <h3>Состояние компании</h3>
-      <ul class="rich-list"><li>Актуальные сведения ЕГРЮЛ, устав, состав участников, директор и юридический адрес.</li><li>Бухгалтерский учёт, отчётность, сальдо ЕНС, активы, долги и банковские счета.</li><li>Сотрудники, незавершённые договоры, судебные споры и требования кредиторов.</li><li>Достаточно ли имущества для расчётов и подходит ли добровольная процедура.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-03">
-      <span>03</span>
-      <h3>Что нужно от клиента</h3>
-      <ul class="rich-list"><li>ИНН или ОГРН ООО, краткая история деятельности и причина закрытия.</li><li>Сведения о банковских счетах, сотрудниках, договорах и последней сданной отчетности.</li><li>Документы учредителей и директора после согласования безопасного канала.</li><li>Письма ИФНС или банка, если они уже есть и могут повлиять на маршрут.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-04">
-      <span>04</span>
-      <h3>Документы и этапы</h3>
-      <ul class="rich-list"><li>Решение участников о ликвидации и назначении ликвидатора либо комиссии.</li><li>Уведомления по форме Р15016 и контроль регистрационных записей.</li><li>Сообщения в Федресурсе и «Вестнике государственной регистрации» для кредиторов.</li><li>Промежуточный и итоговый ликвидационные балансы, финальный комплект для регистрации.</li></ul>
-    </article></div>
-    </section>
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Как проходит работа</p>
-      <h2>От обращения к понятному результату</h2>
-      <p>Этапы идут последовательно: от проверки и решения участников до расчётов с кредиторами и внесения записи о прекращении ООО в ЕГРЮЛ.</p>
-    </div>
-      <div class="card-grid two rich-step-grid">
-    <article class="glass-card rich-card rich-step-card">
-      <span>01</span>
-      <h3>Проверяем состояние компании и готовим решение участников о ликвидации и ликвидаторе.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>02</span>
-      <h3>В течение 3 рабочих дней после решения готовим уведомление по форме Р15016, затем обязательные публикации.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>03</span>
-      <h3>Фиксируем требования кредиторов, составляем промежуточный баланс и проводим расчёты.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>04</span>
-      <h3>Готовим итоговый ликвидационный баланс и финальный комплект, затем проверяем запись ЕГРЮЛ.</h3>
-    </article></div>
-    </section>
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Сроки, результат и риски</p>
-      <h2>Что получает клиент и почему лучше не затягивать</h2>
-      <p>Мы отвечаем за согласованный состав подготовки и контроль документов. Решение регистрирующего органа и возможность завершить добровольную процедуру зависят от фактического состояния компании.</p>
-    </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card">
-          <span>01</span>
-          <h3>Сроки, стоимость и результат</h3>
-          <p>Клиент получает согласованный маршрут, комплект документов по этапам и контрольный список действий до внесения записи в ЕГРЮЛ. Стоимость начинается от 45 000 ₽; точный состав и цену фиксируем после проверки компании, до начала работ.</p><p>Уведомление о решении подают в течение 3 рабочих дней. Период предъявления требований кредиторами составляет не менее двух месяцев после публикации, а общий срок зависит от состояния компании и расчётов.</p><p><a href="https://www.nalog.gov.ru/rn77/related_activities/registration_ip_yl/reg_yl/termination_activities/" target="_blank" rel="noopener">Проверить официальный порядок ликвидации на сайте ФНС</a></p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>02</span>
-          <h3>Риски</h3>
-          <ul class="rich-list"><li>Старт без проверки учёта и обязательств может привести к исправлениям уже внутри процедуры.</li><li>Пропуск публикации, кредитора или регистрационного этапа мешает завершить добровольную ликвидацию.</li><li>Недостаточность имущества для расчётов требует отдельной оценки и может исключить добровольный маршрут.</li></ul>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section faq-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">FAQ</p>
-      <h2>Частые вопросы</h2>
-      <p>Ответы на вопросы, которые возникают до начала добровольной ликвидации ООО.</p>
-    </div>
-      <div class="card-grid two faq-grid">
-    <article class="glass-card rich-card faq-card">
-      <span>01</span>
-      <h3>Можно ли ликвидировать ООО, если деятельности давно нет?</h3>
-      <p>Да, если состояние компании допускает добровольную процедуру. Проверяем ЕГРЮЛ, отчётность, счета, активы, долги, сотрудников и договоры.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>02</span>
-      <h3>Сколько длится добровольная ликвидация ООО?</h3>
-      <p>Единый короткий срок обещать нельзя. Только период для требований кредиторов составляет не менее двух месяцев после публикации.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>03</span>
-      <h3>Что входит в стоимость ликвидации ООО от 45 000 ₽?</h3>
-      <p>После проверки фиксируем состав работы: решение, уведомления Р15016, публикации, ликвидационные балансы и финальный регистрационный комплект. Если сначала нужен отдельный бухгалтерский или правовой маршрут, согласуем его до продолжения.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>04</span>
-      <h3>Можно ли добровольно ликвидировать ООО с долгами?</h3>
-      <p>Сначала определяем состав требований и достаточность имущества для расчётов. Если активов недостаточно, добровольный маршрут может не подходить.</p>
-    </article></div>
-    </section>
-    
-    <section class="section page-rich-section related-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Смежные страницы</p>
-      <h2>Другие задачи по документам</h2>
-      <p>Смежные разделы помогают закрыть учётные и отчётные вопросы до завершения добровольной ликвидации ООО.</p>
-    </div>
-      <div class="card-grid two related-grid">
-        
-          <a class="glass-card related-card" href="/registraciya-i-likvidaciya/">
-            <span>01</span>
-            <h3>Регистрация и прекращение бизнеса</h3>
-            <p>Сравнить маршруты для ИП и ООО и перейти к самостоятельной процедуре.</p>
-          </a>
-          <a class="glass-card related-card" href="/vosstanovlenie-buhucheta/">
-            <span>02</span>
-            <h3>Восстановление бухучёта</h3>
-            <p>Восстановить регистры и первичные документы, если учёт не позволяет составить балансы.</p>
-          </a>
-          <a class="glass-card related-card" href="/nulevaya-otchetnost-ooo/">
-            <span>03</span>
-            <h3>Нулевая отчётность ООО</h3>
-            <p>Закрыть пропущенные периоды без деятельности до ликвидационных этапов.</p>
-          </a>
-          <a class="glass-card related-card" href="/sdacha-otchetnosti-ooo/">
-            <span>04</span>
-            <h3>Сдача отчётности ООО</h3>
-            <p>Проверить обязательные формы и финальные отчётные периоды компании.</p>
-          </a>
-          <a class="glass-card related-card" href="/nedostovernost-yuridicheskogo-adresa/">
-            <span>05</span>
-            <h3>Недостоверность адреса</h3>
-            <p>Разобрать отметку в ЕГРЮЛ до начала регистрационных этапов ликвидации.</p>
-          </a>
-          <a class="glass-card related-card" href="/smena-yuridicheskogo-adresa-ooo/">
-            <span>06</span>
-            <h3>Смена юридического адреса</h3>
-            <p>Оценить отдельное изменение, если завершать деятельность пока рано.</p>
-          </a>
-      </div>
-    </section></main>
+    <main class="service-page liquidation-ooo-page" data-ui-version="approved-home-derived-v1-seo-safe" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero">
+<div class="service-hero-frame">
+<div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Добровольная ликвидация</p>
+<h1 id="service-title">Добровольная ликвидация <span>ООО</span> в Симферополе</h1>
+<p class="service-lead">Проверим состояние компании, определим подходящий маршрут и сопроводим этапы добровольной ликвидации: от решения участников и Р15016 до расчётов, балансов и записи в ЕГРЮЛ.</p>
+<div aria-label="Ключевые этапы услуги" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 4h11v16H4z"></path><path d="M8 8h4M8 12h4M8 16h3"></path><circle cx="17.5" cy="16.5" r="3.5"></circle><path d="m20 19 2 2"></path></svg></span><span><strong>Проверка компании</strong><small>Учёт, отчётность, активы, долги, сотрудники и договоры.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h5M9.5 12h6M9.5 16h4"></path></svg></span><span><strong>Корпоративная процедура</strong><small>Решение участников, ликвидатор, Р15016 и обязательные публикации.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 12l5 5L20 6"></path><path d="M4 4h16v16H4z"></path></svg></span><span><strong>Завершение ликвидации</strong><small>Кредиторы, расчёты, ликвидационные балансы и запись в ЕГРЮЛ.</small></span></div>
+</div>
+<div class="hero-commerce hero-commerce--banner"><a class="button button-primary hero-consult-button" href="#request"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a><div aria-label="Стоимость сопровождения добровольной ликвидации ООО от 45 000 рублей" class="hero-price-inline"><strong>от 45 000 ₽</strong><span>Состав и стоимость фиксируем после проверки состояния компании.</span></div></div>
+<div aria-label="Преимущества работы" class="hero-facts"><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg><b>Конфиденциально</b></span><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><b>Поэтапно</b></span><span class="hero-trust-item"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20v-2.2C3 15.7 4.7 14 6.8 14h2.4c2.1 0 3.8 1.7 3.8 3.8V20M13 14h2.2c3.2 0 5.8 2.6 5.8 5.8V20"></path></svg><b>Опытная команда</b></span></div>
+</div>
+<figure aria-label="Добровольная ликвидация ООО — этапы и документы" class="service-hero-visual"><div class="hero-banner-media"><picture><source srcset="/assets/liquidation-ooo-v1/liquidation-ooo-hero-right-320.webp 320w, /assets/liquidation-ooo-v1/liquidation-ooo-hero-right-480.webp 480w, /assets/liquidation-ooo-v1/liquidation-ooo-hero-right-644.webp 644w" type="image/webp"/><img alt="Добровольная ликвидация ООО — решение, публикации, балансы и завершение процедуры" class="hero-banner-image" decoding="async" fetchpriority="high" height="970" loading="eager" src="/assets/liquidation-ooo-v1/liquidation-ooo-hero-right.webp" width="644"/></picture></div><figcaption class="sr-only">Добровольная ликвидация ООО: корпоративное решение, уведомления, публикации, кредиторы, балансы и финальная запись в ЕГРЮЛ.</figcaption></figure>
+</div>
+</div>
+</section>
+<section aria-labelledby="decision-title" class="service-section">
+<div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Перед началом</span><h2 id="decision-title">Что определяет маршрут ликвидации</h2></div><p class="section-intro">Добровольная процедура подходит не каждой компании. До решения проверяем документы, обязательства, состояние расчётов и возможность рассчитаться с кредиторами.</p></div>
+<ul class="decision-grid">
+<li class="decision-card" data-card="01"><span class="decision-number">01</span><strong>Состояние компании</strong><p>ЕГРЮЛ, учёт, отчётность, активы, долги, сотрудники, договоры и банковские счета.</p></li>
+<li class="decision-card" data-card="02"><span class="decision-number">02</span><strong>Возможность расчётов</strong><p>Кредиторы, обязательства, активы и достаточность имущества для добровольной процедуры.</p></li>
+<li class="decision-card" data-card="03"><span class="decision-number">03</span><strong>Корпоративные решения</strong><p>Участники, решение о ликвидации, ликвидатор или комиссия и порядок ключевых действий.</p></li>
+<li class="decision-card" data-card="04"><span class="decision-number">04</span><strong>Маршрут процедуры</strong><p>Р15016, публикации, требования кредиторов, балансы и финальная государственная регистрация.</p></li>
+</ul></div></section>
+<section aria-labelledby="request-title" class="service-section soft" id="request">
+<div class="container"><div class="request-panel">
+<div class="request-copy"><span class="eyebrow eyebrow-dark">Консультация</span><h2 id="request-title">Получить консультацию по ликвидации ООО</h2><p>Коротко расскажите о состоянии компании. Уточним, подходит ли добровольная ликвидация и какие вопросы нужно проверить до начала процедуры.</p><div class="request-price"><span>Сопровождение ликвидации</span><strong>от 45 000 ₽</strong></div></div>
+<form action="/api/lead" aria-label="Получить консультацию" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<input type="hidden" name="source_page" value="/likvidaciya-ooo/" />
+<input type="hidden" name="task_type" value="Ликвидация ООО" />
+<input type="hidden" name="lead_mode" value="quick" />
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field wide"><span>Состояние компании или ваш вопрос <small>(необязательно)</small></span><textarea aria-label="Состояние компании или ваш вопрос" name="message" placeholder="Есть ли деятельность, долги, сотрудники, текущая отчётность и расчёты" rows="4"></textarea></label>
+<p class="form-note wide">На первом контакте достаточно описания ситуации. Документы и персональные данные передаются позже через согласованный безопасный канал.</p>
+<label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
+<p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+</form></div></div></section>
+<section aria-labelledby="expert-title" class="service-section">
+<div class="container expert-grid"><div class="expert-heading"><span class="eyebrow">Закрытие компании</span><h2 id="expert-title">Ликвидация ООО начинается с проверки, а не с подачи формы</h2><div aria-label="Ключевые условия" class="expert-proof"><span><small>Сопровождение</small><strong>от 45 000 ₽</strong></span><span><small>Маршрут</small><strong>после проверки</strong></span></div></div><div class="expert-copy"><p>Добровольная ликвидация прекращает юридическое лицо без перехода его прав и обязанностей к другому лицу. До принятия решения важно проверить отчётность, активы, долги, сотрудников, договоры, расчётные счета и сведения ЕГРЮЛ. Если имущества недостаточно для расчётов, нужен другой правовой маршрут.</p><p>Процедура включает решение участников и назначение ликвидатора, уведомление регистрирующего органа, сообщения в Федресурсе и «Вестнике государственной регистрации», выявление кредиторов, промежуточный баланс, расчёты и итоговый ликвидационный баланс. Состав работ и стоимость фиксируем после проверки компании, до начала согласованного маршрута.</p></div></div></section>
+<section aria-labelledby="case-title" class="service-section soft">
+<div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">До решения</span><h2 id="case-title">Что необходимо проверить до решения о ликвидации</h2></div><p class="section-intro">До запуска процедуры нужно понять реальное состояние компании и убедиться, что добровольный маршрут соответствует фактическим обстоятельствам.</p></div>
+<ol class="case-grid">
+<li class="case-card case-card--1"><span class="case-number">01</span><h3>Учёт и обязательства</h3><p>Проверяем отчётность, сальдо ЕНС, активы, долги, счета и незавершённые расчёты, которые должны быть учтены в маршруте.</p></li>
+<li class="case-card case-card--2"><span class="case-number">02</span><h3>Люди и договоры</h3><p>Фиксируем сотрудников, контрагентов, незавершённые договоры, судебные вопросы и требования, способные повлиять на процедуру.</p></li>
+<li class="case-card case-card--3"><span class="case-number">03</span><h3>Возможность добровольной процедуры</h3><p>Сопоставляем требования кредиторов и имущество компании, корпоративные документы и сведения ЕГРЮЛ, чтобы определить допустимый маршрут.</p></li>
+</ol><div class="section-action"><a class="button button-secondary" href="#request"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div></div></section>
+<section aria-labelledby="composition-title" class="service-section">
+<div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Состав услуги</span><h2 id="composition-title">Что проверим и подготовим</h2></div><p class="section-intro">Состав работы относится именно к добровольной ликвидации ООО. Проверка состояния компании предшествует документам и позволяет не запускать процедуру вслепую.</p></div>
+<div class="content-grid">
+<article class="content-card content-card--1"><span class="card-number">01</span><h3>Когда нужна услуга</h3><ul><li>Учредители решили закрыть ООО и хотят понять, с чего начать без хаотичной подачи документов.</li><li>Компания давно не ведёт деятельность, но остались счета, отчётность, сотрудники или вопросы по адресу.</li><li>Есть риск, что перед ликвидацией нужно восстановить учёт или закрыть вопросы с ИФНС и банком.</li><li>Нужно понять, подходит ли обычный маршрут или сначала требуется разбор проблемных вводных.</li></ul></article>
+<article class="content-card content-card--2"><span class="card-number">02</span><h3>Состояние компании</h3><ul><li>Актуальные сведения ЕГРЮЛ, устав, состав участников, директор и юридический адрес.</li><li>Бухгалтерский учёт, отчётность, сальдо ЕНС, активы, долги и банковские счета.</li><li>Сотрудники, незавершённые договоры, судебные споры и требования кредиторов.</li><li>Достаточно ли имущества для расчётов и подходит ли добровольная процедура.</li></ul></article>
+<article class="content-card content-card--3"><span class="card-number">03</span><h3>Что нужно от клиента</h3><ul><li>ИНН или ОГРН ООО, краткая история деятельности и причина закрытия.</li><li>Сведения о банковских счетах, сотрудниках, договорах и последней сданной отчётности.</li><li>Документы учредителей и директора после согласования безопасного канала.</li><li>Письма ИФНС или банка, если они уже есть и могут повлиять на маршрут.</li></ul></article>
+<article class="content-card content-card--4"><span class="card-number">04</span><h3>Документы и этапы</h3><ul><li>Решение участников о ликвидации и назначении ликвидатора либо комиссии.</li><li>Уведомления по форме Р15016 и контроль регистрационных записей.</li><li>Сообщения в Федресурсе и «Вестнике государственной регистрации» для кредиторов.</li><li>Промежуточный и итоговый ликвидационные балансы, финальный комплект для регистрации.</li></ul></article>
+</div></div></section>
+<section aria-labelledby="process-title" class="service-section soft">
+<div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Как проходит работа</span><h2 id="process-title">От обращения к понятному результату</h2></div><p class="section-intro">Этапы идут последовательно: от проверки и решения участников до расчётов с кредиторами и внесения записи о прекращении ООО в ЕГРЮЛ.</p></div>
+<ol class="process-grid process-service liquidation-process">
+<li class="step" data-step="01"><div class="step-rail"><span class="step-number">01</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/liquidation-ooo-v1/process-step-01.svg"/></span><h3>Проверяем состояние компании и готовим решение участников о ликвидации и ликвидаторе.</h3><div class="step-tags"><span>проверка</span><span>решение</span><span>ликвидатор</span></div></article></li>
+<li class="step" data-step="02"><div class="step-rail"><span class="step-number">02</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/liquidation-ooo-v1/process-step-02.svg"/></span><h3>В течение 3 рабочих дней после решения готовим уведомление по форме Р15016, затем обязательные публикации.</h3><div class="step-tags"><span>Р15016</span><span>Федресурс</span><span>Вестник</span></div></article></li>
+<li class="step" data-step="03"><div class="step-rail"><span class="step-number">03</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/liquidation-ooo-v1/process-step-03.svg"/></span><h3>Фиксируем требования кредиторов, составляем промежуточный баланс и проводим расчёты.</h3><div class="step-tags"><span>кредиторы</span><span>ПЛБ</span><span>расчёты</span></div></article></li>
+<li class="step" data-step="04"><div class="step-rail"><span class="step-number">04</span></div><article class="step-card"><span aria-hidden="true" class="icon-tile"><img alt="" src="/assets/liquidation-ooo-v1/process-step-04.svg"/></span><h3>Готовим итоговый ликвидационный баланс и финальный комплект, затем проверяем запись ЕГРЮЛ.</h3><div class="step-tags"><span>баланс</span><span>финальный комплект</span><span>ЕГРЮЛ</span></div></article></li>
+</ol></div></section>
+<section aria-labelledby="outcome-title" class="service-section">
+<div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Сроки, результат и риски</span><h2 id="outcome-title">Что получает клиент и почему лучше не затягивать</h2></div><p class="section-intro">Мы отвечаем за согласованный состав подготовки и контроль документов. Возможность завершить добровольную процедуру зависит от фактического состояния компании.</p></div>
+<div class="result-grid liquidation-result-grid">
+<article class="result-card result-card--1"><span class="card-number">01</span><h3>Сроки, стоимость и результат</h3><div class="result-metrics"><div><small>Стоимость</small><strong>от 45 000 ₽</strong></div><div><small>Уведомление</small><strong>3 рабочих дня</strong></div><div><small>Кредиторы</small><strong>не менее 2 месяцев</strong></div><div><small>Финал</small><strong>запись в ЕГРЮЛ</strong></div></div><p>Клиент получает согласованный маршрут, комплект документов по этапам и контрольный список действий до внесения записи о прекращении ООО в ЕГРЮЛ. Точный состав и цену фиксируем после проверки компании, до начала работ.</p><a aria-label="Проверить официальный порядок ликвидации на сайте ФНС — откроется в новой вкладке" class="official-link official-link--external" href="https://www.nalog.gov.ru/rn77/related_activities/registration_ip_yl/reg_yl/termination_activities/" rel="noopener noreferrer" target="_blank">Проверить официальный порядок ликвидации на сайте ФНС ↗</a></article>
+<article class="result-card result-card--2"><span class="card-number">02</span><h3>Риски</h3><ul><li>Старт без проверки учёта и обязательств может привести к исправлениям уже внутри процедуры.</li><li>Пропуск публикации, кредитора или регистрационного этапа мешает завершить добровольную ликвидацию.</li><li>Недостаточность имущества для расчётов требует отдельной оценки и может исключить добровольный маршрут.</li><li>Если обстоятельства изменились, маршрут нужно пересмотреть до следующего регистрационного шага.</li></ul></article>
+</div></div></section>
+<section aria-labelledby="faq-title" class="service-section soft">
+<div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы</h2></div><p class="section-intro">Ответы на вопросы, которые возникают до начала добровольной ликвидации ООО.</p></div>
+<div class="faq-grid">
+<article class="faq-card faq-card--1"><span class="faq-number">01</span><h3>Можно ли ликвидировать ООО, если деятельности давно нет?</h3><p>Да, если состояние компании допускает добровольную процедуру. Проверяем ЕГРЮЛ, отчётность, счета, активы, долги, сотрудников и договоры.</p></article>
+<article class="faq-card faq-card--2"><span class="faq-number">02</span><h3>Сколько длится добровольная ликвидация ООО?</h3><p>Единый короткий срок обещать нельзя. Только период для требований кредиторов составляет не менее двух месяцев после публикации, а общий срок зависит от состояния компании и расчётов.</p></article>
+<article class="faq-card faq-card--3"><span class="faq-number">03</span><h3>Что входит в стоимость ликвидации ООО от 45 000 ₽?</h3><p>После проверки фиксируем состав работы: решение, уведомления Р15016, публикации, ликвидационные балансы и финальный регистрационный комплект. Если сначала нужен отдельный бухгалтерский или правовой маршрут, согласуем его до продолжения.</p></article>
+<article class="faq-card faq-card--4"><span class="faq-number">04</span><h3>Можно ли добровольно ликвидировать ООО с долгами?</h3><p>Сначала определяем состав требований и достаточность имущества для расчётов. Если активов недостаточно, добровольный маршрут может не подходить.</p></article>
+</div></div></section>
+
+<nav class="service-related-links" aria-label="Связанные услуги">
+  <div class="container">
+    <a href="/registraciya-i-likvidaciya/">01 Регистрация и прекращение бизнеса Сравнить маршруты для ИП и ООО и перейти к самостоятельной процедуре.</a>
+    <a href="/vosstanovlenie-buhucheta/">02 Восстановление бухучёта Восстановить регистры и первичные документы, если учёт не позволяет составить балансы.</a>
+    <a href="/nulevaya-otchetnost-ooo/">03 Нулевая отчётность ООО Закрыть пропущенные периоды без деятельности до ликвидационных этапов.</a>
+    <a href="/sdacha-otchetnosti-ooo/">04 Сдача отчётности ООО Проверить обязательные формы и финальные отчётные периоды компании.</a>
+    <a href="/nedostovernost-yuridicheskogo-adresa/">05 Недостоверность адреса Разобрать отметку в ЕГРЮЛ до начала регистрационных этапов ликвидации.</a>
+    <a href="/smena-yuridicheskogo-adresa-ooo/">06 Смена юридического адреса Оценить отдельное изменение, если завершать деятельность пока рано.</a>
+  </div>
+</nav>
+</main>
     
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">
