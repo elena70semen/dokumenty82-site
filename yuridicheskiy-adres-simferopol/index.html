@@ -175,7 +175,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260921-v11c" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/legal-address-v1/page.css?v=20260922-v1" />
   </head>
   <body>
     
@@ -226,152 +230,120 @@
         </nav>
       </details>
     </header>
-    <main>
-    <section class="hero hero-inner hero-stack">
-      <div class="glass-panel hero-copy-panel">
-        <p class="eyebrow">Адрес ООО</p>
-        <h1>Юридический адрес в Симферополе</h1>
-        <p>Проверим помещение, собственника и возможность связи с компанией, затем соберём адресный комплект для регистрации нового ООО или изменения сведений ЕГРЮЛ.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 20 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#quick-lead">Проверить адрес</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-      </div>
-      <aside class="glass-panel hero-choice-panel">
-        <p class="eyebrow">Четыре проверки</p>
-        <h2>Адрес должен работать не только на бумаге</h2>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Объект и помещение</strong><small>Точный адрес, номер помещения и соответствие адресным сведениям.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>Собственник и основание</strong><small>Полномочия владельца, согласие, аренда или иной документ о пользовании.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>Связь с ООО</strong><small>Получение корреспонденции и фактическая связь с исполнительным органом.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Регистрационный маршрут</strong><small>Создание ООО, смена адреса или исправление недостоверных сведений.</small></div></a></li>
-        </ul>
-      </aside>
-    </section>
-    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
-      <div class="section-header">
-        <p class="eyebrow">Быстрый запрос</p>
-        <h2 id="quick-lead-title">Определить адресный комплект</h2>
-        <p>Опишите задачу и помещение. Подскажем, какие подтверждения нужны именно для вашего маршрута.</p>
-      </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-        <input type="hidden" name="source_page" value="/yuridicheskiy-adres-simferopol/" />
-        <input type="hidden" name="task_type" value="Юридический адрес в Симферополе" />
-        <input type="hidden" name="lead_mode" value="quick" />
-        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-grid">
-          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Ситуация с адресом (необязательно)<textarea name="message" rows="3" placeholder="Например: регистрируем ООО, есть арендованное помещение в Симферополе"></textarea></label>
-        </div>
-        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Проверить комплект</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить документы</a></div>
-        <p class="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="section page-rich-section rich-intro-section">
-      <p class="eyebrow">Требование к адресу</p>
-      <h2>Место нахождения ООО должно быть проверяемым</h2>
-      <div class="rich-copy"><p>Государственная регистрация проводится по месту нахождения постоянно действующего исполнительного органа. ФНС указывает, что это может быть собственный офис, арендованное помещение или в допустимом случае домашний адрес руководителя. Ключевое условие — возможность фактически связаться с компанией по заявленному адресу. <a href="https://www.nalog.gov.ru/rn77/related_activities/registration_ip_yl/reg_yl/order/" target="_blank" rel="noopener">Порядок регистрации юридического лица на сайте ФНС</a>.</p><p>Адресные сведения используют налоговые органы, банки и контрагенты, поэтому перед подачей проверяем не только форму заявления, но и объект, собственника, основание пользования, корреспонденцию и текущие данные ЕГРЮЛ. <a href="https://www.nalog.gov.ru/rn46/news/activities_fts/16631904/" target="_blank" rel="noopener">ФНС о достоверности сведений ЕГРЮЛ</a>.</p></div>
-    </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">Учредитель проверяет адрес до регистрации компании</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>Для будущего ООО подобрано помещение в Симферополе. Учредителю важно проверить документы по адресу и возможность связи с компанией, прежде чем использовать сведения при регистрации.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Изучим доступные документы собственника и основания использования помещения. Сверим написание адреса и уточним условия получения корреспонденции и связи.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>Вывод по проверенным сведениям и перечень документов, которые нужны для выбранного адресного и регистрационного решения.</p></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Варианты размещения</p>
-        <h2>Какой адрес рассматриваем для компании</h2>
-        <p>Допустимость зависит от конкретного объекта, основания пользования и регистрационной ситуации.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card" id="orientation-detail-01"><span>01</span><h3>Собственный офис</h3><p>Сверяем право собственности, точное описание объекта и адрес исполнительного органа.</p></article>
-        <article class="glass-card rich-card" id="orientation-detail-02"><span>02</span><h3>Арендованное помещение</h3><p>Проверяем собственника, договор, согласие на регистрацию и конкретное помещение.</p></article>
-        <article class="glass-card rich-card" id="orientation-detail-03"><span>03</span><h3>Адрес руководителя</h3><p>Оцениваем допустимость домашнего адреса, полномочия руководителя и документы на жильё.</p></article>
-        <article class="glass-card rich-card" id="orientation-detail-04"><span>04</span><h3>Новый адрес действующего ООО</h3><p>Сопоставляем ЕГРЮЛ, устав, населённый пункт и объём необходимых корпоративных изменений.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Документальная проверка</p>
-        <h2>Что сверяем до подачи в ИФНС</h2>
-        <p>Комплект должен однозначно связывать организацию, исполнительный орган и конкретное помещение.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>Адресные сведения</h3><p>Индекс, населённый пункт, улица, дом, корпус и номер помещения без расхождений между документами.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Право на объект</h3><p>Собственник, выписка или иные сведения об объекте, договор и согласие на использование адреса.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Доступ и корреспонденция</h3><p>Возможность принять письма, подтвердить присутствие компании и оперативно отвечать на запросы.</p></article>
-        <article class="glass-card rich-card"><span>04</span><h3>ЕГРЮЛ и устав</h3><p>Текущие сведения компании, формулировка места нахождения и необходимость менять устав.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Порядок работы</p>
-        <h2>От помещения к регистрационному комплекту</h2>
-        <p>Маршрут отличается для нового ООО, смены адреса и уже внесённой отметки о недостоверности.</p>
-      </div>
-      <div class="card-grid two rich-step-grid">
-        <article class="glass-card rich-card rich-step-card"><span>01</span><h3>Фиксируем задачу, сведения об ООО и точный адрес помещения.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>02</span><h3>Проверяем объект, собственника, основание пользования и получение писем.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>03</span><h3>Определяем форму, корпоративное решение и необходимость менять устав.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>04</span><h3>Собираем комплект и контрольный список действий после регистрации.</h3></article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Результат</p>
-        <h2>Что получает компания</h2>
-        <p>Стоимость от 20 000 ₽ зависит от типа объекта, регистрационного действия и состояния сведений ЕГРЮЛ.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>Проверка адреса</h3><p>Выводы по объекту, собственнику, праву пользования и возможности связи с ООО.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Перечень подтверждений</h3><p>Точный список документов по помещению и участникам адресной процедуры.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Регистрационный маршрут</h3><p>Отдельный порядок для создания ООО, смены адреса или устранения недостоверности.</p></article>
-        <article class="glass-card rich-card"><span>04</span><h3>Контроль после подачи</h3><p>Проверка новой выписки ЕГРЮЛ, корреспонденции и согласованности сведений компании.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section faq-section">
-      <div class="section-header">
-        <p class="eyebrow">FAQ</p>
-        <h2>Частые вопросы о юридическом адресе</h2>
-        <p>Ответы по выбору помещения, подтверждающим документам и смене сведений ООО.</p>
-      </div>
-      <div class="card-grid two faq-grid">
-        <article class="glass-card rich-card faq-card"><span>01</span><h3>Какой адрес можно указать для ООО?</h3><p>Компания может использовать собственный офис, арендованное помещение или в допустимой ситуации домашний адрес руководителя. Важно, чтобы по адресу находился исполнительный орган и с компанией можно было связаться.</p></article>
-        <article class="glass-card rich-card faq-card"><span>02</span><h3>Какие документы подтверждают юридический адрес?</h3><p>Состав зависит от основания использования помещения: проверяем согласие собственника, сведения об объекте, договор аренды или иной документ о праве пользования и точное описание помещения.</p></article>
-        <article class="glass-card rich-card faq-card"><span>03</span><h3>Как проверить риск недостоверности адреса?</h3><p>Сверяем адрес с ЕГРЮЛ, полномочия собственника, признаки массовой регистрации, возможность получать корреспонденцию и фактическую связь помещения с исполнительным органом.</p></article>
-        <article class="glass-card rich-card faq-card"><span>04</span><h3>Что потребуется при смене адреса ООО?</h3><p>Сначала определяем, меняется ли устав и населённый пункт, затем готовим корпоративное решение, регистрационную форму и подтверждающие документы. Отметка о недостоверности требует отдельного маршрута.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section related-section">
-      <div class="section-header">
-        <p class="eyebrow">Связанные услуги</p>
-        <h2>Выберите точный адресный маршрут</h2>
-        <p>Эти страницы разделяют создание компании, обычную смену адреса и исправление проблемных сведений.</p>
-      </div>
-      <div class="card-grid two related-grid">
-        <a class="glass-card related-card" href="/registraciya-ooo/"><span>01</span><h3>Регистрация ООО</h3><p>Подготовить полный стартовый комплект, включая сведения об адресе и руководителе.</p></a>
-        <a class="glass-card related-card" href="/smena-yuridicheskogo-adresa-ooo/"><span>02</span><h3>Смена адреса ООО</h3><p>Определить корпоративное решение, форму и изменения устава для действующей компании.</p></a>
-        <a class="glass-card related-card" href="/nedostovernost-yuridicheskogo-adresa/"><span>03</span><h3>Недостоверность адреса</h3><p>Разобрать уже внесённую отметку и подготовить самостоятельный маршрут исправления.</p></a>
-        <a class="glass-card related-card" href="/adres-egryul-direktor/"><span>04</span><h3>Адрес, ЕГРЮЛ и директор</h3><p>Сверить взаимосвязь адресных сведений, полномочий руководителя и данных реестра.</p></a>
-      </div>
-    </section>
-  </main>
+    <main class="service-page legal-address-page" data-ui-version="t1-unified-v1-seo-safe" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero"><div class="service-hero-frame"><div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Юридический адрес</p>
+<h1 id="service-title">Юридический адрес <span>в Симферополе</span></h1>
+<p class="service-lead">Проверим помещение, собственника и документы. Определим, подходит ли адрес для регистрации ООО и дальнейшей работы компании.</p>
+<div aria-label="Ключевые элементы проверки" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></span><span><strong>Объект и помещение</strong><small>ГАР, точный адрес и конкретное помещение.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 7l2 2M14 9l2 2"/></svg></span><span><strong>Собственник и основание</strong><small>Право собственности, аренда, согласие и подтверждения.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 6h18v13H3zM3 6l9 7 9-7"/></svg></span><span><strong>Связь с компанией</strong><small>Корреспонденция и связь адреса с исполнительным органом ООО.</small></span></div>
+</div>
+<div class="hero-commerce hero-commerce--banner">
+<a class="button button-primary hero-consult-button" href="/razbor-situacii/"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+<div aria-label="Стоимость услуги от 20 000 рублей" class="hero-price-inline"><strong>от 20 000 ₽</strong><span>Итоговая стоимость зависит от типа адреса и объёма проверки.</span></div>
+</div>
+<div aria-label="Преимущества работы" class="hero-facts"><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg><b>Конфиденциально</b></span><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Оперативно</b></span><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 2-6 6-6s6 2 6 6M14 15c4 0 6 2 6 5"/></svg><b>Опытная команда</b></span></div>
+</div>
+<figure class="service-hero-visual" aria-label="Юридический адрес ООО — ГАР, помещение, собственник, документы и ЕГРЮЛ"><div class="hero-art-panel"><picture><source srcset="/assets/legal-address-v1/legal-address-hero-right-320.webp 320w, /assets/legal-address-v1/legal-address-hero-right-480.webp 480w, /assets/legal-address-v1/legal-address-hero-right-644.webp 644w, /assets/legal-address-v1/legal-address-hero-right-900.webp 900w" type="image/webp"><img class="hero-banner-image" src="/assets/legal-address-v1/legal-address-hero-right.webp" alt="Юридический адрес ООО: ГАР, помещение, собственник, документы и ЕГРЮЛ" loading="eager" fetchpriority="high" decoding="async"></picture></div><figcaption class="sr-only">Проверка юридического адреса ООО в Симферополе: помещение, собственник, документы и связь с компанией.</figcaption></figure>
+</div></div></section>
+
+<section class="service-section" aria-labelledby="checks-title"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Четыре проверки</span><h2 id="checks-title">Адрес должен работать не только на бумаге</h2></div><p class="section-intro">До регистрации проверяем не только строку адреса, но и реальную связь компании с помещением и возможность получать юридически значимые сообщения.</p></div>
+<div class="decision-grid">
+<article class="decision-card"><span class="decision-number">01</span><strong>Объект и помещение</strong><p>Точный адрес, номер помещения и соответствие сведениям ГАР.</p></article>
+<article class="decision-card"><span class="decision-number">02</span><strong>Собственник и основание</strong><p>Полномочия владельца, согласие, аренда или иной документ о пользовании.</p></article>
+<article class="decision-card"><span class="decision-number">03</span><strong>Связь с ООО</strong><p>Получение корреспонденции и связь адреса с исполнительным органом.</p></article>
+<article class="decision-card"><span class="decision-number">04</span><strong>Получение корреспонденции</strong><p>По адресу должна приниматься официальная почта и запросы.</p></article>
+</div></div></section>
+
+<section class="service-section soft" aria-labelledby="request-title"><div class="container">
+<div class="request-panel"><div class="request-copy"><span class="eyebrow">Проверка адреса</span><h2 id="request-title">Проверить адрес и документы</h2><p>Расскажите, какой адрес рассматриваете. Подскажем, подходит ли он для регистрации и какие подтверждения понадобятся.</p><div class="request-price"><span>Стоимость услуги</span><strong>от 20 000 ₽</strong></div><ul class="request-benefits"><li>Проверим исходные сведения</li><li>Сверим документы на помещение</li><li>Определим регистрационный маршрут</li></ul></div>
+<form action="/api/lead" aria-label="Получить консультацию" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<input type="hidden" name="source_page" value="/yuridicheskiy-adres-simferopol/" />
+<input type="hidden" name="task_type" value="Юридический адрес в Симферополе" />
+<input type="hidden" name="lead_mode" value="quick" />
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field wide"><span>Ситуация с адресом или ваш вопрос <small>(необязательно)</small></span><textarea aria-label="Ситуация с адресом или ваш вопрос" name="message" placeholder="Какой адрес рассматриваете? Что нужно проверить?" rows="4"></textarea></label>
+<div class="upload-row wide upload-note"><div class="upload-button upload-button-static" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M5 14v6h14v-6"></path></svg><span>Документы — после консультации</span></div><small>Документы на помещение можно передать после консультации через согласованный защищённый канал.</small></div>
+<p class="form-note wide">Открытая форма принимает только контактные данные. Файлы и персональные документы здесь не загружаются.</p>
+<label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
+<p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+</form></div>
+</div></section>
+
+<section class="service-section" aria-labelledby="expert-title"><div class="container expert-grid">
+<div class="expert-heading"><span class="eyebrow">Требование к адресу</span><h2 id="expert-title">Место нахождения ООО должно быть проверяемым</h2></div>
+<div class="expert-copy"><p>Государственная регистрация проводится по месту нахождения постоянно действующего исполнительного органа. Для устойчивого адреса важно, чтобы объект существовал, основание пользования подтверждалось, а с компанией можно было реально связаться.</p><p>Перед подачей проверяем объект, собственника, документы, получение корреспонденции и текущие сведения ЕГРЮЛ — не только заполнение регистрационной формы.</p><div class="expert-proof"><div><small>Проверяем</small><strong>ГАР и объект</strong></div><div><small>Подтверждаем</small><strong>основание</strong></div><div><small>Оцениваем</small><strong>связь</strong></div></div></div>
+</div></section>
+
+<section class="service-section soft" aria-labelledby="preuse-title"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">До использования адреса</span><h2 id="preuse-title">Что проверить до использования адреса в регистрационных документах</h2></div><p class="section-intro">Сначала подтверждаем сам объект и основание, затем оцениваем связь с компанией и только после этого определяем регистрационный маршрут.</p></div>
+<div class="case-grid">
+<article class="case-card"><span class="case-number">01</span><h3>Объект и точное описание</h3><p>Проверяем адресные сведения по ГАР, точное написание и конкретное помещение, которое будет связано с ООО.</p></article>
+<article class="case-card"><span class="case-number">02</span><h3>Собственник и основание</h3><p>Сверяем право собственности, договор аренды, согласие либо иное основание использования помещения.</p></article>
+<article class="case-card"><span class="case-number">03</span><h3>Связь, корреспонденция и маршрут</h3><p>Оцениваем возможность получать письма и определяем сценарий: регистрация нового ООО, смена адреса или исправление недостоверности.</p></article>
+</div></div></section>
+
+<section class="service-section" aria-labelledby="variants-title"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Варианты размещения</span><h2 id="variants-title">Какой адрес рассматриваем для компании</h2></div><p class="section-intro">Допустимость зависит от конкретного объекта, основания пользования и регистрационной ситуации.</p></div>
+<div class="content-grid">
+<article class="content-card"><span class="card-number">01</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v10H3z"/><path d="M9 21v-7h6v7"/></svg></span><h3>Собственный офис</h3><p>Сверяем право собственности, точное описание объекта и адрес исполнительного органа.</p></article>
+<article class="content-card"><span class="card-number">02</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v5h5M8 12h8M8 16h6"/></svg></span><h3>Арендованное помещение</h3><p>Проверяем собственника, договор, согласие на регистрацию и конкретное помещение.</p></article>
+<article class="content-card"><span class="card-number">03</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 21c0-4.3 2.4-6.5 7-6.5s7 2.2 7 6.5"/></svg></span><h3>Адрес руководителя</h3><p>Оцениваем допустимость домашнего адреса, полномочия руководителя и документы на жильё.</p></article>
+<article class="content-card"><span class="card-number">04</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 12h4c4 0 3-6 6-6M11 12c4 0 3 6 6 6"/></svg></span><h3>Новый адрес действующего ООО</h3><p>Сопоставляем ЕГРЮЛ, устав, населённый пункт и объём необходимых корпоративных изменений.</p></article>
+</div></div></section>
+
+<section class="service-section soft" aria-labelledby="document-title"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Документальная проверка</span><h2 id="document-title">Что сверяем до подачи в ИФНС</h2></div><p class="section-intro">Комплект должен однозначно связывать организацию, исполнительный орган и конкретное помещение.</p></div>
+<div class="content-grid">
+<article class="content-card"><span class="card-number">01</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg></span><h3>Адресные сведения</h3><p>Индекс, населённый пункт, улица, дом, корпус и номер помещения без расхождений между документами.</p></article>
+<article class="content-card"><span class="card-number">02</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 7l2 2M14 9l2 2"/></svg></span><h3>Право на объект</h3><p>Собственник, сведения об объекте, договор и согласие на использование адреса.</p></article>
+<article class="content-card"><span class="card-number">03</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 6h18v13H3zM3 6l9 7 9-7"/></svg></span><h3>Доступ и корреспонденция</h3><p>Возможность принять письма, подтвердить присутствие компании и оперативно отвечать на запросы.</p></article>
+<article class="content-card"><span class="card-number">04</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>ЕГРЮЛ и устав</h3><p>Текущие сведения компании, формулировка места нахождения и необходимость менять устав.</p></article>
+</div></div></section>
+
+<section class="service-section" aria-labelledby="process-title"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Порядок работы</span><h2 id="process-title">От помещения к регистрационному комплекту</h2></div><p class="section-intro">Маршрут отличается для нового ООО, смены адреса и уже внесённой отметки о недостоверности.</p></div>
+<div class="process-service">
+<article class="step-card"><span class="step-number">01</span><span class="step-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></span><h3>Фиксируем задачу, сведения об ООО и точный адрес помещения.</h3><p>Уточняем, какой именно адрес нужно проверить и для какого регистрационного действия.</p></article>
+<article class="step-card"><span class="step-number">02</span><span class="step-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4 21h16M6 21V7l6-3 6 3v14M9 10h1M14 10h1M9 14h1M14 14h1M9 18h1M14 18h1"/></svg></span><h3>Проверяем объект, собственника, основание пользования и получение писем.</h3><p>Сопоставляем объект, документы и фактические условия использования.</p></article>
+<article class="step-card"><span class="step-number">03</span><span class="step-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v5h5M8 12h8M8 16h6"/></svg></span><h3>Определяем форму, корпоративное решение и необходимость менять устав.</h3><p>Собираем корректный маршрут и перечень документов.</p></article>
+<article class="step-card"><span class="step-number">04</span><span class="step-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.6 2.6L16 9"/></svg></span><h3>Собираем комплект и контрольный список действий после регистрации.</h3><p>Проверяем результат и дальнейшие обновления по адресу.</p></article>
+</div></div></section>
+
+<section class="service-section soft" aria-labelledby="result-title"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Результат</span><h2 id="result-title">Что получает компания</h2></div><p class="section-intro">Стоимость от 20 000 ₽ зависит от типа объекта, регистрационного действия и состояния сведений ЕГРЮЛ.</p></div>
+<div class="content-grid result-grid-4">
+<article class="content-card"><span class="card-number">01</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></span><h3>Проверка адреса</h3><p>Выводы по объекту, собственнику, праву пользования и возможности связи с ООО.</p></article>
+<article class="content-card"><span class="card-number">02</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v5h5M8 12h8M8 16h6"/></svg></span><h3>Перечень подтверждений</h3><p>Точный список документов по помещению и участникам адресной процедуры.</p></article>
+<article class="content-card"><span class="card-number">03</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 12h4c4 0 3-6 6-6M11 12c4 0 3 6 6 6"/></svg></span><h3>Регистрационный маршрут</h3><p>Отдельный порядок для создания ООО, смены адреса или устранения недостоверности.</p></article>
+<article class="content-card"><span class="card-number">04</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.6 2.6L16 9"/></svg></span><h3>Контроль после подачи</h3><p>Проверка новой выписки ЕГРЮЛ, корреспонденции и согласованности сведений компании.</p></article>
+</div></div></section>
+
+<section class="service-section" aria-labelledby="faq-title"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы о юридическом адресе</h2></div><p class="section-intro">Ответы по выбору помещения, подтверждающим документам и смене сведений ООО.</p></div>
+<div class="faq-grid">
+<article class="faq-card"><span class="faq-number">01</span><h3>Какой адрес можно указать для ООО?</h3><p>Компания может использовать собственный офис, арендованное помещение или в допустимой ситуации домашний адрес руководителя. Важно, чтобы по адресу находился исполнительный орган и с компанией можно было связаться.</p></article>
+<article class="faq-card"><span class="faq-number">02</span><h3>Какие документы подтверждают юридический адрес?</h3><p>Состав зависит от основания использования помещения: проверяем согласие собственника, сведения об объекте, договор аренды или иной документ о праве пользования и точное описание помещения.</p></article>
+<article class="faq-card"><span class="faq-number">03</span><h3>Как проверить риск недостоверности адреса?</h3><p>Сверяем адрес с ЕГРЮЛ, полномочия собственника, признаки массовой регистрации, возможность получать корреспонденцию и фактическую связь помещения с исполнительным органом.</p></article>
+<article class="faq-card"><span class="faq-number">04</span><h3>Что потребуется при смене адреса ООО?</h3><p>Сначала определяем, меняется ли устав и населённый пункт, затем готовим корпоративное решение, регистрационную форму и подтверждающие документы. Отметка о недостоверности требует отдельного маршрута.</p></article>
+</div></div></section>
+
+<nav class="service-related-links" aria-label="Связанные услуги">
+  <div class="container">
+    <a href="/registraciya-ooo/">01 Регистрация ООО Подготовить полный стартовый комплект, включая сведения об адресе и руководителе.</a>
+    <a href="/smena-yuridicheskogo-adresa-ooo/">02 Смена адреса ООО Определить корпоративное решение, форму и изменения устава для действующей компании.</a>
+    <a href="/nedostovernost-yuridicheskogo-adresa/">03 Недостоверность адреса Разобрать уже внесённую отметку и подготовить самостоятельный маршрут исправления.</a>
+    <a href="/adres-egryul-direktor/">04 Адрес, ЕГРЮЛ и директор Сверить взаимосвязь адресных сведений, полномочий руководителя и данных реестра.</a>
+  </div>
+</nav>
+</main>
     
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">

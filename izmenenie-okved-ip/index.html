@@ -161,7 +161,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260921-v11c" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/okved-ip-v1/page.css?v=20260922-v1" />
   </head>
   <body>
 
@@ -212,213 +216,121 @@
         </nav>
       </details>
     </header>
-    <main>
-    <section class="hero hero-inner hero-stack">
-      <div class="glass-panel hero-copy-panel">
-        <p class="eyebrow">Изменения ЕГРИП</p>
-        <h1>Изменение ОКВЭД ИП в Симферополе</h1>
-        <p>Сверим фактическую деятельность и налоговый режим, подберём заявительные коды и подготовим форму Р24001 для изменения ЕГРИП.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 5 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#quick-lead">Изменить ОКВЭД</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-      </div>
-      <aside class="glass-panel hero-choice-panel">
-        <p class="eyebrow">Перед началом</p>
-        <h2>Что проверяем у ИП</h2>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Фактическая деятельность</strong><small>Что ИП уже продаёт или оказывает и какое направление запускает.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>Заявительные коды</strong><small>Какие коды добавить, исключить и какой указать основным в заявлении.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>Налоги и условия</strong><small>Режим, касса, сотрудники, лицензии и ограничения для нового направления.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Форма Р24001</strong><small>Листы заявления, способ подачи и проверка обновлённой выписки ЕГРИП.</small></div></a></li>
-        </ul>
-      </aside>
-    </section>
-    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
-      <div class="section-header">
-        <p class="eyebrow">Быстрый запрос</p>
-        <h2 id="quick-lead-title">Рассчитать изменение ОКВЭД ИП</h2>
-        <p>Опишите текущее и новое направление. Проверим коды, режим и состав формы Р24001 до начала работы.</p>
-      </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-        <input type="hidden" name="source_page" value="/izmenenie-okved-ip/" />
-        <input type="hidden" name="task_type" value="Изменение ОКВЭД ИП" />
-        <input type="hidden" name="lead_mode" value="quick" />
-        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-grid">
-          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Изменения деятельности (необязательно)<textarea name="message" rows="3" placeholder="Что ИП делает сейчас и какие товары, работы или услуги добавляет"></textarea></label>
-        </div>
-        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчёт</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить файлы</a></div>
-        <p class="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="section page-rich-section rich-intro-section">
-      <p class="eyebrow">ОКВЭД в 2026 году</p>
-      <h2>ИП меняет заявительные коды через ЕГРИП, а отчётные формируются отдельно</h2>
-      <div class="rich-copy"><p>С 2026 года <a href="https://www.nalog.gov.ru/okved/" target="_blank" rel="noopener">ФНС разделяет</a> коды ОКВЭД заявительного и отчётного типа. ИП может в любое время добавить или исключить заявительные коды через регистрирующий орган. Отчётные коды и их доли в ЕГРИП появляются на основании сведений Росстата.</p><p>Для изменения заявительных кодов используем форму Р24001. До подготовки заявления отделяем фактическую деятельность от планов «на будущее», проверяем основной код, налоговый режим, кассу, лицензии и вопросы банка. Стоимость подготовки — от 5 000 ₽.</p></div>
-    </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">ИП добавляет доставку к своей основной деятельности</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>Предприниматель расширяет услуги и хочет проверить, отражает ли запись в реестре новый формат работы. Текущие коды подбирались при первоначальной регистрации.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Опишем фактические операции и подберём соответствующие коды. Уточним основной вид деятельности и подготовим сведения для изменения записи, проверив связанные вопросы режима.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>Согласованный набор кодов и комплект для внесения изменений в сведения об ИП с порядком проверки обновлённой записи.</p></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Когда обращаться</p>
-        <h2>Когда ИП нужно обновить коды в ЕГРИП</h2>
-        <p>Страница относится к изменениям действующего ИП. Для первичной регистрации используется отдельный маршрут с формой Р21001.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card" id="orientation-detail-01">
-          <span>01</span>
-          <h3>Новое направление</h3>
-          <p>ИП начинает продавать другие товары, выполнять новые работы или оказывать новые услуги.</p>
-        </article>
-        <article class="glass-card rich-card" id="orientation-detail-02">
-          <span>02</span>
-          <h3>Вопросы банка</h3>
-          <p>Назначение платежей и договоры не совпадают с заявительными кодами в выписке ЕГРИП.</p>
-        </article>
-        <article class="glass-card rich-card" id="orientation-detail-03">
-          <span>03</span>
-          <h3>Другой основной код</h3>
-          <p>Главный источник выручки изменился, поэтому текущий основной код больше не описывает бизнес.</p>
-        </article>
-        <article class="glass-card rich-card" id="orientation-detail-04">
-          <span>04</span>
-          <h3>Специальные требования</h3>
-          <p>Перед лицензией, уведомлением, закупкой или новым договором нужно проверить допустимость деятельности.</p>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Состав услуги</p>
-        <h2>Что входит в изменение ОКВЭД ИП</h2>
-        <p>Сначала определяем, какие изменения относятся к ЕГРИП, а какие требуют отдельного налогового, лицензионного или статистического действия.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card">
-          <span>01</span>
-          <h3>Карта деятельности</h3>
-          <p>Разбираем фактические и планируемые товары, работы, услуги, клиентов и источники выручки.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>02</span>
-          <h3>Набор кодов</h3>
-          <p>Подбираем основной и дополнительные заявительные коды без случайного перечня «на все случаи».</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>03</span>
-          <h3>Проверка последствий</h3>
-          <p>Сверяем режим налогообложения, кассу, сотрудников, лицензии и возможные вопросы банка.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>04</span>
-          <h3>Форма и контроль</h3>
-          <p>Готовим относящиеся к ОКВЭД листы формы Р24001 и проверяем результат в новой выписке ЕГРИП.</p>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Входные данные</p>
-        <h2>Что нужно сообщить до подготовки Р24001</h2>
-        <p>Персональные документы передаются только после согласования безопасного канала. Для предварительного разбора достаточно описания деятельности.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card">
-          <span>01</span>
-          <h3>Данные ИП</h3>
-          <p>ИНН, ОГРНИП и актуальная выписка ЕГРИП с текущими кодами.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>02</span>
-          <h3>Текущая выручка</h3>
-          <p>Какие товары, работы или услуги уже формируют доход предпринимателя.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>03</span>
-          <h3>Новый маршрут</h3>
-          <p>Что планируется добавить или прекратить, будут ли сотрудники, касса и новые договоры.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>04</span>
-          <h3>Внешние требования</h3>
-          <p>Письмо банка, условия закупки, лицензии или уведомления, если вопрос возник из конкретного запроса.</p>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Этапы</p>
-        <h2>От операций ИП до обновлённой выписки ЕГРИП</h2>
-        <p>Не начинаем с заполнения формы: сначала определяем экономический смысл деятельности и только затем фиксируем коды.</p>
-      </div>
-      <div class="card-grid two rich-step-grid">
-        <article class="glass-card rich-card rich-step-card"><span>01</span><h3>Сверяем выписку ЕГРИП с текущими и планируемыми операциями ИП.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>02</span><h3>Выбираем добавляемые и исключаемые коды, проверяем основной вид деятельности.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>03</span><h3>Готовим форму Р24001 и инструкцию для согласованного способа подачи.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>04</span><h3>Сверяем новую выписку и фиксируем действия по режиму, банку и отчётности.</h3></article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Результат и стоимость</p>
-        <h2>Что получает ИП и от чего зависит цена</h2>
-        <p>Стоимость от 5 000 ₽ зависит от количества направлений и необходимости проверять режим, лицензии и специальные требования.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>Подбор кодов</h3><p>Согласованный перечень заявительных ОКВЭД под фактическую и планируемую деятельность.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Документы</h3><p>Подготовленная форма Р24001 и понятная инструкция по выбранному способу подачи.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Контроль ЕГРИП</h3><p>Проверка новой выписки: добавленные, исключённые и основной код отображаются корректно.</p></article>
-        <article class="glass-card rich-card"><span>04</span><h3>Следующие действия</h3><p>Список вопросов по налоговому режиму, кассе, банку, лицензиям и отчётности, если они затронуты.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section faq-section">
-      <div class="section-header">
-        <p class="eyebrow">FAQ</p>
-        <h2>Частые вопросы</h2>
-        <p>Форма Р24001, изменения 2026 года, налоговый режим и взаимодействие с банком.</p>
-      </div>
-      <div class="card-grid two faq-grid">
-        <article class="glass-card rich-card faq-card"><span>01</span><h3>Какая форма нужна для изменения ОКВЭД ИП?</h3><p>Применяется форма Р24001. В заявлении отмечают добавляемые и исключаемые коды заявительного типа.</p></article>
-        <article class="glass-card rich-card faq-card"><span>02</span><h3>Чем заявительные коды отличаются от отчётных?</h3><p>Заявительные коды ИП меняет через регистрирующий орган. Отчётные коды и их доли с 2026 года поступают в ЕГРИП из Росстата.</p></article>
-        <article class="glass-card rich-card faq-card"><span>03</span><h3>Нужно ли менять налоговый режим?</h3><p>Не всегда. Проверяем совместимость нового направления с режимом, лимитами, кассой и специальными требованиями.</p></article>
-        <article class="glass-card rich-card faq-card"><span>04</span><h3>Нужно ли сообщать банку?</h3><p>Сведения отражаются в ЕГРИП, но дополнительное уведомление зависит от правил банка, договоров и характера операций.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section related-section">
-      <div class="section-header">
-        <p class="eyebrow">Связанные услуги</p>
-        <h2>Другие задачи по документам</h2>
-        <p>Связанные страницы дополняют услугу «Изменение ОКВЭД ИП в Симферополе» и отделяют регистрационные действия от учёта, отчётности и банковских вопросов.</p>
-      </div>
-      <div class="card-grid two related-grid">
-        <a class="glass-card related-card" href="/registraciya-ip/"><span>01</span><h3>Регистрация ИП</h3><p>Проверить стартовые коды и режим нового предпринимателя.</p></a>
-        <a class="glass-card related-card" href="/raschet-nalogovoy-nagruzki/"><span>02</span><h3>Расчёт налоговой нагрузки</h3><p>Сопоставить новое направление с налоговыми последствиями.</p></a>
-        <a class="glass-card related-card" href="/bank-i-115-fz/"><span>03</span><h3>Банк и 115-ФЗ</h3><p>Проверить связь кодов с экономическим смыслом операций.</p></a>
-        <a class="glass-card related-card" href="/sdacha-otchetnosti-ip/"><span>04</span><h3>Отчётность ИП</h3><p>Учесть новое направление при подготовке деклараций и расчётов.</p></a>
-      </div>
-    </section>
-  </main>
+    <main class="service-page okved-ip-page" data-ui-version="t1-unified-v1-seo-safe" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero"><div class="service-hero-frame"><div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Изменения ЕГРИП</p>
+<h1 id="service-title">Изменение <span>ОКВЭД ИП</span> в Симферополе</h1>
+<p class="service-lead">Сверим фактическую деятельность и налоговый режим, подберём заявительные коды и подготовим форму Р24001 для изменения сведений в ЕГРИП.</p>
+<div aria-label="Ключевые элементы изменения ОКВЭД" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-8M22 19H2"></path></svg></span><span><strong>Деятельность и основной код</strong><small>Разберём реальные операции и определим основной вид деятельности.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"></path></svg></span><span><strong>Добавление и исключение кодов</strong><small>Подберём заявительные ОКВЭД без случайного перечня «на все случаи».</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"></path><path d="M15 3v5h5M8 12h8M8 16h6"></path></svg></span><span><strong>Р24001 и ЕГРИП</strong><small>Подготовим форму и проверим обновлённую выписку после регистрации.</small></span></div>
+</div>
+<div class="hero-commerce hero-commerce--banner">
+<a class="button button-primary hero-consult-button" href="/razbor-situacii/"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a>
+<div aria-label="Стоимость услуги от 5 000 рублей" class="hero-price-inline"><strong>от 5 000 ₽</strong><span>Стоимость зависит от числа направлений и необходимости проверить режим, кассу, лицензии и требования банка.</span></div>
+</div>
+<div aria-label="Преимущества работы" class="hero-facts"><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg><b>Конфиденциально</b></span><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><b>Оперативно</b></span><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20c0-4 2-6 6-6s6 2 6 6M14 15c4 0 6 2 6 5"></path></svg><b>Опытная команда</b></span></div>
+</div>
+<figure aria-label="Изменение ОКВЭД ИП — деятельность, основной код, Р24001 и ЕГРИП" class="service-hero-visual"><div class="hero-art-panel"><picture><source srcset="/assets/okved-ip-v1/okved-ip-hero-right-320.webp 320w, /assets/okved-ip-v1/okved-ip-hero-right-480.webp 480w, /assets/okved-ip-v1/okved-ip-hero-right-644.webp 644w, /assets/okved-ip-v1/okved-ip-hero-right-900.webp 900w" type="image/webp"/><img alt="Изменение ОКВЭД ИП: деятельность, основной код, дополнительные коды, Р24001 и ЕГРИП" class="hero-banner-image" decoding="async" fetchpriority="high" loading="eager" src="/assets/okved-ip-v1/okved-ip-hero-right.webp"/></picture></div><figcaption class="sr-only">Подбор заявительных кодов ОКВЭД, форма Р24001 и контроль обновлённой выписки ЕГРИП.</figcaption></figure>
+</div></div></section>
+<section aria-labelledby="checks-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Перед началом</span><h2 id="checks-title">Что проверяем у ИП</h2></div><p class="section-intro">Не начинаем с перечня цифр: сначала сопоставляем выписку, реальные операции и требования к новому направлению.</p></div>
+<div class="decision-grid">
+<article class="decision-card"><span class="decision-number">01</span><strong>Фактическая деятельность</strong><p>Что ИП уже продаёт, выполняет или оказывает и какое направление запускает.</p></article>
+<article class="decision-card"><span class="decision-number">02</span><strong>Заявительные коды</strong><p>Какие коды добавить, исключить и какой заявительный код определить основным.</p></article>
+<article class="decision-card"><span class="decision-number">03</span><strong>Налоги и условия</strong><p>Режим, касса, сотрудники, лицензии и ограничения для нового направления.</p></article>
+<article class="decision-card"><span class="decision-number">04</span><strong>Форма Р24001</strong><p>Нужные листы заявления, способ подачи и контроль обновлённой выписки ЕГРИП.</p></article>
+</div></div></section>
+<section aria-labelledby="request-title" class="service-section soft"><div class="container">
+<div class="request-panel"><div class="request-copy"><span class="eyebrow">Консультация</span><h2 id="request-title">Получить консультацию по изменению ОКВЭД ИП</h2><p>Опишите текущую деятельность и новое направление. Уточним, какие заявительные коды нужно добавить, исключить или сделать основными и какие связанные вопросы проверить.</p><div class="request-price"><span>Стоимость услуги</span><strong>от 5 000 ₽</strong></div><ul class="request-benefits"><li>Разберём фактические операции</li><li>Подберём заявительные коды</li><li>Проверим налоги, кассу и требования</li></ul></div>
+<form action="/api/lead" aria-label="Получить консультацию" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<input type="hidden" name="source_page" value="/izmenenie-okved-ip/" />
+<input type="hidden" name="task_type" value="Изменение ОКВЭД ИП" />
+<input type="hidden" name="lead_mode" value="quick" />
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field wide"><span>Текущая и новая деятельность или ваш вопрос <small>(необязательно)</small></span><textarea aria-label="Текущая и новая деятельность или ваш вопрос" name="message" placeholder="Что ИП делает сейчас? Какое направление планируете добавить или прекратить?" rows="4"></textarea></label>
+<div class="upload-row wide upload-note"><div class="upload-button upload-button-static" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M5 14v6h14v-6"></path></svg><span>Документы — после консультации</span></div><small>Выписку ЕГРИП, письмо банка и другие материалы можно передать после консультации.</small></div>
+<p class="form-note wide">Открытая форма принимает только контактные данные. Файлы и персональные документы здесь не загружаются.</p>
+<label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
+<p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+</form></div>
+</div></section>
+<section aria-labelledby="expert-title" class="service-section"><div class="container expert-grid">
+<div class="expert-heading"><span class="eyebrow">ОКВЭД и ЕГРИП</span><h2 id="expert-title">ИП меняет заявительные коды через ЕГРИП, а отчётные формируются отдельно</h2></div>
+<div class="expert-copy"><p>С 1 сентября 2025 года в ЕГРИП различаются заявительные и отчётные коды ОКВЭД. Заявительные коды предприниматель выбирает и меняет через регистрирующий орган. Отчётные коды и их доли формируются на основании статистических данных и поступают в реестр из Росстата.</p><p>Для изменения заявительных кодов используем форму Р24001. Перед её подготовкой отделяем фактическую деятельность от планов «на будущее», проверяем основной код, режим налогообложения, кассу, лицензии и вопросы банка.</p>
+<div class="okved-types"><div class="okved-type"><strong>Заявительные коды</strong><p>Добавляются и исключаются по инициативе ИП. Основной заявительный код должен описывать ключевое направление бизнеса.</p><div class="code-chips"><span class="code-chip">Р24001</span><span class="code-chip">основной код</span><span class="code-chip">дополнительные коды</span></div></div><div class="okved-type"><strong>Отчётные коды</strong><p>Формируются по статистическим сведениям Росстата и отражаются в ЕГРИП отдельно от заявительных кодов.</p><div class="code-chips"><span class="code-chip">Росстат</span><span class="code-chip">доли деятельности</span><span class="code-chip">ЕГРИП</span></div></div></div>
+<div class="official-note"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg><span>Официальное описание новой модели кодов размещено на странице ФНС <a href="https://www.nalog.gov.ru/okved/" rel="noopener noreferrer" target="_blank">«Новое о кодах ОКВЭД в ЕГРЮЛ и ЕГРИП»</a>.</span></div>
+</div></div></section>
+<section aria-labelledby="preflight-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">До Р24001</span><h2 id="preflight-title">Что определить до подготовки Р24001</h2></div><p class="section-intro">Форма фиксирует уже принятое решение по кодам. Сначала нужно понять, что именно меняется в бизнесе и какие последствия связаны с новым направлением.</p></div>
+<div class="case-grid">
+<article class="case-card"><span class="case-number">01</span><h3>Фактическая деятельность</h3><p>Фиксируем товары, работы и услуги, которые уже формируют выручку, и операции, которые только планируются.</p></article>
+<article class="case-card"><span class="case-number">02</span><h3>Изменение реестра</h3><p>Определяем коды для добавления и исключения и проверяем, какой заявительный код должен быть основным.</p></article>
+<article class="case-card"><span class="case-number">03</span><h3>Связанные последствия</h3><p>Сверяем налоговый режим, кассу, сотрудников, лицензии, уведомления, договоры и требования банка.</p></article>
+</div></div></section>
+<section aria-labelledby="when-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Когда обращаться</span><h2 id="when-title">Когда ИП нужно обновить коды в ЕГРИП</h2></div><p class="section-intro">Страница относится к изменениям действующего ИП. Для первичной регистрации применяется отдельный маршрут с формой Р21001.</p></div>
+<div class="content-grid">
+<article class="content-card"><span class="card-number">01</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="6" r="2"></circle><circle cx="19" cy="18" r="2"></circle><path d="M7 12h4c4 0 3-6 6-6M11 12c4 0 3 6 6 6"></path></svg></span><h3>Новое направление</h3><p>ИП начинает продавать другие товары, выполнять новые работы или оказывать новые услуги.</p></article>
+<article class="content-card"><span class="card-number">02</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="m3 9 9-5 9 5M5 10h14M6 10v8M10 10v8M14 10v8M18 10v8M4 19h16"></path></svg></span><h3>Вопросы банка</h3><p>Назначение платежей и договоры не совпадают с заявительными кодами в выписке ЕГРИП.</p></article>
+<article class="content-card"><span class="card-number">03</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-8M22 19H2"></path></svg></span><h3>Другой основной код</h3><p>Главный источник выручки изменился, и текущий основной код больше не описывает бизнес.</p></article>
+<article class="content-card"><span class="card-number">04</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M6 3h12v18H6z"></path><path d="M9 8h6M9 12h6M9 16h4"></path></svg></span><h3>Специальные требования</h3><p>Перед лицензией, уведомлением, закупкой или новым договором нужно проверить допустимость деятельности.</p></article>
+</div></div></section>
+<section aria-labelledby="service-title-2" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Состав услуги</span><h2 id="service-title-2">Что входит в изменение ОКВЭД ИП</h2></div><p class="section-intro">Сначала определяем, какие изменения относятся к ЕГРИП, а какие требуют отдельного налогового, лицензионного или статистического действия.</p></div>
+<div class="content-grid">
+<article class="content-card"><span class="card-number">01</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg></span><h3>Карта деятельности</h3><p>Разбираем фактические и планируемые товары, работы, услуги, клиентов и источники выручки.</p></article>
+<article class="content-card"><span class="card-number">02</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"></path></svg></span><h3>Набор кодов</h3><p>Подбираем основной и дополнительные заявительные коды без случайного перечня «на все случаи».</p></article>
+<article class="content-card"><span class="card-number">03</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="M7 9h5M7 13h3M16 9h1M16 13h1"></path></svg></span><h3>Проверка последствий</h3><p>Сверяем режим налогообложения, кассу, сотрудников, лицензии и возможные вопросы банка.</p></article>
+<article class="content-card"><span class="card-number">04</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"></path><path d="M15 3v5h5M8 12h8M8 16h6"></path></svg></span><h3>Форма и контроль</h3><p>Готовим относящиеся к ОКВЭД листы Р24001 и проверяем результат в новой выписке ЕГРИП.</p></article>
+</div></div></section>
+<section aria-labelledby="inputs-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Входные данные</span><h2 id="inputs-title">Что нужно сообщить до подготовки Р24001</h2></div><p class="section-intro">Персональные документы передаются только после согласования безопасного канала. Для первичного разбора достаточно описания деятельности.</p></div>
+<div class="content-grid">
+<article class="content-card"><span class="card-number">01</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.2"></circle><path d="M5 21c0-4.3 2.4-6.5 7-6.5s7 2.2 7 6.5"></path></svg></span><h3>Данные ИП</h3><p>ИНН, ОГРНИП и актуальная выписка ЕГРИП с текущими кодами.</p></article>
+<article class="content-card"><span class="card-number">02</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-8M22 19H2"></path></svg></span><h3>Текущая выручка</h3><p>Какие товары, работы или услуги уже формируют доход предпринимателя.</p></article>
+<article class="content-card"><span class="card-number">03</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="6" r="2"></circle><circle cx="19" cy="18" r="2"></circle><path d="M7 12h4c4 0 3-6 6-6M11 12c4 0 3 6 6 6"></path></svg></span><h3>Новый маршрут</h3><p>Что планируется добавить или прекратить, будут ли сотрудники, касса и новые договоры.</p></article>
+<article class="content-card"><span class="card-number">04</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"></path><path d="M15 3v5h5M8 12h8M8 16h6"></path></svg></span><h3>Внешние требования</h3><p>Письмо банка, условия закупки, лицензии или уведомления, если вопрос возник из конкретного запроса.</p></article>
+</div></div></section>
+<section aria-labelledby="process-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Этапы</span><h2 id="process-title">От операций ИП до обновлённой выписки ЕГРИП</h2></div><p class="section-intro">Не начинаем с заполнения формы: сначала определяем экономический смысл деятельности и только затем фиксируем коды.</p></div>
+<div class="process-grid process-service">
+<div class="step"><div class="step-rail"><span class="step-number">01</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg></span><h3>Сверяем выписку ЕГРИП с текущими и планируемыми операциями ИП.</h3><p class="card-description">Выделяем реальные и планируемые направления бизнеса.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">02</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"></path></svg></span><h3>Выбираем добавляемые и исключаемые коды, проверяем основной вид деятельности.</h3><p class="card-description">Формируем согласованный набор заявительных кодов.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">03</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"></path><path d="M15 3v5h5M8 12h8M8 16h6"></path></svg></span><h3>Готовим форму Р24001 и инструкцию для согласованного способа подачи.</h3><p class="card-description">Проверяем листы заявления и комплектность.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">04</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.6 2.6L16 9"></path></svg></span><h3>Сверяем новую выписку и фиксируем действия по режиму, банку и отчётности.</h3><p class="card-description">Контролируем результат и связанные обновления.</p></article></div>
+</div></div></section>
+<section aria-labelledby="result-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Результат и стоимость</span><h2 id="result-title">Что получает ИП и от чего зависит цена</h2></div><p class="section-intro">Стоимость от 5 000 ₽ зависит от количества направлений и необходимости проверять налоговый режим, лицензии и специальные требования.</p></div>
+<div class="content-grid result-grid-4">
+<article class="content-card"><span class="card-number">01</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"></path></svg></span><h3>Подбор кодов</h3><p>Согласованный перечень заявительных ОКВЭД под фактическую и планируемую деятельность.</p></article>
+<article class="content-card"><span class="card-number">02</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"></path><path d="M15 3v5h5M8 12h8M8 16h6"></path></svg></span><h3>Документы</h3><p>Подготовленная форма Р24001 и понятная инструкция по выбранному способу подачи.</p></article>
+<article class="content-card"><span class="card-number">03</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.6 2.6L16 9"></path></svg></span><h3>Контроль ЕГРИП</h3><p>Проверка новой выписки: добавленные, исключённые и основной код отображаются корректно.</p></article>
+<article class="content-card"><span class="card-number">04</span><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="6" r="2"></circle><circle cx="19" cy="18" r="2"></circle><path d="M7 12h4c4 0 3-6 6-6M11 12c4 0 3 6 6 6"></path></svg></span><h3>Следующие действия</h3><p>Список вопросов по режиму, кассе, банку, лицензиям и отчётности, если они затронуты.</p></article>
+</div></div></section>
+<section aria-labelledby="faq-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы</h2></div><p class="section-intro">Форма Р24001, заявительные и отчётные коды, налоговый режим и взаимодействие с банком.</p></div>
+<div class="faq-grid">
+<article class="faq-card"><span class="faq-number">01</span><h3>Какая форма нужна для изменения ОКВЭД ИП?</h3><p>Применяется форма Р24001. В заявлении отмечают добавляемые и исключаемые коды заявительного типа.</p></article>
+<article class="faq-card"><span class="faq-number">02</span><h3>Чем заявительные коды отличаются от отчётных?</h3><p>Заявительные коды ИП меняет через регистрирующий орган. Отчётные коды и их доли формируются по статистическим сведениям Росстата и поступают в ЕГРИП отдельно.</p></article>
+<article class="faq-card"><span class="faq-number">03</span><h3>Нужно ли менять налоговый режим?</h3><p>Не всегда. Проверяем совместимость нового направления с режимом, лимитами, кассой и специальными требованиями.</p></article>
+<article class="faq-card"><span class="faq-number">04</span><h3>Нужно ли сообщать банку?</h3><p>Сведения отражаются в ЕГРИП, но дополнительное уведомление зависит от правил банка, договоров и характера операций.</p></article>
+</div></div></section>
+
+<nav class="service-related-links" aria-label="Связанные услуги">
+  <div class="container">
+    <a href="/registraciya-ip/">01 Регистрация ИП Проверить стартовые коды и режим нового предпринимателя.</a>
+    <a href="/raschet-nalogovoy-nagruzki/">02 Расчёт налоговой нагрузки Сопоставить новое направление с налоговыми последствиями.</a>
+    <a href="/bank-i-115-fz/">03 Банк и 115-ФЗ Проверить связь кодов с экономическим смыслом операций.</a>
+    <a href="/sdacha-otchetnosti-ip/">04 Отчётность ИП Учесть новое направление при подготовке деклараций и расчётов.</a>
+  </div>
+</nav>
+</main>
 
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">
