@@ -175,7 +175,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260921-v11c" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/accounting-recovery-v1/page.css?v=20260923-v1" />
   </head>
   <body>
     
@@ -226,152 +230,105 @@
         </nav>
       </details>
     </header>
-    <main>
-    <section class="hero hero-inner hero-stack">
-      <div class="glass-panel hero-copy-panel">
-        <p class="eyebrow">Учёт прошлых периодов</p>
-        <h1>Восстановление бухучёта</h1>
-        <p>Определим проблемные периоды, соберём первичные документы и восстановим бухгалтерские и налоговые регистры до согласованного результата.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 20 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#quick-lead">Оценить объём</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-      </div>
-      <aside class="glass-panel hero-choice-panel">
-        <p class="eyebrow">Диагностика учёта</p>
-        <h2>Сначала находим пробелы, затем восстанавливаем</h2>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Периоды и участки</strong><small>Определяем месяцы, счета и операции, где учёт отсутствует или расходится.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>Источники данных</strong><small>База, банк, касса, ЭДО, договоры, первичка и кадровые документы.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>Риски и сроки</strong><small>Требования ИФНС, несданные формы, ликвидация или передача новому бухгалтеру.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Контрольный результат</strong><small>Регистры, отчётность, сверки и перечень оставшихся неподтверждённых операций.</small></div></a></li>
-        </ul>
-      </aside>
-    </section>
-    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
-      <div class="section-header">
-        <p class="eyebrow">Быстрый запрос</p>
-        <h2 id="quick-lead-title">Оценить восстановление учёта</h2>
-        <p>Укажите периоды, режим и причину восстановления. Начнём с перечня доступных данных и пробелов.</p>
-      </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-        <input type="hidden" name="source_page" value="/vosstanovlenie-buhucheta/" />
-        <input type="hidden" name="task_type" value="Восстановление бухгалтерского учёта" />
-        <input type="hidden" name="lead_mode" value="quick" />
-        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-grid">
-          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Периоды и проблема (необязательно)<textarea name="message" rows="3" placeholder="Например: ООО на УСН, нет учёта за два квартала, сохранились банк и ЭДО"></textarea></label>
-        </div>
-        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить план</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить документы</a></div>
-        <p class="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="section page-rich-section rich-intro-section">
-      <p class="eyebrow">Первичные документы</p>
-      <h2>Восстановление начинается с доказуемых хозяйственных операций</h2>
-      <div class="rich-copy"><p>Банковская выписка показывает движение денег, но сама по себе не объясняет предмет сделки, момент признания расходов, НДС или закрытие обязательства. Поэтому параллельно собираем договоры, акты, накладные, счета-фактуры, кассовые и кадровые документы, а не восстанавливаем проводки по догадкам.</p><p>Организация обязана хранить документы бухгалтерского и налогового учёта в установленные сроки. При утрате запрашиваем дубликаты у контрагентов, банка и оператора ЭДО, а неподтверждённые операции отмечаем отдельно. <a href="https://www.nalog.gov.ru/rn23/news/activities_fts/4250633/" target="_blank" rel="noopener">Разъяснение ФНС о хранении первичных документов</a>.</p></div>
-    </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">База учёта есть, но несколько периодов не закрыты</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>В ООО менялись бухгалтеры, часть первички осталась в почте. Выписки доступны, однако остатки в базе не совпадают с расчётами поставщиков.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Определим проблемные периоды и участки, составим реестр пробелов. Соберём подтверждения операций, восстановим согласованные регистры и проверим связь учёта с отчётностью.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>Восстановленные данные в пределах согласованного объёма, реестр неподтверждённых операций и список дальнейших действий по отчётам и сверкам.</p><ul class="rich-list"><li>Реестр отсутствующих и неподтверждённых документов.</li><li>Восстановленные регистры в пределах согласованного периода.</li><li>Перечень расхождений и необходимых действий с отчётностью.</li></ul></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Карта пробелов</p>
-        <h2>Что инвентаризируем до начала проводок</h2>
-        <p>Диагностика отделяет отсутствующие документы от ошибок в уже отражённых операциях.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card" id="orientation-detail-01"><span>01</span><h3>База и периоды</h3><p>Состояние учётной базы, закрытые месяцы, оборотно-сальдовые ведомости и резервные копии.</p></article>
-        <article class="glass-card rich-card" id="orientation-detail-02"><span>02</span><h3>Банк и касса</h3><p>Выписки по всем счетам, платежи, эквайринг, наличные операции и подотчётные суммы.</p></article>
-        <article class="glass-card rich-card" id="orientation-detail-03"><span>03</span><h3>Контрагенты и первичка</h3><p>Договоры, акты, накладные, счета-фактуры, ЭДО и остатки расчётов по каждой стороне.</p></article>
-        <article class="glass-card rich-card" id="orientation-detail-04"><span>04</span><h3>Персонал и отчётность</h3><p>Кадровые события, начисления, выплаты, налоги, принятые формы и требования ведомств.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Слои восстановления</p>
-        <h2>Какие данные приводим в согласованное состояние</h2>
-        <p>Работа не заканчивается на вводе документов: показатели должны сходиться между регистрами и отчётами.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>Первичные документы</h3><p>Восстанавливаем комплект по операциям и фиксируем источники каждого подтверждения.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Бухгалтерские регистры</h3><p>Формируем проводки, обороты, остатки, расчёты с контрагентами и закрытие периодов.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Налоговый учёт</h3><p>Проверяем доходы, расходы, НДС, налоги, разницы и основания для налоговых показателей.</p></article>
-        <article class="glass-card rich-card"><span>04</span><h3>Отчётность и сверки</h3><p>Сопоставляем восстановленные данные с принятыми формами, требованиями и состоянием расчётов.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Порядок работы</p>
-        <h2>От инвентаризации к закрытому периоду</h2>
-        <p>Большой объём делим на этапы, чтобы результат каждого периода можно было проверить отдельно.</p>
-      </div>
-      <div class="card-grid two rich-step-grid">
-        <article class="glass-card rich-card rich-step-card"><span>01</span><h3>Фиксируем периоды, режим, участки учёта и цель восстановления.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>02</span><h3>Составляем реестр пробелов и запрашиваем недостающие документы.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>03</span><h3>Восстанавливаем первичку, регистры и закрытие счетов по этапам.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>04</span><h3>Сверяем налоги и отчётность, передаём базу и контрольный реестр.</h3></article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Результат</p>
-        <h2>Что остаётся после восстановления</h2>
-        <p>Стоимость от 20 000 ₽ зависит от числа периодов, операций, режима, НДС, персонала и доступности первички.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>Рабочая учётная база</h3><p>Восстановленные операции, регистры, обороты и остатки за согласованные периоды.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Реестр пробелов</h3><p>Перечень полученных, запрошенных и по-прежнему отсутствующих подтверждений.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Отчётный маршрут</h3><p>Список исходных или корректирующих форм и сверок, необходимых после восстановления.</p></article>
-        <article class="glass-card rich-card"><span>04</span><h3>Контрольный архив</h3><p>Структура документов и рекомендации по текущему ведению, чтобы пробелы не повторялись.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section faq-section">
-      <div class="section-header">
-        <p class="eyebrow">FAQ</p>
-        <h2>Частые вопросы о восстановлении учёта</h2>
-        <p>Ответы о диагностике, недостающей первичке, составе работы и расчёте стоимости.</p>
-      </div>
-      <div class="card-grid two faq-grid">
-        <article class="glass-card rich-card faq-card"><span>01</span><h3>С чего начинается восстановление бухгалтерского учёта?</h3><p>Начинаем с инвентаризации периодов, режима, банковских и кассовых операций, договоров, отчётности и расчётов с сотрудниками. По результату составляем реестр пробелов.</p></article>
-        <article class="glass-card rich-card faq-card"><span>02</span><h3>Можно ли восстановить учёт без всей первички?</h3><p>Работу можно начать, но недостающие документы потребуется запросить у контрагентов, банка или оператора ЭДО. Операции без подтверждения фиксируем отдельно и не подменяем предположениями.</p></article>
-        <article class="glass-card rich-card faq-card"><span>03</span><h3>Что восстанавливается кроме бухгалтерских проводок?</h3><p>Проверяем налоговые регистры, расчёты с сотрудниками, ранее сданные формы, остатки по контрагентам, налоги и акты сверки. Состав зависит от периода и деятельности компании.</p></article>
-        <article class="glass-card rich-card faq-card"><span>04</span><h3>От чего зависят срок и стоимость восстановления?</h3><p>От числа периодов и операций, режима налогообложения, НДС, персонала, доступности базы и объёма утраченной первички. Работу делим на согласованные этапы после диагностики.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section related-section">
-      <div class="section-header">
-        <p class="eyebrow">После диагностики</p>
-        <h2>Выберите следующий учётный маршрут</h2>
-        <p>Связанные услуги применяются после того, как определены состояние базы и конкретные обязательства.</p>
-      </div>
-      <div class="card-grid two related-grid">
-        <a class="glass-card related-card" href="/sdacha-otchetnosti-ooo/"><span>01</span><h3>Отчётность ООО</h3><p>Подготовить формы по восстановленным регистрам и проверить межформенные связи.</p></a>
-        <a class="glass-card related-card" href="/nulevaya-otchetnost-ooo/"><span>02</span><h3>Нулевая отчётность ООО</h3><p>Отдельно проверить, действительно ли в периоде отсутствовали операции и объекты.</p></a>
-        <a class="glass-card related-card" href="/sverka-s-nalogovoy/"><span>03</span><h3>Сверка с налоговой</h3><p>Сопоставить начисления, платежи, сальдо ЕНС и состояние обязательств после восстановления.</p></a>
-        <a class="glass-card related-card" href="/buhgalterskie-uslugi/"><span>04</span><h3>Бухгалтерское сопровождение</h3><p>Передать восстановленную базу в регулярное ведение учёта и отчётности.</p></a>
-      </div>
-    </section>
-  </main>
+    <main class="service-page accounting-page recovery-accounting-page" data-ui-version="accounting-recovery-v1-seo-safe" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero"><div class="service-hero-frame"><div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Учёт прошлых периодов</p>
+<h1 id="service-title">Восстановление <span>бухучёта</span></h1>
+<p class="service-lead">Определим проблемные периоды, соберём первичные документы и восстановим бухгалтерские и налоговые регистры до согласованного результата.</p>
+<p class="hero-geo"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><span>Начинаем с диагностики базы, документов, отчётности и расчётов</span></p>
+<div aria-label="Ключевые этапы восстановления" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg></span><span><strong>Анализ периода</strong><small>Определяем месяцы, счета, операции и документы, где учёт отсутствует или расходится.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3.1 3 7 3s7-1.3 7-3v-7"/></svg></span><span><strong>Восстановление базы</strong><small>Собираем подтверждения, восстанавливаем регистры, обороты, остатки и закрытие периодов.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M8 14l2 2 4-4"/></svg></span><span><strong>Контрольный результат</strong><small>Сверяем налоги и отчётность, формируем реестр пробелов и план дальнейших действий.</small></span></div>
+</div>
+<div class="hero-commerce"><div class="hero-price"><span>Стоимость услуги</span><strong>от 20 000 ₽</strong><small>Точный объём зависит от периода, режима, операций, НДС, персонала и доступности первичных документов.</small></div><div class="hero-actions"><a class="button button-primary" data-event-name="hero_cta_click" href="#quick-lead"><span>Оценить объём восстановления</span><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a><a class="button button-secondary" href="tel:+79789987222"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M7 3l3 5-2 2c2 3 3 4 6 6l2-2 5 3c-1 5-4 5-7 3C8 17 5 14 3 8 2 5 4 3 7 3Z"/></svg><span>Позвонить</span></a></div></div>
+<p class="hero-report-note">Работу делим на проверяемые этапы; неподтверждённые операции не подменяем предположениями.</p>
+<div aria-label="Преимущества работы" class="hero-facts"><span><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg><b>Конфиденциально</b></span><span><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Поэтапно</b></span><span><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M8 14l2 2 4-4"/></svg><b>Проверяемый результат</b></span></div>
+</div>
+<figure aria-label="Восстановление бухгалтерского учёта: документы, база, исправление ошибок и контроль результата" class="service-hero-visual"><div class="hero-art-panel"><picture><source srcset="/assets/accounting-recovery-v1/accounting-recovery-hero-right-320.webp 320w, /assets/accounting-recovery-v1/accounting-recovery-hero-right-480.webp 480w, /assets/accounting-recovery-v1/accounting-recovery-hero-right-644.webp 644w, /assets/accounting-recovery-v1/accounting-recovery-hero-right-900.webp 900w, /assets/accounting-recovery-v1/accounting-recovery-hero-right-1100.webp 1100w" type="image/webp"/><img alt="Восстановление бухгалтерского учёта: восстановленная база, исправленные ошибки и порядок в учёте" class="hero-banner-image" decoding="async" fetchpriority="high" loading="eager" src="/assets/accounting-recovery-v1/accounting-recovery-hero-right.webp"/></picture></div><figcaption class="sr-only">Восстановление учётной базы и документов до согласованного контрольного результата.</figcaption></figure>
+</div><div class="container hero-route-bar">
+<a href="/buhgalterskie-uslugi/"><span class="route-mini-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h1M12 11h1M16 11h1M8 15h1M12 15h1M16 15h1M8 19h5"/></svg></span><span><b>Бухгалтерские услуги</b><small>Регулярное сопровождение и разовые задачи.</small></span><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+<a href="/soprovozhdenie/"><span class="route-mini-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M9 12h6M9 16h6"/></svg></span><span><b>Сопровождение ИП</b><small>Учёт и отчётность после восстановления.</small></span><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+<a href="/buhgalterskoe-soprovozhdenie-ooo/"><span class="route-mini-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v12H3z"/></svg></span><span><b>Сопровождение ООО</b><small>Передача восстановленной базы в текущую работу.</small></span><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+</div></div></section>
+
+<section aria-labelledby="diagnostic-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Диагностика учёта</span><h2 id="diagnostic-title">Сначала находим пробелы, затем восстанавливаем</h2></div><p class="section-intro">До проводок фиксируем границы работы: периоды, источники данных, риски, цель восстановления и критерии готового результата.</p></div><div class="orientation-grid">
+<article class="orientation-card"><span class="orientation-index">01</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></span><strong>Периоды и участки</strong><p>Определяем месяцы, счета и операции, где учёт отсутствует или расходится.</p></article>
+<article class="orientation-card"><span class="orientation-index">02</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3.1 3 7 3s7-1.3 7-3v-7"/></svg></span><strong>Источники данных</strong><p>База, банк, касса, ЭДО, договоры, первичка и кадровые документы.</p></article>
+<article class="orientation-card"><span class="orientation-index">03</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9v5M12 18h.01"/></svg></span><strong>Риски и сроки</strong><p>Требования ИФНС, несданные формы, ликвидация или передача новому бухгалтеру.</p></article>
+<article class="orientation-card"><span class="orientation-index">04</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M8 14l2 2 4-4"/></svg></span><strong>Контрольный результат</strong><p>Регистры, отчётность, сверки и перечень оставшихся неподтверждённых операций.</p></article>
+</div></div></section>
+
+<section aria-labelledby="request-title" class="service-section soft" id="quick-lead"><div class="container"><div class="request-panel"><div class="request-side"><span class="eyebrow eyebrow-light">Быстрый запрос</span><h2 id="request-title">Оценить восстановление учёта</h2><p>Укажите периоды, режим и причину восстановления. Начнём с перечня доступных данных и пробелов.</p><div class="request-factors"><span>Периоды</span><span>Режим</span><span>База</span><span>Первичка</span><span>Отчётность</span></div><p class="safe-note">Конфиденциальные документы передавайте только через согласованный безопасный канал.</p></div><form action="/api/lead" aria-label="Оценить объём восстановления" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<input type="hidden" name="source_page" value="/vosstanovlenie-buhucheta/" />
+<input type="hidden" name="task_type" value="Восстановление бухгалтерского учёта" />
+<input type="hidden" name="lead_mode" value="quick" />
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<div class="form-grid">
+<label><span>Имя <small>необязательно</small></span><input autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
+<label><span>Телефон</span><input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="form-wide"><span>Периоды и проблема <small>необязательно</small></span><textarea name="message" placeholder="Например: не закрыты 2024–2025 годы, база есть, часть первички отсутствует" rows="5"></textarea></label>
+<div class="file-field form-wide safe-file-note" role="note"><span class="file-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"></path><path d="M14 2v5h5M9 12h6M9 16h4"></path></svg></span><span><b>Документы — после первичного разговора</b><small>Базу, выписки и первичные документы можно передать после разговора через согласованный защищённый канал.</small></span></div>
+<p class="form-note form-wide">Открытая форма принимает только контактные данные. Файлы и персональные документы здесь не загружаются.</p>
+<label class="consent form-wide"><input name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<button class="button button-primary form-submit form-wide" type="submit"><span>Получить план восстановления</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button>
+</div>
+<p class="form-status lead-status" role="status" aria-live="polite"></p>
+</form></div></div></section>
+
+<section aria-labelledby="evidence-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Первичные документы</span><h2 id="evidence-title">Восстановление начинается с доказуемых хозяйственных операций</h2></div><p class="section-intro">Банковская выписка показывает движение денег, но не объясняет сама по себе предмет сделки, момент признания расходов, НДС или закрытие обязательства.</p></div><div class="expert-layout"><div class="expert-main"><p>Параллельно собираем договоры, акты, накладные, счета-фактуры, кассовые и кадровые документы. Для утраченных материалов определяем источник дубликатов: контрагент, банк, оператор ЭДО или внутренний архив.</p><p>Неподтверждённые операции фиксируем отдельно. Мы не восстанавливаем проводки по догадкам и не скрываем пробелы, которые требуют дальнейшего документального подтверждения.</p><p><a class="inline-action" href="https://www.nalog.gov.ru/rn23/news/activities_fts/4250633/" rel="noopener noreferrer" target="_blank">Разъяснение ФНС о хранении первичных документов <svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></p></div><aside class="expert-summary"><span>Принцип восстановления</span><strong>Документ → операция → регистр → отчётность</strong><p>Каждый восстановленный показатель должен иметь источник и проверяемую связь с хозяйственной операцией.</p></aside></div></div></section>
+
+<section aria-labelledby="case-title" class="service-section soft"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Практический сценарий</span><h2 id="case-title">База учёта есть, но несколько периодов не закрыты</h2></div><p class="section-intro">Такой сценарий помогает определить, где заканчивается диагностика и начинается полноценное восстановление базы, регистров и отчётности.</p></div><div class="case-grid">
+<article class="case-card"><span class="card-index">01</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9v5M12 18h.01"/></svg></span><h3>С чем обращаются</h3><p>В компании менялись бухгалтеры, часть первички осталась в почте. Выписки доступны, но остатки в базе не совпадают с расчётами поставщиков.</p></article>
+<article class="case-card"><span class="card-index">02</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg></span><h3>Что сделаем</h3><p>Определим проблемные периоды и участки, составим реестр пробелов, соберём подтверждения операций и проверим связь учёта с отчётностью.</p></article>
+<article class="case-card"><span class="card-index">03</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M8 14l2 2 4-4"/></svg></span><h3>Что подготовим</h3><p>Восстановленные данные в согласованном объёме, реестр неподтверждённых операций и список действий по отчётам и сверкам.</p></article>
+</div><div class="section-actions"><a class="button button-secondary" href="#quick-lead">Обсудить похожую задачу <svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></div></div></section>
+
+<section aria-labelledby="inventory-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Карта пробелов</span><h2 id="inventory-title">Что инвентаризируем до начала проводок</h2></div><p class="section-intro">Диагностика отделяет отсутствующие документы от ошибок в уже отражённых операциях и задаёт последовательность восстановления.</p></div><div class="content-grid">
+<article class="content-card"><span class="card-index">01</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3.1 3 7 3s7-1.3 7-3v-7"/></svg></span><h3>База и периоды</h3><p>Состояние учётной базы, закрытые месяцы, оборотно-сальдовые ведомости и резервные копии.</p></article>
+<article class="content-card"><span class="card-index">02</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 10h18M5 10V20M9 10V20M15 10V20M19 10V20M2 20h20M12 3 2 8h20z"/></svg></span><h3>Банк и касса</h3><p>Выписки по всем счетам, платежи, эквайринг, наличные операции и подотчётные суммы.</p></article>
+<article class="content-card"><span class="card-index">03</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v12H3z"/></svg></span><h3>Контрагенты и первичка</h3><p>Договоры, акты, накладные, счета-фактуры, ЭДО и остатки расчётов по каждой стороне.</p></article>
+<article class="content-card"><span class="card-index">04</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20v-2.2C3 15.7 4.7 14 6.8 14h2.4c2.1 0 3.8 1.7 3.8 3.8V20M13 14h2.2c3.2 0 5.8 2.6 5.8 5.8V20"/></svg></span><h3>Персонал и отчётность</h3><p>Кадровые события, начисления, выплаты, налоги, принятые формы и требования ведомств.</p></article>
+</div></div></section>
+
+<section aria-labelledby="layers-title" class="service-section soft"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Слои восстановления</span><h2 id="layers-title">Какие данные приводим в согласованное состояние</h2></div><p class="section-intro">Работа не заканчивается на вводе документов: показатели должны сходиться между первичкой, регистрами, налоговым учётом и отчётностью.</p></div><div class="content-grid layer-grid">
+<article class="content-card"><span class="card-index">01</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M9 12h6M9 16h6"/></svg></span><h3>Первичные документы</h3><p>Восстанавливаем комплект по операциям и фиксируем источники каждого подтверждения.</p></article>
+<article class="content-card"><span class="card-index">02</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Бухгалтерские регистры</h3><p>Формируем проводки, обороты, остатки, расчёты с контрагентами и закрытие периодов.</p></article>
+<article class="content-card"><span class="card-index">03</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h1M12 11h1M16 11h1M8 15h1M12 15h1M16 15h1M8 19h5"/></svg></span><h3>Налоговый учёт</h3><p>Проверяем доходы, расходы, НДС, налоги, разницы и основания для налоговых показателей.</p></article>
+<article class="content-card"><span class="card-index">04</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M8 14l2 2 4-4"/></svg></span><h3>Отчётность и сверки</h3><p>Сопоставляем восстановленные данные с принятыми формами, требованиями и состоянием расчётов.</p></article>
+</div></div></section>
+
+<section aria-labelledby="process-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Порядок работы</span><h2 id="process-title">От инвентаризации к закрытому периоду</h2></div><p class="section-intro">Большой объём делим на этапы, чтобы результат каждого периода можно было проверить отдельно до перехода к следующему.</p></div><div class="process-grid">
+<div class="step"><div class="step-rail"><span class="step-number">01</span></div><article class="step-card"><span class="icon-tile"><img alt="" src="/assets/accounting-recovery-v1/process-step-01.svg"/></span><h3>Фиксируем периоды, режим, участки учёта и цель восстановления.</h3><p class="card-description">Определяем границы работ и критерии готового результата.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">02</span></div><article class="step-card"><span class="icon-tile"><img alt="" src="/assets/accounting-recovery-v1/process-step-02.svg"/></span><h3>Составляем реестр пробелов и запрашиваем недостающие документы.</h3><p class="card-description">Разделяем утраченные материалы и ошибки в уже внесённых данных.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">03</span></div><article class="step-card"><span class="icon-tile"><img alt="" src="/assets/accounting-recovery-v1/process-step-03.svg"/></span><h3>Восстанавливаем первичку, регистры и закрытие счетов по этапам.</h3><p class="card-description">Каждый показатель связываем с документом и проверяем внутри периода.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">04</span></div><article class="step-card"><span class="icon-tile"><img alt="" src="/assets/accounting-recovery-v1/process-step-04.svg"/></span><h3>Сверяем налоги и отчётность, передаём базу и контрольный реестр.</h3><p class="card-description">Фиксируем результат, открытые вопросы и дальнейший рабочий маршрут.</p></article></div>
+</div></div></section>
+
+<section aria-labelledby="result-title" class="service-section soft"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Результат</span><h2 id="result-title">Что остаётся после восстановления</h2></div><p class="section-intro">Стоимость от 20 000 ₽ зависит от числа периодов, операций, режима, НДС, персонала и доступности первички.</p></div><div class="result-grid recovery-result-grid">
+<article class="result-card result-card-primary"><span class="card-index">01</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3.1 3 7 3s7-1.3 7-3v-7"/></svg></span><h3>Рабочая учётная база</h3><p>Восстановленные операции, регистры, обороты и остатки за согласованные периоды.</p></article>
+<article class="result-card"><span class="card-index">02</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4 4h16v4H4zM6 8h12v12H6zM9 12h6"/></svg></span><h3>Реестр пробелов</h3><p>Перечень полученных, запрошенных и по-прежнему отсутствующих подтверждений.</p></article>
+<article class="result-card"><span class="card-index">03</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></span><h3>Отчётный маршрут</h3><p>Список исходных или корректирующих форм и сверок, необходимых после восстановления.</p></article>
+<article class="result-card"><span class="card-index">04</span><span class="card-icon"><svg class="" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v12H3z"/></svg></span><h3>Контрольный архив</h3><p>Структура документов и рекомендации по текущему ведению, чтобы пробелы не повторялись.</p></article>
+</div></div></section>
+
+<section aria-labelledby="faq-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы о восстановлении учёта</h2></div><p class="section-intro">Ответы о диагностике, недостающей первичке, составе работы и расчёте стоимости.</p></div><div class="faq-grid">
+<article class="faq-card"><h3>С чего начинается восстановление бухгалтерского учёта?</h3><p>Начинаем с инвентаризации периодов, режима, банковских и кассовых операций, договоров, отчётности и расчётов с сотрудниками. По результату составляем реестр пробелов.</p></article>
+<article class="faq-card"><h3>Можно ли восстановить учёт без всей первички?</h3><p>Работу можно начать, но недостающие документы потребуется запросить у контрагентов, банка или оператора ЭДО. Операции без подтверждения фиксируем отдельно.</p></article>
+<article class="faq-card"><h3>Что восстанавливается кроме бухгалтерских проводок?</h3><p>Проверяем налоговые регистры, расчёты с сотрудниками, ранее сданные формы, остатки по контрагентам, налоги и акты сверки.</p></article>
+<article class="faq-card"><h3>От чего зависят срок и стоимость восстановления?</h3><p>От числа периодов и операций, режима налогообложения, НДС, персонала, доступности базы и объёма утраченной первички. Работу делим на этапы после диагностики.</p></article>
+</div></div></section>
+
+<nav class="service-related-links" aria-label="Дополнительные связанные услуги">
+  <div class="container">
+    <a href="/razbor-situacii/#route-contact">Согласовать безопасную передачу документов</a>
+    <a href="/sdacha-otchetnosti-ooo/">01 Отчётность ООО Подготовить формы по восстановленным регистрам и проверить межформенные связи.</a>
+    <a href="/nulevaya-otchetnost-ooo/">02 Нулевая отчётность ООО Отдельно проверить, действительно ли в периоде отсутствовали операции и объекты.</a>
+    <a href="/sverka-s-nalogovoy/">03 Сверка с налоговой Сопоставить начисления, платежи, сальдо ЕНС и состояние обязательств после восстановления.</a>
+  </div>
+</nav>
+</main>
     
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">

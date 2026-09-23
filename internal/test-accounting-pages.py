@@ -8,12 +8,13 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 ROUTES = ["/", "/buhgalterskie-uslugi/", "/soprovozhdenie/",
           "/buhgalterskoe-soprovozhdenie-ooo/", "/ceny/", "/razbor-situacii/",
-          "/registraciya-ip/", "/likvidaciya-ooo/"]
+          "/registraciya-ip/", "/likvidaciya-ooo/", "/vosstanovlenie-buhucheta/"]
 NO_UPLOAD_ROUTES = [
     "/buhgalterskie-uslugi/", "/buhgalterskoe-soprovozhdenie-ooo/", "/deklaraciya-usn/",
     "/likvidaciya-ooo/", "/nulevaya-otchetnost-ip/", "/nulevaya-otchetnost-ooo/",
     "/otvet-na-trebovanie-ifns/", "/registraciya-ip/", "/sdacha-otchetnosti-ip/",
     "/sdacha-otchetnosti-ooo/", "/soprovozhdenie/", "/razbor-situacii/",
+    "/vosstanovlenie-buhucheta/",
 ]
 TOPICS = {"accounting": "Подбор бухгалтерских услуг", "accounting-ip": "Бухгалтерское сопровождение ИП",
           "accounting-ooo": "Бухгалтерское сопровождение ООО"}
