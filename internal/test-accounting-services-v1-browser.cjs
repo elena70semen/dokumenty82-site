@@ -1,0 +1,111 @@
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const { chromium } = require("playwright");
+
+const root = path.resolve(__dirname, "..");
+const origin = "https://dokumenty82.test";
+const routePath = "/buhgalterskie-uslugi/";
+const mimeTypes = {
+  ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8",
+  ".js": "application/javascript; charset=utf-8", ".png": "image/png",
+  ".webp": "image/webp", ".jpg": "image/jpeg", ".svg": "image/svg+xml",
+  ".ico": "image/x-icon", ".woff2": "font/woff2", ".woff": "font/woff",
+};
+
+(async () => {
+  const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL || "chrome", headless: true });
+  try {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, serviceWorkers: "block" });
+    const broken = [];
+    const submissions = [];
+    await context.route("**/*", async (route) => {
+      const request = route.request();
+      const url = new URL(request.url());
+      if (url.origin === origin && url.pathname === "/api/lead") {
+        const body = request.postData() || "";
+        assert.match(body, /name="source_page"[\s\S]*\/buhgalterskie-uslugi\//);
+        assert.match(body, /name="task_type"[\s\S]*Подбор бухгалтерских услуг/);
+        assert.match(body, /name="phone"/);
+        assert.match(body, /name="privacy"[\s\S]*\r\n1\r\n/);
+        assert.doesNotMatch(body, /filename=/);
+        submissions.push(body);
+        return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, id: "offline", crm_status: "sent" }) });
+      }
+      if (url.origin !== origin) return route.fulfill({ status: 204, body: "" });
+      if (request.method() !== "GET") return route.abort();
+      if (["/assets/metrika-goals.js", "/assets/crm-attribution.js"].includes(url.pathname)) {
+        return route.fulfill({ contentType: "application/javascript", body: "window.d82TrackGoal=function(){};window.d82GetAttribution=function(){return Promise.resolve({});};" });
+      }
+      const relative = decodeURIComponent(url.pathname).replace(/^\/+/, "");
+      let file = path.resolve(root, relative || "index.html");
+      if (!file.startsWith(root + path.sep) && file !== root) return route.abort();
+      if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");
+      if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
+        broken.push(url.pathname);
+        return route.fulfill({ status: 404, body: "Not found" });
+      }
+      return route.fulfill({ contentType: mimeTypes[path.extname(file)] || "application/octet-stream", body: fs.readFileSync(file) });
+    });
+
+    const page = await context.newPage();
+    const consoleErrors = [];
+    page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
+    await page.goto(origin + routePath, { waitUntil: "load" });
+    const cookieButton = page.locator("#cookie-notice button");
+    if (await cookieButton.isVisible()) await cookieButton.click();
+    assert.deepEqual(await Promise.all(["h1", "h2", "h3"].map((tag) => page.locator(`main ${tag}`).count())), [1, 10, 16]);
+    assert.equal((await page.locator("main h1").innerText()).replace(/\s+/g, " ").trim(), "Бухгалтерские услуги для ИП и ООО в Симферополе");
+    assert.equal(await page.locator("main form").count(), 1);
+    assert.equal(await page.locator('main input[type="file"]').count(), 0);
+    assert.equal(await page.locator('meta[name="robots"]').getAttribute("content"), "index, follow");
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute("href"), "https://dokumenty82.ru/buhgalterskie-uslugi/");
+
+    const metrics = [];
+    for (const width of [1440, 1024, 768, 390, 320]) {
+      await page.setViewportSize({ width, height: width >= 768 ? 900 : 844 });
+      await page.evaluate(() => scrollTo(0, document.body.scrollHeight));
+      await page.waitForTimeout(75);
+      const metric = await page.evaluate(() => ({
+        width: innerWidth,
+        overflow: document.documentElement.scrollWidth - innerWidth,
+        h1Color: getComputedStyle(document.querySelector("main h1")).color,
+        h2Color: getComputedStyle(document.querySelector("main h2")).color,
+        allImagesLoaded: [...document.images].every((img) => img.complete && img.naturalWidth > 0),
+      }));
+      assert.ok(metric.overflow <= 1, `horizontal overflow ${metric.overflow}px at ${width}`);
+      assert.equal(metric.allImagesLoaded, true, `broken image at ${width}`);
+      assert.equal(metric.h1Color, "rgb(11, 36, 64)");
+      assert.equal(metric.h2Color, "rgb(11, 36, 64)");
+      metrics.push(metric);
+    }
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.evaluate(() => scrollTo(0, 0));
+    const shellToggle = page.locator("#menu-toggle");
+    if (await shellToggle.count()) {
+      await shellToggle.click();
+      assert.equal(await shellToggle.getAttribute("aria-expanded"), "true");
+      assert.equal(await page.locator("#header-nav").isVisible(), true);
+    } else {
+      const menu = page.locator("details.mobile-menu");
+      await page.locator("details.mobile-menu > summary").click();
+      assert.equal(await menu.getAttribute("open"), "");
+    }
+
+    const form = page.locator("main form");
+    await form.locator('input[name="name"]').fill("Тест");
+    await form.locator('input[name="phone"]').fill("+7 978 000-00-00");
+    await form.locator('textarea[name="message"]').fill("ИП, УСН, 30 операций");
+    await form.locator('input[name="privacy"]').check();
+    await form.locator('button[type="submit"]').click();
+    await form.locator('[role="status"]').filter({ hasText: /принят|отправлен|спасибо/i }).waitFor({ timeout: 5000 });
+
+    assert.equal(submissions.length, 1);
+    assert.deepEqual([...new Set(broken)], []);
+    assert.deepEqual(consoleErrors, []);
+    console.log(JSON.stringify({ result: "PASS", route: routePath, metrics }, null, 2));
+  } finally {
+    await browser.close();
+  }
+})().catch((error) => { console.error(error); process.exitCode = 1; });

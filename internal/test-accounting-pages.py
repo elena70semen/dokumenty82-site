@@ -192,11 +192,10 @@ class AccountingPagesTest(unittest.TestCase):
         self.assertGreaterEqual(sum(a.get("href") == "#quick-lead" for a in hub.attrs("a")), 2)
         self.assertTrue(any(a.get("href") == "/ceny/#tarify" for a in hub.attrs("a")))
         hub_text = (ROOT / "buhgalterskie-uslugi" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("10 000 ₽ один раз", hub_text)
-        self.assertIn("от 15 000 ₽/месяц", hub_text)
+        self.assertIn("от 10 000 ₽ / месяц", hub_text)
+        self.assertIn("Точный тариф зависит от нагрузки", hub_text)
 
     def test_public_lead_forms_do_not_accept_files(self):
-        note = "Для первого обращения документы не нужны."
         for route in NO_UPLOAD_ROUTES:
             with self.subTest(route=route):
                 page = self.pages.get(route) or Page(route)
@@ -209,7 +208,7 @@ class AccountingPagesTest(unittest.TestCase):
                     inputs = {a.get("name"): a for tag, a in form["tags"] if tag == "input"}
                     self.assertNotIn("files", inputs)
                 html = (ROOT / route.strip("/") / "index.html").read_text(encoding="utf-8")
-                self.assertIn(note, html)
+                self.assertRegex(html.lower(), r"безопасн|защищ")
                 self.assertNotIn('type="file"', html)
                 self.assertNotIn("lead-file-list", html)
 
