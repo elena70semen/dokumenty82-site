@@ -147,3 +147,14 @@ body {
     display: flex;
   }
 }
+/* Compatibility polish shared by every redesigned page. */
+main[data-ui-version] .request-panel>.request-form.crm-lead-form{border:0;border-radius:0;box-shadow:none}
+main[data-ui-version] .news-card.glass-card{border-color:#D5E6ED}
+@media(min-width:1401px) and (max-width:1699px){
+body:has(main[data-ui-version]) :is(.ai-chat-widget,.client-portal-widget){width:58px;max-width:58px;min-height:56px;justify-content:center;gap:0;padding:.68rem;opacity:.9}
+body:has(main[data-ui-version]) :is(.ai-chat-widget,.client-portal-widget) strong{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+@media(max-width:640px){
+body:has(main[data-ui-version]) .ai-chat-widget{width:44px;max-width:44px;min-height:44px;padding:7px;right:6px;opacity:.86}
+body:has(main[data-ui-version]) .ai-chat-widget span{width:28px;height:28px}
+}

@@ -86,6 +86,13 @@ class ServiceRedesignBatchTwoTest(unittest.TestCase):
                 self.assertEqual(document.xpath(f"//link[contains(@href,'/assets/{spec['asset']}/page.css')]/@href"), [f"/assets/{spec['asset']}/page.css?v=20260922-v1"])
                 ids = document.xpath("//@id")
                 self.assertEqual(len(ids), len(set(ids)))
+                if route == "yuridicheskiy-adres-simferopol":
+                    steps = main.xpath(
+                        ".//*[contains(concat(' ',normalize-space(@class),' '),' process-grid ')]"
+                        "/*[contains(concat(' ',normalize-space(@class),' '),' step ')]"
+                    )
+                    self.assertEqual(len(steps), 4)
+                    self.assertTrue(all(step.xpath(".//*[contains(concat(' ',normalize-space(@class),' '),' icon-tile ')]/svg") for step in steps))
 
 
 if __name__ == "__main__":
