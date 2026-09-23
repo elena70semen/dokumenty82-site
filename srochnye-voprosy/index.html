@@ -175,7 +175,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260921-v11c" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/urgent-questions-v1/page.css?v=20260923-v1" />
   </head>
   <body>
     
@@ -226,158 +230,116 @@
         </nav>
       </details>
     </header>
-    <main>
-      <section class="hero hero-inner hero-stack">
-        <div class="glass-panel hero-copy-panel">
-          <p class="eyebrow">Когда в документе есть срок</p>
-          <h1>Срочная помощь с документами бизнеса</h1>
-          <p>Определяем, кто и что запросил, когда документ считается полученным, какое действие ожидается и какой комплект нужно собирать первым.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 3 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-          <div class="actions"><a class="button button-lime" href="#quick-lead">Сообщить о документе</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-        </div>
-        <aside class="glass-panel hero-choice-panel">
-          <p class="eyebrow">Четыре факта</p>
-          <h2>Что нужно зафиксировать сразу</h2>
-          <p class="hero-choice-description">Срочность определяет не тревога, а содержание входящего документа и его календарь.</p>
-          <ul class="compact-list">
-            <li><a href="#orientation-detail-01"><span>01</span><div><strong>Отправитель</strong><small>ИФНС, банк, СФР, контрагент, суд или другой адресант.</small></div></a></li>
-            <li><a href="#orientation-detail-02"><span>02</span><div><strong>Получение</strong><small>Дата, канал доставки и подтверждение, от которого может считаться срок.</small></div></a></li>
-            <li><a href="#orientation-detail-03"><span>03</span><div><strong>Предмет и дедлайн</strong><small>Что именно требуют, за какой период и до какой даты ожидают действие.</small></div></a></li>
-            <li><a href="#orientation-detail-04"><span>04</span><div><strong>Исходные материалы</strong><small>Какие документы, пояснения и переписка уже доступны для проверки.</small></div></a></li>
-          </ul>
-        </aside>
-      </section>
-      <section class="section lead-quick-section" id="quick-lead" aria-labelledby="urgent-lead-title">
-        <div class="section-header">
-          <p class="eyebrow">Срочный запрос</p>
-          <h2 id="urgent-lead-title">Передать четыре исходных факта</h2>
-          <p>Опишите отправителя, документ, дату получения и срок. Реквизиты, паспорта и сканы в текстовое поле не добавляйте.</p>
-        </div>
-        <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-          <input type="hidden" name="source_page" value="/srochnye-voprosy/" />
-          <input type="hidden" name="task_type" value="Срочный вопрос по документам" />
-        <input type="hidden" name="lead_mode" value="quick" />
-          <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          <div class="form-grid">
-            <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-            <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-            <label class="lead-quick-message">Что получено (необязательно)<textarea name="message" rows="3" placeholder="Например: требование ИФНС, получено 17 августа, ответ до указанной в документе даты"></textarea></label>
-          </div>
-          <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-          <div class="lead-form-actions"><button class="button button-lime" type="submit">Передать сведения</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить файлы</a></div>
-          <p class="form-note" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-      <section class="section page-rich-section rich-intro-section">
-        <p class="eyebrow">Сначала календарь</p>
-        <h2>Дата получения важнее даты, когда письмо заметили</h2>
-        <div class="rich-copy"><p>Одинаково выглядящие письма могут иметь разные основания и сроки. По требованиям ИФНС порядок зависит от статьи НК РФ и вида контрольного мероприятия; при невозможности собрать документы вовремя предусмотрено уведомление с указанием причин и предполагаемой даты представления. Актуальные правила публикует <a href="https://www.nalog.gov.ru/rn77/taxation/reference_work/measures_tax_control/istreb_doc_kr/" target="_blank" rel="noopener">ФНС России</a>.</p><p>Поэтому мы не обещаем универсальный ответ «за один день» до чтения документа. Сначала сохраняем исходник, подтверждение доставки и все приложения, затем отделяем обязательное действие от пояснений, которые могут потребоваться дополнительно.</p></div>
-      </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">Письмо обнаружили, когда срок ответа уже идёт</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>Руководитель заметил в электронном кабинете запрос с приложениями. Часть документов хранится у бывшего бухгалтера, а дата получения письма неясна.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Начнём с самого запроса и подтверждения его получения. Уточним срок, выделим запрошенные сведения и отделим доступные документы от тех, которые ещё нужно получить.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>Перечень ближайших действий, ответственных за сбор данных и документов, без которых нельзя подготовить содержательный ответ.</p></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-      <section class="section page-rich-section">
-        <div class="section-header">
-          <p class="eyebrow">Первые действия</p>
-          <h2>Что сделать до подготовки ответа</h2>
-          <p>Эти шаги сохраняют факты и помогают не отвечать на другой вопрос вместо заданного.</p>
-        </div>
-        <div class="card-grid two rich-card-grid">
-          <article class="glass-card rich-card" id="orientation-detail-01"><span>01</span><h3>Сохранить оригинал</h3><p>Не переименовывать и не редактировать исходный файл, письмо, сообщение или вложения.</p></article>
-          <article class="glass-card rich-card" id="orientation-detail-02"><span>02</span><h3>Зафиксировать доставку</h3><p>Сделать запись о дате, времени, кабинете, электронной почте или ином канале получения.</p></article>
-          <article class="glass-card rich-card" id="orientation-detail-03"><span>03</span><h3>Выделить формулировку</h3><p>Отдельно выписать, какие документы, сведения или пояснения запрошены и за какой период.</p></article>
-          <article class="glass-card rich-card" id="orientation-detail-04"><span>04</span><h3>Не отправлять наугад</h3><p>До проверки основания не дополнять ответ лишними данными и не пересылать чувствительные материалы открыто.</p></article>
-        </div>
-      </section>
-      <section class="section page-rich-section">
-        <div class="section-header">
-          <p class="eyebrow">До проверки документа</p>
-          <h2>Четыре действия, которые могут ухудшить срочную ситуацию</h2>
-          <p>Даже при коротком сроке сначала сохраняем доказательства получения и границы запроса.</p>
-        </div>
-        <div class="card-grid two rich-card-grid">
-          <article class="glass-card rich-card"><h3>Редактировать исходник</h3><p>Изменённый файл или пересобранное письмо усложняют проверку формулировок, вложений и даты.</p></article>
-          <article class="glass-card rich-card"><h3>Терять подтверждение доставки</h3><p>Без даты и канала получения нельзя надёжно определить календарь обязательных действий.</p></article>
-          <article class="glass-card rich-card"><h3>Отправлять лишние документы</h3><p>Дополнительные сведения не всегда помогают и могут открыть вопросы, которых в запросе не было.</p></article>
-          <article class="glass-card rich-card"><h3>Обещать срок до чтения</h3><p>Объём и способ ответа подтверждаем после проверки основания, пунктов и доступных материалов.</p></article>
-        </div>
-      </section>
-      <section class="section page-rich-section">
-        <div class="section-header">
-          <p class="eyebrow">Маршрут по отправителю</p>
-          <h2>Куда направляем задачу после первичного чтения</h2>
-          <p>Каждый адресант проверяет свой набор фактов, поэтому рабочие комплекты не смешиваем.</p>
-        </div>
-        <div class="card-grid two rich-card-grid">
-          <article class="glass-card rich-card"><span>01</span><h3>ИФНС</h3><p>Определяем статью, мероприятие контроля, период, перечень и способ представления ответа.</p></article>
-          <article class="glass-card rich-card"><span>02</span><h3>Банк</h3><p>Связываем запрос с операциями, контрагентами, экономическим смыслом и подтверждающими документами.</p></article>
-          <article class="glass-card rich-card"><span>03</span><h3>СФР и работники</h3><p>Проверяем кадровое событие, отчётную форму, страховые сведения и документы по физическому лицу.</p></article>
-          <article class="glass-card rich-card"><span>04</span><h3>ЕГРЮЛ и компания</h3><p>Разделяем вопросы адреса, директора, участников, регистрационных записей и корпоративных решений.</p></article>
-        </div>
-      </section>
-      <section class="section page-rich-section">
-        <div class="section-header">
-          <p class="eyebrow">Рабочий алгоритм</p>
-          <h2>Как проходит срочный разбор</h2>
-          <p>Срок подготовки зависит от объёма запроса и наличия подтверждающих материалов.</p>
-        </div>
-        <div class="card-grid two rich-step-grid">
-          <article class="glass-card rich-card rich-step-card"><span>01</span><h3>Читаем основание, адресата и формулировку запроса.</h3></article>
-          <article class="glass-card rich-card rich-step-card"><span>02</span><h3>Считаем календарь от подтверждённой даты получения.</h3></article>
-          <article class="glass-card rich-card rich-step-card"><span>03</span><h3>Сопоставляем каждый пункт с документом или пояснением.</h3></article>
-          <article class="glass-card rich-card rich-step-card"><span>04</span><h3>Согласуем способ подачи и контроль подтверждения отправки.</h3></article>
-        </div>
-      </section>
-      <section class="section page-rich-section">
-        <div class="section-header">
-          <p class="eyebrow">Результат первичного этапа</p>
-          <h2>Что становится понятно после проверки</h2>
-          <p>Первичный разбор не подменяет подготовку ответа, но убирает неопределённость и задаёт порядок.</p>
-        </div>
-        <div class="card-grid two rich-card-grid">
-          <article class="glass-card rich-card"><span>01</span><h3>Контрольная дата</h3><p>Зафиксировано, от какого события считается срок и когда нужен следующий шаг.</p></article>
-          <article class="glass-card rich-card"><span>02</span><h3>Карта пунктов</h3><p>Каждое требование связано с доступным документом, пояснением либо отмеченным пробелом.</p></article>
-          <article class="glass-card rich-card"><span>03</span><h3>Приоритет сбора</h3><p>Команда понимает, какие материалы искать первыми и кто отвечает за их подготовку.</p></article>
-          <article class="glass-card rich-card"><span>04</span><h3>Способ ответа</h3><p>Определён канал представления и подтверждение, которое необходимо сохранить после отправки.</p></article>
-        </div>
-      </section>
-      <section class="section page-rich-section faq-section">
-        <div class="section-header"><p class="eyebrow">FAQ</p><h2>Вопросы о срочном обращении</h2><p>Что можно сообщить сразу и какие обещания возможны только после чтения документа.</p></div>
-        <div class="card-grid two faq-grid">
-          <article class="glass-card rich-card faq-card"><span>01</span><h3>Какие обращения считаются срочными?</h3><p>Те, где в полученном документе указан близкий срок, ожидается подтверждение получения или промедление может повлиять на дальнейшие действия бизнеса.</p></article>
-          <article class="glass-card rich-card faq-card"><span>02</span><h3>Что сообщить в первом обращении?</h3><p>Назовите отправителя, вид документа, дату и способ получения, указанный срок и кратко перечислите имеющиеся материалы.</p></article>
-          <article class="glass-card rich-card faq-card"><span>03</span><h3>Можно ли подготовить ответ в день обращения?</h3><p>Сначала оцениваем сам документ и комплект исходных данных. Возможность подготовки в тот же день подтверждаем только после первичной проверки.</p></article>
-          <article class="glass-card rich-card faq-card"><span>04</span><h3>Куда передать конфиденциальные документы?</h3><p>Не прикладывайте их к открытому описанию. После контакта согласуем подходящий защищённый способ передачи.</p></article>
-        </div>
-      </section>
-      <section class="section page-rich-section related-section">
-        <div class="section-header"><p class="eyebrow">Точные маршруты</p><h2>Перейти к подготовке по виду запроса</h2><p>После сортировки используйте страницу, соответствующую конкретному отправителю и предмету.</p></div>
-        <div class="card-grid two related-grid">
-          <a class="glass-card related-card" href="/otvet-na-trebovanie-ifns/"><span>01</span><h3>Требование ИФНС</h3><p>Разобрать основание, пункты, период и налоговый комплект.</p></a>
-          <a class="glass-card related-card" href="/otvet-na-zapros-banka/"><span>02</span><h3>Запрос банка</h3><p>Подготовить пояснения по операциям и подтверждающие документы.</p></a>
-          <a class="glass-card related-card" href="/dokumenty-dlya-banka-115-fz/"><span>03</span><h3>Документы по 115-ФЗ</h3><p>Собрать деловую модель, контрагентов, платежи и первичные документы.</p></a>
-          <a class="glass-card related-card" href="/razbor-situacii/"><span>04</span><h3>Передача файлов</h3><p>Описать смешанную ситуацию и согласовать безопасный канал.</p></a>
-        </div>
-      </section>
-    </main>
+    <main class="service-page urgent-questions-page" data-ui-version="t1-urgent-questions-v2-final" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero"><div class="service-hero-frame"><div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Когда в документе есть срок</p>
+<h1 id="service-title">Срочная помощь <span>с документами бизнеса</span></h1>
+<p class="service-lead">Определим, кто и что запросил, когда документ считается полученным, какое действие ожидается и какой комплект нужно собирать первым.</p>
+<div aria-label="Ключевые этапы срочного разбора" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 3h11l5 5v13H4z"></path><path d="M15 3v6h6M8 13h8M8 17h6"></path></svg></span><span><strong>Отправитель и документ</strong><small>ИФНС, банк, СФР, контрагент, суд или регистрационный орган.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><span><strong>Получение и календарь</strong><small>Фиксируем дату, канал доставки и событие, от которого может считаться срок.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="6" cy="7" r="2"></circle><circle cx="18" cy="17" r="2"></circle><path d="M8 7h3c4 0 1 10 5 10"></path></svg></span><span><strong>Предмет и следующий шаг</strong><small>Отделяем обязательное действие от документов и пояснений, которые нужно собрать.</small></span></div>
+</div>
+<div class="hero-commerce hero-commerce--banner"><div class="hero-actions"><a class="button button-primary" href="#urgent-request"><span>Сообщить о документе</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div><div aria-label="Стоимость услуги от 3 000 рублей" class="hero-price-inline"><strong>от 3 000 ₽</strong><span>Точный состав и стоимость согласуем после чтения документа и проверки срока.</span></div></div>
+<div aria-label="Преимущества работы" class="hero-facts"><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg><b>Конфиденциально</b></span><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><b>Оперативно</b></span><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20c0-4 2-6 6-6s6 2 6 6M14 15c4 0 6 2 6 5"></path></svg><b>Опытная команда</b></span></div>
+</div>
+<figure aria-label="Срочная помощь с документами: отправитель, получение, предмет, срок и маршрут действий" class="service-hero-visual"><div class="hero-art-panel"><picture><source srcset="/assets/urgent-questions-v1/urgent-help-hero-right-320.webp 320w, /assets/urgent-questions-v1/urgent-help-hero-right-480.webp 480w, /assets/urgent-questions-v1/urgent-help-hero-right-644.webp 644w, /assets/urgent-questions-v1/urgent-help-hero-right-900.webp 900w, /assets/urgent-questions-v1/urgent-help-hero-right-1100.webp 1100w" type="image/webp"/><img alt="Срочная помощь с документами: отправитель, дата получения, предмет, срок и маршрут" class="hero-banner-image" decoding="async" fetchpriority="high" loading="eager" sizes="(max-width: 699px) 100vw, (max-width: 999px) 760px, 48vw" src="/assets/urgent-questions-v1/urgent-help-hero-right.webp"/></picture></div><figcaption class="sr-only">Сначала фиксируются документ и календарь, затем определяется маршрут и ближайшее безопасное действие.</figcaption></figure>
+</div></div></section>
+<section aria-labelledby="facts-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Четыре факта</span><h2 id="facts-title">Что нужно зафиксировать сразу</h2></div><p class="section-intro">Срочность определяет не тревога, а содержание входящего документа и его календарь.</p></div>
+<div class="decision-grid">
+<article class="decision-card"><span class="decision-number">01</span><strong>Отправитель</strong><p>ИФНС, банк, СФР, контрагент, суд или другой адресант.</p></article>
+<article class="decision-card"><span class="decision-number">02</span><strong>Получение</strong><p>Дата, канал доставки и подтверждение, от которого может считаться срок.</p></article>
+<article class="decision-card"><span class="decision-number">03</span><strong>Предмет и дедлайн</strong><p>Что именно требуют, за какой период и до какой даты ожидают действие.</p></article>
+<article class="decision-card"><span class="decision-number">04</span><strong>Исходные материалы</strong><p>Какие документы, пояснения и переписка уже доступны для проверки.</p></article>
+</div></div></section>
+<section aria-labelledby="request-title" class="service-section soft" id="urgent-request"><div class="container"><div class="request-panel">
+<div class="request-copy"><span class="eyebrow eyebrow-dark">Срочный запрос</span><h2 id="request-title">Передать четыре исходных факта</h2><p>Опишите отправителя, документ, дату получения и срок. Реквизиты, паспорта и чувствительные сканы в текстовое поле не добавляйте.</p><ul class="request-benefits"><li>Фиксируем ближайшее безопасное действие.</li><li>Не обещаем срок до чтения документа.</li><li>Для конфиденциальных материалов согласуем защищённый канал.</li></ul><div class="request-price"><span>Первичный разбор</span><strong>от 3 000 ₽</strong></div></div>
+<form action="/api/lead" aria-label="Получить консультацию" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<input type="hidden" name="source_page" value="/srochnye-voprosy/" />
+<input type="hidden" name="task_type" value="Срочный вопрос по документам" />
+<input type="hidden" name="lead_mode" value="quick" />
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field wide"><span>Документ, дата получения, срок и ваш вопрос <small>(необязательно)</small></span><textarea aria-label="Документ, дата получения, срок и ваш вопрос" name="message" placeholder="Кто направил документ, когда получили, что требуется и до какой даты нужно ответить" rows="4"></textarea></label>
+<div class="upload-row wide upload-note"><div class="upload-button upload-button-static" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M5 14v6h14v-6"></path></svg><span>Документы — после консультации</span></div><small>Оригинал документа и приложения можно передать после консультации через согласованный защищённый канал.</small></div>
+<p class="form-note wide">Открытая форма принимает только контактные данные. Файлы и персональные документы здесь не загружаются.</p>
+<label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-actions wide"><button class="button button-primary" type="submit"><span>Передать сведения</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
+<p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+</form></div></div></section>
+<section aria-labelledby="calendar-title" class="service-section"><div class="container expert-grid">
+<div class="expert-heading"><span class="eyebrow">Сначала календарь</span><h2 id="calendar-title">Дата получения важнее даты, когда письмо заметили</h2><div class="expert-proof"><span><small>Не обещаем</small><strong>универсальный ответ за день</strong></span><span><small>Сначала</small><strong>документ и подтверждение доставки</strong></span></div></div>
+<div class="expert-copy"><p>Одинаково выглядящие письма могут иметь разные основания и сроки. Сначала сохраняем исходник, подтверждение доставки и все приложения, затем отделяем обязательное действие от пояснений и документов, которые могут потребоваться дополнительно.</p><p>По требованиям ИФНС порядок зависит от вида контрольного мероприятия и нормы НК РФ. Если документы невозможно собрать вовремя, в предусмотренных случаях требуется отдельное уведомление с причинами и предполагаемой датой представления.</p><div class="expert-comparison"><div><strong>Непроверенная срочность</strong><span>письмо заметили поздно, срок оценивается на глаз</span></div><div><strong>Рабочий календарь</strong><span>дата получения, основание, действие и контрольная точка</span></div></div><div class="official-links"><a class="official-link" href="https://www.nalog.gov.ru/rn77/taxation/reference_work/measures_tax_control/istreb_doc_kr/" rel="noopener noreferrer" target="_blank">ФНС: истребование документов и продление срока</a></div></div>
+</div></section>
+<section aria-labelledby="situation-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Практическая ситуация</span><h2 id="situation-title">Письмо обнаружили, когда срок ответа уже идёт</h2></div><p class="section-intro">Вместо поиска виноватого сначала восстанавливаем факты, границы запроса и ближайшее действие.</p></div>
+<div class="case-grid">
+<article class="case-card"><span class="case-number">01</span><h3>Что уже известно</h3><p>Кто направил документ, где он обнаружен, какие приложения доступны и какая дата видна в кабинете или письме.</p></article>
+<article class="case-card case-card--2"><span class="case-number">02</span><h3>Что проверяем</h3><p>Подтверждение получения, формулировку запроса, период, указанный срок и документы, которые находятся у команды или бывшего подрядчика.</p></article>
+<article class="case-card"><span class="case-number">03</span><h3>Что становится планом</h3><p>Перечень ближайших действий, ответственных за сбор данных и материалов, без которых нельзя подготовить содержательный ответ.</p></article>
+</div><div class="section-action"><a class="button button-primary" href="#urgent-request"><span>Сообщить о документе</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div>
+</div></section>
+<section aria-labelledby="first-actions-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Первые действия</span><h2 id="first-actions-title">Что сделать до подготовки ответа</h2></div><p class="section-intro">Эти шаги сохраняют факты и помогают не отвечать на другой вопрос вместо заданного.</p></div>
+<div class="content-grid action-grid">
+<article class="content-card"><span class="card-number">01</span><h3>Сохранить оригинал</h3><p>Не переименовывать и не редактировать исходный файл, письмо, сообщение или вложения.</p></article>
+<article class="content-card content-card--2"><span class="card-number">02</span><h3>Зафиксировать доставку</h3><p>Сохранить дату, время, кабинет, электронную почту или иной канал получения.</p></article>
+<article class="content-card"><span class="card-number">03</span><h3>Выделить формулировку</h3><p>Отдельно выписать, какие документы, сведения или пояснения запрошены и за какой период.</p></article>
+<article class="content-card content-card--4"><span class="card-number">04</span><h3>Не отправлять наугад</h3><p>До проверки основания не добавлять лишние данные и не пересылать чувствительные материалы открыто.</p></article>
+</div></div></section>
+<section aria-labelledby="mistakes-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">До проверки документа</span><h2 id="mistakes-title">Четыре действия, которые могут ухудшить срочную ситуацию</h2></div><p class="section-intro">Даже при коротком сроке сначала сохраняем доказательства получения и границы запроса.</p></div>
+<div class="content-grid risk-grid">
+<article class="content-card warning-card"><span class="card-number">01</span><h3>Редактировать исходник</h3><p>Изменённый файл или пересобранное письмо усложняют проверку формулировок, вложений и даты.</p></article>
+<article class="content-card warning-card"><span class="card-number">02</span><h3>Терять подтверждение доставки</h3><p>Без даты и канала получения нельзя надёжно определить календарь обязательных действий.</p></article>
+<article class="content-card warning-card"><span class="card-number">03</span><h3>Отправлять лишние документы</h3><p>Дополнительные сведения не всегда помогают и могут открыть вопросы, которых в запросе не было.</p></article>
+<article class="content-card warning-card"><span class="card-number">04</span><h3>Обещать срок до чтения</h3><p>Объём и способ ответа подтверждаем после проверки основания, пунктов и доступных материалов.</p></article>
+</div></div></section>
+<section aria-labelledby="routes-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Маршрут по отправителю</span><h2 id="routes-title">Куда направляем задачу после первичного чтения</h2></div><p class="section-intro">Каждый адресант проверяет свой набор фактов, поэтому рабочие комплекты не смешиваем.</p></div>
+<div class="content-grid route-grid">
+<a class="route-card" href="/otvet-na-trebovanie-ifns/"><span class="route-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 3h11l5 5v13H4z"></path><path d="M15 3v6h6M8 13h8M8 17h6"></path></svg></span><span><h3>ИФНС</h3><p>Определяем основание, период, перечень и способ представления ответа.</p></span><i class="route-arrow">→</i></a>
+<a class="route-card" href="/bank-i-115-fz/"><span class="route-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg></span><span><h3>Банк</h3><p>Связываем запрос с операциями, контрагентами, экономическим смыслом и документами.</p></span><i class="route-arrow">→</i></a>
+<a class="route-card" href="/kadry/"><span class="route-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20c0-4 2-6 6-6s6 2 6 6M14 15c4 0 6 2 6 5"></path></svg></span><span><h3>СФР и работники</h3><p>Проверяем кадровое событие, отчётную форму и документы по физическому лицу.</p></span><i class="route-arrow">→</i></a>
+<a class="route-card" href="/adres-egryul-direktor/"><span class="route-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="6" cy="7" r="2"></circle><circle cx="18" cy="17" r="2"></circle><path d="M8 7h3c4 0 1 10 5 10"></path></svg></span><span><h3>ЕГРЮЛ и компания</h3><p>Разделяем вопросы адреса, директора, участников, записей и корпоративных решений.</p></span><i class="route-arrow">→</i></a>
+</div></div></section>
+<section aria-labelledby="process-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Рабочий алгоритм</span><h2 id="process-title">Как проходит срочный разбор</h2></div><p class="section-intro">Срок подготовки зависит от объёма запроса и наличия подтверждающих материалов.</p></div>
+<div class="process-grid process-service">
+<div class="step"><div class="step-rail"><span class="step-number">01</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 3h11l5 5v13H4z"></path><path d="M15 3v6h6M8 13h8M8 17h6"></path></svg></span><h3>Читаем основание, адресата и формулировку запроса.</h3><p class="card-description">Фиксируем документ без пересказа и догадок.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">02</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><h3>Считаем календарь от подтверждённой даты получения.</h3><p class="card-description">Отделяем дату обнаружения от юридически значимого события.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">03</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg></span><h3>Сопоставляем каждый пункт с документом или пояснением.</h3><p class="card-description">Отмечаем доступные материалы и пробелы.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">04</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="6" cy="7" r="2"></circle><circle cx="18" cy="17" r="2"></circle><path d="M8 7h3c4 0 1 10 5 10"></path></svg></span><h3>Согласуем способ подачи и контроль подтверждения отправки.</h3><p class="card-description">Фиксируем канал и доказательства представления.</p></article></div>
+</div></div></section>
+<section aria-labelledby="result-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Результат первичного этапа</span><h2 id="result-title">Что становится понятно после проверки</h2></div><p class="section-intro">Первичный разбор не подменяет подготовку ответа, но убирает неопределённость и задаёт порядок.</p></div>
+<div class="urgent-result-grid">
+<article class="result-card"><span class="card-number">01</span><h3>Контрольная дата</h3><p>Зафиксировано, от какого события считается срок и когда нужен следующий шаг.</p></article>
+<article class="result-card"><span class="card-number">02</span><h3>Карта пунктов</h3><p>Каждое требование связано с доступным документом, пояснением либо отмеченным пробелом.</p></article>
+<article class="result-card"><span class="card-number">03</span><h3>Приоритет сбора</h3><p>Команда понимает, какие материалы искать первыми и кто отвечает за подготовку.</p></article>
+<article class="result-card"><span class="card-number">04</span><h3>Способ ответа</h3><p>Определён канал представления и подтверждение, которое нужно сохранить после отправки.</p></article>
+</div><div class="urgent-source-note"><strong>Важно:</strong> возможность подготовки ответа в день обращения подтверждаем только после чтения документа и проверки исходных материалов.</div>
+</div></section>
+<section aria-labelledby="faq-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Вопросы о срочном обращении</h2></div><p class="section-intro">Что можно сообщить сразу и какие обещания возможны только после чтения документа.</p></div>
+<div class="faq-grid">
+<article class="faq-card faq-card--1"><span class="faq-number">01</span><h3>Какие обращения считаются срочными?</h3><p>Те, где указан близкий срок, ожидается подтверждение получения или промедление может повлиять на дальнейшие действия бизнеса.</p></article>
+<article class="faq-card"><span class="faq-number">02</span><h3>Что сообщить в первом обращении?</h3><p>Отправителя, вид документа, дату и способ получения, указанный срок и краткий перечень имеющихся материалов.</p></article>
+<article class="faq-card"><span class="faq-number">03</span><h3>Можно ли подготовить ответ в день обращения?</h3><p>Сначала оцениваем сам документ и исходные данные. Возможность работы в тот же день подтверждаем только после первичной проверки.</p></article>
+<article class="faq-card faq-card--4"><span class="faq-number">04</span><h3>Куда передать конфиденциальные документы?</h3><p>Не прикладывайте их к открытому описанию. После контакта согласуем подходящий защищённый способ передачи.</p></article>
+</div></div></section>
+
+<nav class="service-related-links" aria-label="Дополнительные связанные услуги">
+  <div class="container">
+    <a href="/razbor-situacii/">Согласовать безопасную передачу документов</a>
+    <a href="/otvet-na-zapros-banka/">02 Запрос банка Подготовить пояснения по операциям и подтверждающие документы.</a>
+    <a href="/dokumenty-dlya-banka-115-fz/">03 Документы по 115-ФЗ Собрать деловую модель, контрагентов, платежи и первичные документы.</a>
+  </div>
+</nav>
+</main>
     
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">

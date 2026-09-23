@@ -175,7 +175,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260921-v11c" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/bank-answer-v1/page.css?v=20260923-v1" />
   </head>
   <body>
     
@@ -226,209 +230,110 @@
         </nav>
       </details>
     </header>
-    <main>
-    <section class="hero hero-inner hero-stack">
-      <div class="glass-panel hero-copy-panel">
-        <p class="eyebrow">Письменный ответ банку</p>
-        <h1>Ответ на запрос банка по 115-ФЗ в Симферополе</h1>
-        <p>Разберём письмо банка по пунктам, подготовим деловые пояснения и свяжем операции, контрагентов и назначения платежей с подтверждающими документами.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 10 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#quick-lead">Подготовить ответ</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-      </div>
-      <aside class="glass-panel hero-choice-panel">
-        <p class="eyebrow">Ориентиры</p>
-        <h2>Что нужно для ответа на запрос банка</h2>
-        <p class="hero-choice-description">Для письменного ответа важны точная формулировка каждого пункта, срок банка и документы по затронутым операциям — не полный архив компании.</p>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Когда нужна услуга</strong><small>Банк запросил пояснения по операции, контрагенту или назначению платежа.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>Что подготовим и проверим</strong><small>Разберем запрос банка и выделим, какие пункты требуют ответа.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>Что нужно от клиента</strong><small>Текст запроса банка и срок, который указан в сообщении.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Сроки и результат</strong><small>Результат — структура ответа банку и комплект документов, который можно использовать для дальнейшего согласования.</small></div></a></li>
-        </ul>
-      </aside>
-    </section>
-    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
-      <div class="section-header">
-        <p class="eyebrow">Быстрый запрос</p>
-        <h2 id="quick-lead-title">Подготовить ответ на запрос банка</h2>
-        <p>Оставьте телефон и краткое содержание запроса. Уточним, какие документы и пояснения потребуются.</p>
-      </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-        <input type="hidden" name="source_page" value="/otvet-na-zapros-banka/" />
-        <input type="hidden" name="task_type" value="Ответ на запрос банка" />
-        <input type="hidden" name="lead_mode" value="quick" />
-        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-grid">
-          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Запрос банка (необязательно)<textarea name="message" rows="3" placeholder="Какой банк, что запросил и какой срок ответа"></textarea></label>
-        </div>
-        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Подготовить ответ</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить файлы</a></div>
-        <p class="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="section page-rich-section rich-intro-section">
-      <p class="eyebrow">Банк</p>
-      <h2>Ответ на запрос банка: объясняем операцию документами и понятным текстом</h2>
-      <div class="rich-copy"><p>Запрос банка может касаться операции, контрагента, экономического смысла платежей, источника средств или подтверждения деятельности. Ошибка часто не в отсутствии документов, а в том, что они отправляются без логики: банк видит файлы, но не видит связной картины.</p><p>Мы помогаем собрать ответ так, чтобы документы и пояснение работали вместе. Не обещаем решение банка, но помогаем убрать хаос и подготовить деловой комплект.</p></div>
-    </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">По конкретному запросу банка нужно собрать связный ответ</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>У компании есть договоры и акты, но банк задаёт вопросы по нескольким платежам и их назначению. Простая отправка всех файлов не объясняет связь между ними.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Разберём каждый пункт, сопоставим платежи со сделками и проверим противоречия в датах и суммах. Подготовим пояснения с описью относящихся к вопросу приложений.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>Структурированный ответ на полученный запрос и упорядоченный комплект подтверждений. Решение по обслуживанию остаётся за банком.</p><ul class="rich-list"><li>Письменный ответ на вопросы банка.</li><li>Перечень связей между платежами, договорами и актами.</li><li>Опись подтверждающих приложений по каждой операции.</li></ul></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Состав услуги</p>
-      <h2>Что важно проверить</h2>
-      <p>Ниже собраны проверки и документы именно для задачи «Ответ на запрос банка»; соседние вопросы вынесены в отдельные маршруты.</p>
-    </div>
-      <div class="card-grid two rich-card-grid">
-    <article class="glass-card rich-card" id="orientation-detail-01">
-      <span>01</span>
-      <h3>Когда нужна услуга</h3>
-      <ul class="rich-list"><li>Банк запросил пояснения по операции, контрагенту или назначению платежа.</li><li>Нужно показать экономический смысл сделки и связь документов между собой.</li><li>Есть риск ограничения счета или уже появились дополнительные вопросы.</li><li>Предприниматель не понимает, какие документы приложить и что писать в пояснении.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-02">
-      <span>02</span>
-      <h3>Что подготовим и проверим</h3>
-      <ul class="rich-list"><li>Разберем запрос банка и выделим, какие пункты требуют ответа.</li><li>Соберем документы по операции: договор, счет, акт, накладная, платежи, переписка.</li><li>Подготовим структуру пояснения без лишней эмоциональности и без неподтвержденных утверждений.</li><li>Составим список недостающих материалов, если банк просит то, чего пока нет.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-03">
-      <span>03</span>
-      <h3>Что нужно от клиента</h3>
-      <ul class="rich-list"><li>Текст запроса банка и срок, который указан в сообщении.</li><li>Документы по операции или контрагенту, из-за которого появился вопрос.</li><li>Краткое описание бизнеса и реальной деловой цели платежа.</li><li>Информация о предыдущих ответах банку, если они уже направлялись.</li></ul>
-    </article>
-    <article class="glass-card rich-card" id="orientation-detail-04">
-      <span>04</span>
-      <h3>Что будет в готовом ответе</h3>
-      <ul class="rich-list"><li>Нумерованные пояснения по каждому пункту письма банка.</li><li>Краткая логика операций без эмоциональных и неподтверждённых утверждений.</li><li>Перечень приложений с понятной связью между документами и ответом.</li><li>Отдельный список вопросов, по которым нужно восстановить или уточнить данные.</li></ul>
-    </article></div>
-    </section>
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Как проходит работа</p>
-      <h2>От обращения к понятному результату</h2>
-      <p>Работа начинается с точной формулировки письма банка, затем переходит к проверке фактов, подготовке пояснений и сверке приложений.</p>
-    </div>
-      <div class="card-grid two rich-step-grid">
-    <article class="glass-card rich-card rich-step-card">
-      <span>01</span>
-      <h3>Читаем запрос и отделяем факты от тревожных предположений.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>02</span>
-      <h3>Собираем документы по конкретной операции или контрагенту.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>03</span>
-      <h3>Готовим пояснение и порядок вложений.</h3>
-    </article>
-    <article class="glass-card rich-card rich-step-card">
-      <span>04</span>
-      <h3>Проверяем, что ответ понятен, не перегружен и не содержит лишних данных.</h3>
-    </article></div>
-    </section>
-    <section class="section page-rich-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Сроки, результат и риски</p>
-      <h2>Что получает клиент и почему лучше не затягивать</h2>
-      <p>Мы отвечаем за логику, ясность и документальную связность ответа. Решение по результатам проверки принимает банк на основании фактических данных и своих процедур.</p>
-    </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card">
-          <span>01</span>
-          <h3>Сроки и результат</h3>
-          <p>Результат — структура ответа банку и комплект документов, который можно использовать для дальнейшего согласования.</p><p>Срок зависит от объема запроса и доступности документов. Если документов нет, сначала фиксируем, что нужно восстановить.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>02</span>
-          <h3>Риски</h3>
-          <ul class="rich-list"><li>Неполный ответ может привести к повторному запросу или усилению ограничений.</li><li>Отправка лишнего без пояснения может создать впечатление хаоса в документах.</li><li>Если затянуть ответ, банк может рассматривать ситуацию как повышенный риск.</li></ul>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section faq-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">FAQ</p>
-      <h2>Частые вопросы</h2>
-      <p>Ответы на вопросы о письменных пояснениях, приложениях и границах ответа по конкретному письму банка.</p>
-    </div>
-      <div class="card-grid two faq-grid">
-    <article class="glass-card rich-card faq-card">
-      <span>01</span>
-      <h3>Банк просит много документов, нужно отправлять все?</h3>
-      <p>Сначала разбираем, что относится к запросу. Ответ и приложения лучше структурировать по пунктам письма банка.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>02</span>
-      <h3>Можно ли отвечать одним письмом?</h3>
-      <p>Можно, если письмо связывает документы и объясняет операцию. Без приложений этого часто недостаточно.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>03</span>
-      <h3>Что делать, если часть документов отсутствует?</h3>
-      <p>Нужно честно определить, чего нет, и можно ли подтвердить факт другим документом. Придумывать сведения нельзя.</p>
-    </article>
-    <article class="glass-card rich-card faq-card">
-      <span>04</span>
-      <h3>Чем ответ отличается от комплекта документов?</h3>
-      <p>Ответ строится по формулировкам конкретного письма банка. Расширенный комплект используют, когда требуется подтвердить несколько операций или деятельность в целом.</p>
-    </article></div>
-    </section>
-    
-    <section class="section page-rich-section related-section">
-      
-    <div class="section-header">
-      <p class="eyebrow">Смежные страницы</p>
-      <h2>Другие задачи по документам</h2>
-      <p>Выберите соседний маршрут, если банк просит расширенный пакет, задача выходит за рамки конкретного письма или срок ответа уже критичен.</p>
-    </div>
-      <div class="card-grid two related-grid">
-        
-          <a class="glass-card related-card" href="/dokumenty-dlya-banka-115-fz/">
-            <span>01</span>
-            <h3>Документы для банка по 115-ФЗ</h3>
-            <p>Собрать расширенный пакет подтверждений по операциям и деятельности.</p>
-          </a>
-          <a class="glass-card related-card" href="/bank-i-115-fz/">
-            <span>02</span>
-            <h3>Помощь по 115-ФЗ</h3>
-            <p>Вернуться к общему маршруту и определить тип банковской проверки.</p>
-          </a>
-          <a class="glass-card related-card" href="/srochnye-voprosy/">
-            <span>03</span>
-            <h3>Срочные вопросы</h3>
-            <p>Согласовать приоритеты, если срок ответа короткий или ограничения уже действуют.</p>
-          </a>
-          <a class="glass-card related-card" href="/kontakty/">
-            <span>04</span>
-            <h3>Безопасная передача документов</h3>
-            <p>Согласовать канал для чувствительных банковских документов и персональных данных.</p>
-          </a>
-      </div>
-    </section></main>
+    <main class="service-page bank-answer-page" data-ui-version="t1-bank-answer-v1-seo-safe" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero"><div class="service-hero-frame"><div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Письменный ответ банку</p>
+<h1 id="service-title">Ответ на запрос банка по <span>115-ФЗ</span> в Симферополе</h1>
+<p class="service-lead">Разберём письмо банка по пунктам, подготовим деловые пояснения и свяжем операции, контрагентов и назначения платежей с подтверждающими документами.</p>
+<div aria-label="Ключевые элементы письменного ответа банку" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"></path><path d="M8 8h8M8 12h5M8 16h7"></path></svg></span><span><strong>Разбор письма банка</strong><small>Фиксируем пункты, операции, контрагентов, период и срок ответа.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"></path><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"></path></svg></span><span><strong>Пояснения и подтверждения</strong><small>Связываем платежи, договоры, акты, счета и деловую цель операций.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v5h5M9 12h6M9 16h6"></path></svg></span><span><strong>Ответ и приложения</strong><small>Готовим структурированный текст и понятную опись подтверждающих материалов.</small></span></div>
+</div>
+<div class="hero-commerce hero-commerce--banner">
+<div class="hero-actions"><a class="button button-primary" href="/razbor-situacii/"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
+<div class="hero-price-inline" aria-label="Стоимость услуги от 10 000 рублей"><strong>от 10 000 ₽</strong><span>Цена зависит от числа пунктов, операций и доступности подтверждающих документов.</span></div>
+</div>
+<div aria-label="Преимущества работы" class="hero-facts"><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg><b>Конфиденциально</b></span><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><b>Оперативно</b></span><span class="hero-trust-item"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20c0-4 2-6 6-6s6 2 6 6M14 15c4 0 6 2 6 5"></path></svg><b>Опытная команда</b></span></div>
+</div>
+<figure aria-label="Ответ банку по 115-ФЗ: запрос, операции, контрагенты, пояснения и приложения" class="service-hero-visual"><div class="hero-art-panel"><picture><source srcset="/assets/bank-answer-v1/bank-answer-hero-right-320.webp 320w, /assets/bank-answer-v1/bank-answer-hero-right-480.webp 480w, /assets/bank-answer-v1/bank-answer-hero-right-644.webp 644w, /assets/bank-answer-v1/bank-answer-hero-right-900.webp 900w, /assets/bank-answer-v1/bank-answer-hero-right-1100.webp 1100w" type="image/webp"/><img alt="Ответ банку по 115-ФЗ: запрос, операции, контрагенты, пояснения и приложения" class="hero-banner-image" decoding="async" fetchpriority="high" loading="eager" src="/assets/bank-answer-v1/bank-answer-hero-right.webp"/></picture></div><figcaption class="sr-only">Каждый пункт запроса связывается с фактом, документом и деловым пояснением.</figcaption></figure>
+</div></div></section>
+
+<section aria-labelledby="checks-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Ориентиры</span><h2 id="checks-title">Что нужно для ответа на запрос банка</h2></div><p class="section-intro">Для письменного ответа важны точная формулировка каждого пункта, срок банка и документы по затронутым операциям — не полный архив компании.</p></div>
+<div class="decision-grid">
+<article class="decision-card"><span class="decision-number">01</span><h3>Когда нужна услуга</h3><p>Банк запросил пояснения по операции, контрагенту, источнику средств или назначению платежа.</p></article>
+<article class="decision-card"><span class="decision-number">02</span><h3>Что подготовим и проверим</h3><p>Разберём письмо по пунктам и определим состав пояснений и подтверждающих приложений.</p></article>
+<article class="decision-card"><span class="decision-number">03</span><h3>Что нужно от клиента</h3><p>Текст запроса, срок, документы по операции и краткое описание фактической деловой цели.</p></article>
+<article class="decision-card"><span class="decision-number">04</span><h3>Сроки и результат</h3><p>Структурированный ответ и комплект материалов для направления в банк и дальнейшего согласования.</p></article>
+</div></div></section>
+
+<section aria-labelledby="request-title" class="service-section soft"><div class="container">
+<div class="request-panel"><div class="request-copy"><span class="eyebrow eyebrow-dark">Быстрый запрос</span><h2 id="request-title">Подготовить ответ на запрос банка</h2><p>Оставьте телефон и кратко укажите, какой банк направил запрос, что он просит и какой срок обозначен в письме.</p><div class="request-price"><span>Стоимость услуги</span><strong>от 10 000 ₽</strong></div><ul class="request-benefits"><li>Разберём письмо по пунктам</li><li>Свяжем факты с документами</li><li>Подготовим деловой комплект без лишнего</li></ul></div>
+<form action="/api/lead" aria-label="Получить консультацию" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<input type="hidden" name="source_page" value="/otvet-na-zapros-banka/" />
+<input type="hidden" name="task_type" value="Ответ на запрос банка" />
+<input type="hidden" name="lead_mode" value="quick" />
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field wide"><span>Запрос банка или ваш вопрос <small>(необязательно)</small></span><textarea aria-label="Запрос банка или ваш вопрос" name="message" placeholder="Кратко опишите письмо банка, операцию, контрагента и срок ответа" rows="4"></textarea></label>
+<div class="upload-row wide upload-note"><div class="upload-button upload-button-static" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M5 14v6h14v-6"></path></svg><span>Документы — после консультации</span></div><small>Письмо банка и подтверждающие документы можно передать после консультации через согласованный защищённый канал.</small></div>
+<p class="form-note wide">Открытая форма принимает только контактные данные. Файлы и персональные документы здесь не загружаются.</p>
+<label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
+<p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+</form></div></div></section>
+
+<section aria-labelledby="expert-title" class="service-section"><div class="container expert-grid">
+<div class="expert-heading"><span class="eyebrow">Экспертный подход</span><h2 id="expert-title">Ответ на запрос банка: объясняем операцию документами и понятным текстом</h2><div class="expert-proof"><span><small>Фокус</small><strong>конкретный запрос</strong></span><span><small>Ответственность</small><strong>решение остаётся за банком</strong></span></div></div>
+<div class="expert-copy"><p>Запрос может касаться отдельной операции, контрагента, экономического смысла платежей, источника средств или подтверждения деятельности. Проблема часто не в полном отсутствии документов, а в том, что файлы отправляются без логики: банк видит вложения, но не видит связной картины.</p><p>Мы выстраиваем ответ так, чтобы каждый факт подтверждался относящимся к нему документом, а текст объяснял деловую цель операции без эмоциональных и неподтверждённых утверждений.</p><div class="expert-comparison"><div><strong>Без структуры</strong><span>платежи, контрагенты и набор разрозненных файлов</span></div><div><strong>В готовом ответе</strong><span>пункт запроса, пояснение, документ и понятная опись</span></div></div><p class="expert-disclaimer"><strong>Важно:</strong> мы отвечаем за логику, ясность и документальную связность комплекта. Итоговое решение принимает банк на основании фактических данных и своих процедур.</p></div>
+</div></section>
+
+<section aria-labelledby="linked-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Связный ответ</span><h2 id="linked-title">Что входит в связный ответ по конкретному письму банка</h2></div><p class="section-intro">Не отправляем весь архив без разбора: сначала сопоставляем формулировки банка с фактами и только затем собираем приложения.</p></div>
+<div class="case-grid">
+<article class="case-card "><span class="case-number">01</span><h3>Что указано в запросе</h3><p>Фиксируем формулировки банка, операции, контрагентов, период, назначение платежей и срок ответа.</p></article>
+<article class="case-card case-card--2"><span class="case-number">02</span><h3>Что необходимо связать</h3><p>Сопоставляем платежи с договорами, счетами, актами, накладными, перепиской и экономической целью сделки.</p></article>
+<article class="case-card "><span class="case-number">03</span><h3>Что войдёт в ответ</h3><p>Готовим нумерованные пояснения, опись приложений и отдельный список отсутствующих или требующих уточнения сведений.</p></article>
+</div><div class="section-action"><a class="button button-primary" href="/razbor-situacii/"><span>Обсудить запрос банка</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div>
+</div></section>
+
+<section aria-labelledby="composition-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Состав услуги</span><h2 id="composition-title">Что важно проверить</h2></div><p class="section-intro">Проверки и документы относятся именно к письменному ответу на конкретное письмо банка; расширенный комплект по деятельности оформляется отдельным маршрутом.</p></div>
+<div class="content-grid">
+<article class="content-card "><span class="card-number">01</span><h3>Когда нужна услуга</h3><ul><li>Банк запросил пояснения по операции, контрагенту или назначению платежа.</li><li>Нужно показать экономический смысл сделки и связь документов между собой.</li><li>Есть риск ограничения счёта или уже появились дополнительные вопросы.</li><li>Неясно, какие материалы приложить и как сформулировать пояснение.</li></ul></article>
+<article class="content-card content-card--2"><span class="card-number">02</span><h3>Что подготовим и проверим</h3><ul><li>Разберём письмо и выделим пункты, требующие ответа.</li><li>Соберём относящиеся к операциям договоры, счета, акты, накладные, платежи и переписку.</li><li>Проверим противоречия в датах, суммах, названиях сторон и назначениях.</li><li>Составим список недостающих материалов, если банк просит то, чего пока нет.</li></ul></article>
+<article class="content-card "><span class="card-number">03</span><h3>Что нужно от клиента</h3><ul><li>Текст запроса и указанный банком срок.</li><li>Документы по операции или контрагенту, из-за которого возник вопрос.</li><li>Краткое описание бизнеса и фактической деловой цели платежа.</li><li>Сведения о предыдущих ответах банку, если они уже направлялись.</li></ul></article>
+<article class="content-card content-card--4"><span class="card-number">04</span><h3>Что будет в готовом ответе</h3><ul><li>Нумерованные пояснения по каждому пункту письма банка.</li><li>Краткая логика операций без эмоциональных и неподтверждённых утверждений.</li><li>Перечень приложений с понятной связью между документами и ответом.</li><li>Отдельный список вопросов, по которым нужно восстановить или уточнить данные.</li></ul></article>
+</div></div></section>
+
+<section aria-labelledby="process-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Как проходит работа</span><h2 id="process-title">От обращения к понятному результату</h2></div><p class="section-intro">Работа начинается с точной формулировки письма, затем переходит к проверке фактов, подготовке пояснений и сверке приложений.</p></div>
+<div class="process-grid process-service">
+<div class="step"><div class="step-rail"><span class="step-number">01</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"></path><path d="M8 8h8M8 12h5M8 16h7"></path></svg></span><h3>Читаем запрос и отделяем факты от тревожных предположений.</h3><p class="card-description">Фиксируем вопросы банка, период, операции и срок ответа.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">02</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v11H3z"></path><path d="M7 12h10M7 16h7"></path></svg></span><h3>Собираем документы по конкретной операции или контрагенту.</h3><p class="card-description">Проверяем договоры, исполнение, платежи и деловую переписку.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">03</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"></path><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"></path></svg></span><h3>Готовим пояснение и порядок вложений.</h3><p class="card-description">Каждый пункт письма связываем с фактами и приложениями.</p></article></div>
+<div class="step"><div class="step-rail"><span class="step-number">04</span></div><article class="step-card"><span class="icon-tile"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.6 2.6L16 9"></path></svg></span><h3>Проверяем, что ответ понятен, не перегружен и не содержит лишних данных.</h3><p class="card-description">Сверяем даты, суммы, названия сторон и порядок приложений.</p></article></div>
+</div></div></section>
+
+<section aria-labelledby="result-title" class="service-section"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">Сроки, результат и риски</span><h2 id="result-title">Что получает клиент и почему лучше не затягивать</h2></div><p class="section-intro">Готовый комплект должен отвечать на фактические вопросы банка, а не создавать новый массив несвязанных сведений.</p></div>
+<div class="result-grid">
+<article class="result-card result-card--1"><span class="card-number">01</span><h3>Сроки и результат</h3><p>Результат — структурированный текст, опись и комплект документов, относящихся к конкретному запросу.</p><p>Срок зависит от объёма письма и доступности подтверждений. Если части документов нет, сначала фиксируем, что необходимо восстановить или чем можно подтвердить факт иначе.</p></article>
+<article class="result-card result-card--2"><span class="card-number">02</span><h3>Риски</h3><ul><li>Неполный ответ может привести к повторному запросу или усилению ограничений.</li><li>Лишние документы без пояснения могут создать впечатление хаоса.</li><li>Противоречия в датах, суммах или названиях сторон ослабляют позицию.</li><li>Задержка ответа повышает риск негативной оценки ситуации.</li></ul></article>
+</div>
+<div class="related-callout"><div><span class="eyebrow">Соседний маршрут</span><strong>Банк просит подтвердить деятельность в целом или несколько групп операций?</strong><p>Для такой задачи подходит расширенный комплект документов по 115‑ФЗ.</p></div><a class="button button-secondary" href="/dokumenty-dlya-banka-115-fz/">Перейти к комплекту</a></div>
+</div></section>
+
+<section aria-labelledby="faq-title" class="service-section soft"><div class="container">
+<div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы</h2></div><p class="section-intro">Ответы о письменных пояснениях, приложениях, отсутствующих документах и границах конкретного ответа банку.</p></div>
+<div class="faq-grid">
+<article class="faq-card faq-card--1"><span class="faq-number">01</span><h3>Банк просит много документов, нужно отправлять все?</h3><p>Сначала разбираем, что относится к запросу. Ответ и приложения лучше структурировать по пунктам письма банка.</p></article>
+<article class="faq-card "><span class="faq-number">02</span><h3>Можно ли отвечать одним письмом?</h3><p>Можно, если письмо связывает документы и объясняет операцию. Без относящихся к вопросу приложений этого часто недостаточно.</p></article>
+<article class="faq-card "><span class="faq-number">03</span><h3>Что делать, если часть документов отсутствует?</h3><p>Нужно честно определить, чего нет, и можно ли подтвердить факт другим документом. Придумывать сведения нельзя.</p></article>
+<article class="faq-card faq-card--4"><span class="faq-number">04</span><h3>Чем ответ отличается от комплекта документов?</h3><p>Ответ строится по формулировкам конкретного письма. Расширенный комплект используют, когда требуется подтвердить несколько операций или деятельность в целом.</p></article>
+</div></div></section>
+
+<nav class="service-related-links" aria-label="Дополнительные связанные услуги">
+  <div class="container">
+    <a href="/bank-i-115-fz/">02 Помощь по 115-ФЗ Вернуться к общему маршруту и определить тип банковской проверки.</a>
+    <a href="/srochnye-voprosy/">03 Срочные вопросы Согласовать приоритеты, если срок ответа короткий или ограничения уже действуют.</a>
+    <a href="/kontakty/">04 Безопасная передача документов Согласовать канал для чувствительных банковских документов и персональных данных.</a>
+  </div>
+</nav>
+</main>
     
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">
