@@ -66,16 +66,20 @@ async function routeLocal(route) {
         await page.waitForTimeout(40);
         await page.waitForFunction(() => [...document.querySelectorAll("#main.service-page .service-hero-visual img")]
           .every((img) => img.complete && img.naturalWidth > 0));
+        await page.waitForTimeout(80);
+        await page.waitForFunction(() => [...document.querySelectorAll("#main.service-page .service-hero-visual img")]
+          .every((img) => img.complete && img.naturalWidth > 0));
         const metric = await page.evaluate(() => {
           const hero = document.querySelector("#main.service-page .service-hero");
           const frame = hero.querySelector(".service-hero-frame");
           const heading = hero.querySelector("h1");
           const visual = hero.querySelector(".service-hero-visual");
-          const details = [...hero.querySelectorAll(".hero-service-point small")];
+          const details = [...document.querySelectorAll("#main.service-page .hero-service-point small")];
           const accents = [...heading.querySelectorAll("span")];
           const actions = [...hero.querySelectorAll(".hero-commerce .button")];
           const priceTiers = [...hero.querySelectorAll(".hero-price-inline .price-tier")];
           const tierTops = priceTiers.map((node) => node.getBoundingClientRect().top);
+          const bankSteps = document.querySelector("#main.bank-115-hub-page .service-hero + .bank-hero-steps");
           return {
             heroHeight: hero.getBoundingClientRect().height,
             headingSize: parseFloat(getComputedStyle(heading).fontSize),
@@ -87,6 +91,8 @@ async function routeLocal(route) {
             actionsFit: actions.every((node) => node.scrollWidth <= node.clientWidth + 1 && node.scrollHeight <= node.clientHeight + 1),
             priceTierSpread: tierTops.length ? Math.max(...tierTops) - Math.min(...tierTops) : 0,
             priceHeight: hero.querySelector(".hero-price-inline")?.getBoundingClientRect().height || 0,
+            bankStepsOutsideHero: !hero.querySelector(".bank-hero-steps") && !!bankSteps,
+            bankStepsCenterDelta: bankSteps ? Math.abs(bankSteps.getBoundingClientRect().left + bankSteps.getBoundingClientRect().width / 2 - innerWidth / 2) : 0,
             overflow: document.documentElement.scrollWidth - innerWidth,
             imageLoaded: [...visual.querySelectorAll("img")].every((img) => img.complete && img.naturalWidth > 0),
           };
@@ -104,6 +110,8 @@ async function routeLocal(route) {
         if (pathname === "/bank-i-115-fz/") {
           assert.ok(metric.priceTierSpread <= 1, `${pathname} price tiers are not horizontal at ${viewport.width}px`);
           assert.ok(metric.priceHeight <= 62, `${pathname} horizontal price bar is ${metric.priceHeight}px at ${viewport.width}px`);
+          assert.equal(metric.bankStepsOutsideHero, true, `${pathname} steps must sit immediately below the hero at ${viewport.width}px`);
+          assert.ok(metric.bankStepsCenterDelta <= 1, `${pathname} steps are ${metric.bankStepsCenterDelta}px off-center at ${viewport.width}px`);
         }
         assert.equal(metric.imageLoaded, true, `${pathname} hero image failed at ${viewport.width}px`);
         assert.ok(metric.overflow <= 1, `${pathname} horizontal overflow ${metric.overflow}px at ${viewport.width}px`);
