@@ -161,7 +161,11 @@
     <!-- d82-service-schema:end -->
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
+    <link rel="stylesheet" href="/assets/home-v11/base-v1.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/refinements.css?v=20260921-v11b" />
+    <link rel="stylesheet" href="/assets/home-v11/glass.css?v=20260923-qa1" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260921-v11c" />
+    <link rel="stylesheet" href="/assets/ip-reporting-v1/page.css?v=20260924-v1" />
   </head>
   <body>
 
@@ -212,218 +216,50 @@
         </nav>
       </details>
     </header>
-    <main>
-    <section class="hero hero-inner hero-stack">
-      <div class="glass-panel hero-copy-panel">
-        <p class="eyebrow">Отчётность ИП</p>
-        <h1>Сдача отчётности ИП в Симферополе</h1>
-        <p>Определим обязательные формы ИП по УСН, патенту или ОСНО, учтём операции и сотрудников, проверим данные и соберём комплект для сдачи.</p>
-        <!-- d82-feed-price:start -->
-        <div class="service-price-note" aria-label="Стоимость услуги">
-          <span>Стоимость услуги</span>
-          <strong>от 3 000 ₽</strong>
-          <small>Точный состав и стоимость согласуем до начала работ.</small>
-        </div>
-        <!-- d82-feed-price:end -->
-        <div class="actions"><a class="button button-lime" href="#quick-lead">Рассчитать комплект</a><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
-      </div>
-      <aside class="glass-panel hero-choice-panel">
-        <p class="eyebrow">Календарь ИП</p>
-        <h2>Что меняет состав отчётов</h2>
-        <ul class="compact-list">
-          <li><a href="#orientation-detail-01"><span>01</span><div><strong>Режимы</strong><small>УСН, ПСН, ОСНО, АУСН и их сочетание в течение года.</small></div></a></li>
-          <li><a href="#orientation-detail-02"><span>02</span><div><strong>НДС в 2026 году</strong><small>Доход, импорт, счета-фактуры и функции налогового агента.</small></div></a></li>
-          <li><a href="#orientation-detail-03"><span>03</span><div><strong>Работники</strong><small>Выплаты, договоры и кадровые события добавляют отдельные сроки.</small></div></a></li>
-          <li><a href="#orientation-detail-04"><span>04</span><div><strong>Старт или закрытие</strong><small>Неполный год меняет период и финальный комплект предпринимателя.</small></div></a></li>
-        </ul>
-      </aside>
-    </section>
-    <section class="section lead-quick-section" id="quick-lead" aria-labelledby="quick-lead-title">
-      <div class="section-header">
-        <p class="eyebrow">Быстрый запрос</p>
-        <h2 id="quick-lead-title">Собрать календарь отчётности ИП</h2>
-        <p>Укажите режим, период и наличие работников. Проверим формы, сроки и документы до отправки.</p>
-      </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
-        <input type="hidden" name="source_page" value="/sdacha-otchetnosti-ip/" />
-        <input type="hidden" name="task_type" value="Сдача отчётности ИП" />
-        <input type="hidden" name="lead_mode" value="quick" />
-        <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-grid">
-          <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
-          <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-          <label class="lead-quick-message">Режим и задача (необязательно)<textarea name="message" rows="3" placeholder="Например: ИП на УСН, есть два работника, нужна отчётность за полугодие"></textarea></label>
-        </div>
-        <p class="form-note lead-transfer-note">Для первого обращения документы не нужны. После уточнения задачи согласуем защищённый способ передачи через личный кабинет или другой подходящий канал.</p>
-        <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
-        <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчёт</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Прикрепить файлы</a></div>
-        <p class="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="section page-rich-section rich-intro-section">
-      <p class="eyebrow">Правила 2026 года</p>
-      <h2>Для ИП сначала проверяем режим, затем события года</h2>
-      <div class="rich-copy"><p>Годовая декларация ИП по УСН представляется не позднее 25 апреля следующего года с переносом выходного срока. При регистрации, закрытии или утрате режима период определяется иначе. Актуальные правила собраны на <a href="https://www.nalog.gov.ru/rn77/ip/ip_pay_taxes/usn/" target="_blank" rel="noopener">странице ФНС об УСН</a>.</p><p>В 2026 году отдельной проверкой стал НДС: освобождение для УСН связано с доходом 20 млн ₽, но значение имеют также импорт, агентские обязанности и выставленные счета-фактуры. Подробные условия приводит <a href="https://www.nalog.gov.ru/rn77/taxation/taxes/nds_usn/" target="_blank" rel="noopener">ФНС России</a>. Поэтому календарь ИП строим по операциям, а не по одному названию режима.</p></div>
-    </section>
-    <!-- d82-service-example:start -->
-    <section class="section page-rich-section service-example-section" id="service-example" aria-labelledby="service-example-title">
-      <div class="section-header">
-        <p class="eyebrow">Пример ситуации</p>
-        <h2 id="service-example-title">У ИП появились сотрудники и новые отчётные задачи</h2>
-        <p>Типовой пример, чтобы понять состав услуги.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>С чем обращаются</h3><p>Предприниматель раньше работал один, а теперь нанял продавцов. Данные по выплатам есть, но он не уверен, все ли формы учтены вместе с отчётностью по его режиму.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Что сделаем</h3><p>Проверим даты кадровых событий, начисления и уже переданные сведения. Согласуем комплект за нужный период и сверим показатели между расчётами и исходными документами.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Что подготовим</h3><p>Подготовленные формы по согласованному составу и перечень подтверждений, которые нужно получить и сохранить после их представления.</p></article>
-      </div>
-      <p class="actions"><a class="button button-lime" href="#quick-lead">Обсудить похожую задачу</a></p>
-    </section>
-    <!-- d82-service-example:end -->
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Налоговые маршруты</p>
-        <h2>Какие формы проверяем у предпринимателя</h2>
-        <p>Каждый режим создаёт собственный набор деклараций, уведомлений и контрольных дат.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card" id="orientation-detail-01">
-          <span>01</span>
-          <h3>УСН</h3>
-          <p>Годовая декларация, авансовые платежи, уведомления и проверка освобождения либо обязанности по НДС.</p>
-        </article>
-        <article class="glass-card rich-card" id="orientation-detail-02">
-          <span>02</span>
-          <h3>Патент</h3>
-          <p>Декларации по ПСН нет, но контролируем срок патента, лимит дохода, совмещение режимов и книгу учёта.</p>
-        </article>
-        <article class="glass-card rich-card" id="orientation-detail-03">
-          <span>03</span>
-          <h3>Общая система</h3>
-          <p>Разделяем 3-НДФЛ, НДС и обязанности налогового агента, сверяем книги покупок и продаж.</p>
-        </article>
-        <article class="glass-card rich-card" id="orientation-detail-04">
-          <span>04</span>
-          <h3>АУСН и совмещение</h3>
-          <p>Проверяем данные уполномоченного банка и отдельно учитываем операции по каждому применяемому режиму.</p>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Работодательский контур</p>
-        <h2>Что добавляется, когда ИП платит физическим лицам</h2>
-        <p>Налоговая отчётность предпринимателя и отчёты работодателя живут по разным срокам.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card">
-          <span>01</span>
-          <h3>РСВ и сведения</h3>
-          <p>Расчёт по страховым взносам сдаётся поквартально, персонифицированные сведения — по месяцам с учётом состава выплат.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>02</span>
-          <h3>6-НДФЛ</h3>
-          <p>Сверяем даты дохода, удержания и перечисления НДФЛ по зарплате и договорам с физическими лицами.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>03</span>
-          <h3>ЕФС-1</h3>
-          <p>Подразделы и сроки зависят от приёма, увольнения, перевода, стажа и страховых взносов от несчастных случаев.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>04</span>
-          <h3>Без работников</h3>
-          <p>Подтверждаем отсутствие трудовых и гражданско-правовых отношений, чтобы не создавать лишние формы.</p>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Данные предпринимателя</p>
-        <h2>Из чего собираем показатели ИП</h2>
-        <p>Чувствительные документы принимаем только согласованным каналом после первичного определения задачи.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card">
-          <span>01</span>
-          <h3>Статус и режимы</h3>
-          <p>ИНН, даты регистрации или закрытия, уведомления о режимах и патенты за нужный период.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>02</span>
-          <h3>Доходы и расходы</h3>
-          <p>Выписки всех счетов, кассовые данные, чеки, акты, накладные и подтверждения расходов.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>03</span>
-          <h3>Люди и выплаты</h3>
-          <p>Договоры, кадровые события, начисления, удержания и ранее представленные сведения.</p>
-        </article>
-        <article class="glass-card rich-card">
-          <span>04</span>
-          <h3>История сдачи</h3>
-          <p>Декларации, уведомления, квитанции оператора и требования ИФНС по смежным периодам.</p>
-        </article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Порядок подготовки</p>
-        <h2>От событий ИП к квитанции о приёме</h2>
-        <p>Сначала восстанавливаем календарь предпринимателя, затем переходим к цифрам и формам.</p>
-      </div>
-      <div class="card-grid two rich-step-grid">
-        <article class="glass-card rich-card rich-step-card"><span>01</span><h3>Фиксируем режимы, работников и события отчётного периода.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>02</span><h3>Разносим операции по книгам учёта и проверяем первичные документы.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>03</span><h3>Рассчитываем налоги и взносы, затем формируем декларации и сведения.</h3></article>
-        <article class="glass-card rich-card rich-step-card"><span>04</span><h3>Проводим форматный контроль и сохраняем подтверждение доставки каждой формы.</h3></article>
-      </div>
-    </section>
-    <section class="section page-rich-section">
-      <div class="section-header">
-        <p class="eyebrow">Результат</p>
-        <h2>Что остаётся у предпринимателя после сдачи</h2>
-        <p>Стоимость от 3 000 ₽ определяется режимами, количеством операций, работников и готовностью документов.</p>
-      </div>
-      <div class="card-grid two rich-card-grid">
-        <article class="glass-card rich-card"><span>01</span><h3>Календарь форм</h3><p>Список обязанностей ИП по каждому режиму и роли работодателя.</p></article>
-        <article class="glass-card rich-card"><span>02</span><h3>Проверенные расчёты</h3><p>Налоговая база, авансы, взносы и контроль связи с уведомлениями.</p></article>
-        <article class="glass-card rich-card"><span>03</span><h3>Отчётный комплект</h3><p>Согласованные декларации и сведения в форматах для выбранного способа отправки.</p></article>
-        <article class="glass-card rich-card"><span>04</span><h3>Подтверждения</h3><p>Квитанции, протоколы и перечень контрольных действий после представления.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section faq-section">
-      <div class="section-header">
-        <p class="eyebrow">FAQ</p>
-        <h2>Частые вопросы</h2>
-        <p>Ключевые правила по срокам, НДС, работникам и электронной отправке.</p>
-      </div>
-      <div class="card-grid two faq-grid">
-        <article class="glass-card rich-card faq-card"><span>01</span><h3>Когда ИП сдаёт годовую декларацию по УСН?</h3><p>Общий срок — не позднее 25 апреля года, следующего за отчётным. Если дата приходится на выходной, срок переносится на ближайший рабочий день.</p></article>
-        <article class="glass-card rich-card faq-card"><span>02</span><h3>Когда ИП на УСН нужна декларация по НДС в 2026 году?</h3><p>Обязанность зависит от дохода, операций и специальных оснований. В 2026 году освобождение связано с порогом 20 млн рублей, но импорт, функции налогового агента или счёт-фактура с выделенным НДС проверяются отдельно.</p></article>
-        <article class="glass-card rich-card faq-card"><span>03</span><h3>Какие отчёты добавляются у ИП с работниками?</h3><p>Проверяем РСВ, 6-НДФЛ, персонифицированные сведения и ЕФС-1. Точный состав зависит от выплат, договоров и кадровых мероприятий.</p></article>
-        <article class="glass-card rich-card faq-card"><span>04</span><h3>Как подтверждается сдача электронной отчётности?</h3><p>Способ отправки согласуется с учётом электронной подписи и оператора. После отправки важно получить и сохранить квитанции о приёме и результаты контрольной проверки.</p></article>
-      </div>
-    </section>
-    <section class="section page-rich-section related-section">
-      <div class="section-header">
-        <p class="eyebrow">Связанные услуги</p>
-        <h2>Другие задачи по документам</h2>
-        <p>Связанные страницы дополняют услугу «Сдача отчётности ИП в Симферополе» и отделяют регистрационные действия от учёта, отчётности и банковских вопросов.</p>
-      </div>
-      <div class="card-grid two related-grid">
-        <a class="glass-card related-card" href="/deklaraciya-usn/"><span>01</span><h3>Декларация УСН</h3><p>Разобрать показатели и подтверждения для УСН.</p></a>
-        <a class="glass-card related-card" href="/nulevaya-otchetnost-ip/"><span>02</span><h3>Нулевая отчётность ИП</h3><p>Проверить период без операций и сотрудников.</p></a>
-        <a class="glass-card related-card" href="/otvet-na-trebovanie-ifns/"><span>03</span><h3>Ответ на требование ИФНС</h3><p>Подготовить позицию, если отчётность уже вызвала вопросы.</p></a>
-        <a class="glass-card related-card" href="/soprovozhdenie/"><span>04</span><h3>Сопровождение ИП</h3><p>Перейти от разовой сдачи к регулярному учёту и контролю сроков.</p></a>
-        <a class="glass-card related-card" href="/ausn-krym/"><span>05</span><h3>АУСН в Крыму</h3><p>Проверить критерии режима, банк и отчётные обязанности предпринимателя.</p></a>
-        <a class="glass-card related-card" href="/nds-pri-usn-2026/"><span>06</span><h3>НДС при УСН</h3><p>Определить обязанность по НДС и связать её с декларациями ИП.</p></a>
-        <a class="glass-card related-card" href="/nalogi-i-rezhimy/"><span>07</span><h3>Налоги и режимы</h3><p>Сравнить режимы до формирования полного календаря отчётности.</p></a>
-        <a class="glass-card related-card" href="/raschet-nalogovoy-nagruzki/"><span>08</span><h3>Налоговая нагрузка</h3><p>Сопоставить расчёты, показатели отчётности и отраслевые ориентиры.</p></a>
-      </div>
-    </section>
-  </main>
+    <main class="service-page ip-reporting-page" data-ui-version="ip-reporting-v1-seo-safe" id="main" tabindex="-1">
+<section aria-labelledby="service-title" class="service-hero"><div class="service-hero-frame"><div class="container service-hero-grid">
+<div class="service-hero-copy">
+<p class="service-eyebrow">Отчётность предпринимателя</p>
+<h1 id="service-title">Сдача отчётности <span>ИП</span> в Симферополе</h1>
+<p class="service-lead">Определим обязательные формы ИП по УСН, патенту или ОСНО, учтём операции и сотрудников, проверим данные и соберём комплект для сдачи.</p>
+<div aria-label="Основные этапы подготовки отчётности ИП" class="hero-service-points">
+<div class="hero-service-point"><span class="point-icon" data-step="01"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4M17 3v4M3 10h18M8 14h3M13 14h3M8 18h3"></path></svg></span><span><strong>Режим и период</strong><small>Проверим УСН, патент, ОСНО, АУСН, дату регистрации и нужный период.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="02"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 19V5M4 15h4v4H4M10 10h4v9h-4M16 4h4v15h-4"></path></svg></span><span><strong>Операции и сотрудники</strong><small>Учитываем банк, кассу, имущество, выплаты физическим лицам и кадровые события.</small></span></div>
+<div class="hero-service-point"><span class="point-icon" data-step="03"><svg aria-hidden="true" class="point-svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6zM14 2v5h5M9 12h6M9 16h4"></path><path d="m3 18 2 2 4-5"></path></svg></span><span><strong>Формы и подтверждения</strong><small>Готовим согласованный комплект и сохраняем квитанции после отправки.</small></span></div>
+</div>
+<div class="hero-commerce"><div class="hero-price"><span>Разовая задача</span><strong>от 3 000 ₽</strong><small>Минимальная цена — для отдельной формы или простой задачи.</small></div><div class="hero-actions"><a class="button button-primary" href="#reporting-request"><span>Определить комплект</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a><a class="button button-secondary" href="tel:+79789987222"><span>Позвонить</span></a></div></div>
+<div aria-label="Преимущества работы" class="hero-facts"><span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-2.7 8-7 10-4.3-2-7-5.2-7-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg><b>Конфиденциально</b></span><span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><b>По срокам</b></span><span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M4 4h16v16H4z"></path><path d="M8 9h8M8 13h5M15 16l2 2 3-4"></path></svg><b>Проверяемый результат</b></span></div>
+</div>
+<figure aria-label="Отчётность ИП: режим, события, обязательные формы, отправка и квитанции" class="service-hero-visual"><div class="hero-art-panel"><picture><source srcset="/assets/ip-reporting-v1/ip-reporting-hero-right-320.webp 320w, /assets/ip-reporting-v1/ip-reporting-hero-right-480.webp 480w, /assets/ip-reporting-v1/ip-reporting-hero-right-644.webp 644w, /assets/ip-reporting-v1/ip-reporting-hero-right-900.webp 900w, /assets/ip-reporting-v1/ip-reporting-hero-right-1100.webp 1100w" type="image/webp"/><img alt="Отчётность ИП: налоговый режим, период, операции, сотрудники, формы и квитанции" class="hero-banner-image" decoding="async" fetchpriority="high" loading="eager" src="/assets/ip-reporting-v1/ip-reporting-hero-right.webp"/></picture></div><figcaption class="sr-only">Режим, события, обязательные формы, отправка и квитанции отчётности индивидуального предпринимателя.</figcaption></figure>
+</div></div></section>
+<section aria-labelledby="factors-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Календарь ИП</span><h2 id="factors-title">Что меняет состав отчётов</h2></div><p class="section-intro">Состав обязательных форм зависит не от одного названия режима, а от событий периода, операций, выплат и статуса предпринимателя.</p></div><div class="decision-grid">
+<article class="decision-card"><span class="decision-number">01</span><strong>Налоговые режимы</strong><p>УСН, ПСН, ОСНО, АУСН, их смена или совмещение в течение отчётного периода.</p></article>
+<article class="decision-card"><span class="decision-number">02</span><strong>НДС и специальные операции</strong><p>Доход, импорт, обязанности налогового агента и выставленные счета-фактуры проверяем отдельно.</p></article>
+<article class="decision-card"><span class="decision-number">03</span><strong>Работники и выплаты</strong><p>Трудовые договоры, выплаты физическим лицам и кадровые события добавляют отдельные формы и сроки.</p></article>
+<article class="decision-card"><span class="decision-number">04</span><strong>Старт или закрытие</strong><p>Неполный год, начало деятельности и прекращение статуса меняют период и финальный комплект.</p></article>
+</div></div></section>
+<section aria-labelledby="request-title" class="service-section soft" id="reporting-request"><div class="container"><div class="request-panel"><div class="request-copy"><span class="eyebrow eyebrow-dark">Быстрый запрос</span><h2 id="request-title">Определить комплект отчётности ИП</h2><p>Укажите период, налоговый режим и наличие работников. Проверим предварительный состав обязательных форм и согласуем объём работы.</p><div class="request-price"><span>Разовая задача</span><strong>от 3 000 ₽</strong></div><p class="safe-note">Чувствительные документы передавайте только через согласованный безопасный канал после первичного определения задачи.</p></div><form class="request-form crm-lead-form" action="/api/lead" method="post" data-lead-form="amo">
+<input type="hidden" name="source_page" value="/sdacha-otchetnosti-ip/">
+<input type="hidden" name="task_type" value="Сдача отчётности ИП">
+<input type="hidden" name="lead_mode" value="quick">
+<input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label class="field"><span>Имя <small>необязательно</small></span><input autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text"></label>
+<label class="field"><span>Телефон</span><input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (___) ___-__-__" required type="tel"></label>
+<label class="field wide"><span>Режим и задача <small>необязательно</small></span><textarea name="message" placeholder="Период, режимы, были ли операции, сотрудники, касса, ранее сданные формы или требование ИФНС" rows="5"></textarea></label>
+<p class="form-note wide">Для первого обращения документы не нужны. После уточнения задачи согласуем защищённый способ передачи.</p>
+<label class="consent wide"><input name="privacy" value="1" required type="checkbox"><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить состав и стоимость</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button></div>
+<p class="form-note wide" role="status" aria-live="polite"></p>
+</form></div></div></section>
+<section aria-labelledby="rules-title" class="service-section"><div class="container"><div class="expert-grid"><div class="expert-heading"><span class="eyebrow">Правила периода</span><h2 id="rules-title">Для ИП сначала проверяем режим, затем события года</h2><div class="expert-proof"><span><small>УСН</small><strong>декларация ИП — до 25 апреля</strong></span><span><small>НДС при УСН</small><strong>проверяем доход и операции</strong></span></div></div><div class="expert-copy"><p>Годовая декларация ИП по УСН представляется не позднее 25 апреля следующего года. При регистрации, закрытии или утрате права на режим применяются специальные сроки, поэтому календарь строится по фактическим событиям периода.</p><p>Отдельно проверяем НДС: значение имеют доход, импорт, функции налогового агента и выставленные счета-фактуры. Название режима само по себе не даёт полного ответа.</p><div class="expert-compare"><article><strong class="expert-subtitle">Базовый налоговый маршрут</strong><ul><li>применяемые режимы и даты;</li><li>доходы и расходы;</li><li>авансовые платежи и уведомления;</li><li>годовая декларация.</li></ul></article><article><strong class="expert-subtitle">Дополнительные обязанности</strong><ul><li>сотрудники и выплаты физическим лицам;</li><li>НДС, импорт и налоговый агент;</li><li>касса, имущество и отдельные операции;</li><li>специальные сроки при старте или закрытии.</li></ul></article></div><div class="expert-notice">Перед подготовкой комплекта сверяем сроки и пороговые показатели с актуальными материалами ФНС.</div><a class="official-link" href="https://www.nalog.gov.ru/rn77/ip/ip_pay_taxes/usn/" rel="noopener noreferrer" target="_blank">Официальная страница ФНС об УСН <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div></div></div></section>
+<section aria-labelledby="diagnostic-title" class="service-section soft"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">До подготовки форм</span><h2 id="diagnostic-title">Что определить до подготовки форм</h2></div><p class="section-intro">Сначала восстанавливаем картину периода, затем переходим к расчётам и форматам отчётности.</p></div><div class="case-grid"><article class="case-card"><span class="case-number">01</span><h3>Статус, режим и период</h3><p>Дата регистрации или закрытия, применяемые режимы, патенты и период, который необходимо закрыть.</p></article><article class="case-card case-card--2"><span class="case-number">02</span><h3>Операции и выплаты</h3><p>Доходы, расходы, банк, касса, имущество, импорт, сотрудники и договоры с физическими лицами.</p></article><article class="case-card"><span class="case-number">03</span><h3>История отчётности</h3><p>Ранее сданные формы, уведомления, квитанции, требования ИФНС и незакрытые периоды.</p></article></div><div class="section-action"><a class="button button-secondary" href="#reporting-request">Обсудить состав отчётности<svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div></div></section>
+<section aria-labelledby="tax-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Налоговые маршруты</span><h2 id="tax-title">Какие формы проверяем у предпринимателя</h2></div><p class="section-intro">Каждый режим создаёт свой набор деклараций, уведомлений, книг учёта и контрольных дат.</p></div><div class="tax-route-grid"><article class="route-card"><span class="card-number">01</span><h3>УСН</h3><p>Годовая декларация, авансовые платежи, уведомления и отдельная проверка освобождения либо обязанности по НДС.</p></article><article class="route-card"><span class="card-number">02</span><h3>Патент</h3><p>Декларации по ПСН нет, но проверяем срок патента, лимиты, книгу учёта и совмещение с другими режимами.</p></article><article class="route-card"><span class="card-number">03</span><h3>Общая система</h3><p>Разделяем 3‑НДФЛ, НДС и функции налогового агента, сверяем книги покупок и продаж.</p></article><article class="route-card"><span class="card-number">04</span><h3>АУСН и совмещение</h3><p>Проверяем данные уполномоченного банка и отдельно учитываем операции по каждому режиму.</p></article></div></div></section>
+<section aria-labelledby="employer-title" class="service-section soft"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Работодательский контур</span><h2 id="employer-title">Что добавляется, когда ИП платит физическим лицам</h2></div><p class="section-intro">Налоговая отчётность предпринимателя и обязанности работодателя имеют разные основания, формы и календарь.</p></div><div class="employer-grid"><article class="employer-card"><span class="card-number">01</span><h3>РСВ и сведения</h3><p>Расчёт по страховым взносам и персонифицированные сведения проверяем с учётом состава выплат и периода.</p></article><article class="employer-card"><span class="card-number">02</span><h3>6‑НДФЛ</h3><p>Сверяем даты дохода, удержания и перечисления НДФЛ по зарплате и договорам с физическими лицами.</p></article><article class="employer-card"><span class="card-number">03</span><h3>ЕФС‑1</h3><p>Подразделы и сроки зависят от приёма, увольнения, перевода, стажа и страховых взносов от несчастных случаев.</p></article><article class="employer-card"><span class="card-number">04</span><h3>Без работников</h3><p>Подтверждаем отсутствие трудовых и гражданско-правовых отношений, чтобы не создавать лишние формы.</p></article></div></div></section>
+<section aria-labelledby="data-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Данные предпринимателя</span><h2 id="data-title">Из чего собираем показатели ИП</h2></div><p class="section-intro">Для достоверной формы нужны не только итоги банка, но и документы, подтверждающие режим, операции, выплаты и историю представления.</p></div><div class="data-grid"><article class="data-card"><span class="card-number">01</span><h3>Статус и режимы</h3><p>ИНН, даты регистрации или закрытия, уведомления о режимах и патенты за нужный период.</p></article><article class="data-card"><span class="card-number">02</span><h3>Доходы и расходы</h3><p>Выписки всех счетов, кассовые данные, чеки, акты, накладные и подтверждения расходов.</p></article><article class="data-card"><span class="card-number">03</span><h3>Люди и выплаты</h3><p>Договоры, кадровые события, начисления, удержания и ранее представленные сведения.</p></article><article class="data-card"><span class="card-number">04</span><h3>История сдачи</h3><p>Декларации, уведомления, квитанции оператора и требования ИФНС по смежным периодам.</p></article></div></div></section>
+<section aria-labelledby="process-title" class="service-section soft"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Порядок подготовки</span><h2 id="process-title">От событий ИП к квитанции о приёме</h2></div><p class="section-intro">Сначала восстанавливаем календарь предпринимателя, затем переходим к данным, расчётам, формам и подтверждению доставки.</p></div><div class="process-grid process-service"><div class="step"><div class="step-rail"><span class="step-number">01</span></div><article class="step-card"><span class="icon-tile"><img alt="" src="/assets/ip-reporting-v1/process-step-01.svg"/></span><h3>Фиксируем режимы, работников и события отчётного периода.</h3><p class="card-description">Собираем календарь обязанностей и контрольных дат.</p></article></div><div class="step"><div class="step-rail"><span class="step-number">02</span></div><article class="step-card"><span class="icon-tile"><img alt="" src="/assets/ip-reporting-v1/process-step-02.svg"/></span><h3>Разносим операции по книгам учёта и проверяем первичные документы.</h3><p class="card-description">Сверяем банк, кассу, доходы, расходы и подтверждения.</p></article></div><div class="step"><div class="step-rail"><span class="step-number">03</span></div><article class="step-card"><span class="icon-tile"><img alt="" src="/assets/ip-reporting-v1/process-step-03.svg"/></span><h3>Рассчитываем налоги и взносы, затем формируем декларации и сведения.</h3><p class="card-description">Проводим внутренние контрольные сверки между формами.</p></article></div><div class="step"><div class="step-rail"><span class="step-number">04</span></div><article class="step-card"><span class="icon-tile"><img alt="" src="/assets/ip-reporting-v1/process-step-04.svg"/></span><h3>Проводим форматный контроль и сохраняем подтверждение доставки каждой формы.</h3><p class="card-description">Квитанции и протоколы входят в контрольный комплект.</p></article></div></div></div></section>
+<section aria-labelledby="result-title" class="service-section"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Результат</span><h2 id="result-title">Что остаётся у предпринимателя после сдачи</h2></div><p class="section-intro">Стоимость от 3 000 ₽ определяется режимами, количеством операций, работниками и готовностью документов.</p></div><div class="result-grid"><article class="result-card"><span class="card-number">01</span><h3>Календарь форм</h3><p>Список обязанностей ИП по каждому режиму и роли работодателя.</p></article><article class="result-card"><span class="card-number">02</span><h3>Проверенные расчёты</h3><p>Налоговая база, авансы, взносы и контроль связи с уведомлениями.</p></article><article class="result-card"><span class="card-number">03</span><h3>Отчётный комплект</h3><p>Согласованные декларации и сведения в форматах для выбранного способа отправки.</p></article><article class="result-card"><span class="card-number">04</span><h3>Подтверждения</h3><p>Квитанции, протоколы и перечень контрольных действий после представления.</p></article></div></div></section>
+<section aria-labelledby="faq-title" class="service-section soft"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы</h2></div><p class="section-intro">Ключевые правила по срокам, НДС, работникам и электронной отправке.</p></div><div class="faq-grid"><article class="faq-card"><span class="faq-number">01</span><h3>Когда ИП сдаёт годовую декларацию по УСН?</h3><p>Общий срок — не позднее 25 апреля года, следующего за отчётным. Если дата приходится на выходной, срок переносится на ближайший рабочий день.</p></article><article class="faq-card"><span class="faq-number">02</span><h3>Когда ИП на УСН нужна декларация по НДС в 2026 году?</h3><p>Обязанность зависит от дохода, операций и специальных оснований. Освобождение связано с установленным порогом, но импорт, функции налогового агента или счёт-фактура с выделенным НДС проверяются отдельно.</p></article><article class="faq-card"><span class="faq-number">03</span><h3>Какие отчёты добавляются у ИП с работниками?</h3><p>Проверяем РСВ, 6‑НДФЛ, персонифицированные сведения и ЕФС‑1. Точный состав зависит от выплат, договоров и кадровых мероприятий.</p></article><article class="faq-card"><span class="faq-number">04</span><h3>Как подтверждается сдача электронной отчётности?</h3><p>После отправки важно получить и сохранить квитанции о приёме и результаты форматной и контрольной проверки.</p></article></div></div></section>
+</main>
 
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">

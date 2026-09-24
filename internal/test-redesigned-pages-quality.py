@@ -24,6 +24,8 @@ ROUTES = (
     "buhgalterskie-uslugi",
     "buhgalterskoe-soprovozhdenie-ooo",
     "vosstanovlenie-buhucheta",
+    "otchetnost",
+    "sdacha-otchetnosti-ip",
 )
 BANNED_VISIBLE_TEXT = (
     "динамический блок",
