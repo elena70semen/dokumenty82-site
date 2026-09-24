@@ -87,7 +87,7 @@ class SmenaBuhgalteraPageTest(unittest.TestCase):
         self.assertEqual(len(urls), 65)
         self.assertEqual(urls.count(URL), 1)
 
-        self.assertIn('/assets/home-v11/shell.css?v=20260921-v11c', self.text)
+        self.assertIn('/assets/home-v11/shell.css?v=20260924-shell1', self.text)
         self.assertIn('/assets/home-v11/shell.js?v=20260921-v11c', self.text)
 
 

@@ -79,6 +79,15 @@ async function routeLocal(route) {
           const actions = [...hero.querySelectorAll(".hero-commerce .button")];
           const priceTiers = [...hero.querySelectorAll(".hero-price-inline .price-tier")];
           const tierTops = priceTiers.map((node) => node.getBoundingClientRect().top);
+          const related = document.querySelector("#main.service-page nav.service-related-links");
+          const relatedLinks = related ? [...related.querySelectorAll("a")] : [];
+          const relatedRows = relatedLinks.reduce((rows, link) => {
+            const box = link.getBoundingClientRect();
+            const key = String(Math.round(box.top));
+            rows[key] ||= [];
+            rows[key].push(box);
+            return rows;
+          }, {});
           const serviceSteps = document.querySelector("#main.service-page .service-hero + .service-hero-steps");
           const stepParts = serviceSteps ? [...serviceSteps.querySelectorAll(".hero-service-point")].map((card) => ({
             number: card.querySelector(".service-step-number").getBoundingClientRect(),
@@ -102,6 +111,17 @@ async function routeLocal(route) {
             actionsFit: actions.every((node) => node.scrollWidth <= node.clientWidth + 1 && node.scrollHeight <= node.clientHeight + 1),
             priceTierSpread: tierTops.length ? Math.max(...tierTops) - Math.min(...tierTops) : 0,
             priceHeight: hero.querySelector(".hero-price-inline")?.getBoundingClientRect().height || 0,
+            navActionColor: getComputedStyle(document.querySelector(".uh-action")).color,
+            relatedExists: !!related,
+            relatedHeight: related?.getBoundingClientRect().height || 0,
+            relatedLinkCount: relatedLinks.length,
+            relatedRowsCentered: Object.values(relatedRows).every((row) => {
+              const left = Math.min(...row.map((box) => box.left));
+              const right = Math.max(...row.map((box) => box.right));
+              return Math.abs((left + right) / 2 - innerWidth / 2) <= 1;
+            }),
+            relatedLinksFit: relatedLinks.every((link) => link.scrollWidth <= link.clientWidth + 1 && link.scrollHeight <= link.clientHeight + 1),
+            precedingBottomPadding: related ? parseFloat(getComputedStyle(related.previousElementSibling).paddingBottom) : 0,
             stepsOutsideHero: !hero.querySelector(".service-hero-steps") && !!serviceSteps,
             stepsCenterDelta: serviceSteps ? Math.abs(serviceSteps.getBoundingClientRect().left + serviceSteps.getBoundingClientRect().width / 2 - innerWidth / 2) : 0,
             stepPartsSeparate: stepParts.every(({ number, icon }) => number.right <= icon.left),
@@ -123,6 +143,18 @@ async function routeLocal(route) {
         assert.equal(metric.hiddenDetails, true, `${pathname} supporting copy must move out of the first-screen hierarchy`);
         assert.equal(metric.visibleAccents, true, `${pathname} heading accent is transparent at ${viewport.width}px`);
         assert.equal(metric.actionsFit, true, `${pathname} action label is clipped at ${viewport.width}px`);
+        assert.equal(metric.navActionColor, "rgb(255, 255, 255)", `${pathname} navigation CTA has low contrast at ${viewport.width}px`);
+        if (metric.relatedExists) {
+          assert.equal(metric.relatedRowsCentered, true, `${pathname} related links are not centered at ${viewport.width}px`);
+          assert.equal(metric.relatedLinksFit, true, `${pathname} related link text is clipped at ${viewport.width}px`);
+          assert.ok(
+            metric.precedingBottomPadding <= (viewport.width <= 699 ? 24 : 34),
+            `${pathname} has ${metric.precedingBottomPadding}px before its footer links at ${viewport.width}px`,
+          );
+          if (viewport.width >= 1000 && metric.relatedLinkCount <= 4) {
+            assert.ok(metric.relatedHeight <= 80, `${pathname} footer bridge is ${metric.relatedHeight}px tall at ${viewport.width}px`);
+          }
+        }
         assert.equal(metric.stepsOutsideHero, true, `${pathname} steps must sit immediately below the hero at ${viewport.width}px`);
         assert.ok(metric.stepsCenterDelta <= 1, `${pathname} steps are ${metric.stepsCenterDelta}px off-center at ${viewport.width}px`);
         assert.equal(metric.stepPartsSeparate, true, `${pathname} step numbers overlap their icons at ${viewport.width}px`);

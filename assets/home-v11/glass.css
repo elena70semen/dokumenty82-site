@@ -142,6 +142,34 @@ body {
   }
 }
 
+/* Finish service pages with a compact, centered bridge into the footer. */
+#main.service-page .service-section:has(+ nav.service-related-links) {
+  padding-bottom: 34px;
+}
+
+#main.service-page nav.service-related-links {
+  padding: 16px 0 24px;
+}
+
+#main.service-page nav.service-related-links > .container {
+  justify-content: center;
+}
+
+#main.service-page nav.service-related-links a {
+  min-height: 38px;
+  padding: 7px 12px;
+}
+
+@media (max-width: 699px) {
+  #main.service-page .service-section:has(+ nav.service-related-links) {
+    padding-bottom: 24px;
+  }
+
+  #main.service-page nav.service-related-links {
+    padding: 12px 0 18px;
+  }
+}
+
 @media (max-width: 1199px) {
   .uh-cabinet-link {
     display: flex;

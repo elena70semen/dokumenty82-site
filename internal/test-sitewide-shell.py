@@ -25,7 +25,7 @@ class SitewideShellTest(unittest.TestCase):
         for url in self.urls[1:]:
             text = self.page_file(url).read_text(encoding="utf-8")
             with self.subTest(url=url):
-                self.assertIn('/assets/home-v11/shell.css?v=20260921-v11c', text)
+                self.assertIn('/assets/home-v11/shell.css?v=20260924-shell1', text)
                 self.assertIn('/assets/home-v11/shell.js?v=20260921-v11c', text)
 
     def test_seo_structure_is_still_parseable(self):

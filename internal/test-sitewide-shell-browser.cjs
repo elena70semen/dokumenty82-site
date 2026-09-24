@@ -53,6 +53,7 @@ async function routeLocal(route) {
       assert.equal(await page.locator('.uh-nav a[href="/cabinet/"]').isHidden(), true, `${pathname} desktop cabinet`);
       assert.equal(await page.locator('.db-footer [data-footer-link="01"]').evaluate((link) => getComputedStyle(link).backgroundColor), "rgba(0, 0, 0, 0)", `${pathname} footer links`);
       assert.equal(await page.locator('.db-footer [data-footer-link="01"]').evaluate((link) => getComputedStyle(link).color), "rgb(227, 237, 246)", `${pathname} footer link color`);
+      assert.equal(await page.locator(".uh-action").evaluate((link) => getComputedStyle(link).color), "rgb(255, 255, 255)", `${pathname} navigation CTA contrast`);
       const desktopOverflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       assert.ok(desktopOverflow <= 1, `${pathname} desktop overflow ${desktopOverflow}`);
 
