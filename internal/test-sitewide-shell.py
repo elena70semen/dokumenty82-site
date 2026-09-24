@@ -47,6 +47,23 @@ class SitewideShellTest(unittest.TestCase):
         ]:
             self.assertTrue((ROOT / relative).is_file(), relative)
 
+    def test_every_public_footer_has_yandex_rating_badge(self):
+        badge_url = "https://yandex.ru/sprav/widget/rating-badge/1302424560?type=rating"
+        for url in self.urls:
+            document = html.fromstring(self.page_file(url).read_text(encoding="utf-8"))
+            with self.subTest(url=url):
+                if url == "https://dokumenty82.ru/":
+                    self.assertEqual(document.xpath("//footer//a[@href=$url]/@class", url=badge_url), ["rating-link"])
+                else:
+                    self.assertEqual(
+                        document.xpath("//footer//iframe[@src=$url]/@title", url=badge_url),
+                        ["Рейтинг организации в Яндексе"],
+                    )
+        shell = (ROOT / "assets/home-v11/shell.js").read_text(encoding="utf-8")
+        home_script = (ROOT / "assets/home-v11/site.js").read_text(encoding="utf-8")
+        self.assertIn(badge_url, shell)
+        self.assertIn(badge_url, home_script)
+
 
 if __name__ == "__main__":
     unittest.main()

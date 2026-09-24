@@ -45,6 +45,10 @@
 .channel-status{width:min(450px,calc(100% - 32px));max-height:85dvh;padding:26px;border:1px solid #CBDDE7;border-radius:16px;background:white;color:#0B2440;font:400 16px/1.6 Inter,Arial,sans-serif;box-sizing:border-box}.channel-status::backdrop{background:#071B3299}.channel-status h2{font-size:23px;line-height:1.3;margin:0 0 14px}.channel-status p{font-size:15px;margin:0}.channel-status button{min-height:44px;padding:10px 20px;border:0;border-radius:8px;background:#0B2440;color:white;margin-top:22px;font:inherit;cursor:pointer}.channel-status button:focus-visible{outline:3px solid #007783;outline-offset:4px}
 @media print{.preview-space,.channel-status{display:none}.db-footer{background:white;color:#0B2440}.db-footer :is(a,p,span){color:#0B2440}.db-footer .footer-brand img{background:#0B2440}.db-footer .footer-bottom{border-color:#9BB0BF}}
 
+.db-footer .footer-rating{width:150px;height:50px;margin-top:8px;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 10px 24px -18px rgba(0,0,0,.72)}
+.db-footer .footer-rating iframe{display:block;width:150px;height:50px;border:0;background:#fff;filter:none!important}
+@media(max-width:599px){.db-footer .footer-rating{margin-top:6px}}
+
 /* Natural reflow at large user text settings, without changing the ordinary phone line. */
 .db-footer .contact-phone{display:flex;flex-wrap:wrap;white-space:normal;column-gap:.22em;row-gap:0}
 .db-footer .contact-phone span{white-space:nowrap}
@@ -52,5 +56,3 @@
 .db-footer .brand-copy{overflow-wrap:anywhere}
 
 .db-footer .brand-name{font-synthesis:none}.db-footer .contact-phone{column-gap:.25em}.db-footer .footer-links a:focus-visible{outline-color:#A0E0E4}.db-footer .db-container{width:min(1248px,calc(100% - var(--gutter)*2))}
-
-

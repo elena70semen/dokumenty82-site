@@ -9,6 +9,22 @@
     return template.content.firstElementChild;
   }
 
+  function installYandexRatingBadge(footer) {
+    const ratingLink = footer?.querySelector(".rating-link");
+    if (!ratingLink) return;
+    const badge = document.createElement("div");
+    badge.className = "footer-rating footer-rating-yandex";
+    const frame = document.createElement("iframe");
+    frame.src = "https://yandex.ru/sprav/widget/rating-badge/1302424560?type=rating";
+    frame.width = "150";
+    frame.height = "50";
+    frame.title = "Рейтинг организации в Яндексе";
+    frame.loading = "lazy";
+    frame.setAttribute("frameborder", "0");
+    badge.append(frame);
+    ratingLink.replaceWith(badge);
+  }
+
   function init() {
     const oldHeader = document.querySelector("header.site-header");
     const oldFooter = document.querySelector("footer.site-footer");
@@ -17,6 +33,7 @@
     document.documentElement.classList.add("js");
     const header = createElement(HEADER);
     const footer = createElement(FOOTER);
+    installYandexRatingBadge(footer);
     oldHeader.replaceWith(header);
     oldFooter.replaceWith(footer);
 
@@ -87,4 +104,3 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
 })();
-

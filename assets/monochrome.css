@@ -50,6 +50,7 @@ iframe {
 }
 
 .yandex-map-embed iframe { filter: none; }
+.footer-rating iframe { filter: none !important; }
 
 /* Primary actions and messenger tiles use transparent white glass. */
 .button-lime,

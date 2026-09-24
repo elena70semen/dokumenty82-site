@@ -36,13 +36,18 @@ async function routeLocal(route) {
     const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, serviceWorkers: "block" });
     await context.route("**/*", routeLocal);
     const page = await context.newPage();
-    const pages = ["/ceny/", "/buhgalterskie-uslugi/", "/smena-buhgaltera/", "/kontakty/", "/novosti/formaty-nds-s-1-iyulya-2026/"];
+    const pages = ["/", "/ceny/", "/buhgalterskie-uslugi/", "/smena-buhgaltera/", "/kontakty/", "/novosti/formaty-nds-s-1-iyulya-2026/"];
 
     for (const pathname of pages) {
       await page.goto(origin + pathname, { waitUntil: "load" });
       await page.locator("header.uh").waitFor();
       assert.equal(await page.locator("header.site-header").count(), 0, pathname);
       assert.equal(await page.locator("footer.db-footer").count(), 1, pathname);
+      const ratingBadge = page.locator('.db-footer .footer-rating iframe[title="Рейтинг организации в Яндексе"]');
+      assert.equal(await ratingBadge.count(), 1, `${pathname} Yandex rating badge`);
+      assert.equal(await ratingBadge.getAttribute("src"), "https://yandex.ru/sprav/widget/rating-badge/1302424560?type=rating", pathname);
+      assert.equal(await ratingBadge.isVisible(), true, `${pathname} Yandex rating badge visible`);
+      assert.equal(await page.locator(".db-footer .rating-link").count(), 0, `${pathname} text rating link removed`);
       assert.equal(await page.locator(".db-footer [data-footer-link]").count(), 12, pathname);
       assert.equal(await page.locator(".uh-logo").evaluate((image) => image.naturalWidth > 0), true, pathname);
       assert.equal(await page.locator('.uh-nav a[href="/cabinet/"]').isHidden(), true, `${pathname} desktop cabinet`);

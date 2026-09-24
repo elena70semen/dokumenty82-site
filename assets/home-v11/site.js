@@ -11,6 +11,21 @@
 
   root.classList.add('js');
 
+  const ratingLink = document.querySelector('.db-footer .rating-link');
+  if (ratingLink) {
+    const badge = document.createElement('div');
+    badge.className = 'footer-rating footer-rating-yandex';
+    const frame = document.createElement('iframe');
+    frame.src = 'https://yandex.ru/sprav/widget/rating-badge/1302424560?type=rating';
+    frame.width = '150';
+    frame.height = '50';
+    frame.title = 'Рейтинг организации в Яндексе';
+    frame.loading = 'lazy';
+    frame.setAttribute('frameborder', '0');
+    badge.append(frame);
+    ratingLink.replaceWith(badge);
+  }
+
   if (nav && !nav.querySelector('.uh-cabinet-link')) {
     const cabinetLink = document.createElement('a');
     cabinetLink.className = 'uh-navlink uh-cabinet-link';

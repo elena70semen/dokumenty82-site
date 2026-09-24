@@ -34,5 +34,9 @@ body{font-family:Inter,Arial,Helvetica,sans-serif}
 
 .db-footer .brand-name{font-synthesis:none}.db-footer .contact-phone{column-gap:.25em}.db-footer .footer-links a:focus-visible{outline-color:#A0E0E4}.db-footer .db-container{width:min(1248px,calc(100% - var(--gutter)*2))}
 
+.db-footer .footer-rating{width:150px;height:50px;margin-top:8px;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 10px 24px -18px rgba(0,0,0,.72)}
+.db-footer .footer-rating iframe{display:block;width:150px;height:50px;border:0;background:#fff;filter:none!important}
+@media(max-width:599px){.db-footer .footer-rating{margin-top:6px}}
+
 /* Keep the accepted white-glass depth after the exact component rules. */
 .uh{background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(22px) saturate(1.08);backdrop-filter:blur(22px) saturate(1.08);box-shadow:0 18px 40px -34px rgba(11,36,64,.48),inset 0 -1px 0 rgba(83,128,151,.08)}
