@@ -201,3 +201,405 @@ body:has(main[data-ui-version]) :is(.ai-chat-widget,.client-portal-widget) stron
 body:has(main[data-ui-version]) .ai-chat-widget{width:44px;max-width:44px;min-height:44px;padding:7px;right:6px;opacity:.86}
 body:has(main[data-ui-version]) .ai-chat-widget span{width:28px;height:28px}
 }
+
+/* Compact first-screen hierarchy shared by the redesigned service pages. */
+#main.service-page .service-hero {
+  padding: 24px 24px 14px;
+}
+
+#main.service-page .service-hero-frame {
+  border-radius: 28px;
+}
+
+#main.service-page .service-hero-grid {
+  grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+  gap: 34px;
+  align-items: center;
+  padding-block: 32px;
+}
+
+#main.service-page .service-hero-copy {
+  min-width: 0;
+}
+
+#main.service-page .service-eyebrow {
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+#main.service-page .service-hero h1 {
+  max-width: 620px;
+  font-size: clamp(40px, 3.25vw, 46px);
+  line-height: 1.055;
+  letter-spacing: -.042em;
+}
+
+#main.service-page .service-hero h1 span {
+  color: #0796a7 !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+#main.service-page .service-lead {
+  max-width: 620px;
+  margin-top: 13px;
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+#main.service-page .hero-geo {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+#main.service-page .hero-service-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 620px;
+  margin-top: 16px;
+}
+
+#main.service-page .hero-service-points:has(> :nth-child(4)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#main.service-page .hero-service-point {
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 8px;
+  min-height: 54px;
+  padding: 6px 9px 6px 6px;
+  border-radius: 13px;
+}
+
+#main.service-page .hero-service-point .point-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+#main.service-page .hero-service-point :is(.point-svg, .point-icon > svg) {
+  width: 19px;
+  height: 19px;
+}
+
+#main.service-page .hero-service-point .point-icon::after {
+  min-width: 17px;
+  height: 17px;
+  font-size: 7px;
+}
+
+#main.service-page .hero-service-point strong {
+  font-size: 13px;
+  line-height: 1.24;
+}
+
+#main.service-page .hero-service-point small {
+  display: none;
+}
+
+#main.service-page .hero-commerce {
+  grid-template-columns: minmax(170px, .78fr) minmax(0, 1.22fr);
+  gap: 8px;
+  max-width: 620px;
+  margin-top: 12px;
+}
+
+#main.service-page .hero-commerce--banner {
+  grid-template-columns: minmax(0, 1.3fr) minmax(145px, .7fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+#main.service-page .hero-commerce .hero-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: 8px;
+  margin: 0;
+}
+
+#main.service-page .hero-commerce .button,
+#main.service-page .hero-consult-button {
+  min-width: 0;
+  min-height: 46px !important;
+  gap: 6px;
+  padding: 10px 9px;
+  border-radius: 13px !important;
+  font-size: 13px !important;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+#main.service-page .hero-commerce .button svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+#main.service-page .hero-price,
+#main.service-page .hero-price-inline {
+  min-width: 0;
+  min-height: 0;
+  padding: 8px 12px;
+  border-radius: 13px;
+}
+
+#main.service-page .hero-price strong,
+#main.service-page .hero-price-inline strong {
+  font-size: 20px;
+  line-height: 1.12;
+}
+
+#main.service-page .hero-price small {
+  display: none;
+}
+
+#main.service-page .hero-price-inline span {
+  margin-top: 3px;
+  font-size: 9.5px;
+  line-height: 1.3;
+}
+
+#main.service-page :is(.hero-facts, .hero-report-note, .hero-route-bar) {
+  display: none;
+}
+
+#main.service-page .service-hero-visual {
+  align-self: center;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+}
+
+#main.service-page :is(.hero-art-panel, .hero-banner-media, .hero-art-crop) {
+  width: 100%;
+  height: 460px;
+  min-height: 0;
+  max-height: 460px;
+  aspect-ratio: auto;
+  border-radius: 23px;
+}
+
+#main.service-page :is(.hero-art-panel, .hero-banner-media, .hero-art-crop) :is(picture, img) {
+  width: 100%;
+  height: 100%;
+}
+
+#main.service-page .hero-banner-image {
+  object-fit: cover;
+}
+
+#main.service-page .service-hero-visual figcaption.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+#main.service-page.reporting-hub-page .hero-price {
+  min-height: 0;
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  #main.service-page .service-hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .92fr);
+    gap: 24px;
+    padding-block: 28px;
+  }
+
+  #main.service-page .service-hero h1 {
+    font-size: 40px;
+  }
+
+  #main.service-page :is(.hero-art-panel, .hero-banner-media, .hero-art-crop) {
+    height: 420px;
+    max-height: 420px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 999px) {
+  #main.service-page .service-hero {
+    padding: 18px 18px 10px;
+  }
+
+  #main.service-page .service-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-block: 26px 22px;
+  }
+
+  #main.service-page .service-hero-copy {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  #main.service-page .service-hero h1 {
+    max-width: 760px;
+    font-size: 40px;
+  }
+
+  #main.service-page .service-lead,
+  #main.service-page .hero-service-points,
+  #main.service-page .hero-commerce {
+    max-width: none;
+  }
+
+  #main.service-page .hero-service-points:has(> :nth-child(4)) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #main.service-page .service-hero-visual {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  #main.service-page :is(.hero-art-panel, .hero-banner-media, .hero-art-crop) {
+    height: 360px;
+    max-height: 360px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 699px) {
+  #main.service-page .service-hero {
+    padding: 12px 10px 8px;
+  }
+
+  #main.service-page .service-hero-frame {
+    border-radius: 21px;
+  }
+
+  #main.service-page .service-hero-grid {
+    width: calc(100% - 28px);
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-block: 22px 18px;
+  }
+
+  #main.service-page .service-hero-copy {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  #main.service-page .service-eyebrow {
+    margin-bottom: 9px;
+    font-size: 12px;
+  }
+
+  #main.service-page .service-hero h1 {
+    max-width: none;
+    font-size: clamp(30px, 8.9vw, 35px);
+    line-height: 1.06;
+    letter-spacing: -.038em;
+  }
+
+  #main.service-page .service-lead {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  #main.service-page .hero-geo {
+    margin-top: 7px;
+    font-size: 11px;
+  }
+
+  #main.service-page .hero-service-points,
+  #main.service-page .hero-service-points:has(> :nth-child(4)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 14px;
+  }
+
+  #main.service-page .hero-service-point {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 7px;
+    min-height: 50px;
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  #main.service-page .hero-service-point .point-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+
+  #main.service-page .hero-service-point :is(.point-svg, .point-icon > svg) {
+    width: 17px;
+    height: 17px;
+  }
+
+  #main.service-page .hero-service-point strong {
+    font-size: 11.5px;
+    line-height: 1.22;
+  }
+
+  #main.service-page .hero-commerce,
+  #main.service-page .hero-commerce--banner {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    margin-top: 10px;
+  }
+
+  #main.service-page .hero-commerce .hero-actions {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  #main.service-page .hero-commerce .button,
+  #main.service-page .hero-consult-button {
+    min-height: 44px !important;
+    padding: 9px 11px;
+    font-size: 12px !important;
+  }
+
+  #main.service-page .hero-price,
+  #main.service-page .hero-price-inline {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 9px;
+    padding: 8px 11px;
+  }
+
+  #main.service-page .hero-price > span {
+    grid-column: 1 / -1;
+    font-size: 9px;
+  }
+
+  #main.service-page .hero-price strong,
+  #main.service-page .hero-price-inline strong {
+    font-size: 18px;
+  }
+
+  #main.service-page .hero-price-inline span {
+    margin: 0;
+  }
+
+  #main.service-page .service-hero-visual {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  #main.service-page :is(.hero-art-panel, .hero-banner-media, .hero-art-crop) {
+    height: 300px;
+    max-height: 300px;
+    aspect-ratio: auto;
+    border-radius: 17px;
+  }
+}

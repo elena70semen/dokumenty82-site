@@ -1,0 +1,104 @@
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const { chromium } = require("playwright");
+
+const root = path.resolve(__dirname, "..");
+const origin = "https://dokumenty82.test";
+const routes = [
+  "/registraciya-ip/", "/smena-yuridicheskogo-adresa-ooo/", "/smena-direktora-ooo/",
+  "/likvidaciya-ooo/", "/registraciya-ooo/", "/izmenenie-okved-ip/",
+  "/yuridicheskiy-adres-simferopol/", "/adres-egryul-direktor/",
+  "/dokumenty-dlya-banka-115-fz/", "/otvet-na-zapros-banka/", "/bank-i-115-fz/",
+  "/srochnye-voprosy/", "/registraciya-i-likvidaciya/", "/buhgalterskie-uslugi/",
+  "/buhgalterskoe-soprovozhdenie-ooo/", "/vosstanovlenie-buhucheta/",
+  "/otchetnost/", "/sdacha-otchetnosti-ip/",
+];
+const viewports = [
+  { width: 1440, height: 900, maxHero: 720, maxHeading: 48 },
+  { width: 1024, height: 900, maxHero: 720, maxHeading: 44 },
+  { width: 768, height: 900, maxHero: 1000, maxHeading: 42 },
+  { width: 390, height: 844, maxHero: 1150, maxHeading: 36 },
+];
+const mimeTypes = {
+  ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8",
+  ".js": "application/javascript; charset=utf-8", ".png": "image/png",
+  ".webp": "image/webp", ".jpg": "image/jpeg", ".svg": "image/svg+xml",
+  ".ico": "image/x-icon", ".woff2": "font/woff2", ".woff": "font/woff",
+};
+
+async function routeLocal(route) {
+  const request = route.request();
+  const url = new URL(request.url());
+  if (url.origin !== origin) return route.fulfill({ status: 204, body: "" });
+  if (request.method() !== "GET") return route.abort();
+  if (["/assets/metrika-goals.js", "/assets/crm-attribution.js"].includes(url.pathname)) {
+    return route.fulfill({ contentType: "application/javascript", body: "window.d82TrackGoal=function(){};window.d82GetAttribution=async()=>({});" });
+  }
+  const relative = decodeURIComponent(url.pathname).replace(/^\/+/, "");
+  let file = path.resolve(root, relative || "index.html");
+  if (!file.startsWith(root + path.sep) && file !== root) return route.abort();
+  if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");
+  if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return route.abort();
+  return route.fulfill({ contentType: mimeTypes[path.extname(file)] || "application/octet-stream", body: fs.readFileSync(file) });
+}
+
+(async () => {
+  const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL || "chrome", headless: true });
+  try {
+    const context = await browser.newContext({ viewport: viewports[0], serviceWorkers: "block" });
+    await context.route("**/*", routeLocal);
+    const page = await context.newPage();
+    const results = [];
+
+    for (const pathname of routes) {
+      await page.goto(origin + pathname, { waitUntil: "load" });
+      const pointCount = await page.locator("#main.service-page .hero-service-point").count();
+      assert.ok(pointCount >= 3, `${pathname} must keep its service points`);
+      assert.equal(
+        await page.locator("#main.service-page .hero-service-point small").count(),
+        pointCount,
+        `${pathname} must keep the supporting copy in the document`,
+      );
+
+      for (const viewport of viewports) {
+        await page.setViewportSize({ width: viewport.width, height: viewport.height });
+        await page.waitForTimeout(40);
+        await page.waitForFunction(() => [...document.querySelectorAll("#main.service-page .service-hero-visual img")]
+          .every((img) => img.complete && img.naturalWidth > 0));
+        const metric = await page.evaluate(() => {
+          const hero = document.querySelector("#main.service-page .service-hero");
+          const heading = hero.querySelector("h1");
+          const visual = hero.querySelector(".service-hero-visual");
+          const details = [...hero.querySelectorAll(".hero-service-point small")];
+          const accents = [...heading.querySelectorAll("span")];
+          const actions = [...hero.querySelectorAll(".hero-commerce .button")];
+          return {
+            heroHeight: hero.getBoundingClientRect().height,
+            headingSize: parseFloat(getComputedStyle(heading).fontSize),
+            visualHeight: visual.getBoundingClientRect().height,
+            hiddenDetails: details.every((node) => getComputedStyle(node).display === "none"),
+            visibleAccents: accents.every((node) => getComputedStyle(node).webkitTextFillColor !== "rgba(0, 0, 0, 0)"),
+            actionsFit: actions.every((node) => node.scrollWidth <= node.clientWidth + 1 && node.scrollHeight <= node.clientHeight + 1),
+            overflow: document.documentElement.scrollWidth - innerWidth,
+            imageLoaded: [...visual.querySelectorAll("img")].every((img) => img.complete && img.naturalWidth > 0),
+          };
+        });
+        assert.ok(metric.heroHeight <= viewport.maxHero, `${pathname} hero is ${metric.heroHeight}px at ${viewport.width}px`);
+        assert.ok(metric.headingSize <= viewport.maxHeading, `${pathname} heading is ${metric.headingSize}px at ${viewport.width}px`);
+        assert.ok(metric.visualHeight > 250, `${pathname} visual is too small at ${viewport.width}px`);
+        assert.equal(metric.hiddenDetails, true, `${pathname} supporting copy must move out of the first-screen hierarchy`);
+        assert.equal(metric.visibleAccents, true, `${pathname} heading accent is transparent at ${viewport.width}px`);
+        assert.equal(metric.actionsFit, true, `${pathname} action label is clipped at ${viewport.width}px`);
+        assert.equal(metric.imageLoaded, true, `${pathname} hero image failed at ${viewport.width}px`);
+        assert.ok(metric.overflow <= 1, `${pathname} horizontal overflow ${metric.overflow}px at ${viewport.width}px`);
+        results.push({ pathname, width: viewport.width, heroHeight: Math.round(metric.heroHeight) });
+      }
+    }
+
+    console.log(JSON.stringify({ result: "PASS", routes: routes.length, checks: results.length }));
+    await context.close();
+  } finally {
+    await browser.close();
+  }
+})().catch((error) => { console.error(error); process.exitCode = 1; });
