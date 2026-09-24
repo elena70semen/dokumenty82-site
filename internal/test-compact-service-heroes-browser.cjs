@@ -84,6 +84,10 @@ async function routeLocal(route) {
             number: card.querySelector(".bank-step-number").getBoundingClientRect(),
             icon: card.querySelector(".point-icon").getBoundingClientRect(),
           })) : [];
+          const bankStepCards = bankSteps ? [...bankSteps.querySelectorAll(".hero-service-point")].map((card) => card.getBoundingClientRect()) : [];
+          const bankStepGaps = bankStepCards.slice(1).map((card, index) => innerWidth >= 700
+            ? card.left - bankStepCards[index].right
+            : card.top - bankStepCards[index].bottom);
           return {
             heroHeight: hero.getBoundingClientRect().height,
             headingSize: parseFloat(getComputedStyle(heading).fontSize),
@@ -98,6 +102,7 @@ async function routeLocal(route) {
             bankStepsOutsideHero: !hero.querySelector(".bank-hero-steps") && !!bankSteps,
             bankStepsCenterDelta: bankSteps ? Math.abs(bankSteps.getBoundingClientRect().left + bankSteps.getBoundingClientRect().width / 2 - innerWidth / 2) : 0,
             bankStepPartsSeparate: bankStepParts.every(({ number, icon }) => number.right <= icon.left),
+            bankStepMinimumGap: bankStepGaps.length ? Math.min(...bankStepGaps) : 0,
             headingLineRatio: parseFloat(getComputedStyle(heading).lineHeight) / parseFloat(getComputedStyle(heading).fontSize),
             leadLineRatio: parseFloat(getComputedStyle(hero.querySelector(".service-lead")).lineHeight) / parseFloat(getComputedStyle(hero.querySelector(".service-lead")).fontSize),
             overflow: document.documentElement.scrollWidth - innerWidth,
@@ -120,6 +125,10 @@ async function routeLocal(route) {
           assert.equal(metric.bankStepsOutsideHero, true, `${pathname} steps must sit immediately below the hero at ${viewport.width}px`);
           assert.ok(metric.bankStepsCenterDelta <= 1, `${pathname} steps are ${metric.bankStepsCenterDelta}px off-center at ${viewport.width}px`);
           assert.equal(metric.bankStepPartsSeparate, true, `${pathname} step numbers overlap their icons at ${viewport.width}px`);
+          assert.ok(
+            metric.bankStepMinimumGap >= (viewport.width >= 1000 ? 80 : viewport.width >= 700 ? 16 : 10),
+            `${pathname} step gap is ${metric.bankStepMinimumGap}px at ${viewport.width}px`,
+          );
           if (viewport.width >= 1000) {
             assert.ok(metric.headingLineRatio >= 1.1, `${pathname} heading line-height is too tight at ${viewport.width}px`);
             assert.ok(metric.leadLineRatio >= 1.7, `${pathname} lead line-height is too tight at ${viewport.width}px`);

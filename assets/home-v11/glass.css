@@ -460,7 +460,8 @@ body:has(main[data-ui-version]) .ai-chat-widget span{width:28px;height:28px}
 #main.service-page.bank-115-hub-page .bank-hero-steps {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   width: calc(100% - 48px);
-  max-width: 760px;
+  max-width: 1000px;
+  gap: 18px;
   margin: 12px auto 0;
 }
 
@@ -492,6 +493,12 @@ body:has(main[data-ui-version]) .ai-chat-widget span{width:28px;height:28px}
 }
 
 @media (min-width: 1000px) {
+  #main.service-page.bank-115-hub-page .bank-hero-steps {
+    grid-template-columns: repeat(3, minmax(0, 250px));
+    justify-content: space-between;
+    gap: 32px;
+  }
+
   #main.service-page.bank-115-hub-page .service-hero-copy {
     align-self: stretch;
     display: grid;
@@ -721,7 +728,7 @@ body:has(main[data-ui-version]) .ai-chat-widget span{width:28px;height:28px}
     grid-template-columns: 1fr;
     width: calc(100% - 50px);
     max-width: 340px;
-    gap: 7px;
+    gap: 12px;
     margin-top: 12px;
   }
 }
