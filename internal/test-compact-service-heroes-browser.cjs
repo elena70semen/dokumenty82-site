@@ -15,8 +15,8 @@ const routes = [
   "/otchetnost/", "/sdacha-otchetnosti-ip/",
 ];
 const viewports = [
-  { width: 1440, height: 900, maxHero: 720, maxHeading: 48 },
-  { width: 1024, height: 900, maxHero: 720, maxHeading: 44 },
+  { width: 1440, height: 900, maxHero: 720, maxHeading: 48, maxVisualRightGap: 45 },
+  { width: 1024, height: 900, maxHero: 720, maxHeading: 44, maxVisualRightGap: 22 },
   { width: 768, height: 900, maxHero: 1000, maxHeading: 42 },
   { width: 390, height: 844, maxHero: 1150, maxHeading: 36 },
 ];
@@ -68,18 +68,25 @@ async function routeLocal(route) {
           .every((img) => img.complete && img.naturalWidth > 0));
         const metric = await page.evaluate(() => {
           const hero = document.querySelector("#main.service-page .service-hero");
+          const frame = hero.querySelector(".service-hero-frame");
           const heading = hero.querySelector("h1");
           const visual = hero.querySelector(".service-hero-visual");
           const details = [...hero.querySelectorAll(".hero-service-point small")];
           const accents = [...heading.querySelectorAll("span")];
           const actions = [...hero.querySelectorAll(".hero-commerce .button")];
+          const priceTiers = [...hero.querySelectorAll(".hero-price-inline .price-tier")];
+          const tierTops = priceTiers.map((node) => node.getBoundingClientRect().top);
           return {
             heroHeight: hero.getBoundingClientRect().height,
             headingSize: parseFloat(getComputedStyle(heading).fontSize),
             visualHeight: visual.getBoundingClientRect().height,
+            visualRightGap: frame.getBoundingClientRect().right - visual.getBoundingClientRect().right,
+            maxActionHeight: Math.max(...actions.map((node) => node.getBoundingClientRect().height)),
             hiddenDetails: details.every((node) => getComputedStyle(node).display === "none"),
             visibleAccents: accents.every((node) => getComputedStyle(node).webkitTextFillColor !== "rgba(0, 0, 0, 0)"),
             actionsFit: actions.every((node) => node.scrollWidth <= node.clientWidth + 1 && node.scrollHeight <= node.clientHeight + 1),
+            priceTierSpread: tierTops.length ? Math.max(...tierTops) - Math.min(...tierTops) : 0,
+            priceHeight: hero.querySelector(".hero-price-inline")?.getBoundingClientRect().height || 0,
             overflow: document.documentElement.scrollWidth - innerWidth,
             imageLoaded: [...visual.querySelectorAll("img")].every((img) => img.complete && img.naturalWidth > 0),
           };
@@ -87,9 +94,17 @@ async function routeLocal(route) {
         assert.ok(metric.heroHeight <= viewport.maxHero, `${pathname} hero is ${metric.heroHeight}px at ${viewport.width}px`);
         assert.ok(metric.headingSize <= viewport.maxHeading, `${pathname} heading is ${metric.headingSize}px at ${viewport.width}px`);
         assert.ok(metric.visualHeight > 250, `${pathname} visual is too small at ${viewport.width}px`);
+        if (viewport.maxVisualRightGap) {
+          assert.ok(metric.visualRightGap <= viewport.maxVisualRightGap, `${pathname} visual right gap is ${metric.visualRightGap}px at ${viewport.width}px`);
+        }
+        assert.ok(metric.maxActionHeight <= 62, `${pathname} action height is ${metric.maxActionHeight}px at ${viewport.width}px`);
         assert.equal(metric.hiddenDetails, true, `${pathname} supporting copy must move out of the first-screen hierarchy`);
         assert.equal(metric.visibleAccents, true, `${pathname} heading accent is transparent at ${viewport.width}px`);
         assert.equal(metric.actionsFit, true, `${pathname} action label is clipped at ${viewport.width}px`);
+        if (pathname === "/bank-i-115-fz/") {
+          assert.ok(metric.priceTierSpread <= 1, `${pathname} price tiers are not horizontal at ${viewport.width}px`);
+          assert.ok(metric.priceHeight <= 62, `${pathname} horizontal price bar is ${metric.priceHeight}px at ${viewport.width}px`);
+        }
         assert.equal(metric.imageLoaded, true, `${pathname} hero image failed at ${viewport.width}px`);
         assert.ok(metric.overflow <= 1, `${pathname} horizontal overflow ${metric.overflow}px at ${viewport.width}px`);
         results.push({ pathname, width: viewport.width, heroHeight: Math.round(metric.heroHeight) });

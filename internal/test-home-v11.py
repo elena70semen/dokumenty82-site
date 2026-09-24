@@ -84,7 +84,7 @@ class HomeV11ContractTest(unittest.TestCase):
         self.assertEqual(len(self.document.xpath("//input[@type='file']")), 0)
         self.assertEqual(
             self.document.xpath("//link[contains(@href, '/assets/home-v11/glass.css')]/@href"),
-            ["/assets/home-v11/glass.css?v=20260924-hero1"],
+            ["/assets/home-v11/glass.css?v=20260924-hero2"],
         )
         self.assertEqual(
             normalized_text(self.main.xpath("//*[@data-copy='services.5.price']")[0]),
