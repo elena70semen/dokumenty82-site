@@ -147,6 +147,49 @@ body {
     display: flex;
   }
 }
+
+/* Keep every numbered process marker centered over the card it labels. */
+@media (min-width: 700px) {
+  #main :is(.process-grid, .steps) {
+    --process-column-gap: 24px;
+  }
+
+  #main .steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  #main :is(.process-grid, .steps) .step-rail {
+    justify-content: center !important;
+  }
+
+  #main :is(.process-grid, .steps) .step:not(:last-child) .step-rail::after {
+    left: calc(50% + 33px) !important;
+    right: calc(-50% - var(--process-column-gap) + 33px) !important;
+  }
+
+  #main :is(.process-grid, .steps) .step:not(:last-child) .step-rail::before {
+    right: calc(-50% - var(--process-column-gap) + 35px) !important;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  #main :is(.process-grid, .steps) {
+    --process-column-gap: 20px;
+  }
+
+  #main .steps {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 999px) {
+  #main .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
 /* Compatibility polish shared by every redesigned page. */
 main[data-ui-version] .request-panel>.request-form.crm-lead-form{border:0;border-radius:0;box-shadow:none}
 main[data-ui-version] .news-card.glass-card{border-color:#D5E6ED}
