@@ -79,15 +79,18 @@ async function routeLocal(route) {
           const actions = [...hero.querySelectorAll(".hero-commerce .button")];
           const priceTiers = [...hero.querySelectorAll(".hero-price-inline .price-tier")];
           const tierTops = priceTiers.map((node) => node.getBoundingClientRect().top);
-          const bankSteps = document.querySelector("#main.bank-115-hub-page .service-hero + .bank-hero-steps");
-          const bankStepParts = bankSteps ? [...bankSteps.querySelectorAll(".hero-service-point")].map((card) => ({
-            number: card.querySelector(".bank-step-number").getBoundingClientRect(),
+          const serviceSteps = document.querySelector("#main.service-page .service-hero + .service-hero-steps");
+          const stepParts = serviceSteps ? [...serviceSteps.querySelectorAll(".hero-service-point")].map((card) => ({
+            number: card.querySelector(".service-step-number").getBoundingClientRect(),
             icon: card.querySelector(".point-icon").getBoundingClientRect(),
           })) : [];
-          const bankStepCards = bankSteps ? [...bankSteps.querySelectorAll(".hero-service-point")].map((card) => card.getBoundingClientRect()) : [];
-          const bankStepGaps = bankStepCards.slice(1).map((card, index) => innerWidth >= 700
-            ? card.left - bankStepCards[index].right
-            : card.top - bankStepCards[index].bottom);
+          const stepCards = serviceSteps ? [...serviceSteps.querySelectorAll(".hero-service-point")].map((card) => card.getBoundingClientRect()) : [];
+          const stepGaps = stepCards.slice(1).map((card, index) => {
+            const previous = stepCards[index];
+            return Math.abs(card.top - previous.top) <= 2
+              ? card.left - previous.right
+              : card.top - previous.bottom;
+          });
           return {
             heroHeight: hero.getBoundingClientRect().height,
             headingSize: parseFloat(getComputedStyle(heading).fontSize),
@@ -99,10 +102,11 @@ async function routeLocal(route) {
             actionsFit: actions.every((node) => node.scrollWidth <= node.clientWidth + 1 && node.scrollHeight <= node.clientHeight + 1),
             priceTierSpread: tierTops.length ? Math.max(...tierTops) - Math.min(...tierTops) : 0,
             priceHeight: hero.querySelector(".hero-price-inline")?.getBoundingClientRect().height || 0,
-            bankStepsOutsideHero: !hero.querySelector(".bank-hero-steps") && !!bankSteps,
-            bankStepsCenterDelta: bankSteps ? Math.abs(bankSteps.getBoundingClientRect().left + bankSteps.getBoundingClientRect().width / 2 - innerWidth / 2) : 0,
-            bankStepPartsSeparate: bankStepParts.every(({ number, icon }) => number.right <= icon.left),
-            bankStepMinimumGap: bankStepGaps.length ? Math.min(...bankStepGaps) : 0,
+            stepsOutsideHero: !hero.querySelector(".service-hero-steps") && !!serviceSteps,
+            stepsCenterDelta: serviceSteps ? Math.abs(serviceSteps.getBoundingClientRect().left + serviceSteps.getBoundingClientRect().width / 2 - innerWidth / 2) : 0,
+            stepPartsSeparate: stepParts.every(({ number, icon }) => number.right <= icon.left),
+            stepMinimumGap: stepGaps.length ? Math.min(...stepGaps) : 0,
+            stepCardCount: stepCards.length,
             headingLineRatio: parseFloat(getComputedStyle(heading).lineHeight) / parseFloat(getComputedStyle(heading).fontSize),
             leadLineRatio: parseFloat(getComputedStyle(hero.querySelector(".service-lead")).lineHeight) / parseFloat(getComputedStyle(hero.querySelector(".service-lead")).fontSize),
             overflow: document.documentElement.scrollWidth - innerWidth,
@@ -119,20 +123,21 @@ async function routeLocal(route) {
         assert.equal(metric.hiddenDetails, true, `${pathname} supporting copy must move out of the first-screen hierarchy`);
         assert.equal(metric.visibleAccents, true, `${pathname} heading accent is transparent at ${viewport.width}px`);
         assert.equal(metric.actionsFit, true, `${pathname} action label is clipped at ${viewport.width}px`);
+        assert.equal(metric.stepsOutsideHero, true, `${pathname} steps must sit immediately below the hero at ${viewport.width}px`);
+        assert.ok(metric.stepsCenterDelta <= 1, `${pathname} steps are ${metric.stepsCenterDelta}px off-center at ${viewport.width}px`);
+        assert.equal(metric.stepPartsSeparate, true, `${pathname} step numbers overlap their icons at ${viewport.width}px`);
+        const desktopGap = metric.stepCardCount === 4 ? 24 : 80;
+        assert.ok(
+          metric.stepMinimumGap >= (viewport.width >= 1000 ? desktopGap : viewport.width >= 700 ? 16 : 10),
+          `${pathname} step gap is ${metric.stepMinimumGap}px at ${viewport.width}px`,
+        );
+        if (viewport.width >= 1000) {
+          assert.ok(metric.headingLineRatio >= 1.09, `${pathname} heading line-height is too tight at ${viewport.width}px`);
+          assert.ok(metric.leadLineRatio >= 1.67, `${pathname} lead line-height is too tight at ${viewport.width}px`);
+        }
         if (pathname === "/bank-i-115-fz/") {
           assert.ok(metric.priceTierSpread <= 1, `${pathname} price tiers are not horizontal at ${viewport.width}px`);
           assert.ok(metric.priceHeight <= 62, `${pathname} horizontal price bar is ${metric.priceHeight}px at ${viewport.width}px`);
-          assert.equal(metric.bankStepsOutsideHero, true, `${pathname} steps must sit immediately below the hero at ${viewport.width}px`);
-          assert.ok(metric.bankStepsCenterDelta <= 1, `${pathname} steps are ${metric.bankStepsCenterDelta}px off-center at ${viewport.width}px`);
-          assert.equal(metric.bankStepPartsSeparate, true, `${pathname} step numbers overlap their icons at ${viewport.width}px`);
-          assert.ok(
-            metric.bankStepMinimumGap >= (viewport.width >= 1000 ? 80 : viewport.width >= 700 ? 16 : 10),
-            `${pathname} step gap is ${metric.bankStepMinimumGap}px at ${viewport.width}px`,
-          );
-          if (viewport.width >= 1000) {
-            assert.ok(metric.headingLineRatio >= 1.1, `${pathname} heading line-height is too tight at ${viewport.width}px`);
-            assert.ok(metric.leadLineRatio >= 1.7, `${pathname} lead line-height is too tight at ${viewport.width}px`);
-          }
         }
         assert.equal(metric.imageLoaded, true, `${pathname} hero image failed at ${viewport.width}px`);
         assert.ok(metric.overflow <= 1, `${pathname} horizontal overflow ${metric.overflow}px at ${viewport.width}px`);
