@@ -468,6 +468,51 @@ body:has(main[data-ui-version]) .ai-chat-widget span{width:28px;height:28px}
   padding-bottom: 0;
 }
 
+#main.service-page.bank-115-hub-page .bank-hero-steps .hero-service-point {
+  grid-template-columns: 24px 36px minmax(0, 1fr);
+  gap: 8px;
+}
+
+#main.service-page.bank-115-hub-page .bank-hero-steps .point-icon::after {
+  display: none;
+}
+
+#main.service-page.bank-115-hub-page .bank-step-number {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 1000px) {
+  #main.service-page.bank-115-hub-page .service-hero-copy {
+    align-self: stretch;
+    display: grid;
+    align-content: center;
+    gap: 20px;
+  }
+
+  #main.service-page.bank-115-hub-page :is(.service-eyebrow, .service-lead, .hero-commerce) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  #main.service-page.bank-115-hub-page .service-hero h1 {
+    line-height: 1.12;
+  }
+
+  #main.service-page.bank-115-hub-page .service-lead {
+    line-height: 1.72;
+  }
+}
+
 @media (min-width: 1200px) {
   #main.service-page .service-hero-visual {
     transform: translateX(32px);

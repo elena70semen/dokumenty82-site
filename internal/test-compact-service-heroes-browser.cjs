@@ -80,6 +80,10 @@ async function routeLocal(route) {
           const priceTiers = [...hero.querySelectorAll(".hero-price-inline .price-tier")];
           const tierTops = priceTiers.map((node) => node.getBoundingClientRect().top);
           const bankSteps = document.querySelector("#main.bank-115-hub-page .service-hero + .bank-hero-steps");
+          const bankStepParts = bankSteps ? [...bankSteps.querySelectorAll(".hero-service-point")].map((card) => ({
+            number: card.querySelector(".bank-step-number").getBoundingClientRect(),
+            icon: card.querySelector(".point-icon").getBoundingClientRect(),
+          })) : [];
           return {
             heroHeight: hero.getBoundingClientRect().height,
             headingSize: parseFloat(getComputedStyle(heading).fontSize),
@@ -93,6 +97,9 @@ async function routeLocal(route) {
             priceHeight: hero.querySelector(".hero-price-inline")?.getBoundingClientRect().height || 0,
             bankStepsOutsideHero: !hero.querySelector(".bank-hero-steps") && !!bankSteps,
             bankStepsCenterDelta: bankSteps ? Math.abs(bankSteps.getBoundingClientRect().left + bankSteps.getBoundingClientRect().width / 2 - innerWidth / 2) : 0,
+            bankStepPartsSeparate: bankStepParts.every(({ number, icon }) => number.right <= icon.left),
+            headingLineRatio: parseFloat(getComputedStyle(heading).lineHeight) / parseFloat(getComputedStyle(heading).fontSize),
+            leadLineRatio: parseFloat(getComputedStyle(hero.querySelector(".service-lead")).lineHeight) / parseFloat(getComputedStyle(hero.querySelector(".service-lead")).fontSize),
             overflow: document.documentElement.scrollWidth - innerWidth,
             imageLoaded: [...visual.querySelectorAll("img")].every((img) => img.complete && img.naturalWidth > 0),
           };
@@ -112,6 +119,11 @@ async function routeLocal(route) {
           assert.ok(metric.priceHeight <= 62, `${pathname} horizontal price bar is ${metric.priceHeight}px at ${viewport.width}px`);
           assert.equal(metric.bankStepsOutsideHero, true, `${pathname} steps must sit immediately below the hero at ${viewport.width}px`);
           assert.ok(metric.bankStepsCenterDelta <= 1, `${pathname} steps are ${metric.bankStepsCenterDelta}px off-center at ${viewport.width}px`);
+          assert.equal(metric.bankStepPartsSeparate, true, `${pathname} step numbers overlap their icons at ${viewport.width}px`);
+          if (viewport.width >= 1000) {
+            assert.ok(metric.headingLineRatio >= 1.1, `${pathname} heading line-height is too tight at ${viewport.width}px`);
+            assert.ok(metric.leadLineRatio >= 1.7, `${pathname} lead line-height is too tight at ${viewport.width}px`);
+          }
         }
         assert.equal(metric.imageLoaded, true, `${pathname} hero image failed at ${viewport.width}px`);
         assert.ok(metric.overflow <= 1, `${pathname} horizontal overflow ${metric.overflow}px at ${viewport.width}px`);
