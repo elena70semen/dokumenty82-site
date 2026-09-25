@@ -1,4 +1,57 @@
 /* Shared compact hero for the public pages that predate the service-page redesign. */
+main.remaining-page {
+  --section-title: #0b2440;
+  --content-rule: #d7e6ee;
+  color: #17354f;
+  background: #fff;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+:root body main.remaining-page > .section {
+  margin-top: clamp(28px, 4vw, 64px);
+  border: 1px solid #d7e6ee;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #fff 0%, #fcfeff 100%);
+  box-shadow: 0 3px 6px -4px rgb(11 36 64 / 10%), 0 18px 34px -28px rgb(11 36 64 / 36%);
+}
+main.remaining-page > .section::after { opacity: 0; }
+main.remaining-page > .section h2,
+main.remaining-page > .remaining-hero-followup h2 {
+  color: #0b2440;
+  background: none;
+  -webkit-text-fill-color: #0b2440;
+  font-weight: 720;
+  letter-spacing: -.03em;
+  line-height: 1.16;
+}
+main.remaining-page > .section h3 {
+  color: #17354f;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+main.remaining-page > .section p { color: #536b81; line-height: 1.7; }
+main.remaining-page > .section .eyebrow {
+  border-color: #cbe6ec;
+  border-radius: 9px;
+  background: #f0fafb;
+  box-shadow: none;
+  color: #007783;
+  font-weight: 700;
+  letter-spacing: .045em;
+}
+main.remaining-page > .section .eyebrow::before { background: #1fb6c1; box-shadow: none; }
+:root body main.remaining-page > .section :is(.glass-card, .news-card, .service-tree-group, .tax-calendar-entry, .glass-panel) {
+  border-color: #d7e6ee;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff, #fbfdfe);
+  box-shadow: 0 3px 6px -4px rgb(11 36 64 / 10%), 0 18px 34px -28px rgb(11 36 64 / 36%);
+}
+:root body main.remaining-page > :is(.section, .remaining-hero-followup) :is(.compact-list a, .compact-list .compact-row, .home-service-shortcuts a, .insight-link-list a, .news-related, .lead-capture-form) {
+  border-color: #d7e6ee;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #fff, #fbfdfe);
+  box-shadow: 0 3px 6px -4px rgb(11 36 64 / 10%), 0 16px 30px -26px rgb(11 36 64 / 34%);
+}
+main.remaining-page .button { border-radius: 11px; font-weight: 700; }
 main > .hero.remaining-hero {
   position: relative;
   display: grid;
@@ -206,7 +259,7 @@ main > .hero.remaining-hero .remaining-hero-diagram-steps b {
   font-size: 9px;
   font-variant-numeric: tabular-nums;
 }
-main > .remaining-hero-followup {
+:root body main.remaining-page > .remaining-hero-followup {
   width: min(1180px, calc(100% - 48px));
   max-width: none;
   margin: 24px auto 0;

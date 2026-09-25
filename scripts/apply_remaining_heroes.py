@@ -19,6 +19,18 @@ IMAGE_VARIANTS = {
 
 def tidy(source: str) -> str:
     return re.sub(r"(?m)^[ \t]+$", "", source)
+
+
+def mark_main(source: str) -> str:
+    match = re.search(r"<main\b[^>]*>", source)
+    if match is None or "remaining-page" in match.group():
+        return source
+    opening = match.group()
+    if 'class="' in opening:
+        opening = opening.replace('class="', 'class="remaining-page ', 1)
+    else:
+        opening = opening.replace("<main", '<main class="remaining-page"', 1)
+    return source[: match.start()] + opening + source[match.end() :]
 LABELS: dict[str, tuple[str, tuple[str, str, str]]] = {
     "akcii": ("Акции для бизнеса", ("Проверка условий", "Подбор услуги", "Ясная стоимость")),
     "ausn-krym": ("АУСН в Крыму", ("Право на режим", "Расчёт налогов", "План перехода")),
@@ -199,7 +211,7 @@ def apply_page(path: Path) -> None:
         source = source[:start] + section + source[end:]
     if STYLESHEET not in source:
         source = source.replace("</head>", f"  {STYLESHEET}\n  </head>", 1)
-    path.write_text(tidy(source), encoding="utf-8", newline="\n")
+    path.write_text(tidy(mark_main(source)), encoding="utf-8", newline="\n")
 
 
 def move_hero_details(source: str) -> str:
@@ -253,7 +265,7 @@ def main() -> None:
                 if count != 1:
                     raise ValueError(f"{slug}: visual figure missing")
             source = move_hero_details(source)
-            path.write_text(tidy(source), encoding="utf-8", newline="\n")
+            path.write_text(tidy(mark_main(source)), encoding="utf-8", newline="\n")
             continue
         first = re.search(r"<main\b[^>]*>[\s\S]*?<section\b[^>]*>", source)
         if first is None:
