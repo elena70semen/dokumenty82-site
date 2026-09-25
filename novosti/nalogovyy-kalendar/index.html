@@ -31,9 +31,10 @@
     <link rel="stylesheet" href="/assets/footer.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/monochrome.css?v=20260914-mono1" />
     <link rel="stylesheet" href="/assets/home-v11/shell.css?v=20260924-shell1" />
+    <link rel="stylesheet" href="/assets/remaining-heroes-v1/page.css?v=20260925-1" />
   </head>
   <body>
-    
+
     <header class="site-header">
       <a class="brand" href="/" aria-label="Документы для бизнеса - на главную">
         <img src="/assets/images/brand-logo-open-book.png" alt="" />
@@ -82,19 +83,21 @@
       </details>
     </header>
     <main>
-    <section class="hero hero-inner calendar-hero">
+    <section class="hero hero-inner calendar-hero remaining-hero">
       <div class="glass-panel hero-copy-panel route-graphic-panel">
         <p class="eyebrow">Контроль сроков</p>
         <h1>Налоговый календарь для ИП и организаций</h1>
         <p>Ближайшие даты отчетности, уведомлений и платежей собраны в одном месте. Выберите месяц и тип бизнеса, чтобы оставить только относящиеся к вам контрольные точки.</p>
         <div class="actions"><a class="button button-lime" href="#calendar">Показать сроки</a><a class="button button-ghost" href="/novosti/">Все новости</a></div>
       </div>
-      <aside class="calendar-hero-status" aria-label="Ближайший налоговый срок">
+
+        <figure class="remaining-hero-visual"><img src="/assets/remaining-heroes-v1/novosti-nalogovyy-kalendar-v2.webp" srcset="/assets/remaining-heroes-v1/novosti-nalogovyy-kalendar-v2-640.webp 640w, /assets/remaining-heroes-v1/novosti-nalogovyy-kalendar-v2.webp 1024w" sizes="(max-width: 980px) calc(100vw - 76px), (max-width: 1536px) 45vw, 680px" alt="Иллюстрация к теме: Налоговый календарь для ИП и организаций" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async" /><div class="remaining-hero-diagram"><strong class="remaining-hero-diagram-title">Налоговый календарь</strong><div class="remaining-hero-diagram-steps"><span><b>01</b>Сроки отчётов</span><span><b>02</b>Сроки платежей</span><span><b>03</b>План на месяц</span></div></div></figure>
+      </section>
+      <aside class="calendar-hero-status remaining-hero-followup" aria-label="Ближайший налоговый срок">
         <time datetime="2026-08-25">25</time>
         <strong>августа 2026 года</strong>
         <span>Ближайший общий срок для уведомлений и части отчетности. Состав обязанностей зависит от режима, работников и операций.</span>
       </aside>
-    </section>
     <section class="section" id="calendar" data-tax-calendar>
       <div class="section-header">
         <p class="eyebrow">Август — сентябрь 2026</p>
@@ -202,7 +205,7 @@
       </div>
     </section>
   </main>
-    
+
     <footer class="site-footer footer-compact" id="site-footer">
       <div class="footer-compact-main">
         <div class="footer-brand">
