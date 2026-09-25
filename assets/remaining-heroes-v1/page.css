@@ -259,6 +259,68 @@ main > .hero.remaining-hero .remaining-hero-diagram-steps b {
   font-size: 9px;
   font-variant-numeric: tabular-nums;
 }
+/* Live, page-specific copy belongs to the illustration, not to a new stock photo. */
+main > .hero.remaining-hero .remaining-hero-art-text {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 19%;
+  width: min(47%, 304px);
+  padding: clamp(15px, 1.7vw, 24px);
+  transform: translateY(-50%) rotate(-1deg);
+  border: 1px solid rgb(255 255 255 / 95%);
+  border-radius: 17px;
+  background: linear-gradient(138deg, rgb(255 255 255 / 96%), rgb(245 252 254 / 87%));
+  -webkit-backdrop-filter: blur(19px) saturate(1.15);
+  backdrop-filter: blur(19px) saturate(1.15);
+  box-shadow: 0 25px 38px -22px rgb(11 36 64 / 42%), 0 0 0 1px rgb(93 170 194 / 18%), inset 0 2px 0 #fff;
+  color: #0b2440;
+  pointer-events: none;
+}
+main > .hero.remaining-hero .remaining-art-kicker {
+  display: block;
+  margin: 0 0 9px;
+  color: #007783;
+  font: 760 10px/1.25 Inter, Arial, sans-serif;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+}
+main > .hero.remaining-hero .remaining-hero-art-text strong {
+  display: block;
+  margin: 0;
+  color: #0b2440;
+  font: 760 clamp(15px, 1.55vw, 20px)/1.2 Inter, Arial, sans-serif;
+  letter-spacing: -.025em;
+}
+main > .hero.remaining-hero .remaining-hero-art-text ul {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 13px 0 0;
+  border-top: 1px solid #cde4ec;
+  list-style: none;
+}
+main > .hero.remaining-hero .remaining-hero-art-text li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0;
+  color: #365770;
+  font: 650 clamp(10px, .95vw, 12px)/1.35 Inter, Arial, sans-serif;
+}
+main > .hero.remaining-hero .remaining-hero-art-text li span {
+  display: grid;
+  width: 17px;
+  height: 17px;
+  flex: none;
+  place-items: center;
+  border-radius: 5px;
+  background: #14aab5;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
 :root body main.remaining-page > .remaining-hero-followup {
   width: min(1180px, calc(100% - 48px));
   max-width: none;
@@ -328,6 +390,12 @@ main > .remaining-hero-followup.offer-toc { padding: 22px 28px; }
   main > .hero.remaining-hero .remaining-hero-diagram-steps { gap: 4px; }
   main > .hero.remaining-hero .remaining-hero-diagram-steps span { min-height: 46px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; padding: 5px 6px; border-radius: 7px; font-size: 9px; }
   main > .hero.remaining-hero .remaining-hero-diagram-steps b { width: 16px; height: 16px; border-radius: 5px; font-size: 7px; }
+  main > .hero.remaining-hero .remaining-hero-art-text { right: 9px; width: min(72%, 230px); padding: 11px 12px; border-radius: 11px; }
+  main > .hero.remaining-hero .remaining-art-kicker { margin-bottom: 6px; font-size: 8px; letter-spacing: .06em; }
+  main > .hero.remaining-hero .remaining-hero-art-text strong { font-size: 13px; line-height: 1.18; }
+  main > .hero.remaining-hero .remaining-hero-art-text ul { gap: 5px; margin-top: 8px; padding-top: 8px; }
+  main > .hero.remaining-hero .remaining-hero-art-text li { gap: 6px; font-size: 9.5px; line-height: 1.25; }
+  main > .hero.remaining-hero .remaining-hero-art-text li span { width: 13px; height: 13px; border-radius: 3px; font-size: 9px; }
   main > .remaining-hero-followup { width: calc(100% - 28px); margin-top: 16px; border-radius: 18px; }
   main > .remaining-hero-details { width: calc(100% - 28px); margin-top: 14px; padding: 14px 16px; }
 }

@@ -255,7 +255,7 @@ def main() -> None:
                     f"/assets/remaining-heroes-v1/{IMAGE_VARIANTS[slug]}",
                     source,
                 )
-            if slug in LABELS and "remaining-hero-diagram" not in source:
+            if slug in LABELS and "remaining-hero-diagram" not in source and "remaining-hero-art-text" not in source:
                 source, count = re.subn(
                     r'(<figure class="remaining-hero-visual">[\s\S]*?)(</figure>)',
                     lambda match: match.group(1) + diagram(slug) + match.group(2),

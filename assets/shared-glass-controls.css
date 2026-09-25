@@ -1,0 +1,89 @@
+/* Glass treatment for the existing header and buttons; no layout changes. */
+:root body .uh {
+  background: linear-gradient(180deg, rgb(255 255 255 / 94%), rgb(244 250 254 / 83%));
+  border-bottom: 1px solid rgb(172 210 225 / 72%);
+  -webkit-backdrop-filter: blur(26px) saturate(1.24);
+  backdrop-filter: blur(26px) saturate(1.24);
+  box-shadow: 0 16px 34px -30px rgb(11 36 64 / 45%), inset 0 1px 0 #fff;
+}
+:root body .uh .uh-nav {
+  border-color: #acd4e2;
+  background: linear-gradient(142deg, rgb(224 246 253 / 92%), rgb(255 255 255 / 75%) 52%, rgb(213 239 249 / 78%));
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  backdrop-filter: blur(20px) saturate(1.2);
+  box-shadow: 0 14px 26px -20px rgb(11 62 91 / 45%), inset 0 2px 0 rgb(255 255 255 / 98%), inset 0 -2px 0 rgb(103 183 211 / 22%);
+}
+:root body .uh :is(.uh-navlink, .uh-channel, .uh-menu) {
+  border-color: #b7d7e5;
+  background: linear-gradient(148deg, rgb(255 255 255 / 98%) 0%, rgb(238 250 254 / 78%) 60%, rgb(220 241 250 / 72%) 100%);
+  -webkit-backdrop-filter: blur(14px) saturate(1.18);
+  backdrop-filter: blur(14px) saturate(1.18);
+  box-shadow: 0 12px 20px -17px rgb(11 69 105 / 56%), inset 0 1px 0 #fff, inset 0 -1px 0 rgb(59 153 187 / 16%);
+  color: #0b2440;
+}
+:root body .uh .uh-navlink[aria-current="page"] {
+  border-color: #7bbfce;
+  background: linear-gradient(145deg, #fff, #dff5fa);
+  box-shadow: 0 12px 22px -18px rgb(0 119 131 / 50%), inset 0 1px 0 #fff, inset 0 -2px 0 rgb(31 182 193 / 24%);
+}
+:root body .uh .uh-navlink.uh-action,
+:root body .uh a.uh-navlink.uh-action:visited {
+  border-color: #81c9d6;
+  background: linear-gradient(135deg, rgb(245 253 255 / 97%), rgb(205 238 247 / 92%));
+  box-shadow: 0 13px 24px -18px rgb(0 109 136 / 52%), inset 0 1px 0 #fff, inset 0 -2px 0 rgb(31 182 193 / 32%);
+  color: #0b2440 !important;
+}
+:root body .uh .uh-cta-arrow {
+  border: 1px solid rgb(48 168 191 / 44%);
+  background: linear-gradient(140deg, #fff, #9de3ed);
+  box-shadow: 0 7px 15px -12px rgb(0 119 131 / 80%), inset 0 1px 0 #fff;
+  color: #0b2440;
+}
+:root body .uh :is(.uh-channel, .uh-phone, .uh-menu) {
+  box-shadow: 0 12px 22px -18px rgb(11 69 105 / 48%), inset 0 1px 0 #fff;
+}
+:root body .uh :is(.uh-navlink, .uh-channel, .uh-menu):is(:hover, :focus-visible) {
+  border-color: #65b6c8;
+  background: linear-gradient(145deg, #fff, #dff5fa);
+  box-shadow: 0 17px 25px -18px rgb(0 104 138 / 46%), inset 0 1px 0 #fff;
+}
+
+:root body #main .button,
+:root body main .button {
+  border: 1px solid #8fc6d5 !important;
+  background: linear-gradient(145deg, rgb(255 255 255 / 98%), rgb(230 248 253 / 85%) 65%, rgb(209 239 249 / 78%)) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.18);
+  backdrop-filter: blur(14px) saturate(1.18);
+  box-shadow: 0 18px 25px -21px rgb(9 79 114 / 58%), inset 0 2px 0 #fff, inset 0 -2px 0 rgb(81 164 194 / 18%) !important;
+  color: #0b2440 !important;
+  text-shadow: none;
+  transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+:root body #main .button :is(svg, i),
+:root body main .button :is(svg, i) { color: #007783; }
+:root body #main .button:is(:hover, :focus-visible),
+:root body main .button:is(:hover, :focus-visible) {
+  border-color: #56aec0 !important;
+  background: linear-gradient(145deg, #fff, #d6f3f9) !important;
+  box-shadow: 0 22px 29px -22px rgb(0 102 139 / 57%), inset 0 2px 0 #fff, inset 0 -2px 0 rgb(31 182 193 / 24%) !important;
+  color: #0b2440 !important;
+  transform: translateY(-1px);
+}
+:root body #main .button:is(.button-primary, .button-lime),
+:root body main .button:is(.button-primary, .button-lime) {
+  border-color: #6ebdcd !important;
+  background: linear-gradient(135deg, #f9feff, #bfeaf4) !important;
+  color: #0b2440 !important;
+  font-weight: 740;
+}
+:root body #main .button:is(.button-primary, .button-lime):is(:hover, :focus-visible),
+:root body main .button:is(.button-primary, .button-lime):is(:hover, :focus-visible) {
+  background: linear-gradient(135deg, #fff, #aee3ef) !important;
+  color: #0b2440 !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root body #main .button, :root body main .button { transition: none; }
+}
+@media print {
+  :root body .uh, :root body .uh .uh-nav, :root body main .button { background: #fff; box-shadow: none; }
+}
