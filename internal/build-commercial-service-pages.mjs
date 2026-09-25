@@ -353,7 +353,6 @@ const serviceSchema = (page) => {
         sameAs: [
           "https://yandex.ru/maps/org/1302424560/",
           "https://t.me/+79789987222",
-          "https://max.ru/+79789640639",
         ],
       },
       {

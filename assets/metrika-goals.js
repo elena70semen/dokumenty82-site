@@ -77,10 +77,18 @@
       if (value && !stored[key]) stored[key] = value.slice(0, 500);
     });
     if (!stored.landing_page) {
-      stored.landing_page = (window.location.pathname + window.location.search).slice(0, 1000);
+      const allowedQuery = new URLSearchParams();
+      ATTRIBUTION_QUERY_KEYS.forEach(function (key) {
+        const value = query.get(key);
+        if (value) allowedQuery.set(key, value.slice(0, 500));
+      });
+      stored.landing_page = (window.location.pathname + (allowedQuery.size ? "?" + allowedQuery.toString() : "")).slice(0, 1000);
     }
     if (!stored.referrer && document.referrer) {
-      stored.referrer = document.referrer.slice(0, 1000);
+      try {
+        const referrer = new URL(document.referrer);
+        stored.referrer = (referrer.origin + referrer.pathname).slice(0, 1000);
+      } catch (_) {}
     }
     storeAttribution(stored);
     return stored;

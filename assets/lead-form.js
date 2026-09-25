@@ -213,6 +213,7 @@
     const form = document.querySelector('#promotion-contact form[data-lead-form="amo"]');
     const select = form && form.querySelector('select[name="task_type"]');
     if (!select) return;
+    const offerId = form.querySelector('input[name="offer_id"]');
 
     document.querySelectorAll("[data-promotion]").forEach(function (link) {
       link.addEventListener("click", function () {
@@ -220,7 +221,12 @@
         if (!promotion) return;
         select.value = promotion;
         select.dispatchEvent(new Event("change", { bubbles: true }));
+        if (offerId) offerId.value = String(link.dataset.promotionId || "").trim();
       });
+    });
+    select.addEventListener("change", function () {
+      if (offerId) offerId.value = select.value === "Бухгалтерия + Право"
+        ? "accounting-legal-50-20260928" : "";
     });
   }
 

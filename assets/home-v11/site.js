@@ -5,9 +5,6 @@
   const header = document.querySelector('.uh');
   const nav = document.getElementById('header-nav');
   const toggle = document.getElementById('menu-toggle');
-  const dialog = document.getElementById('channel-status');
-  const closeDialog = document.getElementById('close-status');
-  let dialogTrigger = null;
 
   root.classList.add('js');
 
@@ -52,11 +49,6 @@
 
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
-    if (dialog?.open) {
-      dialog.close();
-      event.preventDefault();
-      return;
-    }
     if (nav?.classList.contains('open')) {
       setMenu(false, true);
       event.preventDefault();
@@ -72,26 +64,6 @@
     if (event.matches) setMenu(false);
   };
   desktop.addEventListener?.('change', closeOnDesktop);
-
-  document.querySelectorAll('[data-channel="VK"]').forEach((button) => {
-    button.addEventListener('click', () => {
-      if (!dialog) return;
-      dialogTrigger = button;
-      setMenu(false);
-      dialog.showModal();
-      closeDialog?.focus();
-    });
-  });
-
-  closeDialog?.addEventListener('click', () => dialog?.close());
-  dialog?.addEventListener('close', () => dialogTrigger?.focus({ preventScroll: true }));
-  dialog?.addEventListener('click', (event) => {
-    if (event.target !== dialog) return;
-    const rect = dialog.getBoundingClientRect();
-    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) {
-      dialog.close();
-    }
-  });
 
   document.querySelectorAll('#main .icon-tile img, #main .hero-art').forEach((image) => {
     const holder = image.closest('.icon-tile') || image.closest('.hero-figure');

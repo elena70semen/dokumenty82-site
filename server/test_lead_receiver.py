@@ -44,14 +44,15 @@ class AiCommercialGuidanceTests(unittest.TestCase):
   def test_prompt_covers_the_five_price_dialogues_without_inventing_a_quote(self):
     prompt = receiver.AI_SYSTEM_PROMPT
     for fact in (
-      "10 000 ₽ один раз",
-      "15 000 ₽ в месяц",
+      "ИП — от 5 000 ₽ в месяц",
+      "ООО — от 10 000 ₽ в месяц",
       "Бесплатна только экспресс-диагностика",
       "начинаться от 3 000 ₽",
       "индивидуальной или разовой задачи",
     ):
       self.assertIn(fact, prompt)
     self.assertIn("Точный состав и цену определяет специалист", prompt)
+    self.assertIn("Не называй разовый стартовый платёж", prompt)
     self.assertIn("Не придумывай скидки", prompt)
 
 
@@ -105,6 +106,12 @@ class AmoLeadAttributionTests(unittest.TestCase):
     fields = {**self.fields(), "utm_source": "owner_qa"}
     _, calls = self.create(fields)
     self.assertIn({"name": "owner_qa"}, calls[0].kwargs["payload"][0]["_embedded"]["tags"])
+
+  def test_promotion_id_is_visible_in_crm_note(self):
+    fields = {**self.fields(), "offer_id": "accounting-legal-50-20260928"}
+    _, calls = self.create(fields)
+    note = calls[1].kwargs["payload"][0]["params"]["text"]
+    self.assertIn("Акция: accounting-legal-50-20260928", note)
 
 
 class AmoFollowupTaskTests(unittest.TestCase):
