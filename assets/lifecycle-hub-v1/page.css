@@ -506,7 +506,7 @@
 .content-grid,.result-grid,.faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .content-card,.result-card{display:grid;grid-template-columns:42px minmax(0,1fr);gap:14px 17px;align-content:start}
 .content-card h3,.result-card h3{align-self:center}
-.content-card ul,.result-card>p,.result-card>ul,.result-card>.official-link{grid-column:1/-1}
+.content-card>p,.content-card ul,.result-card>p,.result-card>ul,.result-card>.official-link{grid-column:1/-1}
 .content-card ul,.result-card ul{display:grid;gap:10px;color:var(--muted);font-size:15px;line-height:1.7}
 .content-card li,.result-card li{position:relative;padding-left:19px}.content-card li::before,.result-card li::before{content:"";position:absolute;left:0;top:.60em;width:7px;height:7px;border:2px solid var(--teal);border-radius:50%;background:#fff}
 .content-card--2,.content-card--4{background:linear-gradient(145deg,#F9FDFE,#FFF)}
