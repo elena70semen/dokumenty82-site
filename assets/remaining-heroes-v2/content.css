@@ -1,0 +1,202 @@
+/* Image-led continuation of the remaining-page visual system. */
+:root body main.remaining-page > .hero.remaining-hero .remaining-hero-visual::after {
+  display: none;
+}
+
+:root body main.remaining-page > section.remaining-content-section {
+  padding-block: clamp(52px, 5.5vw, 84px);
+}
+
+:root body main.remaining-page > section.remaining-content-section > .remaining-section-inner:has(> .section-header) {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  column-gap: clamp(24px, 4vw, 64px);
+  row-gap: 28px;
+  align-items: center;
+}
+:root body main.remaining-page .remaining-section-inner:has(> .section-header) > .section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 1;
+  gap: 0;
+  margin: 0;
+}
+:root body main.remaining-page .remaining-section-inner:has(> .section-header) > .section-header > :is(.eyebrow, h2, p:not(.eyebrow)) {
+  grid-column: auto;
+  grid-row: auto;
+  align-self: auto;
+}
+:root body main.remaining-page .remaining-section-inner:has(> .section-header) > .section-header > p:not(.eyebrow) {
+  margin-top: 18px;
+}
+:root body main.remaining-page .remaining-section-inner:has(> .section-header) > .remaining-section-art {
+  grid-column: 2;
+  grid-row: 1;
+}
+:root body main.remaining-page .remaining-section-inner:has(> .section-header) > :not(.section-header, .remaining-section-art) {
+  grid-column: 1 / -1;
+}
+
+:root body main.remaining-page .remaining-section-art,
+:root body main.remaining-page .remaining-followup-art {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #d3e7f0;
+  border-radius: 24px;
+  background: #f2f9fc;
+  box-shadow: 0 26px 44px -34px rgb(11 36 64 / 42%), inset 0 1px 0 #fff;
+}
+:root body main.remaining-page .remaining-section-art img,
+:root body main.remaining-page .remaining-followup-art img {
+  display: block;
+  visibility: visible !important;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+:root body main.remaining-page .remaining-followup-art {
+  width: min(100%, 560px);
+  margin: 0 0 26px;
+  border-radius: 18px;
+}
+
+:root body main.remaining-page .remaining-content-section :is(.glass-card, .news-card, .promotion-card, .pricing-tier, .pricing-service, .service-tree-group, .tax-calendar-entry) > .remaining-card-art {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 0 20px;
+  overflow: hidden;
+  border: 1px solid #d4e9f1;
+  border-radius: 15px;
+  background: #f2f9fc;
+  box-shadow: 0 16px 28px -26px rgb(11 36 64 / 35%);
+}
+:root body main.remaining-page .remaining-content-section .remaining-card-art img {
+  display: block;
+  visibility: visible !important;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+:root body main.remaining-page .remaining-content-section .glass-card > span:first-of-type {
+  display: inline-grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  margin: 0 0 18px;
+  border: 1px solid #bddfe9;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #eaf9fc, #fff);
+  color: #007783;
+  font-weight: 780;
+}
+:root body main.remaining-page .remaining-content-section .rich-step-grid .glass-card > span:first-of-type {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgb(11 36 64 / 18%);
+}
+@media (min-width: 1101px) {
+  :root body main.remaining-page .pricing-tier-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 22px;
+  }
+  :root body main.remaining-page .pricing-tier-card { grid-column: span 2; }
+  :root body main.remaining-page .pricing-tier-card:nth-child(4) { grid-column: 2 / span 2; }
+  :root body main.remaining-page .pricing-tier-card:nth-child(5) { grid-column: 4 / span 2; }
+}
+:root body main.remaining-page .rich-intro-section > .remaining-section-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-rows: auto auto 1fr;
+  gap: 0 clamp(24px, 4vw, 64px);
+}
+:root body main.remaining-page .rich-intro-section > .remaining-section-inner > .remaining-section-art {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+}
+:root body main.remaining-page .rich-intro-section > .remaining-section-inner > :is(.eyebrow, h2, .rich-copy) {
+  grid-column: 1;
+  grid-row: auto;
+}
+:root body main.remaining-page .rich-intro-section > .remaining-section-inner > .rich-copy {
+  margin-top: 18px;
+  padding: 0;
+  border: 0;
+}
+
+/* Promotions: keep the referral invitation and the conditions image beside the copy. */
+:root body main.remaining-page > section.remaining-content-section.promotion-referral {
+  display: block;
+}
+:root body main.remaining-page > .promotion-referral > .remaining-section-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px clamp(24px, 4vw, 64px);
+  align-items: center;
+}
+:root body main.remaining-page > .promotion-referral > .remaining-section-inner > .remaining-section-art {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+:root body main.remaining-page > .promotion-referral > .remaining-section-inner > :not(.remaining-section-art) {
+  grid-column: 1;
+}
+:root body main.remaining-page .promotion-condition-grid > div {
+  overflow: hidden;
+  border: 1px solid #d5e7ef;
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: 0 18px 32px -28px rgb(11 36 64 / 36%);
+  padding: 0 18px 22px;
+}
+:root body main.remaining-page .promotion-condition-grid .promotion-condition-art {
+  width: calc(100% + 36px);
+  height: clamp(175px, 17vw, 270px);
+  margin: 0 -18px 19px;
+  background-image: url("/assets/remaining-heroes-v2/akcii-conditions.webp");
+  background-repeat: no-repeat;
+  background-size: 300% auto;
+  background-position: left center;
+}
+:root body main.remaining-page .promotion-condition-grid > div:nth-child(2) .promotion-condition-art { background-position: center center; }
+:root body main.remaining-page .promotion-condition-grid > div:nth-child(3) .promotion-condition-art { background-position: right center; }
+
+@media (max-width: 899px) {
+  :root body main.remaining-page > section.remaining-content-section > .remaining-section-inner:has(> .section-header),
+  :root body main.remaining-page .rich-intro-section > .remaining-section-inner,
+  :root body main.remaining-page > .promotion-referral > .remaining-section-inner {
+    grid-template-columns: 1fr;
+  }
+  :root body main.remaining-page .remaining-section-inner:has(> .section-header) > .remaining-section-art,
+  :root body main.remaining-page .rich-intro-section > .remaining-section-inner > .remaining-section-art {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  :root body main.remaining-page .remaining-section-inner:has(> .section-header) > .section-header,
+  :root body main.remaining-page .rich-intro-section > .remaining-section-inner > :is(.eyebrow, h2, .rich-copy) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  :root body main.remaining-page > .promotion-referral > .remaining-section-inner > .remaining-section-art,
+  :root body main.remaining-page > .promotion-referral > .remaining-section-inner > :not(.remaining-section-art) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+@media (max-width: 599px) {
+  :root body main.remaining-page .remaining-section-art,
+  :root body main.remaining-page .remaining-followup-art { border-radius: 17px; }
+  :root body main.remaining-page .remaining-content-section :is(.glass-card, .news-card, .promotion-card, .pricing-tier, .pricing-service, .service-tree-group, .tax-calendar-entry) > .remaining-card-art { border-radius: 12px; }
+}
