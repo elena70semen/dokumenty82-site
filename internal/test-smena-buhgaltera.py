@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 ROUTE = "/smena-buhgaltera/"
 URL = "https://dokumenty82.ru/smena-buhgaltera/"
 SAFE_NOTE = (
-    "Для первого обращения документы не нужны. После уточнения задачи согласуем "
-    "защищённый способ передачи через личный кабинет или другой подходящий канал."
+    "Для первого разговора полный архив не нужен. Защищённый способ передачи "
+    "согласуем после квалификации."
 )
 
 
@@ -44,7 +44,7 @@ class SmenaBuhgalteraPageTest(unittest.TestCase):
         self.assertFalse(self.document.xpath("//input[@type='file']"))
         self.assertIn(SAFE_NOTE, " ".join(self.document.xpath("//text()")))
         self.assertTrue(self.document.xpath("//form//a[@href='/policy/']"))
-        self.assertIn('/assets/lead-form.js?v=20260921-v11a', self.text)
+        self.assertIn('/assets/lead-form.js?v=20260927-p0a', self.text)
 
     def test_schema_contains_faq_and_service(self):
         blocks = [
@@ -88,7 +88,7 @@ class SmenaBuhgalteraPageTest(unittest.TestCase):
         self.assertEqual(urls.count(URL), 1)
 
         self.assertIn('/assets/home-v11/shell.css?v=20260924-shell1', self.text)
-        self.assertIn('/assets/home-v11/shell.js?v=20260921-v11c', self.text)
+        self.assertIn('/assets/home-v11/shell.js?v=20260927-footer1', self.text)
 
 
 if __name__ == "__main__":

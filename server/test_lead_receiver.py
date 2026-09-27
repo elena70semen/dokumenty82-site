@@ -113,6 +113,27 @@ class AmoLeadAttributionTests(unittest.TestCase):
     note = calls[1].kwargs["payload"][0]["params"]["text"]
     self.assertIn("Акция: accounting-legal-50-20260928", note)
 
+  def test_offer_is_limited_to_matching_promotion_on_promotions_page(self):
+    offer = "accounting-legal-50-20260928"
+    self.assertEqual(receiver.valid_public_offer_id(offer, "Бухгалтерия + Право", "/akcii/"), offer)
+    self.assertEqual(receiver.valid_public_offer_id(offer, "Безопасная смена бухгалтера", "/akcii/"), "")
+    self.assertEqual(receiver.valid_public_offer_id(offer, "Бухгалтерия + Право", "/ceny/"), "")
+    self.assertEqual(receiver.valid_public_offer_id("unexpected", "Бухгалтерия + Право", "/akcii/"), "")
+
+  def test_unpublished_precontract_audit_has_distinct_type_and_business_form(self):
+    self.assertEqual(receiver.parse_lead_kind("audit_precontract", "ip"), ("audit_precontract", "ip"))
+    self.assertEqual(receiver.parse_lead_kind("audit_precontract", "ooo"), ("audit_precontract", "ooo"))
+    self.assertEqual(receiver.parse_lead_kind("", ""), ("", ""))
+    with self.assertRaises(ValueError):
+      receiver.parse_lead_kind("audit_precontract", "")
+    with self.assertRaises(ValueError):
+      receiver.parse_lead_kind("audit_precontract", "other")
+    fields = {**self.fields(), "lead_type": "audit_precontract", "business_form": "ip"}
+    _, calls = self.create(fields)
+    note = calls[1].kwargs["payload"][0]["params"]["text"]
+    self.assertIn("Тип заявки: audit_precontract", note)
+    self.assertIn("Форма бизнеса: ip", note)
+
 
 class AmoFollowupTaskTests(unittest.TestCase):
   def test_creates_task_for_configured_owner_and_marks_qa(self):

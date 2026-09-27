@@ -11,7 +11,7 @@ ROUTES = ["/", "/buhgalterskie-uslugi/", "/soprovozhdenie/",
           "/registraciya-ip/", "/likvidaciya-ooo/", "/vosstanovlenie-buhucheta/"]
 NO_UPLOAD_ROUTES = [
     "/buhgalterskie-uslugi/", "/buhgalterskoe-soprovozhdenie-ooo/", "/deklaraciya-usn/",
-    "/likvidaciya-ooo/", "/nulevaya-otchetnost-ip/", "/nulevaya-otchetnost-ooo/",
+    "/izmenenie-okved-ooo/", "/likvidaciya-ooo/", "/nulevaya-otchetnost-ip/", "/nulevaya-otchetnost-ooo/",
     "/otvet-na-trebovanie-ifns/", "/registraciya-ip/", "/sdacha-otchetnosti-ip/",
     "/sdacha-otchetnosti-ooo/", "/soprovozhdenie/", "/razbor-situacii/",
     "/vosstanovlenie-buhucheta/",
@@ -129,7 +129,7 @@ class AccountingPagesTest(unittest.TestCase):
                                ("/buhgalterskoe-soprovozhdenie-ooo/", "accounting-ooo"), ("/ceny/", "accounting")]:
             page = self.pages[route]
             self.assertTrue(any(a.get("href") == f"/razbor-situacii/?service={service}#route-contact" for a in page.attrs("a")))
-            self.assertTrue(any(a.get("src") == "/assets/metrika-goals.js?v=202608271600" for a in page.attrs("script")))
+            self.assertTrue(any(a.get("src") == "/assets/metrika-goals.js?v=20260925-handoff1" for a in page.attrs("script")))
             if route in direct_forms:
                 forms = [a for a in page.attrs("form") if a.get("data-lead-form") == "amo"]
                 self.assertEqual(len(forms), 1)
@@ -145,7 +145,7 @@ class AccountingPagesTest(unittest.TestCase):
                     self.assertIn("required", inputs[name])
                 self.assertNotIn("required", inputs["name"])
                 self.assertEqual(inputs["lead_mode"].get("value"), "quick")
-                self.assertTrue(any(a.get("src") == "/assets/lead-form.js?v=20260921-v11a"
+                self.assertTrue(any(a.get("src") == "/assets/lead-form.js?v=20260927-p0a"
                                     for a in page.attrs("script")))
         form = [f for f in contact.forms
                 if f["attrs"].get("data-lead-form") == "amo"
@@ -193,7 +193,7 @@ class AccountingPagesTest(unittest.TestCase):
         self.assertGreaterEqual(sum(a.get("href") == "#quick-lead" for a in hub.attrs("a")), 2)
         self.assertTrue(any(a.get("href") == "/ceny/#tarify" for a in hub.attrs("a")))
         hub_text = (ROOT / "buhgalterskie-uslugi" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("от 10 000 ₽ / месяц", hub_text)
+        self.assertIn("от 10 000 ₽/мес.", hub_text)
         self.assertIn("Точный тариф зависит от нагрузки", hub_text)
 
     def test_public_lead_forms_do_not_accept_files(self):
@@ -209,7 +209,7 @@ class AccountingPagesTest(unittest.TestCase):
                     inputs = {a.get("name"): a for tag, a in form["tags"] if tag == "input"}
                     self.assertNotIn("files", inputs)
                 html = (ROOT / route.strip("/") / "index.html").read_text(encoding="utf-8")
-                self.assertRegex(html.lower(), r"безопасн|защищ")
+                self.assertRegex(html.lower(), r"безопасн|защищ|соглас")
                 self.assertNotIn('type="file"', html)
                 self.assertNotIn("lead-file-list", html)
 
@@ -219,19 +219,25 @@ class AccountingPagesTest(unittest.TestCase):
             html = file.read_text(encoding="utf-8")
             if 'src="/assets/lead-form.js?' in html:
                 consumers.append(file)
-                self.assertIn('src="/assets/lead-form.js?v=20260921-v11a"', html)
+                self.assertIn('src="/assets/lead-form.js?v=20260927-p0a"', html)
         self.assertEqual(len(consumers), 24)
 
-    def test_ooo_minimum_price_is_consistent_in_structured_catalog(self):
+    def test_monthly_accounting_prices_are_consistent_in_structured_catalog(self):
         nodes = []
         for schema in self.pages["/ceny/"].schemas:
             nodes.extend(schema.get("@graph", [schema]))
         catalog = next(node for node in nodes if node.get("@type") == "OfferCatalog")
-        offer = next(item for item in catalog["itemListElement"]
-                     if item.get("url") == "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/")
-        self.assertEqual(offer["price"], "15000")
-        self.assertIn("10 000 ₽ один раз", offer["itemOffered"]["description"])
-        self.assertIn("15 000 ₽ в месяц", offer["itemOffered"]["description"])
+        for route, price in [
+            ("soprovozhdenie", "5000"),
+            ("buhgalterskoe-soprovozhdenie-ooo", "10000"),
+        ]:
+            with self.subTest(route=route):
+                offer = next(item for item in catalog["itemListElement"]
+                             if item.get("url") == f"https://dokumenty82.ru/{route}/")
+                self.assertEqual(offer["price"], price)
+                self.assertEqual(offer["priceSpecification"]["price"], price)
+                self.assertEqual(offer["priceSpecification"]["unitText"], "MONTH")
+                self.assertNotIn("один раз", offer["itemOffered"]["description"])
 
     def test_accounting_pages_share_verified_business_identity(self):
         for route in ["/buhgalterskie-uslugi/", "/soprovozhdenie/",

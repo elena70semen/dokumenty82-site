@@ -22,7 +22,7 @@
     frame.loading = "lazy";
     frame.setAttribute("frameborder", "0");
     badge.append(frame);
-    ratingLink.replaceWith(badge);
+    ratingLink.after(badge);
   }
 
   function init() {
@@ -38,7 +38,7 @@
     oldFooter.replaceWith(footer);
 
     const maxScript = document.createElement("script");
-    maxScript.src = "/assets/home-v11/max-contact.js?v=20260927-max1";
+    maxScript.src = "/assets/home-v11/max-contact.js?v=20260927-max2";
     maxScript.defer = true;
     document.head.append(maxScript);
 

@@ -1,6 +1,7 @@
 (function () {
   const ATTRIBUTION_TIMEOUT_MS = 3500;
   const REQUEST_TIMEOUT_MS = 120000;
+  const ACCOUNTING_LEGAL_OFFER_ID = "accounting-legal-50-20260928";
 
   function setStatus(form, message) {
     const status = form.querySelector('[role="status"][aria-live]');
@@ -95,6 +96,16 @@
     return /^[1-9]\d{7,14}$/.test(digits);
   }
 
+  function syncPromotionOffer(form) {
+    const offerId = form.querySelector('input[name="offer_id"]');
+    if (!offerId) return "";
+    const select = form.querySelector('select[name="task_type"]');
+    const selected = window.location.pathname === "/akcii/" && select &&
+      select.value === "Бухгалтерия + Право";
+    offerId.value = selected ? ACCOUNTING_LEGAL_OFFER_ID : "";
+    return offerId.value;
+  }
+
   function wireForm(form) {
     form.setAttribute("novalidate", "");
 
@@ -164,7 +175,10 @@
         return;
       }
 
+      const promotionOffer = syncPromotionOffer(form);
       const data = new FormData(form);
+      // An empty hidden field must not label an unrelated request as an offer.
+      if (!promotionOffer) data.delete("offer_id");
       sending = true;
       form.classList.add("is-sending");
       if (submit) {
@@ -178,12 +192,14 @@
           return postLead(form, payloadData);
         })
         .then(function (payload) {
+          if (payload.crm_status === "stored_only") {
+            setStatus(form, "Заявка сохранена на сервере, но не доставлена менеджеру в CRM. Данные остались в форме. Свяжитесь с нами по телефону или в мессенджере; перед повторной отправкой уточните приём заявки.");
+            fireGoal("goal_form_stored_only", { form: "amo_lead", crm_status: "stored_only" });
+            return;
+          }
           form.reset();
-          setStatus(form, "Заявка отправлена. Мы свяжемся с вами по указанному телефону.");
-          fireGoal("lead_submit_success", {
-            form: "amo_lead",
-            crm_status: payload.crm_status,
-          });
+          setStatus(form, "Заявка доставлена менеджеру. Мы свяжемся с вами по указанному телефону.");
+          fireGoal("lead_submit_success", { form: "amo_lead", crm_status: "sent" });
         })
         .catch(function (error) {
           const serverError = error && error.reason === "server";
@@ -221,17 +237,32 @@
         if (!promotion) return;
         select.value = promotion;
         select.dispatchEvent(new Event("change", { bubbles: true }));
-        if (offerId) offerId.value = String(link.dataset.promotionId || "").trim();
+        if (offerId) syncPromotionOffer(form);
       });
     });
     select.addEventListener("change", function () {
-      if (offerId) offerId.value = select.value === "Бухгалтерия + Право"
-        ? "accounting-legal-50-20260928" : "";
+      if (offerId) syncPromotionOffer(form);
+    });
+  }
+
+  function hideFixedShortcutsOverForms() {
+    if (typeof IntersectionObserver !== "function" || !document.body) return;
+    const visible = new Set();
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
+      });
+      document.body.classList.toggle("lead-form-in-view", visible.size > 0);
+    }, { threshold: 0 });
+    document.querySelectorAll('form[data-lead-form="amo"]').forEach(function (form) {
+      observer.observe(form);
     });
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('form[data-lead-form="amo"]').forEach(wireForm);
     wirePromotionLinks();
+    hideFixedShortcutsOverForms();
   });
 })();

@@ -20,7 +20,7 @@
     frame.loading = 'lazy';
     frame.setAttribute('frameborder', '0');
     badge.append(frame);
-    ratingLink.replaceWith(badge);
+    ratingLink.after(badge);
   }
 
   if (nav && !nav.querySelector('.uh-cabinet-link')) {

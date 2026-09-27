@@ -80,6 +80,23 @@
   box-shadow: 0 17px 25px -18px rgb(0 104 138 / 46%), inset 0 1px 0 #fff;
 }
 
+/* Preserve a readable rating link when the external badge cannot load. */
+:root.js body .db-footer .rating-link { display: none; }
+@media (max-width: 999px) {
+  :root.js body .db-footer .footer-rating { display: none; }
+  :root.js body .db-footer .rating-link {
+    display: inline-flex;
+    min-height: 40px;
+    margin-top: 10px;
+    padding: 8px 11px;
+    border: 1px solid rgb(157 220 232 / 39%);
+    border-radius: 10px;
+    background: rgb(165 229 241 / 9%);
+    color: #b9eef2;
+    font-size: 12px;
+  }
+}
+
 /* Match the hero frame width while keeping the header a floating card. */
 :root body :is(.uh, .site-header) {
   width: min(calc(100% - 48px), 1536px);
@@ -209,6 +226,149 @@
   background: linear-gradient(135deg, #fff, #aee3ef) !important;
   color: #0b2440 !important;
 }
+
+:root body .contact-max-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 18px 0 0;
+  color: #526b82;
+  font-size: 14px;
+  line-height: 1.5;
+}
+:root body .contact-max-note .button {
+  min-height: 42px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font: 700 14px/1.3 Inter, Arial, sans-serif;
+}
+
+@media (max-width: 599px) {
+  :root body .db-footer {
+    padding: 14px 12px calc(20px + env(safe-area-inset-bottom));
+    border-top: 1px solid rgb(115 205 224 / 38%);
+    background:
+      radial-gradient(circle at 88% 0%, rgb(23 133 164 / 28%), transparent 42%),
+      linear-gradient(160deg, #0c2c4a, #071b31 78%);
+  }
+  :root body .db-footer .db-container { width: min(100%, 440px); }
+  :root body .db-footer .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "brand" "contact" "nav";
+    gap: 12px;
+    padding: 0;
+  }
+  :root body .db-footer :is(.brand-area, .contact-area, .navigation-area) {
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid rgb(158 213 231 / 25%);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgb(255 255 255 / 10%), rgb(255 255 255 / 3%) 72%);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 13%), 0 16px 28px -23px rgb(0 8 20 / 82%);
+  }
+  :root body .db-footer .footer-brand { gap: 12px; }
+  :root body .db-footer .footer-brand img { width: 45px; height: 48px; }
+  :root body .db-footer .brand-name { font-size: 20px; line-height: 1.1; }
+  :root body .db-footer .brand-descriptor { font-size: 12px; }
+  :root body .db-footer .brand-description {
+    max-width: 35ch;
+    margin-top: 13px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  :root.js body .db-footer .footer-rating { display: none; }
+  :root.js body .db-footer .rating-link {
+    display: inline-flex;
+    min-height: 39px;
+    gap: 7px;
+    margin-top: 12px;
+    padding: 8px 11px;
+    border: 1px solid rgb(157 220 232 / 39%);
+    border-radius: 10px;
+    background: rgb(165 229 241 / 9%);
+    color: #b9eef2;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+  :root body .db-footer .footer-label { margin: 0 0 10px; font-size: 11px; }
+  :root body .db-footer .contact-phone {
+    min-height: 37px;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(21px, 6vw, 25px);
+    line-height: 1.2;
+  }
+  :root body .db-footer .contact-address {
+    min-height: 0;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  :root body .db-footer .contact-email { min-height: 34px; font-size: 13px; }
+  :root body .db-footer .footer-channels {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+  :root body .db-footer .footer-channels .channel {
+    min-width: 0;
+    min-height: 44px;
+    padding: 9px 10px;
+    border-color: rgb(157 220 232 / 34%);
+    border-radius: 11px;
+    background: rgb(165 229 241 / 9%);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  :root body .db-footer .navigation-area { border-top-color: rgb(158 213 231 / 25%); }
+  :root body .db-footer .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+  :root body .db-footer .footer-links a,
+  :root:not([data-theme="dark"]) body .db-footer .footer-links a {
+    display: flex;
+    min-height: 46px;
+    padding: 8px 10px;
+    border: 1px solid rgb(158 213 231 / 43%) !important;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgb(226 248 255 / 17%), rgb(34 110 142 / 21%)) !important;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 18%), 0 8px 12px -10px rgb(0 5 15 / 70%) !important;
+    color: #e9f7fb !important;
+    font-size: 13px;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  :root body .db-footer .footer-links a:is(:hover, :focus-visible),
+  :root:not([data-theme="dark"]) body .db-footer .footer-links a:is(:hover, :focus-visible) {
+    border-color: rgb(157 220 232 / 60%) !important;
+    background: rgb(165 229 241 / 15%) !important;
+  }
+  :root body .db-footer .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 17px 3px 0;
+    border-top: 0;
+    color: #acc6d6;
+    text-align: center;
+    font-size: 11px;
+  }
+  :root body .db-footer .legal-links { justify-content: center; gap: 4px 18px; margin: 0; }
+  :root body .db-footer .legal-links a { min-height: 32px; }
+}
+
+@media (max-width: 359px) {
+  :root body .db-footer .legal-links { flex-direction: column; align-items: center; gap: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root body #main .button, :root body main .button { transition: none; }
 }

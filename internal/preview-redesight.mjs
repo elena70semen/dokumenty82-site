@@ -12,12 +12,9 @@ http.createServer((req, res) => {
   res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-src https://yandex.ru https://yandex.com");
   if (url.pathname.startsWith('/api/')) {
     res.setHeader('Content-Type', 'application/json');
-    if (url.pathname === '/api/lead' && req.method === 'POST') {
-      req.resume();
-      return res.end(JSON.stringify({ ok: true, id: 'LOCAL-PREVIEW-ONLY', crm_status: 'sent' }));
-    }
+    if (url.pathname === '/api/lead' && req.method === 'POST') req.resume();
     res.statusCode = 503;
-    return res.end(JSON.stringify({ ok: false, error: 'Local preview: no live API connection' }));
+    return res.end(JSON.stringify({ ok: false, message: 'Локальный предпросмотр не подключён к CRM.' }));
   }
   if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405); return res.end(); }
   let file;

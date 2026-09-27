@@ -305,23 +305,31 @@
       })
       .then(function (response) {
         return response.json().catch(function () { return {}; }).then(function (payload) {
-          if (!response.ok) throw new Error(payload.message || "Не удалось отправить заявку.");
+          if (!response.ok || payload.ok !== true || !payload.id ||
+              !["sent", "stored_only"].includes(payload.crm_status)) {
+            throw new Error(payload.message || "Сервер не подтвердил доставку заявки. Позвоните или напишите в мессенджер.");
+          }
           return payload;
         });
       })
       .then(function (payload) {
+        if (payload.crm_status === "stored_only") {
+          setStatus("Заявка сохранена на сервере, но не доставлена менеджеру в CRM. Перед повторной отправкой уточните приём по телефону или в мессенджере.");
+          fireGoal("goal_ai_chat_stored_only", { form: "ai_chat", crm_status: "stored_only" });
+          return;
+        }
         form.reset();
         form.hidden = true;
         const button = $(".ai-chat-escalate");
         if (button) button.setAttribute("aria-expanded", "false");
-        setStatus("Готово. Диалог передан специалисту.");
-        addMessage("assistant", "Готово, передали диалог специалисту. С вами свяжутся по указанному телефону.");
+        setStatus("Заявка доставлена менеджеру в CRM.");
+        addMessage("assistant", "Диалог передан специалисту. С вами свяжутся по указанному телефону.");
         fireGoal("goal_ai_chat_lead", {
           form: "ai_chat",
         });
         fireGoal("lead_submit_success", {
           form: "ai_chat",
-          crm_status: payload.crm_status || "accepted",
+          crm_status: "sent",
         });
       })
       .catch(function (error) {

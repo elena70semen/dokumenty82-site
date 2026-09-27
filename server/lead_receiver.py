@@ -101,6 +101,25 @@ def clipped(value, limit):
   return text(value)[:limit]
 
 
+def valid_public_offer_id(value, task_type, source_page):
+  """Keep the limited-time promotion attached only to its own form choice."""
+  if (text(source_page) == "/akcii/" and text(task_type) == "Бухгалтерия + Право" and
+      text(value) == "accounting-legal-50-20260928"):
+    return "accounting-legal-50-20260928"
+  return ""
+
+
+def parse_lead_kind(lead_type, business_form):
+  """The unpublished pre-contract audit has a distinct, bounded CRM contract."""
+  kind = text(lead_type)
+  form = text(business_form)
+  if not kind and not form:
+    return "", ""
+  if kind == "audit_precontract" and form in ("ip", "ooo"):
+    return kind, form
+  raise ValueError("Выберите форму бизнеса для преддоговорного аудита.")
+
+
 def normalize_phone(value):
   raw = text(value)
   if re.search(r"[A-Za-zА-Яа-я]", raw):
@@ -672,6 +691,8 @@ def create_amo_lead(fields, files=None):
 
   note_text = "\n".join([
     "Заявка с сайта dokumenty82.ru",
+    f"Тип заявки: {fields.get('lead_type') or 'обычная'}",
+    f"Форма бизнеса: {fields.get('business_form') or '-'}",
     f"Страница: {fields['source_page']}",
     f"Первая страница: {fields['landing_page'] or '-'}",
     f"Тема: {fields['task_type']}",
@@ -925,6 +946,10 @@ class LeadHandler(BaseHTTPRequestHandler):
         "utm_content": clipped(form.getfirst("utm_content"), 500),
         "utm_term": clipped(form.getfirst("utm_term"), 500),
       }, is_quick_lead)
+      fields["offer_id"] = valid_public_offer_id(
+        fields["offer_id"], fields["task_type"], fields["source_page"])
+      fields["lead_type"], fields["business_form"] = parse_lead_kind(
+        form.getfirst("lead_type"), form.getfirst("business_form"))
       if not fields["name"] or not fields["phone"] or not fields["message"] or text(form.getfirst("privacy")) != "1":
         json_response(self, 400, {"ok": False, "message": "Заполните обязательные поля."})
         return

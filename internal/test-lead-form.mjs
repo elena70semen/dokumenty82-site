@@ -81,6 +81,7 @@ function fixture(options = {}) {
   class MockFormData {
     constructor() { this.entries = []; this.taskType = inputs.task_type.value; }
     append(key, value) { this.entries.push([key, value]); }
+    delete(key) { this.entries = this.entries.filter(([name]) => name !== key); }
   }
   vm.runInNewContext(source, {
     document, window, FormData: MockFormData, URLSearchParams,
@@ -323,12 +324,15 @@ test("duplicate submit while pending makes one POST and one success", async () =
   assert.deepEqual(f.requests[0][1].body.entries, [["yandex_client_id", "1234567890"]]);
 });
 
-test("the existing stored-only HTTP 202 contract remains accepted", async () => {
+test("stored-only HTTP 202 keeps the form and is never a successful lead", async () => {
   const f = fixture({ fetch: async () => response(202, { ok: true, id: "mock-id", crm_status: "stored_only" }) });
   f.form.emit("submit");
   await settle();
-  assert.equal(f.successes().length, 1);
-  assert.equal(f.successes()[0].params.crm_status, "stored_only");
+  assert.equal(f.successes().length, 0);
+  assert.equal(f.resets(), 0);
+  assert.match(f.status.textContent, /не доставлена менеджеру/);
+  assert.equal(f.goals.filter((goal) => goal.name === "goal_form_stored_only").length, 1);
+  assert.equal(f.submit.disabled, false);
 });
 
 test("analytics failure cannot prevent the request", async () => {

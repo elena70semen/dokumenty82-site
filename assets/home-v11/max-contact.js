@@ -1,8 +1,13 @@
 (() => {
-  const phone = "+7 978 084-38-96";
-  const maxUrl = "https://max.ru/";
+  const phone = "+7 978 964-06-39";
 
-  function copyPhone() {
+  async function copyPhone() {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(phone);
+        return true;
+      } catch (_) {}
+    }
     const field = document.createElement("textarea");
     field.value = phone;
     field.setAttribute("aria-hidden", "true");
@@ -12,9 +17,6 @@
     let copied = false;
     try { copied = document.execCommand("copy"); } catch (_) {}
     field.remove();
-    if (!copied && navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(phone).catch(() => {});
-    }
     return copied;
   }
 
@@ -45,8 +47,8 @@
     } else {
       button.textContent = label;
     }
-    button.title = `MAX: ${phone}`;
-    button.setAttribute("aria-label", `Открыть MAX и найти нас по номеру ${phone}`);
+    button.title = `Скопировать номер ${phone} для поиска в MAX`;
+    button.setAttribute("aria-label", `Скопировать номер ${phone} и найти нас в MAX`);
     return button;
   }
 
@@ -62,11 +64,10 @@
     if (footer && !footer.querySelector("[data-max-contact]")) {
       footer.append(createButton("channel footer-channel-max", "MAX"));
     }
-    document.addEventListener("click", (event) => {
+    document.addEventListener("click", async (event) => {
       if (!event.target.closest("[data-max-contact]")) return;
-      const copied = copyPhone();
+      const copied = await copyPhone();
       showHint(copied);
-      window.open(maxUrl, "_blank", "noopener");
     });
   }
 

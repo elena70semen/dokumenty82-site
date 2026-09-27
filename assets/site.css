@@ -5494,6 +5494,14 @@ option,
   }
 }
 
+/* A fixed contact shortcut must not cover the telephone or consent fields. */
+@media (max-width: 640px) {
+  body.lead-form-in-view .ai-chat-widget,
+  body.lead-form-in-view .client-portal-widget {
+    display: none !important;
+  }
+}
+
 @media (min-width: 641px) {
   .site-header {
     width: min(calc(100% - 24px), 1680px);
