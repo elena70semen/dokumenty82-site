@@ -208,6 +208,11 @@
       });
     }
 
+    const maxContact = origin.closest("[data-max-contact]");
+    if (maxContact) {
+      reachGoal("contact_max", { placement: linkPlacement(maxContact) });
+    }
+
     const link = origin.closest("a[href]");
     if (!link) return;
     const linkGoal = goalForLink(link);

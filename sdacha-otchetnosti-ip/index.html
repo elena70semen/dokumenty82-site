@@ -230,7 +230,7 @@
 <article class="decision-card"><span class="decision-number">03</span><strong>Работники и выплаты</strong><p>Трудовые договоры, выплаты физическим лицам и кадровые события добавляют отдельные формы и сроки.</p></article>
 <article class="decision-card"><span class="decision-number">04</span><strong>Старт или закрытие</strong><p>Неполный год, начало деятельности и прекращение статуса меняют период и финальный комплект.</p></article>
 </div></div></section>
-<section aria-labelledby="request-title" class="service-section soft" id="reporting-request"><div class="container"><div class="request-panel"><div class="request-copy"><span class="eyebrow eyebrow-dark">Быстрый запрос</span><h2 id="request-title">Определить комплект отчётности ИП</h2><p>Укажите период, налоговый режим и наличие работников. Проверим предварительный состав обязательных форм и согласуем объём работы.</p><div class="request-price"><span>Разовая задача</span><strong>от 3 000 ₽</strong></div><p class="safe-note">Чувствительные документы передавайте только через согласованный безопасный канал после первичного определения задачи.</p></div><form class="request-form crm-lead-form" action="/api/lead" method="post" data-lead-form="amo">
+<section aria-labelledby="request-title" class="service-section soft" id="reporting-request"><div class="container"><div class="request-panel"><div class="request-copy"><span class="eyebrow eyebrow-dark">Быстрый запрос</span><h2 id="request-title">Определить комплект отчётности ИП</h2><p>Укажите период, налоговый режим и наличие работников. Проверим предварительный состав обязательных форм и согласуем объём работы.</p><div class="request-price"><span>Разовая задача</span><strong>от 3 000 ₽</strong></div><p class="safe-note">Чувствительные документы передавайте только через согласованный безопасный канал после первичного определения задачи.</p></div><form class="request-form crm-lead-form" action="/api/lead" method="post" data-lead-form="amo" enctype="multipart/form-data">
 <input type="hidden" name="source_page" value="/sdacha-otchetnosti-ip/">
 <input type="hidden" name="task_type" value="Сдача отчётности ИП">
 <input type="hidden" name="lead_mode" value="quick">
@@ -239,7 +239,17 @@
 <label class="field"><span>Телефон</span><input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (___) ___-__-__" required type="tel"></label>
 <label class="field wide"><span>Режим и задача <small>необязательно</small></span><textarea name="message" placeholder="Период, режимы, были ли операции, сотрудники, касса, ранее сданные формы или требование ИФНС" rows="5"></textarea></label>
 <p class="form-note wide">Для первого обращения документы не нужны. После уточнения задачи согласуем защищённый способ передачи.</p>
-<label class="consent wide"><input name="privacy" value="1" required type="checkbox"><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-file-field form-span-2 form-wide wide">
+          <span>Файлы (необязательно)</span>
+          <input class="lead-file-input" id="sdacha-otchetnosti-ip-files-1" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="sdacha-otchetnosti-ip-files-1-note" />
+          <label class="lead-file-picker" for="sdacha-otchetnosti-ip-files-1">
+            <span class="lead-file-picker-button">Выбрать файлы</span>
+            <span class="lead-file-picker-status">Файлы не выбраны</span>
+          </label>
+          <span class="form-note" id="sdacha-otchetnosti-ip-files-1-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли и секреты доступа.</span>
+        </div>
+        <ul class="lead-file-list form-span-2 form-wide wide" aria-live="polite"></ul>
+        <label class="consent wide"><input name="privacy" value="1" required type="checkbox"><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
 <div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить состав и стоимость</span><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button></div>
 <p class="form-note wide" role="status" aria-live="polite"></p>
 </form></div></div></section>
@@ -349,8 +359,8 @@
         });
       })();
     </script>
-    <script src="/assets/metrika-goals.js?v=20260925-handoff1" defer></script>
-    <script src="/assets/lead-form.js?v=20260927-p0a" defer></script>
+    <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
+    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260927-footer1" defer></script>
     <script src="/assets/ai-chat.js?v=20260927-p0a" defer></script>
   </body>

@@ -253,7 +253,7 @@
 <section aria-labelledby="request-title" class="service-section soft" id="request">
 <div class="container"><div class="request-panel">
 <div class="request-copy"><span class="eyebrow eyebrow-dark">Консультация</span><h2 id="request-title">Получить консультацию по ликвидации ООО</h2><p>Коротко расскажите о состоянии компании. Уточним, подходит ли добровольная ликвидация и какие вопросы нужно проверить до начала процедуры.</p><div class="request-price"><span>Сопровождение ликвидации</span><strong>от 45 000 ₽</strong></div></div>
-<form action="/api/lead" aria-label="Получить консультацию" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<form action="/api/lead" aria-label="Получить консультацию" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" enctype="multipart/form-data" method="post">
 <input type="hidden" name="source_page" value="/likvidaciya-ooo/" />
 <input type="hidden" name="task_type" value="Ликвидация ООО" />
 <input type="hidden" name="lead_mode" value="quick" />
@@ -262,7 +262,17 @@
 <label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
 <label class="field wide"><span>Состояние компании или ваш вопрос <small>(необязательно)</small></span><textarea aria-label="Состояние компании или ваш вопрос" name="message" placeholder="Есть ли деятельность, долги, сотрудники, текущая отчётность и расчёты" rows="4"></textarea></label>
 <p class="form-note wide">На первом контакте достаточно описания ситуации. Документы и персональные данные передаются позже через согласованный безопасный канал.</p>
-<label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<div class="form-file-field form-span-2 form-wide wide">
+          <span>Файлы (необязательно)</span>
+          <input class="lead-file-input" id="likvidaciya-ooo-files-1" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="likvidaciya-ooo-files-1-note" />
+          <label class="lead-file-picker" for="likvidaciya-ooo-files-1">
+            <span class="lead-file-picker-button">Выбрать файлы</span>
+            <span class="lead-file-picker-status">Файлы не выбраны</span>
+          </label>
+          <span class="form-note" id="likvidaciya-ooo-files-1-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли и секреты доступа.</span>
+        </div>
+        <ul class="lead-file-list form-span-2 form-wide wide" aria-live="polite"></ul>
+        <label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
 <div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
 <p class="form-note lead-status wide" role="status" aria-live="polite"></p>
 </form></div></div></section>
@@ -414,8 +424,8 @@
         });
       })();
     </script>
-    <script src="/assets/metrika-goals.js?v=20260925-handoff1" defer></script>
-    <script src="/assets/lead-form.js?v=20260927-p0a" defer></script>
+    <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
+    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260927-footer1" defer></script>
     <script src="/assets/ai-chat.js?v=20260927-p0a" defer></script>
   </body>

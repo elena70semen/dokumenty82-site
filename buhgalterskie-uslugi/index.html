@@ -105,7 +105,7 @@
 <article class="benefit-card"><span class="card-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h1M12 11h1M16 11h1M8 15h1M12 15h1M16 15h1M8 19h5"/></svg></span><h3>Расчёт налогов и сроки платежей</h3><p>Рассчитываем налоги по режиму бизнеса и данным учёта. Сообщаем, какие платежи и к какому сроку нужно перечислить.</p></article>
 </div><p class="section-footnote">Зарплату и кадровые задачи включаем по согласованному составу. Восстановление прошлых периодов, сложные требования ИФНС и запросы банка оцениваем отдельно.</p></div></section>
 
-<section aria-labelledby="request-title" class="service-section soft request-section" id="quick-lead"><div class="container"><div class="request-panel"><div class="request-side"><span class="eyebrow eyebrow-light">Расчёт сопровождения</span><h2 id="request-title">Рассчитать стоимость бухгалтерского сопровождения</h2><p>Укажите форму бизнеса и примерную нагрузку. Определим регулярные участки и задачи, которые нужно оценить отдельно.</p><div class="request-factors"><span>Форма бизнеса</span><span>Налоговый режим</span><span>Операции</span><span>Сотрудники</span><span>Состояние базы</span></div><p class="safe-note">Конфиденциальные документы передавайте только через согласованный безопасный канал после первичного разговора.</p></div><form action="/api/lead" aria-label="Получить расчёт стоимости" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<section aria-labelledby="request-title" class="service-section soft request-section" id="quick-lead"><div class="container"><div class="request-panel"><div class="request-side"><span class="eyebrow eyebrow-light">Расчёт сопровождения</span><h2 id="request-title">Рассчитать стоимость бухгалтерского сопровождения</h2><p>Укажите форму бизнеса и примерную нагрузку. Определим регулярные участки и задачи, которые нужно оценить отдельно.</p><div class="request-factors"><span>Форма бизнеса</span><span>Налоговый режим</span><span>Операции</span><span>Сотрудники</span><span>Состояние базы</span></div><p class="safe-note">Конфиденциальные документы передавайте только через согласованный безопасный канал после первичного разговора.</p></div><form action="/api/lead" aria-label="Получить расчёт стоимости" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" enctype="multipart/form-data" method="post">
 <input type="hidden" name="source_page" value="/buhgalterskie-uslugi/" />
 <input type="hidden" name="task_type" value="Подбор бухгалтерских услуг" />
 <input type="hidden" name="lead_mode" value="quick" />
@@ -115,8 +115,18 @@
 <label><span>Телефон</span><input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
 <label class="form-wide"><span>Форма бизнеса и нагрузка <small>необязательно</small></span><textarea name="message" placeholder="ИП или ООО, режим, примерное число операций, сотрудники, касса, банки и текущая задача" rows="5"></textarea></label>
 <div class="file-field form-wide safe-file-note" role="note"><span class="file-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"></path><path d="M14 2v5h5M9 12h6M9 16h4"></path></svg></span><span><b>Документы — после первичного разговора</b><small>Согласуем защищённый способ передачи через личный кабинет или другой подходящий канал.</small></span></div>
-<p class="form-note form-wide">Для первого обращения документы не нужны. Открытая форма принимает только контактные данные.</p>
-<label class="consent form-wide"><input name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<p class="form-note form-wide">Для первого обращения документы не обязательны. При необходимости можно приложить файл; передачу конфиденциальных материалов согласуем отдельно.</p>
+<div class="form-file-field form-span-2 form-wide wide">
+          <span>Файлы (необязательно)</span>
+          <input class="lead-file-input" id="buhgalterskie-uslugi-files-1" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="buhgalterskie-uslugi-files-1-note" />
+          <label class="lead-file-picker" for="buhgalterskie-uslugi-files-1">
+            <span class="lead-file-picker-button">Выбрать файлы</span>
+            <span class="lead-file-picker-status">Файлы не выбраны</span>
+          </label>
+          <span class="form-note" id="buhgalterskie-uslugi-files-1-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли и секреты доступа.</span>
+        </div>
+        <ul class="lead-file-list form-span-2 form-wide wide" aria-live="polite"></ul>
+        <label class="consent form-wide"><input name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
 <button class="button button-primary form-submit form-wide" type="submit"><span>Получить расчёт стоимости</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button>
 </div>
 <p class="form-status lead-status" role="status" aria-live="polite"></p>
@@ -255,8 +265,8 @@
         });
       })();
     </script>
-    <script src="/assets/lead-form.js?v=20260927-p0a" defer></script>
-    <script src="/assets/metrika-goals.js?v=20260925-handoff1" defer></script>
+    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
+    <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260927-footer1" defer></script>
     <script src="/assets/ai-chat.js?v=20260927-p0a" defer></script>
   </body>

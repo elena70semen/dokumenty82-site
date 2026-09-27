@@ -258,7 +258,7 @@
         <h2 id="quick-lead-title">Определить состав отчётности ООО</h2>
         <p>Укажите режим, период и есть ли директор или работники. Разделим налоговые, зарплатные и бухгалтерские формы.</p>
       </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo" enctype="multipart/form-data">
         <input type="hidden" name="source_page" value="/nulevaya-otchetnost-ooo/" />
         <input type="hidden" name="task_type" value="Нулевая отчётность ООО" />
         <input type="hidden" name="lead_mode" value="quick" />
@@ -269,6 +269,16 @@
           <label class="lead-quick-message">Режим и период (необязательно)<textarea name="message" rows="3" placeholder="Например: ООО на УСН, директор есть, работников и операций не было"></textarea></label>
         </div>
         <p class="form-note lead-transfer-note">Для предварительной проверки ООО назовите период, операции и сотрудников. Запрашивать полный архив до разбора ситуации не будем.</p>
+        <div class="form-file-field form-span-2 form-wide wide">
+          <span>Файлы (необязательно)</span>
+          <input class="lead-file-input" id="nulevaya-otchetnost-ooo-files-1" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="nulevaya-otchetnost-ooo-files-1-note" />
+          <label class="lead-file-picker" for="nulevaya-otchetnost-ooo-files-1">
+            <span class="lead-file-picker-button">Выбрать файлы</span>
+            <span class="lead-file-picker-status">Файлы не выбраны</span>
+          </label>
+          <span class="form-note" id="nulevaya-otchetnost-ooo-files-1-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли и секреты доступа.</span>
+        </div>
+        <ul class="lead-file-list form-span-2 form-wide wide" aria-live="polite"></ul>
         <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
         <div class="lead-form-actions"><button class="button button-lime" type="submit">Получить расчёт</button><a class="button button-ghost" href="/razbor-situacii/#route-contact">Описать задачу подробнее</a></div>
         <p class="form-note" role="status" aria-live="polite"></p>
@@ -584,8 +594,8 @@
         });
       })();
     </script>
-    <script src="/assets/metrika-goals.js?v=20260925-handoff1" defer></script>
-    <script src="/assets/lead-form.js?v=20260927-p0a" defer></script>
+    <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
+    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260927-footer1" defer></script>
     <script src="/assets/ai-chat.js?v=20260927-p0a" defer></script>
   </body>

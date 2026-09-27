@@ -283,7 +283,7 @@
         <p>Укажите режим и нагрузку. Проверим вводные и зафиксируем состав работы до начала сопровождения.</p>
       </div>
       <figure class="remaining-section-art"><img src="/assets/remaining-heroes-v2/soprovozhdenie-ip-start.webp" srcset="/assets/remaining-heroes-v2/soprovozhdenie-ip-start-640.webp 640w, /assets/remaining-heroes-v2/soprovozhdenie-ip-start.webp 1672w" sizes="(max-width: 899px) calc(100vw - 36px), 55vw" alt="Ежемесячное сопровождение ИП: учёт, налоги и отчётность" width="1672" height="941" loading="lazy" decoding="async" /></figure>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo" enctype="multipart/form-data">
         <input type="hidden" name="source_page" value="/soprovozhdenie/" />
         <input type="hidden" name="task_type" value="Бухгалтерское сопровождение ИП" />
         <input type="hidden" name="lead_mode" value="quick" />
@@ -294,6 +294,16 @@
           <label class="lead-quick-message">Нагрузка ИП (необязательно)<textarea name="message" rows="3" placeholder="Режим, сотрудники, касса, банки и примерное число операций"></textarea></label>
         </div>
         <p class="form-note lead-transfer-note">Для первичного разговора назовите режим, период и текущую задачу ИП. Передачу выписок и первичных документов согласуем после определения объёма работы.</p>
+        <div class="form-file-field form-span-2 form-wide wide">
+          <span>Файлы (необязательно)</span>
+          <input class="lead-file-input" id="soprovozhdenie-files-1" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="soprovozhdenie-files-1-note" />
+          <label class="lead-file-picker" for="soprovozhdenie-files-1">
+            <span class="lead-file-picker-button">Выбрать файлы</span>
+            <span class="lead-file-picker-status">Файлы не выбраны</span>
+          </label>
+          <span class="form-note" id="soprovozhdenie-files-1-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли и секреты доступа.</span>
+        </div>
+        <ul class="lead-file-list form-span-2 form-wide wide" aria-live="polite"></ul>
         <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
         <div class="lead-form-actions"><button class="button button-lime" type="submit">Узнать тариф</button><a class="button button-ghost" href="/razbor-situacii/?service=accounting-ip#route-contact">Описать задачу подробнее</a></div>
         <p class="form-note" role="status" aria-live="polite"></p>
@@ -636,8 +646,8 @@
         });
       })();
     </script>
-    <script src="/assets/lead-form.js?v=20260927-p0a" defer></script>
-    <script src="/assets/metrika-goals.js?v=20260925-handoff1" defer></script>
+    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
+    <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260927-footer1" defer></script>
     <script src="/assets/ai-chat.js?v=20260927-p0a" defer></script>
   </body>

@@ -274,7 +274,7 @@
 <article class="benefit-card"><span class="card-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h1M12 11h1M16 11h1M8 15h1M12 15h1M16 15h1M8 19h5"/></svg></span><h3>Налоги и обязательные платежи</h3><p>Рассчитываем налоги и сообщаем сроки платежей. Зарплату и отчётность по сотрудникам ведём, если этот участок включён в договор.</p></article>
 </div><p class="section-footnote">Зарплату и кадровый участок добавляем в ежемесячный состав по договорённости. Восстановление прошлых периодов, нетипичные требования инспекции и запросы банка оцениваем как отдельные задачи.</p></div></section>
 
-<section aria-labelledby="request-title" class="service-section soft request-section" id="quick-lead"><div class="container"><div class="request-panel"><div class="request-side"><span class="eyebrow eyebrow-light">Расчёт тарифа</span><h2 id="request-title">Подобрать сопровождение ООО</h2><p>Сопровождение ООО — от 10 000 ₽ в месяц. Уточним режим, операции, сотрудников и состояние учёта, чтобы назвать обоснованный тариф.</p><div class="request-factors"><span>Режим и НДС</span><span>Операции</span><span>Сотрудники</span><span>Состояние учёта</span><span>Банки и кассы</span></div><p class="safe-note">После первичного разговора согласуем канал для передачи закрытых материалов. Не прикладывайте сканы и персональные данные к открытой заявке.</p></div><form action="/api/lead" aria-label="Подобрать тариф для ООО" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" method="post">
+<section aria-labelledby="request-title" class="service-section soft request-section" id="quick-lead"><div class="container"><div class="request-panel"><div class="request-side"><span class="eyebrow eyebrow-light">Расчёт тарифа</span><h2 id="request-title">Подобрать сопровождение ООО</h2><p>Сопровождение ООО — от 10 000 ₽ в месяц. Уточним режим, операции, сотрудников и состояние учёта, чтобы назвать обоснованный тариф.</p><div class="request-factors"><span>Режим и НДС</span><span>Операции</span><span>Сотрудники</span><span>Состояние учёта</span><span>Банки и кассы</span></div><p class="safe-note">После первичного разговора согласуем канал для передачи закрытых материалов. Не прикладывайте сканы и персональные данные к открытой заявке.</p></div><form action="/api/lead" aria-label="Подобрать тариф для ООО" class="request-form crm-lead-form lead-capture-form" data-lead-form="amo" enctype="multipart/form-data" method="post">
 <input type="hidden" name="source_page" value="/buhgalterskoe-soprovozhdenie-ooo/" />
 <input type="hidden" name="task_type" value="Бухгалтерское сопровождение ООО" />
 <input type="hidden" name="lead_mode" value="quick" />
@@ -284,8 +284,18 @@
 <label><span>Телефон</span><input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
 <label class="form-wide"><span>Нагрузка и текущая задача <small>необязательно</small></span><textarea name="message" placeholder="Режим, НДС, примерное число операций, сотрудники, касса, банки и текущая задача" rows="5"></textarea></label>
 <div class="file-field form-wide safe-file-note" role="note"><span class="file-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"></path><path d="M14 2v5h5M9 12h6M9 16h4"></path></svg></span><span><b>Документы — после первичного разговора</b><small>Первичку, базу и отчётность можно передать после разговора через согласованный защищённый канал.</small></span></div>
-<p class="form-note form-wide">Открытая форма принимает только контактные данные. Файлы и персональные документы здесь не загружаются.</p>
-<label class="consent form-wide"><input name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
+<p class="form-note form-wide">Файл можно приложить по желанию. Персональные документы и базу передавайте после согласования защищённого канала.</p>
+<div class="form-file-field form-span-2 form-wide wide">
+          <span>Файлы (необязательно)</span>
+          <input class="lead-file-input" id="buhgalterskoe-soprovozhdenie-ooo-files-1" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="buhgalterskoe-soprovozhdenie-ooo-files-1-note" />
+          <label class="lead-file-picker" for="buhgalterskoe-soprovozhdenie-ooo-files-1">
+            <span class="lead-file-picker-button">Выбрать файлы</span>
+            <span class="lead-file-picker-status">Файлы не выбраны</span>
+          </label>
+          <span class="form-note" id="buhgalterskoe-soprovozhdenie-ooo-files-1-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли и секреты доступа.</span>
+        </div>
+        <ul class="lead-file-list form-span-2 form-wide wide" aria-live="polite"></ul>
+        <label class="consent form-wide"><input name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
 <button class="button button-primary form-submit form-wide" type="submit"><span>Подобрать тариф для ООО</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button>
 </div>
 <p class="form-status lead-status" role="status" aria-live="polite"></p>
@@ -448,8 +458,8 @@
         });
       })();
     </script>
-    <script src="/assets/lead-form.js?v=20260927-p0a" defer></script>
-    <script src="/assets/metrika-goals.js?v=20260925-handoff1" defer></script>
+    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
+    <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260927-footer1" defer></script>
     <script src="/assets/ai-chat.js?v=20260927-p0a" defer></script>
   </body>

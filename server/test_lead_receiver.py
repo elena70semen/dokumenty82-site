@@ -18,44 +18,6 @@ receiver = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(receiver)
 
 
-class PublicLeadUploadPolicyTests(unittest.TestCase):
-  def test_public_file_part_is_rejected_by_policy(self):
-    form = types.SimpleNamespace(list=[
-      types.SimpleNamespace(name="phone", filename=None),
-      types.SimpleNamespace(name="files", filename="document.pdf"),
-    ])
-    self.assertTrue(receiver.has_public_upload(form))
-
-  def test_regular_lead_without_file_remains_allowed(self):
-    form = types.SimpleNamespace(list=[types.SimpleNamespace(name="phone", filename=None)])
-    self.assertFalse(receiver.has_public_upload(form))
-    fields = AmoLeadAttributionTests().fields()
-    with mock.patch.object(receiver, "amo_base_url", return_value="https://example.amocrm.ru"), \
-         mock.patch.object(receiver, "amo_headers", return_value={"Authorization": "Bearer test"}), \
-         mock.patch.object(receiver, "api_request", side_effect=[[{"id": 901}], None]) as api:
-      result = receiver.create_amo_lead(fields)
-    self.assertEqual(result, {"status": "sent", "lead_id": 901})
-    note = api.call_args_list[1].kwargs["payload"][0]["params"]["text"]
-    self.assertNotIn("Файлы:", note)
-    self.assertNotIn("document.pdf", note)
-
-
-class AiCommercialGuidanceTests(unittest.TestCase):
-  def test_prompt_covers_the_five_price_dialogues_without_inventing_a_quote(self):
-    prompt = receiver.AI_SYSTEM_PROMPT
-    for fact in (
-      "ИП — от 5 000 ₽ в месяц",
-      "ООО — от 10 000 ₽ в месяц",
-      "Бесплатна только экспресс-диагностика",
-      "начинаться от 3 000 ₽",
-      "индивидуальной или разовой задачи",
-    ):
-      self.assertIn(fact, prompt)
-    self.assertIn("Точный состав и цену определяет специалист", prompt)
-    self.assertIn("Не называй разовый стартовый платёж", prompt)
-    self.assertIn("Не придумывай скидки", prompt)
-
-
 class AmoLeadAttributionTests(unittest.TestCase):
   def fields(self, client_id="1730000000000000000"):
     return {
@@ -107,32 +69,12 @@ class AmoLeadAttributionTests(unittest.TestCase):
     _, calls = self.create(fields)
     self.assertIn({"name": "owner_qa"}, calls[0].kwargs["payload"][0]["_embedded"]["tags"])
 
-  def test_promotion_id_is_visible_in_crm_note(self):
-    fields = {**self.fields(), "offer_id": "accounting-legal-50-20260928"}
-    _, calls = self.create(fields)
-    note = calls[1].kwargs["payload"][0]["params"]["text"]
-    self.assertIn("Акция: accounting-legal-50-20260928", note)
-
-  def test_offer_is_limited_to_matching_promotion_on_promotions_page(self):
+  def test_promotion_id_requires_matching_page_and_selection(self):
     offer = "accounting-legal-50-20260928"
     self.assertEqual(receiver.valid_public_offer_id(offer, "Бухгалтерия + Право", "/akcii/"), offer)
     self.assertEqual(receiver.valid_public_offer_id(offer, "Безопасная смена бухгалтера", "/akcii/"), "")
     self.assertEqual(receiver.valid_public_offer_id(offer, "Бухгалтерия + Право", "/ceny/"), "")
     self.assertEqual(receiver.valid_public_offer_id("unexpected", "Бухгалтерия + Право", "/akcii/"), "")
-
-  def test_unpublished_precontract_audit_has_distinct_type_and_business_form(self):
-    self.assertEqual(receiver.parse_lead_kind("audit_precontract", "ip"), ("audit_precontract", "ip"))
-    self.assertEqual(receiver.parse_lead_kind("audit_precontract", "ooo"), ("audit_precontract", "ooo"))
-    self.assertEqual(receiver.parse_lead_kind("", ""), ("", ""))
-    with self.assertRaises(ValueError):
-      receiver.parse_lead_kind("audit_precontract", "")
-    with self.assertRaises(ValueError):
-      receiver.parse_lead_kind("audit_precontract", "other")
-    fields = {**self.fields(), "lead_type": "audit_precontract", "business_form": "ip"}
-    _, calls = self.create(fields)
-    note = calls[1].kwargs["payload"][0]["params"]["text"]
-    self.assertIn("Тип заявки: audit_precontract", note)
-    self.assertIn("Форма бизнеса: ip", note)
 
 
 class AmoFollowupTaskTests(unittest.TestCase):

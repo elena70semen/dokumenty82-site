@@ -275,7 +275,7 @@
         <h2 id="quick-lead-title">Обсудить задачу со специалистом</h2>
         <p>Укажите нужный документ и срок. Для одного отчёта назовите форму и период, для ответа — банк или ИФНС. Состав и стоимость работы согласуем до начала.</p>
       </div>
-      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo">
+      <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo" enctype="multipart/form-data">
         <input type="hidden" name="source_page" value="/razbor-situacii/" />
         <input type="hidden" name="task_type" value="Первичный разбор ситуации" />
         <input type="hidden" name="lead_mode" value="quick" />
@@ -285,6 +285,16 @@
           <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
           <label class="lead-quick-message">Коротко о задаче (необязательно)<textarea name="message" rows="3" placeholder="С чем нужна помощь и есть ли срок ответа"></textarea></label>
         </div>
+        <div class="form-file-field form-span-2 form-wide wide">
+          <span>Файлы (необязательно)</span>
+          <input class="lead-file-input" id="razbor-situacii-files-1" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="razbor-situacii-files-1-note" />
+          <label class="lead-file-picker" for="razbor-situacii-files-1">
+            <span class="lead-file-picker-button">Выбрать файлы</span>
+            <span class="lead-file-picker-status">Файлы не выбраны</span>
+          </label>
+          <span class="form-note" id="razbor-situacii-files-1-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли и секреты доступа.</span>
+        </div>
+        <ul class="lead-file-list form-span-2 form-wide wide" aria-live="polite"></ul>
         <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
         <div class="lead-form-actions"><button class="button button-lime" type="submit">Обсудить задачу</button><a class="button button-ghost" href="#route-contact">Описать задачу подробнее</a></div>
         <p class="form-note" role="status" aria-live="polite"></p>
@@ -327,7 +337,7 @@
         <h2 id="route-contact-title">Подробно описать задачу</h2>
         <p>Для отчёта укажите форму и период, для ответа — кем направлен запрос и срок. После связи согласуем, какие документы понадобятся и как их передать. Отправка обращения не является оплатой услуги.</p>
       </div>
-      <form class="crm-lead-form lead-capture-form" action="/api/lead" method="post" data-lead-form="amo">
+      <form class="crm-lead-form lead-capture-form" action="/api/lead" method="post" data-lead-form="amo" enctype="multipart/form-data">
         <input type="hidden" name="source_page" value="/razbor-situacii/" />
         <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="form-grid">
@@ -359,6 +369,16 @@
           </label>
         </div>
         <p class="form-note lead-transfer-note">Начните с короткого описания события и контрольной даты. После выбора маршрута уточним, какие именно документы понадобятся и как их передать.</p>
+        <div class="form-file-field form-span-2 form-wide wide">
+          <span>Файлы (необязательно)</span>
+          <input class="lead-file-input" id="razbor-situacii-files-2" type="file" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip" aria-describedby="razbor-situacii-files-2-note" />
+          <label class="lead-file-picker" for="razbor-situacii-files-2">
+            <span class="lead-file-picker-button">Выбрать файлы</span>
+            <span class="lead-file-picker-status">Файлы не выбраны</span>
+          </label>
+          <span class="form-note" id="razbor-situacii-files-2-note">До 6 файлов, суммарно до 20 МБ. Не прикладывайте пароли и секреты доступа.</span>
+        </div>
+        <ul class="lead-file-list form-span-2 form-wide wide" aria-live="polite"></ul>
         <label class="lead-consent">
           <input type="checkbox" name="privacy" value="1" required />
           <span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span>
@@ -432,7 +452,7 @@
       <strong>Задать вопрос срочно</strong>
     </a>
     <div class="cookie-notice" id="cookie-notice"><p>Сайт использует cookies и техническую аналитику. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="/policy/">политикой конфиденциальности</a>.</p><button type="button">Понятно</button></div>
-    <script src="/assets/lead-form.js?v=20260927-p0a" defer></script>
+    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
     <script>
       (() => {
         const notice = document.getElementById('cookie-notice');
@@ -471,7 +491,7 @@
         });
       })();
     </script>
-    <script src="/assets/metrika-goals.js?v=20260925-handoff1" defer></script>
+    <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260927-footer1" defer></script>
     <script src="/assets/ai-chat.js?v=20260927-p0a" defer></script>
   </body>
