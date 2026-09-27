@@ -1,0 +1,240 @@
+/* The services directory is a visual index, not a table of links. */
+:root body main.remaining-page .service-tree-section .service-tree-heading {
+  max-width: 760px;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-grid {
+  gap: clamp(16px, 1.8vw, 24px);
+  align-items: stretch;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  padding: clamp(16px, 1.6vw, 22px);
+  border: 1px solid rgba(136, 188, 207, .5);
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .95), rgba(239, 249, 253, .78));
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  backdrop-filter: blur(20px) saturate(1.15);
+  box-shadow: 0 28px 46px -35px rgba(11, 36, 64, .5), inset 0 1px 0 #fff;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-group::before {
+  display: none;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-overview {
+  display: grid;
+  grid-template-columns: minmax(170px, 39%) minmax(0, 1fr);
+  gap: clamp(16px, 1.5vw, 22px);
+  align-items: center;
+  min-width: 0;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-art {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(132, 186, 207, .4);
+  border-radius: 17px;
+  background: #eaf6fb;
+  box-shadow: 0 16px 25px -20px rgba(11, 36, 64, .4), inset 0 1px 0 #fff;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-art img {
+  display: block;
+  visibility: visible !important;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-intro {
+  min-width: 0;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-meta {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px 8px;
+  border: 1px solid #c6e5ed;
+  border-radius: 7px;
+  background: rgba(235, 251, 255, .85);
+  color: #007f91;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: .055em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-group-head > a {
+  display: inline-block;
+  color: #0b2440;
+  font-size: clamp(20px, 1.65vw, 24px);
+  font-weight: 750;
+  line-height: 1.16;
+  text-decoration: none;
+  text-wrap: balance;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-group-head > a:hover,
+:root body main.remaining-page .service-tree-section .service-tree-group-head > a:focus-visible {
+  color: #008c9f;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-intro > p {
+  min-height: 0;
+  margin: 10px 0 0;
+  color: #526e83;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-links,
+:root body main.remaining-page .service-tree-section .service-tree-group:last-child .service-tree-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  align-content: start;
+  min-width: 0;
+  border: 0;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-links a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  gap: 9px;
+  align-items: center;
+  min-width: 0;
+  min-height: 54px;
+  padding: 9px 9px 9px 14px;
+  border: 1px solid #d5e7ef;
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .9), rgba(244, 251, 254, .72));
+  color: #183550;
+  font-size: 13px;
+  font-weight: 610;
+  line-height: 1.3;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 #fff, 0 7px 14px -13px rgba(11, 36, 64, .4);
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-links a b {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid #c1e7ee;
+  border-radius: 8px;
+  background: #eaf9fc;
+  color: #008a9c;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-links a:hover,
+:root body main.remaining-page .service-tree-section .service-tree-links a:focus-visible {
+  padding-left: 14px;
+  border-color: #91d1df;
+  background: #fff;
+  box-shadow: 0 10px 18px -16px rgba(0, 127, 145, .6), inset 0 1px 0 #fff;
+  transform: translateY(-2px);
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-links a:focus-visible,
+:root body main.remaining-page .service-tree-section .service-tree-group-head > a:focus-visible {
+  outline: 2px solid #008a9c;
+  outline-offset: 3px;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-group:last-child .service-tree-links {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-group:nth-child(3) .service-tree-links {
+  grid-template-columns: 1fr;
+}
+
+:root body main.remaining-page .service-tree-section .service-tree-group:last-child .service-tree-overview {
+  grid-template-columns: 220px minmax(0, 1fr);
+}
+
+@media (max-width: 1120px) {
+  :root body main.remaining-page .service-tree-section .service-tree-overview {
+    grid-template-columns: minmax(140px, 36%) minmax(0, 1fr);
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-group-head > a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root body main.remaining-page .service-tree-section .service-tree-grid {
+    grid-template-columns: 1fr;
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-group,
+  :root body main.remaining-page .service-tree-section .service-tree-group:last-child {
+    grid-column: 1;
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-overview {
+    grid-template-columns: minmax(190px, 34%) minmax(0, 1fr);
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-group:last-child .service-tree-overview {
+    grid-template-columns: minmax(190px, 34%) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  :root body main.remaining-page .service-tree-section .service-tree-group {
+    gap: 16px;
+    padding: 14px;
+    border-radius: 19px;
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-overview {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-group:last-child .service-tree-overview {
+    grid-template-columns: 1fr;
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-art {
+    border-radius: 12px;
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-art img {
+    aspect-ratio: 16 / 8;
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-links,
+  :root body main.remaining-page .service-tree-section .service-tree-group:last-child .service-tree-links,
+  :root body main.remaining-page .service-tree-section .service-tree-group:nth-child(3) .service-tree-links {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  :root body main.remaining-page .service-tree-section .service-tree-links a {
+    min-height: 48px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root body main.remaining-page .service-tree-section .service-tree-links a {
+    transition: none;
+  }
+}
