@@ -705,7 +705,7 @@ for (const file of walk(root)) {
     if (refreshed !== html) serviceUpdates += 1;
     html = refreshed;
   }
-  if (route === taxCalendarRoute) {
+  if (route === taxCalendarRoute && !html.includes('<!-- editorial-calendar-2026-09-27 -->')) {
     const refreshed = refreshTaxCalendarPage(html);
     if (refreshed !== html) newsUpdates += 1;
     html = refreshed;
@@ -717,8 +717,8 @@ for (const file of walk(root)) {
     if (refreshed !== html) newsUpdates += 1;
     html = refreshed;
   }
-  if (route === "/novosti/") html = refreshNewsHub(html);
-  if (route === "/blog/") html = refreshBlogHub(html);
+  if (route === "/novosti/" && !html.includes('<!-- editorial-news-2026-09-27 -->')) html = refreshNewsHub(html);
+  if (route === "/blog/" && !html.includes('<!-- editorial-blog-2026-09-27 -->')) html = refreshBlogHub(html);
   if (route === "/blog/razbory/") html = refreshBlogRazbory(html);
 
   if (html !== before) {
