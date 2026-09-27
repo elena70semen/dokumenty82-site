@@ -83,6 +83,64 @@
     grid-column: auto;
   }
 }
+
+:root body main.remaining-page .pricing-factor-grid .pricing-factor {
+  position: relative;
+  min-height: 0;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid #d2e6ef;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #fff, #f4fafc);
+  box-shadow: 0 18px 32px -26px rgba(11, 36, 64, .34), inset 0 1px 0 #fff;
+}
+
+:root body main.remaining-page .pricing-factor > .remaining-card-art {
+  display: block;
+  width: 100%;
+  margin: 0 0 12px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+:root body main.remaining-page .pricing-factor > .remaining-card-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+:root body main.remaining-page .pricing-factor > span {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  z-index: 1;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #bde3ef;
+  border-radius: 50%;
+  background: #f5fcff;
+  color: #007e93;
+  font-size: 12px;
+  font-weight: 700;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px rgba(11, 36, 64, .14);
+}
+
+:root body main.remaining-page .pricing-factor strong {
+  color: #102b47;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+:root body main.remaining-page .pricing-factor small {
+  color: #526d84;
+  font-size: .94rem;
+  line-height: 1.5;
+}
 :root body main.remaining-page .remaining-section-art img,
 :root body main.remaining-page .remaining-followup-art img {
   display: block;
