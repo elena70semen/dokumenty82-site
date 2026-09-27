@@ -70,6 +70,12 @@
   margin-top: 8px;
 }
 @media (min-width: 900px) {
+  :root body main.remaining-page .contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  :root body main.remaining-page .contact-grid > .glass-card:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
   :root body main.remaining-page .reviews-contact-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
