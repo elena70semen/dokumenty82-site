@@ -1,3 +1,4 @@
+/* Structural cabinet styles; portal-theme.css supplies the public-site palette. */
 :root {
   color-scheme: dark;
   --bg: #ffffff;
