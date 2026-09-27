@@ -62,6 +62,21 @@
   max-width: none;
   margin-inline: auto;
 }
+:root body main.remaining-page .reviews-verification-section .section-header p {
+  max-width: 62ch;
+}
+:root body main.remaining-page .reviews-verification-section .section-header .button {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+@media (min-width: 900px) {
+  :root body main.remaining-page .reviews-contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  :root body main.remaining-page .reviews-contact-grid > .rich-card:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}
 :root body main.remaining-page .remaining-section-art img,
 :root body main.remaining-page .remaining-followup-art img {
   display: block;

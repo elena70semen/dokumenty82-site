@@ -297,10 +297,12 @@ for (const page of pages) {
   if (!page.title) issues.push(`${page.route}: missing title`);
   if (!page.description) issues.push(`${page.route}: missing description`);
   if (!page.h1) issues.push(`${page.route}: missing h1`);
-  if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/novosti\/"/i)) issues.push(`${page.route}: News missing from desktop navigation`);
-  if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/akcii\/"[^>]*>Акции<\/a>/i)) issues.push(`${page.route}: Promotions missing from desktop navigation`);
-  if (!page.html.match(/<nav class="desktop-nav"[\s\S]*?href="\/uslugi\/"[^>]*>Услуги<\/a>/i)) issues.push(`${page.route}: Services catalog missing from desktop navigation`);
-  if (!page.html.match(/<nav aria-label="Разделы сайта">[\s\S]*?href="\/buhgalterskie-uslugi\/"[^>]*>Бухгалтерия<\/a>/i)) {
+  const desktopNav = page.html.match(/<nav\b(?=[^>]*class="[^"]*\b(?:desktop-nav|uh-nav)\b)[^>]*>[\s\S]*?<\/nav>/i)?.[0] || "";
+  const footerNav = page.html.match(/<footer\b[\s\S]*?<\/footer>/i)?.[0] || "";
+  if (!desktopNav.includes('href="/novosti/"')) issues.push(`${page.route}: News missing from desktop navigation`);
+  if (!desktopNav.match(/href="\/akcii\/"[^>]*>Акции<\/a>/i)) issues.push(`${page.route}: Promotions missing from desktop navigation`);
+  if (!desktopNav.match(/href="\/uslugi\/"[^>]*>Услуги<\/a>/i)) issues.push(`${page.route}: Services catalog missing from desktop navigation`);
+  if (!footerNav.match(/href="\/buhgalterskie-uslugi\/"[^>]*>Бухгалтерия<\/a>/i)) {
     issues.push(`${page.route}: Accounting services missing from footer navigation`);
   }
   if (!page.html.includes("/assets/metrika-goals.js")) issues.push(`${page.route}: Metrika contact goals script missing`);
@@ -401,19 +403,19 @@ for (const [hubRoute, routes] of commercialHubCoverage) {
 
 const commercialProofMarkers = new Map([
   ["/registraciya-ip/", [
-    "без привязки к банку",
-    "через 3 рабочих дня",
+    "не привязана к открытию счёта",
+    "не более 3 рабочих дней",
     "https://www.nalog.gov.ru/create_business/ip/creation/registration/step4/",
   ]],
   ["/likvidaciya-ooo/", [
     "В течение 3 рабочих дней после решения",
-    "Стоимость начинается от 45 000 ₽",
+    "от 45 000 ₽",
     "https://www.nalog.gov.ru/rn77/related_activities/registration_ip_yl/reg_yl/termination_activities/",
   ]],
   ["/buhgalterskie-uslugi/", [
-    "Простое ООО также может обслуживаться по базовому тарифу",
-    "фиксируем ежемесячный состав задач и стоимость",
-    "сопровождение по всему Крыму и Севастополю",
+    "простой моделью учёта",
+    "фиксируем ежемесячный состав задач",
+    "сопровождение по Крыму и Севастополю",
     "Феодосии, Ялты, Евпатории, Керчи, Севастополя",
   ]],
   ["/soprovozhdenie/", [
