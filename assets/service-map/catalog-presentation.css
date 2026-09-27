@@ -1,0 +1,15 @@
+/* Keep the lone personnel card beside its introduction on wide screens. */
+@media (min-width: 900px) {
+  :root body main.remaining-page > #kadry > .remaining-section-inner:has(> .section-header) {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    column-gap: clamp(36px, 5vw, 84px);
+    align-items: center;
+  }
+
+  :root body main.remaining-page > #kadry > .remaining-section-inner > .related-grid {
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
