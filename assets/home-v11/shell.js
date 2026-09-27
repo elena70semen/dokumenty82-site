@@ -37,6 +37,11 @@
     oldHeader.replaceWith(header);
     oldFooter.replaceWith(footer);
 
+    const maxScript = document.createElement("script");
+    maxScript.src = "/assets/home-v11/max-contact.js?v=20260927-max1";
+    maxScript.defer = true;
+    document.head.append(maxScript);
+
     const nav = header.querySelector("#header-nav");
     const toggle = header.querySelector("#menu-toggle");
     const cabinetLink = document.createElement("a");

@@ -1,0 +1,75 @@
+(() => {
+  const phone = "+7 978 084-38-96";
+  const maxUrl = "https://max.ru/";
+
+  function copyPhone() {
+    const field = document.createElement("textarea");
+    field.value = phone;
+    field.setAttribute("aria-hidden", "true");
+    field.style.cssText = "position:fixed;left:-9999px;top:0;opacity:0";
+    document.body.append(field);
+    field.select();
+    let copied = false;
+    try { copied = document.execCommand("copy"); } catch (_) {}
+    field.remove();
+    if (!copied && navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(phone).catch(() => {});
+    }
+    return copied;
+  }
+
+  function showHint(copied) {
+    let hint = document.getElementById("max-contact-hint");
+    if (!hint) {
+      hint = document.createElement("div");
+      hint.id = "max-contact-hint";
+      hint.setAttribute("role", "status");
+      hint.style.cssText = "position:fixed;z-index:10000;left:50%;bottom:24px;transform:translateX(-50%);max-width:min(480px,calc(100vw - 32px));padding:14px 18px;border:1px solid #bddde9;border-radius:14px;background:#fff;color:#0b2440;box-shadow:0 16px 40px #0b244040;font:500 14px/1.5 Arial,sans-serif;text-align:center";
+      document.body.append(hint);
+    }
+    hint.textContent = copied
+      ? `Номер MAX ${phone} скопирован. Найдите его в контактах MAX.`
+      : `Найдите нас в MAX по номеру ${phone}.`;
+    hint.hidden = false;
+    clearTimeout(hint._timer);
+    hint._timer = setTimeout(() => { hint.hidden = true; }, 7000);
+  }
+
+  function createButton(className, label) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = className;
+    button.dataset.maxContact = "";
+    if (className.includes("uh-channel")) {
+      button.innerHTML = '<img src="/assets/home-v11/channel-max.png" width="27" height="27" alt=""><span>MAX</span>';
+    } else {
+      button.textContent = label;
+    }
+    button.title = `MAX: ${phone}`;
+    button.setAttribute("aria-label", `Открыть MAX и найти нас по номеру ${phone}`);
+    return button;
+  }
+
+  function init() {
+    const styles = document.createElement("style");
+    styles.textContent = ".db-footer .footer-channel-max{font-family:inherit;cursor:pointer}";
+    document.head.append(styles);
+    const header = document.querySelector(".uh-channels");
+    if (header && !header.querySelector("[data-max-contact]")) {
+      header.append(createButton("uh-channel uh-channel-max", "MAX"));
+    }
+    const footer = document.querySelector(".footer-channels");
+    if (footer && !footer.querySelector("[data-max-contact]")) {
+      footer.append(createButton("channel footer-channel-max", "MAX"));
+    }
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest("[data-max-contact]")) return;
+      const copied = copyPhone();
+      showHint(copied);
+      window.open(maxUrl, "_blank", "noopener");
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
+  else init();
+})();
