@@ -1,7 +1,7 @@
 # Выпуск полного редизайна на dokumenty82.ru — 27.09.2026
 
 Источник: `codex/redesight-v11-redesign`, commit `b205862`.
-Текущий релиз: `/var/www/dokumenty82/releases/20260927-redesight-b205862`.
+Исходный релиз полного редизайна: `/var/www/dokumenty82/releases/20260927-redesight-b205862`. Последующее обновление оформления кабинета и AI-приёмной описано в `style-unification-release-2026-09-27.md`.
 Предыдущий релиз: `/var/www/dokumenty82/releases/20260915-inline-attachments`.
 Серверная форма: `/opt/dokumenty82-form/lead_receiver.py`; резервная копия перед выпуском — `/opt/dokumenty82-form/lead_receiver.py.rollback-20260927-b205862`.
 
