@@ -1,4 +1,82 @@
 /* Image-led continuation of the remaining-page visual system. */
+:root body main.remaining-page .contact-max-assistant {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  margin-top: clamp(20px, 2.5vw, 32px);
+  padding: clamp(24px, 3.5vw, 48px);
+  border: 1px solid rgba(99, 152, 177, .38);
+  border-radius: 24px;
+  background: linear-gradient(125deg, rgba(255, 255, 255, .9), rgba(237, 248, 252, .74));
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  backdrop-filter: blur(18px) saturate(1.1);
+  box-shadow: 0 25px 46px -32px rgba(11, 36, 64, .4), inset 0 1px 0 #fff;
+}
+:root body main.remaining-page .contact-max-assistant-copy { min-width: 0; }
+:root body main.remaining-page .contact-max-assistant-kicker {
+  margin: 0 0 12px;
+  color: #007783;
+  font: 750 12px/1.4 Inter, Arial, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+:root body main.remaining-page .contact-max-assistant h3 {
+  margin: 0 0 16px;
+  color: #0b2440;
+  font-size: clamp(28px, 2.7vw, 40px);
+  line-height: 1.15;
+}
+:root body main.remaining-page .contact-max-assistant-copy > p:not(.contact-max-assistant-kicker) {
+  max-width: 57ch;
+  margin: 0;
+  color: #526b82;
+  font-size: 16px;
+  line-height: 1.7;
+}
+:root body main.remaining-page .contact-max-assistant-action {
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 24px;
+  text-decoration: none;
+}
+:root body main.remaining-page .contact-max-assistant-copy > .contact-max-assistant-hint {
+  margin-top: 14px;
+  font-size: 13px;
+}
+:root body main.remaining-page .contact-max-assistant-poster {
+  display: block;
+  width: min(100%, 320px);
+  justify-self: end;
+  overflow: hidden;
+  border: 1px solid #d7e8ee;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 20px 36px -28px rgba(11, 36, 64, .5);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+:root body main.remaining-page .contact-max-assistant-poster:is(:hover, :focus-visible) {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 40px -28px rgba(11, 36, 64, .55);
+}
+:root body main.remaining-page .contact-max-assistant-poster img {
+  display: block;
+  visibility: visible !important;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 699px) {
+  :root body main.remaining-page .contact-max-assistant {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    border-radius: 18px;
+  }
+  :root body main.remaining-page .contact-max-assistant-action { width: 100%; }
+  :root body main.remaining-page .contact-max-assistant-poster {
+    width: min(100%, 280px);
+    justify-self: center;
+  }
+}
 :root body main.remaining-page > .hero.remaining-hero .remaining-hero-visual::after {
   display: none;
 }
