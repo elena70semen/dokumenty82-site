@@ -38,7 +38,7 @@
     oldFooter.replaceWith(footer);
 
     const maxScript = document.createElement("script");
-    maxScript.src = "/assets/home-v11/max-contact.js?v=20260927-max2";
+    maxScript.src = "/assets/home-v11/max-contact.js?v=20260929-maxroute1";
     maxScript.defer = true;
     document.head.append(maxScript);
 

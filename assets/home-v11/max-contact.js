@@ -37,16 +37,23 @@
     hint._timer = setTimeout(() => { hint.hidden = true; }, 7000);
   }
 
+  function createHeaderLink() {
+    const link = document.createElement("a");
+    link.className = "uh-channel uh-channel-max";
+    link.href = "/kontakty/#max-assistant";
+    link.dataset.maxQrLink = "";
+    link.innerHTML = '<img src="/assets/home-v11/channel-max.png" width="27" height="27" alt=""><span>MAX</span>';
+    link.title = "Перейти к QR-коду помощника в MAX";
+    link.setAttribute("aria-label", "Перейти к QR-коду помощника в MAX на странице контактов");
+    return link;
+  }
+
   function createButton(className, label) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = className;
     button.dataset.maxContact = "";
-    if (className.includes("uh-channel")) {
-      button.innerHTML = '<img src="/assets/home-v11/channel-max.png" width="27" height="27" alt=""><span>MAX</span>';
-    } else {
-      button.textContent = label;
-    }
+    button.textContent = label;
     button.title = `Скопировать номер ${phone} для поиска в MAX`;
     button.setAttribute("aria-label", `Скопировать номер ${phone} и найти нас в MAX`);
     return button;
@@ -57,8 +64,8 @@
     styles.textContent = ".db-footer .footer-channel-max{font-family:inherit;cursor:pointer}";
     document.head.append(styles);
     const header = document.querySelector(".uh-channels");
-    if (header && !header.querySelector("[data-max-contact]")) {
-      header.append(createButton("uh-channel uh-channel-max", "MAX"));
+    if (header && !header.querySelector("[data-max-qr-link]")) {
+      header.append(createHeaderLink());
     }
     const footer = document.querySelector(".footer-channels");
     if (footer && !footer.querySelector("[data-max-contact]")) {

@@ -1,5 +1,6 @@
 /* Image-led continuation of the remaining-page visual system. */
 :root body main.remaining-page .contact-max-assistant {
+  scroll-margin-top: 24px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
   align-items: center;
@@ -12,6 +13,9 @@
   -webkit-backdrop-filter: blur(18px) saturate(1.1);
   backdrop-filter: blur(18px) saturate(1.1);
   box-shadow: 0 25px 46px -32px rgba(11, 36, 64, .4), inset 0 1px 0 #fff;
+}
+:root body main.remaining-page .contact-max-assistant:target {
+  border-color: #5aaec0;
 }
 :root body main.remaining-page .contact-max-assistant-copy { min-width: 0; }
 :root body main.remaining-page .contact-max-assistant-kicker {
