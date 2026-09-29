@@ -6339,30 +6339,99 @@ main .calendar-promo::after {
   }
 }
 
-/* Keep the fixed account and question shortcuts clear of page content. */
-@media (min-width: 641px) {
+/* Keep the names visible without pushing fixed shortcuts over the hero art. */
+@media (min-width: 1850px) {
   :root body :is(.ai-chat-widget, .client-portal-widget) {
     right: 8px !important;
-    width: 48px !important;
-    max-width: 48px !important;
-    height: 48px !important;
-    min-height: 48px !important;
-    justify-content: center;
-    gap: 0 !important;
-    padding: 7px !important;
+    width: 144px !important;
+    max-width: 144px !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    justify-content: flex-start;
+    gap: 7px !important;
+    padding: 6px 8px !important;
   }
 
   :root body :is(.ai-chat-widget, .client-portal-widget) span {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   :root body :is(.ai-chat-widget, .client-portal-widget) strong {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+    position: relative !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip-path: none !important;
+    white-space: normal !important;
+    font-size: 12px !important;
+    line-height: 1.12;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1849px) {
+  :root body :is(.ai-chat-widget, .client-portal-widget) {
+    right: 0 !important;
+    width: 64px !important;
+    max-width: 64px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px !important;
+    padding: 5px 3px !important;
+  }
+
+  :root body .client-portal-widget { top: calc(50% - 96px); }
+
+  :root body :is(.ai-chat-widget, .client-portal-widget) span {
+    width: 24px;
+    height: 24px;
+  }
+
+  :root body :is(.ai-chat-widget, .client-portal-widget) strong {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip-path: none !important;
+    white-space: normal !important;
+    font-size: 10px !important;
+    line-height: 1.05;
+    text-align: center;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  :root body :is(.ai-chat-widget, .client-portal-widget) {
+    width: 56px !important;
+    max-width: 56px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :root body .ai-chat-widget {
+    right: 8px !important;
+    width: 48px !important;
+    max-width: 48px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px !important;
+    padding: 5px 3px !important;
+  }
+
+  :root body .ai-chat-widget span { width: 24px; height: 24px; }
+  :root body .ai-chat-widget strong {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip-path: none !important;
+    white-space: normal !important;
+    font-size: 10px !important;
+    line-height: 1.05;
+    text-align: center;
   }
 }
