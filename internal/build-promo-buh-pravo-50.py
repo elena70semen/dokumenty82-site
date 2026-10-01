@@ -60,7 +60,7 @@ def build():
     head = head.replace(
         "  </head>",
         '    <meta property="og:image" content="https://dokumenty82.ru/assets/promo-buh-pravo-50/hero.webp" />\n'
-        '    <link rel="stylesheet" href="/assets/promo-buh-pravo-50.css?v=20261001-2" />\n'
+        '    <link rel="stylesheet" href="/assets/promo-buh-pravo-50.css?v=20261001-3" />\n'
         "  </head>",
         1,
     )
@@ -158,28 +158,6 @@ def build():
         </div>
       </section>
     </main>'''
-    image_captions = {
-        "hero": "Два направления · один договор",
-        "documents": "Документы и учёт",
-        "tax-legal": "Налоги и договоры",
-        "shared-plan": "Единый рабочий план",
-        "accounting": "Учёт · налоги · отчётность",
-        "legal": "Договоры и правовые вопросы",
-        "discount": "−50% на каждый платёж",
-        "process": "От обращения до договора",
-        "provider": "Встреча по записи · Симферополь",
-        "faq": "Ответы об условиях",
-        "contact": "Обсудим вашу задачу",
-    }
-    for image_name, caption in image_captions.items():
-        image_marker = f'src="/assets/promo-buh-pravo-50/{image_name}.webp"'
-        image_start = main.index(image_marker)
-        figure_end = main.index('</figure>', image_start)
-        main = (
-            main[:figure_end]
-            + f'<figcaption class="promo-image-label">{caption}</figcaption>'
-            + main[figure_end:]
-        )
     TARGET.parent.mkdir(exist_ok=True)
     page = head + main + tail
     page = page.replace(

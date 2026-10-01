@@ -1,0 +1,92 @@
+/* Shared motion for editorial images. Logos, QR codes and widgets stay still. */
+:root body :is(main, #main) :is(
+  .remaining-hero-visual, .remaining-section-art, .remaining-followup-art,
+  .remaining-card-art, .promo-section-art, .promo-card-media, .service-tree-art,
+  .hero-art-panel, .hero-banner-media, .hero-media, .image-hover-media
+) {
+  overflow: hidden;
+}
+:root body :is(main, #main) .hero-media { border-radius: 18px; }
+:root body :is(main, #main) .image-hover-media { border-radius: 14px; }
+
+/* CSS-backed illustrations use a clipped layer so their crop remains intact. */
+:root body :is(.promotion-condition-art, .login-photo) {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+:root body :is(.promotion-condition-art, .login-photo)::before {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  pointer-events: none;
+  content: "";
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :root body :is(main, #main) :is(
+    :is(.glass-card, .news-card, .pricing-factor):has(> :is(.remaining-card-art, .promo-card-media)),
+    .service-tree-group:has(.service-tree-art),
+    .reporting-related-card:has(.image-hover-media),
+    .promotion-condition-grid > div:has(> .promotion-condition-art),
+    :is(.choice-card, .service-card, .provider-card, .step-card):has(.icon-tile img),
+    .remaining-hero-visual, .remaining-section-art, .remaining-followup-art,
+    .promo-section-art, .hero-art-panel, .hero-banner-media, .hero-media
+  ) {
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  :root body :is(main, #main) :is(
+    :is(.glass-card, .news-card, .pricing-factor):has(> :is(.remaining-card-art, .promo-card-media)),
+    .service-tree-group:has(.service-tree-art),
+    .reporting-related-card:has(.image-hover-media),
+    .promotion-condition-grid > div:has(> .promotion-condition-art),
+    :is(.choice-card, .service-card, .provider-card, .step-card):has(.icon-tile img),
+    .remaining-hero-visual, .remaining-section-art, .remaining-followup-art,
+    .promo-section-art, .hero-art-panel, .hero-banner-media, .hero-media
+  ):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 38px -28px rgba(11, 36, 64, .5), inset 0 1px 0 rgba(255, 255, 255, .8);
+  }
+  :root body :is(main, #main) :is(
+    .remaining-hero-visual, .remaining-section-art, .remaining-followup-art,
+    .remaining-card-art, .promo-section-art, .promo-card-media, .service-tree-art,
+    .hero-art-panel, .hero-banner-media, .hero-media, .image-hover-media, .icon-tile
+  ) img,
+  :root body :is(.promotion-condition-art, .login-photo)::before {
+    transition: transform .6s ease;
+  }
+  :root body :is(main, #main) :is(
+    .glass-card, .news-card, .pricing-factor, .service-tree-group,
+    .reporting-related-card, .choice-card, .service-card, .provider-card, .step-card
+  ):hover :is(.remaining-card-art, .promo-card-media, .service-tree-art, .image-hover-media, .icon-tile) img,
+  :root body :is(main, #main) :is(
+    .remaining-hero-visual, .remaining-section-art, .remaining-followup-art,
+    .promo-section-art, .hero-art-panel, .hero-banner-media, .hero-media
+  ):hover img,
+  :root body .promotion-condition-grid > div:hover .promotion-condition-art::before,
+  :root body .login-photo:hover::before {
+    transform: scale(1.035);
+  }
+}
+
+/* Override older hover rules for touch screens and reduced-motion settings. */
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  :root body :is(main, #main) :is(
+    :is(.glass-card, .news-card, .pricing-factor):has(> :is(.remaining-card-art, .promo-card-media)),
+    .service-tree-group:has(.service-tree-art),
+    .reporting-related-card:has(.image-hover-media),
+    .promotion-condition-grid > div:has(> .promotion-condition-art),
+    :is(.choice-card, .service-card, .provider-card, .step-card):has(.icon-tile img),
+    .remaining-hero-visual, .remaining-section-art, .remaining-followup-art,
+    .promo-section-art, .hero-art-panel, .hero-banner-media, .hero-media
+  ),
+  :root body :is(main, #main) :is(
+    .remaining-hero-visual, .remaining-section-art, .remaining-followup-art,
+    .remaining-card-art, .promo-section-art, .promo-card-media, .service-tree-art,
+    .hero-art-panel, .hero-banner-media, .hero-media, .image-hover-media, .icon-tile
+  ) img,
+  :root body :is(.promotion-condition-art, .login-photo)::before {
+    transform: none;
+    transition: none;
+  }
+}

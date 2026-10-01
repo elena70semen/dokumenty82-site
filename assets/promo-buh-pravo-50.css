@@ -362,11 +362,6 @@ main.promo-landing .promo-card {
   border-radius: 18px;
   background: rgba(255,255,255,.88);
   box-shadow: 0 12px 28px -24px rgba(11,36,64,.52);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-main.promo-landing .promo-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 22px 38px -28px rgba(11,36,64,.5);
 }
 main.promo-landing .promo-card-media,
 main.promo-landing .promo-section-art { position: relative; margin: 0; overflow: hidden; }
@@ -378,37 +373,6 @@ main.promo-landing .promo-section-art img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-main.promo-landing .promo-card-media img { transition: transform .6s ease; }
-main.promo-landing .promo-card:hover .promo-card-media img { transform: scale(1.035); }
-main.promo-landing .promo-image-label {
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
-  left: 14px;
-  width: fit-content;
-  max-width: calc(100% - 28px);
-  padding: 10px 15px;
-  border: 1px solid rgba(255,255,255,.38);
-  border-radius: 10px;
-  background: rgba(9,31,52,.78);
-  box-shadow: 0 10px 25px rgba(8,32,53,.16);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #fff;
-  font-size: clamp(.85rem, 1.1vw, 1.05rem);
-  font-weight: 560;
-  letter-spacing: .005em;
-  line-height: 1.25;
-  text-wrap: balance;
-}
-main.promo-landing .promo-hero-visual .promo-image-label {
-  right: 22px;
-  bottom: 22px;
-  left: 22px;
-  max-width: calc(100% - 44px);
-  padding: 13px 18px;
-  font-size: clamp(1rem, 1.25vw, 1.2rem);
 }
 main.promo-landing .promo-card-body {
   display: flex;
@@ -520,19 +484,6 @@ main.promo-landing .promo-contact-links { display: grid; gap: 9px; padding: 20px
   main.promo-landing .promo-feature-intro .promo-section-art { aspect-ratio: 1.9; }
   main.promo-landing .promo-contact-aside { grid-template-columns: 1fr; }
   main.promo-landing .promo-contact-aside .promo-section-art { aspect-ratio: 1.9; }
-  main.promo-landing .promo-image-label,
-  main.promo-landing .promo-hero-visual .promo-image-label {
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
-    max-width: calc(100% - 20px);
-    padding: 8px 11px;
-    font-size: .83rem;
-  }
   main.promo-landing .promo-steps li,
   main.promo-landing .promo-process li { padding: 16px 0 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  main.promo-landing .promo-card,
-  main.promo-landing .promo-card-media img { transition: none; }
 }

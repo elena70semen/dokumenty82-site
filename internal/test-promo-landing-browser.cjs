@@ -48,7 +48,7 @@ async function localRoute(route) {
       }
       assert.equal(await page.locator("h1").count(), 1, width + " one H1");
       assert.match(await page.locator(".promo-hero-copy").innerText(), /каждый платёж в течение всего срока договора/, width + " terms");
-      assert.equal(await page.locator(".promo-image-label").count(), 11, width + " labelled editorial images");
+      assert.equal(await page.locator(".promo-image-label").count(), 0, width + " no image caption overlays");
       assert.equal(await page.locator('main.promo-landing img[src^="/assets/promo-buh-pravo-50/"]').count(), 11, width + " unique images");
       for (const image of await page.locator('main.promo-landing img[src^="/assets/promo-buh-pravo-50/"]').all()) {
         await image.scrollIntoViewIfNeeded();
@@ -105,7 +105,7 @@ async function localRoute(route) {
     await page.goto(origin + "/akcii/", { waitUntil: "load" });
     assert.equal(await page.locator('#offer-2 a[href="/buhgalteriya-pravo-50/"]').count(), 1);
     await page.locator("#offer-2").screenshot({ path: path.join(output, "offer-entry-1440.png") });
-    console.log("Promo landing browser QA: 5 widths, 11 labelled images, no overflow, CTA order, one CRM-confirmed success, attribution OK");
+    console.log("Promo landing browser QA: 5 widths, 11 images without overlays, no overflow, CTA order, one mocked CRM-confirmed success, attribution OK");
     console.log("Screenshots: " + output);
   } finally {
     await browser.close();
