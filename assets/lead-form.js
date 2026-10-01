@@ -139,8 +139,10 @@
     const offerId = form.querySelector('input[name="offer_id"]');
     if (!offerId) return "";
     const select = form.querySelector('select[name="task_type"]');
-    const selected = window.location.pathname === "/akcii/" && select &&
-      select.value === "Бухгалтерия + Право";
+    const selected = (window.location.pathname === "/akcii/" && select &&
+      select.value === "Бухгалтерия + Право") ||
+      (window.location.pathname === "/buhgalteriya-pravo-50/" &&
+        form.querySelector('input[name="task_type"]')?.value === "Бухгалтерия + право — 50%");
     offerId.value = selected ? ACCOUNTING_LEGAL_OFFER_ID : "";
     return offerId.value;
   }
@@ -230,6 +232,9 @@
 
       const promotionOffer = syncPromotionOffer(form);
       const data = new FormData(form);
+      if (window.location.pathname === "/buhgalteriya-pravo-50/") {
+        data.set("current_url", window.location.pathname + window.location.search);
+      }
       const hasFiles = selectedFiles(fileInput).length > 0;
       // An empty hidden field must not label an unrelated request as an offer.
       if (!promotionOffer) data.delete("offer_id");

@@ -101,8 +101,12 @@ def clipped(value, limit):
 
 
 def valid_public_offer_id(value, task_type, source_page):
-  if (text(source_page) == "/akcii/" and text(task_type) == "Бухгалтерия + Право" and
-      text(value) == "accounting-legal-50-20260928"):
+  valid_source = (
+    (text(source_page) == "/akcii/" and text(task_type) == "Бухгалтерия + Право")
+    or (text(source_page) == "/buhgalteriya-pravo-50/"
+        and text(task_type) == "Бухгалтерия + право — 50%")
+  )
+  if valid_source and text(value) == "accounting-legal-50-20260928":
     return "accounting-legal-50-20260928"
   return ""
 
@@ -649,7 +653,8 @@ def create_amo_lead(fields, files):
     })
 
   lead = {
-    "name": "Заявка с сайта: " + fields["task_type"],
+    "name": ("Бухгалтерия + право — 50%" if fields.get("promo") else
+             "Заявка с сайта: " + fields["task_type"]),
     "_embedded": {
       "contacts": [{
         "name": fields["name"] or "Посетитель сайта",
@@ -673,6 +678,11 @@ def create_amo_lead(fields, files):
     lead["custom_fields_values"] = tracking_fields
   if fields.get("utm_source") == "owner_qa":
     lead["_embedded"]["tags"].append({"name": "owner_qa"})
+  if fields.get("promo"):
+    lead["_embedded"]["tags"] = [
+      tag for tag in lead["_embedded"]["tags"] if tag["name"] != "razbor-situacii"
+    ]
+    lead["_embedded"]["tags"].append({"name": fields["promo"]})
 
   for key, env_value in (
     ("pipeline_id", AMO_PIPELINE_ID),
@@ -700,9 +710,12 @@ def create_amo_lead(fields, files):
   note_text = "\n".join([
     "Заявка с сайта dokumenty82.ru",
     f"Страница: {fields['source_page']}",
+    f"Текущий URL: {fields.get('current_url') or '-'}",
     f"Первая страница: {fields['landing_page'] or '-'}",
     f"Тема: {fields['task_type']}",
     f"Акция: {fields.get('offer_id') or '-'}",
+    f"Сценарий: {fields.get('service') or '-'} / {fields.get('promo') or '-'}",
+    f"Форма бизнеса: {fields.get('business_form') or '-'}",
     f"Имя: {fields['name']}",
     f"Телефон: {fields['phone']}",
     f"Email: {fields['email'] or '-'}",
@@ -999,6 +1012,8 @@ class LeadHandler(BaseHTTPRequestHandler):
         "email": text(form.getfirst("email")),
         "task_type": text(form.getfirst("task_type")) or "Разбор ситуации",
         "offer_id": clipped(form.getfirst("offer_id"), 80),
+        "current_url": clipped(form.getfirst("current_url"), 1000),
+        "business_form": clipped(form.getfirst("business_form"), 20),
         "message": text(form.getfirst("message")),
         "source_page": text(form.getfirst("source_page")) or "/razbor-situacii/",
         "landing_page": clipped(form.getfirst("landing_page"), 1000),
@@ -1013,6 +1028,19 @@ class LeadHandler(BaseHTTPRequestHandler):
       }, is_quick_lead)
       fields["offer_id"] = valid_public_offer_id(
         fields["offer_id"], fields["task_type"], fields["source_page"])
+      is_promo_landing = (
+        fields["source_page"] == "/buhgalteriya-pravo-50/"
+        and fields["task_type"] == "Бухгалтерия + право — 50%"
+        and fields["offer_id"] == "accounting-legal-50-20260928"
+      )
+      fields["service"] = "accounting_legal_combo" if is_promo_landing else ""
+      fields["promo"] = "promo_buh_pravo_50" if is_promo_landing else ""
+      fields["business_form"] = (
+        fields["business_form"] if is_promo_landing and
+        fields["business_form"] in ("ip", "ooo", "unknown") else ""
+      )
+      if not is_promo_landing:
+        fields["current_url"] = ""
       if not fields["name"] or not fields["phone"] or not fields["message"] or text(form.getfirst("privacy")) != "1":
         json_response(self, 400, {"ok": False, "message": "Заполните обязательные поля."})
         return

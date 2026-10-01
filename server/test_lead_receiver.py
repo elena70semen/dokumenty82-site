@@ -72,9 +72,30 @@ class AmoLeadAttributionTests(unittest.TestCase):
   def test_promotion_id_requires_matching_page_and_selection(self):
     offer = "accounting-legal-50-20260928"
     self.assertEqual(receiver.valid_public_offer_id(offer, "Бухгалтерия + Право", "/akcii/"), offer)
+    self.assertEqual(receiver.valid_public_offer_id(offer, "Бухгалтерия + право — 50%", "/buhgalteriya-pravo-50/"), offer)
+    self.assertEqual(receiver.valid_public_offer_id(offer, "Бухгалтерия + Право", "/buhgalteriya-pravo-50/"), "")
     self.assertEqual(receiver.valid_public_offer_id(offer, "Безопасная смена бухгалтера", "/akcii/"), "")
     self.assertEqual(receiver.valid_public_offer_id(offer, "Бухгалтерия + Право", "/ceny/"), "")
     self.assertEqual(receiver.valid_public_offer_id("unexpected", "Бухгалтерия + Право", "/akcii/"), "")
+
+  def test_promo_lead_has_clear_name_tag_and_attribution(self):
+    fields = {
+      **self.fields(), "task_type": "Бухгалтерия + право — 50%",
+      "source_page": "/buhgalteriya-pravo-50/",
+      "current_url": "/buhgalteriya-pravo-50/?utm_source=yandex",
+      "offer_id": "accounting-legal-50-20260928",
+      "service": "accounting_legal_combo", "promo": "promo_buh_pravo_50",
+      "business_form": "ip",
+    }
+    _, calls = self.create(fields)
+    lead = calls[0].kwargs["payload"][0]
+    self.assertEqual(lead["name"], "Бухгалтерия + право — 50%")
+    self.assertIn({"name": "promo_buh_pravo_50"}, lead["_embedded"]["tags"])
+    self.assertNotIn({"name": "razbor-situacii"}, lead["_embedded"]["tags"])
+    note = calls[1].kwargs["payload"][0]["params"]["text"]
+    self.assertIn("Сценарий: accounting_legal_combo / promo_buh_pravo_50", note)
+    self.assertIn("Форма бизнеса: ip", note)
+    self.assertIn("Текущий URL: /buhgalteriya-pravo-50/?utm_source=yandex", note)
 
 
 class AmoFollowupTaskTests(unittest.TestCase):

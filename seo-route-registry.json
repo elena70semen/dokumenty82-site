@@ -3,6 +3,7 @@
   "owner_decisions": {
     "/oferta/": "publication approved on 2026-08-28; supplied offer text with issuer details from the website; follows the existing legal-page indexing policy",
     "/akcii/": "approved promotions hub; index, follow; keep in sitemap",
+    "/buhgalteriya-pravo-50/": "approved accounting and legal support promotion landing; index, follow; keep in sitemap",
     "/policy/": "index, follow; keep in sitemap",
     "/blog/": "approved for indexing",
     "/blog/razbory/": "approved for indexing",
@@ -16,6 +17,7 @@
   "indexable_routes": [
     "/",
     "/akcii/",
+    "/buhgalteriya-pravo-50/",
     "/adres-egryul-direktor/",
     "/ausn-krym/",
     "/bank-i-115-fz/",
