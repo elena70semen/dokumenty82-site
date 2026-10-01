@@ -43,8 +43,20 @@ async function localRoute(route) {
     for (const width of [1440, 1024, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(origin + "/buhgalteriya-pravo-50/?utm_source=owner_qa&utm_medium=test", { waitUntil: "load" });
+      if (width === 1440) {
+        await page.locator("#cookie-notice button").click();
+      }
       assert.equal(await page.locator("h1").count(), 1, width + " one H1");
       assert.match(await page.locator(".promo-hero-copy").innerText(), /каждый платёж в течение всего срока договора/, width + " terms");
+      assert.equal(await page.locator(".promo-image-label").count(), 11, width + " labelled editorial images");
+      assert.equal(await page.locator('main.promo-landing img[src^="/assets/promo-buh-pravo-50/"]').count(), 11, width + " unique images");
+      for (const image of await page.locator('main.promo-landing img[src^="/assets/promo-buh-pravo-50/"]').all()) {
+        await image.scrollIntoViewIfNeeded();
+        await image.evaluate((element) => element.decode());
+      }
+      const imageHealth = await page.locator('main.promo-landing img[src^="/assets/promo-buh-pravo-50/"]').evaluateAll((images) => images.map((image) => ({src: image.getAttribute("src"), ok: image.complete && image.naturalWidth > 0 && getComputedStyle(image).visibility === "visible"})));
+      assert.equal(new Set(imageHealth.map((image) => image.src)).size, 11, width + " distinct image sources");
+      assert.ok(imageHealth.every((image) => image.ok), width + " all images load: " + JSON.stringify(imageHealth));
       const dimensions = await page.evaluate(() => ({
         scroll: document.documentElement.scrollWidth,
         client: document.documentElement.clientWidth,
@@ -55,6 +67,19 @@ async function localRoute(route) {
       if (width <= 768) assert.ok(dimensions.cta < dimensions.art, width + " CTA before illustration");
       if (width === 1440 || width === 390 || width === 320) {
         await page.locator(".promo-hero").screenshot({ path: path.join(output, "hero-" + width + ".png") });
+      }
+      if (width === 1440 || width === 390) {
+        for (const [name, selector] of [
+          ["value", '[aria-labelledby="promo-value-title"]'],
+          ["scope", '[aria-labelledby="promo-scope-title"]'],
+          ["discount", '[aria-labelledby="promo-discount-title"]'],
+          ["process", '[aria-labelledby="promo-process-title"]'],
+          ["provider", '[aria-labelledby="promo-provider-title"]'],
+          ["faq", '[aria-labelledby="promo-faq-title"]'],
+          ["contact", '[aria-labelledby="promo-contact-title"]'],
+        ]) {
+          await page.locator("main.promo-landing > " + selector).screenshot({ path: path.join(output, name + "-" + width + ".png") });
+        }
       }
     }
     await page.setViewportSize({ width: 390, height: 900 });
@@ -80,7 +105,7 @@ async function localRoute(route) {
     await page.goto(origin + "/akcii/", { waitUntil: "load" });
     assert.equal(await page.locator('#offer-2 a[href="/buhgalteriya-pravo-50/"]').count(), 1);
     await page.locator("#offer-2").screenshot({ path: path.join(output, "offer-entry-1440.png") });
-    console.log("Promo landing browser QA: 5 widths, no overflow, CTA order, one CRM-confirmed success, attribution OK");
+    console.log("Promo landing browser QA: 5 widths, 11 labelled images, no overflow, CTA order, one CRM-confirmed success, attribution OK");
     console.log("Screenshots: " + output);
   } finally {
     await browser.close();
