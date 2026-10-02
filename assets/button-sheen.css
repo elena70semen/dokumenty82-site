@@ -1,0 +1,85 @@
+/* Restore the old moving glass reflection across every button variant. */
+:root body :is(button:not(.ai-chat-close), .button, .phone-pill,
+  .messenger, .mobile-phone-link, .mobile-menu summary,
+  .site-header .desktop-nav a, .mobile-nav-grid a,
+  .uh-navlink, .uh-channel, .uh-phone, .uh-email,
+  .footer-channels .channel, .contact-phone, .pricing-catalog-nav a) {
+  position: relative;
+}
+
+/* The floating shortcuts and chat close button retain their own positioning. */
+:root body :is(button, .button, .phone-pill,
+  .messenger, .mobile-phone-link, .mobile-menu summary,
+  .site-header .desktop-nav a, .mobile-nav-grid a,
+  .uh-navlink, .uh-channel, .uh-phone, .uh-email,
+  .footer-channels .channel, .contact-phone, .pricing-catalog-nav a,
+  .ai-chat-widget, .client-portal-widget) {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+:root body :is(button, .button, .phone-pill,
+  .messenger, .mobile-phone-link, .mobile-menu summary,
+  .site-header .desktop-nav a, .mobile-nav-grid a,
+  .uh-navlink, .uh-channel, .uh-phone, .uh-email,
+  .footer-channels .channel, .contact-phone, .pricing-catalog-nav a,
+  .ai-chat-widget, .client-portal-widget)::before {
+  display: block;
+  position: absolute;
+  inset: -90% -28%;
+  z-index: -1;
+  border: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(ellipse at 30% 24%, rgb(255 255 255 / 75%), transparent 19%),
+    linear-gradient(112deg, transparent 31%, rgb(255 255 255 / 85%) 46%, transparent 61%);
+  filter: blur(6px);
+  opacity: .2;
+  transform: translateX(-50%) rotate(-8deg);
+  /* Legacy hover rules must not replace the repeating reflection. */
+  animation: shared-button-sheen 6.8s ease-in-out infinite !important;
+  will-change: auto;
+}
+
+:root body :is(button, .button, .phone-pill, .messenger,
+  .mobile-phone-link, .mobile-menu summary, .site-header .desktop-nav a,
+  .mobile-nav-grid a, .uh-navlink, .uh-channel, .uh-phone, .uh-email,
+  .footer-channels .channel, .contact-phone, .pricing-catalog-nav a,
+  .ai-chat-widget, .client-portal-widget):nth-child(3n + 2)::before {
+  animation-delay: -1.8s !important;
+}
+
+:root body :is(button, .button, .phone-pill, .messenger,
+  .mobile-phone-link, .mobile-menu summary, .site-header .desktop-nav a,
+  .mobile-nav-grid a, .uh-navlink, .uh-channel, .uh-phone, .uh-email,
+  .footer-channels .channel, .contact-phone, .pricing-catalog-nav a,
+  .ai-chat-widget, .client-portal-widget):nth-child(3n)::before {
+  animation-delay: -3.6s !important;
+}
+
+@keyframes shared-button-sheen {
+  0%, 72%, 100% { opacity: .2; transform: translateX(-50%) rotate(-8deg); }
+  38% { opacity: .68; transform: translateX(36%) rotate(-8deg); }
+}
+
+:root body :is(button, .button, .phone-pill, .messenger,
+  .mobile-phone-link, .mobile-menu summary, .site-header .desktop-nav a,
+  .mobile-nav-grid a, .uh-navlink, .uh-channel, .uh-phone, .uh-email,
+  .footer-channels .channel, .contact-phone, .pricing-catalog-nav a,
+  .ai-chat-widget, .client-portal-widget):is(:disabled, [aria-disabled="true"])::before {
+  animation: none !important;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  :root body :is(button, .button, .phone-pill, .messenger,
+    .mobile-phone-link, .mobile-menu summary, .site-header .desktop-nav a,
+    .mobile-nav-grid a, .uh-navlink, .uh-channel, .uh-phone, .uh-email,
+    .footer-channels .channel, .contact-phone, .pricing-catalog-nav a,
+    .ai-chat-widget, .client-portal-widget)::before {
+    animation: none !important;
+    content: none;
+  }
+}
