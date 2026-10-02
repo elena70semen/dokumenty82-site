@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/shared-glass-controls.css?v=20260927-unified1" />
     <link rel="stylesheet" href="/assets/remaining-heroes-v2/content.css?v=20260927-glass2" />
     <link rel="stylesheet" href="/assets/image-hover.css?v=20261001-1" />
+    <link rel="stylesheet" href="/assets/pricing-page.css?v=20261002-1" />
   </head>
   <body>
 
@@ -76,7 +77,7 @@
         </nav>
       </details>
     </header>
-    <main class="remaining-page">
+    <main class="remaining-page pricing-page">
       <section class="hero hero-inner hero-stack pricing-hero remaining-hero">
         <div class="glass-panel hero-copy-panel pricing-hero-copy">
           <p class="eyebrow">Услуги и цены</p>
@@ -87,12 +88,36 @@
 
         <figure class="remaining-hero-visual"><img src="/assets/remaining-heroes-v2/ceny.webp" srcset="/assets/remaining-heroes-v2/ceny-640.webp 640w, /assets/remaining-heroes-v2/ceny.webp 1672w" sizes="(max-width: 980px) calc(100vw - 76px), (max-width: 1536px) 45vw, 680px" alt="Тарифы и цены на услуги для бизнеса" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async" /></figure>
       </section>
-      <aside class="glass-panel pricing-hero-summary remaining-hero-followup">
-          <p class="eyebrow">Стоимость по факторам</p>
-          <h2>Ежемесячное сопровождение или разовая задача</h2>
-          <p>Для регулярной работы сравните <a href="#tarify">тарифы бухгалтерского сопровождения</a>. Если нужен только отчёт: <a href="/nulevaya-otchetnost-ip/">нулевая отчётность ИП — от 3 000 ₽</a>, <a href="/nulevaya-otchetnost-ooo/">ООО — от 4 000 ₽</a>, <a href="/deklaraciya-usn/">декларация УСН — от 5 000 ₽</a>. Эти задачи можно заказать отдельно.</p>
-          <div class="pricing-hero-price"><span>Ежемесячное сопровождение</span><strong>ИП от 5 000 ₽</strong><small>ООО — от 10 000 ₽/месяц</small></div>
-        </aside>
+      <section class="glass-panel remaining-hero-followup pricing-format-section" aria-labelledby="work-format">
+        <div class="pricing-format-heading">
+          <p class="eyebrow">Формат работы</p>
+          <h2 id="work-format">Сопровождение или отдельная задача</h2>
+          <p>Выберите регулярную работу с бухгалтером или одну услугу. Состав и итоговую стоимость согласуем до начала.</p>
+        </div>
+        <div class="pricing-format-grid">
+          <article class="glass-card pricing-format-card">
+            <p class="pricing-format-label">Каждый месяц</p>
+            <h3>Бухгалтерское сопровождение</h3>
+            <p>Учёт, налоги и отчётность по согласованному составу работ.</p>
+            <dl class="pricing-format-prices">
+              <div><dt>ИП</dt><dd>от 5 000 ₽<span>/ месяц</span></dd></div>
+              <div><dt>ООО</dt><dd>от 10 000 ₽<span>/ месяц</span></dd></div>
+            </dl>
+            <a class="button button-ghost" href="#tarify">Сравнить тарифы <span aria-hidden="true">↓</span></a>
+          </article>
+          <article class="glass-card pricing-format-card">
+            <p class="pricing-format-label">По задаче</p>
+            <h3>Один отчёт или документ</h3>
+            <p>Можно заказать отдельно, без ежемесячного сопровождения.</p>
+            <ul class="pricing-format-services">
+              <li><a href="/nulevaya-otchetnost-ip/"><span>Нулевая отчётность ИП</span><strong>от 3 000 ₽</strong></a></li>
+              <li><a href="/nulevaya-otchetnost-ooo/"><span>Нулевая отчётность ООО</span><strong>от 4 000 ₽</strong></a></li>
+              <li><a href="/deklaraciya-usn/"><span>Декларация УСН</span><strong>от 5 000 ₽</strong></a></li>
+            </ul>
+            <a class="button button-ghost" href="#razovye-uslugi">Все разовые услуги <span aria-hidden="true">↓</span></a>
+          </article>
+        </div>
+      </section>
 
       <section class="remaining-content-section section pricing-tariffs" id="tarify">
       <div class="remaining-section-inner">
@@ -110,7 +135,7 @@
             <div class="pricing-tier-price"><strong>от 5 000 ₽</strong><small>в месяц</small></div>
             <p>Минимальный ориентир для ИП; состав зависит от режима и нагрузки. <a href="/soprovozhdenie/">Что входит в сопровождение ИП</a>.</p>
             <ul class="pricing-feature-list"><li>оцениваем исходные данные</li><li>определяем регулярные участки</li><li>согласуем состав пакета</li><li>фиксируем стоимость до начала работы</li></ul>
-            <a class="button button-ghost" href="/razbor-situacii/?service=accounting#route-contact">Обсудить старт</a>
+            <a class="button button-ghost" href="/razbor-situacii/?service=accounting#route-contact">Обсудить сопровождение ИП</a>
           </article>
           <article class="glass-card pricing-tier-card is-featured"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/ceny-ooo-accounting.webp" srcset="/assets/remaining-heroes-v2/ceny-ooo-accounting-640.webp 640w, /assets/remaining-heroes-v2/ceny-ooo-accounting.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Бухгалтерия ООО" width="1672" height="941" loading="lazy" decoding="async" /></figure>
             <span class="pricing-tier-number">02</span>
@@ -119,7 +144,7 @@
             <div class="pricing-tier-price"><strong>от 10 000 ₽</strong><small>в месяц</small></div>
             <p>Минимальный ориентир для ООО; состав зависит от режима, операций и сотрудников. <a href="/buhgalterskoe-soprovozhdenie-ooo/">Состав бухгалтерского сопровождения ООО</a>.</p>
             <ul class="pricing-feature-list"><li>оцениваем объём операций</li><li>уточняем режим и сотрудников</li><li>согласуем регулярные участки</li><li>фиксируем стоимость до начала работы</li></ul>
-            <a class="button button-lime" href="/razbor-situacii/?service=accounting#route-contact">Обсудить тариф</a>
+            <a class="button button-lime" href="/razbor-situacii/?service=accounting#route-contact">Обсудить сопровождение ООО</a>
           </article>
           <article class="glass-card pricing-tier-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/akcii.webp" srcset="/assets/remaining-heroes-v2/akcii-640.webp 640w, /assets/remaining-heroes-v2/akcii.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Эксперт" width="1672" height="941" loading="lazy" decoding="async" /></figure>
             <span class="pricing-tier-number">03</span>
@@ -158,7 +183,7 @@
 
         <div class="section-header">
           <p class="eyebrow">Что влияет на тариф</p>
-          <h2>Стоимость складывается из нагрузки, а не из одного признака</h2>
+          <h2>Из чего складывается стоимость</h2>
         </div>
         <div class="pricing-factor-grid">
           <div class="pricing-factor"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/ceny-factor-tax.webp" srcset="/assets/remaining-heroes-v2/ceny-factor-tax-640.webp 640w, /assets/remaining-heroes-v2/ceny-factor-tax.webp 1672w" sizes="(max-width: 760px) 100vw, 33vw" alt="Папки налоговых режимов: УСН, патент, АУСН и ОСНО" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>01</span><strong>Налоговый режим</strong><small>УСН, патент, АУСН, ОСНО, НДС и совмещение режимов.</small></div>
@@ -180,6 +205,14 @@
           <h2>Документы и отдельные услуги</h2>
           <p>Цены указаны за базовый объём. Если задача включает дополнительные периоды, документы или нестандартные обстоятельства, стоимость согласуем после короткого разбора.</p>
         </div>
+        <nav class="pricing-catalog-nav" aria-label="Разделы прайса">
+          <a href="#registration">Регистрация и ЕГРЮЛ</a>
+          <a href="#reporting">Налоги и отчётность</a>
+          <a href="#accounting">Восстановление учёта</a>
+          <a href="#hr">Кадры</a>
+          <a href="#bank">Банк и ИФНС</a>
+          <a href="#first">Разбор задачи</a>
+        </nav>
 
       </div>
     </section>
@@ -203,7 +236,7 @@
               </div>
               <h3>Регистрация ИП</h3>
               <p>Подготовим документы для старта ИП с учётом деятельности и выбранного режима.</p>
-              <a class="pricing-card-link" href="/registraciya-ip/">Подробнее</a>
+              <a class="pricing-card-link" href="/registraciya-ip/" aria-label="Регистрация ИП: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-registraciya-ooo.webp" srcset="/assets/remaining-heroes-v2/reuse-registraciya-ooo-640.webp 640w, /assets/remaining-heroes-v2/reuse-registraciya-ooo.webp 1124w" sizes="(max-width: 760px) 100vw, 50vw" alt="Регистрация ООО" width="1124" height="1145" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -212,7 +245,7 @@
               </div>
               <h3>Регистрация ООО</h3>
               <p>Соберём данные об участниках, адресе и деятельности, подготовим стартовый комплект.</p>
-              <a class="pricing-card-link" href="/registraciya-ooo/">Подробнее</a>
+              <a class="pricing-card-link" href="/registraciya-ooo/" aria-label="Регистрация ООО: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/nedostovernost-yuridicheskogo-adresa.webp" srcset="/assets/remaining-heroes-v2/nedostovernost-yuridicheskogo-adresa-640.webp 640w, /assets/remaining-heroes-v2/nedostovernost-yuridicheskogo-adresa.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Недостоверность юридического адреса" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -221,7 +254,7 @@
               </div>
               <h3>Недостоверность юридического адреса</h3>
               <p>Разберём отметку или риск недостоверности и подготовим документы по ситуации.</p>
-              <a class="pricing-card-link" href="/nedostovernost-yuridicheskogo-adresa/">Подробнее</a>
+              <a class="pricing-card-link" href="/nedostovernost-yuridicheskogo-adresa/" aria-label="Недостоверность юридического адреса: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-smena-direktora-ooo.webp" srcset="/assets/remaining-heroes-v2/reuse-smena-direktora-ooo-640.webp 640w, /assets/remaining-heroes-v2/reuse-smena-direktora-ooo.webp 644w" sizes="(max-width: 760px) 100vw, 50vw" alt="Смена директора ООО" width="644" height="678" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -230,7 +263,7 @@
               </div>
               <h3>Смена директора ООО</h3>
               <p>Отделим смену директора от связанных изменений и подготовим комплект документов.</p>
-              <a class="pricing-card-link" href="/smena-direktora-ooo/">Подробнее</a>
+              <a class="pricing-card-link" href="/smena-direktora-ooo/" aria-label="Смена директора ООО: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-smena-yuridicheskogo-adresa-ooo.webp" srcset="/assets/remaining-heroes-v2/reuse-smena-yuridicheskogo-adresa-ooo-640.webp 640w, /assets/remaining-heroes-v2/reuse-smena-yuridicheskogo-adresa-ooo.webp 458w" sizes="(max-width: 760px) 100vw, 50vw" alt="Смена юридического адреса ООО" width="458" height="497" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -239,7 +272,7 @@
               </div>
               <h3>Смена юридического адреса ООО</h3>
               <p>Проверим текущий и новый адресный маршрут, уточним вводные и документы.</p>
-              <a class="pricing-card-link" href="/smena-yuridicheskogo-adresa-ooo/">Подробнее</a>
+              <a class="pricing-card-link" href="/smena-yuridicheskogo-adresa-ooo/" aria-label="Смена юридического адреса ООО: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-yuridicheskiy-adres-simferopol.webp" srcset="/assets/remaining-heroes-v2/reuse-yuridicheskiy-adres-simferopol-640.webp 640w, /assets/remaining-heroes-v2/reuse-yuridicheskiy-adres-simferopol.webp 450w" sizes="(max-width: 760px) 100vw, 50vw" alt="Юридический адрес в Симферополе" width="450" height="420" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -248,7 +281,7 @@
               </div>
               <h3>Юридический адрес в Симферополе</h3>
               <p>Разделим адресный вопрос, регистрацию, смену адреса и сведения ЕГРЮЛ.</p>
-              <a class="pricing-card-link" href="/yuridicheskiy-adres-simferopol/">Подробнее</a>
+              <a class="pricing-card-link" href="/yuridicheskiy-adres-simferopol/" aria-label="Юридический адрес в Симферополе: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-likvidaciya-ooo.webp" srcset="/assets/remaining-heroes-v2/reuse-likvidaciya-ooo-640.webp 640w, /assets/remaining-heroes-v2/reuse-likvidaciya-ooo.webp 644w" sizes="(max-width: 760px) 100vw, 50vw" alt="Ликвидация ООО" width="644" height="970" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -257,7 +290,7 @@
               </div>
               <h3>Ликвидация ООО</h3>
               <p>Начнём с текущего статуса, документов и обязательств, затем соберём маршрут ликвидации.</p>
-              <a class="pricing-card-link" href="/likvidaciya-ooo/">Подробнее</a>
+              <a class="pricing-card-link" href="/likvidaciya-ooo/" aria-label="Ликвидация ООО: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
           </div>
 
@@ -281,7 +314,7 @@
               </div>
               <h3>Расчёт налоговой нагрузки</h3>
               <p>Соберём данные по деятельности, режиму, операциям и периоду для расчёта.</p>
-              <a class="pricing-card-link" href="/raschet-nalogovoy-nagruzki/">Подробнее</a>
+              <a class="pricing-card-link" href="/raschet-nalogovoy-nagruzki/" aria-label="Расчёт налоговой нагрузки: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/nulevaya-otchetnost-ip.webp" srcset="/assets/remaining-heroes-v2/nulevaya-otchetnost-ip-640.webp 640w, /assets/remaining-heroes-v2/nulevaya-otchetnost-ip.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Нулевая отчётность ИП" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -290,7 +323,7 @@
               </div>
               <h3>Нулевая отчётность ИП</h3>
               <p>Проверим режим, период и активность ИП перед подготовкой отчётности.</p>
-              <a class="pricing-card-link" href="/nulevaya-otchetnost-ip/">Подробнее</a>
+              <a class="pricing-card-link" href="/nulevaya-otchetnost-ip/" aria-label="Нулевая отчётность ИП: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/nulevaya-otchetnost-ooo.webp" srcset="/assets/remaining-heroes-v2/nulevaya-otchetnost-ooo-640.webp 640w, /assets/remaining-heroes-v2/nulevaya-otchetnost-ooo.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Нулевая отчётность ООО" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -299,7 +332,7 @@
               </div>
               <h3>Нулевая отчётность ООО</h3>
               <p>Проверим статус ООО, период и отсутствие операций перед подготовкой отчётности.</p>
-              <a class="pricing-card-link" href="/nulevaya-otchetnost-ooo/">Подробнее</a>
+              <a class="pricing-card-link" href="/nulevaya-otchetnost-ooo/" aria-label="Нулевая отчётность ООО: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/deklaraciya-usn.webp" srcset="/assets/remaining-heroes-v2/deklaraciya-usn-640.webp 640w, /assets/remaining-heroes-v2/deklaraciya-usn.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Декларация УСН" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -308,7 +341,7 @@
               </div>
               <h3>Декларация УСН</h3>
               <p>Проверим период, статус бизнеса, операции и исходные данные для декларации.</p>
-              <a class="pricing-card-link" href="/deklaraciya-usn/">Подробнее</a>
+              <a class="pricing-card-link" href="/deklaraciya-usn/" aria-label="Декларация УСН: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/ausn-krym-v2.webp" srcset="/assets/remaining-heroes-v2/ausn-krym-v2-640.webp 640w, /assets/remaining-heroes-v2/ausn-krym-v2.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Проверка применимости АУСН" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -317,7 +350,7 @@
               </div>
               <h3>Проверка применимости АУСН</h3>
               <p>Сверим лимиты, сотрудников, активы, банк и экономику режима для бизнеса в Крыму.</p>
-              <a class="pricing-card-link" href="/ausn-krym/">Подробнее</a>
+              <a class="pricing-card-link" href="/ausn-krym/" aria-label="Проверка применимости АУСН: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/nds-pri-usn-2026.webp" srcset="/assets/remaining-heroes-v2/nds-pri-usn-2026-640.webp 640w, /assets/remaining-heroes-v2/nds-pri-usn-2026.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Проверка НДС при УСН" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -326,7 +359,7 @@
               </div>
               <h3>Проверка НДС при УСН</h3>
               <p>Определим порог, дату начала обязанностей и варианты ставки по данным бизнеса.</p>
-              <a class="pricing-card-link" href="/nds-pri-usn-2026/">Подробнее</a>
+              <a class="pricing-card-link" href="/nds-pri-usn-2026/" aria-label="Проверка НДС при УСН: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/sverka-s-nalogovoy.webp" srcset="/assets/remaining-heroes-v2/sverka-s-nalogovoy-640.webp 640w, /assets/remaining-heroes-v2/sverka-s-nalogovoy.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Сверка расчётов с ФНС и ЕНС" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -335,7 +368,7 @@
               </div>
               <h3>Сверка расчётов с ФНС и ЕНС</h3>
               <p>Проверим сальдо, начисления, платежи и уведомления за выбранный период.</p>
-              <a class="pricing-card-link" href="/sverka-s-nalogovoy/">Подробнее</a>
+              <a class="pricing-card-link" href="/sverka-s-nalogovoy/" aria-label="Сверка расчётов с ФНС и ЕНС: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/nalogi-i-rezhimy.webp" srcset="/assets/remaining-heroes-v2/nalogi-i-rezhimy-640.webp 640w, /assets/remaining-heroes-v2/nalogi-i-rezhimy.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Сравнить налоговые режимы" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -368,7 +401,7 @@
               </div>
               <h3>Восстановление бухгалтерского учёта</h3>
               <p>Определим периоды, недостающие документы и пробелы в учёте, затем составим план восстановления.</p>
-              <a class="pricing-card-link" href="/vosstanovlenie-buhucheta/">Подробнее</a>
+              <a class="pricing-card-link" href="/vosstanovlenie-buhucheta/" aria-label="Восстановление бухгалтерского учёта: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
           </div>
 
@@ -392,16 +425,16 @@
               </div>
               <h3>Кадровые документы</h3>
               <p>Определим кадровую задачу по ситуации и имеющимся исходным данным.</p>
-              <a class="pricing-card-link" href="/kadry/">Подробнее</a>
+              <a class="pricing-card-link" href="/kadry/" aria-label="Кадровые документы: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/kadry-document-check.webp" srcset="/assets/remaining-heroes-v2/kadry-document-check-640.webp 640w, /assets/remaining-heroes-v2/kadry-document-check.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Проверка кадровых документов и текущих задач" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
-                <span class="pricing-service-label">Разовая услуга</span>
+                <span class="pricing-service-label">Сопровождение</span>
                 <strong class="pricing-service-price">от 10 000 ₽</strong>
               </div>
               <h3>Кадровое сопровождение</h3>
               <p>Уточним повторяющиеся кадровые задачи и соберём безопасный рабочий маршрут.</p>
-              <a class="pricing-card-link" href="/kadry/">Подробнее</a>
+              <a class="pricing-card-link" href="/kadry/" aria-label="Кадровое сопровождение: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
           </div>
 
@@ -425,7 +458,7 @@
               </div>
               <h3>Документы для банка по 115-ФЗ</h3>
               <p>Соберём комплект по операциям, деятельности, контрагентам и запросу банка.</p>
-              <a class="pricing-card-link" href="/dokumenty-dlya-banka-115-fz/">Подробнее</a>
+              <a class="pricing-card-link" href="/dokumenty-dlya-banka-115-fz/" aria-label="Документы для банка по 115-ФЗ: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-otvet-na-zapros-banka-krym.webp" srcset="/assets/remaining-heroes-v2/reuse-otvet-na-zapros-banka-krym-640.webp 640w, /assets/remaining-heroes-v2/reuse-otvet-na-zapros-banka-krym.webp 1428w" sizes="(max-width: 760px) 100vw, 50vw" alt="Ответ на запрос банка" width="1428" height="1102" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -434,7 +467,7 @@
               </div>
               <h3>Ответ на запрос банка</h3>
               <p>Разберём письмо банка по пунктам и подготовим структуру ответа с документами.</p>
-              <a class="pricing-card-link" href="/otvet-na-zapros-banka/">Подробнее</a>
+              <a class="pricing-card-link" href="/otvet-na-zapros-banka/" aria-label="Ответ на запрос банка: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/otvet-na-trebovanie-ifns.webp" srcset="/assets/remaining-heroes-v2/otvet-na-trebovanie-ifns-640.webp 640w, /assets/remaining-heroes-v2/otvet-na-trebovanie-ifns.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Ответ на требование ИФНС" width="1672" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -443,7 +476,7 @@
               </div>
               <h3>Ответ на требование ИФНС</h3>
               <p>Разберём требование, период и имеющиеся документы до подготовки ответа.</p>
-              <a class="pricing-card-link" href="/otvet-na-trebovanie-ifns/">Подробнее</a>
+              <a class="pricing-card-link" href="/otvet-na-trebovanie-ifns/" aria-label="Ответ на требование ИФНС: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
           </div>
 
@@ -467,7 +500,7 @@
               </div>
               <h3>Разбор ситуации по документам</h3>
               <p>Определим задачу, исходные документы и ближайший безопасный шаг.</p>
-              <a class="pricing-card-link" href="/razbor-situacii/">Подробнее</a>
+              <a class="pricing-card-link" href="/razbor-situacii/" aria-label="Разбор ситуации по документам: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-srochnye-voprosy.webp" srcset="/assets/remaining-heroes-v2/reuse-srochnye-voprosy-640.webp 640w, /assets/remaining-heroes-v2/reuse-srochnye-voprosy.webp 900w" sizes="(max-width: 760px) 100vw, 50vw" alt="Срочный разбор документов" width="900" height="600" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -476,7 +509,7 @@
               </div>
               <h3>Срочный разбор документов</h3>
               <p>Зафиксируем ближайший срок и определим безопасное первое действие по письму или запросу.</p>
-              <a class="pricing-card-link" href="/srochnye-voprosy/">Подробнее</a>
+              <a class="pricing-card-link" href="/srochnye-voprosy/" aria-label="Срочный разбор документов: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-otchetnost.webp" srcset="/assets/remaining-heroes-v2/reuse-otchetnost-640.webp 640w, /assets/remaining-heroes-v2/reuse-otchetnost.webp 941w" sizes="(max-width: 760px) 100vw, 50vw" alt="Проверка отчётности" width="941" height="941" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -485,7 +518,7 @@
               </div>
               <h3>Проверка отчётности</h3>
               <p>Сверим режим, периоды, обязательные формы и пропуски до подготовки документов.</p>
-              <a class="pricing-card-link" href="/otchetnost/">Подробнее</a>
+              <a class="pricing-card-link" href="/otchetnost/" aria-label="Проверка отчётности: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
 <article class="glass-card pricing-service-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/reuse-adres-egryul-direktor.webp" srcset="/assets/remaining-heroes-v2/reuse-adres-egryul-direktor-640.webp 640w, /assets/remaining-heroes-v2/reuse-adres-egryul-direktor.webp 1536w" sizes="(max-width: 760px) 100vw, 50vw" alt="Разбор изменений ЕГРЮЛ" width="1536" height="1024" loading="lazy" decoding="async" /></figure>
               <div class="pricing-service-top">
@@ -494,7 +527,7 @@
               </div>
               <h3>Разбор изменений ЕГРЮЛ</h3>
               <p>Разделим адрес, директора, устав и связанные изменения по регистрационным процедурам.</p>
-              <a class="pricing-card-link" href="/adres-egryul-direktor/">Подробнее</a>
+              <a class="pricing-card-link" href="/adres-egryul-direktor/" aria-label="Разбор изменений ЕГРЮЛ: состав услуги">Состав услуги <span aria-hidden="true">→</span></a>
             </article>
           </div>
 
@@ -512,10 +545,10 @@
           <p>Отправка формы фиксирует обращение, но не создаёт платёж и не запускает работу автоматически.</p>
         </div>
         <div class="card-grid two rich-step-grid">
-          <article class="glass-card rich-card rich-step-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/faq-safe-start.webp" srcset="/assets/remaining-heroes-v2/faq-safe-start-640.webp 640w, /assets/remaining-heroes-v2/faq-safe-start.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Заявка с вопросом, сроком и исходными данными" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>01</span><h3>Оставьте заявку на странице разбора ситуации или позвоните по номеру, указанному на сайте.</h3></article>
-          <article class="glass-card rich-card rich-step-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/blog-source-proof.webp" srcset="/assets/remaining-heroes-v2/blog-source-proof-640.webp 640w, /assets/remaining-heroes-v2/blog-source-proof.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Проверка документов, периода и исходных данных" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>02</span><h3>Мы уточним документы, период, налоговый режим и объём операций, которые влияют на состав услуги.</h3></article>
-          <article class="glass-card rich-card rich-step-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/oferta.webp" srcset="/assets/remaining-heroes-v2/oferta-640.webp 640w, /assets/remaining-heroes-v2/oferta.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Согласованные условия договора" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>03</span><h3>До начала работ согласуем результат, стоимость, границы задачи и условия договора.</h3></article>
-          <article class="glass-card rich-card rich-step-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/rekvizity.webp" srcset="/assets/remaining-heroes-v2/rekvizity-640.webp 640w, /assets/remaining-heroes-v2/rekvizity.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Реквизиты для оплаты по счёту" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>04</span><h3>Оплата производится безналично по выставленному счёту после согласования условий.</h3></article>
+          <article class="glass-card rich-card rich-step-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/faq-safe-start.webp" srcset="/assets/remaining-heroes-v2/faq-safe-start-640.webp 640w, /assets/remaining-heroes-v2/faq-safe-start.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Заявка с вопросом, сроком и исходными данными" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>01</span><h3>Заявка</h3><p>Опишите задачу на странице разбора ситуации или позвоните нам.</p></article>
+          <article class="glass-card rich-card rich-step-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/blog-source-proof.webp" srcset="/assets/remaining-heroes-v2/blog-source-proof-640.webp 640w, /assets/remaining-heroes-v2/blog-source-proof.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Проверка документов, периода и исходных данных" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>02</span><h3>Оценка задачи</h3><p>Уточним документы, период, налоговый режим и объём операций.</p></article>
+          <article class="glass-card rich-card rich-step-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/oferta.webp" srcset="/assets/remaining-heroes-v2/oferta-640.webp 640w, /assets/remaining-heroes-v2/oferta.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Согласованные условия договора" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>03</span><h3>Договор</h3><p>До начала работ согласуем результат, стоимость, границы задачи и условия договора.</p></article>
+          <article class="glass-card rich-card rich-step-card"><figure class="remaining-card-art"><img src="/assets/remaining-heroes-v2/rekvizity.webp" srcset="/assets/remaining-heroes-v2/rekvizity-640.webp 640w, /assets/remaining-heroes-v2/rekvizity.webp 1672w" sizes="(max-width: 760px) 100vw, 50vw" alt="Реквизиты для оплаты по счёту" width="1672" height="941" loading="lazy" decoding="async" /></figure><span>04</span><h3>Оплата</h3><p>После согласования условий выставим счёт для безналичной оплаты.</p></article>
         </div>
         <p>Исполнитель услуг и получатель оплаты — ИП Барков Андрей Андреевич. ИНН, ОГРНИП и регистрационные сведения опубликованы на странице <a href="/rekvizity/">«Реквизиты»</a>.</p>
         <p>Условия оказания услуг, оплаты и ответственности сторон опубликованы в <a href="/oferta/">Публичной оферте</a>.</p>
@@ -528,8 +561,8 @@
 
         <div class="section-header">
           <p class="eyebrow">Выбрать по задаче</p>
-          <h2>Прайс или состав бухгалтерской услуги</h2>
-          <p>На этой странице сравниваются цены. Подробный состав работы и границы ответственности вынесены в отдельные маршруты.</p>
+          <h2>Подробнее о бухгалтерских услугах</h2>
+          <p>Выберите свою задачу, чтобы посмотреть состав работы, порядок передачи документов и условия сопровождения.</p>
         </div>
         <nav class="insight-link-list" aria-label="Бухгалтерские услуги по типу бизнеса">
           <a href="/buhgalterskie-uslugi/"><strong>Бухгалтерские услуги для ИП и ООО</strong><span>Общий состав: учёт, налоги, отчётность, сотрудники и ответы на требования.</span></a>

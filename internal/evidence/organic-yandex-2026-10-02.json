@@ -1,0 +1,215 @@
+{
+  "checked_at": "2026-10-02",
+  "site": "https://dokumenty82.ru/",
+  "source": "Authenticated Yandex Webmaster UI, search query groups and page statistics",
+  "current": {
+    "period": [
+      "2026-09-16",
+      "2026-09-29"
+    ],
+    "impressions": 178,
+    "clicks": 10,
+    "ctr": 5.61
+  },
+  "previous": {
+    "period": [
+      "2026-09-02",
+      "2026-09-15"
+    ],
+    "impressions": 75,
+    "clicks": 6,
+    "ctr": 8
+  },
+  "change_percent": {
+    "impressions": 137.33,
+    "clicks": 66.67
+  },
+  "pages_unique": [
+    {
+      "url": "https://dokumenty82.ru/",
+      "impressions": 65,
+      "clicks": 1,
+      "ctr_percent": 1.53
+    },
+    {
+      "url": "https://dokumenty82.ru/ausn-krym/",
+      "impressions": 25,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/ceny/",
+      "impressions": 24,
+      "clicks": 8,
+      "ctr_percent": 33.33
+    },
+    {
+      "url": "https://dokumenty82.ru/likvidaciya-ooo/",
+      "impressions": 12,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/buhgalterskie-uslugi/",
+      "impressions": 11,
+      "clicks": 1,
+      "ctr_percent": 9.09
+    },
+    {
+      "url": "https://dokumenty82.ru/registraciya-ip/",
+      "impressions": 8,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/kontakty/",
+      "impressions": 6,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/registraciya-ooo/",
+      "impressions": 6,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/deklaraciya-usn/",
+      "impressions": 5,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/uslugi/",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/soprovozhdenie/",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/vosstanovlenie-buhucheta/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/otchetnost/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/sdacha-otchetnosti-ooo/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/likvidaciya-ip/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/smena-direktora-ooo/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/oferta/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/yuridicheskiy-adres-simferopol/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    },
+    {
+      "url": "https://dokumenty82.ru/otzyvy/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0.0
+    }
+  ],
+  "limitations": [
+    "Latest available search statistics end on 2026-09-29. These data do not measure changes published on October 1 or October 2.",
+    "Clicks are not unique visits or leads. Metrika counter 109869928 returned HTTP 403 for the current browser account.",
+    "Pages table UI duplicated one restoration URL when expanding the final row. The all-queries aggregate (178 impressions, 10 clicks) is authoritative; deduplicated page rows sum to 177 impressions.",
+    "No current position trend was collected. Do not infer improved rankings from impressions alone.",
+    "Important-page monitor lags behind the latest searchable-pages history."
+  ],
+  "index_monitor_before_adding_promo": {
+    "tracked_urls": 65,
+    "in_search": 57,
+    "low_value_news_urls": [
+      "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+      "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+      "/novosti/nalogovye-vebinary-iyul-2026/",
+      "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+      "/novosti/formaty-nds-s-1-iyulya-2026/"
+    ],
+    "not_in_search_base_urls": [
+      "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+      "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+      "/smena-buhgaltera/"
+    ],
+    "all_tracked_http_status": 200
+  },
+  "searchable_history_20261002": [
+    {
+      "path": "/smena-buhgaltera/",
+      "status": "Canonical",
+      "last_robot_visit": "2026-09-27"
+    },
+    {
+      "path": "/",
+      "status": "Canonical URL data processing",
+      "last_robot_visit": "2026-10-02"
+    },
+    {
+      "path": "/buhgalteriya-pravo-50/",
+      "status": "Canonical URL data processing",
+      "last_robot_visit": "2026-10-01"
+    }
+  ],
+  "actions": {
+    "promo_added_to_important_page_monitor": true,
+    "pricing_reindex": {
+      "url": "https://dokumenty82.ru/ceny/",
+      "row": "https://dokumenty82.ru/ceny/\t\nВ очереди\n\t02.10.2026 17:03\tУже отслеживается",
+      "source": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/indexing/reindex/"
+    },
+    "pricing_release": "20261002-pricing-refinement",
+    "rollback_release": "20261001-organic",
+    "published_files": [
+      "ceny/index.html",
+      "assets/pricing-page.css",
+      "sitemap.xml"
+    ],
+    "direct_campaigns_changed": false
+  },
+  "validation": {
+    "strict_site_audit": "PASS: 66 sitemap URLs, 30 feed offers, no technical errors or duplicate title/description/H1",
+    "structured_data_offers": "Unchanged from HEAD before edits",
+    "pricing_ids_and_anchors": "Unique IDs, all in-page links resolve",
+    "metrika_counter": "109869928 preserved",
+    "live_publish": "All three files HTTP 200 and expected SHA256",
+    "visual_review": "Desktop comparison, tiers, service cards, restoration, ordering and lower blocks reviewed in browser",
+    "responsive_review": "Responsive CSS implemented; viewport override was unavailable in the selected browser, so a real mobile rendering was not confirmed"
+  }
+}
