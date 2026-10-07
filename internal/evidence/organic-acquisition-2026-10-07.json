@@ -3,7 +3,7 @@
   "site": "https://dokumenty82.ru/",
   "branch": "codex/promo-buh-pravo-50",
   "base_commit": "1075931",
-  "status": "prepared_local_not_published",
+  "status": "published_and_reindex_queued",
   "changed_files": [
     "index.html",
     "buhgalterskie-uslugi/index.html",
@@ -31,34 +31,104 @@
         "http_status": 200,
         "live_sha256": "25e8a5141d0f261b0972eef92b3ade76856643e8be76b3b4fcbed497df18a1d3",
         "baseline_sha256": "25e8a5141d0f261b0972eef92b3ade76856643e8be76b3b4fcbed497df18a1d3",
-        "matches_git_head": true
+        "matches_base_commit": true
       },
       {
         "path": "buhgalterskie-uslugi/index.html",
         "http_status": 200,
         "live_sha256": "f27f57de04c512d960c9471ca42061ef923e3b788d67426b0b64be712b6c1109",
         "baseline_sha256": "f27f57de04c512d960c9471ca42061ef923e3b788d67426b0b64be712b6c1109",
-        "matches_git_head": true
+        "matches_base_commit": true
       },
       {
         "path": "sitemap.xml",
         "http_status": 200,
         "live_sha256": "52dcb7f3a1336479c00c8f102e5cecaec989f56393224d47015b2569639abc4d",
         "baseline_sha256": "52dcb7f3a1336479c00c8f102e5cecaec989f56393224d47015b2569639abc4d",
-        "matches_git_head": true
+        "matches_base_commit": true
       }
+    ],
+    "live_published": [
+      {
+        "path": "index.html",
+        "url": "https://dokumenty82.ru/",
+        "http_status": 200,
+        "content_type": "text/html",
+        "sha256": "be602ae64b39bd09f10f2a64176c11adfd785a163a45eef75822ec23026062aa",
+        "expected_sha256": "be602ae64b39bd09f10f2a64176c11adfd785a163a45eef75822ec23026062aa",
+        "matches_local_commit": true,
+        "direct_source_ipv4": "192.168.8.95",
+        "interface_index": 6,
+        "certificate_validation": true
+      },
+      {
+        "path": "buhgalterskie-uslugi/index.html",
+        "url": "https://dokumenty82.ru/buhgalterskie-uslugi/",
+        "http_status": 200,
+        "content_type": "text/html",
+        "sha256": "39d89e50140cb176e9bad0d1848a12e716744d16f983947580ffc08dd44ac380",
+        "expected_sha256": "39d89e50140cb176e9bad0d1848a12e716744d16f983947580ffc08dd44ac380",
+        "matches_local_commit": true,
+        "direct_source_ipv4": "192.168.8.95",
+        "interface_index": 6,
+        "certificate_validation": true
+      },
+      {
+        "path": "sitemap.xml",
+        "url": "https://dokumenty82.ru/sitemap.xml",
+        "http_status": 200,
+        "content_type": "text/xml",
+        "sha256": "d0483982c073ae8b076bfc46f700b0f3177c7877d4efb429ee26d7963d6ca4db",
+        "expected_sha256": "d0483982c073ae8b076bfc46f700b0f3177c7877d4efb429ee26d7963d6ca4db",
+        "matches_local_commit": true,
+        "direct_source_ipv4": "192.168.8.95",
+        "interface_index": 6,
+        "certificate_validation": true
+      }
+    ],
+    "production_browser": "New accounting title, office address, price panel and FAQ visible in Chrome. Hero tariff panel opens https://dokumenty82.ru/ceny/#tarify.",
+    "screenshots": [
+      ".codex-tmp/buh-organic-published-20261007.png",
+      ".codex-tmp/yandex-reindex-20261007.png"
     ]
   },
   "deployment": {
-    "completed": false,
-    "blocker": "SSH connection closes before key exchange. Local route to VPS is through throne-tun. This suggests a possible VPN routing issue but does not prove it; user was asked to temporarily disable VPN for a diagnostic connection check.",
-    "reindex_submitted": false,
-    "next": "Restore SSH, verify production baseline hashes, clone active release, replace only the three changed files, activate atomically, verify live bytes and submit only the two changed pages for reindex."
+    "completed": true,
+    "active_release": "/var/www/dokumenty82/releases/20261007-organic-acquisition",
+    "rollback_release": "/var/www/dokumenty82/releases/20261002-button-sheen",
+    "method": "Copied the complete active release, replaced only the three public files, verified baseline/new SHA256 hashes and switched the current symlink atomically.",
+    "nginx_config_test": "PASS",
+    "service_status": {
+      "nginx": "active",
+      "dokumenty82-lead": "active",
+      "dokumenty82-portal": "active"
+    },
+    "direct_transport": "Per-connection Windows IP_UNICAST_IF selection of Wi-Fi interface 6 with socket source binding; normal OpenSSH key authentication and host verification. Public HTTPS file verification used the same direct socket route with TLS certificate validation.",
+    "vpn_settings_changed": false,
+    "system_routes_changed": false,
+    "ssh_config_changed": false,
+    "reindex_submitted": true,
+    "reindex_pages": [
+      {
+        "url": "https://dokumenty82.ru/",
+        "status": "В очереди",
+        "submitted_at_moscow": "07.10.2026 11:38"
+      },
+      {
+        "url": "https://dokumenty82.ru/buhgalterskie-uslugi/",
+        "status": "В очереди",
+        "submitted_at_moscow": "07.10.2026 11:38"
+      }
+    ],
+    "reindex_source": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/indexing/reindex/",
+    "next": "Wait for Yandex to process the two queued pages, then compare query impressions and clicks over a complete subsequent period. Queue acceptance is not confirmation of updated indexing or rankings."
   },
   "direct_campaigns_changed": false,
   "seo_reference": "https://yandex.ru/support/webmaster/ru/search-results/title-and-description",
   "limitations": [
     "Yandex can choose another snippet from page content; edited metadata does not guarantee a specific snippet or higher rankings.",
     "Small current organic sample is insufficient to establish a conversion or ranking improvement."
-  ]
+  ],
+  "published_at": "2026-10-07",
+  "content_commit": "0e22de9"
 }
