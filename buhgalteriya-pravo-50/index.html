@@ -37,6 +37,7 @@
     <meta property="og:image" content="https://dokumenty82.ru/assets/promo-buh-pravo-50/hero.webp" />
     <link rel="stylesheet" href="/assets/promo-buh-pravo-50.css?v=20261001-3" />
       <link rel="stylesheet" href="/assets/button-sheen.css?v=20261002-1" />
+    <link rel="stylesheet" href="/assets/contact-fields.css?v=20261007-contact1" />
 </head>
   <body>
 
@@ -161,14 +162,20 @@
           <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="form-grid">
             <label>Как к вам обращаться <span class="promo-optional">необязательно</span><input type="text" name="name" autocomplete="name" placeholder="Ваше имя" /></label>
-            <label>Телефон (обязательно)<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
+            <label>Телефон (обязательно)<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7 (978) 123-45-67" maxlength="40" aria-describedby="buhgalteriya-pravo-50-phone-contact-1" /><small class="lead-contact-hint" id="buhgalteriya-pravo-50-phone-contact-1">Проверьте номер для обратного звонка.</small></label>
+<label class="lead-backup-contact">Email для связи (необязательно)<input type="email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.ru" aria-describedby="buhgalteriya-pravo-50-phone-contact-1-email" /><small class="lead-contact-hint" id="buhgalteriya-pravo-50-phone-contact-1-email">Если не дозвонимся, сможем написать вам.</small></label>
             <label>Форма бизнеса<select name="business_form"><option value="unknown">Пока не знаю или другое</option><option value="ip">ИП</option><option value="ooo">ООО</option></select></label>
             <label class="form-span-2">Коротко о задаче <span class="promo-optional">необязательно</span><textarea name="message" rows="4" placeholder="Что нужно по бухгалтерии и правовым вопросам"></textarea></label>
           </div>
           <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
           <div class="lead-form-actions"><button class="button button-lime" type="submit">Обсудить комплексное сопровождение</button><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
           <p class="form-note" role="status" aria-live="polite"></p>
-        </form>
+        <div class="lead-receipt" hidden>
+  <p class="lead-receipt-contact ym-hide-content"></p>
+  <p class="lead-receipt-note"></p>
+  <div class="lead-receipt-actions"><a href="https://t.me/+79789987222" target="_blank" rel="noopener">Написать в Telegram</a><a href="mailto:info@dokumenty82.ru">Написать на email</a></div>
+</div>
+</form>
         <aside class="promo-contact-aside"><figure class="promo-section-art"><img src="/assets/promo-buh-pravo-50/contact.webp" srcset="/assets/promo-buh-pravo-50/contact-640.webp 640w, /assets/promo-buh-pravo-50/contact.webp 1280w" sizes="(max-width: 800px) 100vw, 34vw" alt="Телефон и чистый лист для первого обращения" width="1280" height="853" loading="lazy" decoding="async" /></figure><div class="promo-contact-links"><a href="tel:+79789987222">+7 (978) 998-72-22</a><a href="https://t.me/centr_reg" target="_blank" rel="noopener">Telegram @centr_reg</a><span>MAX: +7 (978) 964-06-39</span></div></aside>
         </div>
       </section>
@@ -270,9 +277,10 @@
         });
       })();
     </script>
-    <script src="/assets/lead-form.js?v=20261001-promo1" defer></script>
+    <script src="/assets/contact-fields.js?v=20261007-contact1" defer></script>
+    <script src="/assets/lead-form.js?v=20261007-contact1" defer></script>
     <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260929-maxroute1" defer></script>
-    <script src="/assets/ai-chat.js?v=20260927-unified1" defer></script>
+    <script src="/assets/ai-chat.js?v=20261007-contact1" defer></script>
   </body>
 </html>

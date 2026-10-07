@@ -113,20 +113,32 @@ def valid_public_offer_id(value, task_type, source_page):
 
 def normalize_phone(value):
   raw = text(value)
-  if re.search(r"[A-Za-zА-Яа-я]", raw):
+  if not re.fullmatch(r"\+?[0-9\s().-]+", raw):
     raise ValueError("Укажите телефон цифрами с кодом страны.")
 
-  digits = re.sub(r"\D", "", raw)
+  digits = re.sub(r"[^0-9]", "", raw)
+  international = raw.startswith("+") or digits.startswith("00")
   if digits.startswith("00"):
     digits = digits[2:]
-  if len(digits) == 10:
-    digits = "7" + digits
-  elif len(digits) == 11 and digits.startswith("8"):
-    digits = "7" + digits[1:]
+  if not international:
+    if len(digits) == 10:
+      digits = "7" + digits
+    elif len(digits) == 11 and digits.startswith("8"):
+      digits = "7" + digits[1:]
+    elif not (len(digits) == 11 and digits.startswith("7")):
+      raise ValueError("Укажите полный телефон. Для иностранного номера добавьте + и код страны.")
 
-  if not re.fullmatch(r"[1-9]\d{7,14}", digits):
+  if (not re.fullmatch(r"[1-9][0-9]{7,14}", digits)
+      or (digits.startswith("7") and len(digits) != 11)):
     raise ValueError("Укажите телефон с кодом страны, например 79789987222.")
   return digits
+
+
+def normalize_email(value):
+  email = text(value)
+  if email and (len(email) > 254 or not re.fullmatch(r"[^@\s<>]+@[^@\s<>]+\.[^@\s<>]+", email)):
+    raise ValueError("Проверьте email или оставьте необязательное поле пустым.")
+  return email
 
 
 def complete_quick_lead(fields, is_quick):
@@ -177,12 +189,20 @@ def load_token_state():
 def save_token_state(state):
   AMO_TOKEN_PATH.parent.mkdir(parents=True, exist_ok=True)
   try:
+    token_owner = AMO_TOKEN_PATH.stat()
+  except FileNotFoundError:
+    token_owner = AMO_TOKEN_PATH.parent.stat()
+  try:
     os.chmod(AMO_TOKEN_PATH.parent, 0o700)
   except OSError:
     pass
   temp = AMO_TOKEN_PATH.with_suffix(AMO_TOKEN_PATH.suffix + ".tmp")
   temp.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
   os.chmod(temp, 0o600)
+  # A root-run diagnostic can refresh OAuth too. Keep the service's ownership
+  # when atomically replacing the file, so the next real lead can read it.
+  if hasattr(os, "geteuid") and hasattr(os, "chown") and os.geteuid() == 0:
+    os.chown(temp, token_owner.st_uid, token_owner.st_gid)
   temp.replace(AMO_TOKEN_PATH)
 
 
@@ -1009,7 +1029,7 @@ class LeadHandler(BaseHTTPRequestHandler):
       fields = complete_quick_lead({
         "name": text(form.getfirst("name")),
         "phone": normalize_phone(form.getfirst("phone")),
-        "email": text(form.getfirst("email")),
+        "email": normalize_email(form.getfirst("email")),
         "task_type": text(form.getfirst("task_type")) or "Разбор ситуации",
         "offer_id": clipped(form.getfirst("offer_id"), 80),
         "current_url": clipped(form.getfirst("current_url"), 1000),

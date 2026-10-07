@@ -182,6 +182,7 @@
     <link rel="stylesheet" href="/assets/shared-glass-controls.css?v=20260927-unified1" />
     <link rel="stylesheet" href="/assets/image-hover.css?v=20261001-1" />
       <link rel="stylesheet" href="/assets/button-sheen.css?v=20261002-1" />
+    <link rel="stylesheet" href="/assets/contact-fields.css?v=20261007-contact1" />
 </head>
   <body>
 
@@ -265,12 +266,18 @@
 <input type="hidden" name="lead_mode" value="quick" />
 <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 <label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
-<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (978) 123-45-67" required type="tel" maxlength="40" aria-describedby="registraciya-ooo-phone-contact-1" /><small class="lead-contact-hint" id="registraciya-ooo-phone-contact-1">Проверьте номер для обратного звонка.</small></label>
+<label class="lead-backup-contact">Email для связи (необязательно)<input type="email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.ru" aria-describedby="registraciya-ooo-phone-contact-1-email" /><small class="lead-contact-hint" id="registraciya-ooo-phone-contact-1-email">Если не дозвонимся, сможем написать вам.</small></label>
 <label class="field wide"><span>О будущей компании или ваш вопрос <small>(необязательно)</small></span><textarea aria-label="О будущей компании или ваш вопрос" name="message" placeholder="Например: сколько будет участников, кто станет директором, какой адрес и деятельность планируются" rows="4"></textarea></label>
 <p class="form-note wide">Свяжемся, уточним исходные данные и объясним, какой комплект потребуется. Решение по составу сопровождения принимаете после консультации.</p>
 <label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
 <div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
 <p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+<div class="lead-receipt" hidden>
+  <p class="lead-receipt-contact ym-hide-content"></p>
+  <p class="lead-receipt-note"></p>
+  <div class="lead-receipt-actions"><a href="https://t.me/+79789987222" target="_blank" rel="noopener">Написать в Telegram</a><a href="mailto:info@dokumenty82.ru">Написать на email</a></div>
+</div>
 </form>
 </div>
 </div>
@@ -446,8 +453,9 @@
       })();
     </script>
     <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
-    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
+    <script src="/assets/contact-fields.js?v=20261007-contact1" defer></script>
+    <script src="/assets/lead-form.js?v=20261007-contact1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260929-maxroute1" defer></script>
-    <script src="/assets/ai-chat.js?v=20260927-unified1" defer></script>
+    <script src="/assets/ai-chat.js?v=20261007-contact1" defer></script>
   </body>
 </html>

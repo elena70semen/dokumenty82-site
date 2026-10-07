@@ -1,6 +1,7 @@
 import importlib.util
 import io
 import json
+import os
 import sys
 import tempfile
 import types
@@ -352,6 +353,16 @@ class AmoSetupLinkTests(unittest.TestCase):
 
 
 class PhoneNormalizationTests(unittest.TestCase):
+  def test_shared_frontend_backend_phone_cases(self):
+    cases_path = MODULE_PATH.parent.parent / "internal" / "contact-phone-cases.json"
+    for case in json.loads(cases_path.read_text(encoding="utf-8")):
+      with self.subTest(source=case["input"]):
+        if case["expected"]:
+          self.assertEqual(receiver.normalize_phone(case["input"]), case["expected"])
+        else:
+          with self.assertRaises(ValueError):
+            receiver.normalize_phone(case["input"])
+
   def test_formats_russian_phone_for_yandex_crm_import(self):
     cases = {
       "+7 (978) 998-72-22": "79789987222",
@@ -374,6 +385,45 @@ class PhoneNormalizationTests(unittest.TestCase):
           receiver.normalize_phone(source)
 
 
+class TokenOwnershipTests(unittest.TestCase):
+  def test_root_refresh_preserves_service_owner_before_replacement(self):
+    with tempfile.TemporaryDirectory() as directory:
+      target = Path(directory) / "oauth.json"
+      target.write_text('{"mock": "old"}', encoding="utf-8")
+      real_stat = os.stat
+      def owned_stat(path, *args, **kwargs):
+        result = real_stat(path, *args, **kwargs)
+        if Path(path) == target:
+          values = list(result)
+          values[4:6] = [1234, 1235]
+          return os.stat_result(values)
+        return result
+      captured = []
+      def capture_owner(path, uid, gid):
+        self.assertTrue(path.exists())
+        self.assertIn(mock.call(path, 0o600), chmod.call_args_list)
+        captured.append((uid, gid))
+      with mock.patch.object(receiver, "AMO_TOKEN_PATH", target), \
+           mock.patch.object(receiver.os, "stat", side_effect=owned_stat), \
+           mock.patch.object(receiver.os, "geteuid", return_value=0, create=True), \
+           mock.patch.object(receiver.os, "chmod", wraps=receiver.os.chmod) as chmod, \
+           mock.patch.object(receiver.os, "chown", side_effect=capture_owner, create=True):
+        receiver.save_token_state({"mock": "new"})
+      self.assertEqual(captured, [(1234, 1235)])
+      self.assertEqual(json.loads(target.read_text(encoding="utf-8")), {"mock": "new"})
+      self.assertFalse(target.with_suffix(".json.tmp").exists())
+
+  def test_service_refresh_does_not_require_chown_privilege(self):
+    with tempfile.TemporaryDirectory() as directory:
+      target = Path(directory) / "oauth.json"
+      with mock.patch.object(receiver, "AMO_TOKEN_PATH", target), \
+           mock.patch.object(receiver.os, "geteuid", return_value=1234, create=True), \
+           mock.patch.object(receiver.os, "chown", create=True) as chown:
+        receiver.save_token_state({"mock": "new"})
+      chown.assert_not_called()
+      self.assertEqual(json.loads(target.read_text(encoding="utf-8")), {"mock": "new"})
+
+
 class QuickLeadDefaultsTests(unittest.TestCase):
   def test_quick_lead_requires_only_contact_and_keeps_context(self):
     fields = {
@@ -392,6 +442,20 @@ class QuickLeadDefaultsTests(unittest.TestCase):
   def test_detailed_lead_is_not_filled_implicitly(self):
     fields = {"name": "", "task_type": "Разбор ситуации", "message": ""}
     self.assertEqual(receiver.complete_quick_lead(fields, False), fields)
+
+  def test_backup_email_stays_optional_and_is_validated(self):
+    self.assertEqual(receiver.normalize_email(""), "")
+    self.assertEqual(receiver.normalize_email(" qa@example.invalid "), "qa@example.invalid")
+    for value in ("qa@example", "qa @example.invalid", "<qa@example.invalid>", "qa@@example.invalid"):
+      with self.subTest(value=value):
+        with self.assertRaises(ValueError):
+          receiver.normalize_email(value)
+
+  def test_backup_email_reaches_the_crm_contact(self):
+    fields = AmoLeadAttributionTests().fields()
+    _, calls = AmoLeadAttributionTests().create(fields)
+    contact = calls[0].kwargs["payload"][0]["_embedded"]["contacts"][0]
+    self.assertIn({"field_code": "EMAIL", "values": [{"value": "test@example.com", "enum_code": "WORK"}]}, contact["custom_fields_values"])
 
 
 class RequestClientIpTests(unittest.TestCase):

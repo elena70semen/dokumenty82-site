@@ -125,16 +125,6 @@
     return Promise.race([request, deadline]).finally(function () { clearTimeout(timer); });
   }
 
-  function validPhone(value) {
-    const raw = String(value || "").trim();
-    if (/[A-Za-zА-Яа-я]/.test(raw)) return false;
-    let digits = raw.replace(/\D/g, "");
-    if (digits.startsWith("00")) digits = digits.slice(2);
-    if (digits.length === 10) digits = "7" + digits;
-    else if (digits.length === 11 && digits.startsWith("8")) digits = "7" + digits.slice(1);
-    return /^[1-9]\d{7,14}$/.test(digits);
-  }
-
   function syncPromotionOffer(form) {
     const offerId = form.querySelector('input[name="offer_id"]');
     if (!offerId) return "";
@@ -174,6 +164,9 @@
     const fileInput = form.querySelector('input[type="file"]');
     const submit = form.querySelector('button[type="submit"]');
     const submitLabel = submit ? submit.textContent : "Отправить заявку";
+    const submitMarkup = submit ? submit.innerHTML : undefined;
+    const phoneInput = form.querySelector('[name="phone"]');
+    window.d82ContactFields.wirePhone(phoneInput);
     let sending = false;
 
     if (fileInput) {
@@ -196,6 +189,9 @@
       const trap = form.querySelector('input[name="company_website"]');
       if (trap && trap.value) return;
 
+      const receipt = form.querySelector(".lead-receipt");
+      if (receipt) receipt.hidden = true;
+
       fireGoal("goal_form_submit_attempt", {
         form: "amo_lead",
       });
@@ -214,9 +210,12 @@
         return field && !String(field.value || "").trim();
       });
       const phone = form.querySelector('[name="phone"]');
-      const invalidPhone = phone && !validPhone(phone.value);
-      if (!form.checkValidity() || emptyText || invalidPhone) {
-        const invalid = emptyText || (invalidPhone && phone) || form.querySelector(":invalid");
+      const invalidPhone = phone && !window.d82ContactFields.normalizePhone(phone.value);
+      const email = form.querySelector('[name="email"]');
+      if (email) email.value = String(email.value || "").trim();
+      const invalidEmail = email && email.value && !/^[^@\s<>]+@[^@\s<>]+\.[^@\s<>]+$/.test(email.value);
+      if (!form.checkValidity() || emptyText || invalidPhone || invalidEmail) {
+        const invalid = emptyText || (invalidPhone && phone) || (invalidEmail && email) || form.querySelector(":invalid");
         const field = invalid && invalid.name;
         const messages = new Map([
           ["name", "Укажите, как к вам обращаться."],
@@ -232,6 +231,9 @@
 
       const promotionOffer = syncPromotionOffer(form);
       const data = new FormData(form);
+      const contactPhone = "+" + window.d82ContactFields.normalizePhone(phone.value);
+      const contactEmail = email ? email.value : "";
+      data.set("phone", contactPhone);
       if (window.location.pathname === "/buhgalteriya-pravo-50/") {
         data.set("current_url", window.location.pathname + window.location.search);
       }
@@ -258,7 +260,8 @@
           }
           form.reset();
           renderFiles(form);
-          setStatus(form, "Заявка доставлена менеджеру. Мы свяжемся с вами по указанному телефону.");
+          setStatus(form, "Заявка доставлена менеджеру. Проверьте контакты для обратной связи ниже.");
+          window.d82ContactFields.showReceipt(form, contactPhone, contactEmail);
           fireGoal("lead_submit_success", { form: "amo_lead", crm_status: "sent" });
         })
         .catch(function (error) {
@@ -279,7 +282,8 @@
           form.classList.remove("is-sending");
           if (submit) {
             submit.disabled = false;
-            submit.textContent = submitLabel;
+            if (typeof submitMarkup === "string") submit.innerHTML = submitMarkup;
+            else submit.textContent = submitLabel;
           }
         });
     });

@@ -5,12 +5,24 @@ import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
 const port = Number(process.env.PORT || 8184);
+// Optional loopback-only receiver for local end-to-end tests with CRM mocked.
+const leadPreviewPort = Number(process.env.LEAD_PREVIEW_PORT || 0);
+if (!Number.isInteger(leadPreviewPort) || leadPreviewPort < 0 || leadPreviewPort > 65535) throw new Error('Invalid local receiver port');
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.ico': 'image/x-icon', '.json': 'application/json', '.xml': 'application/xml' };
 http.createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
   res.setHeader('Cache-Control', 'no-store');
   res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-src https://yandex.ru https://yandex.com");
   if (url.pathname.startsWith('/api/')) {
+    if (url.pathname === '/api/lead' && req.method === 'POST' && leadPreviewPort) {
+      const upstream = http.request({ hostname: '127.0.0.1', port: leadPreviewPort, path: '/api/lead', method: 'POST', headers: req.headers }, reply => {
+        res.writeHead(reply.statusCode, { 'Content-Type': 'application/json' });
+        reply.pipe(res);
+      });
+      upstream.on('error', () => { res.statusCode = 503; res.end(JSON.stringify({ ok: false, message: 'Локальный тестовый приёмник недоступен.' })); });
+      req.pipe(upstream);
+      return;
+    }
     res.setHeader('Content-Type', 'application/json');
     if (url.pathname === '/api/lead' && req.method === 'POST') req.resume();
     res.statusCode = 503;

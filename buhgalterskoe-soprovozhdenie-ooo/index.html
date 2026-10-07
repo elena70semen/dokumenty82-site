@@ -205,6 +205,7 @@
     <link rel="stylesheet" href="/assets/shared-glass-controls.css?v=20260927-unified1" />
     <link rel="stylesheet" href="/assets/image-hover.css?v=20261001-1" />
       <link rel="stylesheet" href="/assets/button-sheen.css?v=20261002-1" />
+    <link rel="stylesheet" href="/assets/contact-fields.css?v=20261007-contact1" />
 </head>
   <body>
 
@@ -284,7 +285,8 @@
 <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 <div class="form-grid">
 <label><span>Имя <small>необязательно</small></span><input autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
-<label><span>Телефон</span><input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label><span>Телефон</span><input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (978) 123-45-67" required type="tel" maxlength="40" aria-describedby="buhgalterskoe-soprovozhdenie-ooo-phone-contact-1" /><small class="lead-contact-hint" id="buhgalterskoe-soprovozhdenie-ooo-phone-contact-1">Проверьте номер для обратного звонка.</small></label>
+<label class="lead-backup-contact">Email для связи (необязательно)<input type="email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.ru" aria-describedby="buhgalterskoe-soprovozhdenie-ooo-phone-contact-1-email" /><small class="lead-contact-hint" id="buhgalterskoe-soprovozhdenie-ooo-phone-contact-1-email">Если не дозвонимся, сможем написать вам.</small></label>
 <label class="form-wide"><span>Нагрузка и текущая задача <small>необязательно</small></span><textarea name="message" placeholder="Режим, НДС, примерное число операций, сотрудники, касса, банки и текущая задача" rows="5"></textarea></label>
 <div class="file-field form-wide safe-file-note" role="note"><span class="file-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"></path><path d="M14 2v5h5M9 12h6M9 16h4"></path></svg></span><span><b>Документы — после первичного разговора</b><small>Первичку, базу и отчётность можно передать после разговора через согласованный защищённый канал.</small></span></div>
 <p class="form-note form-wide">Файл можно приложить по желанию. Персональные документы и базу передавайте после согласования защищённого канала.</p>
@@ -302,6 +304,11 @@
 <button class="button button-primary form-submit form-wide" type="submit"><span>Подобрать тариф для ООО</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button>
 </div>
 <p class="form-status lead-status" role="status" aria-live="polite"></p>
+<div class="lead-receipt" hidden>
+  <p class="lead-receipt-contact ym-hide-content"></p>
+  <p class="lead-receipt-note"></p>
+  <div class="lead-receipt-actions"><a href="https://t.me/+79789987222" target="_blank" rel="noopener">Написать в Telegram</a><a href="mailto:info@dokumenty82.ru">Написать на email</a></div>
+</div>
 </form></div></div></section>
 
 <section aria-labelledby="one-report-title" class="service-section" id="one-report"><div class="container"><div class="section-head"><div class="heading-copy"><span class="eyebrow">Разовые услуги</span><h2 id="one-report-title">Отдельная задача для ООО</h2></div><p class="section-intro">Разовую отчётность, декларацию или восстановление можно заказать отдельно — ежемесячное сопровождение для этого не требуется.</p></div><div class="report-grid">
@@ -461,9 +468,10 @@
         });
       })();
     </script>
-    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
+    <script src="/assets/contact-fields.js?v=20261007-contact1" defer></script>
+    <script src="/assets/lead-form.js?v=20261007-contact1" defer></script>
     <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260929-maxroute1" defer></script>
-    <script src="/assets/ai-chat.js?v=20260927-unified1" defer></script>
+    <script src="/assets/ai-chat.js?v=20261007-contact1" defer></script>
   </body>
 </html>

@@ -5,6 +5,7 @@ import test from "node:test";
 
 // Unit tests only: no browser, listener, HTTP server or real network request.
 const source = fs.readFileSync(new URL("../assets/lead-form.js", import.meta.url), "utf8");
+const contactsSource = fs.readFileSync(new URL("../assets/contact-fields.js", import.meta.url), "utf8");
 const settle = () => new Promise((resolve) => setImmediate(resolve));
 const response = (status = 200, payload = { ok: true, id: "mock-id", crm_status: "sent" }) => ({
   ok: status >= 200 && status < 300, status,
@@ -39,6 +40,7 @@ function fixture(options = {}) {
   const inputs = {
     name: element({ value: "Mock visitor" }),
     phone: element({ value: "+7 (978) 000-00-00" }),
+    email: element({ value: options.email || "" }),
     message: element({ value: "Mock request" }),
     privacy: element({ value: "1", checked: true }),
     company_website: element(),
@@ -51,6 +53,9 @@ function fixture(options = {}) {
   const timers = new Map();
   let nextTimer = 0;
   const status = element();
+  const receiptContact = element();
+  const receiptNote = element();
+  const receipt = element({ hidden: true, querySelector: (selector) => selector === ".lead-receipt-contact" ? receiptContact : receiptNote });
   const submit = element({ textContent: "Отправить заявку" });
   let resets = 0;
   let nativeValid = options.nativeValid !== false;
@@ -62,6 +67,7 @@ function fixture(options = {}) {
       if (selector === 'input[type="hidden"][name="task_type"]') return options.quick ? inputs.task_type : null;
       if (selector === 'button[type="submit"]') return submit;
       if (selector === '[role="status"][aria-live]') return status;
+      if (selector === ".lead-receipt") return receipt;
       if (selector === ":invalid") return !inputs.privacy.checked ? inputs.privacy : options.invalidField ? inputs[options.invalidField] : null;
       const name = selector.match(/\[name="([^"]+)"\]/)?.[1];
       return name ? inputs[name] || null : null;
@@ -79,11 +85,12 @@ function fixture(options = {}) {
     d82GetAttribution: options.attribution || (() => Promise.resolve({ yandex_client_id: "1234567890" })),
   };
   class MockFormData {
-    constructor() { this.entries = []; this.taskType = inputs.task_type.value; }
+    constructor() { this.entries = []; this.values = { phone: inputs.phone.value, email: inputs.email.value }; this.taskType = inputs.task_type.value; }
+    set(key, value) { this.values[key] = value; }
     append(key, value) { this.entries.push([key, value]); }
     delete(key) { this.entries = this.entries.filter(([name]) => name !== key); }
   }
-  vm.runInNewContext(source, {
+  vm.runInNewContext(contactsSource + "\n" + source, {
     document, window, FormData: MockFormData, URLSearchParams,
     ...(options.noAbortController ? {} : { AbortController }),
     setTimeout: (callback, delay) => {
@@ -98,7 +105,7 @@ function fixture(options = {}) {
     },
   });
   document.emit("DOMContentLoaded");
-  return { form, inputs, status, submit, goals, requests, resets: () => resets,
+  return { form, inputs, status, receipt, receiptContact, submit, goals, requests, resets: () => resets,
     timers,
     expireTimers: () => {
       const pending = [...timers.values()];
@@ -412,6 +419,57 @@ test("supported phone formats pass without rewriting the field", async () => {
     assert.equal(f.requests.length, 1);
     assert.equal(f.inputs.phone.value, phone);
   }
+});
+
+test("short Russian numbers and ambiguous foreign codes are rejected before sending", async () => {
+  const cases = JSON.parse(fs.readFileSync(new URL("./contact-phone-cases.json", import.meta.url), "utf8"));
+  for (const { input, expected } of cases) {
+    const f = fixture();
+    f.inputs.phone.value = input;
+    f.form.emit("submit");
+    await settle();
+    assert.equal(f.requests.length, expected ? 1 : 0, input);
+    if (expected) assert.equal(f.requests[0][1].body.values.phone, "+" + expected, input);
+  }
+});
+
+test("blur formats a complete phone but leaves an incomplete one for correction", () => {
+  const f = fixture();
+  f.inputs.phone.value = "89781234567";
+  f.inputs.phone.emit("blur");
+  assert.equal(f.inputs.phone.value, "+7 (978) 123-45-67");
+  f.inputs.phone.value = "97812345";
+  f.inputs.phone.emit("blur");
+  assert.equal(f.inputs.phone.value, "97812345");
+  assert.equal(f.requests.length, 0);
+});
+
+test("optional backup email is trimmed, submitted and shown after confirmed delivery only", async () => {
+  const f = fixture({ quick: true, email: " qa@example.invalid " });
+  f.form.emit("submit");
+  await settle();
+  assert.equal(f.requests[0][1].body.values.email, "qa@example.invalid");
+  assert.equal(f.receipt.hidden, false);
+  assert.match(f.receiptContact.textContent, /\+7 \(978\) 000-00-00/);
+  assert.match(f.receiptContact.textContent, /qa@example\.invalid/);
+  assert.doesNotMatch(JSON.stringify(f.goals), /qa@example|978/);
+  for (const fetch of [async () => response(503), async () => response(202, { ok: true, id: "stored", crm_status: "stored_only" })]) {
+    const failed = fixture({ email: "qa@example.invalid", fetch });
+    failed.form.emit("submit");
+    await settle();
+    assert.equal(failed.receipt.hidden, true);
+    assert.equal(failed.resets(), 0);
+  }
+});
+
+test("an incomplete backup email does not POST and points to the optional field", async () => {
+  const f = fixture({ quick: true, email: "qa@example" });
+  f.form.emit("submit");
+  await settle();
+  assert.equal(f.requests.length, 0);
+  assert.equal(f.fail().params.field, "email");
+  assert.equal(f.inputs.email.focused, true);
+  assert.doesNotMatch(JSON.stringify(f.goals), /qa@example/);
 });
 
 test("service links select only the fixed accounting topic without sending a lead or goal", async () => {

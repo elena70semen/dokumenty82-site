@@ -150,14 +150,22 @@
       '    <button class="ai-chat-escalate" type="button" aria-expanded="false">Передать специалисту</button>',
       '  </div>',
       '</form>',
-      '<form class="ai-chat-lead" hidden>',
-      '  <p class="ai-chat-lead-note">Специалист получит переписку, ваше имя и телефон.</p>',
-      '  <label>Имя<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться"></label>',
-      '  <label>Телефон<input type="tel" name="phone" autocomplete="tel" placeholder="+7"></label>',
-      '  <label class="ai-chat-consent"><input type="checkbox" name="privacy" value="1"> <span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a></span></label>',
+      '<form class="ai-chat-lead" novalidate hidden>',
+      '  <p class="ai-chat-lead-note">Специалист получит переписку и ваши контакты.</p>',
+      '  <label>Имя<input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться"></label>',
+      '  <label>Телефон<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required maxlength="40" placeholder="+7 (978) 123-45-67" aria-describedby="ai-lead-phone-hint"></label>',
+      '  <small class="lead-contact-hint" id="ai-lead-phone-hint">Проверьте номер для обратного звонка.</small>',
+      '  <label>Email для связи (необязательно)<input type="email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.ru" aria-describedby="ai-lead-email-hint"></label>',
+      '  <small class="lead-contact-hint" id="ai-lead-email-hint">Если не дозвонимся, сможем написать вам.</small>',
+      '  <label class="ai-chat-consent"><input type="checkbox" name="privacy" value="1" required> <span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a></span></label>',
       '  <button type="submit">Отправить специалисту</button>',
       '</form>',
-      '<p class="ai-chat-status" role="status" aria-live="polite"></p>'
+      '<p class="ai-chat-status" role="status" aria-live="polite"></p>',
+      '<div class="lead-receipt" hidden>',
+      '  <p class="lead-receipt-contact ym-hide-content"></p>',
+      '  <p class="lead-receipt-note"></p>',
+      '  <div class="lead-receipt-actions"><a href="https://t.me/+79789987222" target="_blank" rel="noopener">Написать в Telegram</a><a href="mailto:info@dokumenty82.ru">Написать на email</a></div>',
+      '</div>'
     ].join("");
 
     document.body.appendChild(panel);
@@ -169,6 +177,7 @@
     });
     $(".ai-chat-escalate", panel).addEventListener("click", showLeadForm);
     $(".ai-chat-lead", panel).addEventListener("submit", submitLead);
+    window.d82ContactFields.wirePhone($('.ai-chat-lead input[name="phone"]', panel));
     panel.querySelectorAll("[data-ai-prompt]").forEach(function (button) {
       button.addEventListener("click", function () {
         const textarea = $("#ai-chat-text", panel);
@@ -267,24 +276,34 @@
 
     const form = event.currentTarget;
     const name = cleanText(form.elements.name && form.elements.name.value);
-    const phone = cleanText(form.elements.phone && form.elements.phone.value);
+    const phone = window.d82ContactFields.normalizePhone(form.elements.phone && form.elements.phone.value);
+    const email = cleanText(form.elements.email && form.elements.email.value);
+    if (form.elements.email) form.elements.email.value = email;
     const privacy = form.elements.privacy && form.elements.privacy.checked;
 
     if (!name || !phone || !privacy) {
-      setStatus("Заполните имя, телефон и согласие.");
+      setStatus(!phone ? "Проверьте полный номер телефона с кодом страны, например +7 (978) 123-45-67." : "Заполните имя и согласие.");
+      if (!phone && form.elements.phone) form.elements.phone.focus();
+      return;
+    }
+    if ((email && !/^[^@\s<>]+@[^@\s<>]+\.[^@\s<>]+$/.test(email)) || !form.checkValidity()) {
+      setStatus("Проверьте email или оставьте необязательное поле пустым.");
+      if (form.elements.email) form.elements.email.focus();
       return;
     }
 
     const data = new FormData();
     data.append("source_page", window.location.pathname || "/");
     data.append("name", name);
-    data.append("phone", phone);
-    data.append("email", "");
+    data.append("phone", "+" + phone);
+    data.append("email", email);
     data.append("task_type", "AI-чат");
     data.append("message", "Заявка из AI-чата\n\n" + transcriptText());
     data.append("privacy", "1");
 
     setBusy(true);
+    const receipt = $(".ai-chat-panel .lead-receipt");
+    if (receipt) receipt.hidden = true;
     setStatus("Передаем диалог специалисту.");
 
     const attributionPromise = typeof window.d82GetAttribution === "function"
@@ -323,7 +342,8 @@
         const button = $(".ai-chat-escalate");
         if (button) button.setAttribute("aria-expanded", "false");
         setStatus("Заявка доставлена менеджеру в CRM.");
-        addMessage("assistant", "Диалог передан специалисту. С вами свяжутся по указанному телефону.");
+        window.d82ContactFields.showReceipt($(".ai-chat-panel"), "+" + phone, email);
+        addMessage("assistant", "Диалог передан специалисту. Проверьте контакты ниже; если звонки неудобны, можно написать нам самостоятельно.");
         fireGoal("goal_ai_chat_lead", {
           form: "ai_chat",
         });

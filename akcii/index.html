@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="/assets/remaining-heroes-v2/content.css?v=20260927-glass2" />
     <link rel="stylesheet" href="/assets/image-hover.css?v=20261001-1" />
       <link rel="stylesheet" href="/assets/button-sheen.css?v=20261002-1" />
+    <link rel="stylesheet" href="/assets/contact-fields.css?v=20261007-contact1" />
 </head>
   <body>
 
@@ -229,15 +230,20 @@
           <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="form-grid">
             <label>Имя<input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться" /></label>
-            <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7..." /></label>
-            <label>Email<input type="email" name="email" autocomplete="email" placeholder="Для копии ответа" /></label>
+            <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7 (978) 123-45-67" maxlength="40" aria-describedby="akcii-phone-contact-1" /><small class="lead-contact-hint" id="akcii-phone-contact-1">Проверьте номер для обратного звонка.</small></label>
+            <label>Email для связи (необязательно)<input type="email" name="email" autocomplete="email" placeholder="name@example.ru" maxlength="254" aria-describedby="akcii-phone-contact-1-email" /><small class="lead-contact-hint" id="akcii-phone-contact-1-email">Если не дозвонимся, сможем написать вам.</small></label>
             <label>Предложение<select name="task_type" required><option value="" selected disabled>Выберите предложение</option><option value="Карта рисков и точек роста бизнеса">Карта рисков и точек роста</option><option value="Безопасная смена бухгалтера">Безопасная смена бухгалтера</option><option value="Бухгалтерия + Право">Бухгалтерия + Право</option><option value="Документы по строительному объекту под ключ">Документы по строительному объекту</option><option value="Единое окно для бизнеса">Единое окно для бизнеса</option><option value="Бизнес-старт под ключ">Бизнес-старт под ключ</option><option value="Сайт с SEO-стартом и аналитикой">Сайт с SEO-стартом и аналитикой</option><option value="Деловая почта под контролем">Деловая почта под контролем</option><option value="Рекомендация с выгодой для двоих">Рекомендация с выгодой для двоих</option></select></label>
             <label class="form-span-2">Коротко о задаче<textarea name="message" rows="4" required placeholder="Что нужно сделать и что уже есть на руках"></textarea></label>
           </div>
           <label class="lead-consent"><input type="checkbox" name="privacy" value="1" required /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
           <div class="lead-form-actions"><button class="button button-lime" type="submit">Отправить заявку</button><a class="button button-ghost" href="tel:+79789987222">Позвонить</a></div>
           <p class="form-note" role="status" aria-live="polite"></p>
-        </form>
+        <div class="lead-receipt" hidden>
+  <p class="lead-receipt-contact ym-hide-content"></p>
+  <p class="lead-receipt-note"></p>
+  <div class="lead-receipt-actions"><a href="https://t.me/+79789987222" target="_blank" rel="noopener">Написать в Telegram</a><a href="mailto:info@dokumenty82.ru">Написать на email</a></div>
+</div>
+</form>
 
       </div>
     </section>
@@ -339,9 +345,10 @@
         });
       })();
     </script>
-    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
+    <script src="/assets/contact-fields.js?v=20261007-contact1" defer></script>
+    <script src="/assets/lead-form.js?v=20261007-contact1" defer></script>
     <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260929-maxroute1" defer></script>
-    <script src="/assets/ai-chat.js?v=20260927-unified1" defer></script>
+    <script src="/assets/ai-chat.js?v=20261007-contact1" defer></script>
   </body>
 </html>

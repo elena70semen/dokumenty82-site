@@ -182,6 +182,7 @@
     <link rel="stylesheet" href="/assets/shared-glass-controls.css?v=20260927-unified1" />
     <link rel="stylesheet" href="/assets/image-hover.css?v=20261001-1" />
       <link rel="stylesheet" href="/assets/button-sheen.css?v=20261002-1" />
+    <link rel="stylesheet" href="/assets/contact-fields.css?v=20261007-contact1" />
 </head>
   <body>
 
@@ -263,7 +264,8 @@
 <input type="hidden" name="lead_mode" value="quick" />
 <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 <label class="field"><span>Имя <small>(необязательно)</small></span><input aria-label="Имя" autocomplete="name" name="name" placeholder="Как к вам обращаться" type="text" /></label>
-<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7..." required type="tel" /></label>
+<label class="field"><span>Телефон</span><input aria-label="Телефон" autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (978) 123-45-67" required type="tel" maxlength="40" aria-describedby="registraciya-ip-phone-contact-1" /><small class="lead-contact-hint" id="registraciya-ip-phone-contact-1">Проверьте номер для обратного звонка.</small></label>
+<label class="lead-backup-contact">Email для связи (необязательно)<input type="email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.ru" aria-describedby="registraciya-ip-phone-contact-1-email" /><small class="lead-contact-hint" id="registraciya-ip-phone-contact-1-email">Если не дозвонимся, сможем написать вам.</small></label>
 <label class="field wide"><span>Ваш вопрос <small>(необязательно)</small></span><textarea aria-label="Ваш вопрос" name="message" placeholder="Например: чем планируете заниматься, будут ли сотрудники, нужна ли касса, какой режим рассматриваете" rows="4"></textarea></label>
 <p class="form-note wide">Свяжемся, чтобы уточнить детали и ответить на вопросы. Решение по составу сопровождения принимаете после консультации.</p>
 <div class="form-file-field form-span-2 form-wide wide">
@@ -279,6 +281,11 @@
         <label class="consent wide"><input aria-label="Согласен на обработку данных по политике конфиденциальности" name="privacy" required type="checkbox" value="1" /><span>Согласен на обработку данных по <a href="/policy/" target="_blank" rel="noopener">политике конфиденциальности</a>.</span></label>
 <div class="form-actions wide"><button class="button button-primary" type="submit"><span>Получить консультацию</span><svg aria-hidden="true" class="icon" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button><a class="button button-secondary" href="tel:+79789987222">Позвонить</a></div>
 <p class="form-note lead-status wide" role="status" aria-live="polite"></p>
+<div class="lead-receipt" hidden>
+  <p class="lead-receipt-contact ym-hide-content"></p>
+  <p class="lead-receipt-note"></p>
+  <div class="lead-receipt-actions"><a href="https://t.me/+79789987222" target="_blank" rel="noopener">Написать в Telegram</a><a href="mailto:info@dokumenty82.ru">Написать на email</a></div>
+</div>
 </form>
 </div></div></section>
 <section aria-labelledby="expert-title" class="service-section"><div class="container expert-grid"><div class="expert-heading"><span class="eyebrow">Старт ИП</span><h2 id="expert-title">До подачи документов важно понять, как ИП будет работать после регистрации</h2><div aria-label="Ключевые условия" class="expert-proof"><span><small>Сопровождение</small><strong>от 5 000 ₽</strong></span><span><small>Консультация</small><strong>до подачи</strong></span></div></div><div class="expert-copy"><p>Регистрация ИП начинается не с заполнения Р21001, а с понимания будущей деятельности. До подачи документов важно определить подходящие ОКВЭД, налоговый режим и понять, понадобятся ли онлайн-касса, сотрудники и дополнительные уведомления.</p><p>На консультации разбираем исходные данные и объясняем порядок действий. После этого готовим согласованный комплект документов и способ подачи. Открытие расчётного счёта в конкретном банке не является условием услуги.</p></div></div></section>
@@ -432,8 +439,9 @@
       })();
     </script>
     <script src="/assets/metrika-goals.js?v=20260927-release1" defer></script>
-    <script src="/assets/lead-form.js?v=20260927-release1" defer></script>
+    <script src="/assets/contact-fields.js?v=20261007-contact1" defer></script>
+    <script src="/assets/lead-form.js?v=20261007-contact1" defer></script>
     <script src="/assets/home-v11/shell.js?v=20260929-maxroute1" defer></script>
-    <script src="/assets/ai-chat.js?v=20260927-unified1" defer></script>
+    <script src="/assets/ai-chat.js?v=20261007-contact1" defer></script>
   </body>
 </html>
