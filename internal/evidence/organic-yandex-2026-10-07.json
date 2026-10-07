@@ -1,0 +1,1592 @@
+{
+  "checked_at": "2026-10-07",
+  "site": "https://dokumenty82.ru/",
+  "source": "Authenticated Yandex Webmaster UI and CSV export",
+  "latest_search_data": "2026-10-04",
+  "current": {
+    "period": [
+      "2026-09-21",
+      "2026-10-04"
+    ],
+    "impressions": 239,
+    "clicks": 11,
+    "ctr_percent": 4.6
+  },
+  "previous": {
+    "period": [
+      "2026-09-07",
+      "2026-09-20"
+    ],
+    "impressions": 81,
+    "clicks": 5,
+    "ctr_percent": 6.17
+  },
+  "change_percent": {
+    "impressions": 195.06,
+    "clicks": 120
+  },
+  "weekly": [
+    {
+      "period": [
+        "2026-09-21",
+        "2026-09-27"
+      ],
+      "impressions": 127,
+      "clicks": 9,
+      "ctr_percent": 7.08
+    },
+    {
+      "period": [
+        "2026-09-28",
+        "2026-10-04"
+      ],
+      "impressions": 112,
+      "clicks": 2,
+      "ctr_percent": 1.78
+    }
+  ],
+  "source_urls": {
+    "current": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/efficiency/statistics/?deviceType=ALL_DEVICES&dateTo=2026-10-04&dateFrom=2026-09-21&period=DAY&searchLocation=ALL_LOCATIONS_ORGANIC",
+    "previous": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/efficiency/statistics/?deviceType=ALL_DEVICES&dateTo=2026-09-20&dateFrom=2026-09-07&period=DAY&searchLocation=ALL_LOCATIONS_ORGANIC",
+    "latest_week": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/efficiency/statistics/?deviceType=ALL_DEVICES&dateTo=2026-10-04&dateFrom=2026-09-28&period=DAY&searchLocation=ALL_LOCATIONS_ORGANIC",
+    "previous_week": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/efficiency/statistics/?deviceType=ALL_DEVICES&dateTo=2026-09-27&dateFrom=2026-09-21&period=DAY&searchLocation=ALL_LOCATIONS_ORGANIC",
+    "pages": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/efficiency/urls/?specialGroup=TOP_URLS&deviceType=ALL_DEVICES&dateTo=2026-10-04&dateFrom=2026-09-21&period=DAY&searchLocation=ALL_LOCATIONS_ORGANIC",
+    "monitor": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/indexing/url-tracker/",
+    "metrika": "https://metrika.yandex.ru/stat/sources_search_engines?id=109869928&period=2026-09-21%3A2026-10-04&group=day"
+  },
+  "pages": [
+    {
+      "path": "/",
+      "impressions": 74,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/ceny/",
+      "impressions": 51,
+      "clicks": 10,
+      "ctr_percent": 19.6
+    },
+    {
+      "path": "/ausn-krym/",
+      "impressions": 31,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/registraciya-ooo/",
+      "impressions": 13,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/buhgalterskie-uslugi/",
+      "impressions": 13,
+      "clicks": 1,
+      "ctr_percent": 7.69
+    },
+    {
+      "path": "/registraciya-ip/",
+      "impressions": 12,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/likvidaciya-ooo/",
+      "impressions": 12,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/kontakty/",
+      "impressions": 10,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/yuridicheskiy-adres-simferopol/",
+      "impressions": 5,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/deklaraciya-usn/",
+      "impressions": 5,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/uslugi/",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/buhgalterskoe-soprovozhdenie-ooo/",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/soprovozhdenie/",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/oferta/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/otzyvy/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/otvet-na-zapros-banka/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0
+    },
+    {
+      "path": "/vosstanovlenie-buhucheta/",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0
+    }
+  ],
+  "queries": [
+    {
+      "query": "ведение карточки организации симферополь",
+      "impressions": 29,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6.38,
+      "avg_click_position": null
+    },
+    {
+      "query": "оформление документов симферополь",
+      "impressions": 28,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8.96,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерские услуги",
+      "impressions": 15,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9.6,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерские услуги симферополь",
+      "impressions": 7,
+      "clicks": 1,
+      "ctr_percent": 14.29,
+      "avg_position": 8.29,
+      "avg_click_position": 8
+    },
+    {
+      "query": "сколько стоит ведение бухгалтерии",
+      "impressions": 7,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 4,
+      "avg_click_position": null
+    },
+    {
+      "query": "для бизнеса в симферополе",
+      "impressions": 6,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 5.67,
+      "avg_click_position": null
+    },
+    {
+      "query": "открыть ип симферополь",
+      "impressions": 6,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10.67,
+      "avg_click_position": null
+    },
+    {
+      "query": "ликвидация ооо симферополь",
+      "impressions": 5,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 5.8,
+      "avg_click_position": null
+    },
+    {
+      "query": "документы для бизнеса симферополь",
+      "impressions": 5,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 2.8,
+      "avg_click_position": null
+    },
+    {
+      "query": "аусн в крыму",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10.5,
+      "avg_click_position": null
+    },
+    {
+      "query": "dokumenty82.ru",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 1.5,
+      "avg_click_position": null
+    },
+    {
+      "query": "регистрация ооо симферополь",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8.25,
+      "avg_click_position": null
+    },
+    {
+      "query": "аусн крым",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9.67,
+      "avg_click_position": null
+    },
+    {
+      "query": "ведение бухгалтерии стоимость",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 2.33,
+      "avg_click_position": null
+    },
+    {
+      "query": "сколько стоят бухгалтерские услуги в симферополе ип",
+      "impressions": 3,
+      "clicks": 1,
+      "ctr_percent": 33.33,
+      "avg_position": 2.33,
+      "avg_click_position": 1
+    },
+    {
+      "query": "стоимость бухгалтерских услуг в 2026 году в республике крым",
+      "impressions": 3,
+      "clicks": 1,
+      "ctr_percent": 33.33,
+      "avg_position": 1,
+      "avg_click_position": 1
+    },
+    {
+      "query": "прайс на бухгалтерские услуги 2026",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 2,
+      "avg_click_position": null
+    },
+    {
+      "query": "действует ли аусн в республике крым",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6,
+      "avg_click_position": null
+    },
+    {
+      "query": "регистрация ооо в симферополь",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9.5,
+      "avg_click_position": null
+    },
+    {
+      "query": "центр подготовки документов матэ залки",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 1,
+      "avg_click_position": null
+    },
+    {
+      "query": "доступен ли аусн в крыму",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 11,
+      "avg_click_position": null
+    },
+    {
+      "query": "аусн сколько в крыму",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 11,
+      "avg_click_position": null
+    },
+    {
+      "query": "ликвидация ип цена симферополь",
+      "impressions": 2,
+      "clicks": 1,
+      "ctr_percent": 50,
+      "avg_position": 2,
+      "avg_click_position": 1
+    },
+    {
+      "query": "декларация симферополь сделать",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "регистрация ооо в крыму",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10.5,
+      "avg_click_position": null
+    },
+    {
+      "query": "как узнать банки в симферополе которые работают с аусн",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 5,
+      "avg_click_position": null
+    },
+    {
+      "query": "юридические компании которые занимаются закрытием ооо симферополь",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9.5,
+      "avg_click_position": null
+    },
+    {
+      "query": "ведение бухгалтерского учёта для нерезидентов ип в симферополь",
+      "impressions": 2,
+      "clicks": 2,
+      "ctr_percent": 100,
+      "avg_position": 3.5,
+      "avg_click_position": 5
+    },
+    {
+      "query": "центр подготовки документов матэ залки виктория ниденталь",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 1,
+      "avg_click_position": null
+    },
+    {
+      "query": "мате залки 1а",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10,
+      "avg_click_position": null
+    },
+    {
+      "query": "сколько в крыму аусн процент",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 13.5,
+      "avg_click_position": null
+    },
+    {
+      "query": "регистрация ип в симферополе",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 11.5,
+      "avg_click_position": null
+    },
+    {
+      "query": "кто регистрирует ооо в крыму",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 23,
+      "avg_click_position": null
+    },
+    {
+      "query": "купить юр адреса симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 7,
+      "avg_click_position": null
+    },
+    {
+      "query": "аусн в крыму ставки",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 11,
+      "avg_click_position": null
+    },
+    {
+      "query": "ведение ип стоимость в месяц",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 1,
+      "avg_click_position": null
+    },
+    {
+      "query": "декларация о доходах симферополь сделать",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "эцп мате залки",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9,
+      "avg_click_position": null
+    },
+    {
+      "query": "регистрации ооо через нотариуса цена крым",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "стоимость бухгалтерских услуг на аусн в 2026 году в республике крым",
+      "impressions": 1,
+      "clicks": 1,
+      "ctr_percent": 100,
+      "avg_position": 2,
+      "avg_click_position": 2
+    },
+    {
+      "query": "аусн в крыму условия",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 4,
+      "avg_click_position": null
+    },
+    {
+      "query": "кнд 1154004 в астрале как называется",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "закрытие предприятия симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 7,
+      "avg_click_position": null
+    },
+    {
+      "query": "изготовление отчетных документов симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 3,
+      "avg_click_position": null
+    },
+    {
+      "query": "для юр лиц в симферополе",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 7,
+      "avg_click_position": null
+    },
+    {
+      "query": "куда отправить декларацию по усн г симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 3,
+      "avg_click_position": null
+    },
+    {
+      "query": "ведение бухгалтерского учёта для нерезидентов в симферополь",
+      "impressions": 1,
+      "clicks": 1,
+      "ctr_percent": 100,
+      "avg_position": 1,
+      "avg_click_position": 1
+    },
+    {
+      "query": "куда отправить декларацию по усн г симферополь почта",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 12,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерия для ип симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 4,
+      "avg_click_position": null
+    },
+    {
+      "query": "цены на бухгалтерские услуги 2026",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 2,
+      "avg_click_position": null
+    },
+    {
+      "query": "цены на бухгалтерские услуги 2026 в крыму",
+      "impressions": 1,
+      "clicks": 1,
+      "ctr_percent": 100,
+      "avg_position": 1,
+      "avg_click_position": 1
+    },
+    {
+      "query": "симферополь режим аусн",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 4,
+      "avg_click_position": null
+    },
+    {
+      "query": "будет ли аусн в 2027 году в крыму",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 33,
+      "avg_click_position": null
+    },
+    {
+      "query": "сколько стоят услуги на юридическое письмо",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерские услуги крым стоимость",
+      "impressions": 1,
+      "clicks": 1,
+      "ctr_percent": 100,
+      "avg_position": 1,
+      "avg_click_position": 1
+    },
+    {
+      "query": "регистрация ип симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерские услуги симферополь цены",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 11,
+      "avg_click_position": null
+    },
+    {
+      "query": "виды аусн крым",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 5,
+      "avg_click_position": null
+    },
+    {
+      "query": "есть ли применение аусн в крыму",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "симферополь ул мате залки 1/3",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10,
+      "avg_click_position": null
+    },
+    {
+      "query": "сколько стоит ведение ип с ндс с работниками",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 3,
+      "avg_click_position": null
+    },
+    {
+      "query": "аусн симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6,
+      "avg_click_position": null
+    },
+    {
+      "query": "крым на аусн",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "где в симферополе можно оформить ип",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10,
+      "avg_click_position": null
+    },
+    {
+      "query": "ооо \"структура решение\"",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 5,
+      "avg_click_position": null
+    },
+    {
+      "query": "регистрация ооо цена",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 11,
+      "avg_click_position": null
+    },
+    {
+      "query": "восстановление бухгалтерского учета",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 7,
+      "avg_click_position": null
+    },
+    {
+      "query": "стоимость бухгалтерских услуг по крыму",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 2,
+      "avg_click_position": null
+    },
+    {
+      "query": "закрытие ооо без долгов с одним учредителем стоимость симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9,
+      "avg_click_position": null
+    },
+    {
+      "query": "мате залки 1",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "как создать ооо в симферополе",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 12,
+      "avg_click_position": null
+    },
+    {
+      "query": "юридический адрес симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9,
+      "avg_click_position": null
+    },
+    {
+      "query": "открыть ип в симферополе",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6,
+      "avg_click_position": null
+    },
+    {
+      "query": "аусн с доходов в крыму",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9,
+      "avg_click_position": null
+    },
+    {
+      "query": "симферополь мате залки 1",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтер цена симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6,
+      "avg_click_position": null
+    },
+    {
+      "query": "какие банки в крыму подходят под аусн",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "стоимость бухгалтерский услуг",
+      "impressions": 1,
+      "clicks": 1,
+      "ctr_percent": 100,
+      "avg_position": 2,
+      "avg_click_position": 2
+    },
+    {
+      "query": "юридические адреса симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9,
+      "avg_click_position": null
+    },
+    {
+      "query": "сколько стоят бухгалтерские услуги когда ведешь ооо по конференциям с не очень большим количеством услуг",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 2,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтер по ооо с ндс симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10,
+      "avg_click_position": null
+    },
+    {
+      "query": "предоставление юридического адреса в симферополе",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6,
+      "avg_click_position": null
+    },
+    {
+      "query": "документы симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 7,
+      "avg_click_position": null
+    },
+    {
+      "query": "расценки на бухгалтерские услуги 2026",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 1,
+      "avg_click_position": null
+    },
+    {
+      "query": "юр адрес в крыму",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 14,
+      "avg_click_position": null
+    },
+    {
+      "query": "аусн в республике крым",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6,
+      "avg_click_position": null
+    },
+    {
+      "query": "стоимость часа работы бухгалтера в симферополе",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6,
+      "avg_click_position": null
+    },
+    {
+      "query": "мате залки 1а симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9,
+      "avg_click_position": null
+    },
+    {
+      "query": "документы для бизнеса симферополь отзывы",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 2,
+      "avg_click_position": null
+    },
+    {
+      "query": "ответ банку по 115 фз в симферополе",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 2,
+      "avg_click_position": null
+    },
+    {
+      "query": "ликвидация ооо под ключ",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9,
+      "avg_click_position": null
+    },
+    {
+      "query": "крым можно аусн",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 5,
+      "avg_click_position": null
+    },
+    {
+      "query": "аусн системы крым",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 9,
+      "avg_click_position": null
+    },
+    {
+      "query": "уполномоченный банки по аусн для республики крым",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерские услуги цена крым",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 4,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерия симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 7,
+      "avg_click_position": null
+    },
+    {
+      "query": "ликвидация предприятия в крыму",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтер для ип цена",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 4,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерская помощь для ип в симферополе",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 7,
+      "avg_click_position": null
+    },
+    {
+      "query": "симферополь-где можно оформить статус ип",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    },
+    {
+      "query": "симферополь, ул. им. мате залки, 1",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 6,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерский учет стоимость услуг",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 1,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтерские услуги симферополь стоимость",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 3,
+      "avg_click_position": null
+    },
+    {
+      "query": "бухгалтеры для ип в симферополе",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 3,
+      "avg_click_position": null
+    },
+    {
+      "query": "ооо мозаика ликвидация симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 10,
+      "avg_click_position": null
+    },
+    {
+      "query": "ккт мате залки симферополь",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 7,
+      "avg_click_position": null
+    },
+    {
+      "query": "ул. м. залки 1/9 симферополь дубликат устава",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr_percent": 0,
+      "avg_position": 8,
+      "avg_click_position": null
+    }
+  ],
+  "important_page_monitor": {
+    "tracked_urls": 66,
+    "in_search": 59,
+    "low_value_news": 7,
+    "not_in_search_base": 0,
+    "all_tracked_http_status": 200,
+    "rows": [
+      {
+        "path": "/buhgalteriya-pravo-50/",
+        "last_change": "06.10.2026",
+        "last_crawl": "04.10.2026",
+        "http_status": 200,
+        "search_version": "03.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+        "last_change": "05.10.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/servis-vypiski-na-nalogovyy-vychet/",
+        "last_change": "05.10.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+        "last_change": "05.10.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/buhgalterskie-uslugi/",
+        "last_change": "05.10.2026",
+        "last_crawl": "06.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/soprovozhdenie/",
+        "last_change": "02.10.2026",
+        "last_crawl": "05.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/smena-buhgaltera/",
+        "last_change": "02.10.2026",
+        "last_crawl": "03.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/nalogovyy-kalendar/",
+        "last_change": "02.10.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/buhgalterskoe-soprovozhdenie-ooo/",
+        "last_change": "02.10.2026",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+        "last_change": "30.09.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/oferta/",
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+        "last_change": "",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/razbor-situacii/",
+        "last_change": "20.09.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/srochnye-voprosy/",
+        "last_change": "09.09.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/registraciya-ip/",
+        "last_change": "07.09.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/rekvizity/",
+        "last_change": "06.09.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+        "last_change": "06.09.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/uslugi/",
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/faq/",
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/akcii/",
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/uplata-nalogov-i-poshlin-razdel-fns/",
+        "last_change": "02.09.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+        "last_change": "02.09.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/nalogi-i-rezhimy/",
+        "last_change": "25.08.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/",
+        "last_change": "25.08.2026",
+        "last_crawl": "03.10.2026",
+        "http_status": 200,
+        "search_version": "03.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/yuridicheskiy-adres-simferopol/",
+        "last_change": "23.08.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/vosstanovlenie-buhucheta/",
+        "last_change": "23.08.2026",
+        "last_crawl": "06.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/registraciya-ooo/",
+        "last_change": "23.08.2026",
+        "last_crawl": "04.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/otvet-na-trebovanie-ifns/",
+        "last_change": "23.08.2026",
+        "last_crawl": "05.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/nulevaya-otchetnost-ooo/",
+        "last_change": "23.08.2026",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/nulevaya-otchetnost-ip/",
+        "last_change": "23.08.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/kadry/",
+        "last_change": "23.08.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/izmenenie-okved-ooo/",
+        "last_change": "23.08.2026",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/izmenenie-okved-ip/",
+        "last_change": "23.08.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/sdacha-otchetnosti-ooo/",
+        "last_change": "21.08.2026",
+        "last_crawl": "06.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/sdacha-otchetnosti-ip/",
+        "last_change": "21.08.2026",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/registraciya-i-likvidaciya/",
+        "last_change": "21.08.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/otvet-na-zapros-banka/",
+        "last_change": "21.08.2026",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/otchetnost/",
+        "last_change": "21.08.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/likvidaciya-ooo/",
+        "last_change": "21.08.2026",
+        "last_crawl": "04.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/likvidaciya-ip/",
+        "last_change": "21.08.2026",
+        "last_crawl": "04.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/dokumenty-dlya-banka-115-fz/",
+        "last_change": "21.08.2026",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/ceny/",
+        "last_change": "21.08.2026",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/bank-i-115-fz/",
+        "last_change": "21.08.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/blog/",
+        "last_change": "18.08.2026",
+        "last_crawl": "02.10.2026",
+        "http_status": 200,
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/smena-yuridicheskogo-adresa-ooo/",
+        "last_change": "27.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/otzyvy/",
+        "last_change": "27.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/nds-pri-usn-2026/",
+        "last_change": "27.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/porog-nds-usn-20-mln-do-2029/",
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/sverka-s-nalogovoy/",
+        "last_change": "24.07.2026",
+        "last_crawl": "05.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/o-proekte/",
+        "last_change": "24.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/kontakty/",
+        "last_change": "24.07.2026",
+        "last_crawl": "04.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/deklaraciya-usn/",
+        "last_change": "24.07.2026",
+        "last_crawl": "05.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/smena-direktora-ooo/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/raschet-nalogovoy-nagruzki/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/novosti/nalogovye-vebinary-iyul-2026/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/novosti/formaty-nds-s-1-iyulya-2026/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "path": "/nedostovernost-yuridicheskogo-adresa/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/blog/razbory/",
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/ausn-krym/",
+        "last_change": "23.07.2026",
+        "last_crawl": "05.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/policy/",
+        "last_change": "16.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/adres-egryul-direktor/",
+        "last_change": "14.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "path": "/novosti/",
+        "last_change": "07.07.2026",
+        "last_crawl": "01.10.2026",
+        "http_status": 200,
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      }
+    ]
+  },
+  "limitations": [
+    "Search statistics are only available through October 4; October 5-7 are not measured.",
+    "Clicks do not equal unique visitors or leads.",
+    "Metrika counter 109869928 returns 403 for the current signed-in account; organic visits and conversions could not be verified.",
+    "Position values are period averages from the export, not fixed rankings or a verified change in rankings.",
+    "Low click counts make week-to-week percentage changes unstable; growth is not proof of the latest site edits causing growth.",
+    "Important-page monitor counts describe its 66 tracked URLs, not all known URLs on the internet."
+  ],
+  "observations": [
+    "10 of 11 clicks are on /ceny/; one click is on /buhgalterskie-uslugi/.",
+    "The homepage has 74 impressions and zero clicks.",
+    "Latest week decreased to two clicks from nine the preceding week.",
+    "Promo and change-accountant pages are in search; no reindex action is needed just to get these URLs into search."
+  ],
+  "mutations": {
+    "site_changed": false,
+    "direct_campaigns_changed": false,
+    "reindex_submitted": false
+  },
+  "validation": {
+    "query_export_sum": {
+      "impressions": 239,
+      "clicks": 11
+    },
+    "page_table_sum": {
+      "impressions": 239,
+      "clicks": 11
+    },
+    "query_export_rows": 107
+  }
+}

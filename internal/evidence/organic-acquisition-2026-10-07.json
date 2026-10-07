@@ -1,0 +1,64 @@
+{
+  "prepared_at": "2026-10-07",
+  "site": "https://dokumenty82.ru/",
+  "branch": "codex/promo-buh-pravo-50",
+  "base_commit": "1075931",
+  "status": "prepared_local_not_published",
+  "changed_files": [
+    "index.html",
+    "buhgalterskie-uslugi/index.html",
+    "sitemap.xml"
+  ],
+  "changes": [
+    "Homepage title, description and matching OpenGraph/WebPage descriptions describe actual accounting and document services with approved prices.",
+    "Homepage accounting cards use plain language while preserving the starting-period meaning.",
+    "Accounting metadata includes the city and separately states approved IP/LLC monthly minima.",
+    "Existing hero price panel links to /ceny/#tarify; no extra hero block is added.",
+    "Office address is visible in the accounting hero.",
+    "Four FAQ answers cover prices, one-off reporting, accountant handoff and restoration; visible text and FAQ schema agree.",
+    "Only the two changed page sitemap lastmod values are updated."
+  ],
+  "validation": {
+    "strict_site_audit": "PASS: 66 sitemap URLs, 30 service offers; no technical issues or duplicate title/description/H1",
+    "forms": "Exact original form HTML preserved; no production lead was submitted in this task.",
+    "schema": "Business/Service/Offer nodes and commercial prices unchanged; four FAQ answers match visible text.",
+    "contracts": "Canonical, indexability, H1 and runtime assets unchanged; Metrika counter 109869928 preserved.",
+    "links": "All cross-page anchors resolve; browser click on hero price panel opens /ceny/#tarify.",
+    "visual": "Desktop and narrow-screen rendering reviewed. Narrow document client/scroll width 375/375 px with one-column hero and visible price panel.",
+    "live_baseline": [
+      {
+        "path": "index.html",
+        "http_status": 200,
+        "live_sha256": "25e8a5141d0f261b0972eef92b3ade76856643e8be76b3b4fcbed497df18a1d3",
+        "baseline_sha256": "25e8a5141d0f261b0972eef92b3ade76856643e8be76b3b4fcbed497df18a1d3",
+        "matches_git_head": true
+      },
+      {
+        "path": "buhgalterskie-uslugi/index.html",
+        "http_status": 200,
+        "live_sha256": "f27f57de04c512d960c9471ca42061ef923e3b788d67426b0b64be712b6c1109",
+        "baseline_sha256": "f27f57de04c512d960c9471ca42061ef923e3b788d67426b0b64be712b6c1109",
+        "matches_git_head": true
+      },
+      {
+        "path": "sitemap.xml",
+        "http_status": 200,
+        "live_sha256": "52dcb7f3a1336479c00c8f102e5cecaec989f56393224d47015b2569639abc4d",
+        "baseline_sha256": "52dcb7f3a1336479c00c8f102e5cecaec989f56393224d47015b2569639abc4d",
+        "matches_git_head": true
+      }
+    ]
+  },
+  "deployment": {
+    "completed": false,
+    "blocker": "SSH connection closes before key exchange. Local route to VPS is through throne-tun. This suggests a possible VPN routing issue but does not prove it; user was asked to temporarily disable VPN for a diagnostic connection check.",
+    "reindex_submitted": false,
+    "next": "Restore SSH, verify production baseline hashes, clone active release, replace only the three changed files, activate atomically, verify live bytes and submit only the two changed pages for reindex."
+  },
+  "direct_campaigns_changed": false,
+  "seo_reference": "https://yandex.ru/support/webmaster/ru/search-results/title-and-description",
+  "limitations": [
+    "Yandex can choose another snippet from page content; edited metadata does not guarantee a specific snippet or higher rankings.",
+    "Small current organic sample is insufficient to establish a conversion or ranking improvement."
+  ]
+}
