@@ -1,0 +1,252 @@
+{
+  "checked_at": "2026-10-07",
+  "site": "https://dokumenty82.ru/",
+  "counter_id": 109869928,
+  "period_moscow": [
+    "2026-09-21",
+    "2026-10-04"
+  ],
+  "period_reason": "Two complete weeks aligned with the latest Webmaster search data used in organic-yandex-2026-10-07.json; not the original month range.",
+  "access_resolution": "User opened the counter in the Codex in-app browser under OFFICE-9102. This session has report access; the earlier Chrome session returned 403.",
+  "attribution": {
+    "model": "LastSign",
+    "cross_device": true,
+    "sampling_percent": 100,
+    "undefined_sources_enabled": false
+  },
+  "traffic": {
+    "sources_report_visits": 1685,
+    "sources_report_people": 1332,
+    "paid_visits": 1526,
+    "referral_visits": 79,
+    "direct_visits": 58,
+    "organic_visits": 21,
+    "organic_people": 13,
+    "internal_visits": 1,
+    "organic_bounce_percent": 4.76,
+    "organic_page_depth": 2.62,
+    "organic_time_seconds": 168,
+    "yandex_visits": 12,
+    "yandex_people": 10,
+    "google_visits": 9,
+    "google_people": 3
+  },
+  "organic_entry_visits": {
+    "/ceny/": 6,
+    "/": 4,
+    "/ausn-krym/": 4,
+    "/buhgalteriya-pravo-50/": 2,
+    "/kontakty/": 2,
+    "/buhgalterskie-uslugi/": 1,
+    "/likvidaciya-ip/": 1,
+    "/likvidaciya-ooo/": 1
+  },
+  "organic_goals": {
+    "favorite_goal_reaches": 5,
+    "lead_submit_success": {
+      "id": 582169328,
+      "target_visits": 1,
+      "reaches": 1,
+      "date_moscow": "2026-10-02",
+      "search_engine": "Yandex",
+      "entry_page": "/ausn-krym/"
+    },
+    "contact_phone": {
+      "id": 582169968,
+      "target_visits": 2,
+      "reaches": 3
+    },
+    "contact_email": {
+      "id": 582170917,
+      "target_visits": 1,
+      "reaches": 1
+    },
+    "contact_telegram": {
+      "id": 582171696,
+      "target_visits": 0
+    },
+    "contact_max": {
+      "id": 582173593,
+      "target_visits": 0
+    },
+    "goal_form_start": {
+      "target_visits": 2
+    },
+    "goal_form_submit_attempt": {
+      "target_visits": 1
+    },
+    "goal_form_submit_fail": {
+      "target_visits": 1
+    },
+    "crm_presentation_lead_received": {
+      "id": 612969936,
+      "target_visits": 0,
+      "interpretation": "This is a manual offline import goal according to the existing export workflow. No data does not by itself mean delivery failed."
+    },
+    "goal_form_stored_only": {
+      "id": 664354713,
+      "target_visits": 0
+    },
+    "crm_order_created": {
+      "id": 593556280,
+      "target_visits": 1
+    },
+    "crm_order_paid": {
+      "id": 593556281,
+      "target_visits": 0
+    }
+  },
+  "server_form_receipts": {
+    "period_moscow": [
+      "2026-09-21",
+      "2026-10-04"
+    ],
+    "source": "/var/lib/dokumenty82-leads/submissions",
+    "counts": {
+      "qa:sent": 18,
+      "qa:missing_receipt": 2,
+      "non_qa:sent": 1
+    },
+    "by_day": {
+      "2026-09-25": {
+        "qa:missing_receipt": 1
+      },
+      "2026-09-27": {
+        "qa:missing_receipt": 1,
+        "qa:sent": 2
+      },
+      "2026-09-28": {
+        "qa:sent": 4
+      },
+      "2026-09-29": {
+        "qa:sent": 7
+      },
+      "2026-10-01": {
+        "qa:sent": 1
+      },
+      "2026-10-02": {
+        "qa:sent": 4,
+        "non_qa:sent": 1
+      }
+    },
+    "oct2_qa": {
+      "qa_records": 4,
+      "sent_to_crm": 4,
+      "funnel_recheck_20261002": 4
+    },
+    "nonqa_metadata": [
+      {
+        "created_at_moscow": "2026-10-02T09:09:08.906637+03:00",
+        "crm_status": "sent",
+        "source_page_path": "/razbor-situacii/",
+        "has_metrika_client_id": true,
+        "has_yclid": false,
+        "utm_source": "",
+        "utm_medium": "",
+        "is_funnel_recheck_campaign": false,
+        "phone_matches_qa_record": false,
+        "text_mentions_test": false
+      }
+    ],
+    "customer_details_exported": false
+  },
+  "live_crm_verification": {
+    "account_id": 32965862,
+    "read_only_crm_check": true,
+    "leads": [
+      {
+        "submission_id": "20261002T060908Z-bb400fc4",
+        "lead_id": 48194547,
+        "account_matches": true,
+        "id_matches": true,
+        "has_site_tag": true,
+        "has_qa_tag": false,
+        "title_mentions_test": false,
+        "is_deleted": false,
+        "status_id": 143,
+        "status_name": "Закрыто и не реализовано",
+        "pipeline_name": "Отдел продаж",
+        "created_at_moscow": "2026-10-02T09:09:09+03:00",
+        "lead_url": "https://presentationrc.amocrm.ru/leads/detail/48194547"
+      }
+    ],
+    "customer_details_exported": false
+  },
+  "nonqa_receipt_source": {
+    "submission_id": "20261002T060908Z-bb400fc4",
+    "landing_page_path": "/ausn-krym/",
+    "referrer_host": "dokumenty82.ru",
+    "source_page_path": "/razbor-situacii/",
+    "customer_details_exported": false
+  },
+  "observations": [
+    "Five favorite goal reaches represent one form success, three phone clicks and one email click, not five unique leads.",
+    "The server recorded 18 sent QA submissions, two QA submissions without receipts and one sent submission without QA markers in this period.",
+    "The one submission without QA markers is present in Presentation with a site tag and no QA tag or test title. It is currently closed and not realized; delivery is not a sale.",
+    "The unique non-QA submission and the organic success event share the October 2 date and AUSN landing page. This supports their correspondence, but no visitor identifier was exported to assert an exact ClientID match.",
+    "One organic visit has a form failure event; an event alone does not identify an HTTP error or prove a currently failing form.",
+    "Organic acquisition volume is small: 12 Yandex-attributed visits in fourteen days. Behavioral figures are based on a very small sample."
+  ],
+  "limitations": [
+    "Last significant cross-device attribution can include return visits, so Webmaster clicks and Metrika visits are not interchangeable.",
+    "Phone/email clicks are not confirmed calls or qualified inquiries.",
+    "QA filtering uses documented field/tag rules and does not prove every unmarked record is a qualified customer.",
+    "The receipt source referrer is the website itself; the Yandex attribution is observed in Metrika.",
+    "The original traffic report shows 1690 visits; the sources report shows 1685 with undefined sources disabled. The five-visit difference was not assigned to a source."
+  ],
+  "actions": {
+    "new_leads_submitted": false,
+    "crm_records_modified": false,
+    "offline_conversions_uploaded": false,
+    "direct_campaigns_changed": false,
+    "vpn_settings_changed": false,
+    "system_routes_changed": false
+  },
+  "ui_evidence": {
+    "checked_at": "2026-10-07",
+    "counter_id": 109869928,
+    "period": [
+      "2026-09-21",
+      "2026-10-04"
+    ],
+    "account": "OFFICE-9102",
+    "source": "Authenticated Codex in-app browser UI",
+    "sources": {
+      "url": "https://metrika.yandex.ru/stat/sources?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Hierarchical&sortBy=-ym%3As%3Avisits&showTotal=true&chartView=Line&metricValueMode=Absolute&screenMode=Default&sh=82657cdfc67876283cb1ff8037699640&table=visits",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nИсточники, сводка\nВизиты за отчётный период: 1 685\nНа дашборд\n21 сен — 4 окт\nСегмент\nНе выбран\nСравнение\n100 %\nВизиты\nЛюди\nГруппировка\nИсточник трафика\n, +2\nМетрики\nВизиты\n, +7\nЦель\nНе выбрана\nАтрибуция\nПоследний значимый переход\nк/д\nНа графике • Визиты\nПо дням\nПримечания\n5\nS\nM\nL\n21.09\n28.09\n04.10\n0\n120\n240\n360\n480\nВыбрано 6 из 6\nВсего\n1 685\nПереходы по рекламе\n1 526\nПереходы по ссылкам на сайтах\n79\nПрямые заходы\n58\nПереходы из поисковых систем\n21\nВнутренние переходы\n1\nНайти по названию\nИсточник трафика › Источник трафика (детально) › Тип площадки\nВизиты\nПосетители\nОтказы\nГлубина просмотра\nВремя на сайте\nДостижения избранных целей\nДоход по избранным целям, ₽\nКонверсия посетителей по избранным целям\nИтого и средние\n1 685\n100,00 %\n1 332\n100,00 %\n54,36 %\n1,13\n44 c\n16\n100,00 %\n0,00 \n0,98 %\nПереходы по рекламе\n1 526\n90,56 %\n1 206\n90,54 %\n55,90 %\n1,05\n36 c\n6\n37,50 %\n0,00 \n0,50 %\nПереходы по ссылкам на сайтах\n79\n4,69 %\n62\n4,65 %\n30,38 %\n1,86\n2 м 48 c\n3\n18,75 %\n0,00 \n4,84 %\nПрямые заходы\n58\n3,44 %\n56\n4,20 %\n63,79 %\n1,50\n57 c\n2\n12,50 %\n0,00 \n3,57 %\nПереходы из поисковых систем\n21\n1,25 %\n13\n0,98 %\n4,76 %\n2,62\n2 м 48 c\n5\n31,25 %\n0,00 \n15,38 %\nВнутренние переходы\n1\n0,06 %\n1\n0,08 %\n100,00 %\n1,00\n0 с\n0\n0,00 \n0,00 %\nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»"
+    },
+    "goals_all_sources": {
+      "url": "https://metrika.yandex.ru/stat/conversion_rate?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Hierarchical&goalsConversionViewKind=Factoid&showTotal=true&chartView=Line&metricValueMode=Absolute&screenMode=Default&sh=64edb74f01280038bb3c503d0952890f&table=conversion_rate",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nКонверсии\nИспользовано 30 из 200 целей\nДобавить цель\n21 сен — 4 окт\nСегмент\nНе выбран\n100 %\nВизиты\nЛюди\nСтатистика • Показатели\nМетрики • Конверсия, +2\nВсе цели\nПоиск\nПо дням\nУспешная заявка с сайта\nID 582169328\nидентификатор содержит: lead_submit_success\nКонверсия\n0,12 %\n⬥ \n+0,12 %\nЦелевые визиты\n2\nДостижения цели\n2\nКонтакт: телефон\nID 582169968\nидентификатор содержит: contact_phone\nКонверсия\n0,30 %\n⬥ \n+0,3 %\nЦелевые визиты\n5\nДостижения цели\n6\nКонтакт: email\nID 582170917\nидентификатор содержит: contact_email\nКонверсия\n0,06 %\n⬥ \n+0,06 %\nЦелевые визиты\n1\nДостижения цели\n1\nКонтакт: Telegram\nID 582171696\nидентификатор содержит: contact_telegram\nКонверсия\n0,30 %\n⬥ \n+0,3 %\nЦелевые визиты\n5\nДостижения цели\n5\nКонтакт: MAX\nID 582173593\nидентификатор содержит: contact_max\nКонверсия\n0,12 %\n⬥ \n+0,12 %\nЦелевые визиты\n2\nДостижения цели\n2\nКлик по телефону\nID 569389888\nидентификатор содержит: goal_call_click\nНет данных по цели\nПереход к маршруту или контактам\nID 569412233\nидентификатор содержит: goal_route_click\nНет данных по цели\nПоказать документы\nID 569412300\nидентификатор содержит: goal_docs_show_click\nНет данных по цели\nНачало заполнения формы\nID 569412349\nидентификатор содержит: goal_form_start\nКонверсия\nЦелевые визиты\nДостижения цели\nПопытка отправки формы\nID 569412382\nидентификатор содержит: goal_form_submit_attempt\nКонверсия\nЦелевые визиты\nДостижения цели\nОшибка формы\nID 569412415\nидентификатор содержит: goal_form_submit_fail\nКонверсия\nЦелевые визиты\nДостижения цели\nПереход к связанной странице\nID 569412453\nидентификатор содержит: goal_related_route_click\nНет данных по цели\nCTA Разобрать ситуацию\nID 572457570\nидентификатор содержит: consultation_cta_click\nКонверсия\nЦелевые визиты\nДостижения цели\nCTA первого экрана\nID 572457638\nидентификатор содержит: hero_cta_click\nКонверсия\nЦелевые визиты\nДостижения цели\nЗапасной контакт\nID 572457639\nидентификатор содержит: fallback_contact_click\nНет данных по цели\nКлик по карточке услуги\nID 572457664\nидентификатор содержит: service_card_click\nНет данных по цели\nКлик по сценарию\nID 572457666\nидентификатор содержит: scenario_card_click\nНет данных по цели\nПереход к связанной поддержке\nID 572457686\nидентификатор содержит: support_bridge_click\nНет данных по цели\nАвтоцель: клик по номеру телефона\nID 572527518\nклики по всем номерам телефонов\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: клик по email\nID 576756809\nклики по всем email-адресам\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: переход в мессенджер\nID 576756810\nклики по всем ссылкам на мессенджеры\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: отправка формы\nID 579993642\nотправки всех форм\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: заполнил контактные данные\nID 580054757\nзаполнил контактные данные\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: отправил контактные данные\nID 580217381\nотправил контактные данные\nКонверсия\nЦелевые визиты\nДостижения цели\nПосещение страницы Разбор ситуации\nID 580815478\nurl содержит: /razbor-situacii/\nКонверсия\nЦелевые визиты\nДостижения цели\nПосещение страницы Контакты\nID 580816968\nurl содержит: /kontakty/\nКонверсия\nЦелевые визиты\nДостижения цели\nУспешная отправка заявки\nID 580981206\nидентификатор содержит: goal_form_submit_success\nНет данных по цели\nКонтакт: маршрут\nID 582173840\nидентификатор содержит: contact_route\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Назначена встреча\nID 593538559\nидентификатор: crm_meeting_scheduled\nНет данных по цели\nCRM: Заказ создан\nID 593556280\nсозданные в CRM заказы\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Заказ оплачен\nID 593556281\nоплата заказов в CRM\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Спам заказ\nID 593556283\nзаказы, отмеченные как спам в CRM\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Заказ отменен\nID 593556284\nотменённые заказы в CRM\nКонверсия\nЦелевые визиты\nДостижения цели\nПереход по коммерческому маршруту\nID 601766084\nидентификатор содержит: service_route_click\nКонверсия\nЦелевые визиты\nДостижения цели\nPresentation: заявка получена (без тестов)\nID 612969936\nидентификатор: crm_presentation_lead_received\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: обратная связь\nID 664086002\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: узнать цену\nID 664086003\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: узнать цену\nID 664086004\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: заявка\nID 664086005\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nФорма: сохранена без передачи в CRM\nID 664354713\nидентификатор: goal_form_stored_only\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: узнать цену\nID 665486386\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»"
+    },
+    "goals_organic_top": {
+      "url": "https://metrika.yandex.ru/stat/conversion_rate?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Hierarchical&goalsConversionViewKind=Factoid&showTotal=true&chartView=Line&metricValueMode=Absolute&screenMode=Default&sh=3337a197707b034a4721404c9abe610c&table=conversion_rate&segmentId=3",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nКонверсии\nИспользовано 30 из 200 целей\nДобавить цель\n21 сен — 4 окт\nСегмент\nПоисковый трафик\n100 %\nВизиты\nи\nИсточники\n › \nТип источника\n=\nПереходы из поисковых систем\nПоследний значимый переход\nКросс-девайс\nи\nЛюди\nПрименить\nСохранить...\nОтмена\nСтатистика • Показатели\nМетрики • Конверсия, +2\nВсе цели\nПоиск\nПо дням\nУспешная заявка с сайта\nID 582169328\nидентификатор содержит: lead_submit_success\nКонверсия\n4,76 %\n▲ \n+4,76 %\nЦелевые визиты\n1\nДостижения цели\n1\nКонтакт: телефон\nID 582169968\nидентификатор содержит: contact_phone\nКонверсия\n9,52 %\n▲ \n+9,52 %\nЦелевые визиты\n2\nДостижения цели\n3\nКонтакт: email\nID 582170917\nидентификатор содержит: contact_email\nКонверсия\n4,76 %\n▲ \n+4,76 %\nЦелевые визиты\n1\nДостижения цели\n1\nКонтакт: Telegram\nID 582171696\nидентификатор содержит: contact_telegram\nНет данных по цели\nКонтакт: MAX\nID 582173593\nидентификатор содержит: contact_max\nНет данных по цели\nКлик по телефону\nID 569389888\nидентификатор содержит: goal_call_click\nНет данных по цели\nПереход к маршруту или контактам\nID 569412233\nидентификатор содержит: goal_route_click\nНет данных по цели\nПоказать документы\nID 569412300\nидентификатор содержит: goal_docs_show_click\nНет данных по цели\nНачало заполнения формы\nID 569412349\nидентификатор содержит: goal_form_start\nКонверсия\nЦелевые визиты\nДостижения цели\nПопытка отправки формы\nID 569412382\nидентификатор содержит: goal_form_submit_attempt\nКонверсия\nЦелевые визиты\nДостижения цели\nОшибка формы\nID 569412415\nидентификатор содержит: goal_form_submit_fail\nКонверсия\nЦелевые визиты\nДостижения цели\nПереход к связанной странице\nID 569412453\nидентификатор содержит: goal_related_route_click\nНет данных по цели\nCTA Разобрать ситуацию\nID 572457570\nидентификатор содержит: consultation_cta_click\nКонверсия\nЦелевые визиты\nДостижения цели\nCTA первого экрана\nID 572457638\nидентификатор содержит: hero_cta_click\nКонверсия\nЦелевые визиты\nДостижения цели\nЗапасной контакт\nID 572457639\nидентификатор содержит: fallback_contact_click\nНет данных по цели\nКлик по карточке услуги\nID 572457664\nидентификатор содержит: service_card_click\nНет данных по цели\nКлик по сценарию\nID 572457666\nидентификатор содержит: scenario_card_click\nНет данных по цели\nПереход к связанной поддержке\nID 572457686\nидентификатор содержит: support_bridge_click\nНет данных по цели\nАвтоцель: клик по номеру телефона\nID 572527518\nклики по всем номерам телефонов\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: клик по email\nID 576756809\nклики по всем email-адресам\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: переход в мессенджер\nID 576756810\nклики по всем ссылкам на мессенджеры\nНет данных по цели\nАвтоцель: отправка формы\nID 579993642\nотправки всех форм\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: заполнил контактные данные\nID 580054757\nзаполнил контактные данные\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: отправил контактные данные\nID 580217381\nотправил контактные данные\nКонверсия\nЦелевые визиты\nДостижения цели\nПосещение страницы Разбор ситуации\nID 580815478\nurl содержит: /razbor-situacii/\nКонверсия\nЦелевые визиты\nДостижения цели\nПосещение страницы Контакты\nID 580816968\nurl содержит: /kontakty/\nКонверсия\nЦелевые визиты\nДостижения цели\nУспешная отправка заявки\nID 580981206\nидентификатор содержит: goal_form_submit_success\nНет данных по цели\nКонтакт: маршрут\nID 582173840\nидентификатор содержит: contact_route\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Назначена встреча\nID 593538559\nидентификатор: crm_meeting_scheduled\nНет данных по цели\nCRM: Заказ создан\nID 593556280\nсозданные в CRM заказы\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Заказ оплачен\nID 593556281\nоплата заказов в CRM\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Спам заказ\nID 593556283\nзаказы, отмеченные как спам в CRM\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Заказ отменен\nID 593556284\nотменённые заказы в CRM\nКонверсия\nЦелевые визиты\nДостижения цели\nПереход по коммерческому маршруту\nID 601766084\nидентификатор содержит: service_route_click\nКонверсия\nЦелевые визиты\nДостижения цели\nPresentation: заявка получена (без тестов)\nID 612969936\nидентификатор: crm_presentation_lead_received\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: обратная связь\nID 664086002\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: узнать цену\nID 664086003\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: узнать цену\nID 664086004\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: заявка\nID 664086005\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nФорма: сохранена без передачи в CRM\nID 664354713\nидентификатор: goal_form_stored_only\nКонверсия\nЦелевые визиты\nДостижения цели\nЯндекс Бизнес Автоцель: узнать цену\nID 665486386\nклик по кнопке\nКонверсия\nЦелевые визиты\nДостижения цели\nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»"
+    },
+    "goals_organic_bottom": {
+      "url": "https://metrika.yandex.ru/stat/conversion_rate?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Hierarchical&goalsConversionViewKind=Factoid&showTotal=true&chartView=Line&metricValueMode=Absolute&screenMode=Default&sh=3337a197707b034a4721404c9abe610c&table=conversion_rate&segmentId=3",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nКонверсии\nИспользовано 30 из 200 целей\nДобавить цель\n21 сен — 4 окт\nСегмент\nПоисковый трафик\n100 %\nВизиты\nи\nИсточники\n › \nТип источника\n=\nПереходы из поисковых систем\nПоследний значимый переход\nКросс-девайс\nи\nЛюди\nПрименить\nСохранить...\nОтмена\nСтатистика • Показатели\nМетрики • Конверсия, +2\nВсе цели\nПоиск\nПо дням\nУспешная заявка с сайта\nID 582169328\nидентификатор содержит: lead_submit_success\nКонверсия\nЦелевые визиты\nДостижения цели\nКонтакт: телефон\nID 582169968\nидентификатор содержит: contact_phone\nКонверсия\nЦелевые визиты\nДостижения цели\nКонтакт: email\nID 582170917\nидентификатор содержит: contact_email\nКонверсия\nЦелевые визиты\nДостижения цели\nКонтакт: Telegram\nID 582171696\nидентификатор содержит: contact_telegram\nНет данных по цели\nКонтакт: MAX\nID 582173593\nидентификатор содержит: contact_max\nНет данных по цели\nКлик по телефону\nID 569389888\nидентификатор содержит: goal_call_click\nНет данных по цели\nПереход к маршруту или контактам\nID 569412233\nидентификатор содержит: goal_route_click\nНет данных по цели\nПоказать документы\nID 569412300\nидентификатор содержит: goal_docs_show_click\nНет данных по цели\nНачало заполнения формы\nID 569412349\nидентификатор содержит: goal_form_start\nКонверсия\nЦелевые визиты\nДостижения цели\nПопытка отправки формы\nID 569412382\nидентификатор содержит: goal_form_submit_attempt\nКонверсия\nЦелевые визиты\nДостижения цели\nОшибка формы\nID 569412415\nидентификатор содержит: goal_form_submit_fail\nКонверсия\nЦелевые визиты\nДостижения цели\nПереход к связанной странице\nID 569412453\nидентификатор содержит: goal_related_route_click\nНет данных по цели\nCTA Разобрать ситуацию\nID 572457570\nидентификатор содержит: consultation_cta_click\nКонверсия\nЦелевые визиты\nДостижения цели\nCTA первого экрана\nID 572457638\nидентификатор содержит: hero_cta_click\nКонверсия\nЦелевые визиты\nДостижения цели\nЗапасной контакт\nID 572457639\nидентификатор содержит: fallback_contact_click\nНет данных по цели\nКлик по карточке услуги\nID 572457664\nидентификатор содержит: service_card_click\nНет данных по цели\nКлик по сценарию\nID 572457666\nидентификатор содержит: scenario_card_click\nНет данных по цели\nПереход к связанной поддержке\nID 572457686\nидентификатор содержит: support_bridge_click\nНет данных по цели\nАвтоцель: клик по номеру телефона\nID 572527518\nклики по всем номерам телефонов\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: клик по email\nID 576756809\nклики по всем email-адресам\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: переход в мессенджер\nID 576756810\nклики по всем ссылкам на мессенджеры\nНет данных по цели\nАвтоцель: отправка формы\nID 579993642\nотправки всех форм\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: заполнил контактные данные\nID 580054757\nзаполнил контактные данные\nКонверсия\nЦелевые визиты\nДостижения цели\nАвтоцель: отправил контактные данные\nID 580217381\nотправил контактные данные\nКонверсия\nЦелевые визиты\nДостижения цели\nПосещение страницы Разбор ситуации\nID 580815478\nurl содержит: /razbor-situacii/\nКонверсия\nЦелевые визиты\nДостижения цели\nПосещение страницы Контакты\nID 580816968\nurl содержит: /kontakty/\nКонверсия\nЦелевые визиты\nДостижения цели\nУспешная отправка заявки\nID 580981206\nидентификатор содержит: goal_form_submit_success\nНет данных по цели\nКонтакт: маршрут\nID 582173840\nидентификатор содержит: contact_route\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Назначена встреча\nID 593538559\nидентификатор: crm_meeting_scheduled\nНет данных по цели\nCRM: Заказ создан\nID 593556280\nсозданные в CRM заказы\nКонверсия\nЦелевые визиты\nДостижения цели\nCRM: Заказ оплачен\nID 593556281\nоплата заказов в CRM\nНет данных по цели\nCRM: Спам заказ\nID 593556283\nзаказы, отмеченные как спам в CRM\nНет данных по цели\nCRM: Заказ отменен\nID 593556284\nотменённые заказы в CRM\nНет данных по цели\nПереход по коммерческому маршруту\nID 601766084\nидентификатор содержит: service_route_click\nКонверсия\n42,86 %\n▲ \n+42,86 %\nЦелевые визиты\n9\nДостижения цели\n13\nPresentation: заявка получена (без тестов)\nID 612969936\nидентификатор: crm_presentation_lead_received\nНет данных по цели\nЯндекс Бизнес Автоцель: обратная связь\nID 664086002\nклик по кнопке\nКонверсия\n4,76 %\n▲ \n+4,76 %\nЦелевые визиты\n1\nДостижения цели\n1\nЯндекс Бизнес Автоцель: узнать цену\nID 664086003\nклик по кнопке\nКонверсия\n4,76 %\n▲ \n+4,76 %\nЦелевые визиты\n1\nДостижения цели\n1\nЯндекс Бизнес Автоцель: узнать цену\nID 664086004\nклик по кнопке\nНет данных по цели\nЯндекс Бизнес Автоцель: заявка\nID 664086005\nклик по кнопке\nКонверсия\n9,52 %\n▲ \n+9,52 %\nЦелевые визиты\n2\nДостижения цели\n6\nФорма: сохранена без передачи в CRM\nID 664354713\nидентификатор: goal_form_stored_only\nНет данных по цели\nЯндекс Бизнес Автоцель: узнать цену\nID 665486386\nклик по кнопке\nНет данных по цели\nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»"
+    },
+    "organic_success_by_day": {
+      "url": "https://metrika.yandex.ru/stat/traffic?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Hierarchical&segmentId=3&goal=582169328&sortBy=-ym%3As%3AdatePeriod%3Cgroup%3E&showTotal=true&chartView=Column&metricValueMode=Absolute&screenMode=Default&tableGroupByInterval=day&sh=332d701a81178bd5bd269b2488020489&table=visits",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nПосещаемость\nВизиты за отчётный период: 2\nНа дашборд\n21 сен — 4 окт\nСегмент\nПоисковый трафик\nСравнение\n100 %\nВизиты\nи\nИсточники\nТип источника\n=\nПереходы из поисковых систем\nПоследний значимый переход\nКросс-девайс\nГруппировка\nИнтервал дат визита\nРазбить по • Дням\nМетрики\nКонверсия\n, +9\nЦель\nУспешная заявка с сайта\nНа графике • Целевые визиты\nПо дням\nПримечания\n5\nS\nM\nL\n21.09\n28.09\n04.10\n0\n0,3\n0,6\n0,9\n1,2\nВсего\n1\nНайти по названию\nИнтервал дат визита\nКонверсия\nДостижения цели\nЦелевые визиты\nДоход по цели, ₽\nЦелевые посетители\nПросмотры\nДоля новых посетителей\nОтказы\nГлубина просмотра\nВремя на сайте\nИтого и средние\n4,76 %\n1\n100,00 %\n1\n100,00 %\n0,00 \n1\n100,00 %\n6\n100,00 %\n0,00 %\n0,00 %\n6,00\n2 м 49 c\n2 октября\n20,00 %\n1\n100,00 %\n1\n100,00 %\n0,00 \n1\n100,00 %\n6\n100,00 %\n0,00 %\n0,00 %\n6,00\n2 м 49 c\nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»"
+    },
+    "organic_success_by_engine": {
+      "url": "https://metrika.yandex.ru/stat/search_engines?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Hierarchical&sortBy=-ym%3As%3Agoal%3Cgoal_id%3Evisits&segmentId=3&goal=582169328&showTotal=true&chartView=Line&metricValueMode=Absolute&screenMode=Default&sh=b25fc876181498afafb899f2b1ef5d57&table=visits",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nПоисковые системы\nВизиты за отчётный период: 1\nНа дашборд\n21 сен — 4 окт\nСегмент\nПоисковый трафик\nСравнение\n100 %\nВизиты\nи\nИсточники\nТип источника\n=\nПереходы из поисковых систем\nПоследний значимый переход\nКросс-девайс\nГруппировка\nПоисковая система\n, +1\nМетрики\nКонверсия\n, +9\nЦель\nУспешная заявка с сайта\nАтрибуция\nПоследний значимый переход\nк/д\nПеренесено из предыдущего отчета\nЦель\nСегменты\nОставить\nСбросить\nНа графике • Целевые визиты\nПо дням\nПримечания\n5\nS\nM\nL\n21.09\n28.09\n04.10\n0\n0,3\n0,6\n0,9\n1,2\nВыбрано 2 из 2\nВсего\n1\nЯндекс\n1\nНайти по названию\nПоисковая система › Поисковая фраза\nКонверсия\nДостижения цели\nЦелевые визиты\nДоход по цели, ₽\nЦелевые посетители\nОтказы\nГлубина просмотра\nВремя на сайте\nДостижения избранных целей\nДоход по избранным целям, ₽\nИтого и средние\n4,76 %\n1\n100,00 %\n1\n100,00 %\n0,00 \n1\n100,00 %\n0,00 %\n6,00\n2 м 49 c\n2\n100,00 %\n0,00 \nЯндекс\n8,33 %\n1\n100,00 %\n1\n100,00 %\n0,00 \n1\n100,00 %\n0,00 %\n6,00\n2 м 49 c\n2\n100,00 %\n0,00 \nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»"
+    },
+    "search_engines": {
+      "url": "https://metrika.yandex.ru/stat/search_engines?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Hierarchical&sortBy=-ym%3As%3Avisits&segmentId=3&showTotal=true&chartView=Line&metricValueMode=Absolute&screenMode=Default&sh=025686db3855f379f3f00ef42a075cdf&table=visits",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nПоисковые системы\nВизиты за отчётный период: 21\nНа дашборд\n21 сен — 4 окт\nСегмент\nПоисковый трафик\nСравнение\n100 %\nВизиты\nи\nИсточники\nТип источника\n=\nПереходы из поисковых систем\nПоследний значимый переход\nКросс-девайс\nГруппировка\nПоисковая система\n, +1\nМетрики\nВизиты\n, +6\nЦель\nНе выбрана\nАтрибуция\nПоследний значимый переход\nк/д\nПеренесено из предыдущего отчета\nСегменты\nОставить\nСбросить\nНа графике • Визиты\nПо дням\nПримечания\n5\nS\nM\nL\n21.09\n28.09\n04.10\n0\n1,5\n3\n4,5\n6\nВыбрано 3 из 3\nВсего\n21\nЯндекс\n12\nGoogle\n9\nНайти по названию\nПоисковая система › Поисковая фраза\nВизиты\nПосетители\nОтказы\nГлубина просмотра\nВремя на сайте\nДостижения избранных целей\nДоход по избранным целям, ₽\nИтого и средние\n21\n100,00 %\n13\n100,00 %\n4,76 %\n2,62\n2 м 48 c\n5\n100,00 %\n0,00 \nЯндекс\n12\n57,14 %\n10\n76,92 %\n0,00 %\n2,75\n2 м 37 c\n5\n100,00 %\n0,00 \nGoogle\n9\n42,86 %\n3\n23,08 %\n11,11 %\n2,44\n3 м 4 c\n0\n0,00 \nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»"
+    },
+    "organic_entry_pages": {
+      "url": "https://metrika.yandex.ru/stat/entrance?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Linear&sortBy=-ym%3As%3Avisits&segmentId=3&showTotal=true&chartView=Line&metricValueMode=Absolute&screenMode=Default&sh=751b4568105a76db19096be98fea3e80&table=visits",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nСтраницы входа\nВизиты за отчётный период: 1 690\nНа дашборд\n21 сен — 4 окт\nСегмент\nПоисковый трафик\nСравнение\n100 %\nВизиты\nи\nИсточники\nТип источника\n=\nПереходы из поисковых систем\nПоследний значимый переход\nКросс-девайс\nГруппировка\nСтраница входа, ур. 1\n, +4\nМетрики\nВизиты\n, +7\nЦель\nНе выбрана\nПеренесено из предыдущего отчета\nСегменты\nОставить\nСбросить\nНа графике • Визиты\nПо дням\nПримечания\n5\nS\nM\nL\n21.09\n28.09\n04.10\n0\n1,5\n3\n4,5\n6\nВыбрано 6 из 6\nВсего\n21\nhttps://dokumenty82.ru/ › https://dokumenty82.ru/ceny/ › Не определено › Не определено › https://dokumenty82.ru/ceny/\n6\nhttps://dokumenty82.ru/ › Не определено › Не определено › Не определено › https://dokumenty82.ru/\n4\nhttps://dokumenty82.ru/ › https://dokumenty82.ru/ausn-krym/ › Не определено › Не определено › https://dokumenty82.ru/ausn-krym/\n4\nhttps://dokumenty82.ru/ › https://dokumenty82.ru/buhgalteriya-pravo-50/ › Не определено › Не определено › https://dokumenty82.ru/buhgalteriya-pravo-50/\n2\nhttps://dokumenty82.ru/ › https://dokumenty82.ru/kontakty/ › Не определено › Не определено › https://dokumenty82.ru/kontakty/\n2\nНайти по названию\nСтраница входа, ур. 1 › Страница входа, ур. 2 › Страница входа, ур. 3 › Страница входа, ур. 4 › Страница входа\nВизиты\nПосетители\nОтказы\nГлубина просмотра\nВремя на сайте\nДостижения избранных целей\nДоход по избранным целям, ₽\nКонверсия посетителей по избранным целям\nИтого и средние\n21\n100,00 %\n13\n100,00 %\n4,76 %\n2,62\n2 м 48 c\n5\n100,00 %\n0,00 \n15,38 %\nhttps://dokumenty82.ru/  › https://dokumenty82.ru/ceny/  › Не определено\n › Не определено\n › https://dokumenty82.ru/ceny/\n6\n28,57 %\n6\n46,15 %\n0,00 %\n3,33\n4 м 27 c\n2\n40,00 %\n0,00 \n16,67 %\nhttps://dokumenty82.ru/  › Не определено\n › Не определено\n › Не определено\n › https://dokumenty82.ru/\n4\n19,05 %\n3\n23,08 %\n0,00 %\n2,00\n49 c\n0\n0,00 \n0,00 %\nhttps://dokumenty82.ru/  › https://dokumenty82.ru/ausn-krym/  › Не определено\n › Не определено\n › https://dokumenty82.ru/ausn-krym/\n4\n19,05 %\n2\n15,38 %\n0,00 %\n2,75\n1 м 3 c\n3\n60,00 %\n0,00 \n50,00 %\nhttps://dokumenty82.ru/  › https://dokumenty82.ru/buhgalteriya-pravo-50/  › Не определено\n › Не определено\n › https://dokumenty82.ru/buhgalteriya-pravo-50/\n2\n9,52 %\n1\n7,69 %\n0,00 %\n4,50\n11 м 36 c\n0\n0,00 \n0,00 %\nhttps://dokumenty82.ru/  › https://dokumenty82.ru/kontakty/  › Не определено\n › Не определено\n › https://dokumenty82.ru/kontakty/\n2\n9,52 %\n2\n15,38 %\n50,00 %\n2,00\n22 c\n0\n0,00 \n0,00 %\nhttps://dokumenty82.ru/  › https://dokumenty82.ru/buhgalterskie-uslugi/  › Не определено\n › Не определено\n › https://dokumenty82.ru/buhgalterskie-uslugi/\n1\n4,76 %\n1\n7,69 %\n0,00 %\n1,00\n15 c\n0\n0,00 \n0,00 %\nhttps://dokumenty82.ru/  › https://dokumenty82.ru/likvidaciya-ip/  › Не определено\n › Не определено\n › https://dokumenty82.ru/likvidaciya-ip/\n1\n4,76 %\n1\n7,69 %\n0,00 %\n1,00\n15 c\n0\n0,00 \n0,00 %\nhttps://dokumenty82.ru/  › https://dokumenty82.ru/likvidaciya-ooo/  › Не определено\n › Не определено\n › https://dokumenty82.ru/likvidaciya-ooo/\n1\n4,76 %\n1\n7,69 %\n0,00 %\n1,00\n23 c\n0\n0,00 \n0,00 %\nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»\nhttps://dokumenty82.ru/ › https://dokumenty82.ru/ausn-krym/ › Не определено › Не определено › https://dokumenty82.ru/ausn-krym/"
+    },
+    "organic_success_entry_page": {
+      "url": "https://metrika.yandex.ru/stat/entrance?id=109869928&period=2026-09-21%3A2026-10-04&group=day&isMinSamplingEnabled=false&currency=RUB&attr=%7B%22attributionId%22%3A%22LastSign%22%2C%22isCrossDevice%22%3Atrue%7D&isUndefinedEnabled=false&view=Linear&sortBy=-ym%3As%3Agoal%3Cgoal_id%3Evisits&segmentId=3&showTotal=true&chartView=Line&metricValueMode=Absolute&screenMode=Default&sh=74f49a202c90c370aa0bdcf8f78a8e60&table=visits&goal=582169328",
+      "text": "Обзор\nДашборды\nОтчеты\nПоведение\nПосетители\nЦели\nКонверсии\nТег Менеджер\nВариокуб\nПривлечение\nИнтеграции\nИнсайты\nНастройки\nСвернуть\nДокументы для бизнеса / dokumenty82.ru / Metrika 109869928\ndokumenty82.ru\n109869928\nНастройка аккаунта\nПомощь\n0\nOFFICE-9102\nСтраницы входа\nВизиты за отчётный период: 2\nНа дашборд\n21 сен — 4 окт\nСегмент\nПоисковый трафик\nСравнение\n100 %\nВизиты\nи\nИсточники\nТип источника\n=\nПереходы из поисковых систем\nПоследний значимый переход\nКросс-девайс\nГруппировка\nСтраница входа, ур. 1\n, +4\nМетрики\nКонверсия\n, +9\nЦель\nУспешная заявка с сайта\nПеренесено из предыдущего отчета\nСегменты\nОставить\nСбросить\nНа графике • Целевые визиты\nПо дням\nПримечания\n5\nS\nM\nL\n21.09\n28.09\n04.10\n0\n0,3\n0,6\n0,9\n1,2\nВыбрано 2 из 2\nВсего\n1\nhttps://dokumenty82.ru/ › https://dokumenty82.ru/ausn-krym/ › Не определено › Не определено › https://dokumenty82.ru/ausn-krym/\n1\nНайти по названию\nСтраница входа, ур. 1 › Страница входа, ур. 2 › Страница входа, ур. 3 › Страница входа, ур. 4 › Страница входа\nКонверсия\nДостижения цели\nЦелевые визиты\nДоход по цели, ₽\nЦелевые посетители\nОтказы\nГлубина просмотра\nВремя на сайте\nДостижения избранных целей\nДоход по избранным целям, ₽\nИтого и средние\n4,76 %\n1\n100,00 %\n1\n100,00 %\n0,00 \n1\n100,00 %\n0,00 %\n6,00\n2 м 49 c\n2\n100,00 %\n0,00 \nhttps://dokumenty82.ru/  › https://dokumenty82.ru/ausn-krym/  › Не определено\n › Не определено\n › https://dokumenty82.ru/ausn-krym/\n25,00 %\n1\n100,00 %\n1\n100,00 %\n0,00 \n1\n100,00 %\n0,00 %\n6,00\n2 м 49 c\n2\n100,00 %\n0,00 \nПользовательское соглашение\nПолитика конфиденциальности\nСправка\nЕще...\nRu\n© 2008–2026 OOO «ЯНДЕКС»"
+    }
+  },
+  "screenshot": ".codex-tmp/metrika-organic-success-20261007.png"
+}
