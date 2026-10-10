@@ -466,7 +466,8 @@ for (const route of new Set(serviceOffers.map((offer) => new URL(offer.url).path
 }
 
 const minimumInboundSupport = new Map([
-  ["/otvet-na-zapros-banka/", 60],
+  // Preserve sitewide support when editorial cleanup reduces the page count.
+  ["/otvet-na-zapros-banka/", Math.min(60, pages.length)],
   ["/ausn-krym/", 8],
   ["/deklaraciya-usn/", 10],
   ["/izmenenie-okved-ip/", 5],

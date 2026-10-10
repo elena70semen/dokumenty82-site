@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-21",
+  "version": "2026-10-10",
   "owner_decisions": {
     "/oferta/": "publication approved on 2026-08-28; supplied offer text with issuer details from the website; follows the existing legal-page indexing policy",
     "/akcii/": "approved promotions hub; index, follow; keep in sitemap",
@@ -39,18 +39,6 @@
     "/nedostovernost-yuridicheskogo-adresa/",
     "/novosti/",
     "/novosti/nalogovyy-kalendar/",
-    "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
-    "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
-    "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
-    "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
-    "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
-    "/novosti/porog-nds-usn-20-mln-do-2029/",
-    "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
-    "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
-    "/novosti/nalogovye-vebinary-iyul-2026/",
-    "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
-    "/novosti/servis-vypiski-na-nalogovyy-vychet/",
-    "/novosti/uplata-nalogov-i-poshlin-razdel-fns/",
     "/nulevaya-otchetnost-ip/",
     "/nulevaya-otchetnost-ooo/",
     "/o-proekte/",
@@ -78,9 +66,10 @@
     "/yuridicheskiy-adres-simferopol/",
     "/otzyvy/",
     "/ceny/",
-    "/novosti/formaty-nds-s-1-iyulya-2026/",
-    "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
-    "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/"
+    "/novosti/otchetnost-9-mesyacev-oktyabr-2026/",
+    "/novosti/nds-usn-podgotovka-2027/",
+    "/blog/peredacha-ucheta-checklist/",
+    "/blog/kak-proverit-priem-otchetnosti/"
   ],
   "noindex_follow_routes": [
     "/blog/obnovleniya-fns/"
@@ -96,5 +85,53 @@
     "canonical": "self-referencing HTTPS URL with trailing slash",
     "recrawl": "submit only URLs whose indexable content changed",
     "policy": "remains indexable and present in sitemap"
+  },
+  "retired_routes": {
+    "/novosti/porog-nds-usn-20-mln-do-2029/": {
+      "status": 301,
+      "target": "/novosti/nds-usn-podgotovka-2027/"
+    },
+    "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/": {
+      "status": 410
+    },
+    "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/": {
+      "status": 410
+    },
+    "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/": {
+      "status": 410
+    },
+    "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/": {
+      "status": 410
+    },
+    "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/": {
+      "status": 410
+    },
+    "/novosti/formaty-nds-s-1-iyulya-2026/": {
+      "status": 410
+    },
+    "/novosti/nalogovye-vebinary-iyul-2026/": {
+      "status": 410
+    },
+    "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/": {
+      "status": 410
+    },
+    "/novosti/servis-vypiski-na-nalogovyy-vychet/": {
+      "status": 410
+    },
+    "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/": {
+      "status": 410
+    },
+    "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/": {
+      "status": 410
+    },
+    "/novosti/ndfl-2025-deklaracii-posle-kampanii/": {
+      "status": 410
+    },
+    "/novosti/uplata-nalogov-i-poshlin-razdel-fns/": {
+      "status": 410
+    },
+    "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/": {
+      "status": 410
+    }
   }
 }

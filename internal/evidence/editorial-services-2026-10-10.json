@@ -1,0 +1,327 @@
+{
+  "date": "2026-10-10",
+  "release": "/var/www/dokumenty82/releases/20261010-editorial-services",
+  "indexablePages": 55,
+  "allHttp200": true,
+  "allCanonicalAndLocalHashesMatch": true,
+  "sitemapAndRobots": [
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "matches_local": true
+    }
+  ],
+  "retiredRouteChecks": [
+    {
+      "path": "/novosti/porog-nds-usn-20-mln-do-2029/",
+      "status": 301,
+      "location": "https://dokumenty82.ru/novosti/nds-usn-podgotovka-2027/"
+    },
+    {
+      "path": "/novosti/porog-nds-usn-20-mln-do-2029",
+      "status": 301,
+      "location": "https://dokumenty82.ru/novosti/nds-usn-podgotovka-2027/"
+    },
+    {
+      "path": "/novosti/porog-nds-usn-20-mln-do-2029/index.html",
+      "status": 301,
+      "location": "https://dokumenty82.ru/novosti/nds-usn-podgotovka-2027/"
+    },
+    {
+      "path": "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/formaty-nds-s-1-iyulya-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/formaty-nds-s-1-iyulya-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/formaty-nds-s-1-iyulya-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/nalogovye-vebinary-iyul-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/nalogovye-vebinary-iyul-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/nalogovye-vebinary-iyul-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/doverennye-lica-inostrannyh-organizaciy-tks",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/servis-vypiski-na-nalogovyy-vychet/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/servis-vypiski-na-nalogovyy-vychet",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/servis-vypiski-na-nalogovyy-vychet/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/kachestvo-nalogovogo-administrirovaniya-2026",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/ndfl-2025-deklaracii-posle-kampanii",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/ndfl-2025-deklaracii-posle-kampanii/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/uplata-nalogov-i-poshlin-razdel-fns/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/uplata-nalogov-i-poshlin-razdel-fns",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/uplata-nalogov-i-poshlin-razdel-fns/index.html",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya",
+      "status": 410,
+      "location": null
+    },
+    {
+      "path": "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/index.html",
+      "status": 410,
+      "location": null
+    }
+  ],
+  "redirectQueryPreserved": true,
+  "formsUnchanged": 26,
+  "strictStaticAudit": "PASS",
+  "mobileWidth390NoOverflow": true,
+  "usnFilterVisibleEntries": 2,
+  "indexNow": {
+    "date": "2026-10-10",
+    "endpoint": "https://yandex.com/indexnow",
+    "httpStatus": 202,
+    "submittedUrls": [
+      "https://dokumenty82.ru/adres-egryul-direktor/",
+      "https://dokumenty82.ru/blog/",
+      "https://dokumenty82.ru/blog/kak-proverit-priem-otchetnosti/",
+      "https://dokumenty82.ru/blog/peredacha-ucheta-checklist/",
+      "https://dokumenty82.ru/blog/razbory/",
+      "https://dokumenty82.ru/buhgalterskie-uslugi/",
+      "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/",
+      "https://dokumenty82.ru/deklaraciya-usn/",
+      "https://dokumenty82.ru/nalogi-i-rezhimy/",
+      "https://dokumenty82.ru/nds-pri-usn-2026/",
+      "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/",
+      "https://dokumenty82.ru/novosti/",
+      "https://dokumenty82.ru/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+      "https://dokumenty82.ru/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+      "https://dokumenty82.ru/novosti/formaty-nds-s-1-iyulya-2026/",
+      "https://dokumenty82.ru/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+      "https://dokumenty82.ru/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+      "https://dokumenty82.ru/novosti/nalogovye-vebinary-iyul-2026/",
+      "https://dokumenty82.ru/novosti/nalogovyy-kalendar/",
+      "https://dokumenty82.ru/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+      "https://dokumenty82.ru/novosti/nds-usn-podgotovka-2027/",
+      "https://dokumenty82.ru/novosti/otchetnost-9-mesyacev-oktyabr-2026/",
+      "https://dokumenty82.ru/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+      "https://dokumenty82.ru/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+      "https://dokumenty82.ru/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/",
+      "https://dokumenty82.ru/novosti/porog-nds-usn-20-mln-do-2029/",
+      "https://dokumenty82.ru/novosti/servis-vypiski-na-nalogovyy-vychet/",
+      "https://dokumenty82.ru/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
+      "https://dokumenty82.ru/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+      "https://dokumenty82.ru/novosti/uplata-nalogov-i-poshlin-razdel-fns/",
+      "https://dokumenty82.ru/nulevaya-otchetnost-ip/",
+      "https://dokumenty82.ru/nulevaya-otchetnost-ooo/",
+      "https://dokumenty82.ru/otchetnost/",
+      "https://dokumenty82.ru/raschet-nalogovoy-nagruzki/",
+      "https://dokumenty82.ru/registraciya-i-likvidaciya/",
+      "https://dokumenty82.ru/smena-buhgaltera/",
+      "https://dokumenty82.ru/srochnye-voprosy/",
+      "https://dokumenty82.ru/sverka-s-nalogovoy/"
+    ],
+    "accepted": true
+  },
+  "serviceRoutesUpdated": [
+    "/smena-buhgaltera/",
+    "/raschet-nalogovoy-nagruzki/",
+    "/nedostovernost-yuridicheskogo-adresa/",
+    "/nds-pri-usn-2026/",
+    "/nalogi-i-rezhimy/",
+    "/adres-egryul-direktor/",
+    "/registraciya-i-likvidaciya/",
+    "/srochnye-voprosy/",
+    "/blog/razbory/"
+  ],
+  "newPublications": [
+    "/novosti/otchetnost-9-mesyacev-oktyabr-2026/",
+    "/novosti/nds-usn-podgotovka-2027/",
+    "/blog/peredacha-ucheta-checklist/",
+    "/blog/kak-proverit-priem-otchetnosti/"
+  ],
+  "sources": {
+    "usn": "https://www.nalog.gov.ru/rn91/ifns/ifns_simph/info/16608587/",
+    "vat": "https://www.nalog.gov.ru/rn77/taxation/taxes/nds/",
+    "vatUsn": "https://www.nalog.gov.ru/rn77/taxation/taxes/nds_usn/",
+    "rsv": "https://www.nalog.gov.ru/rn77/yul/str_vznos/",
+    "sfrReport": "https://sfr.gov.ru/branches/khakasia/info/~/15058",
+    "sfrPayment": "https://sfr.gov.ru/branches/nizhnynovgorod/news~2026/10/06/285297",
+    "calendar": "https://www.nalog.gov.ru/rn77/calendar/"
+  },
+  "screenshots": [
+    "internal/evidence/editorial-news-20261010.png"
+  ],
+  "limitation": "IndexNow HTTP 202 acknowledges receipt; it does not establish crawling, inclusion in search, or removal of LOW_DEMAND."
+}

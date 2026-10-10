@@ -37,7 +37,7 @@ const walk = (directory) => fs.readdirSync(directory, { withFileTypes: true }).f
   return entry.isDirectory() ? walk(full) : entry.name === "index.html" ? [full] : [];
 });
 
-const articleTemplate = path.join(root, "novosti", "formaty-nds-s-1-iyulya-2026", "index.html");
+const articleTemplate = path.join(root, "novosti", "otchetnost-9-mesyacev-oktyabr-2026", "index.html");
 for (const item of newsItems.filter((entry) => entry.article && (!requestedRoutes.size || requestedRoutes.has(entry.route)))) {
   const target = path.join(root, item.route.slice(1), "index.html");
   if (!fs.existsSync(target)) {
@@ -705,11 +705,11 @@ for (const file of walk(root)) {
     if (refreshed !== html) serviceUpdates += 1;
     html = refreshed;
   }
-  if (route === taxCalendarRoute && !html.includes('<!-- editorial-calendar-2026-09-27 -->')) {
+  if (route === taxCalendarRoute && !/<!-- editorial-calendar-2026-(?:09-27|10-10) -->/.test(html)) {
     const refreshed = refreshTaxCalendarPage(html);
     if (refreshed !== html) newsUpdates += 1;
     html = refreshed;
-  } else if (route.startsWith("/novosti/") && route !== "/novosti/") {
+  } else if (route.startsWith("/novosti/") && route !== "/novosti/" && !html.includes('<!-- editorial-current-2026-10-10 -->')) {
     const registered = newsItems.find((item) => item.route === route && item.article);
     const refreshed = registered
       ? refreshRegisteredNews(html, registered)
@@ -717,8 +717,8 @@ for (const file of walk(root)) {
     if (refreshed !== html) newsUpdates += 1;
     html = refreshed;
   }
-  if (route === "/novosti/" && !html.includes('<!-- editorial-news-2026-09-27 -->')) html = refreshNewsHub(html);
-  if (route === "/blog/" && !html.includes('<!-- editorial-blog-2026-09-27 -->')) html = refreshBlogHub(html);
+  if (route === "/novosti/" && !html.includes('<!-- editorial-news-2026-09-27 -->') && !html.includes('<!-- editorial-current-2026-10-10 -->')) html = refreshNewsHub(html);
+  if (route === "/blog/" && !html.includes('<!-- editorial-blog-2026-09-27 -->') && !html.includes('<!-- editorial-current-2026-10-10 -->')) html = refreshBlogHub(html);
   if (route === "/blog/razbory/") html = refreshBlogRazbory(html);
 
   if (html !== before) {
