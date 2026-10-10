@@ -1,0 +1,832 @@
+{
+  "checked_at": "2026-10-10",
+  "site": "https://dokumenty82.ru/",
+  "source": "Authenticated Yandex Webmaster in-app browser, excluded-pages CSV, direct HTTPS GET checks of all sitemap URLs",
+  "source_urls": {
+    "monitor": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/indexing/url-tracker/",
+    "excluded": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/indexing/searchable/?nodeId=47&samplesType=excluded",
+    "restrictions": "https://webmaster.yandex.ru/site/https:dokumenty82.ru:443/optimization/threats/",
+    "official_explanation": "https://yandex.ru/support/webmaster/ru/site-indexing/low-demand"
+  },
+  "restrictions": "Нет ограничений",
+  "dashboard_diagnostics": "Ошибок и рекомендаций нет",
+  "excluded_url_total": 65,
+  "excluded_status_counts": {
+    "CLEAN_PARAMS": 37,
+    "LOW_DEMAND": 22,
+    "NOT_CANONICAL": 5,
+    "META_NO_INDEX": 1
+  },
+  "important_page_monitor": {
+    "tracked_urls": 66,
+    "in_search": 44,
+    "low_demand": 22,
+    "low_demand_news": 13,
+    "low_demand_non_news": 9,
+    "all_tracked_http_status": 200,
+    "rows": [
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/srochnye-voprosy/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "03.10.2026",
+        "path": "/smena-buhgaltera/",
+        "search_version": "03.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/registraciya-i-likvidaciya/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/raschet-nalogovoy-nagruzki/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/porog-nds-usn-20-mln-do-2029/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "02.10.2026",
+        "path": "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+        "search_version": "02.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/nedostovernost-yuridicheskogo-adresa/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/nds-pri-usn-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/nalogi-i-rezhimy/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "08.10.2026",
+        "path": "/kontakty/",
+        "search_version": "04.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/ceny/",
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "04.10.2026",
+        "path": "/buhgalteriya-pravo-50/",
+        "search_version": "04.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/blog/razbory/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/adres-egryul-direktor/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "05.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/servis-vypiski-na-nalogovyy-vychet/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "05.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "05.10.2026",
+        "last_crawl": "06.10.2026",
+        "path": "/buhgalterskie-uslugi/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "02.10.2026",
+        "last_crawl": "05.10.2026",
+        "path": "/soprovozhdenie/",
+        "search_version": "03.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "02.10.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/nalogovyy-kalendar/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "02.10.2026",
+        "last_crawl": "03.10.2026",
+        "path": "/buhgalterskoe-soprovozhdenie-ooo/",
+        "search_version": "03.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "30.09.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "path": "/oferta/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "20.09.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/razbor-situacii/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.09.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/registraciya-ip/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "06.09.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/rekvizity/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "",
+        "last_crawl": "07.10.2026",
+        "path": "/uslugi/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "path": "/faq/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "",
+        "last_crawl": "01.10.2026",
+        "path": "/akcii/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "02.09.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/uplata-nalogov-i-poshlin-razdel-fns/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "25.08.2026",
+        "last_crawl": "05.10.2026",
+        "path": "/",
+        "search_version": "05.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/yuridicheskiy-adres-simferopol/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "06.10.2026",
+        "path": "/vosstanovlenie-buhucheta/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "04.10.2026",
+        "path": "/registraciya-ooo/",
+        "search_version": "04.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "05.10.2026",
+        "path": "/otvet-na-trebovanie-ifns/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "04.10.2026",
+        "path": "/nulevaya-otchetnost-ooo/",
+        "search_version": "04.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "04.10.2026",
+        "path": "/nulevaya-otchetnost-ip/",
+        "search_version": "04.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/kadry/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "02.10.2026",
+        "path": "/izmenenie-okved-ooo/",
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.08.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/izmenenie-okved-ip/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "21.08.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/sdacha-otchetnosti-ooo/",
+        "search_version": "04.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "21.08.2026",
+        "last_crawl": "08.10.2026",
+        "path": "/sdacha-otchetnosti-ip/",
+        "search_version": "03.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "21.08.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/otvet-na-zapros-banka/",
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "21.08.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/otchetnost/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "21.08.2026",
+        "last_crawl": "04.10.2026",
+        "path": "/likvidaciya-ooo/",
+        "search_version": "04.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "21.08.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/likvidaciya-ip/",
+        "search_version": "04.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "21.08.2026",
+        "last_crawl": "07.10.2026",
+        "path": "/dokumenty-dlya-banka-115-fz/",
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "21.08.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/bank-i-115-fz/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "18.08.2026",
+        "last_crawl": "02.10.2026",
+        "path": "/blog/",
+        "search_version": "02.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "27.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/smena-yuridicheskogo-adresa-ooo/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "27.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/otzyvy/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "24.07.2026",
+        "last_crawl": "05.10.2026",
+        "path": "/sverka-s-nalogovoy/",
+        "search_version": "05.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "24.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/o-proekte/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "24.07.2026",
+        "last_crawl": "05.10.2026",
+        "path": "/deklaraciya-usn/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.07.2026",
+        "last_crawl": "06.10.2026",
+        "path": "/smena-direktora-ooo/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/nalogovye-vebinary-iyul-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/formaty-nds-s-1-iyulya-2026/",
+        "search_version": "01.10.2026",
+        "status": "Малоценная или маловостребованная страница"
+      },
+      {
+        "http_status": 200,
+        "last_change": "23.07.2026",
+        "last_crawl": "05.10.2026",
+        "path": "/ausn-krym/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "16.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/policy/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      },
+      {
+        "http_status": 200,
+        "last_change": "07.07.2026",
+        "last_crawl": "01.10.2026",
+        "path": "/novosti/",
+        "search_version": "01.10.2026",
+        "status": "В поиске"
+      }
+    ]
+  },
+  "baseline_2026_10_07": {
+    "tracked_urls": 66,
+    "in_search": 59,
+    "low_demand": 7
+  },
+  "newly_low_demand": [
+    "/adres-egryul-direktor/",
+    "/blog/razbory/",
+    "/nalogi-i-rezhimy/",
+    "/nds-pri-usn-2026/",
+    "/nedostovernost-yuridicheskogo-adresa/",
+    "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+    "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+    "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+    "/novosti/porog-nds-usn-20-mln-do-2029/",
+    "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
+    "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+    "/raschet-nalogovoy-nagruzki/",
+    "/registraciya-i-likvidaciya/",
+    "/smena-buhgaltera/",
+    "/srochnye-voprosy/"
+  ],
+  "non_news_low_demand": [
+    "/adres-egryul-direktor/",
+    "/blog/razbory/",
+    "/nalogi-i-rezhimy/",
+    "/nds-pri-usn-2026/",
+    "/nedostovernost-yuridicheskogo-adresa/",
+    "/raschet-nalogovoy-nagruzki/",
+    "/registraciya-i-likvidaciya/",
+    "/smena-buhgaltera/",
+    "/srochnye-voprosy/"
+  ],
+  "pre_exclusion_search_baseline_for_all_22_affected_pages": {
+    "period": [
+      "2026-09-21",
+      "2026-10-04"
+    ],
+    "impressions": 1,
+    "clicks": 0,
+    "meaning": "Historical demand baseline only; does not measure traffic after October 7 exclusion."
+  },
+  "technical_checks": {
+    "method": "Direct interface-bound TCP sockets with certificate validation; VPN settings unchanged",
+    "sitemap_pages": 66,
+    "all_http_200": true,
+    "canonical_errors": 0,
+    "noindex_pages": 0,
+    "all_match_local_commit": true,
+    "robots_and_sitemap_match_local": true,
+    "static_strict_audit": "PASS: 66 sitemap pages, 30 service offers, zero technical issues",
+    "affected_pages": [
+      {
+        "path": "/adres-egryul-direktor/",
+        "main_text_words": 612,
+        "main_inbound_count": 10,
+        "h1": [
+          "Адрес, ЕГРЮЛ и изменения в компании"
+        ]
+      },
+      {
+        "path": "/blog/razbory/",
+        "main_text_words": 648,
+        "main_inbound_count": 1,
+        "h1": [
+          "Разборы документов для бизнеса: банк, ФНС, отчётность и ЕГРЮЛ"
+        ]
+      },
+      {
+        "path": "/nalogi-i-rezhimy/",
+        "main_text_words": 1028,
+        "main_inbound_count": 16,
+        "h1": [
+          "Налоговый режим для ИП и ООО в Симферополе"
+        ]
+      },
+      {
+        "path": "/nds-pri-usn-2026/",
+        "main_text_words": 775,
+        "main_inbound_count": 8,
+        "h1": [
+          "НДС при УСН в 2026 году: порог 20 млн и выбор ставки"
+        ]
+      },
+      {
+        "path": "/nedostovernost-yuridicheskogo-adresa/",
+        "main_text_words": 831,
+        "main_inbound_count": 8,
+        "h1": [
+          "Недостоверность юридического адреса в ЕГРЮЛ: как действовать"
+        ]
+      },
+      {
+        "path": "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+        "main_text_words": 626,
+        "main_inbound_count": 1,
+        "h1": [
+          "До 1 сентября проверьте КЭП для сдачи отчетности в СФР"
+        ]
+      },
+      {
+        "path": "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
+        "main_text_words": 627,
+        "main_inbound_count": 1,
+        "h1": [
+          "25 и 28 августа 2026 года: что проверить ИП и ООО"
+        ]
+      },
+      {
+        "path": "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+        "main_text_words": 735,
+        "main_inbound_count": 2,
+        "h1": [
+          "С 1 августа налоговые уведомления будут приходить на Госуслуги автоматически"
+        ]
+      },
+      {
+        "path": "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+        "main_text_words": 707,
+        "main_inbound_count": 2,
+        "h1": [
+          "С 1 июля действует единая форма уведомления по УСН"
+        ]
+      },
+      {
+        "path": "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+        "main_text_words": 920,
+        "main_inbound_count": 5,
+        "h1": [
+          "27 и 28 июля: уведомления и налоговые платежи за полугодие"
+        ]
+      },
+      {
+        "path": "/novosti/porog-nds-usn-20-mln-do-2029/",
+        "main_text_words": 648,
+        "main_inbound_count": 1,
+        "h1": [
+          "Порог НДС для УСН: 20 млн рублей сохранён до 2029 года"
+        ]
+      },
+      {
+        "path": "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+        "main_text_words": 567,
+        "main_inbound_count": 1,
+        "h1": [
+          "Машиночитаемая доверенность (МЧД): как оформить и проверить перед ТКС"
+        ]
+      },
+      {
+        "path": "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+        "main_text_words": 624,
+        "main_inbound_count": 7,
+        "h1": [
+          "Цифровое налоговое администрирование: как проверить данные до отправки"
+        ]
+      },
+      {
+        "path": "/novosti/nalogovye-vebinary-iyul-2026/",
+        "main_text_words": 663,
+        "main_inbound_count": 3,
+        "h1": [
+          "Налог на прибыль в 2026 году: чек-лист после вебинара ФНС"
+        ]
+      },
+      {
+        "path": "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+        "main_text_words": 585,
+        "main_inbound_count": 2,
+        "h1": [
+          "После декларационной кампании: когда 3-НДФЛ всё ещё нужно подать"
+        ]
+      },
+      {
+        "path": "/novosti/servis-vypiski-na-nalogovyy-vychet/",
+        "main_text_words": 662,
+        "main_inbound_count": 2,
+        "h1": [
+          "Налоговый вычет в упрощённом порядке: когда заявление появится в Личном кабинете"
+        ]
+      },
+      {
+        "path": "/raschet-nalogovoy-nagruzki/",
+        "main_text_words": 745,
+        "main_inbound_count": 14,
+        "h1": [
+          "Расчёт налоговой нагрузки бизнеса в Симферополе"
+        ]
+      },
+      {
+        "path": "/registraciya-i-likvidaciya/",
+        "main_text_words": 909,
+        "main_inbound_count": 6,
+        "h1": [
+          "Регистрация, изменения и прекращение бизнеса в Симферополе"
+        ]
+      },
+      {
+        "path": "/srochnye-voprosy/",
+        "main_text_words": 869,
+        "main_inbound_count": 8,
+        "h1": [
+          "Срочная помощь с документами бизнеса"
+        ]
+      },
+      {
+        "path": "/novosti/formaty-nds-s-1-iyulya-2026/",
+        "main_text_words": 724,
+        "main_inbound_count": 5,
+        "h1": [
+          "Новые форматы документов по НДС с 1 июля 2026 года"
+        ]
+      },
+      {
+        "path": "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+        "main_text_words": 756,
+        "main_inbound_count": 6,
+        "h1": [
+          "Просрочка отчётности: ответственность смягчили, обязанность осталась"
+        ]
+      },
+      {
+        "path": "/smena-buhgaltera/",
+        "main_text_words": 647,
+        "main_inbound_count": 4,
+        "h1": [
+          "Смена бухгалтера для ИП и ООО в Симферополе"
+        ]
+      }
+    ]
+  },
+  "working_hypotheses_not_yandex_confirmed_causes": [
+    "Some navigation hubs may overlap the purposes of more specific service pages.",
+    "Dated July/August deadline news may have lost time-sensitive relevance.",
+    "Excluded service pages need query-specific utility and concrete deliverable examples rather than additional generic text."
+  ],
+  "prioritized_next_work": [
+    {
+      "path": "/smena-buhgaltera/",
+      "work": "Review actual search demand; develop a useful transfer inventory/checklist and clear example of the written handoff result without inventing client cases."
+    },
+    {
+      "path": "/raschet-nalogovoy-nagruzki/",
+      "work": "Review demand; provide an illustrative calculation with explicit assumptions, data inputs and a clearly described output; verify tax facts against official sources before publication."
+    },
+    {
+      "path": "/nedostovernost-yuridicheskogo-adresa/",
+      "work": "Review demand; improve the practical decision guide and list of evidence needed, checking legal facts with official sources before publication."
+    },
+    {
+      "paths": [
+        "/adres-egryul-direktor/",
+        "/blog/razbory/",
+        "/registraciya-i-likvidaciya/",
+        "/nalogi-i-rezhimy/",
+        "/srochnye-voprosy/",
+        "/nds-pri-usn-2026/"
+      ],
+      "work": "Review distinct search purpose and overlap before any consolidation, redirects or index restrictions."
+    }
+  ],
+  "limitations": [
+    "The status does not disclose the exact scoring factors or a guaranteed remedy.",
+    "Monitor and search-page reports may refresh on different schedules; the homepage current canonical status is processing while a previous canonical version remains listed.",
+    "All-page CSV export failed at Yandex storage; excluded CSV and all 66 monitor rows were retrieved successfully.",
+    "No new organic traffic period, conversions or Direct performance was audited in this request.",
+    "Current technical accessibility alone does not guarantee inclusion in search."
+  ],
+  "mutations": {
+    "public_site_changed": false,
+    "direct_campaigns_changed": false,
+    "index_restrictions_changed": false,
+    "reindex_submitted": false,
+    "vpn_settings_changed": false
+  }
+}
