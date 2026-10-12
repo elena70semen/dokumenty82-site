@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-12",
+  "site": "https://dokumenty82.ru/",
+  "verificationFile": "zen_10RpDdYf8UCx91FEO1orFyeLfTteUJkMMMIWwmZugMmSFPXsvkQL8jmVdg2jr4Qh.html",
+  "publicUrl": "https://dokumenty82.ru/zen_10RpDdYf8UCx91FEO1orFyeLfTteUJkMMMIWwmZugMmSFPXsvkQL8jmVdg2jr4Qh.html",
+  "release": "/var/www/dokumenty82/releases/20261012-zen-verification",
+  "previousRetained": "/var/www/dokumenty82/releases/20261012-brand-rating-fix",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "bodyMatchesUserMetaExactly": true,
+  "sha256": "b7a398076a6999e9a31aa02b64f46297ea58e3e300e21294e408cdc240fbf68d",
+  "certificateValidated": true,
+  "directWifiInterface": 6,
+  "dns": {
+    "A": [
+      "155.212.142.72"
+    ],
+    "AAAA": []
+  },
+  "serverConfigChanged": false,
+  "zenOwnershipResult": "Not confirmed in Dzen; its authenticated tab was not available to browser tools."
+}
