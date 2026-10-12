@@ -1,0 +1,185 @@
+{
+  "date": "2026-10-12",
+  "site": "https://dokumenty82.ru/",
+  "release": "/var/www/dokumenty82/releases/20261012-brand-rating-fix",
+  "webmaster": {
+    "available": false,
+    "browserTitle": "Яндекс Вебмастер — временно недоступен",
+    "directVpsResponse": {
+      "httpStatus": 200,
+      "title": "Яндекс Вебмастер — временно недоступен"
+    },
+    "independentNetworksShowSameMaintenancePage": true,
+    "noticeUrl": "https://yandex.ru/company/news/09-10-2026-01",
+    "officialNoticePublished": "2026-10-09",
+    "officialNoticeUpdated": "2026-10-11",
+    "restorationEta": "not announced in the notice",
+    "screenshot": "internal/evidence/webmaster-unavailable-20261012.png"
+  },
+  "liveAudit": {
+    "indexablePages": 55,
+    "allHttp200": true,
+    "allMatchLocal": true,
+    "canonicalErrors": [],
+    "indexBlockingMetaOrHeaders": [],
+    "robotsAndSitemap": [
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "matches_local": true
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "matches_local": true
+      }
+    ],
+    "retiredRoutes": [
+      {
+        "path": "/novosti/porog-nds-usn-20-mln-do-2029/",
+        "status": 301,
+        "location": "https://dokumenty82.ru/novosti/nds-usn-podgotovka-2027/"
+      },
+      {
+        "path": "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/formaty-nds-s-1-iyulya-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/nalogovye-vebinary-iyul-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/servis-vypiski-na-nalogovyy-vychet/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/uplata-nalogov-i-poshlin-razdel-fns/",
+        "status": 410,
+        "location": null
+      },
+      {
+        "path": "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/",
+        "status": 410,
+        "location": null
+      }
+    ],
+    "errors": [],
+    "transport": "Direct Wi-Fi interface 6 with certificate validation; VPN and routes unchanged"
+  },
+  "indexingLastConfirmed": {
+    "date": "2026-10-10",
+    "trackedUrls": 66,
+    "inSearch": 44,
+    "lowDemand": 22,
+    "lowDemandServicesOrHubs": 9,
+    "lowDemandNews": 13,
+    "restrictions": "Нет ограничений",
+    "diagnostics": "Ошибок и рекомендаций нет"
+  },
+  "proposedMonitorReconciliation": {
+    "basedOnSnapshotDate": "2026-10-10",
+    "previousUrls": 66,
+    "targetUrls": 55,
+    "removeRetiredUrls": [
+      "/novosti/doverennye-lica-inostrannyh-organizaciy-tks/",
+      "/novosti/edinaya-forma-uvedomleniya-usn-s-1-iyulya-2026/",
+      "/novosti/formaty-nds-s-1-iyulya-2026/",
+      "/novosti/kachestvo-nalogovogo-administrirovaniya-2026/",
+      "/novosti/nalogovye-uvedomleniya-gosuslugi-s-1-avgusta-2026/",
+      "/novosti/nalogovye-vebinary-iyul-2026/",
+      "/novosti/ndfl-2025-deklaracii-posle-kampanii/",
+      "/novosti/otchetnost-sfr-kep-do-1-sentyabrya-2026/",
+      "/novosti/otvetstvennost-za-prosrochku-otchetnosti-2026/",
+      "/novosti/podderzhka-biznesa-krym-chrezvychaynaya-situaciya/",
+      "/novosti/porog-nds-usn-20-mln-do-2029/",
+      "/novosti/servis-vypiski-na-nalogovyy-vychet/",
+      "/novosti/sroki-otchetnosti-i-platezhey-avgust-2026/",
+      "/novosti/sroki-uvedomleniy-i-platezhey-iyul-2026/",
+      "/novosti/uplata-nalogov-i-poshlin-razdel-fns/"
+    ],
+    "addNewUrls": [
+      "/blog/kak-proverit-priem-otchetnosti/",
+      "/blog/peredacha-ucheta-checklist/",
+      "/novosti/nds-usn-podgotovka-2027/",
+      "/novosti/otchetnost-9-mesyacev-oktyabr-2026/"
+    ],
+    "preparedList": "internal/evidence/webmaster-current-urls-20261012.txt",
+    "appliedToWebmaster": false
+  },
+  "notificationReceipts": {
+    "2026-10-10": {
+      "endpoint": "https://yandex.com/indexnow",
+      "urlCount": 38,
+      "httpStatus": 202
+    },
+    "2026-10-12-brand": {
+      "endpoint": "https://api.indexnow.org/indexnow",
+      "urlCount": 55,
+      "httpStatus": 202
+    },
+    "2026-10-12-reviews": {
+      "endpoint": "https://api.indexnow.org/indexnow",
+      "urlCount": 1,
+      "httpStatus": 200
+    }
+  },
+  "requiredWhenServiceReturns": [
+    "Read fresh diagnostics and restrictions.",
+    "Compare current excluded pages against the October 10 snapshot, separating deliberately retired news from active service pages.",
+    "Reconcile the monitored URL list after reading its current state.",
+    "Confirm crawl dates for the nine rewritten service/hub pages and four new articles."
+  ],
+  "limits": [
+    "Current search inclusion, traffic and LOW_DEMAND statuses could not be read because Webmaster is unavailable.",
+    "IndexNow receipt does not prove recrawl or index inclusion.",
+    "No site content, Direct campaign or VPN setting changed during this audit."
+  ]
+}
