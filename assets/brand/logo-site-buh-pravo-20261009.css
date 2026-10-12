@@ -97,6 +97,33 @@
   :root body .uh[data-logo-release="buh-pravo-20261009"] .container { width: calc(100% - 2px); }
   :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-main { column-gap: 4px; }
 }
+/* A verified, dated rating stays visible when the external widget is unavailable. */
+:root body .db-footer .rating-link,
+:root.js body .db-footer .rating-link {
+  display: inline-flex;
+  width: 150px;
+  min-height: 50px;
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+  line-height: 0;
+}
+:root body :is(.rating-link, .d82-rating-badge) img {
+  display: block;
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 1;
+  filter: none !important;
+  transform: none;
+}
+:root body .reviews-rating-panel .d82-rating-badge,
+:root body .reviews-rating-panel .d82-rating-badge img { width: min(300px, 100%); }
+:root body .d82-rating-badge { display: inline-block; max-width: 100%; line-height: 0; }
 /* The existing dark footer retains its palette; only the light logo has a white surface. */
 :root body .db-footer .footer-brand.d82-brand-approved {
   display: block;

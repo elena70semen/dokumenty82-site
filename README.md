@@ -28,6 +28,14 @@ This command preserves page content, forms, analytics and contacts. It also
 updates the client portal brand. Keep the old assets for rollback and remaining
 references; do not replace «ИИ-центр» across article or service text.
 
+The rating banner links to the live Yandex Maps reviews and displays a verified,
+dated snapshot from `internal/yandex-rating-snapshot.json`. The date is visible
+on the banner. Update this data only after checking the organization in Yandex
+Maps, then rerun the brand command. Do not replace the snapshot with an external
+Business iframe: during service outages it renders a maintenance document in
+the small banner box. Header/footer script versions must change for every
+previous query variant when releasing updated shared shell code.
+
 ## SEO quality and IndexNow
 
 Run the strict local SEO audit before deployment:
