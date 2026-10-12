@@ -1,0 +1,171 @@
+/* Approved light lockup. Keep its geometry and colors on every site shell. */
+:root body .uh[data-logo-release="buh-pravo-20261009"] .uh-brand.d82-brand-approved {
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
+  flex: none;
+  border-radius: 0;
+  line-height: 0;
+  background: #fff;
+}
+:root body .uh[data-logo-release="buh-pravo-20261009"] .d82-site-logo {
+  display: block;
+  width: 248px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 504 / 144;
+  object-fit: contain;
+  object-position: left center;
+  background: transparent;
+  filter: none;
+  transform: none;
+}
+:root body .d82-brand-approved:focus-visible {
+  outline: 2px solid #007783;
+  outline-offset: 5px;
+}
+@media (min-width: 700px) and (max-width: 1100px) {
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .d82-site-logo { width: 224px; }
+}
+@media (max-width: 699px) {
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 44px;
+    grid-template-areas: "brand menu" "email email" "phone channels";
+    gap: 8px 12px;
+    min-height: 0;
+    align-items: center;
+  }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-brand { grid-area: brand; }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .d82-site-logo { width: 224px; }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-menu {
+    grid-area: menu;
+    justify-self: end;
+    width: 44px;
+    height: 44px;
+  }
+  :root.js body .uh[data-logo-release="buh-pravo-20261009"] .uh-menu { display: inline-flex; }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-email {
+    grid-area: email;
+    min-width: 0;
+    justify-self: start;
+    max-width: 100%;
+    margin-left: 0;
+    display: inline-flex;
+  }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-phone {
+    grid-area: 3 / 1 / 4 / 3;
+    justify-self: start;
+    min-width: 0;
+    max-width: calc(100% - 104px);
+    width: auto;
+    padding-inline: 10px;
+    justify-content: flex-start;
+  }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-phone span {
+    position: static;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    overflow: visible;
+    white-space: nowrap;
+  }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-phone .icon { display: none; }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-channels {
+    grid-area: 3 / 1 / 4 / 3;
+    justify-self: end;
+    width: 96px;
+    min-width: 0;
+    margin: 0;
+    display: flex;
+    gap: 8px;
+    border: 0;
+    padding: 0;
+  }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-channel {
+    display: inline-flex;
+    width: 44px;
+    flex: none;
+    height: 44px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-channel span { display: none; }
+}
+@media (max-width: 359px) {
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .container { width: calc(100% - 2px); }
+  :root body .uh[data-logo-release="buh-pravo-20261009"] .uh-main { column-gap: 4px; }
+}
+/* The existing dark footer retains its palette; only the light logo has a white surface. */
+:root body .db-footer .footer-brand.d82-brand-approved {
+  display: block;
+  box-sizing: border-box;
+  width: 280px;
+  max-width: 100%;
+  padding: 16px 18px;
+  margin: 0;
+  gap: 0;
+  line-height: 0;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+}
+:root body .db-footer .footer-brand.d82-brand-approved .d82-site-logo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 504 / 144;
+  object-fit: contain;
+  background: transparent;
+  filter: none;
+  transform: none;
+}
+.portal-header .portal-brand.d82-brand-approved .d82-site-logo {
+  width: 248px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 504 / 144;
+  object-fit: contain;
+  background: #fff;
+  mix-blend-mode: normal;
+  filter: none;
+}
+/* Server-rendered fallback before the shared shell is installed, and without JS. */
+:root body .site-header .brand.d82-brand-approved { display: block; line-height: 0; flex: none; }
+:root body .site-header .brand.d82-brand-approved .d82-site-logo {
+  width: 224px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 504 / 144;
+  object-fit: contain;
+  filter: none;
+}
+:root body .site-footer .brand.d82-brand-approved {
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  padding: 16px 18px;
+  background: #fff;
+  line-height: 0;
+}
+:root body .site-footer .brand.d82-brand-approved .d82-site-logo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 504 / 144;
+  object-fit: contain;
+  filter: none;
+}
+@media (max-width: 820px) {
+  .portal-header .portal-brand.d82-brand-approved .d82-site-logo { width: 224px; }
+}
+@media (max-width: 620px) {
+  .portal-header { gap: 10px; }
+  .portal-header .portal-brand.d82-brand-approved { flex: none; }
+}
+@media (max-width: 359px) {
+  .portal-header { display: grid; grid-template-columns: 1fr; padding: 12px; }
+  .portal-header-actions { justify-self: end; }
+}

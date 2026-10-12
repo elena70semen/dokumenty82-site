@@ -1,0 +1,844 @@
+{
+  "date": "2026-10-12",
+  "sourceArchive": "DOKUMENTY82_LOGO_BUHGALTERIYA_PRAVO_SITE_20261009.zip",
+  "sourceArchiveSha256": "c4608152770e2ac81e6636b5af913d4f6803cea3ac5f0860da2a50b0d57a426d",
+  "descriptor": "Бухгалтерия и право",
+  "theme": "approved light only",
+  "brandUrl": "https://dokumenty82.ru/assets/brand/logo-site-buh-pravo-20261009.svg",
+  "static": {
+    "pages": 60,
+    "forms": 30,
+    "mainUnchanged": 60,
+    "jsonldChecked": 92,
+    "errors": [],
+    "uniqueIconLinksPerPage": 4
+  },
+  "responsive": {
+    "home": [
+      {
+        "channels": [
+          44,
+          44
+        ],
+        "clipped": [],
+        "logoWidth": 224,
+        "overlaps": [],
+        "scrollWidth": 305,
+        "viewport": 320
+      },
+      {
+        "channels": [
+          44,
+          44
+        ],
+        "clipped": [],
+        "logoWidth": 224,
+        "overlaps": [],
+        "scrollWidth": 345,
+        "viewport": 360
+      },
+      {
+        "channels": [
+          44,
+          44
+        ],
+        "clipped": [],
+        "logoWidth": 224,
+        "overlaps": [],
+        "scrollWidth": 375,
+        "viewport": 390
+      },
+      {
+        "channels": [
+          44,
+          44
+        ],
+        "clipped": [],
+        "logoWidth": 224,
+        "overlaps": [],
+        "scrollWidth": 753,
+        "viewport": 768
+      },
+      {
+        "channels": [
+          44,
+          44
+        ],
+        "clipped": [],
+        "logoWidth": 224,
+        "overlaps": [],
+        "scrollWidth": 1009,
+        "viewport": 1024
+      },
+      {
+        "channels": [
+          44,
+          44
+        ],
+        "clipped": [],
+        "logoWidth": 248,
+        "overlaps": [],
+        "scrollWidth": 1265,
+        "viewport": 1280
+      },
+      {
+        "channels": [
+          44,
+          44
+        ],
+        "clipped": [],
+        "logoWidth": 248,
+        "overlaps": [],
+        "scrollWidth": 1425,
+        "viewport": 1440
+      }
+    ],
+    "cabinet": [
+      {
+        "clipped": false,
+        "logoWidth": 224,
+        "overlap": false,
+        "scroll": 320,
+        "width": 320
+      },
+      {
+        "clipped": false,
+        "logoWidth": 224,
+        "overlap": false,
+        "scroll": 345,
+        "width": 360
+      },
+      {
+        "clipped": false,
+        "logoWidth": 224,
+        "overlap": false,
+        "scroll": 375,
+        "width": 390
+      },
+      {
+        "clipped": false,
+        "logoWidth": 224,
+        "overlap": false,
+        "scroll": 753,
+        "width": 768
+      },
+      {
+        "clipped": false,
+        "logoWidth": 248,
+        "overlap": false,
+        "scroll": 1009,
+        "width": 1024
+      },
+      {
+        "clipped": false,
+        "logoWidth": 248,
+        "overlap": false,
+        "scroll": 1265,
+        "width": 1280
+      },
+      {
+        "clipped": false,
+        "logoWidth": 248,
+        "overlap": false,
+        "scroll": 1425,
+        "width": 1440
+      }
+    ],
+    "representativePages": [
+      {
+        "logos": [
+          {
+            "loaded": true,
+            "src": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+            "width": 248
+          },
+          {
+            "loaded": true,
+            "src": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+            "width": 244
+          }
+        ],
+        "overflow": false,
+        "path": "/buhgalterskie-uslugi/"
+      },
+      {
+        "logos": [
+          {
+            "loaded": true,
+            "src": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+            "width": 248
+          },
+          {
+            "loaded": true,
+            "src": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+            "width": 244
+          }
+        ],
+        "overflow": false,
+        "path": "/buhgalteriya-pravo-50/"
+      },
+      {
+        "logos": [
+          {
+            "loaded": true,
+            "src": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+            "width": 248
+          },
+          {
+            "loaded": true,
+            "src": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+            "width": 244
+          }
+        ],
+        "overflow": false,
+        "path": "/kontakty/"
+      },
+      {
+        "logos": [
+          {
+            "loaded": true,
+            "src": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+            "width": 248
+          },
+          {
+            "loaded": true,
+            "src": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+            "width": 244
+          }
+        ],
+        "overflow": false,
+        "path": "/novosti/"
+      }
+    ],
+    "menuOpenClose": true,
+    "escapeClosesMenu": true,
+    "final320Recheck": {
+      "logoWidth": 224,
+      "channels": [
+        44,
+        44
+      ],
+      "overflow": false
+    }
+  },
+  "live": {
+    "date": "2026-10-12",
+    "release": "/var/www/dokumenty82/releases/20261012-approved-brand-v2",
+    "previousRetained": "/var/www/dokumenty82/releases/20261012-approved-brand",
+    "filesChecked": 74,
+    "checks": [
+      {
+        "route": "/adres-egryul-direktor/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/adres-egryul-direktor/"
+      },
+      {
+        "route": "/akcii/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/akcii/"
+      },
+      {
+        "route": "/apple-touch-icon.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/apple-touch-icon.png"
+      },
+      {
+        "route": "/assets/brand/icons/app-icon-192.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/icons/app-icon-192.png"
+      },
+      {
+        "route": "/assets/brand/icons/app-icon-512.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/icons/app-icon-512.png"
+      },
+      {
+        "route": "/assets/brand/icons/apple-touch-icon-180.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/icons/apple-touch-icon-180.png"
+      },
+      {
+        "route": "/assets/brand/icons/favicon-16.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/icons/favicon-16.png"
+      },
+      {
+        "route": "/assets/brand/icons/favicon-32.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/icons/favicon-32.png"
+      },
+      {
+        "route": "/assets/brand/icons/favicon-48.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/icons/favicon-48.png"
+      },
+      {
+        "route": "/assets/brand/icons/favicon.ico",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/x-icon",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/icons/favicon.ico"
+      },
+      {
+        "route": "/assets/brand/logo-site-buh-pravo-20261009.css",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/css",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/logo-site-buh-pravo-20261009.css"
+      },
+      {
+        "route": "/assets/brand/logo-site-buh-pravo-20261009.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/logo-site-buh-pravo-20261009.png"
+      },
+      {
+        "route": "/assets/brand/logo-site-buh-pravo-20261009.svg",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/svg+xml",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/logo-site-buh-pravo-20261009.svg"
+      },
+      {
+        "route": "/assets/brand/logo-site-buh-pravo-white-20261009.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/logo-site-buh-pravo-white-20261009.png"
+      },
+      {
+        "route": "/assets/brand/logo-symbol-3d-512.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/assets/brand/logo-symbol-3d-512.png"
+      },
+      {
+        "route": "/assets/home-v11/shell.js",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "application/javascript",
+        "finalUrl": "https://dokumenty82.ru/assets/home-v11/shell.js"
+      },
+      {
+        "route": "/ausn-krym/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/ausn-krym/"
+      },
+      {
+        "route": "/bank-i-115-fz/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/bank-i-115-fz/"
+      },
+      {
+        "route": "/blog/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/blog/"
+      },
+      {
+        "route": "/blog/kak-proverit-priem-otchetnosti/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/blog/kak-proverit-priem-otchetnosti/"
+      },
+      {
+        "route": "/blog/obnovleniya-fns/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/novosti/"
+      },
+      {
+        "route": "/blog/peredacha-ucheta-checklist/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/blog/peredacha-ucheta-checklist/"
+      },
+      {
+        "route": "/blog/razbory/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/blog/razbory/"
+      },
+      {
+        "route": "/buhgalteriya-pravo-50/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/buhgalteriya-pravo-50/"
+      },
+      {
+        "route": "/buhgalterskie-uslugi/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/buhgalterskie-uslugi/"
+      },
+      {
+        "route": "/buhgalterskoe-soprovozhdenie-ooo/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/"
+      },
+      {
+        "route": "/cabinet/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/cabinet/"
+      },
+      {
+        "route": "/ceny/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/ceny/"
+      },
+      {
+        "route": "/deklaraciya-usn/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/deklaraciya-usn/"
+      },
+      {
+        "route": "/dokumenty-dlya-banka-115-fz/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/"
+      },
+      {
+        "route": "/faq/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/faq/"
+      },
+      {
+        "route": "/favicon.ico",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/x-icon",
+        "finalUrl": "https://dokumenty82.ru/favicon.ico"
+      },
+      {
+        "route": "/favicon.png",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/png",
+        "finalUrl": "https://dokumenty82.ru/favicon.png"
+      },
+      {
+        "route": "/favicon.svg",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "image/svg+xml",
+        "finalUrl": "https://dokumenty82.ru/favicon.svg"
+      },
+      {
+        "route": "/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/"
+      },
+      {
+        "route": "/izmenenie-okved-ip/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/izmenenie-okved-ip/"
+      },
+      {
+        "route": "/izmenenie-okved-ooo/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/izmenenie-okved-ooo/"
+      },
+      {
+        "route": "/kadry/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/kadry/"
+      },
+      {
+        "route": "/kontakty/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/kontakty/"
+      },
+      {
+        "route": "/likvidaciya-ip/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/likvidaciya-ip/"
+      },
+      {
+        "route": "/likvidaciya-ooo/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/likvidaciya-ooo/"
+      },
+      {
+        "route": "/nalogi-i-rezhimy/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/nalogi-i-rezhimy/"
+      },
+      {
+        "route": "/nds-pri-usn-2026/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/nds-pri-usn-2026/"
+      },
+      {
+        "route": "/nedostovernost-yuridicheskogo-adresa/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/"
+      },
+      {
+        "route": "/novosti/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/novosti/"
+      },
+      {
+        "route": "/novosti/nalogovyy-kalendar/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/novosti/nalogovyy-kalendar/"
+      },
+      {
+        "route": "/novosti/nds-usn-podgotovka-2027/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/novosti/nds-usn-podgotovka-2027/"
+      },
+      {
+        "route": "/novosti/otchetnost-9-mesyacev-oktyabr-2026/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/novosti/otchetnost-9-mesyacev-oktyabr-2026/"
+      },
+      {
+        "route": "/nulevaya-otchetnost-ip/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/nulevaya-otchetnost-ip/"
+      },
+      {
+        "route": "/nulevaya-otchetnost-ooo/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/nulevaya-otchetnost-ooo/"
+      },
+      {
+        "route": "/o-proekte/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/o-proekte/"
+      },
+      {
+        "route": "/oferta/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/oferta/"
+      },
+      {
+        "route": "/otchetnost/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/otchetnost/"
+      },
+      {
+        "route": "/otvet-na-trebovanie-ifns/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/otvet-na-trebovanie-ifns/"
+      },
+      {
+        "route": "/otvet-na-zapros-banka/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/otvet-na-zapros-banka/"
+      },
+      {
+        "route": "/otzyvy/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/otzyvy/"
+      },
+      {
+        "route": "/policy/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/policy/"
+      },
+      {
+        "route": "/raschet-nalogovoy-nagruzki/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/raschet-nalogovoy-nagruzki/"
+      },
+      {
+        "route": "/razbor-situacii/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/razbor-situacii/"
+      },
+      {
+        "route": "/registraciya-i-likvidaciya/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/registraciya-i-likvidaciya/"
+      },
+      {
+        "route": "/registraciya-ip/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/registraciya-ip/"
+      },
+      {
+        "route": "/registraciya-ooo/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/registraciya-ooo/"
+      },
+      {
+        "route": "/rekvizity/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/rekvizity/"
+      },
+      {
+        "route": "/sdacha-otchetnosti-ip/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/sdacha-otchetnosti-ip/"
+      },
+      {
+        "route": "/sdacha-otchetnosti-ooo/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/sdacha-otchetnosti-ooo/"
+      },
+      {
+        "route": "/smena-buhgaltera/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/smena-buhgaltera/"
+      },
+      {
+        "route": "/smena-direktora-ooo/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/smena-direktora-ooo/"
+      },
+      {
+        "route": "/smena-yuridicheskogo-adresa-ooo/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/"
+      },
+      {
+        "route": "/soprovozhdenie/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/soprovozhdenie/"
+      },
+      {
+        "route": "/srochnye-voprosy/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/srochnye-voprosy/"
+      },
+      {
+        "route": "/sverka-s-nalogovoy/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/sverka-s-nalogovoy/"
+      },
+      {
+        "route": "/uslugi/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/uslugi/"
+      },
+      {
+        "route": "/vosstanovlenie-buhucheta/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/vosstanovlenie-buhucheta/"
+      },
+      {
+        "route": "/yuridicheskiy-adres-simferopol/",
+        "status": 200,
+        "hashMatches": true,
+        "contentType": "text/html",
+        "finalUrl": "https://dokumenty82.ru/yuridicheskiy-adres-simferopol/"
+      }
+    ],
+    "crmStatus": {
+      "httpStatus": 200,
+      "connected": true
+    }
+  },
+  "indexnow": {
+    "date": "2026-10-12",
+    "endpoint": "https://api.indexnow.org/indexnow",
+    "yandexDirectAttempt": "connection closed without an HTTP response on two attempts",
+    "httpStatus": 202,
+    "submittedUrls": [
+      "https://dokumenty82.ru/",
+      "https://dokumenty82.ru/akcii/",
+      "https://dokumenty82.ru/buhgalteriya-pravo-50/",
+      "https://dokumenty82.ru/adres-egryul-direktor/",
+      "https://dokumenty82.ru/ausn-krym/",
+      "https://dokumenty82.ru/bank-i-115-fz/",
+      "https://dokumenty82.ru/buhgalterskie-uslugi/",
+      "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/",
+      "https://dokumenty82.ru/blog/",
+      "https://dokumenty82.ru/blog/razbory/",
+      "https://dokumenty82.ru/deklaraciya-usn/",
+      "https://dokumenty82.ru/dokumenty-dlya-banka-115-fz/",
+      "https://dokumenty82.ru/faq/",
+      "https://dokumenty82.ru/kadry/",
+      "https://dokumenty82.ru/kontakty/",
+      "https://dokumenty82.ru/likvidaciya-ooo/",
+      "https://dokumenty82.ru/nalogi-i-rezhimy/",
+      "https://dokumenty82.ru/nds-pri-usn-2026/",
+      "https://dokumenty82.ru/nedostovernost-yuridicheskogo-adresa/",
+      "https://dokumenty82.ru/novosti/",
+      "https://dokumenty82.ru/novosti/nalogovyy-kalendar/",
+      "https://dokumenty82.ru/nulevaya-otchetnost-ip/",
+      "https://dokumenty82.ru/nulevaya-otchetnost-ooo/",
+      "https://dokumenty82.ru/o-proekte/",
+      "https://dokumenty82.ru/otchetnost/",
+      "https://dokumenty82.ru/otvet-na-trebovanie-ifns/",
+      "https://dokumenty82.ru/otvet-na-zapros-banka/",
+      "https://dokumenty82.ru/policy/",
+      "https://dokumenty82.ru/raschet-nalogovoy-nagruzki/",
+      "https://dokumenty82.ru/rekvizity/",
+      "https://dokumenty82.ru/razbor-situacii/",
+      "https://dokumenty82.ru/registraciya-i-likvidaciya/",
+      "https://dokumenty82.ru/registraciya-ip/",
+      "https://dokumenty82.ru/registraciya-ooo/",
+      "https://dokumenty82.ru/smena-direktora-ooo/",
+      "https://dokumenty82.ru/smena-yuridicheskogo-adresa-ooo/",
+      "https://dokumenty82.ru/soprovozhdenie/",
+      "https://dokumenty82.ru/srochnye-voprosy/",
+      "https://dokumenty82.ru/sverka-s-nalogovoy/",
+      "https://dokumenty82.ru/vosstanovlenie-buhucheta/",
+      "https://dokumenty82.ru/uslugi/",
+      "https://dokumenty82.ru/yuridicheskiy-adres-simferopol/",
+      "https://dokumenty82.ru/otzyvy/",
+      "https://dokumenty82.ru/ceny/",
+      "https://dokumenty82.ru/likvidaciya-ip/",
+      "https://dokumenty82.ru/sdacha-otchetnosti-ip/",
+      "https://dokumenty82.ru/sdacha-otchetnosti-ooo/",
+      "https://dokumenty82.ru/izmenenie-okved-ip/",
+      "https://dokumenty82.ru/izmenenie-okved-ooo/",
+      "https://dokumenty82.ru/oferta/",
+      "https://dokumenty82.ru/smena-buhgaltera/",
+      "https://dokumenty82.ru/novosti/otchetnost-9-mesyacev-oktyabr-2026/",
+      "https://dokumenty82.ru/novosti/nds-usn-podgotovka-2027/",
+      "https://dokumenty82.ru/blog/peredacha-ucheta-checklist/",
+      "https://dokumenty82.ru/blog/kak-proverit-priem-otchetnosti/"
+    ],
+    "accepted": true
+  },
+  "rollbackOriginalRelease": "/var/www/dokumenty82/releases/20261010-editorial-services",
+  "unchanged": [
+    "main content",
+    "all 30 form elements",
+    "consent",
+    "analytics initialization and goal scripts",
+    "UTM",
+    "contacts",
+    "backend services",
+    "nginx configuration",
+    "VPN configuration"
+  ],
+  "liveBrowser": {
+    "headerAndFooterConfirmed": true,
+    "faviconTagsUnique": true,
+    "cabinetLogoLoaded": true,
+    "cabinetUnavailableMessage": false
+  },
+  "limits": [
+    "No live lead or OTP submitted for this visual change.",
+    "IndexNow 202 confirms receipt pending key validation, not indexing."
+  ],
+  "sources": [
+    "https://www.indexnow.org/documentation",
+    "https://www.indexnow.org/faq"
+  ]
+}

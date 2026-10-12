@@ -10,6 +10,24 @@ Recovered production snapshot from VPS.
 
 This repository currently contains the static production build served by nginx.
 
+## Approved website brand
+
+The light logo uses the descriptor «Бухгалтерия и право». Its production SVG
+and site icons are under `assets/brand/`, and the component styles are in
+`assets/brand/logo-site-buh-pravo-20261009.css`. The source is the owner's
+`DOKUMENTY82_LOGO_BUHGALTERIYA_PRAVO_SITE_20261009.zip` design package.
+
+After regenerating static pages, apply the brand to their fallback markup,
+shared shell, organization logo metadata and favicon links:
+
+```powershell
+python internal/apply-approved-brand.py
+```
+
+This command preserves page content, forms, analytics and contacts. It also
+updates the client portal brand. Keep the old assets for rollback and remaining
+references; do not replace «ИИ-центр» across article or service text.
+
 ## SEO quality and IndexNow
 
 Run the strict local SEO audit before deployment:
