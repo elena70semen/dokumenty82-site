@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-17",
+  "release": "/var/www/dokumenty82/releases/20261017-crystal-menu-light",
+  "previousRelease": "/var/www/dokumenty82/releases/20261017-crystal-menu",
+  "pagesWithSharedMenu": 59,
+  "filesPublishedAndHashVerified": 61,
+  "styleVersion": "20261017-2",
+  "textColor": "#19465a",
+  "appearance": "Pale blue glass, softer edge reflections and shadows, dark readable labels",
+  "contentAndNavigationUnchanged": true,
+  "checks": [
+    "HTML differs only by the menu stylesheet version",
+    "Existing production file hashes matched before deployment",
+    "All published file hashes matched the release manifest",
+    "Nginx configuration and backend service checks passed",
+    "Homepage, services, cabinet and both menu assets return success",
+    "Live browser displays stylesheet and SVG version 20261017-2 with dark text"
+  ],
+  "screenshot": "menu-crystal-light-desktop-20261017.jpg"
+}

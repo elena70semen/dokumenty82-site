@@ -4,7 +4,7 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-STYLE = '/assets/menu-crystal.css?v=20261017-1'
+STYLE = '/assets/menu-crystal.css?v=20261017-2'
 
 
 def apply():

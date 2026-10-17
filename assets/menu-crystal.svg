@@ -1,28 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 112" preserveAspectRatio="none" fill="none">
   <defs>
     <linearGradient id="body" x1="180" y1="8" x2="180" y2="103" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#4de1e8"/><stop offset=".19" stop-color="#078c9c"/>
-      <stop offset=".52" stop-color="#007181"/><stop offset=".76" stop-color="#00798b"/>
-      <stop offset="1" stop-color="#6ce4e8"/>
+      <stop stop-color="#f2fcfd"/><stop offset=".19" stop-color="#d8f0f3"/>
+      <stop offset=".52" stop-color="#bfe1e8"/><stop offset=".76" stop-color="#c5e8ed"/>
+      <stop offset="1" stop-color="#effcfd"/>
     </linearGradient>
     <linearGradient id="edge" x1="14" y1="4" x2="332" y2="108" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#005365"/><stop offset=".08" stop-color="#d5ffff"/>
-      <stop offset=".14" stop-color="#037c8a"/><stop offset=".23" stop-color="#99faff"/>
-      <stop offset=".38" stop-color="#edfefe"/><stop offset=".51" stop-color="#008d9e"/>
-      <stop offset=".68" stop-color="#dbffff"/><stop offset=".8" stop-color="#006879"/>
-      <stop offset=".9" stop-color="#8df5fa"/><stop offset="1" stop-color="#034a62"/>
+      <stop stop-color="#82b7c5"/><stop offset=".08" stop-color="#fff"/>
+      <stop offset=".14" stop-color="#b0d8e1"/><stop offset=".23" stop-color="#e9fbff"/>
+      <stop offset=".38" stop-color="#fff"/><stop offset=".51" stop-color="#8bbecb"/>
+      <stop offset=".68" stop-color="#f6ffff"/><stop offset=".8" stop-color="#82b8c5"/>
+      <stop offset=".9" stop-color="#e4faff"/><stop offset="1" stop-color="#88afbe"/>
     </linearGradient>
     <linearGradient id="inner" x1="180" y1="10" x2="180" y2="100" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#f0ffff" stop-opacity=".95"/><stop offset=".18" stop-color="#9af5fc" stop-opacity=".65"/>
-      <stop offset=".45" stop-color="#00465c" stop-opacity=".4"/>
-      <stop offset=".8" stop-color="#8afaff" stop-opacity=".4"/><stop offset="1" stop-color="#eaffff"/>
+      <stop stop-color="#fff" stop-opacity=".95"/><stop offset=".18" stop-color="#e8faff" stop-opacity=".65"/>
+      <stop offset=".45" stop-color="#74a1b5" stop-opacity=".22"/>
+      <stop offset=".8" stop-color="#dff8fd" stop-opacity=".4"/><stop offset="1" stop-color="#fff"/>
     </linearGradient>
     <radialGradient id="light" cx="0" cy="0" r="1" gradientTransform="translate(39 17) rotate(18) scale(116 35)" gradientUnits="userSpaceOnUse">
-      <stop stop-color="white" stop-opacity=".9"/><stop offset=".27" stop-color="#b3ffff" stop-opacity=".54"/>
-      <stop offset="1" stop-color="#76f7ff" stop-opacity="0"/>
+      <stop stop-color="white" stop-opacity=".9"/><stop offset=".27" stop-color="#f1ffff" stop-opacity=".54"/>
+      <stop offset="1" stop-color="#e1f7ff" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="bottom" cx="0" cy="0" r="1" gradientTransform="translate(259 93) scale(100 15)" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#d5ffff" stop-opacity=".9"/><stop offset="1" stop-color="#65eeff" stop-opacity="0"/>
+      <stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#d1f2fa" stop-opacity="0"/>
     </radialGradient>
     <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.4"/></filter>
     <path id="outline" d="M38 6H321C341 6 353 18 353 37V68C353 87 342 97 322 97H67C54 97 43 107 28 107C33 100 35 95 29 91C15 87 7 78 7 64V38C7 19 19 6 38 6Z"/>
@@ -30,7 +30,7 @@
   </defs>
   <use href="#outline" fill="url(#body)" stroke="url(#edge)" stroke-width="7"/>
   <g clip-path="url(#clip)">
-    <path d="M37 13H321C336 13 346 23 346 38V67C346 82 337 90 321 90H64C53 90 44 96 36 99" stroke="#004a61" stroke-opacity=".6" stroke-width="3"/>
+    <path d="M37 13H321C336 13 346 23 346 38V67C346 82 337 90 321 90H64C53 90 44 96 36 99" stroke="#7198aa" stroke-opacity=".25" stroke-width="3"/>
     <path d="M37 14H321C336 14 345 23 345 38V66C345 80 335 89 320 89H65C54 89 45 94 38 97M31 88C19 84 14 76 14 64V38C14 23 23 14 37 14Z" stroke="url(#inner)" stroke-width="3.5"/>
     <use href="#outline" fill="url(#light)"/>
     <use href="#outline" fill="url(#bottom)"/>
