@@ -1,0 +1,247 @@
+{
+  "date": "2026-10-17",
+  "release": "/var/www/dokumenty82/releases/20261017-crystal-menu",
+  "previousRelease": "/var/www/dokumenty82/releases/20261012-zen-verification",
+  "pagesWithSharedMenu": 59,
+  "indexablePagesVerified": 55,
+  "publicChecks": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/akcii/",
+      "status": 200
+    },
+    {
+      "route": "/buhgalteriya-pravo-50/",
+      "status": 200
+    },
+    {
+      "route": "/adres-egryul-direktor/",
+      "status": 200
+    },
+    {
+      "route": "/ausn-krym/",
+      "status": 200
+    },
+    {
+      "route": "/bank-i-115-fz/",
+      "status": 200
+    },
+    {
+      "route": "/buhgalterskie-uslugi/",
+      "status": 200
+    },
+    {
+      "route": "/buhgalterskoe-soprovozhdenie-ooo/",
+      "status": 200
+    },
+    {
+      "route": "/blog/",
+      "status": 200
+    },
+    {
+      "route": "/blog/razbory/",
+      "status": 200
+    },
+    {
+      "route": "/deklaraciya-usn/",
+      "status": 200
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "status": 200
+    },
+    {
+      "route": "/faq/",
+      "status": 200
+    },
+    {
+      "route": "/kadry/",
+      "status": 200
+    },
+    {
+      "route": "/kontakty/",
+      "status": 200
+    },
+    {
+      "route": "/likvidaciya-ooo/",
+      "status": 200
+    },
+    {
+      "route": "/nalogi-i-rezhimy/",
+      "status": 200
+    },
+    {
+      "route": "/nds-pri-usn-2026/",
+      "status": 200
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "status": 200
+    },
+    {
+      "route": "/novosti/",
+      "status": 200
+    },
+    {
+      "route": "/novosti/nalogovyy-kalendar/",
+      "status": 200
+    },
+    {
+      "route": "/nulevaya-otchetnost-ip/",
+      "status": 200
+    },
+    {
+      "route": "/nulevaya-otchetnost-ooo/",
+      "status": 200
+    },
+    {
+      "route": "/o-proekte/",
+      "status": 200
+    },
+    {
+      "route": "/otchetnost/",
+      "status": 200
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "status": 200
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "status": 200
+    },
+    {
+      "route": "/policy/",
+      "status": 200
+    },
+    {
+      "route": "/raschet-nalogovoy-nagruzki/",
+      "status": 200
+    },
+    {
+      "route": "/rekvizity/",
+      "status": 200
+    },
+    {
+      "route": "/razbor-situacii/",
+      "status": 200
+    },
+    {
+      "route": "/registraciya-i-likvidaciya/",
+      "status": 200
+    },
+    {
+      "route": "/registraciya-ip/",
+      "status": 200
+    },
+    {
+      "route": "/registraciya-ooo/",
+      "status": 200
+    },
+    {
+      "route": "/smena-direktora-ooo/",
+      "status": 200
+    },
+    {
+      "route": "/smena-yuridicheskogo-adresa-ooo/",
+      "status": 200
+    },
+    {
+      "route": "/soprovozhdenie/",
+      "status": 200
+    },
+    {
+      "route": "/srochnye-voprosy/",
+      "status": 200
+    },
+    {
+      "route": "/sverka-s-nalogovoy/",
+      "status": 200
+    },
+    {
+      "route": "/vosstanovlenie-buhucheta/",
+      "status": 200
+    },
+    {
+      "route": "/uslugi/",
+      "status": 200
+    },
+    {
+      "route": "/yuridicheskiy-adres-simferopol/",
+      "status": 200
+    },
+    {
+      "route": "/otzyvy/",
+      "status": 200
+    },
+    {
+      "route": "/ceny/",
+      "status": 200
+    },
+    {
+      "route": "/likvidaciya-ip/",
+      "status": 200
+    },
+    {
+      "route": "/sdacha-otchetnosti-ip/",
+      "status": 200
+    },
+    {
+      "route": "/sdacha-otchetnosti-ooo/",
+      "status": 200
+    },
+    {
+      "route": "/izmenenie-okved-ip/",
+      "status": 200
+    },
+    {
+      "route": "/izmenenie-okved-ooo/",
+      "status": 200
+    },
+    {
+      "route": "/oferta/",
+      "status": 200
+    },
+    {
+      "route": "/smena-buhgaltera/",
+      "status": 200
+    },
+    {
+      "route": "/novosti/otchetnost-9-mesyacev-oktyabr-2026/",
+      "status": 200
+    },
+    {
+      "route": "/novosti/nds-usn-podgotovka-2027/",
+      "status": 200
+    },
+    {
+      "route": "/blog/peredacha-ucheta-checklist/",
+      "status": 200
+    },
+    {
+      "route": "/blog/kak-proverit-priem-otchetnosti/",
+      "status": 200
+    },
+    {
+      "route": "/assets/menu-crystal.css?v=20261017-1",
+      "status": 200
+    },
+    {
+      "route": "/assets/menu-crystal.svg?v=20261017-1",
+      "status": 200
+    }
+  ],
+  "contentAndNavigationUnchanged": true,
+  "formsPreserved": true,
+  "strictSiteAudit": "PASS",
+  "browserChecks": [
+    "desktop menu on live homepage",
+    "mobile 390px and 320px",
+    "reporting navigation and current page",
+    "Escape restores menu toggle focus"
+  ],
+  "serverConfigChanged": false
+}
