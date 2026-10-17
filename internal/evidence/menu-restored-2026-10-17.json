@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-17",
+  "release": "/var/www/dokumenty82/releases/20261017-original-menu-restored",
+  "previousRelease": "/var/www/dokumenty82/releases/20261017-crystal-menu-light",
+  "restoredReferenceCommit": "ae13845",
+  "pagesRestored": 59,
+  "htmlMatchesBefore3D": true,
+  "checks": [
+    "All 59 restored HTML files match the version before the 3D menu changes",
+    "Production baseline and restored file hashes verified",
+    "Nginx and backend services healthy",
+    "Homepage, services, cabinet and original shared styles return success",
+    "Live browser loads zero crystal-menu stylesheets and displays the original navigation"
+  ],
+  "screenshot": "menu-restored-20261017.jpg"
+}

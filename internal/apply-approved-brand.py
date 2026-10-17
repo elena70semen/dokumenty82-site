@@ -135,8 +135,3 @@ def apply():
 
 if __name__ == "__main__":
     apply()
-    from importlib.util import spec_from_file_location, module_from_spec
-    menu_spec = spec_from_file_location("menu_crystal", ROOT / "internal/apply-menu-crystal.py")
-    menu_module = module_from_spec(menu_spec)
-    menu_spec.loader.exec_module(menu_module)
-    menu_module.apply()
