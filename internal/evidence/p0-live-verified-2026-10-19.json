@@ -1,0 +1,318 @@
+{
+  "date": "2026-10-19",
+  "sourceCommit": "c679eb169bf55b60291587e4f3b4d2dc2cadda1e",
+  "release": "/var/www/dokumenty82/releases/20261019-lead-content-p0",
+  "previousRelease": "/var/www/dokumenty82/releases/20261017-original-menu-restored",
+  "backendBackup": "/opt/dokumenty82-form/backups/20261019-lead-content-p0/lead_receiver.py",
+  "privateReleaseManifest": "/opt/dokumenty82-form/backups/20261019-lead-content-p0/manifest.json",
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/akcii/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/buhgalteriya-pravo-50/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/adres-egryul-direktor/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/ausn-krym/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/bank-i-115-fz/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/buhgalterskie-uslugi/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/buhgalterskoe-soprovozhdenie-ooo/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/blog/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/blog/razbory/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/deklaraciya-usn/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/faq/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/kadry/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/kontakty/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/likvidaciya-ooo/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/nalogi-i-rezhimy/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/nds-pri-usn-2026/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/novosti/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/novosti/nalogovyy-kalendar/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/nulevaya-otchetnost-ip/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/nulevaya-otchetnost-ooo/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/o-proekte/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/otchetnost/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/policy/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/raschet-nalogovoy-nagruzki/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/rekvizity/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/razbor-situacii/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/registraciya-i-likvidaciya/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/registraciya-ip/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/registraciya-ooo/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/smena-direktora-ooo/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/smena-yuridicheskogo-adresa-ooo/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/soprovozhdenie/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/srochnye-voprosy/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/sverka-s-nalogovoy/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/vosstanovlenie-buhucheta/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/uslugi/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/yuridicheskiy-adres-simferopol/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/otzyvy/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/ceny/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/likvidaciya-ip/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/sdacha-otchetnosti-ip/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/sdacha-otchetnosti-ooo/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/izmenenie-okved-ip/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/izmenenie-okved-ooo/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/oferta/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/smena-buhgaltera/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/novosti/otchetnost-9-mesyacev-oktyabr-2026/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/novosti/nds-usn-podgotovka-2027/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/blog/peredacha-ucheta-checklist/",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/blog/kak-proverit-priem-otchetnosti/",
+      "status": 200,
+      "hashMatches": true
+    }
+  ],
+  "assets": [
+    {
+      "route": "/assets/lead-form.js?v=20261019-p0-1",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/assets/precontract-audit.css?v=20261019-1",
+      "status": 200,
+      "hashMatches": true
+    }
+  ],
+  "backendHashMatches": true,
+  "crmConnected": true,
+  "newLiveCrmSubmissionTested": false,
+  "indexNow": {
+    "accepted": true,
+    "httpStatus": 200,
+    "submittedUrls": [
+      "https://dokumenty82.ru/",
+      "https://dokumenty82.ru/ceny/",
+      "https://dokumenty82.ru/buhgalterskie-uslugi/",
+      "https://dokumenty82.ru/soprovozhdenie/",
+      "https://dokumenty82.ru/buhgalterskoe-soprovozhdenie-ooo/",
+      "https://dokumenty82.ru/smena-buhgaltera/",
+      "https://dokumenty82.ru/razbor-situacii/",
+      "https://dokumenty82.ru/nds-pri-usn-2026/",
+      "https://dokumenty82.ru/novosti/nds-usn-podgotovka-2027/",
+      "https://dokumenty82.ru/akcii/",
+      "https://dokumenty82.ru/policy/"
+    ],
+    "endpoint": "https://api.indexnow.org/indexnow"
+  }
+}
