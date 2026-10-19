@@ -5,6 +5,38 @@
   const REQUEST_TIMEOUT_MS = 120000;
   const UPLOAD_TIMEOUT_MS = 300000;
   const ACCOUNTING_LEGAL_OFFER_ID = "accounting-legal-50-20260928";
+  const FREE_AUDIT_TOPIC = "Бесплатный аудит перед сопровождением";
+  const PAGE_QUERY_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "yclid"];
+  const ATTRIBUTION_FIELDS = ["landing_page", "referrer", "yandex_client_id", "yclid",
+    "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+  function currentPageUrl() {
+    const path = window.location.pathname.slice(0, 500);
+    const incoming = new URLSearchParams(window.location.search);
+    const allowed = new URLSearchParams();
+    PAGE_QUERY_KEYS.forEach(function (key) {
+      const value = String(incoming.get(key) || "").replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, 120);
+      if (!value) return;
+      allowed.set(key, value);
+      if ((path + "?" + allowed.toString()).length > 1000) allowed.delete(key);
+    });
+    const query = allowed.toString();
+    return path + (query ? "?" + query : "");
+  }
+
+  function syncAuditLead(form) {
+    const select = form.querySelector('select[name="task_type"]');
+    const topic = select || form.querySelector('input[type="hidden"][name="task_type"]');
+    const audit = window.location.pathname === "/razbor-situacii/" && topic && topic.value === FREE_AUDIT_TOPIC;
+    const leadType = form.querySelector('input[name="lead_type"]');
+    if (leadType) leadType.value = audit ? "audit_precontract" : "";
+    const business = form.querySelector('[data-audit-business]');
+    if (business) business.hidden = !audit;
+    const context = form.querySelector('[data-audit-context]');
+    if (context) context.hidden = !audit;
+    const businessSelect = form.querySelector('select[name="business_form"]');
+    if (businessSelect) businessSelect.disabled = !audit;
+  }
 
   function formatBytes(value) {
     if (value >= 1024 * 1024) return (value / 1024 / 1024).toFixed(1) + " МБ";
@@ -73,8 +105,8 @@
       }),
     ])
       .then(function (attribution) {
-        Object.keys(attribution || {}).forEach(function (key) {
-          const value = String(attribution[key] || "").trim();
+        ATTRIBUTION_FIELDS.forEach(function (key) {
+          const value = String((attribution || {})[key] || "").trim();
           if (value) data.append(key, value);
         });
         return data;
@@ -148,6 +180,7 @@
         ["accounting-ip", "Бухгалтерское сопровождение ИП"],
         ["accounting-ooo", "Бухгалтерское сопровождение ООО"],
         ["one-off-report", "Разовый отчёт (РСВ или другая форма)"],
+        ["free-audit", FREE_AUDIT_TOPIC],
       ]);
       const topic = topics.get(new URLSearchParams(window.location.search).get("service"));
       const select = form.querySelector('select[name="task_type"]');
@@ -160,6 +193,9 @@
         quickTopic.value = topic;
       }
     }
+    syncAuditLead(form);
+    const topicSelect = form.querySelector('select[name="task_type"]');
+    if (topicSelect) topicSelect.addEventListener("change", function () { syncAuditLead(form); });
 
     const fileInput = form.querySelector('input[type="file"]');
     const submit = form.querySelector('button[type="submit"]');
@@ -230,13 +266,12 @@
       }
 
       const promotionOffer = syncPromotionOffer(form);
+      syncAuditLead(form);
       const data = new FormData(form);
       const contactPhone = "+" + window.d82ContactFields.normalizePhone(phone.value);
       const contactEmail = email ? email.value : "";
       data.set("phone", contactPhone);
-      if (window.location.pathname === "/buhgalteriya-pravo-50/") {
-        data.set("current_url", window.location.pathname + window.location.search);
-      }
+      data.set("current_url", currentPageUrl());
       const hasFiles = selectedFiles(fileInput).length > 0;
       // An empty hidden field must not label an unrelated request as an offer.
       if (!promotionOffer) data.delete("offer_id");
@@ -259,6 +294,7 @@
             return;
           }
           form.reset();
+          syncAuditLead(form);
           renderFiles(form);
           setStatus(form, "Заявка доставлена менеджеру. Проверьте контакты для обратной связи ниже.");
           window.d82ContactFields.showReceipt(form, contactPhone, contactEmail);

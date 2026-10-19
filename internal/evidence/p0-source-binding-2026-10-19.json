@@ -1,0 +1,41 @@
+{
+  "checkedDate": "2026-10-19",
+  "repository": "https://github.com/elena70semen/dokumenty82-site",
+  "branch": "codex/promo-buh-pravo-50",
+  "sourceBaseCommit": "b51c77a19212caaac711e15eb64ecb14738423bf",
+  "baselineRelease": "/var/www/dokumenty82/releases/20261017-original-menu-restored",
+  "publishedControlHashes": {
+    "index.html": "f41ea57001929c2a1db265d9fa791786ffd7f6f5374d8ff44ab1f4a4025a80a5",
+    "buhgalteriya-pravo-50/index.html": "10808ea91c6f399eaf6bb79cabf68e7d62eeb8d3dbca1ac8d681e58861dc50dd",
+    "novosti/nds-usn-podgotovka-2027/index.html": "5b9ec30d6617b19ee339f67c0da978b6a6fbd19ddacc0286738a60954560b568",
+    "assets/lead-form.js": "51354277a274ca1822505caac1f85b147ffad84f1bf4c1e90e710a15ced896eb",
+    "assets/metrika-goals.js": "079bcaed3b4ac0386a99ae2d6f78f112cbc6d1e966a171df8b614d6a1b5ea18e",
+    "server/lead_receiver.py": "a91e893be6af45c95b5a2e6c9524a744d74af1ef7d57a59daef66176eda6fc33"
+  },
+  "controlHashesMatchedVps": true,
+  "backendRuntimePath": "/opt/dokumenty82-form/lead_receiver.py",
+  "backendSourcePath": "server/lead_receiver.py",
+  "handler": "/api/lead",
+  "metrikaCounter": 109869928,
+  "crmHost": "presentationrc.amocrm.ru",
+  "crmConnectedBeforeChange": true,
+  "tests": {
+    "nodePassed": 36,
+    "backendPassed": 45,
+    "siteAudit": "PASS",
+    "formElementsPreserved": 30,
+    "uploadInputsPreserved": 14
+  },
+  "localBrowserChecks": {
+    "auditTopicAndTypeReceivedByActualLocalHandler": true,
+    "auditWithoutFilesAccepted": true,
+    "storedOnlyKeptFieldsWithoutSuccessGoal": true,
+    "mobileWidths": [
+      390,
+      320
+    ]
+  },
+  "liveCrmTestLeadCreated": false,
+  "credentialsChanged": false,
+  "vpnSettingsChanged": false
+}

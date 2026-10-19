@@ -458,6 +458,78 @@ class QuickLeadDefaultsTests(unittest.TestCase):
     self.assertIn({"field_code": "EMAIL", "values": [{"value": "test@example.com", "enum_code": "WORK"}]}, contact["custom_fields_values"])
 
 
+class SubmissionContextTests(unittest.TestCase):
+  def test_all_forms_keep_distinct_current_and_landing_urls(self):
+    for source in ("/soprovozhdenie/", "/buhgalterskoe-soprovozhdenie-ooo/", "/sdacha-otchetnosti-ooo/", "/buhgalteriya-pravo-50/"):
+      fields = {**AmoLeadAttributionTests().fields(), "source_page": source,
+                "current_url": source + "?utm_source=yandex&yclid=123&email=private%40example.invalid&token=secret",
+                "landing_page": "/?utm_source=first"}
+      prepared = receiver.normalize_lead_context(fields)
+      self.assertEqual(prepared["current_url"], source + "?utm_source=yandex&yclid=123")
+      self.assertEqual(prepared["landing_page"], "/?utm_source=first")
+      _, calls = AmoLeadAttributionTests().create(prepared)
+      note = calls[1].kwargs["payload"][0]["params"]["text"]
+      self.assertIn("Текущий URL: " + source + "?utm_source=yandex&yclid=123", note)
+      self.assertIn("Первая страница: /?utm_source=first", note)
+      self.assertNotIn("private@", note)
+      self.assertNotIn("token=", note)
+
+  def test_stale_frontends_get_source_path_and_external_or_mismatched_urls_are_rejected(self):
+    for raw in ("", "https://evil.invalid/?token=secret", "//evil.invalid/", "/other/?utm_source=bad", "x"*8001):
+      self.assertEqual(receiver.normalized_submission_url(raw, "/soprovozhdenie/"), "/soprovozhdenie/")
+    self.assertEqual(receiver.normalized_submission_url("", "https://evil.invalid"), "/")
+
+  def test_long_encoded_query_remains_valid_and_bounded(self):
+    raw = "/soprovozhdenie/?" + receiver.urllib.parse.urlencode({key:"учёт & "*20 for key in receiver.PAGE_QUERY_KEYS})
+    result = receiver.normalized_submission_url(raw, "/soprovozhdenie/")
+    self.assertLessEqual(len(result), 1000)
+    self.assertIn("utm_source=", result)
+    for value in receiver.urllib.parse.parse_qs(receiver.urllib.parse.urlsplit(result).query).values():
+      self.assertLessEqual(len(value[0]), 120)
+      self.assertNotIn("\ufffd", value[0])
+
+  def test_audit_request_has_its_own_type_and_crm_tag(self):
+    fields = {**AmoLeadAttributionTests().fields(), "task_type": receiver.FREE_AUDIT_TOPIC,
+              "lead_type": "audit_precontract", "business_form": "ooo", "offer_id": "accounting-legal-50-20260928"}
+    prepared = receiver.normalize_lead_context(fields)
+    self.assertEqual(prepared["lead_type"], "audit_precontract")
+    self.assertEqual(prepared["business_form"], "ooo")
+    self.assertEqual(prepared["offer_id"], "")
+    self.assertEqual(prepared["promo"], "")
+    _, calls = AmoLeadAttributionTests().create(prepared)
+    self.assertIn({"name":"audit_precontract"}, calls[0].kwargs["payload"][0]["_embedded"]["tags"])
+    self.assertIn("Тип обращения: audit_precontract", calls[1].kwargs["payload"][0]["params"]["text"])
+    for changed in ({"task_type":"Запрос банка"}, {"source_page":"/buhgalteriya-pravo-50/"}, {"lead_type":"unexpected"}):
+      self.assertEqual(receiver.normalize_lead_context({**fields, **changed})["lead_type"], "")
+
+  def test_handler_passes_audit_context_to_crm_and_keeps_delivery_statuses(self):
+    values = {"source_page":"/razbor-situacii/", "task_type":receiver.FREE_AUDIT_TOPIC,
+              "lead_type":"audit_precontract", "business_form":"ip", "lead_mode":"quick",
+              "phone":"+7 (978) 000-00-00", "privacy":"1",
+              "current_url":"/razbor-situacii/?utm_source=current&token=not-forwarded",
+              "landing_page":"/soprovozhdenie/?utm_source=first"}
+    form = types.SimpleNamespace(getfirst=lambda name: values.get(name, ""))
+    for status, code in (("sent", 200), ("stored_only", 202)):
+      with self.subTest(status=status), tempfile.TemporaryDirectory() as directory:
+        handler = object.__new__(receiver.LeadHandler)
+        handler.path = "/api/lead"
+        handler.headers = {"Content-Length":"1", "Content-Type":"multipart/form-data"}
+        handler.rfile = io.BytesIO(b"x")
+        handler.client_address = ("127.0.0.1", 1234)
+        with mock.patch.object(receiver, "BASE_DIR", Path(directory)), \
+             mock.patch.object(receiver.cgi, "FieldStorage", return_value=form, create=True), \
+             mock.patch.object(handler, "save_files", return_value=[]), \
+             mock.patch.object(receiver, "create_amo_lead", return_value={"status":status}) as crm, \
+             mock.patch.object(receiver, "json_response") as response:
+          handler.do_POST()
+        sent = crm.call_args.args[0]
+        self.assertEqual(sent["lead_type"], "audit_precontract")
+        self.assertEqual(sent["current_url"], "/razbor-situacii/?utm_source=current")
+        self.assertEqual(sent["landing_page"], values["landing_page"])
+        self.assertEqual(response.call_args.args[1], code)
+        self.assertEqual(response.call_args.args[2]["crm_status"], status)
+
+
 class RequestClientIpTests(unittest.TestCase):
   def test_uses_nginx_real_ip_for_loopback_proxy(self):
     handler = types.SimpleNamespace(

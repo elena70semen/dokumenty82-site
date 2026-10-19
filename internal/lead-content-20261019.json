@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-19",
+  "ownerDecisions": {
+    "implementationAuthorized": true,
+    "auditScope": "User delegated scope drafting; preliminary accounting review before regular support, with timing agreed after first contact",
+    "keepOptionalDocumentUploads": true,
+    "uploadProcessConfirmedByOwner": true,
+    "telegram": "https://t.me/+79789987222"
+  },
+  "audit": {
+    "topic": "Бесплатный аудит перед сопровождением",
+    "leadType": "audit_precontract",
+    "route": "/razbor-situacii/?service=free-audit#quick-lead",
+    "audience": "ИП и ООО, которые рассматривают регулярное бухгалтерское сопровождение",
+    "scope": ["Организация учёта и налоговый режим", "Наличие отчётности, первички и открытых вопросов", "Готовность передать учёт новому бухгалтеру"],
+    "result": "Краткий список выявленных вопросов, ближайшие действия и предложение по сопровождению",
+    "timing": "Срок и объём согласуем после первого разговора",
+    "limitations": "Восстановление учёта, пересчёт налогов, подготовка отчётности и ответы на требования оцениваются отдельно",
+    "contractRequired": false
+  },
+  "taxSources": [
+    "https://nalog.garant.ru/fns/nk/3780a465c57513165f942ba713db0691/",
+    "https://www.nalog.gov.ru/rn58/news/activities_fts/16640074/",
+    "https://publication.pravo.gov.ru/document/0001202607040017"
+  ]
+}

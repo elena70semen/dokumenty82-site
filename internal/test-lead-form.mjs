@@ -45,9 +45,13 @@ function fixture(options = {}) {
     privacy: element({ value: "1", checked: true }),
     company_website: element(),
     task_type: element({ value: options.topic || "Разбор ситуации", options: [
-      "Разбор ситуации", "Подбор бухгалтерских услуг", "Бухгалтерское сопровождение ИП", "Бухгалтерское сопровождение ООО", "Разовый отчёт (РСВ или другая форма)",
+      "Разбор ситуации", "Подбор бухгалтерских услуг", "Бухгалтерское сопровождение ИП", "Бухгалтерское сопровождение ООО", "Разовый отчёт (РСВ или другая форма)", "Бесплатный аудит перед сопровождением",
     ].map((value) => ({ value })) }),
   };
+  if (options.auditFields) {
+    inputs.lead_type = element();
+    inputs.business_form = element({ value: "ip" });
+  }
   if (options.quick) inputs.lead_mode = element({ value: "quick" });
   for (const [name, input] of Object.entries(inputs)) input.name = name;
   const timers = new Map();
@@ -85,7 +89,7 @@ function fixture(options = {}) {
     d82GetAttribution: options.attribution || (() => Promise.resolve({ yandex_client_id: "1234567890" })),
   };
   class MockFormData {
-    constructor() { this.entries = []; this.values = { phone: inputs.phone.value, email: inputs.email.value }; this.taskType = inputs.task_type.value; }
+    constructor() { this.entries = []; this.values = { phone: inputs.phone.value, email: inputs.email.value, lead_type: inputs.lead_type?.value, business_form: inputs.business_form?.disabled ? undefined : inputs.business_form?.value }; this.taskType = inputs.task_type.value; }
     set(key, value) { this.values[key] = value; }
     append(key, value) { this.entries.push([key, value]); }
     delete(key) { this.entries = this.entries.filter(([name]) => name !== key); }
@@ -124,6 +128,57 @@ test("one-off report selection reaches the submitted quick and detailed forms", 
     assert.equal(f.requests.length, 1);
     assert.equal(f.requests[0][1].body.taskType, "Разовый отчёт (РСВ или другая форма)");
   }
+});
+
+test("every form sends a filtered submission URL without replacing first-touch attribution", async () => {
+  for (const path of ["/soprovozhdenie/", "/buhgalterskoe-soprovozhdenie-ooo/", "/sdacha-otchetnosti-ooo/", "/buhgalteriya-pravo-50/"]) {
+    const f = fixture({ path, search: "?utm_source=yandex&utm_term=%D1%83%D1%87%D1%91%D1%82&yclid=123&email=private%40example.invalid&phone=123456&token=private-secret&service=free-audit",
+      attribution: async () => ({ landing_page: "/?utm_source=first", utm_source: "first", yandex_client_id: "1234567890", current_url: "https://untrusted.invalid/?token=bad", source_page: "/wrong/" }) });
+    f.form.emit("submit");
+    await settle();
+    const data = f.requests[0][1].body;
+    const url = new URL("https://dokumenty82.ru" + data.values.current_url);
+    assert.equal(url.pathname, path);
+    assert.equal(url.searchParams.get("utm_source"), "yandex");
+    assert.equal(url.searchParams.get("utm_term"), "учёт");
+    assert.deepEqual([...url.searchParams.keys()], ["utm_source", "utm_term", "yclid"]);
+    assert.deepEqual(data.entries.find(([key]) => key === "landing_page"), ["landing_page", "/?utm_source=first"]);
+    assert.equal(data.entries.some(([key]) => ["current_url", "source_page"].includes(key)), false);
+    assert.doesNotMatch(data.values.current_url, /private|token|email|phone|service/);
+  }
+});
+
+test("submission URL stays bounded and encoded for long marketing parameters", async () => {
+  const search = new URLSearchParams(Object.fromEntries(["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "yclid"].map(key => [key, "учёт & ".repeat(100)]))).toString();
+  const f = fixture({ search: "?" + search });
+  f.form.emit("submit");
+  await settle();
+  const url = f.requests[0][1].body.values.current_url;
+  assert.ok(url.length <= 1000);
+  assert.doesNotThrow(() => decodeURIComponent(url));
+  assert.equal(f.requests.length, 1);
+});
+
+test("free audit is a separate quick and detailed request, not a promotion", async () => {
+  for (const quick of [true, false]) {
+    const f = fixture({ auditFields: true, quick, topic: quick ? "Первичный разбор ситуации" : "Разбор ситуации", search: "?service=free-audit" });
+    assert.equal(f.inputs.task_type.value, "Бесплатный аудит перед сопровождением");
+    assert.equal(f.requests.length, 0);
+    f.form.emit("submit");
+    await settle();
+    const data = f.requests[0][1].body;
+    assert.equal(data.values.lead_type, "audit_precontract");
+    assert.equal(data.values.business_form, "ip");
+    assert.equal(data.values.current_url, "/razbor-situacii/");
+    assert.equal(data.taskType, "Бесплатный аудит перед сопровождением");
+  }
+  const changed = fixture({ auditFields: true, search: "?service=free-audit" });
+  changed.inputs.task_type.value = "Запрос банка";
+  changed.inputs.task_type.emit("change");
+  changed.form.emit("submit");
+  await settle();
+  assert.equal(changed.requests[0][1].body.values.lead_type, "");
+  assert.equal(changed.requests[0][1].body.values.business_form, undefined);
 });
 
 test("invalid native fields/consent do not POST and keep the existing failure goal", async () => {

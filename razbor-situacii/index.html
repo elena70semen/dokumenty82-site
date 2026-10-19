@@ -222,6 +222,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/icons/favicon-16.png?v=20261012-buh-pravo" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261012-buh-pravo" />
     <link rel="stylesheet" href="/assets/brand/logo-site-buh-pravo-20261009.css?v=20261012-2" />
+    <link rel="stylesheet" href="/assets/precontract-audit.css?v=20261019-1" />
 </head>
   <body>
 
@@ -277,11 +278,14 @@
         <p>Укажите нужный документ и срок. Для одного отчёта назовите форму и период, для ответа — банк или ИФНС. Состав и стоимость работы согласуем до начала.</p>
       </div>
       <form class="crm-lead-form lead-capture-form lead-quick-form" action="/api/lead" method="post" data-lead-form="amo" enctype="multipart/form-data">
+<p class="lead-audit-context" data-audit-context hidden>Тема: бесплатный аудит учёта перед сопровождением. Для начала достаточно контакта и краткой задачи; документы необязательны.</p>
         <input type="hidden" name="source_page" value="/razbor-situacii/" />
+        <input type="hidden" name="lead_type" value="" />
         <input type="hidden" name="task_type" value="Первичный разбор ситуации" />
         <input type="hidden" name="lead_mode" value="quick" />
         <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="form-grid">
+<label data-audit-business hidden>Форма бизнеса (необязательно)<select name="business_form"><option value="unknown">Уточним при разговоре</option><option value="ip">ИП</option><option value="ooo">ООО</option></select></label>
           <label>Имя (необязательно)<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" /></label>
           <label>Телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7 (978) 123-45-67" maxlength="40" aria-describedby="razbor-situacii-phone-contact-1" /><small class="lead-contact-hint" id="razbor-situacii-phone-contact-1">Проверьте номер для обратного звонка.</small></label>
 <label class="lead-backup-contact">Email для связи (необязательно)<input type="email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.ru" aria-describedby="razbor-situacii-phone-contact-1-email" /><small class="lead-contact-hint" id="razbor-situacii-phone-contact-1-email">Если не дозвонимся, сможем написать вам.</small></label>
@@ -345,9 +349,12 @@
         <p>Для отчёта укажите форму и период, для ответа — кем направлен запрос и срок. После связи согласуем, какие документы понадобятся и как их передать. Отправка обращения не является оплатой услуги.</p>
       </div>
       <form class="crm-lead-form lead-capture-form" action="/api/lead" method="post" data-lead-form="amo" enctype="multipart/form-data">
+<p class="lead-audit-context" data-audit-context hidden>Тема: бесплатный аудит учёта перед сопровождением. Для начала достаточно контакта и краткой задачи; документы необязательны.</p>
         <input type="hidden" name="source_page" value="/razbor-situacii/" />
+        <input type="hidden" name="lead_type" value="" />
         <input class="lead-form-trap" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="form-grid">
+<label data-audit-business hidden>Форма бизнеса (необязательно)<select name="business_form"><option value="unknown">Уточним при разговоре</option><option value="ip">ИП</option><option value="ooo">ООО</option></select></label>
           <label>Имя
             <input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться" />
           </label>
@@ -360,6 +367,7 @@
           <label>Тема
             <select name="task_type" required>
               <option value="Разбор ситуации">Описать задачу</option>
+              <option value="Бесплатный аудит перед сопровождением">Бесплатный аудит перед сопровождением</option>
               <option value="Подбор бухгалтерских услуг">Подбор бухгалтерских услуг</option>
               <option value="Бухгалтерское сопровождение ИП">Бухгалтерское сопровождение ИП</option>
               <option value="Бухгалтерское сопровождение ООО">Бухгалтерское сопровождение ООО</option>
@@ -462,7 +470,7 @@
     </a>
     <div class="cookie-notice" id="cookie-notice"><p>Сайт использует cookies и техническую аналитику. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="/policy/">политикой конфиденциальности</a>.</p><button type="button">Понятно</button></div>
     <script src="/assets/contact-fields.js?v=20261007-contact1" defer></script>
-    <script src="/assets/lead-form.js?v=20261007-contact1" defer></script>
+    <script src="/assets/lead-form.js?v=20261019-p0-1" defer></script>
     <script>
       (() => {
         const notice = document.getElementById('cookie-notice');

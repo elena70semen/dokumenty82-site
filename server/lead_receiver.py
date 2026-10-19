@@ -72,7 +72,7 @@ AI_SYSTEM_PROMPT = """
 - Не составляй окончательный юридический документ в чате и не проси присылать чувствительные персональные данные прямо в чат.
 - Не проси присылать пароли, SMS-коды, паспортные данные или банковские секреты.
 - Регулярное бухгалтерское сопровождение ИП — от 5 000 ₽ в месяц, ООО — от 10 000 ₽ в месяц. Точный состав и цену определяет специалист после оценки нагрузки.
-- Не называй бесплатными услуги, кроме явно указанного на странице акций предложения «Карта рисков и точек роста бизнеса».
+- Бесплатен предварительный аудит учёта для ИП и ООО перед регулярным бухгалтерским сопровождением: первичный разбор организации учёта и открытых вопросов, список ближайших действий и предложение по сопровождению. Срок и объём согласуют после первого разговора. Это не полный аудит бухгалтерской отчётности; восстановление учёта, пересчёт налогов, отчётность и ответы на требования — отдельные работы. Не называй другие услуги бесплатными.
 - Если не хватает вводных, задай один главный уточняющий вопрос: что пришло, от кого, какой срок, какой период или какой документ есть.
 - Когда ситуация похожа на реальную задачу, предложи передать вопрос специалисту через форму в чате.
 - Если вопрос не про услуги сайта, мягко верни к теме документов бизнеса.
@@ -109,6 +109,60 @@ def valid_public_offer_id(value, task_type, source_page):
   if valid_source and text(value) == "accounting-legal-50-20260928":
     return "accounting-legal-50-20260928"
   return ""
+
+
+PAGE_QUERY_KEYS = ("utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "yclid")
+FREE_AUDIT_TOPIC = "Бесплатный аудит перед сопровождением"
+
+
+def normalized_submission_url(value, source_page):
+  """Keep the submission path distinct from first-touch attribution.
+
+  Only known marketing parameters may cross into CRM; a stale frontend still
+  gets a useful path from source_page. Reject external URLs and mismatched paths.
+  """
+  source = text(source_page)
+  if not re.fullmatch(r"/[A-Za-z0-9._~%/-]{0,499}", source) or source.startswith("//"):
+    source = "/"
+  raw = text(value)
+  if not raw or len(raw) > 8000:
+    return source
+  try:
+    parsed = urllib.parse.urlsplit(raw)
+    if parsed.scheme or parsed.netloc or parsed.path != source or "\\" in parsed.path:
+      return source
+    incoming = urllib.parse.parse_qs(parsed.query, keep_blank_values=True, max_num_fields=40)
+  except ValueError:
+    return source
+  allowed = {}
+  for key in PAGE_QUERY_KEYS:
+    val = re.sub(r"[\x00-\x1f\x7f]", "", incoming.get(key, [""])[0]).strip()[:120]
+    if not val:
+      continue
+    candidate = {**allowed, key: val}
+    if len(source + "?" + urllib.parse.urlencode(candidate)) <= 1000:
+      allowed = candidate
+  query = urllib.parse.urlencode(allowed)
+  return source + ("?" + query if query else "")
+
+
+def normalize_lead_context(fields):
+  fields = dict(fields)
+  fields["offer_id"] = valid_public_offer_id(
+    fields.get("offer_id"), fields.get("task_type"), fields.get("source_page"))
+  promo = (fields.get("source_page") == "/buhgalteriya-pravo-50/"
+           and fields.get("task_type") == "Бухгалтерия + право — 50%"
+           and fields["offer_id"] == "accounting-legal-50-20260928")
+  audit = (fields.get("source_page") == "/razbor-situacii/"
+           and fields.get("task_type") == FREE_AUDIT_TOPIC
+           and fields.get("lead_type") == "audit_precontract")
+  fields["service"] = "accounting_legal_combo" if promo else ""
+  fields["promo"] = "promo_buh_pravo_50" if promo else ""
+  fields["lead_type"] = "audit_precontract" if audit else ""
+  fields["business_form"] = (fields.get("business_form", "") if (promo or audit)
+                             and fields.get("business_form") in ("ip", "ooo", "unknown") else "")
+  fields["current_url"] = normalized_submission_url(fields.get("current_url"), fields.get("source_page"))
+  return fields
 
 
 def normalize_phone(value):
@@ -703,6 +757,8 @@ def create_amo_lead(fields, files):
       tag for tag in lead["_embedded"]["tags"] if tag["name"] != "razbor-situacii"
     ]
     lead["_embedded"]["tags"].append({"name": fields["promo"]})
+  if fields.get("lead_type") == "audit_precontract":
+    lead["_embedded"]["tags"].append({"name": "audit_precontract"})
 
   for key, env_value in (
     ("pipeline_id", AMO_PIPELINE_ID),
@@ -733,6 +789,7 @@ def create_amo_lead(fields, files):
     f"Текущий URL: {fields.get('current_url') or '-'}",
     f"Первая страница: {fields['landing_page'] or '-'}",
     f"Тема: {fields['task_type']}",
+    f"Тип обращения: {fields.get('lead_type') or '-'}",
     f"Акция: {fields.get('offer_id') or '-'}",
     f"Сценарий: {fields.get('service') or '-'} / {fields.get('promo') or '-'}",
     f"Форма бизнеса: {fields.get('business_form') or '-'}",
@@ -1032,7 +1089,8 @@ class LeadHandler(BaseHTTPRequestHandler):
         "email": normalize_email(form.getfirst("email")),
         "task_type": text(form.getfirst("task_type")) or "Разбор ситуации",
         "offer_id": clipped(form.getfirst("offer_id"), 80),
-        "current_url": clipped(form.getfirst("current_url"), 1000),
+        "lead_type": clipped(form.getfirst("lead_type"), 40),
+        "current_url": clipped(form.getfirst("current_url"), 8001),
         "business_form": clipped(form.getfirst("business_form"), 20),
         "message": text(form.getfirst("message")),
         "source_page": text(form.getfirst("source_page")) or "/razbor-situacii/",
@@ -1046,21 +1104,7 @@ class LeadHandler(BaseHTTPRequestHandler):
         "utm_content": clipped(form.getfirst("utm_content"), 500),
         "utm_term": clipped(form.getfirst("utm_term"), 500),
       }, is_quick_lead)
-      fields["offer_id"] = valid_public_offer_id(
-        fields["offer_id"], fields["task_type"], fields["source_page"])
-      is_promo_landing = (
-        fields["source_page"] == "/buhgalteriya-pravo-50/"
-        and fields["task_type"] == "Бухгалтерия + право — 50%"
-        and fields["offer_id"] == "accounting-legal-50-20260928"
-      )
-      fields["service"] = "accounting_legal_combo" if is_promo_landing else ""
-      fields["promo"] = "promo_buh_pravo_50" if is_promo_landing else ""
-      fields["business_form"] = (
-        fields["business_form"] if is_promo_landing and
-        fields["business_form"] in ("ip", "ooo", "unknown") else ""
-      )
-      if not is_promo_landing:
-        fields["current_url"] = ""
+      fields = normalize_lead_context(fields)
       if not fields["name"] or not fields["phone"] or not fields["message"] or text(form.getfirst("privacy")) != "1":
         json_response(self, 400, {"ok": False, "message": "Заполните обязательные поля."})
         return
