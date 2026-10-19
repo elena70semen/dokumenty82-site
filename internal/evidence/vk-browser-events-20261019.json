@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-19",
+  "evidence": "Browser pageAssets resource inventory; server receipt and CRM record verified separately",
+  "pageViews": [
+    {
+      "endpoint": "/counter",
+      "pixel": "3805909",
+      "event": "pageView",
+      "url": "https://dokumenty82.ru/sdacha-otchetnosti-ip/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ip_a",
+      "viewport": "375*844",
+      "observedAsResource": true
+    }
+  ],
+  "leadEvents": [
+    {
+      "endpoint": "/tracker",
+      "pixel": "3805909",
+      "event": "RG:/leadSubmitSuccess",
+      "url": "https://dokumenty82.ru/sdacha-otchetnosti-ip/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ip_a",
+      "viewport": "375*844",
+      "observedAsResource": true
+    }
+  ],
+  "vendorAutomaticEvents": [
+    "RT/load",
+    "CE:/_submit;lead;https://dokumenty82.ru/api/lead",
+    "PVT/15",
+    "RT/beat",
+    "RT/beat"
+  ],
+  "vkCabinetReceiptVerified": false,
+  "desktop": {
+    "route": "/sdacha-otchetnosti-ooo/",
+    "pageViews": 1,
+    "libraryScripts": 1,
+    "viewport": "1265*720"
+  },
+  "mobile": {
+    "route": "/sdacha-otchetnosti-ip/",
+    "viewport": "375*844",
+    "libraryScripts": 1,
+    "physicalDevice": false
+  }
+}

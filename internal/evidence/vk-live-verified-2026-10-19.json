@@ -1,0 +1,536 @@
+{
+  "date": "2026-10-19",
+  "sourceCommit": "9e0323591a6df43eea3ad140d162f92f862def5e",
+  "release": "/var/www/dokumenty82/releases/20261019-vk-pixel-3805909",
+  "previousRelease": "/var/www/dokumenty82/releases/20261019-lead-content-p0",
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/akcii/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/buhgalteriya-pravo-50/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/adres-egryul-direktor/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/ausn-krym/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/bank-i-115-fz/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/buhgalterskie-uslugi/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/buhgalterskoe-soprovozhdenie-ooo/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/blog/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/blog/razbory/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/deklaraciya-usn/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/dokumenty-dlya-banka-115-fz/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/faq/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/izmenenie-okved-ip/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/izmenenie-okved-ooo/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/kadry/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/kontakty/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/likvidaciya-ip/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/likvidaciya-ooo/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/nalogi-i-rezhimy/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/nds-pri-usn-2026/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/nedostovernost-yuridicheskogo-adresa/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/novosti/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/novosti/nalogovyy-kalendar/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/nulevaya-otchetnost-ip/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/nulevaya-otchetnost-ooo/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/o-proekte/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/oferta/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/otchetnost/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/otvet-na-trebovanie-ifns/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/otvet-na-zapros-banka/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/policy/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/raschet-nalogovoy-nagruzki/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/razbor-situacii/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/rekvizity/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/registraciya-i-likvidaciya/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/registraciya-ip/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/registraciya-ooo/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/smena-direktora-ooo/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/smena-buhgaltera/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/smena-yuridicheskogo-adresa-ooo/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/sdacha-otchetnosti-ip/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/sdacha-otchetnosti-ooo/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/soprovozhdenie/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/srochnye-voprosy/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/sverka-s-nalogovoy/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/uslugi/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/vosstanovlenie-buhucheta/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/yuridicheskiy-adres-simferopol/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/otzyvy/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/ceny/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/novosti/otchetnost-9-mesyacev-oktyabr-2026/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/novosti/nds-usn-podgotovka-2027/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/blog/peredacha-ucheta-checklist/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    },
+    {
+      "route": "/blog/kak-proverit-priem-otchetnosti/",
+      "status": 200,
+      "hashMatches": true,
+      "pixelIncludes": 1
+    }
+  ],
+  "assets": [
+    {
+      "route": "/assets/vk-pixel.js?v=20261019-1",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/assets/lead-form.js?v=20261019-vk-1",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "route": "/assets/ai-chat.js?v=20261019-vk-1",
+      "status": 200,
+      "hashMatches": true
+    }
+  ],
+  "backendChanged": false,
+  "metrikaGoalsChanged": false,
+  "unitTestsPassed": 46,
+  "test": {
+    "markedSubmissions": 1,
+    "submissionId": "20261019T093518Z-2306730a",
+    "crmLeadId": 48805909,
+    "crmStatus": "sent",
+    "crmUtmFieldsVerified": true,
+    "crmNoteVerified": true,
+    "utm": {
+      "utm_source": "vk",
+      "utm_medium": "cpc",
+      "utm_campaign": "reporting_oct_2026",
+      "utm_content": "p1_ip_a"
+    },
+    "landingPage": "/sdacha-otchetnosti-ip/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ip_a",
+    "sourcePage": "/sdacha-otchetnosti-ip/",
+    "currentUrl": "/sdacha-otchetnosti-ip/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ip_a",
+    "taskType": "Сдача отчётности ИП",
+    "files": 0,
+    "label": "ТЕСТ VK — исключить из рабочих заявок/статистики",
+    "tags": [
+      "owner_qa",
+      "vk_qa"
+    ],
+    "followupTasksMarkedDoNotCall": [
+      56708911
+    ]
+  },
+  "cabinet": {
+    "status": "blocked",
+    "reason": "Browser site-safety policy blocks ads.vk.com redirect to ads.vk.ru",
+    "goalCreatedOrMapped": false,
+    "optimizationSelectionVerified": false
+  },
+  "vpnSettingsChanged": false,
+  "publishedFiles": [
+    "adres-egryul-direktor/index.html",
+    "akcii/index.html",
+    "assets/ai-chat.js",
+    "assets/lead-form.js",
+    "assets/vk-pixel.js",
+    "ausn-krym/index.html",
+    "bank-i-115-fz/index.html",
+    "blog/index.html",
+    "blog/kak-proverit-priem-otchetnosti/index.html",
+    "blog/peredacha-ucheta-checklist/index.html",
+    "blog/razbory/index.html",
+    "buhgalteriya-pravo-50/index.html",
+    "buhgalterskie-uslugi/index.html",
+    "buhgalterskoe-soprovozhdenie-ooo/index.html",
+    "ceny/index.html",
+    "deklaraciya-usn/index.html",
+    "dokumenty-dlya-banka-115-fz/index.html",
+    "faq/index.html",
+    "index.html",
+    "izmenenie-okved-ip/index.html",
+    "izmenenie-okved-ooo/index.html",
+    "kadry/index.html",
+    "kontakty/index.html",
+    "likvidaciya-ip/index.html",
+    "likvidaciya-ooo/index.html",
+    "nalogi-i-rezhimy/index.html",
+    "nds-pri-usn-2026/index.html",
+    "nedostovernost-yuridicheskogo-adresa/index.html",
+    "novosti/index.html",
+    "novosti/nalogovyy-kalendar/index.html",
+    "novosti/nds-usn-podgotovka-2027/index.html",
+    "novosti/otchetnost-9-mesyacev-oktyabr-2026/index.html",
+    "nulevaya-otchetnost-ip/index.html",
+    "nulevaya-otchetnost-ooo/index.html",
+    "o-proekte/index.html",
+    "oferta/index.html",
+    "otchetnost/index.html",
+    "otvet-na-trebovanie-ifns/index.html",
+    "otvet-na-zapros-banka/index.html",
+    "otzyvy/index.html",
+    "policy/index.html",
+    "raschet-nalogovoy-nagruzki/index.html",
+    "razbor-situacii/index.html",
+    "registraciya-i-likvidaciya/index.html",
+    "registraciya-ip/index.html",
+    "registraciya-ooo/index.html",
+    "rekvizity/index.html",
+    "sdacha-otchetnosti-ip/index.html",
+    "sdacha-otchetnosti-ooo/index.html",
+    "smena-buhgaltera/index.html",
+    "smena-direktora-ooo/index.html",
+    "smena-yuridicheskogo-adresa-ooo/index.html",
+    "soprovozhdenie/index.html",
+    "srochnye-voprosy/index.html",
+    "sverka-s-nalogovoy/index.html",
+    "uslugi/index.html",
+    "vosstanovlenie-buhucheta/index.html",
+    "yuridicheskiy-adres-simferopol/index.html"
+  ],
+  "publicFilesChanged": 58,
+  "sourceBinding": {
+    "previousRelease": "/var/www/dokumenty82/releases/20261019-lead-content-p0",
+    "previousPublicLeadScriptSha256": "2505745d1df0dd9c543bb8a97160a4b91d1776f07f5be7db0a9e30d554cb7838",
+    "suppliedReferenceMatchesPreviousPublicScript": true,
+    "metrikaGoalsSha256": "079bcaed3b4ac0386a99ae2d6f78f112cbc6d1e966a171df8b614d6a1b5ea18e"
+  },
+  "browser": {
+    "date": "2026-10-19",
+    "evidence": "Browser pageAssets resource inventory; server receipt and CRM record verified separately",
+    "pageViews": [
+      {
+        "endpoint": "/counter",
+        "pixel": "3805909",
+        "event": "pageView",
+        "url": "https://dokumenty82.ru/sdacha-otchetnosti-ip/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ip_a",
+        "viewport": "375*844",
+        "observedAsResource": true
+      }
+    ],
+    "leadEvents": [
+      {
+        "endpoint": "/tracker",
+        "pixel": "3805909",
+        "event": "RG:/leadSubmitSuccess",
+        "url": "https://dokumenty82.ru/sdacha-otchetnosti-ip/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ip_a",
+        "viewport": "375*844",
+        "observedAsResource": true
+      }
+    ],
+    "vendorAutomaticEvents": [
+      "RT/load",
+      "CE:/_submit;lead;https://dokumenty82.ru/api/lead",
+      "PVT/15",
+      "RT/beat",
+      "RT/beat"
+    ],
+    "vkCabinetReceiptVerified": false,
+    "desktop": {
+      "route": "/sdacha-otchetnosti-ooo/",
+      "pageViews": 1,
+      "libraryScripts": 1,
+      "viewport": "1265*720"
+    },
+    "mobile": {
+      "route": "/sdacha-otchetnosti-ip/",
+      "viewport": "375*844",
+      "libraryScripts": 1,
+      "physicalDevice": false
+    }
+  },
+  "negativeChecks": {
+    "unitTestsPassed": 46,
+    "siteAudit": "PASS",
+    "invalidPhoneNoRequest": true,
+    "serverErrorsNoConversion": true,
+    "networkErrorsNoConversion": true,
+    "storedOnlyNoConversion": true,
+    "duplicateSubmitOneRequestOneConversion": true,
+    "duplicateBootstrapOneLibraryOnePageView": true,
+    "metrikaUnavailableDoesNotBlockVk": true,
+    "vkUnavailableDoesNotBlockFormOrMetrika": true,
+    "testEnvironment": "Node VM and loopback actual Python receiver with mocked CRM; no false production conversions generated",
+    "mobileBrowserEvidence": "internal/evidence/vk-mobile-negative-20261019.json"
+  },
+  "attributionNavigationTest": [
+    "/sdacha-otchetnosti-ip/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ip_a",
+    "/uslugi/",
+    "back to IP reporting form"
+  ],
+  "metrikaValidation": {
+    "counter": 109869928,
+    "sharedGoalScriptUnchanged": true,
+    "existingLeadSuccessInvocationVerifiedByTests": true,
+    "counterScriptObservedInLiveBrowser": true,
+    "liveGoalReceiptInMetrikaCabinetVerified": false
+  },
+  "screenshot": "internal/evidence/vk-test-delivered-20261019.jpg",
+  "vendorAutomaticEventsAreNotConfirmedLeads": true,
+  "vkOptimizationMustUseExactEvent": "leadSubmitSuccess",
+  "notStarted": [
+    "ad campaign launch",
+    "ad spend"
+  ]
+}

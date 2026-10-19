@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-19",
+  "environment": "loopback real receiver / mocked CRM and analytics; no external conversions",
+  "invalid": {
+    "events": [
+      {
+        "id": "3805909",
+        "referrer": "",
+        "start": 1792402822276,
+        "type": "pageView",
+        "url": "http://127.0.0.1:8189/sdacha-otchetnosti-ooo/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ooo_a"
+      }
+    ],
+    "metrika": [
+      "goal_form_start",
+      "goal_form_submit_attempt",
+      "goal_form_submit_fail"
+    ],
+    "width": 375
+  },
+  "storedOnly": {
+    "events": [
+      {
+        "id": "3805909",
+        "referrer": "",
+        "start": 1792402822276,
+        "type": "pageView",
+        "url": "http://127.0.0.1:8189/sdacha-otchetnosti-ooo/?utm_source=vk&utm_medium=cpc&utm_campaign=reporting_oct_2026&utm_content=p1_ooo_a"
+      }
+    ],
+    "metrika": [
+      "goal_form_start",
+      "goal_form_submit_attempt",
+      "goal_form_submit_fail",
+      "goal_form_submit_attempt",
+      "goal_form_stored_only"
+    ],
+    "width": 375
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-19",
+  "counter": 109869928,
+  "events": [],
+  "counterScriptObserved": true,
+  "standaloneGoalResourceObserved": false,
+  "note": "Resource inventory did not expose a distinct success-goal request URL; this is not a Metrika receipt. Existing invocation is covered by tests and its shared script is unchanged."
+}
