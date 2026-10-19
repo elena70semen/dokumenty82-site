@@ -6,6 +6,7 @@ import test from "node:test";
 // Unit tests only: no browser, listener, HTTP server or real network request.
 const source = fs.readFileSync(new URL("../assets/lead-form.js", import.meta.url), "utf8");
 const contactsSource = fs.readFileSync(new URL("../assets/contact-fields.js", import.meta.url), "utf8");
+const vkSource = fs.readFileSync(new URL("../assets/vk-pixel.js", import.meta.url), "utf8");
 const settle = () => new Promise((resolve) => setImmediate(resolve));
 const response = (status = 200, payload = { ok: true, id: "mock-id", crm_status: "sent" }) => ({
   ok: status >= 200 && status < 300, status,
@@ -79,12 +80,14 @@ function fixture(options = {}) {
     reset() { resets++; nativeValid = false; },
   });
   const document = element({
+    head: { appendChild() {} }, getElementById: () => null,
     querySelectorAll: (selector) => selector === 'form[data-lead-form="amo"]' ? [form] : [],
     querySelector: () => null,
     createElement: () => element(),
   });
   const window = {
-    location: { pathname: options.path || "/razbor-situacii/", search: options.search || "" },
+    location: { pathname: options.path || "/razbor-situacii/", search: options.search || "",
+      href: "https://dokumenty82.ru" + (options.path || "/razbor-situacii/") + (options.search || "") },
     d82TrackGoal: options.track || ((name, params) => goals.push({ name, params })),
     d82GetAttribution: options.attribution || (() => Promise.resolve({ yandex_client_id: "1234567890" })),
   };
@@ -94,8 +97,8 @@ function fixture(options = {}) {
     append(key, value) { this.entries.push([key, value]); }
     delete(key) { this.entries = this.entries.filter(([name]) => name !== key); }
   }
-  vm.runInNewContext(contactsSource + "\n" + source, {
-    document, window, FormData: MockFormData, URLSearchParams,
+  vm.runInNewContext(vkSource + "\n" + contactsSource + "\n" + source, {
+    document, window, FormData: MockFormData, URL, URLSearchParams,
     ...(options.noAbortController ? {} : { AbortController }),
     setTimeout: (callback, delay) => {
       const id = ++nextTimer;
@@ -109,7 +112,8 @@ function fixture(options = {}) {
     },
   });
   document.emit("DOMContentLoaded");
-  return { form, inputs, status, receipt, receiptContact, submit, goals, requests, resets: () => resets,
+  return { form, inputs, status, receipt, receiptContact, submit, goals, requests, window,
+    vkSuccesses: () => window._tmr.filter(event => event.type === "reachGoal"), resets: () => resets,
     timers,
     expireTimers: () => {
       const pending = [...timers.values()];
@@ -294,6 +298,7 @@ test("a hanging response body also times out and late confirmation is ignored", 
   await settle();
   assert.equal(f.status.textContent, message);
   assert.equal(f.successes().length, 0);
+  assert.equal(f.vkSuccesses().length, 0);
   assert.equal(f.resets(), 0);
   assert.equal(f.timers.size, 0);
 });
@@ -381,6 +386,7 @@ test("duplicate submit while pending makes one POST and one success", async () =
   finish(response());
   await settle();
   assert.equal(f.successes().length, 1);
+  assert.equal(f.vkSuccesses().length, 1);
   assert.equal(f.resets(), 1);
   assert.equal(f.submit.disabled, false);
   assert.deepEqual(f.requests[0][1].body.entries, [["yandex_client_id", "1234567890"]]);
@@ -391,6 +397,7 @@ test("stored-only HTTP 202 keeps the form and is never a successful lead", async
   f.form.emit("submit");
   await settle();
   assert.equal(f.successes().length, 0);
+  assert.equal(f.vkSuccesses().length, 0);
   assert.equal(f.resets(), 0);
   assert.match(f.status.textContent, /не доставлена менеджеру/);
   assert.equal(f.goals.filter((goal) => goal.name === "goal_form_stored_only").length, 1);
@@ -403,6 +410,59 @@ test("analytics failure cannot prevent the request", async () => {
   await settle();
   assert.equal(f.requests.length, 1);
   assert.equal(f.resets(), 1);
+  assert.equal(f.vkSuccesses().length, 1);
+});
+
+test("VK receives one safe goal only after a confirmed delivery, even without Metrika", async () => {
+  const f = fixture();
+  delete f.window.d82TrackGoal;
+  f.form.emit("input");
+  assert.equal(f.vkSuccesses().length, 0);
+  f.form.emit("submit");
+  assert.equal(f.vkSuccesses().length, 0);
+  await settle();
+  assert.equal(f.requests.length, 1);
+  assert.equal(f.resets(), 1);
+  const events = f.vkSuccesses();
+  assert.equal(events.length, 1);
+  assert.equal(events[0].goal, "leadSubmitSuccess");
+  assert.equal(events[0].id, "3805909");
+  assert.doesNotMatch(JSON.stringify(events), /Mock|978|mock-id|phone|email|message|files|params|value|currency/);
+  assert.equal(f.window.d82VkLeadSuccess({ ok: true, id: "mock-id", crm_status: "sent" }), false);
+  assert.equal(f.vkSuccesses().length, 1);
+});
+
+test("VK has no conversions on invalid fields, honeypot, server/network errors or stored-only", async () => {
+  for (const options of [
+    { nativeValid: false },
+    { fetch: async () => response(500) },
+    { fetch: async () => { throw new Error("offline"); } },
+    { fetch: async () => response(200, { ok: true, id: "id", crm_status: "stored_only" }) },
+    { fetch: async () => response(200, { ok: true, crm_status: "sent" }) },
+    { fetch: async () => response(200, { ok: true, id: "id" }) },
+    { fetch: async () => response(200, { ok: false, id: "id", crm_status: "sent" }) },
+  ]) {
+    const f = fixture(options);
+    f.form.emit("submit");
+    await settle();
+    assert.equal(f.vkSuccesses().length, 0);
+  }
+  const bot = fixture();
+  bot.inputs.company_website.value = "bot";
+  bot.form.emit("submit");
+  await settle();
+  assert.equal(bot.vkSuccesses().length, 0);
+});
+
+test("a broken VK queue does not affect delivery or the existing Metrika goal", async () => {
+  const f = fixture();
+  f.window._tmr = { push() { throw new Error("blocked pixel"); } };
+  f.form.emit("submit");
+  await settle();
+  assert.equal(f.requests.length, 1);
+  assert.equal(f.resets(), 1);
+  assert.equal(f.successes().length, 1);
+  assert.equal(f.submit.disabled, false);
 });
 
 test("synchronous attribution failure does not disable the form", async () => {

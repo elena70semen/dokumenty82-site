@@ -293,6 +293,10 @@
             fireGoal("goal_form_stored_only", { form: "amo_lead", crm_status: "stored_only" });
             return;
           }
+          // Independent of Metrika and optional UI rendering after delivery.
+          try {
+            if (typeof window.d82VkLeadSuccess === "function") window.d82VkLeadSuccess(payload);
+          } catch (_) {}
           form.reset();
           syncAuditLead(form);
           renderFiles(form);

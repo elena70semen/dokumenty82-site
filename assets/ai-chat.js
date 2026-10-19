@@ -337,6 +337,9 @@
           fireGoal("goal_ai_chat_stored_only", { form: "ai_chat", crm_status: "stored_only" });
           return;
         }
+        try {
+          if (typeof window.d82VkLeadSuccess === "function") window.d82VkLeadSuccess(payload);
+        } catch (_) {}
         form.reset();
         form.hidden = true;
         const button = $(".ai-chat-escalate");
